@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf3f8">
+  <meta name="description" content="Три дизайн-концепции сайта Анастасии: персональный подбор няни с вниманием к вашей семье.">
+  <title>Настя — няня, с которой спокойно</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Manrope:wght@400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-concept="air">
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="heart" viewBox="0 0 48 48"><path d="M24 39S5 29 7 17C9 6 21 10 24 18c4-10 16-10 18-1 2 10-18 22-18 22Z"/></symbol>
+    <symbol id="sun" viewBox="0 0 80 80"><circle cx="40" cy="40" r="15"/><path d="M40 4v12m0 48v12M4 40h12m48 0h12M14 14l9 9m34 34 9 9M14 66l9-9m34-34 9-9"/></symbol>
+    <symbol id="people" viewBox="0 0 48 48"><circle cx="19" cy="15" r="7"/><path d="M5 40v-5a14 14 0 0 1 28 0v5ZM32 8a7 7 0 0 1 0 14m5 18h7v-6a13 13 0 0 0-8-12"/></symbol>
+    <symbol id="chat" viewBox="0 0 48 48"><path d="M42 23c0 10-8 17-19 17l-13 5 2-10C-2 22 8 6 24 6c10 0 18 7 18 17Z"/><path d="M14 21h20M14 28h12"/></symbol>
+    <symbol id="profile" viewBox="0 0 48 48"><path d="M10 4h22l7 8v32H10ZM31 4v10h8M17 33h15m-15 5h15"/><circle cx="24" cy="22" r="4"/></symbol>
+    <symbol id="leaf" viewBox="0 0 48 48"><path d="M9 40C4 11 25 7 40 6c2 19-3 34-24 29M9 40 32 15"/></symbol>
+    <symbol id="shield" viewBox="0 0 48 48"><path d="M24 4 41 11v13c0 11-17 20-17 20S7 35 7 24V11ZM16 23l6 6 11-12"/></symbol>
+    <symbol id="plane" viewBox="0 0 24 24"><path d="m21 3-5 18-5-7-8-3ZM11 14 21 3M11 14v6l4-3"/></symbol>
+    <symbol id="flower" viewBox="0 0 90 150"><path d="M44 147V63m0 50C23 114 13 98 14 88c17 1 29 11 30 25Zm0 14c22-2 32-17 31-28-17 2-30 14-31 28Z"/><path d="M44 58C18 76 5 49 28 40 4 22 28 3 42 26 48-1 75 7 63 31c26-3 30 26 5 27 4 25-23 29-24 0Z"/><circle cx="47" cy="43" r="9"/></symbol>
+  </svg>
+
+  <div class="concept-bar" aria-label="Выбор дизайн-концепции">
+    <a class="concept-brand" href="#top">НАСТЯ <span>/ ВАРИАНТЫ САЙТА</span></a>
+    <div class="concept-options" role="group" aria-label="Варианты оформления">
+      <button type="button" data-theme="air" aria-pressed="true"><i class="swatch air-swatch"></i><span>01 <b>Воздух</b></span></button>
+      <button type="button" data-theme="editorial" aria-pressed="false"><i class="swatch editorial-swatch"></i><span>02 <b>Суть</b></span></button>
+      <button type="button" data-theme="warm" aria-pressed="false"><i class="swatch warm-swatch"></i><span>03 <b>Тепло</b></span></button>
+    </div>
+    <button type="button" class="about-concepts" data-open="concept-dialog" aria-label="О концепциях">О макетах <span>↗</span></button>
+  </div>
+
+  <div class="site-shell" id="top">
+    <header class="site-header wrap">
+      <a href="#top" class="brand" aria-label="Настя — на главную"><strong>Настя<span class="brand-dot">.</span></strong><span>личный подбор няни<br>с вниманием к вашей семье</span></a>
+      <nav class="desktop-nav" aria-label="Основная навигация"><a href="#approach">Подход</a><a href="#about">Обо мне</a><a href="#journey">Как это работает</a><a href="#terms">Условия</a></nav>
+      <a href="#contact" class="button small header-cta">Обсудим вашу семью <svg><use href="#arrow"/></svg></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Открыть меню"><span></span><span></span></button>
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Мобильная навигация" hidden><a href="#approach">Мой подход</a><a href="#about">Обо мне</a><a href="#journey">Маршрут подбора</a><a href="#terms">Условия</a><a href="#contact">Оставить заявку</a></nav>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero wrap">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="tiny-line"></span> ПЕРСОНАЛЬНЫЙ ПОДБОР НЯНИ</div>
+            <h1>Найду няню,<br>с которой <em>спокойно</em><br>вам и хорошо<br class="editorial-break"> ребёнку<span class="headline-dot">.</span></h1>
+            <p class="hero-description">Я беру на себя поиск, собеседования и проверки, чтобы вы познакомились с человеком, который подходит именно вашей семье.</p>
+            <div class="hero-actions"><a href="#contact" class="button">Оставить заявку <svg><use href="#arrow"/></svg></a><a class="text-button" href="https://t.me/anastasiadoroninaa" target="_blank" rel="noopener noreferrer"><svg><use href="#plane"/></svg> Telegram <span>↗</span></a></div>
+            <div class="hero-footnote"><span class="mini-heart">♡</span> С заботой о самых важных</div>
+          </div>
+          <div class="hero-visual">
+            <div class="portrait-frame"><div class="reference-photo portrait-photo" role="img" aria-label="Анастасия — фотография из предоставленного референса"><img src="assets/reference-blue.png" alt="" width="720" height="1280" fetchpriority="high"></div><span class="photo-caption">Анастасия Доронина<br><small>ваш человек в поиске няни</small></span></div>
+            <div class="paper-note"><span class="tape"></span><p>Не просто закрыть<br>вакансию, а найти<br><b>своего человека.</b></p><svg><use href="#heart"/></svg></div>
+            <div class="hero-doodle"><svg><use href="#sun"/></svg><span>Маленькие люди.<br>Большое доверие.</span></div>
+            <span class="photo-side-note">ЗНАКОМСТВО НАЧИНАЕТСЯ С ДОВЕРИЯ</span>
+          </div>
+        </div>
+        <div class="hero-bottom wrap"><span>Меньше тревоги. Больше вашей жизни.</span><a href="#approach">Знакомимся ближе <span>↓</span></a></div>
+      </section>
+
+      <div class="sections">
+        <section id="approach" class="approach section wrap">
+          <div class="section-heading"><div><div class="eyebrow">МОЙ ПОДХОД</div><h2>Не пачка анкет.<br><em>Точное совпадение.</em></h2></div><p>У каждой семьи свой ритм, привычки и ценности.<br>С этого и начинается мой поиск.</p></div>
+          <div class="approach-grid">
+            <article class="approach-card"><svg class="line-icon"><use href="#people"/></svg><span class="card-kicker">СНАЧАЛА — ВЫ</span><h3>Понимаю вашу семью</h3><p>Обсуждаем, как устроен ваш день, что важно в воспитании и какой помощи вам не хватает. Складываем живой портрет вашей няни.</p><span class="card-tail">Внимание к деталям <span>↗</span></span></article>
+            <article class="approach-card"><svg class="line-icon"><use href="#chat"/></svg><span class="card-kicker">ПОТОМ — ЛИЧНЫЙ РАЗГОВОР</span><h3>Собеседую под ваш запрос</h3><p>Задаю вопросы о реальных ситуациях вашей семьи: от детских истерик до уроков и конфликтов между детьми. Смотрю глубже опыта в анкете.</p><span class="card-tail">Совпадение по ценностям <span>↗</span></span></article>
+            <article class="approach-card"><svg class="line-icon"><use href="#profile"/></svg><span class="card-kicker">И ТОЛЬКО ПОТОМ — ЗНАКОМСТВО</span><h3>Даю контекст и рекомендации</h3><p>Вы получаете подробный профиль с моими комментариями: в чём сильные стороны кандидата и почему он может подойти именно вам.</p><span class="card-tail">Человек за резюме <span>↗</span></span></article>
+          </div>
+          <p class="approach-signature">Хороший подбор — когда совпали не только графики, но и люди. <svg><use href="#heart"/></svg></p>
+        </section>
+
+        <section id="about" class="about-section section">
+          <div class="about-grid wrap">
+            <div class="about-visual"><div class="reference-photo mountain-photo" role="img" aria-label="Анастасия в горах — фотография из предоставленного макета"><img src="assets/reference-blue.png" alt="" width="720" height="1280" loading="lazy"></div><span class="about-handwritten">Давайте знакомиться!</span><svg class="about-flower"><use href="#flower"/></svg></div>
+            <div class="about-copy"><div class="eyebrow">ПРИВЕТ, Я НАСТЯ</div><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>С 2022 года я подбираю нянь для семей. Работала в двух агентствах, а теперь веду подбор лично — от первого разговора до выхода няни на работу.</p><p>До этого пять лет работала с детьми: няней, тренером и педагогом. Поэтому понимаю и ожидания родителей, и то, как выглядит работа няни изнутри.</p><blockquote>Мне важно, чтобы вам было спокойно,<br>а няне и ребёнку — хорошо вместе.</blockquote><a class="underlined-link" href="https://t.me/anastasiadoroninaa/103" target="_blank" rel="noopener noreferrer">Больше о моём подходе <span>↗</span></a></div>
+          </div>
+        </section>
+
+        <section id="reviews" class="reviews section wrap">
+          <div class="section-heading"><div><div class="eyebrow">СЛОВА, РАДИ КОТОРЫХ ВСЁ</div><h2>Когда стало <em>спокойнее</em></h2></div><span class="handwritten reviews-note">Самое ценное — ваше доверие ♡</span></div>
+          <div class="review-grid">
+            <figure class="review-card"><span class="quote-mark">“</span><blockquote>Настя помогла нам найти няню для дочки. Очень внимательная, задаёт правильные вопросы, быстро понимает, что важно именно нашей семье.</blockquote><figcaption><span class="avatar">Н</span><span><b>Наталья Д.</b><small>мама двоих детей</small></span><svg><use href="#heart"/></svg></figcaption></figure>
+            <figure class="review-card"><span class="quote-mark">“</span><blockquote>Мы искали няню через агентства, но Настя подобрала нам кандидата из своей базы. Очень благодарны за подход и поддержку!</blockquote><figcaption><span class="avatar">А</span><span><b>Анастасия Р.</b><small>мама одного ребёнка</small></span><svg><use href="#heart"/></svg></figcaption></figure>
+            <figure class="review-card"><span class="quote-mark">“</span><blockquote>Добрый вечер! Отлично, Настя, спасибо! Юра вчера весь вечер спрашивал, когда вы ещё придёте, кроме сегодня 🙂</blockquote><figcaption><span class="avatar">Ю</span><span><b>Юлия К.</b><small>мама одного ребёнка</small></span><svg><use href="#heart"/></svg></figcaption></figure>
+          </div>
+          <p class="draft-note">Тексты из присланного макета. Перед запуском подтвердим отзывы и согласуем публикацию.</p>
+        </section>
+
+        <section id="journey" class="journey-section section">
+          <div class="wrap"><div class="section-heading"><div><div class="eyebrow">ШАГ ЗА ШАГОМ</div><h2>От первого «привет»<br><em>до вашей няни</em></h2></div><p>На каждом этапе рядом со мной.<br>Можно спрашивать, сомневаться и обсуждать.</p></div>
+            <div class="journey-grid">
+              <article><span class="step-point"><svg><use href="#chat"/></svg></span><h3>Знакомимся</h3><p>Вы рассказываете о семье, ребёнке и своих пожеланиях.</p><small>Слушаю и уточняю</small></article>
+              <article><span class="step-point"><svg><use href="#people"/></svg></span><h3>Собираем запрос</h3><p>Определяем задачи, график и качества будущей няни.</p><small>Создаём портрет</small></article>
+              <article><span class="step-point"><svg><use href="#profile"/></svg></span><h3>Ищу и собеседую</h3><p>Отбираю кандидатов и представляю их с личными комментариями.</p><small>Смотрим глубже анкеты</small></article>
+              <article><span class="step-point"><svg><use href="#heart"/></svg></span><h3>Вы встречаетесь</h3><p>Организуем знакомство. Обсуждаем ваши впечатления.</p><small>Ищем ваше совпадение</small></article>
+              <article><span class="step-point"><svg><use href="#leaf"/></svg></span><h3>Остаюсь рядом</h3><p>Поддерживаю после выхода няни на работу и помогаю с заменой.</p><small>Вы не остаётесь одни</small></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="terms" class="terms section wrap">
+          <div class="terms-intro"><div class="eyebrow">ПРОЗРАЧНО И ПО-ЧЕЛОВЕЧЕСКИ</div><h2>Забота —<br><em>в том числе<br>в условиях</em></h2><svg class="terms-flower"><use href="#flower"/></svg></div>
+          <div class="terms-details"><div class="term-row"><span class="term-symbol">∞</span><div><h3>Поиск до результата</h3><p>Количество кандидатов не ограничено. Продолжаем поиск, пока не найдём подходящего человека.</p></div></div><div class="term-row"><svg class="line-icon"><use href="#shield"/></svg><div><h3>Гарантия замены — 6 месяцев</h3><p>Если няня не подошла, подберу замену бесплатно в течение гарантийного срока.</p></div></div><div class="term-row"><svg class="line-icon"><use href="#chat"/></svg><div><h3>Личная связь и сопровождение</h3><p>Вы общаетесь со мной, обсуждаете каждого кандидата и получаете поддержку после выбора.</p></div></div><div class="price-row"><div><span class="eyebrow">СТОИМОСТЬ ПОДБОРА</span><h3>Добавим после согласования</h3><p>В этой концепции пока нет утверждённого тарифа.</p></div><a class="circle-link" href="#contact" aria-label="Перейти к заявке"><svg><use href="#arrow"/></svg></a></div></div>
+        </section>
+
+        <section id="faq" class="faq section wrap"><div><div class="eyebrow">МОЖНО СПРОСИТЬ</div><h2>О том, что<br><em>обычно волнует</em></h2><p class="faq-intro">Первый поиск няни часто начинается<br>с большого количества вопросов.</p></div><div class="faq-list"><details><summary>Чем ваш подбор отличается от анкет из базы?<span>+</span></summary><p>Я провожу интервью под конкретную семью и задаю ситуативные вопросы о ваших задачах. Затем передаю подробный профиль и свои комментарии, чтобы вам было легче оценить кандидата.</p></details><details><summary>А если никто из кандидатов не подойдёт?<span>+</span></summary><p>Продолжим поиск. Количество предложенных кандидатов не ограничено: будем обсуждать обратную связь и уточнять запрос, пока не найдём подходящую няню.</p></details><details><summary>Вы помогаете после выхода няни на работу?<span>+</span></summary><p>Да, я остаюсь на связи и помогаю обсудить возникающие вопросы. Также предусмотрена бесплатная замена в течение 6 месяцев.</p></details><details><summary>Что нужно для первого разговора?<span>+</span></summary><p>Можно начать с возраста ребёнка, примерного графика и того, какая помощь вам нужна. Если запрос пока не сложился, сформулируем его вместе.</p></details></div></section>
+
+        <section id="contact" class="contact-section section"><div class="contact-grid wrap"><div class="contact-copy"><div class="eyebrow">НАЧНЁМ С РАЗГОВОРА</div><h2>Ваша няня<br><em>где-то рядом.</em></h2><p>Расскажите немного о вашей семье.<br>Вместе поймём, какой человек вам нужен.</p><a class="text-button" href="https://t.me/anastasiadoroninaa" target="_blank" rel="noopener noreferrer"><svg><use href="#plane"/></svg> Можно начать с Telegram <span>↗</span></a><svg class="contact-flower"><use href="#flower"/></svg></div><form id="request-form" class="request-form"><div class="form-topline"><span>Давайте познакомимся</span><span>♡</span></div><label for="name">Как к вам обращаться<input id="name" name="name" autocomplete="given-name" placeholder="Ваше имя" required maxlength="80"></label><label for="contact-input">Телефон или Telegram<input id="contact-input" name="contact" autocomplete="tel" placeholder="+7 или @username" required maxlength="100"></label><label for="message">Немного о вашем запросе<textarea id="message" name="message" rows="2" maxlength="2000" placeholder="Возраст ребёнка, график и что для вас важно"></textarea></label><label class="consent"><input id="consent" type="checkbox" required><span>Согласие на <button type="button" data-open="privacy-dialog">обработку персональных данных</button></span></label><button class="button submit-button" type="submit">Оставить заявку <svg><use href="#arrow"/></svg></button><p class="form-demo">Демонстрация формы · данные никуда не отправляются</p><p class="form-status" id="form-status" role="status" hidden></p></form></div></section>
+      </div>
+    </main>
+    <footer class="site-footer wrap"><a class="brand footer-brand" href="#top"><strong>Настя.</strong><span>с вниманием к вашей семье</span></a><span>Личный подбор няни · дизайн-концепция</span><a href="https://t.me/anastasiadoroninaa" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="#top" class="back-top">Наверх ↑</a></footer>
+  </div>
+
+  <dialog id="concept-dialog" class="info-dialog"><button class="dialog-close" type="button" aria-label="Закрыть">×</button><span class="eyebrow">ТРИ НАПРАВЛЕНИЯ</span><h2>Выбираем<br><em>настроение сайта</em></h2><p><b>01 / Воздух.</b> Голубой, белый, зелёный. Ближе всего к присланным референсам: личный портрет и записка.</p><p><b>02 / Суть.</b> Молочная бумага, крупная типографика и строгая сетка. Более сдержанный, журнальный характер.</p><p><b>03 / Тепло.</b> Пудровый, сливочный, зелёный и немного рисунков. Домашнее, дружелюбное настроение.</p><div class="dialog-note">Это три варианта композиции на общей структуре. Можно объединить понравившиеся элементы. Фото временно показываются фрагментами ваших макетов. Отзывы, стоимость, проверки, условия гарантии и адрес личного Telegram уточним перед запуском. Форма демонстрационная.</div></dialog>
+  <dialog id="privacy-dialog" class="info-dialog"><button class="dialog-close" type="button" aria-label="Закрыть">×</button><span class="eyebrow">ДЕМОНСТРАЦИОННЫЙ МАКЕТ</span><h2>Здесь будет<br><em>согласие</em></h2><p>Перед запуском добавим согласованные документы об обработке персональных данных и реквизиты специалиста.</p><p>В этой версии форма ничего не отправляет и не сохраняет введённые данные.</p></dialog>
+  <div class="theme-announcement sr-only" aria-live="polite"></div>
+</body>
+</html>

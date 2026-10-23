@@ -260,6 +260,7 @@ p {
   margin-left:10px;
 }
 .site-shell {
+  overflow:clip;
   background:var(--paper);
 }
 .site-header {

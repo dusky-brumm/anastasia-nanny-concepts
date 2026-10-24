@@ -1085,7 +1085,7 @@ body[data-concept=editorial] {
   --paper:#f6f3ec;
   --soft:#e6e8df;
   --green:#42513c;
-  --muted:#74776a;
+  --muted:#66705d;
   --line:#d6d6c8;
   --accent:#aa674e;
 }
@@ -1346,7 +1346,7 @@ body[data-concept=warm] {
   --soft:#f9f0e5;
   --green:#4f7058;
   --ink:#354b3f;
-  --muted:#7b7f71;
+  --muted:#677360;
   --line:#e0dfd0;
   --accent:#c88167;
 }
@@ -2671,3 +2671,7 @@ body[data-concept=warm] .price-row {
 
 .archive-new-link{font-size:10px;color:#536e55;white-space:nowrap}
 @media(max-width:620px){.archive-new-link{grid-column:1;grid-row:3;font-size:9px;padding-top:5px}.concept-bar{padding-bottom:10px}}
+
+/* Original photos replace the screenshot fragments in the first collection. */
+.reference-photo>img,body[data-concept=warm] .mountain-photo>img,body[data-concept=editorial] .portrait-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait-photo>img{object-position:100% 50%}.mountain-photo>img{object-position:50% 35%}

@@ -1,3 +1,5 @@
+import { initCommonUI } from './shared-ui.js';
+
 const designs = {
   close: { name: 'Близко', color: '#e8f2f6' },
   letter: { name: 'Письмо', color: '#fcfbf6' },
@@ -58,37 +60,4 @@ scenarioTabs.forEach((tab, index) => {
   });
 });
 
-const menuButton = document.querySelector('.menu-button');
-const mobileMenu = document.querySelector('#mobile-menu');
-function closeMenu() {
-  mobileMenu.hidden = true;
-  menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.setAttribute('aria-label', 'Открыть меню');
-}
-menuButton.addEventListener('click', () => {
-  const open = menuButton.getAttribute('aria-expanded') !== 'true';
-  mobileMenu.hidden = !open;
-  menuButton.setAttribute('aria-expanded', String(open));
-  menuButton.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
-});
-mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
-
-document.querySelectorAll('[data-dialog]').forEach(button => button.addEventListener('click', () => {
-  document.getElementById(button.dataset.dialog).showModal();
-}));
-document.querySelectorAll('dialog').forEach(dialog => {
-  dialog.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => {
-    if (event.target !== dialog) return;
-    const rect = dialog.getBoundingClientRect();
-    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
-  });
-});
-
-document.querySelector('#family-form').addEventListener('submit', event => {
-  event.preventDefault();
-  const result = document.querySelector('#form-result');
-  result.textContent = 'Здесь появится подтверждение заявки. Сейчас это дизайн-макет: сообщение не отправлено. Для связи перейдите в Telegram.';
-  result.hidden = false;
-});
+initCommonUI({ menuButton: '.menu-button', menu: '#mobile-menu' });

@@ -1,0 +1,4 @@
+# Keep full browser captures locally; publish lightweight gallery previews.
+project-notes/
+artifacts/
+*.tar.gz

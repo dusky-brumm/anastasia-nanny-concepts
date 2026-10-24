@@ -1,0 +1,10 @@
+{
+  "name": "anastasia-nanny-concepts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-studio.mjs",
+    "check": "node scripts/validate-site.mjs",
+    "test": "node --test scripts/tests/*.test.mjs"
+  }
+}

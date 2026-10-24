@@ -1,0 +1,52 @@
+import { spawnSync } from 'node:child_process';
+import { readdir, readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import { concepts } from '../src/studio/catalog.mjs';
+import { heroes } from '../src/studio/heroes.mjs';
+
+const root=fileURLToPath(new URL('../',import.meta.url));
+const htmlCheck=spawnSync('python',[path.join(root,'scripts','validate_site.py')],{cwd:root,encoding:'utf8'});
+process.stdout.write(htmlCheck.stdout||'');
+process.stderr.write(htmlCheck.stderr||'');
+if(htmlCheck.status!==0)process.exit(htmlCheck.status||1);
+
+assert.equal(concepts.length,20,'The full objective requires twenty additional directions.');
+assert.equal(new Set(concepts.map(item=>item.id)).size,20,'Concept IDs must be unique.');
+assert.deepEqual(concepts.map(item=>item.number),Array.from({length:20},(_,index)=>index+7));
+const signature=['hero','about','approach','route','reviews','pricing'];
+for(let a=0;a<concepts.length;a++)for(let b=a+1;b<concepts.length;b++){
+  const differences=signature.filter(key=>concepts[a][key]!==concepts[b][key]).length;
+  assert.ok(differences>=3,`${concepts[a].id} and ${concepts[b].id} need more structural differences.`);
+}
+const available=concepts.filter(item=>typeof heroes[item.hero]==='function');
+for(const concept of available){
+  const html=await readFile(path.join(root,'dist','studio',`${concept.id}.html`),'utf8');
+  for(const requirement of ['ВОВЛЕЧЁННЫЙ ПОДБОР','ПРИВЕТ, Я НАСТЯ','25 000','5 500','6 месяцев','Неограниченное количество кандидатов','name="service"','data-request-form'])assert.ok(html.includes(requirement),`${concept.id}: missing ${requirement}`);
+}
+async function checkJavaScript(directory){
+  for(const entry of await readdir(directory,{withFileTypes:true})){
+    const filename=path.join(directory,entry.name);
+    if(entry.isDirectory())await checkJavaScript(filename);
+    else if(entry.name.endsWith('.js')){
+      const result=spawnSync(process.execPath,['--check',filename],{encoding:'utf8'});
+      assert.equal(result.status,0,result.stderr||`${filename} failed syntax check.`);
+    }
+  }
+}
+await checkJavaScript(path.join(root,'dist'));
+if(process.argv.includes('--complete')){
+  assert.equal(available.length,20,'Not all twenty directions have been implemented.');
+  const report=JSON.parse(await readFile(path.join(root,'project-notes','visual-qa.json'),'utf8'));
+  for(const concept of concepts){
+    const entry=report.concepts?.[concept.id];
+    assert.ok(entry?.desktop?.reviewed&&entry?.mobile?.reviewed,`${concept.id}: screenshot review is incomplete.`);
+    assert.ok(entry?.interactionsPassed,`${concept.id}: interaction checks are incomplete.`);
+    for(const size of ['desktop','mobile']){
+      const screenshot=await readFile(path.join(root,entry[size].path));
+      assert.ok(screenshot.length>1000,`${concept.id}: missing screenshot bytes.`);
+    }
+  }
+}
+console.log(`PASS: ${available.length}/20 additional directions built; metadata diversity and JS syntax verified. ${process.argv.includes('--complete')?'Recorded screenshot and interaction audits passed.':'Screenshot and interaction audits are checked separately.'}`);

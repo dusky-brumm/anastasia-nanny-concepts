@@ -1,5 +1,8 @@
 import { initCommonUI } from './shared-ui.js';
 
+// Keep saved legacy links while making the unqualified site URL open the finalists.
+if (!new URLSearchParams(location.search).has('concept')) location.replace('collection.html');
+
 const concepts = { air: 'Воздух', editorial: 'Суть', warm: 'Тепло' };
 const buttons = [...document.querySelectorAll('[data-theme]')];
 const themeColor = document.querySelector('meta[name="theme-color"]');

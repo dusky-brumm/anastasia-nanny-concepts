@@ -5,6 +5,8 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import { concepts } from '../src/studio/catalog.mjs';
 import { heroes } from '../src/studio/heroes.mjs';
+import { curatedConcepts } from '../src/curated/catalog.mjs';
+import { palette,contrast } from '../src/curated/page.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const htmlCheck=spawnSync('python',[path.join(root,'scripts','validate_site.py')],{cwd:root,encoding:'utf8'});
@@ -21,6 +23,21 @@ for(let a=0;a<concepts.length;a++)for(let b=a+1;b<concepts.length;b++){
   assert.ok(differences>=3,`${concepts[a].id} and ${concepts[b].id} need more structural differences.`);
 }
 const available=concepts.filter(item=>typeof heroes[item.hero]==='function');
+assert.equal(curatedConcepts.length,15,'The new collection must contain fifteen finalists.');
+assert.equal(new Set(curatedConcepts.map(item=>item.hero)).size,15,'Finalist hero compositions must be distinct.');
+assert.equal(new Set(curatedConcepts.map(item=>item.paletteName)).size,15,'Finalist palettes must be distinct.');
+const requiredOrder=['header','hero','service','about','process','pricing','reviews','request','footer'];
+for(const concept of curatedConcepts){
+  const html=await readFile(path.join(root,'dist','final',`${concept.id}.html`),'utf8');
+  assert.deepEqual([...html.matchAll(/data-section="([a-z]+)"/g)].map(item=>item[1]),requiredOrder,`${concept.id}: required nine-block sequence`);
+  for(const text of ['Готовы обсудить подбор?','25 000','5 500','6 месяцев','Количество кандидатов не ограничено.','data-request-form','Telegram Анастасии'])assert.ok(html.includes(text),`${concept.id}: missing ${text}`);
+  const colors=palette(concept);
+  for(const background of [colors.paper,colors.soft,colors.panel]){
+    assert.ok(contrast(colors.ink,background)>=4.5,`${concept.id}: body contrast`);
+    assert.ok(contrast(colors.muted,background)>=4.5,`${concept.id}: secondary text contrast`);
+  }
+  assert.ok(contrast(colors.accent,colors['on-accent'])>=4.5,`${concept.id}: button contrast`);
+}
 for(const concept of available){
   const html=await readFile(path.join(root,'dist','studio',`${concept.id}.html`),'utf8');
   for(const requirement of ['ВОВЛЕЧЁННЫЙ ПОДБОР','ПРИВЕТ, Я НАСТЯ','25 000','5 500','6 месяцев','Неограниченное количество кандидатов','name="service"','data-request-form'])assert.ok(html.includes(requirement),`${concept.id}: missing ${requirement}`);
@@ -49,4 +66,4 @@ if(process.argv.includes('--complete')){
     }
   }
 }
-console.log(`PASS: ${available.length}/20 additional directions built; metadata diversity and JS syntax verified. ${process.argv.includes('--complete')?'Recorded screenshot and interaction audits passed.':'Screenshot and interaction audits are checked separately.'}`);
+console.log(`PASS: 15 finalists in the required nine-block order, text/button contrast and distinct palettes; ${available.length}/20 archived studio directions; JS syntax verified. ${process.argv.includes('--complete')?'Recorded screenshot and interaction audits passed.':'Screenshot and interaction audits are checked separately.'}`);

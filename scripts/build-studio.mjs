@@ -13,7 +13,7 @@ await mkdir(output,{recursive:true});
 await mkdir(path.join(root,'project-notes'),{recursive:true});
 const available = concepts.filter(concept=>typeof heroes[concept.hero]==='function');
 for (const concept of available) await writeFile(path.join(output,`${concept.id}.html`),renderPage(concept,available));
-const metadata = [];
+export const metadata = [];
 for (const concept of [...available.map(item=>({...item,href:`studio/${item.id}.html`,collection:'new'})),...legacyConcepts.map(item=>({...item,collection:'earlier'}))]) {
   const thumbnail = `studio/previews/${concept.id}.webp`;
   let hasThumbnail = false;

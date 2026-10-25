@@ -1,0 +1,26 @@
+import {escape,icon,renderSymbols,privacyDialog,renderService,renderAbout,renderProcess,renderPricing,renderReviews,renderRequest,telegram} from './components.mjs';
+import {heroes,portraitRail} from './heroes.mjs';
+
+const rgb=hex=>hex.slice(1).match(/../g).map(n=>parseInt(n,16));
+const mix=(a,b,t)=>'#'+rgb(a).map((v,i)=>Math.round(v*t+rgb(b)[i]*(1-t)).toString(16).padStart(2,'0')).join('');
+const luminance=hex=>rgb(hex).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;}).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+export const contrast=(a,b)=>{const x=[luminance(a),luminance(b)].sort((a,b)=>a-b);return(x[1]+.05)/(x[0]+.05);};
+export function palette(c){
+  let muted=c.ink;
+  for(let t=.8;t<=1.001;t+=.025){const candidate=mix(c.ink,c.paper,t);if([c.paper,c.soft,c.panel].every(bg=>contrast(candidate,bg)>=4.55)){muted=candidate;break;}}
+  const onAccent=contrast(c.accent,'#ffffff')>=4.55?'#ffffff':'#000000';
+  return {'paper':c.paper,'soft':c.soft,'panel':c.panel,'ink':c.ink,'muted':muted,'accent':c.accent,'on-accent':onAccent,'deep':c.deep,'on-deep':'#fff9f2','deep-muted':mix('#fff9f2',c.deep,.84),'line':mix(c.ink,c.paper,.23),'display':c.fonts.display,'body':c.fonts.body};
+}
+
+export function renderCuratedPage(c,all,assetVersions={}){
+  const index=all.findIndex(item=>item.id===c.id),previous=all[(index+all.length-1)%all.length],next=all[(index+1)%all.length];
+  const menu=`<a href="#service">Услуга</a><a href="#about">Обо мне</a><a href="#process">Этапы</a><a href="#pricing">Стоимость</a><a href="#reviews">Отзывы</a>`;
+  const toolbar=`<div class="review-toolbar" data-review-ui><a href="../collection.html#card-${c.id}">← 15 лучших вариантов</a><div class="variant-switch"><a href="${previous.id}.html" aria-label="Предыдущий вариант">←</a><label class="sr-only" for="direction-choice">Выбрать вариант</label><select id="direction-choice" data-direction-select>${all.map(item=>`<option value="${item.id}.html" ${item.id===c.id?'selected':''}>${String(item.number).padStart(2,'0')} / ${item.name}</option>`).join('')}</select><a href="${next.id}.html" aria-label="Следующий вариант">→</a></div><a class="before-after-link" href="../compare.html?left=${c.sourceId}&right=${c.id}">До / после ↗</a><button type="button" data-favorite-id="${c.id}" data-favorite-name="${escape(c.name)}" aria-pressed="false">♡ В избранное</button></div>`;
+  const header=`<header class="site-header container" data-section="header"><a class="brand" href="#top"><strong>Анастасия.</strong><span>личный подбор няни</span></a><nav class="desktop-nav" aria-label="Основное меню">${menu}</nav><a class="header-action" href="#request">Обсудить подбор ${icon('arrow')}</a><button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню"><span></span><span></span></button><nav class="mobile-nav" id="mobile-nav" aria-label="Мобильное меню" hidden>${menu}<a href="#request">Готовы обсудить подбор?</a></nav></header>`;
+  const hero=`<section class="hero ${c.darkHero?'inverse':''}" id="hero" data-section="hero">${heroes[c.hero]()}</section>`;
+  const body=hero+renderService(c)+renderAbout(c)+renderProcess(c)+renderPricing(c)+renderReviews(c)+renderRequest();
+  const main=c.hero==='nearby'?`<main id="main-content" class="portrait-page container">${portraitRail()}<div class="portrait-content">${body}</div></main>`:`<main id="main-content">${body}</main>`;
+  const footer=`<footer class="site-footer" data-section="footer"><div class="container footer-grid"><div><a class="brand" href="#top"><strong>Анастасия Доронина</strong><span>личный подбор няни для вашей семьи</span></a><p>С вниманием к людям.<br>С участием на каждом этапе.</p></div><nav aria-label="Контакты и информация">${telegram('Telegram Анастасии')}<a href="#request">Обсудить подбор ${icon('arrow')}</a><button type="button" data-dialog="privacy-info">О данных формы</button></nav><div class="footer-end"><span>© 2026 Анастасия Доронина</span><a href="#top">Наверх ↑</a></div></div></footer>`;
+  const style=Object.entries(palette(c)).map(([k,v])=>`--${k}:${v}`).join(';');
+  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="${c.soft}"><title>${escape(c.name)} — Анастасия, личный подбор няни</title><meta name="description" content="${escape(c.summary)}"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?${c.fonts.query}&family=Caveat:wght@500&display=swap" rel="stylesheet"><link rel="stylesheet" href="../shared-ui.css"><link rel="stylesheet" href="final.css?v=${assetVersions.final}"><link rel="stylesheet" href="heroes.css?v=${assetVersions.heroes}"><script type="module" src="final.js"></script></head><body class="design-${c.hero} ${c.fonts.sans?'sans-display':''}" data-concept-id="${c.id}" style="${escape(style)}"><a class="skip-link" href="#main-content">Перейти к содержанию</a>${renderSymbols()}${toolbar}<div class="site" id="top">${header}${main}${footer}</div>${privacyDialog()}<p class="sr-only" id="favorite-status" role="status"></p></body></html>`;
+}

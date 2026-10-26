@@ -1,7 +1,7 @@
 import { initCommonUI } from './shared-ui.js';
 
-// Keep saved legacy links while making the unqualified site URL open the finalists.
-if (!new URLSearchParams(location.search).has('concept')) location.replace('collection.html');
+// Saved concept links remain accessible; the root opens the current three layouts.
+if (!new URLSearchParams(location.search).has('concept')) location.replace('restart.html');
 
 const concepts = { air: 'Воздух', editorial: 'Суть', warm: 'Тепло' };
 const buttons = [...document.querySelectorAll('[data-theme]')];

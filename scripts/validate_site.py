@@ -61,7 +61,7 @@ for filename in ROOT.rglob('*.js'):
     source=filename.read_text(encoding='utf-8')
     for specifier in re.findall(r'''\bfrom\s+['"]([^'"]+)['"]''',source):
         if specifier.startswith('.'):
-            assert (filename.parent/specifier).is_file(),f'{filename}: unresolved module {specifier}'
+            assert (filename.parent/urlsplit(specifier).path).is_file(),f'{filename}: unresolved module {specifier}'
 
 for filename in ROOT.rglob('*.css'):
     source=re.sub(r'/\*.*?\*/','',filename.read_text(encoding='utf-8'),flags=re.S)

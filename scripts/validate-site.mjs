@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import { concepts } from '../src/studio/catalog.mjs';
 import { heroes } from '../src/studio/heroes.mjs';
 import { curatedConcepts } from '../src/curated/catalog.mjs';
+import { freshConcepts } from '../src/fresh/catalog.mjs';
 import { palette,contrast } from '../src/curated/page.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -27,6 +28,16 @@ assert.equal(curatedConcepts.length,15,'The new collection must contain fifteen 
 assert.equal(new Set(curatedConcepts.map(item=>item.hero)).size,15,'Finalist hero compositions must be distinct.');
 assert.equal(new Set(curatedConcepts.map(item=>item.paletteName)).size,15,'Finalist palettes must be distinct.');
 const requiredOrder=['header','hero','service','about','process','pricing','reviews','request','footer'];
+assert.equal(freshConcepts.length,6);
+assert.equal(new Set(freshConcepts.map(c=>c.layout)).size,6);
+for(const c of freshConcepts){
+  const html=await readFile(path.join(root,'dist','fresh',`${c.id}.html`),'utf8');
+  assert.deepEqual([...html.matchAll(/data-section="([a-z]+)"/g)].map(m=>m[1]),requiredOrder,`${c.id}: nine-block sequence`);
+  for(const text of ['Готовы обсудить подбор?','25 000','5 500','6 месяцев','Количество кандидатов не ограничено.','data-request-form','Telegram Анастасии'])assert.ok(html.includes(text),`${c.id}: missing ${text}`);
+  for(const bg of [c.paper,c.soft,c.panel])assert.ok(contrast(c.ink,bg)>=4.5,`${c.id}: body contrast`);
+  assert.ok(contrast(c.accent,'#ffffff')>=4.5,`${c.id}: button contrast`);
+  assert.ok(!html.includes('final.css')&&!html.includes('heroes.css'),`${c.id}: independently styled`);
+}
 for(const concept of curatedConcepts){
   const html=await readFile(path.join(root,'dist','final',`${concept.id}.html`),'utf8');
   assert.deepEqual([...html.matchAll(/data-section="([a-z]+)"/g)].map(item=>item[1]),requiredOrder,`${concept.id}: required nine-block sequence`);
@@ -66,4 +77,4 @@ if(process.argv.includes('--complete')){
     }
   }
 }
-console.log(`PASS: 15 finalists in the required nine-block order, text/button contrast and distinct palettes; ${available.length}/20 archived studio directions; JS syntax verified. ${process.argv.includes('--complete')?'Recorded screenshot and interaction audits passed.':'Screenshot and interaction audits are checked separately.'}`);
+console.log(`PASS: 6 independently styled new designs and 15 finalists in the required nine-block order, text/button contrast and distinct palettes; ${available.length}/20 archived studio directions; JS syntax verified. ${process.argv.includes('--complete')?'Recorded screenshot and interaction audits passed.':'Screenshot and interaction audits are checked separately.'}`);

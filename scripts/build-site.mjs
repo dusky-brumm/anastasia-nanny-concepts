@@ -16,6 +16,7 @@ import {buildTrio} from './build-trio.mjs';
 import {buildMood} from './build-mood.mjs';
 import {buildSelection} from './build-selection.mjs';
 import {selectEntries} from '../src/selection/catalog.mjs';
+import {buildRestart} from './build-restart.mjs';
 
 const dist=fileURLToPath(new URL('../dist/',import.meta.url));
 const exists=async filename=>{
@@ -83,4 +84,5 @@ const shortlistIds=new Set(shortlist.map(entry=>entry.id));
 await writeFile(path.join(dist,'compare.html'),renderComparison([...shortlist,...all.filter(entry=>!shortlistIds.has(entry.id))]).replace('src="compare.js"',`src="compare.js?v=${compareVersion}"`));
 await writeFile(path.join(dist,'screenshots.html'),renderScreenshots(finals,assetVersions.gallery,mediaVersion));
 await buildSelection(dist,all);
+await buildRestart(dist);
 console.log(`Built ${mood.length} reference-led designs, ${trio.length} text-brief designs, ${fresh.length} fresh concepts and ${finals.length} improved finalists; all ${previous.length} earlier variants remain available in the archive (${all.length} total).`);

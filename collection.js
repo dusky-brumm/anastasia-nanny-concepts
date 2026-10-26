@@ -1,4 +1,4 @@
-import entries from './studio/catalog.js?v=83b5bf5969';
+import entries from './studio/catalog.js?v=2ecb0f95b9';
 import { getFavorites, initFavorites } from './preferences.js';
 
 const cards = [...document.querySelectorAll('[data-card-id]')];

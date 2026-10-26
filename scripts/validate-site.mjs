@@ -7,6 +7,7 @@ import { concepts } from '../src/studio/catalog.mjs';
 import { heroes } from '../src/studio/heroes.mjs';
 import { curatedConcepts } from '../src/curated/catalog.mjs';
 import { freshConcepts } from '../src/fresh/catalog.mjs';
+import { trioConcepts } from '../src/trio/catalog.mjs';
 import { palette,contrast } from '../src/curated/page.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -28,6 +29,17 @@ assert.equal(curatedConcepts.length,15,'The new collection must contain fifteen 
 assert.equal(new Set(curatedConcepts.map(item=>item.hero)).size,15,'Finalist hero compositions must be distinct.');
 assert.equal(new Set(curatedConcepts.map(item=>item.paletteName)).size,15,'Finalist palettes must be distinct.');
 const requiredOrder=['header','hero','service','about','process','pricing','reviews','request','footer'];
+assert.equal(trioConcepts.length,3);
+assert.equal(new Set(trioConcepts.map(c=>c.theme)).size,3);
+for(const c of trioConcepts){
+ const html=await readFile(path.join(root,'dist','trio',`${c.id}.html`),'utf8');
+ const text=html.replace(/<br\s*\/?>/g,' ').replace(/<[^>]*>/g,'').replace(/\s+/g,' ');
+ assert.deepEqual([...html.matchAll(/data-section="([a-z]+)"/g)].map(m=>m[1]),requiredOrder,`${c.id}: nine-block sequence`);
+ for(const value of ['25 000','5 500','6 месяцев','2022','data-request-form','Телефон или Telegram','Готовы обсудить подбор?'])assert.ok((value==='data-request-form'?html:text).includes(value),`${c.id}: missing ${value}`);
+ assert.ok(/не ограничено/i.test(text),`${c.id}: unlimited candidates`);
+ assert.ok(html.includes(`${c.theme}.css`),`${c.id}: independent stylesheet`);
+ assert.ok(!/fresh\.css|heroes\.css|final\.css|polish\.css/.test(html),`${c.id}: earlier presentation styles are not used`);
+}
 assert.equal(freshConcepts.length,6);
 assert.equal(new Set(freshConcepts.map(c=>c.layout)).size,6);
 for(const c of freshConcepts){
@@ -77,4 +89,4 @@ if(process.argv.includes('--complete')){
     }
   }
 }
-console.log(`PASS: 6 independently styled new designs and 15 finalists in the required nine-block order, text/button contrast and distinct palettes; ${available.length}/20 archived studio directions; JS syntax verified. ${process.argv.includes('--complete')?'Recorded screenshot and interaction audits passed.':'Screenshot and interaction audits are checked separately.'}`);
+console.log(`PASS: 3 independent text-brief designs, 6 fresh concepts and 15 finalists in the required nine-block order, text/button contrast and distinct palettes; ${available.length}/20 archived studio directions; JS syntax verified. ${process.argv.includes('--complete')?'Recorded screenshot and interaction audits passed.':'Screenshot and interaction audits are checked separately.'}`);

@@ -1,0 +1,152 @@
+.direction-02-letter {
+  --paper: #fffdf8;
+  --ink: #2b4138;
+  --muted: #5d6b62;
+  --accent: #35594a;
+  --line: #d5dcd3;
+  --blue: #edf3f4;
+  --sage: #f1f3eb;
+  background: #e9ece6;
+}
+.direction-02-letter .site-header { border-bottom: 1px solid var(--line); }
+.direction-02-letter .button { border-radius: 12px; }
+.letter-rule { border-top: 1px solid var(--line); }
+.letter-hero { padding-block: 42px 66px; }
+.letter-introduction { display: grid; grid-template-columns: 224px minmax(0,1fr); gap: 56px; align-items: start; }
+.letter-portrait .cafe-image { aspect-ratio: .86; border-radius: 16px; }
+.letter-portrait figcaption { padding-top: 17px; font-size: 14px; font-weight: 600; line-height: 1.6; }
+.letter-portrait figcaption span { display: block; margin-top: 3px; font-size: 12px; font-weight: 400; color: var(--muted); }
+.letter-opening { padding-block: 4px 0; }
+.letter-opening h1 { font-size: 44px; line-height: 1.21; max-width: 730px; letter-spacing: -.043em; }
+.letter-opening > p { max-width: 650px; margin-top: 27px; font-size: 16px; line-height: 1.85; color: var(--muted); }
+.letter-opening .actions { margin-top: 31px; gap: 21px; }
+.letter-service .section-heading { max-width: 770px; margin-bottom: 25px; }
+.letter-service-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; margin-bottom: 32px; align-items: start; }
+.letter-service-intro p { font-size: 16px; color: var(--muted); }
+.letter-service-intro > span { display: block; border-left: 2px solid #829989; padding-left: 21px; font-size: 15px; line-height: 1.8; }
+.letter-article { border-bottom: 1px solid var(--line); }
+.letter-article-part { display: grid; grid-template-columns: 35px .85fr 1.35fr; gap: 23px; padding-block: 28px; border-top: 1px solid var(--line); align-items: start; }
+.letter-index { font-size: 12px; color: var(--muted); padding-top: 6px; }
+.letter-article-part h3 { max-width: 270px; font-size: 25px; line-height: 1.35; }
+.letter-article-part > p { font-size: 15px; line-height: 1.9; color: var(--muted); }
+.letter-about { background: var(--sage); padding-block: 55px; }
+.letter-biography { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; }
+.letter-biography .section-heading { margin-bottom: 0; }
+.letter-biography h2 { font-size: 32px; max-width: 310px; }
+.letter-biography-text { font-size: 16px; line-height: 1.9; }
+.letter-biography-text p + p { margin-top: 22px; }
+.letter-process .section-heading { max-width: 690px; }
+.letter-route { list-style: none; padding: 0; margin: 0; border-bottom: 1px solid var(--line); }
+.letter-route-step { display: grid; grid-template-columns: 35px .85fr 1.35fr; gap: 23px; border-top: 1px solid var(--line); padding-block: 30px; }
+.letter-route-number { font: 400 27px/1.3 var(--heading); color: #6d8576; }
+.letter-route-step h3 { font-size: 25px; max-width: 270px; }
+.letter-route-step p { font-size: 15px; line-height: 1.85; }
+.letter-route-step .letter-outcome { color: var(--muted); margin-top: 19px; padding-left: 18px; border-left: 2px solid #c4d2c7; }
+.letter-outcome > span { display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: var(--ink); }
+.letter-pricing { background: #f8f9f3; }
+.letter-plan { display: grid; grid-template-columns: .9fr 1.1fr; gap: 62px; border-top: 1px solid var(--line); padding-block: 34px; }
+.letter-plan:last-child { border-bottom: 1px solid var(--line); padding-bottom: 34px; }
+.letter-plan-summary h3 { font-size: 29px; }
+.letter-plan-summary .letter-price { font: 400 32px/1.4 var(--heading); letter-spacing: -.035em; margin-block: 12px 18px; }
+.letter-plan-summary > p:not(.letter-price) { font-size: 15px; color: var(--muted); line-height: 1.85; }
+.letter-plan-summary .button { margin-top: 25px; }
+.letter-plan-details ul { list-style: none; padding: 0; margin: 0; }
+.letter-plan-details li { position: relative; padding-left: 20px; font-size: 15px; line-height: 1.85; }
+.letter-plan-details li + li { margin-top: 10px; }
+.letter-plan-details li::before { content: '—'; position: absolute; left: 0; color: #6d8576; }
+.letter-plan-terms { border-top: 1px solid var(--line); padding-top: 19px; margin-top: 24px; font-size: 15px; color: var(--muted); line-height: 1.85; }
+.letter-correspondence { border-bottom: 1px solid var(--line); }
+.letter-review { display: grid; grid-template-columns: 205px minmax(0,1fr); gap: 44px; border-top: 1px solid var(--line); padding: 30px 0; }
+.letter-review figcaption strong { display: block; font-size: 15px; font-weight: 600; }
+.letter-review figcaption span { display: block; margin-top: 5px; font-size: 13px; color: var(--muted); }
+.letter-review blockquote p { font-size: 16px; line-height: 1.9; max-width: 690px; }
+.letter-request { background: var(--blue); }
+.letter-request-heading { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; margin-bottom: 34px; }
+.letter-request-heading .section-heading { margin-bottom: 0; }
+.letter-request-heading > div:last-child > p { font-size: 16px; color: var(--muted); }
+.letter-request-heading .telegram-link { margin-top: 17px; }
+.letter-request-form { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 33px; }
+.letter-request-form form > label:first-child { max-width: calc(50% - 8px); }
+.letter-request-form form label { font-size: 13px; }
+.letter-request-form form input, .letter-request-form form textarea, .letter-request-form form select { font-size: 16px; }
+.letter-request-form form textarea { min-height: 112px; }
+.letter-request-form .form-note { max-width: 760px; }
+.direction-02-letter .site-footer { background: #f9f9f2; }
+@media (max-width:1100px) {
+  .letter-introduction { gap: 42px; grid-template-columns: 200px minmax(0,1fr); }
+  .letter-opening h1 { font-size: 40px; }
+  .letter-opening .actions { gap: 17px; }
+  .letter-biography, .letter-request-heading { gap: 40px; }
+  .letter-plan { gap: 42px; }
+  .letter-review { grid-template-columns: 170px minmax(0,1fr); gap: 35px; }
+}
+@media (max-width:850px) {
+  .letter-introduction { grid-template-columns: 160px minmax(0,1fr); gap: 30px; }
+  .letter-opening h1 { font-size: 35px; }
+  .letter-opening > p { font-size: 15px; margin-top: 21px; }
+  .letter-opening .actions { flex-direction: column; align-items: flex-start; margin-top: 24px; gap: 12px; }
+  .letter-article-part, .letter-route-step { grid-template-columns: 28px .9fr 1.1fr; gap: 17px; }
+  .letter-article-part h3, .letter-route-step h3 { font-size: 23px; }
+  .letter-service-intro { gap: 30px; }
+  .letter-biography { grid-template-columns: .85fr 1.15fr; gap: 30px; }
+  .letter-plan { gap: 32px; }
+  .letter-plan-summary h3 { font-size: 27px; }
+  .letter-review { grid-template-columns: 145px minmax(0,1fr); gap: 28px; }
+  .letter-request-heading { grid-template-columns: .8fr 1.2fr; gap: 32px; }
+}
+@media (max-width:640px) {
+  .letter-hero { padding-block: 28px 43px; }
+  .letter-introduction { grid-template-columns: minmax(0,1fr); gap: 26px; }
+  .letter-opening { padding: 0; }
+  .letter-opening h1 { font-size: 35px; line-height: 1.22; }
+  .letter-opening > p { font-size: 15px; margin-top: 22px; }
+  .letter-opening .actions { margin-top: 26px; gap: 14px; }
+  .letter-opening .button { width: 100%; }
+  .letter-portrait { display: grid; grid-template-columns: 96px minmax(0,1fr); gap: 19px; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+  .letter-portrait .cafe-image { width: 96px; aspect-ratio: .86; border-radius: 14px; }
+  .letter-portrait figcaption { font-size: 15px; padding-top: 0; }
+  .letter-portrait figcaption span { font-size: 13px; margin-top: 6px; }
+  .letter-service-intro { grid-template-columns: minmax(0,1fr); gap: 22px; margin-bottom: 27px; }
+  .letter-service-intro p, .letter-service-intro > span { font-size: 15px; }
+  .letter-service-intro > span { padding-left: 17px; }
+  .letter-article-part { grid-template-columns: 24px minmax(0,1fr); gap: 12px 15px; padding-block: 25px; }
+  .letter-article-part h3 { max-width: none; font-size: 24px; }
+  .letter-article-part > p { grid-column: 2; font-size: 15px; line-height: 1.85; }
+  .letter-index { padding-top: 5px; font-size: 11px; }
+  .letter-about { padding-block: 43px; }
+  .letter-biography { grid-template-columns: minmax(0,1fr); gap: 25px; }
+  .letter-biography h2 { font-size: 29px; }
+  .letter-biography-text { font-size: 15px; line-height: 1.85; }
+  .letter-biography-text p + p { margin-top: 19px; }
+  .letter-route-step { grid-template-columns: 24px minmax(0,1fr); gap: 13px 15px; padding-block: 26px; }
+  .letter-route-step h3 { max-width: none; font-size: 24px; }
+  .letter-route-step > div { grid-column: 2; }
+  .letter-route-number { font-size: 25px; }
+  .letter-route-step p { font-size: 15px; }
+  .letter-route-step .letter-outcome { padding-left: 14px; margin-top: 17px; }
+  .letter-outcome > span { font-size: 12px; }
+  .letter-plan { grid-template-columns: minmax(0,1fr); gap: 25px; padding-block: 29px; }
+  .letter-plan-summary h3 { font-size: 27px; }
+  .letter-plan-summary .letter-price { font-size: 31px; }
+  .letter-plan-summary > p:not(.letter-price), .letter-plan-details li { font-size: 15px; }
+  .letter-plan-summary .button { width: 100%; margin-top: 23px; }
+  .letter-plan-terms { font-size: 15px; }
+  .letter-review { grid-template-columns: minmax(0,1fr); gap: 17px; padding-block: 26px; }
+  .letter-review figcaption span { margin-top: 3px; }
+  .letter-review blockquote p { font-size: 15px; line-height: 1.9; }
+  .letter-request-heading { grid-template-columns: minmax(0,1fr); gap: 21px; margin-bottom: 27px; }
+  .letter-request-heading > div:last-child > p { font-size: 15px; }
+  .letter-request-form { padding: 23px; border-radius: 14px; }
+  .letter-request-form form > label:first-child { max-width: none; }
+  .letter-request-form .button { width: 100%; }
+}
+@media (max-width:370px) {
+  .letter-portrait { grid-template-columns: 80px minmax(0,1fr); gap: 15px; }
+  .letter-portrait .cafe-image { width: 80px; }
+  .letter-portrait figcaption { font-size: 14px; }
+  .letter-portrait figcaption span { font-size: 12px; }
+  .letter-opening h1 { font-size: 31px; }
+  .letter-article-part, .letter-route-step { column-gap: 11px; grid-template-columns: 21px minmax(0,1fr); }
+  .letter-request-form { padding: 18px; }
+  .letter-request-form form input, .letter-request-form form select, .letter-request-form form textarea { padding-inline: 11px; }
+}

@@ -1,4 +1,4 @@
-import entries from './studio/catalog.js?v=2ecb0f95b9';
+import entries from './studio/catalog.js?v=616144d250';
 
 const byId=new Map(entries.map(entry=>[entry.id,entry]));
 const params=new URLSearchParams(location.search);

@@ -14,6 +14,8 @@ import {renderFreshPage} from '../src/fresh/page.mjs';
 import {renderFreshGallery} from '../src/fresh/gallery.mjs';
 import {buildTrio} from './build-trio.mjs';
 import {buildMood} from './build-mood.mjs';
+import {buildSelection} from './build-selection.mjs';
+import {selectEntries} from '../src/selection/catalog.mjs';
 
 const dist=fileURLToPath(new URL('../dist/',import.meta.url));
 const exists=async filename=>{
@@ -76,6 +78,9 @@ const collectionVersion=createHash('sha256').update(await readFile(path.join(dis
 const compareVersion=createHash('sha256').update(await readFile(path.join(dist,'compare.js'))).digest('hex').slice(0,10);
 await writeFile(path.join(dist,'collection.html'),renderCuratedGallery(finals,previous,{assetVersion:assetVersions.gallery}).replace('src="collection.js"',`src="collection.js?v=${collectionVersion}"`));
 await writeFile(path.join(dist,'archive.html'),renderCuratedGallery(previous,previous,{archive:true,assetVersion:assetVersions.gallery}).replace('src="collection.js"',`src="collection.js?v=${collectionVersion}"`));
-await writeFile(path.join(dist,'compare.html'),renderComparison(all).replace('src="compare.js"',`src="compare.js?v=${compareVersion}"`));
+const shortlist=selectEntries(all).map(entry=>({...entry,shortlisted:true}));
+const shortlistIds=new Set(shortlist.map(entry=>entry.id));
+await writeFile(path.join(dist,'compare.html'),renderComparison([...shortlist,...all.filter(entry=>!shortlistIds.has(entry.id))]).replace('src="compare.js"',`src="compare.js?v=${compareVersion}"`));
 await writeFile(path.join(dist,'screenshots.html'),renderScreenshots(finals,assetVersions.gallery,mediaVersion));
+await buildSelection(dist,all);
 console.log(`Built ${mood.length} reference-led designs, ${trio.length} text-brief designs, ${fresh.length} fresh concepts and ${finals.length} improved finalists; all ${previous.length} earlier variants remain available in the archive (${all.length} total).`);

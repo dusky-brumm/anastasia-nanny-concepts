@@ -24,7 +24,7 @@ function filterCards() {
   });
   document.querySelector('#filter-status').textContent = `Показано ${visible} из ${cards.length} направлений${favoritesOnly?' · избранное':''}`;
   document.querySelector('.empty-state').hidden = visible>0;
-  document.querySelector('[data-favorites-count]').textContent = saved.size;
+  document.querySelector('[data-favorites-count]').textContent = cards.filter(card=>saved.has(card.dataset.cardId)).length;
 }
 function resetFilters() {
   search.value=''; category.value='all'; collection='all'; favoritesOnly=false;
@@ -52,6 +52,8 @@ function updateComparison() {
   const ids=[...comparison];
   const selected=ids.map(id=>entries.find(entry=>entry.id===id));
   const open=document.querySelector('[data-open-comparison]');
+  const tray=document.querySelector('.selection-gallery .compare-tray');
+  if(tray)tray.hidden=ids.length===0;
   open.setAttribute('aria-disabled',String(ids.length!==2));
   open.href=ids.length===2?`compare.html?left=${ids[0]}&right=${ids[1]}`:'compare.html';
   document.querySelector('[data-compare-label]').textContent=selected.length?selected.map(entry=>entry.name).join(' + '):'Выберите два варианта для сравнения';

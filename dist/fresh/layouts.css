@@ -39,3 +39,6 @@
 @media(max-width:640px){.personal-hero{grid-template-columns:minmax(0,1fr) 105px}.personal-hero>*{min-width:0}.light-hero figure img{height:220px}}
 @media(max-width:360px){.personal-hero{grid-template-columns:minmax(0,1fr) 90px;column-gap:12px}.nameplate{font-size:21vw}.personal-opening figure>img{height:94px}.light-hero figure img{height:170px}}
 @media(max-width:360px){.nameplate{font-size:19vw}}
+/* Keep the photo-led opening compact enough to reach both contact actions. */
+@media(max-width:640px){.walk-scene>img{height:280px;object-position:50% 12%}.walk-podium .hero-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:14px}.walk-podium{gap:18px}}
+@media(max-width:360px){.walk-scene>img{height:235px}}

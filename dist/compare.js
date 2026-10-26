@@ -2,7 +2,8 @@ import entries from './studio/catalog.js?v=616144d250';
 
 const byId=new Map(entries.map(entry=>[entry.id,entry]));
 const params=new URLSearchParams(location.search);
-const chosen={left:byId.get(params.get('left'))||entries[0],right:byId.get(params.get('right'))||entries[1]||entries[0]};
+const initialChoice=side=>byId.get(params.get(side))||byId.get(document.querySelector(`[data-pane-choice="${side}"]`).value);
+const chosen={left:initialChoice('left')||entries[0],right:initialChoice('right')||entries[1]||entries[0]};
 if(chosen.left.id===chosen.right.id)chosen.right=entries.find(entry=>entry.id!==chosen.left.id)||chosen.right;
 
 function updatePane(side) {
@@ -30,9 +31,9 @@ document.querySelectorAll('[data-pane-choice]').forEach(select=>select.addEventL
   chosen[side]=next;
   updatePane('left');updatePane('right');updateUrl();
 }));
-document.querySelectorAll('[data-preview-size]').forEach(button=>button.addEventListener('click',()=>{
+document.querySelectorAll('button[data-preview-size]').forEach(button=>button.addEventListener('click',()=>{
   document.body.dataset.previewSize=button.dataset.previewSize;
-  document.querySelectorAll('[data-preview-size]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  document.querySelectorAll('button[data-preview-size]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
 }));
 document.querySelector('[data-copy-comparison]').addEventListener('click',async()=>{
   const status=document.querySelector('#compare-status');

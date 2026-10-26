@@ -6,3 +6,6 @@ html{scrollbar-gutter:stable}
 @media(max-width:900px){.collection-header nav{flex-wrap:wrap;justify-content:flex-end}}
 @media(max-width:800px){.collection-header nav>a:first-child{display:inline-flex}}
 @media(max-width:620px){.collection-header nav{justify-content:flex-start}}
+
+/* Collection follows the same reference colours as the pages. */
+.gallery-page{--ink:#344b43;--muted:#5d6e64;--green:#58715e;--cream:#fbfcf8;--line:#d6e1dc}.collection-intro h1 em{color:#58715e}.collection-header nav button,.collection-tabs button[aria-pressed=true]{background:#eaf0e5;color:#3f5848;border-color:#ccd9c9}.overline,.collection-count,.filter-status,.card-category,.card-category>span,.card-content>p,.collection-privacy{color:#5d6e64}.compare-tray a{background:#526f5c}

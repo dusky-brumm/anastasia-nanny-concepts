@@ -1,0 +1,84 @@
+/* The client's reference family: white, blue, sage; warm details stay small. */
+:root{--coral-detail:#d4a296;--honey-detail:#dfcf9f}
+.cover-topline,.rhythm-scene{border-color:var(--line)}
+.diptych-caption{color:var(--ink);border-color:var(--line)}
+.diptych-caption>span{color:var(--muted)}
+.design-agreement .hero{background:var(--soft)}
+.hero-agreement{box-shadow:0 10px 35px #304c4210}
+.design-warm .warm-letter h1 em{text-decoration:underline;text-decoration-color:var(--coral-detail);text-decoration-thickness:2px;text-underline-offset:8px}
+.design-warm .warm-photo{box-shadow:0 12px 30px #304c4210}
+.design-warm .warm-handnote{border-left:3px solid var(--coral-detail)}
+.mosaic-message{border-bottom:4px solid var(--honey-detail)}
+.dialogue-invitation>svg{color:#a86b5e}
+.gazette-columns>aside{background:var(--soft);padding:25px;border:0}
+.notebook-author>figure{position:relative}
+.notebook-author>figure:before{content:'';position:absolute;z-index:1;width:64px;height:16px;top:-8px;left:20px;background:#bccdb4bb;transform:rotate(-4deg)}
+.portrait-rail{border-left:2px solid var(--line);padding-left:18px;background:linear-gradient(90deg,var(--soft),transparent 85%)}
+.profile-cover{box-shadow:7px 7px 0 var(--soft)}
+.design-choice .hero{background:var(--paper)}
+.choice-signature{border-top-color:var(--coral-detail)}
+.design-choice .service-formats>article{background:var(--soft)}
+.design-desk .paper-note{background:#fff8e5}
+
+/* Keep broad areas light; the green action remains the strongest colour. */
+.pricing-layout--bands .price-plan{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.pricing-layout--bands .price-plan:first-child{border-top:3px solid var(--accent)}
+.pricing-layout--bands .price-plan:first-child>p,
+.pricing-layout--bands .price-plan:first-child .plan-cost>span{color:var(--muted)}
+.pricing-layout--bands .price-plan:first-child li:before{color:var(--accent)}
+.pricing-layout--bands .price-plan:first-child .plan-cost{border-color:var(--line)}
+.pricing-layout--bands .price-plan:first-child .action{border-color:var(--accent)}
+.site-footer{background:var(--soft);color:var(--ink);border-top:1px solid var(--line)}
+.site-footer .brand span,.site-footer p,.footer-end{color:var(--muted)}
+.site-footer nav>button,.footer-end{border-color:var(--line)}
+
+/* Content is visible without JavaScript. Motion only enhances an existing page. */
+.desktop-nav a{position:relative}
+.desktop-nav a:after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.desktop-nav a[aria-current=location]:after,.desktop-nav a:hover:after{transform:scaleX(1)}
+.text-link{position:relative}
+.text-link:after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.text-link:hover:after,.text-link:focus-visible:after{transform:scaleX(1)}
+.studio-form:focus-within{border-color:var(--accent);box-shadow:0 8px 30px #385b4910}
+.studio-form input:focus,.studio-form textarea:focus{border-bottom-color:var(--accent)}
+.reading-progress{position:fixed;inset:0 0 auto;height:3px;z-index:60;pointer-events:none}
+.reading-progress>span{display:block;width:100%;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.floating-request{position:fixed;right:26px;bottom:24px;z-index:25;box-shadow:0 8px 28px #27473528}
+.is-embedded .reading-progress,.is-embedded .floating-request{display:none!important}
+
+@media(hover:hover) and (pointer:fine){
+  .price-plan:hover,.review-layout--cards .review-card:hover{border-color:var(--accent);box-shadow:0 10px 30px #304c4210}
+  .hero figure:hover>img{filter:saturate(1.06)}
+}
+@media(prefers-reduced-motion:no-preference){
+  .action,.header-action{transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+  .action svg,.header-action svg{transition:transform .2s ease}
+  .action:hover,.header-action:hover{transform:translateY(-2px);box-shadow:0 7px 18px #304c421c}
+  .action:hover svg,.header-action:hover svg{transform:translateX(3px)}
+  .price-plan,.review-card,.studio-form{transition:border-color .25s ease,box-shadow .25s ease}
+  .hero figure>img{transition:filter .4s ease}
+  .text-link:after,.desktop-nav a:after{transition:transform .25s ease}
+  .floating-request:not([hidden]){animation:request-arrive .25s ease-out both}
+}
+@keyframes request-arrive{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+html[data-motion=off] *,html[data-motion=reduced] *{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.action:hover,.header-action:hover,.action:hover svg,.header-action:hover svg{transform:none}}
+@media(max-width:900px){.gazette-columns>aside{padding:23px}.portrait-rail{padding-left:0;border:0}}
+@media(max-width:620px){
+  .floating-request{right:20px;bottom:calc(16px + env(safe-area-inset-bottom));min-height:48px;font-size:13px;padding:12px 18px;gap:20px}
+  .design-warm .warm-letter h1 em{text-underline-offset:5px}
+  .mosaic-message{border-bottom-width:3px}
+  .hero-agreement{box-shadow:0 6px 20px #304c4210}
+}
+
+/* Static review captures use ordinary document flow for viewport stitching. */
+html[data-capture=true] .reading-progress,html[data-capture=true] .floating-request{display:none!important}
+html[data-capture=true] .review-toolbar{position:relative}
+html[data-capture=true] .portrait-rail{position:static!important;align-self:start}
+
+html[data-capture=true] .price-plan:hover,html[data-capture=true] .review-card:hover{border-color:var(--line);box-shadow:none}
+html[data-capture=true] .pricing-layout--bands .price-plan:first-child{border-top-color:var(--accent)}
+html[data-capture=true] .hero figure:hover>img{filter:none}
+html[data-capture=true] .action:hover,html[data-capture=true] .header-action:hover,html[data-capture=true] .action:hover svg,html[data-capture=true] .header-action:hover svg{transform:none;filter:none;box-shadow:none}
+
+html[data-motion=off] .action:hover,html[data-motion=off] .header-action:hover,html[data-motion=off] .action:hover svg,html[data-motion=off] .header-action:hover svg{transform:none}

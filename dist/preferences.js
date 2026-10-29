@@ -6,7 +6,7 @@ export function getFavorites() {
   if (storageUnavailable) return [...new Set(memory)];
   try {
     const saved = JSON.parse(localStorage.getItem(key) || '[]');
-    if (Array.isArray(saved)) memory = saved.filter(id=>typeof id==='string' && /^\d{2}-[a-z]+$/.test(id));
+    if (Array.isArray(saved)) memory = saved.filter(id=>typeof id==='string' && /^(?:next-)?\d{2}-[a-z]+$/.test(id));
   } catch { storageUnavailable = true; }
   return [...new Set(memory)];
 }

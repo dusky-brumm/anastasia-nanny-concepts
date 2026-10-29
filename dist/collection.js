@@ -1,5 +1,5 @@
 import entries from './studio/catalog.js?v=616144d250';
-import { getFavorites, initFavorites } from './preferences.js';
+import { getFavorites, initFavorites } from './preferences.js?v=2';
 
 const cards = [...document.querySelectorAll('[data-card-id]')];
 const search = document.querySelector('#design-search');

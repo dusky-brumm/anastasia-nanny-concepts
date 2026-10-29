@@ -1,4 +1,4 @@
-import {initFavorites} from '../preferences.js';
+import {initFavorites} from '../preferences.js?v=2';
 initFavorites();
 const selected=new Set(),checks=[...document.querySelectorAll('[data-trio-compare]')];
 const link=document.getElementById('pair-open'),label=document.getElementById('pair-label'),status=document.getElementById('pair-status');

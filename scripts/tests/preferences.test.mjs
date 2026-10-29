@@ -33,3 +33,15 @@ test('a failed write does not let an older stored value erase this visit’s cho
     assert.deepEqual(getFavorites(),['08-cover']);
   });
 });
+
+test('new-series favourites survive a reload without replacing earlier selections',async()=>{
+  let saved='["07-linen","02-letter"]';
+  await withStorage({getItem:()=>saved,setItem(_key,value){saved=value;}},'mixed-series',async({toggleFavorite,getFavorites})=>{
+    toggleFavorite('next-01-air');
+    assert.deepEqual(getFavorites(),['07-linen','02-letter','next-01-air']);
+    const reloaded=await import('../../dist/preferences.js?case=mixed-series-reloaded');
+    assert.deepEqual(reloaded.getFavorites(),['07-linen','02-letter','next-01-air']);
+    reloaded.toggleFavorite('next-01-air');
+    assert.deepEqual(reloaded.getFavorites(),['07-linen','02-letter']);
+  });
+});

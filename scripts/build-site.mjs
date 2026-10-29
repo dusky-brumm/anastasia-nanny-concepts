@@ -18,6 +18,7 @@ import {buildSelection} from './build-selection.mjs';
 import {selectEntries} from '../src/selection/catalog.mjs';
 import {buildRestart} from './build-restart.mjs';
 import {buildAtelier} from './build-atelier.mjs';
+import {buildNext} from './build-next.mjs';
 
 const dist=fileURLToPath(new URL('../dist/',import.meta.url));
 const exists=async filename=>{
@@ -87,4 +88,5 @@ await writeFile(path.join(dist,'screenshots.html'),renderScreenshots(finals,asse
 await buildSelection(dist,all);
 await buildRestart(dist);
 await buildAtelier(dist);
+await buildNext(dist);
 console.log(`Built ${mood.length} reference-led designs, ${trio.length} text-brief designs, ${fresh.length} fresh concepts and ${finals.length} improved finalists; all ${previous.length} earlier variants remain available in the archive (${all.length} total).`);

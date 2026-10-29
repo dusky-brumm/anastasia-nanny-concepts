@@ -10,7 +10,7 @@ export function formatRequest({ name, contact, service, message }) {
   ].filter((line, index) => line || index === 1).join('\n');
 }
 
-export function initCommonUI({ menuButton, menu, opener = 'data-dialog', closeButton = '.close-dialog' } = {}) {
+export function initCommonUI({ menuButton, menu, menuMinWidth = 901, opener = 'data-dialog', closeButton = '.close-dialog' } = {}) {
   if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('is-embedded');
   const toggle = menuButton && document.querySelector(menuButton);
   const navigation = menu && document.querySelector(menu);
@@ -34,7 +34,7 @@ export function initCommonUI({ menuButton, menu, opener = 'data-dialog', closeBu
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && !navigation.hidden) close(true);
     });
-    matchMedia('(min-width: 901px)').addEventListener('change', event => { if (event.matches) close(); });
+    matchMedia(`(min-width: ${menuMinWidth}px)`).addEventListener('change', event => { if (event.matches) close(); });
   }
 
   document.querySelectorAll(`[${opener}]`).forEach(button => button.addEventListener('click', () => {

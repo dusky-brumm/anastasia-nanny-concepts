@@ -1,7 +1,7 @@
 import { initCommonUI } from './shared-ui.js';
 
-// Saved concept links remain accessible; the root opens the current three layouts.
-if (!new URLSearchParams(location.search).has('concept')) location.replace('atelier.html');
+// Saved concept links remain accessible; the root opens the newest five designs.
+if (!new URLSearchParams(location.search).has('concept')) location.replace('next.html');
 
 const concepts = { air: 'Воздух', editorial: 'Суть', warm: 'Тепло' };
 const buttons = [...document.querySelectorAll('[data-theme]')];

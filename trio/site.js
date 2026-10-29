@@ -1,5 +1,5 @@
 import {initCommonUI} from '../shared-ui.js';
-import {initFavorites} from '../preferences.js';
+import {initFavorites} from '../preferences.js?v=2';
 initCommonUI({menuButton:'.menu-toggle',menu:'#mobile-nav'});
 initFavorites();
 

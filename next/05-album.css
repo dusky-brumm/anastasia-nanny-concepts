@@ -1,0 +1,149 @@
+.next-05-album {
+  --paper: #fffefa;
+  --ink: #294337;
+  --muted: #53695b;
+  --accent: #3a5c46;
+  --sage: #edf3e7;
+  --line: #ccd8c7;
+  --outer: #e5ece1;
+}
+.album-rule { border-top: 1px solid var(--line); }
+.next-05-album .button { border-radius: 12px; }
+.next-05-album .album-hero { padding-block: 30px 55px; background: var(--sage); }
+.album-strip { display: grid; grid-template-columns: 1.12fr .86fr 1.02fr; gap: 12px; height: 300px; margin-bottom: 32px; }
+.album-picture { height: 100%; min-width: 0; overflow: hidden; border-radius: 14px; background: #dce6d8; }
+.album-picture > img { width: 100%; height: 100%; object-fit: cover; }
+.album-picture-family > img { object-position: 44% 35%; }
+.album-picture-child > img { object-position: 80% 40%; }
+.album-picture .cafe-crop { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; }
+.album-cover-copy h1 { max-width: 970px; font-size: 48px; line-height: 1.18; letter-spacing: -.035em; }
+.album-cover-copy .eyebrow { margin-bottom: 17px; }
+.album-cover-bottom { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); align-items: center; gap: 35px; margin-top: 25px; }
+.album-cover-bottom > p { font-size: 16px; line-height: 1.8; color: var(--muted); }
+.album-cover-bottom .actions { justify-content: flex-end; gap: 15px 21px; }
+.album-service > .container { max-width: 780px; }
+.album-service-copy { color: var(--muted); font-size: 16px; line-height: 1.8; }
+.album-service-copy .album-service-lead { font-size: 19px; color: var(--ink); }
+.album-service-copy .album-service-outcome { padding-top: 21px; border-top: 1px solid var(--line); margin-top: 23px; }
+.album-about { background: var(--sage); }
+.album-about .section-heading { max-width: 750px; }
+.album-biography { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 44px; }
+.album-biography p { font-size: 16px; line-height: 1.85; }
+.album-biography p + p { margin-top: 0; }
+.album-route { border-bottom: 1px solid var(--line); }
+.album-stage { border-top: 1px solid var(--line); }
+.album-stage > summary { display: grid; grid-template-columns: 37px minmax(0,1fr) 26px; align-items: start; gap: 20px; padding-block: 23px; list-style: none; cursor: pointer; }
+.album-stage > summary::-webkit-details-marker { display: none; }
+.album-stage-number { padding-top: 4px; font-size: 13px; color: #73896a; }
+.album-stage-title { display: block; font: 400 25px/1.35 var(--heading); letter-spacing: -.025em; }
+.album-stage-result { display: block; max-width: 760px; margin-top: 10px; font-size: 16px; line-height: 1.8; color: var(--muted); }
+.album-stage-toggle { display: grid; place-items: center; width: 25px; height: 30px; color: var(--accent); font-size: 25px; font-weight: 400; line-height: 1; }
+.album-stage[open] .album-stage-toggle { font-size: 0; }
+.album-stage[open] .album-stage-toggle::after { content: '−'; font-size: 25px; }
+.album-stage-action { margin: 0 46px 25px 57px; padding: 19px 22px; border-left: 2px solid #bdcfb6; background: #f5f8f0; }
+.album-stage-action > span { display: block; font-size: 12px; line-height: 1.6; color: var(--muted); margin-bottom: 7px; }
+.album-stage-action p { font-size: 15px; line-height: 1.8; }
+.album-pricing { background: var(--sage); }
+.album-format-tabs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.album-format-tabs > button { display: block; width: 100%; padding: 22px 24px; text-align: left; background: #f8faf4; border: 1px solid #bfceba; border-radius: 13px; }
+.album-format-tabs > button[aria-selected=true] { border-color: var(--accent); background: var(--accent); color: #fff; }
+.album-format-tabs > button > span { display: block; font-size: 16px; line-height: 1.5; }
+.album-format-tabs strong { display: block; margin-top: 9px; font: 400 29px/1.35 var(--heading); letter-spacing: -.025em; white-space: nowrap; }
+.album-format-panel { margin-top: 18px; padding: 31px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.album-plan-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 25px; }
+.album-formats[data-enhanced=true] .album-plan-heading { display: none; }
+.album-formats[data-enhanced=true] .album-plan-intro { margin-top: 0; }
+.album-plan-heading h3 { font-size: 28px; }
+.album-price { font: 400 30px/1.35 var(--heading); letter-spacing: -.025em; white-space: nowrap; }
+.album-plan-intro { font-size: 16px; line-height: 1.8; color: var(--muted); margin-top: 17px; }
+.album-format-panel ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 34px; list-style: none; margin: 25px 0; padding: 0; }
+.album-format-panel li { position: relative; font-size: 15px; line-height: 1.8; padding-left: 20px; }
+.album-format-panel li::before { content: '—'; position: absolute; left: 0; color: #71886a; }
+.album-plan-terms { padding-top: 21px; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.8; color: var(--muted); }
+.album-format-panel .button { margin-top: 23px; }
+.album-reviews { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.album-review { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line); border-radius: 13px; background: #f8faf4; }
+.album-review blockquote { margin-bottom: 23px; }
+.album-review blockquote p { font-size: 15px; line-height: 1.85; }
+.album-review figcaption { margin-top: auto; padding-top: 17px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.6; }
+.album-review figcaption strong { display: block; font-weight: 500; }
+.album-review figcaption > span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; }
+.album-request { background: var(--sage); }
+.album-request-content { max-width: 700px; margin-inline: auto; }
+.album-request .section-heading { text-align: center; margin-inline: auto; margin-bottom: 21px; }
+.album-request-copy { text-align: center; margin-bottom: 28px; }
+.album-request-copy > p { max-width: 590px; margin-inline: auto; font-size: 16px; line-height: 1.8; color: var(--muted); }
+.album-request-copy .telegram-link { margin-top: 16px; }
+.album-request-form { padding: 30px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.next-05-album .site-footer { background: #f8faf4; }
+@media (max-width:1100px) {
+  .album-strip { height: 270px; }
+  .album-strip-cafe > img { width: 125%; left: -12.5%; }
+  .album-cover-copy h1 { font-size: 44px; }
+  .album-cover-bottom { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .album-cover-bottom > p { max-width: 740px; }
+  .album-cover-bottom .actions { justify-content: flex-start; }
+  .album-reviews { gap: 15px; }
+  .album-review { padding: 21px; }
+}
+@media (max-width:850px) {
+  .album-strip { height: 235px; gap: 10px; }
+  .album-strip-cafe > img { width: 145%; left: -22.5%; }
+  .album-cover-copy h1 { font-size: 40px; }
+  .album-biography { gap: 29px; }
+  .album-format-panel { padding: 27px; }
+  .album-reviews { grid-template-columns: minmax(0,1fr); gap: 18px; }
+  .album-review { padding: 26px; }
+}
+@media (max-width:640px) {
+  .next-05-album .album-hero { padding-block: 23px 40px; }
+  .album-strip { grid-template-columns: .85fr .85fr 1.15fr; height: 160px; gap: 6px; margin-bottom: 25px; }
+  .album-picture { border-radius: 10px; }
+  .album-picture-family > img { object-position: 38% 50%; }
+  .album-picture-child > img { object-position: 80% 50%; }
+  .album-strip-cafe > img { width: 215%; left: -57.5%; }
+  .album-cover-copy .eyebrow { margin-bottom: 14px; font-size: 9px; letter-spacing: .045em; }
+  .album-cover-copy h1 { font-size: 34px; line-height: 1.21; }
+  .album-cover-bottom { margin-top: 21px; gap: 23px; }
+  .album-cover-bottom > p { font-size: 15px; line-height: 1.75; }
+  .album-cover-bottom .actions { gap: 11px 18px; }
+  .album-cover-bottom .button { width: 100%; }
+  .album-service-copy { font-size: 15px; }
+  .album-service-copy .album-service-lead { font-size: 17px; }
+  .album-biography { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .album-biography p { font-size: 15px; }
+  .album-stage > summary { grid-template-columns: 27px minmax(0,1fr) 21px; gap: 12px; padding-block: 21px; }
+  .album-stage-number { font-size: 12px; }
+  .album-stage-title { font-size: 23px; }
+  .album-stage-result { font-size: 15px; line-height: 1.75; }
+  .album-stage-toggle { width: 21px; font-size: 23px; }
+  .album-stage-action { margin: 0 0 22px 39px; padding: 16px 17px; }
+  .album-stage-action p { font-size: 15px; }
+  .album-format-tabs { gap: 10px; }
+  .album-format-tabs > button { padding: 17px 15px; border-radius: 12px; }
+  .album-format-tabs > button > span { font-size: 15px; }
+  .album-format-tabs strong { font-size: 23px; margin-top: 10px; }
+  .album-format-panel { padding: 24px; border-radius: 12px; }
+  .album-plan-heading { display: block; }
+  .album-plan-heading h3 { font-size: 27px; }
+  .album-price { font-size: 30px; margin-top: 12px; }
+  .album-plan-intro { font-size: 15px; }
+  .album-format-panel ul { grid-template-columns: minmax(0,1fr); gap: 11px; margin-block: 22px; }
+  .album-format-panel li, .album-plan-terms { font-size: 15px; }
+  .album-format-panel .button { width: 100%; }
+  .album-review { padding: 24px; border-radius: 12px; }
+  .album-request-copy > p { font-size: 15px; }
+  .album-request-form { padding: 24px; border-radius: 12px; }
+  .album-request-form .button { width: 100%; }
+}
+@media (max-width:370px) {
+  .album-cover-copy h1 { font-size: 31px; }
+  .album-stage > summary { grid-template-columns: 23px minmax(0,1fr) 19px; gap: 10px; }
+  .album-stage-title { font-size: 22px; }
+  .album-stage-action { margin-left: 33px; padding-inline: 14px; }
+  .album-format-tabs { grid-template-columns: minmax(0,1fr); }
+  .album-format-tabs > button { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 14px; align-items: center; padding: 15px 14px; }
+  .album-format-tabs > button > span { font-size: 14px; }
+  .album-format-tabs strong { font-size: 22px; margin-top: 0; }
+  .album-format-panel, .album-review, .album-request-form { padding: 19px; }
+}

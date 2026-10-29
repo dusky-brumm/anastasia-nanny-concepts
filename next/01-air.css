@@ -1,0 +1,128 @@
+.next-01-air { --blue:#e4eff5; --accent:#31594b; --outer:#e9efed; }
+.air-hero { background:var(--blue); padding-block:36px 44px; }
+.air-title { text-align:center; max-width:880px; margin-inline:auto; }
+.air-title .eyebrow { margin-bottom:16px; }
+.air-title h1 { font-size:52px; line-height:1.17; letter-spacing:-.032em; }
+.air-introduction { display:grid; grid-template-columns:.84fr 1.16fr; gap:52px; align-items:center; margin-top:32px; }
+.air-lead>p:first-child { font-size:16px; line-height:1.75; }
+.air-lead .actions { margin-top:25px; gap:15px 21px; }
+.air-lead .telegram-link { font-size:13px; }
+.air-author { margin-top:25px; font-size:14px; }
+.air-author>span { display:block; color:var(--muted); font-size:12px; margin-top:4px; }
+.air-portrait .cafe-crop { aspect-ratio:1.55; border-radius:12px; }
+.air-portrait figcaption { padding:17px 1px 0; }
+.air-portrait blockquote { max-width:520px; font:italic 18px/1.55 var(--heading); color:#456456; }
+.air-service-columns { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:34px; }
+.air-service-columns article { border-top:1px solid #a9c0c2; padding-top:20px; }
+.air-service-columns h3 { min-height:61px; font-size:24px; margin-bottom:14px; }
+.air-service-columns p { color:var(--muted); font-size:15px; line-height:1.75; }
+.air-about { background:var(--sage); }
+.air-about-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:65px; align-items:center; }
+.air-about .section-heading { margin-bottom:24px; }
+.air-biography p { font-size:16px; line-height:1.8; color:var(--muted); }
+.air-about .telegram-link { margin-top:23px; }
+.air-about figure>img { width:100%; height:315px; object-position:50% 43%; border-radius:12px; }
+.air-about figcaption { font-size:12px; line-height:1.6; color:var(--muted); margin-top:12px; }
+.air-route { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:22px; }
+.air-route>li { min-width:0; position:relative; display:flex; flex-direction:column; }
+.air-step { display:grid; place-items:center; position:relative; width:34px; height:34px; margin-bottom:19px; border:1px solid #bed0d3; border-radius:50%; background:var(--blue); font-size:13px; }
+.air-route>li:not(:last-child)::before { content:''; position:absolute; left:35px; top:17px; width:calc(100% - 13px); height:1px; background:var(--line); }
+.air-route h3 { font:500 16px/1.45 var(--body); letter-spacing:-.01em; min-height:46px; margin-bottom:12px; }
+.air-action { color:var(--muted); font-size:14px; line-height:1.7; margin-bottom:17px; }
+.air-result { font-size:14px; line-height:1.7; padding-top:14px; border-top:1px solid var(--line); margin-top:auto; }
+.air-result>strong { font-weight:500; }
+.air-pricing { background:var(--blue); }
+.air-plans { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.air-plan { display:flex; flex-direction:column; align-items:flex-start; min-width:0; padding:28px; background:var(--paper); border:1px solid #c3d5d3; border-radius:15px; }
+.air-plan-main { border-color:#729b87; }
+.air-plan h3 { font-size:28px; }
+.air-price { font:400 37px/1.3 var(--heading); letter-spacing:-.035em; margin-top:14px; }
+.air-plan ul { padding-left:18px; margin:21px 0; font-size:15px; line-height:1.7; }
+.air-plan li { padding-left:2px; }
+.air-plan li+li { margin-top:8px; }
+.air-plan li::marker { color:#6d907d; }
+.air-plan .air-terms { color:var(--muted); font-size:15px; line-height:1.7; margin:0 0 23px; }
+.air-plan>.button { margin-top:auto; }
+.air-reviews { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; }
+.air-reviews>figure { display:flex; flex-direction:column; padding-top:23px; border-top:1px solid #b4c9be; }
+.air-reviews blockquote p { font-size:15px; line-height:1.8; margin-bottom:23px; }
+.air-reviews figcaption { margin-top:auto; padding-top:15px; border-top:1px solid var(--line); font-size:13px; }
+.air-reviews figcaption strong { display:block; font-weight:500; }
+.air-reviews figcaption span { display:block; color:var(--muted); font-size:12px; margin-top:4px; }
+.air-request { background:var(--blue); }
+.air-request-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:54px; align-items:start; }
+.air-request .section-heading { margin-bottom:23px; }
+.air-request h2 { max-width:330px; }
+.air-request-grid>div>p { color:var(--muted); }
+.air-request .telegram-link { margin-top:20px; }
+.air-form { padding:26px; background:var(--paper); border:1px solid #c2d4cc; border-radius:15px; }
+
+@media(max-width:1050px) {
+  .air-title h1 { font-size:47px; }
+  .air-introduction { gap:35px; }
+  .air-service-columns { gap:27px; }
+  .air-service-columns h3 { font-size:23px; }
+  .air-about-grid { gap:42px; }
+  .air-route { gap:16px; }
+  .air-plan { padding:25px; }
+  .air-request-grid { gap:34px; }
+}
+@media(max-width:800px) {
+  .air-title h1 { font-size:42px; }
+  .air-introduction { grid-template-columns:1fr 1fr; gap:27px; }
+  .air-author { margin-top:20px; }
+  .air-portrait .cafe-crop { aspect-ratio:1.1; }
+  .air-service-columns h3 { min-height:92px; }
+  .air-about-grid { grid-template-columns:1.15fr .85fr; gap:30px; }
+  .air-route { grid-template-columns:1fr; gap:0; }
+  .air-route>li { display:grid; grid-template-columns:34px .95fr 1.05fr; gap:11px 22px; padding-block:22px; border-top:1px solid var(--line); }
+  .air-route>li::before { display:none; }
+  .air-step { grid-row:1/3; margin:0; }
+  .air-route h3 { min-height:0; margin:0; grid-column:2; }
+  .air-action { margin:0; grid-column:2; }
+  .air-result { grid-column:3; grid-row:1/3; margin:0; padding:0 0 0 21px; border-top:0; border-left:1px solid var(--line); }
+  .air-reviews { grid-template-columns:1fr; gap:24px; }
+  .air-reviews blockquote p { margin-bottom:18px; }
+  .air-request-grid { grid-template-columns:1fr; gap:27px; }
+  .air-request h2 { max-width:650px; }
+}
+@media(max-width:640px) {
+  .air-hero { padding-block:29px 34px; }
+  .air-title { text-align:left; }
+  .air-title h1 { font-size:34px; line-height:1.2; }
+  .air-title .eyebrow { margin-bottom:13px; }
+  .air-introduction { grid-template-columns:1fr; gap:25px; margin-top:21px; }
+  .air-lead>p:first-child { font-size:15px; line-height:1.75; }
+  .air-lead .actions { margin-top:22px; gap:12px 17px; }
+  .air-author { display:none; }
+  .air-portrait .cafe-crop { aspect-ratio:1.25; }
+  .air-portrait figcaption { padding-top:14px; }
+  .air-portrait blockquote { font-size:17px; line-height:1.55; }
+  .air-service-columns { grid-template-columns:1fr; gap:25px; }
+  .air-service-columns article { padding-top:17px; }
+  .air-service-columns h3 { min-height:0; font-size:23px; margin-bottom:12px; }
+  .air-about-grid { grid-template-columns:1fr; gap:25px; }
+  .air-biography p { font-size:15px; line-height:1.75; }
+  .air-about .telegram-link { margin-top:19px; }
+  .air-about figure>img { height:230px; }
+  .air-route>li { grid-template-columns:28px 1fr; gap:10px 13px; padding-block:20px; }
+  .air-step { width:28px; height:28px; grid-row:1; font-size:12px; }
+  .air-route h3 { font-size:16px; align-self:center; }
+  .air-action { grid-column:1/-1; font-size:15px; }
+  .air-result { grid-column:1/-1; grid-row:auto; border-left:0; border-top:1px solid var(--line); padding:11px 0 0; font-size:15px; }
+  .air-plans { grid-template-columns:1fr; gap:20px; }
+  .air-plan { padding:23px; }
+  .air-plan h3 { font-size:27px; }
+  .air-price { font-size:35px; }
+  .air-plan>.button { width:100%; }
+  .air-reviews { gap:23px; }
+  .air-reviews>figure { padding-top:20px; }
+  .air-reviews blockquote p { line-height:1.75; }
+  .air-request h2 { max-width:340px; }
+  .air-form { padding:22px; }
+}
+@media(max-width:370px) {
+  .air-title h1 { font-size:31px; }
+  .air-portrait blockquote { font-size:16px; }
+  .air-plan,.air-form { padding:20px; }
+}

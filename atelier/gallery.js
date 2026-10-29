@@ -1,4 +1,4 @@
-import {getFavorites,initFavorites} from '../preferences.js';
+import {getFavorites,initFavorites} from '../preferences.js?v=2';
 const cards=[...document.querySelectorAll('[data-design-id]')];
 let family='all',favoritesOnly=false;
 const favoriteButton=document.querySelector('[data-favorites-view]');

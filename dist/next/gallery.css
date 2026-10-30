@@ -25,8 +25,9 @@ button { font:inherit; color:inherit; cursor:pointer; }
 .favorites-filter { border-color:var(--line); white-space:nowrap; }
 .favorites-filter>span { margin-left:8px; }
 .gallery-status { margin:17px 0 22px; color:var(--muted); font-size:13px; }
-.design-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; scroll-margin-top:24px; }
-.design-card { display:flex; flex-direction:column; min-width:0; overflow:hidden; background:#fffefa; border:1px solid #c9d7ca; border-radius:16px; scroll-margin-top:24px; }
+/* Keep the last row centered, including any subset selected as favourites. */
+.design-grid { --gallery-gap:28px; display:flex; flex-wrap:wrap; justify-content:center; gap:var(--gallery-gap); scroll-margin-top:24px; }
+.design-card { display:flex; flex:0 0 calc((100% - var(--gallery-gap)) / 2); flex-direction:column; min-width:0; overflow:hidden; background:#fffefa; border:1px solid #c9d7ca; border-radius:16px; scroll-margin-top:24px; }
 .design-preview { display:flex; justify-content:center; aspect-ratio:1120/950; background:#e6eeea; overflow:hidden; border-bottom:1px solid #d3dfd2; }
 .design-preview img { display:block; width:100%; height:100%; object-fit:cover; object-position:top; }
 .mobile-previews .design-preview { padding:20px 0; background:#e3ebe5; }
@@ -56,10 +57,7 @@ button { font:inherit; color:inherit; cursor:pointer; }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 :focus-visible { outline:2px solid #806e54; outline-offset:4px; }
 @media(min-width:1300px) {
-  .design-grid { grid-template-columns:repeat(6,minmax(0,1fr)); }
-  .design-card { grid-column:span 2; }
-  .design-card:nth-child(4) { grid-column:2 / span 2; }
-  .design-card:nth-child(5) { grid-column:4 / span 2; }
+  .design-card { flex-basis:calc((100% - var(--gallery-gap) - var(--gallery-gap)) / 3); }
   .design-description { padding:23px; }
   .design-description h2 { font-size:25px; }
   .design-extras { display:block; }
@@ -69,7 +67,7 @@ button { font:inherit; color:inherit; cursor:pointer; }
 @media(max-width:950px) {
   .gallery-intro { gap:40px; }
   .gallery-intro h1 { font-size:40px; }
-  .design-grid { gap:23px; }
+  .design-grid { --gallery-gap:23px; }
   .design-description { padding:23px; }
   .design-description h2 { font-size:26px; }
   .design-extras { display:block; }
@@ -90,7 +88,8 @@ button { font:inherit; color:inherit; cursor:pointer; }
   .gallery-tools { flex-wrap:wrap; gap:11px; }
   .preview-control>button,.favorites-filter { padding-inline:12px; font-size:12px; }
   .favorites-filter { margin-left:auto; }
-  .design-grid { grid-template-columns:1fr; gap:25px; }
+  .design-grid { --gallery-gap:25px; }
+  .design-card { flex-basis:100%; }
   .mobile-previews .design-preview { aspect-ratio:390/780; padding:16px; }
   .design-description { padding:23px; }
   .design-description h2 { font-size:28px; }

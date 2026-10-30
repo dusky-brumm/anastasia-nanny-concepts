@@ -95,7 +95,9 @@
   .air-introduction { grid-template-columns:1fr 1fr; gap:27px; }
   .air-author { margin-top:20px; }
   .air-portrait .cafe-crop { aspect-ratio:1.1; }
-  .air-service-columns h3 { min-height:92px; }
+  .air-service-columns { grid-template-columns:1fr; gap:25px; }
+  .air-service-columns h3 { min-height:0; }
+  .air-plans { grid-template-columns:1fr; gap:20px; }
   .air-about-grid { grid-template-columns:1.15fr .85fr; gap:30px; }
   .air-route { grid-template-columns:1fr; gap:0; }
   .air-route>li { display:grid; grid-template-columns:34px .95fr 1.05fr; gap:11px 22px; padding-block:22px; border-top:1px solid var(--line); }
@@ -121,7 +123,6 @@
   .air-portrait .cafe-crop { aspect-ratio:1.25; }
   .air-portrait figcaption { padding-top:14px; }
   .air-portrait blockquote { font-size:17px; line-height:1.55; }
-  .air-service-columns { grid-template-columns:1fr; gap:25px; }
   .air-service-columns article { padding-top:17px; }
   .air-service-columns h3 { min-height:0; font-size:23px; margin-bottom:12px; }
   .air-about-grid { grid-template-columns:1fr; gap:25px; }
@@ -133,7 +134,6 @@
   .air-route h3 { font-size:16px; align-self:center; }
   .air-action { grid-column:1/-1; font-size:15px; }
   .air-result { grid-column:1/-1; grid-row:auto; border-left:0; border-top:1px solid var(--line); padding:11px 0 0; font-size:15px; }
-  .air-plans { grid-template-columns:1fr; gap:20px; }
   .air-plan { padding:23px; }
   .air-plan h3 { font-size:27px; }
   .air-price { font-size:35px; }

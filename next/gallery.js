@@ -3,8 +3,11 @@ import {getFavorites,initFavorites} from '../preferences.js?v=2';
 const cards=[...document.querySelectorAll('[data-design-id]')];
 const previewButtons=[...document.querySelectorAll('[data-preview]')];
 const favoriteFilter=document.querySelector('[data-favorites-only]');
-const queryMode=new URLSearchParams(location.search).get('view');
-let mode=queryMode==='mobile'||queryMode==='desktop'?queryMode:(matchMedia('(max-width:600px)').matches?'mobile':'desktop');
+const params=new URLSearchParams(location.search);
+const queryMode=params.get('view');
+const compact=matchMedia('(max-width:600px)');
+let chosenPreview=queryMode==='mobile'||queryMode==='desktop';
+let mode=chosenPreview?queryMode:(compact.matches?'mobile':'desktop');
 let favoritesOnly=false;
 
 function update() {
@@ -26,7 +29,23 @@ function setPreview(value) {
   for(const image of document.querySelectorAll('.design-preview img')) image.src=image.dataset[mode];
   for(const button of previewButtons) button.setAttribute('aria-pressed',String(button.dataset.preview===mode));
 }
-for(const button of previewButtons) button.addEventListener('click',()=>setPreview(button.dataset.preview));
+for(const button of previewButtons) button.addEventListener('click',()=>{
+  chosenPreview=true;
+  setPreview(button.dataset.preview);
+  const url=new URL(location.href);
+  url.searchParams.set('view',mode);
+  history.replaceState(history.state,'',url.href);
+});
+// Follow the available panel size until a reviewer chooses a preview explicitly.
+compact.addEventListener('change',()=>{
+  if(!chosenPreview) setPreview(compact.matches?'mobile':'desktop');
+});
+// The review-page preference also works when browser storage is unavailable.
+if(params.get('motion')==='off') for(const link of document.querySelectorAll('.design-card a:not([target])')) {
+  const url=new URL(link.href,location.href);
+  url.searchParams.set('motion','off');
+  link.href=url.href;
+}
 favoriteFilter.addEventListener('click',()=>{
   favoritesOnly=!favoritesOnly;
   favoriteFilter.setAttribute('aria-pressed',String(favoritesOnly));

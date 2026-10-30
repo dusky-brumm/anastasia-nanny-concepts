@@ -31,33 +31,36 @@
 .pr-case-tabs [aria-selected=true]{color:#fff;background:var(--pr-accent);border-color:var(--pr-accent)}
 .pr-case-tabs [role=tab]:hover{border-color:var(--pr-accent)}
 .pr-cases{display:grid;gap:27px}
+.pr-interview[data-enhanced=true] .pr-cases{gap:0}
+.pr-interview[data-enhanced=true] .pr-case{grid-area:1/1}
+.pr-interview[data-enhanced=true] .pr-case[hidden]{display:block!important;visibility:hidden;pointer-events:none}
 .pr-case h3{font-size:18px;line-height:1.5;letter-spacing:-.015em;margin-bottom:16px}
 .pr-case ol{list-style:decimal-leading-zero;margin:0;padding-left:28px}
 .pr-case li{padding:15px 0 15px 6px;border-top:1px solid #c8d8dd;font-size:15px;line-height:1.8}
 .pr-case li::marker{font-size:11px;color:var(--pr-muted)}
 .pr-interview .pr-example-note{padding-top:19px;margin-top:8px;border-top:1px solid #c8d8dd;font-size:12px;line-height:1.75;color:var(--pr-muted)}
-.pr-output-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:52px;align-items:start}
-.pr-output-copy .section-heading{margin-bottom:22px}
+.pr-output-copy{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:end;margin-bottom:30px}
+.pr-output-copy .section-heading{margin-bottom:0}
 .pr-output-copy>p{color:var(--pr-muted)}
 .pr-output-layout>.profile-sample{padding:30px;background:var(--pr-sage);border:1px solid var(--pr-line);border-radius:var(--pr-radius)}
 .pr-output-layout .profile-sample h3{font-size:25px;line-height:1.4}
-.pr-output-layout .profile-sample dl{margin:24px 0 0}
-.pr-output-layout .profile-sample dl>div{padding:17px 0;border-top:1px solid var(--pr-line)}
+.pr-output-layout .profile-sample dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:25px;margin:24px 0 0}
+.pr-output-layout .profile-sample dl>div{padding:17px 0 0;border-top:1px solid var(--pr-line)}
 .pr-output-layout .profile-sample dt{font-size:14px;font-weight:500;margin-bottom:7px}
 .pr-output-layout .profile-sample dd{margin:0;font-size:15px;line-height:1.8;color:var(--pr-muted)}
 .pr-output-layout .profile-sample .small-note{font-size:12px;line-height:1.75;margin-top:17px;color:var(--pr-muted)}
 .pr-about{background:var(--pr-sage)}
-.pr-about-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:62px}
-.pr-about-layout .section-heading{margin-bottom:0}
-.pr-biography{padding-top:4px}
+.pr-about-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:54px;align-items:center}
+.pr-about-layout .section-heading{margin-bottom:24px}
+.pr-about-photo{width:100%;max-width:300px;justify-self:end}
+.pr-about-photo img{width:100%;height:220px;border-radius:var(--pr-radius);object-position:50% 43%}
 .pr-biography p{max-width:54ch}
 .pr-route{list-style:none;margin:0;padding:0;border-top:1px solid var(--pr-line)}
 .pr-route>li{display:grid;grid-template-columns:34px minmax(0,1.1fr) minmax(0,.95fr);gap:24px;padding:26px 0;border-bottom:1px solid var(--pr-line);align-items:start}
 .pr-stage-number{font-size:12px;line-height:1.7;color:var(--pr-muted);padding-top:4px}
 .pr-stage-action>p{margin-top:13px;color:var(--pr-muted);max-width:45ch}
-.pr-stage-result{padding-left:25px;border-left:1px solid var(--pr-line)}
-.pr-stage-result{font-size:15.5px;line-height:1.8;margin:0}
-.pr-stage-result>strong{font-size:13px;font-weight:500}
+.pr-stage-result{padding-left:25px;border-left:2px solid #b4c9be;font-size:15.5px;font-weight:500;line-height:1.8;margin:0}
+.pr-stage-result>strong{font-size:12px;font-weight:400;color:var(--pr-muted)}
 .pr-pricing{background:#fffefa}
 .pr-comparison{width:100%;table-layout:fixed;border-collapse:collapse;border-top:1px solid var(--pr-line);border-bottom:1px solid var(--pr-line);text-align:left}
 .pr-comparison th{font-weight:500}
@@ -73,6 +76,9 @@
 .pr-plan-terms h3{font-size:18px;line-height:1.5}
 .pr-plan-terms p{margin:12px 0 22px;font-size:15px;color:var(--pr-muted)}
 .pr-plan-terms .button{margin-top:auto}
+.pr-mobile-plans{display:none}
+.pr-mobile-plan{scroll-margin-top:30px}
+.pr-mobile-plan:target{outline:2px solid #a9c1ad;outline-offset:5px}
 .pr-pricing .pricing-note{font-size:12px;line-height:1.75;color:var(--pr-muted);margin-top:20px}
 .pr-reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--pr-line);border-bottom:1px solid var(--pr-line)}
 .pr-reviews>figure{display:flex;flex-direction:column;padding:26px 24px 26px 0}
@@ -95,7 +101,8 @@
  .next-03-practice h1{font-size:39px}
  .pr-interview{padding:25px}
  .pr-interview h2{font-size:25px}
- .pr-output-layout{gap:31px}
+ .pr-output-copy{gap:31px}
+ .pr-output-layout .profile-sample dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
  .pr-output-layout>.profile-sample{padding:25px}
  .pr-about-layout{gap:38px}
  .pr-route>li{gap:18px;grid-template-columns:29px minmax(0,1.1fr) minmax(0,1fr)}
@@ -105,16 +112,22 @@
  .pr-request-layout{gap:31px}
  .pr-form{padding:24px}
 }
+@media(min-width:761px) and (max-width:950px){
+ .pr-form .field-pair{grid-template-columns:1fr;gap:0}
+}
 @media(max-width:760px){
- .pr-hero-layout,.pr-output-layout{grid-template-columns:1fr;gap:33px}
+ .pr-hero-layout{grid-template-columns:1fr;gap:33px}
+ .pr-output-copy{grid-template-columns:1fr;gap:18px;margin-bottom:26px}
  .pr-hero-copy h1{max-width:25ch;font-size:42px}
  .pr-hero-copy>p{max-width:61ch}
  .pr-author{max-width:430px;margin-top:27px;padding-top:21px}
  .pr-interview h2{max-width:none}
  .pr-case h3{font-size:20px}
  .pr-about-layout{grid-template-columns:1fr;gap:25px}
+ .pr-about-photo{max-width:430px;justify-self:start}
+ .pr-about-photo img{height:230px}
  .pr-route>li{grid-template-columns:29px minmax(0,1fr);gap:12px 18px}
- .pr-stage-result{grid-column:2;padding:0;border-left:0}
+ .pr-stage-result{grid-column:2;padding-left:14px}
  .pr-plan-terms{grid-template-columns:1fr;gap:24px}
  .pr-plan-terms article+article{padding-top:24px;border-top:1px solid var(--pr-line)}
  .pr-reviews{grid-template-columns:1fr}
@@ -130,7 +143,7 @@
  .next-03-practice h2{font-size:29px;line-height:1.3}
  .next-03-practice h3{font-size:22px}
  .next-03-practice .section-heading{margin-bottom:27px}
- .pr-about-layout .section-heading{margin-bottom:0}
+ .pr-about-layout .section-heading{margin-bottom:24px}
  .next-03-practice .eyebrow{font-size:10px}
  .next-03-practice .pr-hero{padding-top:31px}
  .pr-hero-copy>.eyebrow{margin-bottom:16px}
@@ -148,20 +161,27 @@
  .pr-case ol{padding-left:24px}
  .pr-case li{padding-left:4px;font-size:15px}
  .pr-interview .pr-example-note{font-size:12px}
- .pr-output-copy .section-heading{margin-bottom:21px}
+ .pr-output-copy .section-heading{margin-bottom:0}
  .pr-output-layout>.profile-sample{padding:25px 22px}
  .pr-output-layout .profile-sample h3{font-size:25px}
+ .pr-output-layout .profile-sample dl{grid-template-columns:1fr;gap:0;margin-top:20px}
+ .pr-output-layout .profile-sample dl>div{padding-block:14px}
+ .pr-output-layout .profile-sample dl>div:last-child{padding-bottom:0}
  .pr-output-layout .profile-sample dd{font-size:15px}
  .pr-route>li{grid-template-columns:23px minmax(0,1fr);gap:12px 13px;padding-block:23px}
  .pr-stage-action>p{margin-top:11px}
  .pr-stage-result{font-size:15px}
- .pr-comparison thead th{padding:22px 13px 22px 0}
- .pr-comparison thead th+th{padding-left:13px;padding-right:0}
- .pr-comparison thead h3{font-size:19px;line-height:1.4}
- .pr-comparison td{font-size:15px;padding:11px 13px 21px 0;line-height:1.75}
- .pr-comparison td+td{padding-left:13px;padding-right:0}
- .pr-price{font-size:25px;margin-top:28px}
- .pr-plan-terms>.button,.pr-plan-terms article>.button{width:100%}
+ .pr-comparison,.pr-plan-terms{display:none}
+ .pr-mobile-plans{display:grid;gap:30px}
+ .pr-mobile-plan{padding:26px 0;border-top:1px solid var(--pr-line)}
+ .pr-mobile-plan:last-child{padding-bottom:0}
+ .pr-mobile-price{font-size:30px;font-weight:500;line-height:1.4;letter-spacing:-.025em;margin-top:10px;white-space:nowrap}
+ .pr-mobile-plan dl{margin:22px 0}
+ .pr-mobile-plan dl>div+div{margin-top:17px}
+ .pr-mobile-plan dt{font-size:12px;color:var(--pr-muted);line-height:1.6;margin-bottom:5px}
+ .pr-mobile-plan dd{margin:0;font-size:15px;line-height:1.75}
+ .pr-mobile-terms{padding-top:19px;border-top:1px solid var(--pr-line);font-size:14px;color:var(--pr-muted);line-height:1.75}
+ .pr-mobile-plan .button{width:100%;margin-top:22px}
  .pr-reviews blockquote{font-size:15px}
  .pr-form{padding:24px 20px}
  .pr-form input,.pr-form select,.pr-form textarea{font-size:16px}
@@ -175,8 +195,5 @@
  .pr-author{grid-template-columns:64px minmax(0,1fr);gap:13px}
  .pr-author-photo{width:64px}
  .pr-author strong{font-size:13px}
- .pr-comparison thead h3{font-size:16px}
- .pr-comparison thead th,.pr-comparison td{padding-right:10px}
- .pr-comparison thead th+th,.pr-comparison td+td{padding-left:10px}
- .pr-price{font-size:22px}
+ .pr-about-photo img{height:210px}
 }

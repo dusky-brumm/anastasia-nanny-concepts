@@ -11,7 +11,7 @@ export async function buildNext(dist) {
   const updatedScript=script.replace(/from '\.\.\/shared-ui\.js(?:\?v=[a-f0-9]+)?'/,`from '../shared-ui.js?v=${uiVersion}'`);
   if(updatedScript!==script) await writeFile(scriptPath,updatedScript);
   const hash=createHash('sha256');
-  for(const file of ['base.css','fonts.css','site.js','gallery.css','gallery.js',...designs.map(design=>`${design.id}.css`)]) {
+  for(const file of ['base.css','fonts.css','site.js','motion.js','gallery.css','gallery.js',...designs.map(design=>`${design.id}.css`)]) {
     hash.update(file).update(await readFile(path.join(dist,'next',file)));
   }
   for(const file of ['catalog.mjs','common.mjs','gallery.mjs',...designs.map(design=>`${design.id}.mjs`)]) {

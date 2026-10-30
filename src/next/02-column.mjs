@@ -1,4 +1,4 @@
-import {
+import {termsMarkup,
   frame, headline, intro, biography, approach, stages, services, reviews,
   cafe, heading, section, actions, button, tg, form, requestCopy,
 } from './common.mjs';
@@ -11,6 +11,10 @@ export function render(version = '1') {
         <h1>${headline}</h1>
         <p class="column-intro">${intro}</p>
         ${actions()}
+        <figure class="column-author">
+          ${cafe(true, 'column-author-photo')}
+          <figcaption><span>Анастасия Доронина</span>Индивидуальный подбор няни</figcaption>
+        </figure>
       </div>`, 'column-hero'),
 
     section('service', `
@@ -21,10 +25,6 @@ export function render(version = '1') {
 
     section('about', `
       ${heading('02 / ОБО МНЕ', 'Опыт подбора и работы с детьми')}
-      <figure class="column-author">
-        ${cafe(false, 'column-author-photo')}
-        <figcaption><span>Анастасия Доронина</span>Индивидуальный подбор няни</figcaption>
-      </figure>
       <div class="column-biography">${biography}</div>`, 'column-about column-rule'),
 
     section('process', `
@@ -43,11 +43,11 @@ export function render(version = '1') {
       ${heading('04 / СТОИМОСТЬ И УСЛОВИЯ', 'Два формата работы')}
       <div class="column-plans">
         ${services.map(service => `
-          <article class="column-plan">
+          <article id="plan-${service.key}" data-service-plan="${service.key}" class="column-plan">
             <div class="column-plan-heading"><h3>${service.title}</h3><p class="column-price">${service.price}</p></div>
             <p class="column-plan-intro">${service.intro}</p>
             <ul>${service.features.map(feature => `<li>${feature}</li>`).join('')}</ul>
-            <p class="column-plan-terms">${service.terms}</p>
+            <p class="column-plan-terms">${termsMarkup(service.terms)}</p>
             ${button(service.action, service.title, service.key === 'consultation' ? 'button-secondary' : '')}
           </article>`).join('')}
       </div>`, 'column-pricing column-rule'),

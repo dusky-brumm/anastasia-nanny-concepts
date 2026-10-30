@@ -1,4 +1,4 @@
-import {
+import {termsMarkup,
   frame, headline, intro, biography, stages, services, reviews,
   cafe, photo, heading, section, actions, button, tg, form, requestCopy,
 } from './common.mjs';
@@ -46,11 +46,11 @@ export function render(version = '1') {
           ${services.map((service, index) => `<button type="button" role="tab" id="album-tab-${service.key}" data-format-service="${service.title}" aria-controls="album-panel-${service.key}" aria-selected="${index === 0 ? 'true' : 'false'}" tabindex="${index === 0 ? '0' : '-1'}"><span>${service.title}</span><strong>${service.price}</strong></button>`).join('')}
         </div>
         ${services.map(service => `
-          <article class="album-format-panel" role="tabpanel" id="album-panel-${service.key}" aria-labelledby="album-tab-${service.key}" tabindex="0">
+          <article data-service-plan="${service.key}" class="album-format-panel" role="tabpanel" id="album-panel-${service.key}" aria-labelledby="album-tab-${service.key}" tabindex="0">
             <div class="album-plan-heading"><h3>${service.title}</h3><p class="album-price">${service.price}</p></div>
             <p class="album-plan-intro">${service.intro}</p>
             <ul>${service.features.map(feature => `<li>${feature}</li>`).join('')}</ul>
-            <p class="album-plan-terms">${service.terms}</p>
+            <p class="album-plan-terms">${termsMarkup(service.terms)}</p>
             ${button(service.action, service.title)}
           </article>`).join('')}
       </div>`, 'album-pricing album-rule'),

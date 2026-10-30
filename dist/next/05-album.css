@@ -23,8 +23,8 @@
 .album-cover-bottom .actions { justify-content: flex-end; gap: 15px 21px; }
 .album-service > .container { max-width: 780px; }
 .album-service-copy { color: var(--muted); font-size: 16px; line-height: 1.8; }
-.album-service-copy .album-service-lead { font-size: 19px; color: var(--ink); }
-.album-service-copy .album-service-outcome { padding-top: 21px; border-top: 1px solid var(--line); margin-top: 23px; }
+.album-service-copy .album-service-lead { font-size: 16px; }
+.album-service-copy .album-service-outcome { padding: 3px 0 3px 22px; border-left: 2px solid #a6bb9b; margin-top: 25px; font-size: 20px; line-height: 1.65; color: var(--ink); }
 .album-about { background: var(--sage); }
 .album-about .section-heading { max-width: 750px; }
 .album-biography { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 44px; }
@@ -50,6 +50,12 @@
 .album-format-tabs > button > span { display: block; font-size: 16px; line-height: 1.5; }
 .album-format-tabs strong { display: block; margin-top: 9px; font: 400 29px/1.35 var(--heading); letter-spacing: -.025em; white-space: nowrap; }
 .album-format-panel { margin-top: 18px; padding: 31px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.album-formats[data-enhanced=true] { display: grid; grid-template-columns: minmax(0,1fr); }
+.album-formats[data-enhanced=true] .album-format-tabs { grid-area: 1/1; }
+.album-formats[data-enhanced=true] .album-format-panel { grid-area: 2/1; display: flex; flex-direction: column; align-items: flex-start; }
+.album-formats[data-enhanced=true] .album-format-panel[hidden] { display: flex!important; visibility: hidden; pointer-events: none; }
+.album-formats[data-enhanced=true] .album-plan-terms { margin-top: auto; width: 100%; }
+.album-formats[data-enhanced=true] .album-format-panel ul { width: 100%; }
 .album-plan-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 25px; }
 .album-formats[data-enhanced=true] .album-plan-heading { display: none; }
 .album-formats[data-enhanced=true] .album-plan-intro { margin-top: 0; }
@@ -76,6 +82,13 @@
 .album-request-copy .telegram-link { margin-top: 16px; }
 .album-request-form { padding: 30px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
 .next-05-album .site-footer { background: #f8faf4; }
+/* Native expansion keeps summary outcomes visible and keyboard behaviour intact.
+   https://developer.chrome.com/blog/styling-details */
+@supports (interpolate-size:allow-keywords) and selector(details::details-content) {
+  html[data-next-motion=on] .album-stage { interpolate-size: allow-keywords; }
+  html[data-next-motion=on] .album-stage::details-content { block-size: 0; overflow: clip; transition: block-size .24s ease,content-visibility .24s; transition-behavior: allow-discrete; }
+  html[data-next-motion=on] .album-stage[open]::details-content { block-size: auto; }
+}
 @media (max-width:1100px) {
   .album-strip { height: 270px; }
   .album-strip-cafe > img { width: 125%; left: -12.5%; }
@@ -109,7 +122,8 @@
   .album-cover-bottom .actions { gap: 11px 18px; }
   .album-cover-bottom .button { width: 100%; }
   .album-service-copy { font-size: 15px; }
-  .album-service-copy .album-service-lead { font-size: 17px; }
+  .album-service-copy .album-service-lead { font-size: 15px; }
+  .album-service-copy .album-service-outcome { padding-left: 17px; font-size: 17px; }
   .album-biography { grid-template-columns: minmax(0,1fr); gap: 20px; }
   .album-biography p { font-size: 15px; }
   .album-stage > summary { grid-template-columns: 27px minmax(0,1fr) 21px; gap: 12px; padding-block: 21px; }
@@ -136,7 +150,12 @@
   .album-request-form { padding: 24px; border-radius: 12px; }
   .album-request-form .button { width: 100%; }
 }
+@media (min-width:371px) and (max-width:390px) {
+  .album-format-tabs > button { padding-inline:10px; }
+}
 @media (max-width:370px) {
+  .album-strip { height:145px; }
+  .album-picture-child > img { object-position:75% 50%; }
   .album-cover-copy h1 { font-size: 31px; }
   .album-stage > summary { grid-template-columns: 23px minmax(0,1fr) 19px; gap: 10px; }
   .album-stage-title { font-size: 22px; }

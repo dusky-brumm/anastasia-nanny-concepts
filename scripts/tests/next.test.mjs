@@ -17,6 +17,13 @@ test('five new full pages preserve the approved content and nine-section order',
     const styles=[...html.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(match=>match[1]);
     assert.deepEqual(styles.map(url=>url.split('?')[0]),['fonts.css','base.css',`${design.id}.css`],`${design.id}: no earlier presentation styles`);
     assert.doesNotMatch(html,/500\+|40\+|няня мечты|бережно проведу|своего человека/i);
+    const version=html.match(/src="site\.js\?v=([a-f0-9]+)"/)[1];
+    assert.ok(html.includes(`href="../next.html?v=${version}#${design.id}"`),`${design.id}: versioned gallery return`);
+    const index=designs.indexOf(design);
+    for(const offset of [-1,1]) {
+      const neighbour=designs[(index+offset+designs.length)%designs.length];
+      assert.ok(html.includes(`href="${neighbour.id}.html?v=${version}"`),`${design.id}: versioned neighbour link`);
+    }
   }
 });
 
@@ -31,9 +38,16 @@ test('each pricing section keeps replacement and unlimited candidates in selecti
         [...section.matchAll(/<article\b[\s\S]*?<\/article>/g)][key==='selection'?0:1][0],
       ].join(' ').replace(/<[^>]+>/g,' '))
       : [...section.matchAll(/<article\b[\s\S]*?<\/article>/g)].map(match=>match[0].replace(/<[^>]+>/g,' '));
-    assert.equal(plans.length,2,design.id);
-    assert.match(plans[0],/25 000/); assert.match(plans[0],/Неограниченное количество кандидатов|Количество кандидатов не ограничено/); assert.match(plans[0],/Бесплатная замена в течение 6 месяцев/);
-    assert.match(plans[1],/5 500/); assert.match(plans[1],/1,5–2 часа/); assert.doesNotMatch(plans[1],/Неограниченное|Бесплатная замена|6 месяцев/);
+    const presentations=[plans];
+    if(design.id==='03-practice') {
+      const mobile=section.match(/<div class="pr-mobile-plans">([\s\S]*?)<\/div><div class="pr-plan-terms">/)[1];
+      presentations.push(mobile.split('<div class="pr-mobile-plan"').slice(1).map(plan=>plan.replace(/<[^>]+>/g,' ')));
+    }
+    for(const presentation of presentations) {
+      assert.equal(presentation.length,2,design.id);
+      assert.match(presentation[0],/25 000/); assert.match(presentation[0],/Неограниченное количество кандидатов|Количество кандидатов не ограничено/); assert.match(presentation[0],/Бесплатная замена в течение 6 месяцев/);
+      assert.match(presentation[1],/5 500/); assert.match(presentation[1],/1,5–2 часа/); assert.doesNotMatch(presentation[1],/Неограниченное|Бесплатная замена|6 месяцев/);
+    }
   }
 });
 
@@ -51,7 +65,7 @@ test('new gallery exposes five real sites and both complete screenshot sizes',as
   const html=await readFile(new URL('../../dist/next.html',import.meta.url),'utf8');
   assert.equal([...html.matchAll(/class="open-design"/g)].length,5);
   for(const design of designs) {
-    assert.ok(html.includes(`href="${design.href}"`));
+    assert.ok(html.includes(`href="${design.href}?v=`),`${design.id}: versioned page link`);
     for(const size of ['desktop','mobile']) {
       const file=`next/screens/${design.id}-${size}.webp`;
       assert.ok(html.includes(file));

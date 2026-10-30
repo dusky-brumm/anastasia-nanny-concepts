@@ -150,7 +150,8 @@ function initDraftForms() {
         status.textContent = 'Текст заявки подготовлен. Скопируйте его и отправьте самостоятельно.';
         status.hidden = false;
       }
-      output.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'nearest' });
+      // Let CSS honor a page's motion switch as well as the system preference.
+      output.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'auto', block: 'nearest' });
     });
     copy.addEventListener('click', async () => {
       try {

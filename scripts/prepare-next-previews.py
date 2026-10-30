@@ -22,14 +22,18 @@ for size in ['desktop', 'mobile']:
     for index, design in enumerate(ids):
         name = f'{design}-{size}'
         metadata = json.loads((args.round / f'{name}.json').read_text(encoding='utf-8'))
-        image = Image.open(args.round / f'{name}.png').convert('RGB')
-        # The browser omits the reserved 15px scrollbar gutter from PNG width.
+        sources = [args.round / f'{name}{suffix}' for suffix in ['.png', '.jpg', '.jpeg'] if (args.round / f'{name}{suffix}').exists()]
+        assert len(sources) == 1, f'{name}: expected one capture, found {len(sources)}'
+        image = Image.open(sources[0]).convert('RGB')
+        # The browser omits the reserved 15px scrollbar gutter from capture width.
         # Full-page captures retain CSS-pixel scale and the complete DOM height.
         scale = 1
         assert 0 <= metadata['viewport']['width'] - image.width <= 15, f'{name}: unexpected capture width'
         assert abs(image.height - metadata['docHeight'] * scale) <= 2, f'{name}: incomplete capture'
         assert not metadata['overflow'], f'{name}: horizontal overflow'
         assert all(item['loaded'] for item in metadata['images']), f'{name}: unloaded photo'
+        if 'fontsReady' in metadata:
+            assert metadata['fontsReady'], f'{name}: required font not loaded'
         left = round(metadata['shell']['x'] * scale)
         top = round(metadata['shell']['documentY'] * scale)
         width = round(metadata['shell']['width'] * scale)
@@ -52,7 +56,7 @@ for size in ['desktop', 'mobile']:
             x, y = index * 300 + 10, 15
         cover_draw.text((x, y), design, fill='#263f34')
         cover_contact.paste(tile, (x, y + 28))
-        records.append({'name': name, 'width': image.width, 'height': image.height, 'complete': True, 'scale': scale})
+        records.append({'name': name, 'width': image.width, 'height': image.height, 'complete': True, 'scale': scale, 'fontsChecked': metadata.get('fontsReady', False)})
     full_contact.save(args.round / f'contact-{size}.jpg', quality=93)
     cover_contact.save(args.round / f'covers-{size}.jpg', quality=94)
 (args.round / 'capture-completeness.json').write_text(json.dumps(records, indent=2), encoding='utf-8')

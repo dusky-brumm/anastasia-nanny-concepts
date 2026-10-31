@@ -1,15 +1,19 @@
 import {initCommonUI} from '../shared-ui.js?v=436430fd89';
 initCommonUI({menuButton:'.menu-toggle',menu:'#mobile-menu',menuMinWidth:document.body.classList.contains('next-02-column')?851:1001,telegramUrl:'https://t.me/inyfid'});
+let pricingContextVisible=false;
+
+function findServicePlan(serviceKey) {
+  if(!serviceKey) return;
+  const plans=[...document.querySelectorAll(`[data-service-plan="${serviceKey}"]`)];
+  return plans.find(plan=>!plan.hidden&&plan.getClientRects().length)||plans[0];
+}
 
 for(const form of document.querySelectorAll('[data-request-form]')) {
   const field=form.elements.namedItem('service');
   const summary=form.querySelector('[data-request-price-summary]');
   if(!field||!summary) continue;
   const conditions=summary.querySelector('[data-view-conditions]');
-  const selectedPlan=()=>{
-    const plans=[...document.querySelectorAll(`[data-service-plan="${field.selectedOptions[0]?.dataset.serviceKey}"]`)];
-    return plans.find(plan=>!plan.hidden&&plan.getClientRects().length)||plans[0];
-  };
+  const selectedPlan=()=>findServicePlan(field.selectedOptions[0]?.dataset.serviceKey);
   function updateConditions(plan) {
     if(!conditions) return;
     conditions.href=plan?.id&&!plan.closest('[data-tabs]')?`#${plan.id}`:'#pricing';
@@ -68,6 +72,7 @@ for(const group of document.querySelectorAll('[data-tabs]')) {
   for(const [index,tab] of tabs.entries()) {
     tab.addEventListener('click',()=>activate(tab,false,true));
     tab.addEventListener('keydown',event=>{
+      if(event.altKey||event.ctrlKey||event.metaKey||event.shiftKey) return;
       let next;
       if(event.key==='ArrowRight') next=(index+1)%tabs.length;
       if(event.key==='ArrowLeft') next=(index+tabs.length-1)%tabs.length;
@@ -79,6 +84,54 @@ for(const group of document.querySelectorAll('[data-tabs]')) {
   if(tabs.length) activate(tabs.find(tab=>tab.getAttribute('aria-selected')==='true')||tabs[0]);
   group.dataset.enhanced='true';
 }
+
+// A shared phone link must resolve to the visible desktop version of its plan.
+function alignServiceAnchor({scroll=true,focus=true,revealTab=true}={}) {
+  const target=document.getElementById(location.hash.slice(1));
+  if(!target?.dataset.servicePlan) return;
+  let plan=findServicePlan(target.dataset.servicePlan);
+  if(!plan) return;
+  let changed=false;
+  if(plan.hidden||!plan.getClientRects().length) {
+    if(!revealTab) {
+      // Resizing follows the current choice instead of reopening an old hash.
+      const chosen=plan.closest('[data-tabs]')?.querySelector('[role="tab"][aria-selected="true"]');
+      plan=chosen&&document.getElementById(chosen.getAttribute('aria-controls'));
+      if(!plan) return;
+    } else {
+      const tab=document.querySelector(`[role="tab"][aria-controls="${plan.id}"]`);
+      if(!tab) return;
+      tab.click();
+      changed=true;
+    }
+  }
+  if(plan.hidden||!plan.getClientRects().length) return;
+  if(plan!==target) {
+    const url=new URL(location.href);
+    url.hash=plan.id;
+    history.replaceState(history.state,'',url.href);
+    changed=true;
+  }
+  const rect=plan.getBoundingClientRect();
+  const outside=rect.bottom<=0||rect.y>=innerHeight;
+  const needsAlignment=revealTab?changed:outside;
+  if(!scroll||!needsAlignment) return;
+  const active=document.activeElement;
+  const followTab=!focus&&active?.matches('[role="tab"]')&&plan.closest('[data-tabs]')?.contains(active);
+  const scrollTarget=followTab?active:plan;
+  if(focus) {
+    if(!plan.hasAttribute('tabindex')) plan.tabIndex=-1;
+    plan.focus({preventScroll:true});
+  }
+  scrollTarget.scrollIntoView({behavior:'instant',block:'start'});
+}
+addEventListener('hashchange',()=>alignServiceAnchor());
+addEventListener('resize',()=>alignServiceAnchor({
+  scroll:pricingContextVisible&&!document.activeElement?.closest('form'),
+  focus:false,
+  revealTab:false,
+}));
+alignServiceAnchor();
 
 // Orientation remains available even when all motion is disabled.
 const navigationLinks=[...document.querySelectorAll('.site-header nav a[href^="#"]')];
@@ -94,9 +147,13 @@ function updateNavigation() {
     else link.removeAttribute('aria-current');
   }
   document.documentElement.dataset.currentSection=current||'hero';
+  const pricingFocus=document.activeElement?.closest('#pricing');
+  const focusRect=pricingFocus&&document.activeElement.getBoundingClientRect();
+  pricingContextVisible=current==='pricing'||Boolean(focusRect&&focusRect.bottom>0&&focusRect.y<innerHeight);
 }
 function scheduleNavigation() { if(!navigationFrame) navigationFrame=requestAnimationFrame(updateNavigation); }
 addEventListener('scroll',scheduleNavigation,{passive:true});
+addEventListener('focusin',scheduleNavigation);
 addEventListener('resize',scheduleNavigation);
 addEventListener('hashchange',scheduleNavigation);
 document.fonts.ready.then(scheduleNavigation);

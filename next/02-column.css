@@ -78,6 +78,8 @@ html[data-capture=true] .next-02-column .site-header > .container { position: st
 .column-request-copy .telegram-link { margin-top: 14px; }
 .column-form { width: 100%; max-width: 680px; padding: 27px; border: 1px solid var(--line); border-radius: 13px; background: var(--paper); }
 .column-form .field-pair { gap: 14px; }
+.column-life-photo { margin-top:28px; }
+.column-life-photo img { width:100%; height:clamp(180px,32vw,340px); object-fit:cover; object-position:50% 42%; border-radius:12px; }
 @media (max-width:1100px) {
   .next-02-column .section > .container,
   .next-02-column .site-footer > .container { width: calc(100% - 62px); }
@@ -147,4 +149,26 @@ html[data-capture=true] .next-02-column .site-header > .container { position: st
   .column-author { grid-template-columns: 72px minmax(0,1fr); gap: 15px; }
   .column-author-photo { width: 72px; }
   .column-form { padding: 18px; }
+}
+
+@media (min-width:851px) {
+  .next-02-column .site-header>.container { max-height:calc(100dvh - 44px); overflow-y:auto; scrollbar-width:thin; scrollbar-color:#a8b9a3 transparent; overscroll-behavior:contain; scroll-padding-block:16px; }
+  .next-02-column .site-header>.container>* { flex-shrink:0; }
+  html[data-capture=true] .next-02-column .site-header>.container { max-height:none; overflow:visible; }
+  .column-process { padding-block:50px; }
+  .column-process .section-heading { margin-bottom:26px; }
+  .column-stage { padding-bottom:18px; }
+  .column-stage+.column-stage { padding-top:18px; }
+  .column-stage+.column-stage .column-stage-number { top:18px; }
+  .column-stage h3 { font-size:24px; margin-bottom:10px; }
+  .column-stage>p { line-height:1.75; }
+  .column-stage .column-stage-result { margin-top:10px; }
+  .column-review:not(:first-child) blockquote p { font-family:var(--body); font-size:16px; line-height:1.8; letter-spacing:0; }
+}
+@media (min-width:851px) and (max-height:560px) {
+  html:not([data-capture=true]) .next-02-column .site-header>.container { top:16px; padding-block:16px; max-height:calc(100dvh - 32px); }
+  html:not([data-capture=true]) .next-02-column .site-header .brand>span { margin-top:8px; }
+  html:not([data-capture=true]) .next-02-column .desktop-menu { margin-top:16px; }
+  html:not([data-capture=true]) .next-02-column .desktop-menu>a { min-height:36px; padding-block:5px; }
+  html:not([data-capture=true]) .next-02-column .header-action { margin-top:12px; }
 }

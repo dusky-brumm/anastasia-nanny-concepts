@@ -64,6 +64,11 @@
 .pt-request .telegram-link { margin-top:20px; }
 .pt-form { border-top:1px solid #9fb9ad; padding-top:26px; }
 
+@media(min-width:701px) {
+  .pt-testimonials { row-gap:22px; }
+  .pt-testimonials>figure:not(.pt-lead-review) { border-top:0; padding-top:15px; }
+}
+
 @media(max-width:1050px) {
   .next-04-portrait { --portrait-overlap:55px; }
   .pt-cover-copy h1 { font-size:44px; }
@@ -131,6 +136,9 @@
   .pt-testimonials>figure:not(.pt-lead-review) blockquote { font-size:15px; line-height:1.75; }
   .pt-testimonials figcaption { gap:4px 14px; margin-top:17px; }
   .pt-form { padding-top:22px; }
+}
+@media(max-width:640px) {
+  .pt-format-main { margin-inline:-12px; }
 }
 @media(max-width:370px) {
   .pt-hero { padding-top:22px; }

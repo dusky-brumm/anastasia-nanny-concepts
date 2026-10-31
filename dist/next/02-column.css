@@ -79,7 +79,7 @@ html[data-capture=true] .next-02-column .site-header > .container { position: st
 .column-form { width: 100%; max-width: 680px; padding: 27px; border: 1px solid var(--line); border-radius: 13px; background: var(--paper); }
 .column-form .field-pair { gap: 14px; }
 .column-life-photo { margin-top:28px; }
-.column-life-photo img { width:100%; height:clamp(180px,32vw,340px); object-fit:cover; object-position:50% 42%; border-radius:12px; }
+.column-life-photo img { width:100%; height:auto; aspect-ratio:2/1; min-height:180px; max-height:340px; object-fit:cover; object-position:50% 42%; border-radius:12px; }
 @media (max-width:1100px) {
   .next-02-column .section > .container,
   .next-02-column .site-footer > .container { width: calc(100% - 62px); }

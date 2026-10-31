@@ -65,6 +65,12 @@ for(const group of document.querySelectorAll('[data-tabs]')) {
         field.value=tab.dataset.formatService;
         field.dispatchEvent(new Event('change',{bubbles:true}));
       }
+      const anchor=document.getElementById(location.hash.slice(1));
+      if(anchor?.dataset.servicePlan&&anchor.closest('[data-tabs]')===group&&anchor.id!==tab.getAttribute('aria-controls')) {
+        const url=new URL(location.href);
+        url.hash=tab.getAttribute('aria-controls');
+        history.replaceState(history.state,'',url.href);
+      }
     }
     if(focus) tab.focus();
     if(selectService&&previous!==tab) group.dispatchEvent(new CustomEvent('next:tabchange',{bubbles:true,detail:{panelId:tab.getAttribute('aria-controls')}}));

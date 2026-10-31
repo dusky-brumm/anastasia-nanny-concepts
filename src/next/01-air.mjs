@@ -3,7 +3,7 @@ import {termsMarkup,frame,section,heading,headline,intro,biography,approach,stag
 export function render(version) {
   const body = [
     section('hero',`
-      <div class="air-title"><span class="eyebrow">Индивидуальный подбор няни</span><h1>${headline}</h1></div>
+      <div class="air-title"><span class="eyebrow">Индивидуальный подбор няни</span><h1>${headline.replace('с которой','с\u00a0которой').replace('и хорошо','<span class="air-join">и хорошо</span>')}</h1></div>
       <div class="air-introduction">
         <div class="air-lead"><p>${intro}</p>${actions()}<p class="air-author">Анастасия Доронина<span>Подбираю нянь с 2022 года</span></p></div>
         <figure class="air-portrait">${cafe(true)}<figcaption><blockquote>«Я собеседую няню не в общих чертах, а под конкретную вакансию»</blockquote></figcaption></figure>

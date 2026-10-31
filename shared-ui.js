@@ -10,7 +10,7 @@ export function formatRequest({ name, contact, service, message }) {
   ].filter((line, index) => line || index === 1).join('\n');
 }
 
-export function initCommonUI({ menuButton, menu, menuMinWidth = 901, opener = 'data-dialog', closeButton = '.close-dialog' } = {}) {
+export function initCommonUI({ menuButton, menu, menuMinWidth = 901, opener = 'data-dialog', closeButton = '.close-dialog', telegramUrl = 'https://t.me/anastasiadoroninaa' } = {}) {
   if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('is-embedded');
   const toggle = menuButton && document.querySelector(menuButton);
   const navigation = menu && document.querySelector(menu);
@@ -54,7 +54,7 @@ export function initCommonUI({ menuButton, menu, menuMinWidth = 901, opener = 'd
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
     });
   });
-  initDraftForms();
+  initDraftForms(telegramUrl);
   document.querySelectorAll('[data-service]').forEach(link => link.addEventListener('click', () => {
     document.querySelectorAll('form').forEach(form => {
       const service = form.elements.namedItem('service');
@@ -66,7 +66,7 @@ export function initCommonUI({ menuButton, menu, menuMinWidth = 901, opener = 'd
   }));
 }
 
-function initDraftForms() {
+function initDraftForms(telegramUrl) {
   document.querySelectorAll('.request-form, .contact-form, [data-request-form]').forEach(form => {
     if (form.dataset.draftReady) return;
     const name = form.elements.namedItem('name');
@@ -112,7 +112,7 @@ function initDraftForms() {
     copy.className = 'request-copy';
     copy.textContent = 'Скопировать текст';
     const telegram = document.createElement('a');
-    telegram.href = 'https://t.me/anastasiadoroninaa';
+    telegram.href = telegramUrl;
     telegram.target = '_blank';
     telegram.rel = 'noopener noreferrer';
     telegram.textContent = 'Открыть Telegram ↗';

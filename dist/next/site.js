@@ -1,5 +1,5 @@
-import {initCommonUI} from '../shared-ui.js?v=621777b811';
-initCommonUI({menuButton:'.menu-toggle',menu:'#mobile-menu',menuMinWidth:document.body.classList.contains('next-02-column')?851:1001});
+import {initCommonUI} from '../shared-ui.js?v=436430fd89';
+initCommonUI({menuButton:'.menu-toggle',menu:'#mobile-menu',menuMinWidth:document.body.classList.contains('next-02-column')?851:1001,telegramUrl:'https://t.me/inyfid'});
 
 for(const form of document.querySelectorAll('[data-request-form]')) {
   const field=form.elements.namedItem('service');

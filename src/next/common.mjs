@@ -21,7 +21,7 @@ export const services = [
   {key:'selection',title:'Личный подбор няни',price:'от 25 000 ₽',intro:'Поиск и сопровождение от обсуждения запроса до начала работы няни.',features:['Собеседования под задачи семьи','Подробные профили и личные комментарии','Неограниченное количество кандидатов','Бесплатная замена в течение 6 месяцев'],terms:'Полная оплата после 1–2 пробных недель. Ориентир поиска — 1–1,5 месяца.',action:'Обсудить подбор'},
   {key:'consultation',title:'Личная консультация',price:'5 500 ₽',intro:'Подготовка к самостоятельному поиску и собеседованиям.',features:['Уточнение запроса и требований','Текст вакансии','Вопросы и чек-листы для интервью','Ответы на вопросы в течение двух недель'],terms:'Продолжительность консультации — 1,5–2 часа.',action:'Обсудить консультацию'},
 ];
-export const telegram = 'https://t.me/anastasiadoroninaa';
+export const telegram = 'https://t.me/inyfid';
 export const tg = (label='Написать в Telegram') => `<a class="telegram-link" href="${telegram}" target="_blank" rel="noopener noreferrer">${label}<span aria-hidden="true">↗</span></a>`;
 export const button = (label='Оставить заявку',service='Личный подбор няни',className='') => `<a class="button ${className}" href="#request" data-service="${service}">${label}<span aria-hidden="true">↗</span></a>`;
 export const actions = () => `<div class="actions">${button()}${tg('Telegram')}</div>`;

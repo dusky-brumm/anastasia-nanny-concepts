@@ -18,7 +18,7 @@ Every page has header, hero, service, about, process/outcomes, pricing/condition
 
 Use real supplied photos and testimonials. Facts: nanny selection since 2022, two agencies, earlier five years working with children. Explain family-specific interviews, detailed profiles and personal comments. Draft full selection from 25,000 ₽, unlimited candidates, free replacement for six months, payment after 1–2 trial weeks and indicative search 1–1.5 months. Consultation 5,500 ₽, 1.5–2 hours and two weeks of follow-up questions. Replacement and unlimited candidates belong only to selection. Do not invent candidate identities, credentials, ratings, statistics or contacts.
 
-Professional concise Russian. Pastel blue, milk-white, muted sage and dark green. At most two coherent font families per page. Straight section boundaries, moderate rounding, centered shell no wider than 1120px, clear side margins on wide monitors, comfortable 15–16px body text and 16px mobile form inputs. Telegram: `https://t.me/anastasiadoroninaa`.
+Professional concise Russian. Pastel blue, milk-white, muted sage and dark green. At most two coherent font families per page. Straight section boundaries, moderate rounding, centered shell no wider than 1120px, clear side margins on wide monitors, comfortable 15–16px body text and 16px mobile form inputs. Direct Telegram contact: `https://t.me/inyfid`, verified on 31 October in the description of the client-provided channel `https://t.me/anastasiadoroninaa`.
 
 Forms prepare a local Telegram message; no backend or simulated successful submission. Keep this clear. No production data-policy document is invented.
 

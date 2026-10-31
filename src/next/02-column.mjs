@@ -1,6 +1,6 @@
 import {termsMarkup,
   frame, headline, intro, biography, approach, stages, services, reviews,
-  cafe, heading, section, actions, button, tg, form, requestCopy,
+  cafe, photo, heading, section, actions, button, tg, form, requestCopy,
 } from './common.mjs';
 
 export function render(version = '1') {
@@ -25,7 +25,8 @@ export function render(version = '1') {
 
     section('about', `
       ${heading('02 / ОБО МНЕ', 'Опыт подбора и работы с детьми')}
-      <div class="column-biography">${biography}</div>`, 'column-about column-rule'),
+      <div class="column-biography">${biography}</div>
+      <figure class="column-life-photo">${photo('nastya-family','Анастасия с детьми на природе')}</figure>`, 'column-about column-rule'),
 
     section('process', `
       ${heading('03 / ЭТАПЫ', 'Этапы подбора')}

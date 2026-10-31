@@ -1,4 +1,4 @@
-import {termsMarkup,frame,section,heading,headline,biography,stages,services,reviews,cafe,photo,actions,button,tg,form,requestCopy,profileSample} from './common.mjs';
+import {termsMarkup,frame,section,heading,headline,biography,stages,services,reviews,cafe,photo,button,tg,form,requestCopy,profileSample} from './common.mjs';
 
 const interviewCases=[
   {
@@ -26,11 +26,12 @@ const comparison=[
 ];
 
 function serviceComparison() {
+  const quickLinks=`<nav class="pr-format-quicklinks" aria-label="Кратко о форматах">${services.map(service=>`<a href="#practice-mobile-${service.key}"><span>${service.key==='selection'?'Подбор няни':'Консультация'}</span><strong>${service.price}</strong><span aria-hidden="true">↓</span></a>`).join('')}</nav>`;
   const mobilePlans=`<div class="pr-mobile-plans">${services.map((service,index)=>`<div class="pr-mobile-plan" id="practice-mobile-${service.key}" data-service-plan="${service.key}"><h3>${index===0?'Подбор няни':'Консультация'}</h3><p class="pr-mobile-price">${service.price}</p><dl>${comparison.map(row=>`<div><dt>${row.label}</dt><dd>${row.values[index]}</dd></div>`).join('')}</dl><p class="pr-mobile-terms">${termsMarkup(service.terms)}</p>${button(service.action,service.title)}</div>`).join('')}</div>`;
   return `<table class="pr-comparison"><caption class="sr-only">Сравнение личного подбора и консультации</caption>
     <thead><tr>${services.map((service,index)=>`<th id="practice-${service.key}" data-service-plan="${service.key}" scope="col"><h3>${index===0?'Подбор няни':'Консультация'}</h3><p class="pr-price">${service.price.replace('от ','<span class="pr-price-prefix">от </span>')}</p></th>`).join('')}</tr></thead>
     ${comparison.map(row=>`<tbody><tr><th id="practice-${row.key}" colspan="2" scope="rowgroup">${row.label}</th></tr><tr>${row.values.map((value,index)=>`<td headers="practice-${services[index].key} practice-${row.key}">${value}</td>`).join('')}</tr></tbody>`).join('')}
-    </table>${mobilePlans}<div class="pr-plan-terms">${services.map((service,index)=>`<article><h3>${index===0?'Подбор няни':'Консультация'}</h3><p>${termsMarkup(service.terms)}</p>${button(service.action,service.title)}</article>`).join('')}</div>`;
+    </table>${quickLinks}${mobilePlans}<div class="pr-plan-terms">${services.map((service,index)=>`<article><h3>${index===0?'Подбор няни':'Консультация'}</h3><p>${termsMarkup(service.terms)}</p>${button(service.action,service.title)}</article>`).join('')}</div>`;
 }
 
 function interviewExample(){
@@ -47,7 +48,7 @@ function interviewExample(){
 
 export function render(version){
   const body=[
-    section('hero',`<div class="pr-hero-layout"><div class="pr-hero-copy"><span class="eyebrow">Индивидуальный подбор няни</span><h1>${headline}</h1><p>Собеседую нянь под задачи и правила вашей семьи. Представляю подходящих кандидатов с подробными профилями и моими комментариями.</p>${actions()}<figure class="pr-author">${cafe(true,'pr-author-photo')}<figcaption><strong>Анастасия Доронина</strong><span>Провожу собеседования и веду подбор лично</span></figcaption></figure></div>${interviewExample()}</div>`,'pr-hero'),
+    section('hero',`<div class="pr-hero-layout"><div class="pr-hero-copy"><span class="eyebrow">Индивидуальный подбор няни</span><h1>${headline}</h1><p>Собеседую нянь под задачи и правила вашей семьи. Представляю подходящих кандидатов с подробными профилями и моими комментариями.</p><div class="actions">${button()}<a class="pr-cost-link" href="#pricing">Стоимость<span aria-hidden="true">↓</span></a></div><figure class="pr-author">${cafe(true,'pr-author-photo')}<figcaption><strong>Анастасия Доронина</strong><span>Провожу собеседования и веду подбор лично</span></figcaption></figure></div>${interviewExample()}</div>`,'pr-hero'),
     section('service',`<div class="pr-output-layout"><div class="pr-output-copy">${heading('Результат подбора','Подробный профиль и личное обсуждение')}<p>Вместе разбираем опыт кандидата и ответы на вопросы. Перед встречей отмечаем, что вам стоит уточнить лично.</p></div>${profileSample()}</div>`,'pr-output'),
     section('about',`<div class="pr-about-layout"><div class="pr-about-copy">${heading('Обо мне','Подбором занимаюсь лично')}<div class="pr-biography">${biography}</div></div><figure class="pr-about-photo">${photo('nastya-family','Анастасия с детьми на природе')}</figure></div>`,'pr-about'),
     section('process',`${heading('Порядок работы','Пять этапов подбора','На каждом этапе обсуждаем результаты и следующие действия.')}<ol class="pr-route">${stages.map((stage,i)=>`<li><span class="pr-stage-number">0${i+1}</span><div class="pr-stage-action"><h3>${stage.title}</h3><p>${stage.action}</p></div><p class="pr-stage-result"><strong>Для семьи:</strong> ${stage.result}</p></li>`).join('')}</ol>`,'pr-process'),

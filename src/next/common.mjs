@@ -35,7 +35,7 @@ export function photo(name,alt,eager=false) {
 }
 export const cafe = (eager=false,className='') => `<div class="cafe-crop ${className}"><img src="media/cafe-story.webp" width="720" height="1280" alt="Анастасия за столиком в кафе" ${eager?'fetchpriority="high"':'loading="lazy" decoding="async"'}></div>`;
 export const requestCopy = '<p>Укажите возраст ребёнка, график и то, какая помощь нужна вашей семье.</p>';
-export const termsMarkup = text => text.replace(/(\d+(?:,\d+)?–\d+(?:,\d+)?)(\s+(?:пробных недель|месяца|часа))/g,'<span class="term-range">$1$2</span>');
+export const termsMarkup = text => text.replace(/ — /g,'\u00a0— ').replace(/(\d+(?:,\d+)?–\d+(?:,\d+)?)(\s+(?:пробных недель|месяца|часа))/g,'<span class="term-range">$1$2</span>');
 export function profileSample() {
   const fields = [['Опыт','Возраст детей и обязанности на предыдущих местах работы.'],['Интервью','Как няня действует в ситуациях, важных вашей семье.'],['Рекомендации','Что удалось уточнить у предыдущих работодателей.'],['Мои комментарии','Сильные стороны и вопросы для личной встречи.']];
   return `<div class="profile-sample"><span class="eyebrow">Профиль кандидата</span><h3>Что вы узнаете о няне</h3><dl>${fields.map(([title,text])=>`<div><dt>${title}</dt><dd>${text}</dd></div>`).join('')}</dl><p class="small-note">Пример содержания профиля, без данных конкретного кандидата.</p></div>`;
@@ -45,7 +45,7 @@ export function form(id) {
     <label class="service-field" for="${id}-service">Какая помощь вам нужна?<select id="${id}-service" name="service" aria-describedby="${id}-price">${services.map(service=>`<option value="${service.title}" data-service-key="${service.key}" data-price="${service.price}">${service.key==='selection'?'Подбор няни':'Консультация'}</option>`).join('')}</select></label>
     <p class="request-price-summary" id="${id}-price" data-request-price-summary aria-live="polite" hidden><span><span class="price-caption">Стоимость</span><strong data-request-price></strong></span><a href="#pricing" data-view-conditions>Условия ↑</a></p>
     <div class="field-pair"><label for="${id}-name">Ваше имя<input id="${id}-name" name="name" required autocomplete="given-name" maxlength="80" placeholder="Имя"></label><label for="${id}-contact">Телефон или Telegram<input id="${id}-contact" name="contact" required autocomplete="tel" maxlength="100" placeholder="Номер / @username"></label></div>
-    <label for="${id}-message">Кратко о запросе<textarea id="${id}-message" name="message" rows="3" maxlength="2000" placeholder="Возраст ребёнка, график и обязанности няни"></textarea></label>
+    <label for="${id}-message"><span class="field-label">Кратко о запросе <span class="field-optional">необязательно</span></span><textarea id="${id}-message" name="message" rows="3" maxlength="2000" placeholder="Возраст ребёнка, график и обязанности няни"></textarea></label>
     <p class="form-note">Форма готовит сообщение для Telegram. Вы отправляете его самостоятельно; здесь данные не сохраняются.</p>
     <button class="button" type="submit" disabled>Подготовить заявку<span aria-hidden="true">↗</span></button><p class="form-result" role="status" hidden></p><button class="privacy-link" type="button" data-dialog="privacy-info">О данных формы</button><noscript>Для подготовки сообщения включите JavaScript или напишите Анастасии в Telegram.</noscript>
   </form>`;

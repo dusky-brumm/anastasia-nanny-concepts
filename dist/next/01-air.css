@@ -97,6 +97,7 @@
   .air-portrait .cafe-crop { aspect-ratio:1.1; }
   .air-service-columns { grid-template-columns:1fr; gap:25px; }
   .air-service-columns h3 { min-height:0; }
+  .air-service-columns .air-personal-interview { margin-inline:-12px; padding-inline:12px; }
   .air-plans { grid-template-columns:1fr; gap:20px; }
   .air-about-grid { grid-template-columns:1.15fr .85fr; gap:30px; }
   .air-route { grid-template-columns:1fr; gap:0; }
@@ -134,7 +135,7 @@
   .air-route h3 { font-size:16px; align-self:center; }
   .air-action { grid-column:1/-1; font-size:15px; }
   .air-result { grid-column:1/-1; grid-row:auto; border-left:0; border-top:1px solid var(--line); padding:11px 0 0; font-size:15px; }
-  .air-plan { padding:23px; }
+  .air-plan { padding:23px; margin-inline:-12px; }
   .air-plan h3 { font-size:27px; }
   .air-price { font-size:35px; }
   .air-plan>.button { width:100%; }

@@ -18,6 +18,8 @@
 .pr-hero-copy h1{max-width:19ch}
 .pr-hero-copy>p{margin-top:23px;max-width:49ch;color:var(--pr-muted)}
 .pr-hero-copy>.actions{margin-top:26px;gap:21px}
+.pr-cost-link{display:inline-flex;align-items:center;gap:11px;min-height:44px;padding-block:7px;border-bottom:1px solid currentColor;font-size:14px;line-height:1.4}
+.pr-cost-link>span{font-size:17px}
 .pr-author{display:grid;grid-template-columns:80px minmax(0,1fr);gap:17px;align-items:center;margin-top:31px;padding-top:24px;border-top:1px solid var(--pr-line)}
 .pr-author-photo{width:80px;aspect-ratio:.85;border-radius:12px}
 .pr-author figcaption{font-size:13px;line-height:1.75}
@@ -77,6 +79,7 @@
 .pr-plan-terms p{margin:12px 0 22px;font-size:15px;color:var(--pr-muted)}
 .pr-plan-terms .button{margin-top:auto}
 .pr-mobile-plans{display:none}
+.pr-format-quicklinks{display:none}
 .pr-mobile-plan{scroll-margin-top:30px}
 .pr-mobile-plan:target{outline:2px solid #a9c1ad;outline-offset:5px}
 .pr-pricing .pricing-note{font-size:12px;line-height:1.75;color:var(--pr-muted);margin-top:20px}
@@ -149,6 +152,7 @@
  .pr-hero-copy>.eyebrow{margin-bottom:16px}
  .pr-hero-copy>p{margin-top:21px}
  .pr-hero-copy>.actions{margin-top:23px;gap:18px}
+ .pr-cost-link{font-size:13px}
  .pr-author{grid-template-columns:70px minmax(0,1fr);gap:15px}
  .pr-author-photo{width:70px}
  .pr-author strong{font-size:14px}
@@ -172,6 +176,9 @@
  .pr-stage-action>p{margin-top:11px}
  .pr-stage-result{font-size:15px}
  .pr-comparison,.pr-plan-terms{display:none}
+ .pr-format-quicklinks{display:grid;margin:0 0 28px;border-top:1px solid var(--pr-line)}
+ .pr-format-quicklinks>a{display:grid;grid-template-columns:minmax(0,1fr) auto 10px;gap:12px;align-items:center;min-height:54px;padding-block:13px;border-bottom:1px solid var(--pr-line);font-size:13px;line-height:1.6}
+ .pr-format-quicklinks strong{font-size:16px;font-weight:500;white-space:nowrap}
  .pr-mobile-plans{display:grid;gap:30px}
  .pr-mobile-plan{padding:26px 0;border-top:1px solid var(--pr-line)}
  .pr-mobile-plan:last-child{padding-bottom:0}

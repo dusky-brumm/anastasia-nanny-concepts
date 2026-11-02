@@ -1,6 +1,6 @@
-import {blocks,palettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=0ca467f439';
-import {renderSite,renderBlock} from './render.js?v=0ca467f439';
-import {seoHead} from './seo.js?v=0ca467f439';
+import {blocks,palettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=0135e20fc9';
+import {renderSite,renderBlock} from './render.js?v=0135e20fc9';
+import {seoHead} from './seo.js?v=0135e20fc9';
 
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
@@ -27,8 +27,8 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
 ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6ec">
 <link rel="preload" href="fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="studio/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=0ca467f439"><link rel="stylesheet" href="studio/fonts.css?v=0ca467f439">
-<link rel="stylesheet" href="journeys.css?v=0ca467f439"><link rel="stylesheet" href="studio/site.css?v=0ca467f439"><link rel="stylesheet" href="studio/ui.css?v=0ca467f439">
-<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=0ca467f439"></script>
+<link rel="stylesheet" href="fonts.css?v=0135e20fc9"><link rel="stylesheet" href="studio/fonts.css?v=0135e20fc9">
+<link rel="stylesheet" href="journeys.css?v=0135e20fc9"><link rel="stylesheet" href="studio/site.css?v=0135e20fc9"><link rel="stylesheet" href="studio/ui.css?v=0135e20fc9">
+<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=0135e20fc9"></script>
 </head><body class="design-tool ${mode==='preview'?'preview-only':''}" data-mode="${mode}" data-library-block="${blockId}">${content}${privacy}<noscript><p class="tool-noscript">${mode==='preview'?'Для подготовки заявки включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }

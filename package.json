@@ -5,6 +5,6 @@
   "scripts": {
     "build": "node scripts/build-reference.mjs",
     "check": "node scripts/check-reference.mjs",
-    "test": "node --test scripts/tests/reference.test.mjs"
+    "test": "node --test scripts/tests/reference.test.mjs scripts/tests/studio.test.mjs"
   }
 }

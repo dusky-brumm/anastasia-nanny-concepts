@@ -2,7 +2,7 @@ import {readFile,stat,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 const root='out';const html=await readFile(path.join(root,'index.html'),'utf8');
-for(const filename of ['index.html','routes.html']){
+for(const filename of (await readdir(root)).filter(name=>name.endsWith('.html'))){
   const content=await readFile(path.join(root,filename),'utf8');
   const matches=[...content.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
   const ids=new Set(matches);
@@ -15,8 +15,16 @@ for(const filename of ['index.html','routes.html']){
   }
 }
 if(!html.includes('Подберу няню')||!html.includes('Маршрут <span>подбора'))throw Error('Missing reference copy');
-for(const file of ['styles.css','fonts.css','journeys.css','routes-gallery.css']){const css=await readFile(path.join(root,file),'utf8');if((css.match(/\{/g)||[]).length!==(css.match(/\}/g)||[]).length)throw Error('Unbalanced CSS '+file);for(const match of css.matchAll(/url\(([^)]+)\)/g)){const url=match[1].replaceAll(/["']/g,'');if(!url.startsWith('data:'))await stat(path.join(root,url));}}
-execFileSync(process.execPath,['--check',path.join(root,'app.js')]);
-execFileSync(process.execPath,['--check',path.join(root,'journeys.js')]);
+for(const file of ['styles.css','fonts.css','journeys.css','routes-gallery.css','studio/site.css','studio/ui.css','studio/fonts.css']){const css=await readFile(path.join(root,file),'utf8');if((css.match(/\{/g)||[]).length!==(css.match(/\}/g)||[]).length)throw Error('Unbalanced CSS '+file);for(const match of css.matchAll(/url\(([^)]+)\)/g)){const url=match[1].replaceAll(/["']/g,'');if(!url.startsWith('data:'))await stat(path.join(root,path.dirname(file),url));}}
+for(const file of ['app.js','journeys.js','studio/model.js','studio/render.js','studio/pages.js','studio/app.js']){
+  const js=await readFile(path.join(root,file),'utf8');
+  if(/__\w+__/.test(js))throw Error('Unrendered module placeholder: '+file);
+  execFileSync(process.execPath,['--check',path.join(root,file)]);
+  for(const match of js.matchAll(/from\s+['"]([^'"]+)['"]/g))await stat(path.join(root,path.dirname(file),match[1].split('?')[0]));
+}
+for(const id of ['header','hero','service','about','process','pricing','reviews','apply','footer']){
+  const page=await readFile(path.join(root,'blocks-'+id+'.html'),'utf8');
+  if([...page.matchAll(/class="library-option"/g)].length!==5)throw Error('Expected five variations of '+id);
+}
 const files=await readdir(root);if(files.includes('collection.html')||files.includes('atelier'))throw Error('Old gallery in publication');
-console.log('PASS: main page and four route options, local assets, unique IDs, anchors, CSS and JavaScript syntax; old galleries excluded.');
+console.log('PASS: reference page, 45 block designs, studio/share previews, local assets and fonts, unique IDs, anchors, CSS/JS syntax and imports.');

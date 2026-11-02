@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {normalizeState,readState,selectVariant,designUrl,palettes} from '../../src/reference/studio/model.js';
+
+test('a shared mixed design round-trips without losing any of the nine choices',()=>{
+  const state={layout:'123455432',palette:'mint',font:'lora'};
+  const url=new URL(designUrl('preview.html',state,'apply'),'https://example.test/');
+  assert.deepEqual(readState(url.search),state);assert.equal(url.hash,'#apply');
+});
+test('corrupt saved state and untrusted query values safely use known choices',()=>{
+  assert.deepEqual(normalizeState({layout:'9x3',palette:'<script>',font:'missing'}),{layout:'113111111',palette:'sky',font:'tinos'});
+  assert.deepEqual(normalizeState(null),{layout:'111111111',palette:'sky',font:'tinos'});
+  assert.deepEqual(readState('?layout=555555555&name=private&contact=private'),{layout:'555555555',palette:'sky',font:'tinos'});
+});
+test('changing one block preserves every other design decision',()=>{
+  const original={layout:'123455432',palette:'rose',font:'prata'};
+  assert.deepEqual(selectVariant(original,'pricing',2),{...original,layout:'123452432'});
+  assert.equal(original.layout,'123455432');assert.deepEqual(selectVariant(original,'unknown',2),original);
+});
+test('share links contain only design choices, never request fields',()=>{
+  const url=new URL(designUrl('preview.html',{name:'Anna',contact:'private',layout:'111111111'}),'https://example.test/');
+  assert.deepEqual([...url.searchParams.keys()],['layout','palette','font','v']);
+});
+function luminance(hex){const c=hex.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;}
+test('all six palettes keep body and accent text readable on both page backgrounds',()=>{
+  for(const p of palettes)for(const foreground of [p.ink,p.accent])for(const background of [p.paper,p.wash]){
+    const ratio=(Math.max(luminance(foreground),luminance(background))+.05)/(Math.min(luminance(foreground),luminance(background))+.05);
+    assert.ok(ratio>=4.5,`${p.id}: contrast ${ratio.toFixed(2)}`);
+  }
+});

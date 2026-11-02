@@ -1,5 +1,5 @@
-import {blocks,normalizeState,designUrl} from './model.js?v=1ef5db9e36';
-import {renderJourney} from '../journeys.js?v=1ef5db9e36';
+import {blocks,normalizeState,designUrl} from './model.js?v=7531ae06e6';
+import {renderJourney} from '../journeys.js?v=7531ae06e6';
 
 const telegram='https://t.me/inyfid';
 const media='studio/media/';

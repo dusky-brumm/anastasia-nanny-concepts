@@ -1,4 +1,4 @@
-import {normalizeJourney, renderJourney} from './journeys.js?v=4853c0a137';
+import {normalizeJourney, renderJourney} from './journeys.js?v=71d89b1ee8';
 
 export function formatRequest({name,contact,message}) {
   const lines=['Здравствуйте, Анастасия!','',`Меня зовут ${name.trim()}.`,`Связаться со мной: ${contact.trim()}.`];

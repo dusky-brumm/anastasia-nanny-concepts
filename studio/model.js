@@ -47,7 +47,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'7531ae06e6'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'0ca467f439'})}${hash?'#'+hash:''}`;
 }
 export function selectVariant(state,blockId,value) {
   const next=normalizeState(state),index=blocks.findIndex(b=>b.id===blockId);

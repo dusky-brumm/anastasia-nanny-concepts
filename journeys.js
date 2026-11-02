@@ -56,7 +56,7 @@ export function renderJourney(value) {
 
 export function renderJourneyOptions() {
   return journeyVariants.map(variant => `<section class="route-option" id="route-${variant.id}" aria-labelledby="option-${variant.id}">
-    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=__VERSION__#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
+    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=a16bc04c38#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
     <div class="option-preview option-preview--${variant.id}"><p class="preview-heading">Маршрут <span>подбора</span></p>${renderJourney(variant.id)}</div>
   </section>`).join('\n');
 }

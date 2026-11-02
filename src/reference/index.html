@@ -8,6 +8,7 @@
   <meta name="description" content="Личный подбор няни, интервью кандидатов и спокойное сопровождение на каждом этапе.">
   <link rel="stylesheet" href="fonts.css?v=__VERSION__">
   <link rel="stylesheet" href="styles.css?v=__VERSION__">
+  <link rel="stylesheet" href="journeys.css?v=__VERSION__">
   <script type="module" src="app.js?v=__VERSION__"></script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
@@ -54,10 +55,10 @@
       <figure class="about-art"><img src="assets/about-collage.webp" width="284" height="310" loading="lazy" decoding="async" alt="Фотоколлаж: Настя в горах, за столиком в кафе и с группой детей. Фотографии в белых рамках, бумажный скотч и нарисованные растения."></figure>
       <svg class="wave about-wave" viewBox="0 0 526 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H526V3C440 20 402 26 328 23C286 20 250 1 210 2C178 2 140 4 110 6C69 10 37 16 0 13Z"/></svg>
     </section>
-    <section class="process" id="process" aria-labelledby="process-title">
+    <section class="process" id="process" data-route-variant="1" aria-labelledby="process-title">
       <h2 id="process-title">Маршрут <span>подбора</span></h2>
-      <div class="route"><svg class="route-line" viewBox="0 0 490 42" preserveAspectRatio="none" aria-hidden="true"><path d="M5 31C32 23 58-14 93-2S148 31 188 3S244 20 288-3S346 6 383 13S457 30 479-20"/></svg><img class="route-heart-art" src="assets/route-heart.webp" width="12" height="19" alt=""><svg class="route-plane" aria-hidden="true"><use href="#i-plane"/></svg>
-      <ol class="steps"><li><span class="step-number">1</span><h3>запрос</h3><p>Вы оставляете заявку<br class="reference-break"> и рассказываете<br class="reference-break"> о своей семье<br class="reference-break"> и ожиданиях.</p></li><li><span class="step-number">2</span><h3>подбор</h3><p>Я ищу подходящих<br class="reference-break"> кандидатов и провожу<br class="reference-break"> первичный отбор.</p></li><li><span class="step-number">3</span><h3>интервью</h3><p>Провожу интервью,<br class="reference-break"> проверяю рекомендации<br class="reference-break"> и опыт.</p></li><li><span class="step-number">4</span><h3>знакомство</h3><p>Организуем встречи<br class="reference-break"> вашей семьи<br class="reference-break"> с кандидатами.</p></li><li><span class="step-number">5</span><h3>поддержка</h3><p>Я рядом после выхода<br class="reference-break"> няни на работу.<br class="reference-break"> Помогаю при любых<br class="reference-break"> вопросах.</p></li></ol></div>
+      <div data-journey-main>__JOURNEY__</div>
+      <a class="route-back" href="routes.html?v=__VERSION__" hidden>← Сравнить варианты маршрута</a>
       <footer class="contact" id="contact"><div class="contact-copy"><h2>Связаться</h2><p>Отвечу на вопросы и помогу<br class="reference-break"> на первом этапе.</p></div><div class="contact-actions"><button class="button primary" type="button" data-whatsapp><svg><use href="#i-wa"/></svg>WhatsApp</button><a class="button secondary" href="https://t.me/inyfid" target="_blank" rel="noopener noreferrer"><svg><use href="#i-plane"/></svg>Telegram</a></div><button class="privacy-note" type="button" data-privacy><svg><use href="#i-shield"/></svg>Ваши данные в безопасности и не передаются третьим лицам.</button></footer>
       <svg class="botanical" viewBox="0 0 70 150" aria-hidden="true"><path d="M33 149C38 105 29 73 32 28M33 117C4 115 8 91 8 91c22 1 27 18 25 26ZM34 113c26-8 24-28 24-28-22 5-24 20-24 28ZM31 85C7 83 3 61 3 61c23 0 29 16 28 24ZM33 79c24-11 25-29 25-29-21 3-27 18-25 29ZM31 50c-17-8-19-26-19-26 17 7 20 20 19 26ZM33 45c15-13 14-27 14-27-14 9-15 20-14 27ZM31 28C19 13 32 0 32 0c13 13 10 23-1 28Z"/></svg>
       <img class="contact-flowers" src="assets/flowers.webp" width="70" height="114" loading="lazy" decoding="async" alt="">

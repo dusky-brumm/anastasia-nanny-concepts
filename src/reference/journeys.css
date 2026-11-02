@@ -1,0 +1,90 @@
+/* Route components share the supplied reference's blue, cream and thin strokes. */
+.journey {
+  --route-blue: #6b9bb2;
+  --route-line: #426174;
+  --route-text: #4a4b4c;
+  position: relative;
+  container: journey / inline-size;
+  color: var(--route-text);
+  font-family: Arial, sans-serif;
+}
+.journey-lines {position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.journey-lines path {fill:none;stroke:var(--route-line);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.journey-list {position:relative;height:38.6cqw;margin:0;padding:0;list-style:none}
+.journey-node {position:absolute;display:flex;align-items:flex-start;gap:1.45cqw}
+.journey-number {display:grid;place-items:center;flex:0 0 2.3cqw;width:2.3cqw;height:2.3cqw;border-radius:50%;background:var(--route-blue);color:white;font-size:1.46cqw;font-weight:700;line-height:1}
+.journey-copy {min-width:0}
+.journey h3 {margin:0 0 .65cqw;font:600 1.674cqw/1.15 Arial,sans-serif;letter-spacing:-.035em}
+.journey p {margin:0;font:400 1.674cqw/1.1 Arial,sans-serif;letter-spacing:-.012em}
+.journey--1 .journey-node:nth-child(1) {left:6.7%;top:12.2%;width:25%}
+.journey--1 .journey-node:nth-child(2) {left:22.9%;top:64.2%;width:35%}
+.journey--1 .journey-node:nth-child(3) {left:38.9%;top:12.2%;width:29%}
+.journey--1 .journey-node:nth-child(4) {left:59.7%;top:64.2%;width:33%}
+.journey--1 .journey-node:nth-child(5) {left:67.8%;top:12.2%;width:31%}
+
+/* A continuous open route, with slightly staggered labels. */
+.journey--2 {--route-blue:#355c4c;--route-line:#7f9d9c;--route-text:#314b42}
+.journey--2 .journey-list {height:35cqw;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2.6cqw;padding:14cqw 4cqw 4cqw}
+.journey--2 .journey-node {position:relative;display:block}
+.journey--2 .journey-node:nth-child(even) {transform:translateY(3cqw)}
+.journey--2 .journey-number {position:absolute;left:0;top:-5.5cqw;width:2.8cqw;height:2.8cqw;font-size:1.5cqw}
+.journey--2 h3 {font-size:1.7cqw;margin-bottom:1cqw}
+.journey--2 p {font-size:1.48cqw;line-height:1.4}
+.journey--2 br {display:none}
+
+/* Three steps across, then a turn back for the final two. */
+.journey--3 .journey-list {height:42.9cqw}
+.journey--3 .journey-node {width:26%;gap:1.3cqw}
+.journey--3 .journey-node:nth-child(1) {left:5%;top:15%}
+.journey--3 .journey-node:nth-child(2) {left:37.3%;top:15%}
+.journey--3 .journey-node:nth-child(3) {left:69.7%;top:15%}
+.journey--3 .journey-node:nth-child(4) {left:69.7%;top:67%}
+.journey--3 .journey-node:nth-child(5) {left:37.3%;top:67%}
+.journey--3 .journey-number {background:transparent;border:1px solid var(--route-blue);color:#517d91;width:3cqw;height:3cqw;flex-basis:3cqw}
+.journey--3 h3 {font-size:1.7cqw;margin-top:.55cqw;margin-bottom:1cqw}
+.journey--3 p {font-size:1.48cqw;line-height:1.4}
+.journey--3 br {display:none}
+
+/* Paper notes echo the pinned reviews already used on the page. */
+.journey--4 {--route-line:#7d9d9d;--route-text:#3d4e46}
+.journey--4 .journey-list {height:39.2cqw;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3.8cqw;padding:6cqw 2.4cqw}
+.journey--4 .journey-node {position:relative;display:block;align-self:start;min-height:24cqw;padding:4cqw 1.4cqw 2cqw;background:#fffdf7;border-radius:1cqw;box-shadow:0 .5cqw 1.2cqw #657e7914;transform:rotate(-1.2deg)}
+.journey--4 .journey-node:nth-child(even) {transform:translateY(3cqw) rotate(1.3deg)}
+.journey--4 .journey-number {position:absolute;left:calc(50% - 1.25cqw);top:-1.3cqw;width:2.5cqw;height:2.5cqw;box-shadow:.15cqw .3cqw .4cqw #294c3e24;background:radial-gradient(circle at 35% 25%,#a9c8d5,#6191a6 65%,#447187)}
+.journey--4 .journey-node:nth-child(2n) .journey-number {background:radial-gradient(circle at 35% 25%,#8cad99,#416b57 65%,#2b503e)}
+.journey--4 h3 {font-size:1.54cqw;margin-bottom:1.2cqw;letter-spacing:-.045em}
+.journey--4 p {font-size:1.38cqw;line-height:1.45}
+.journey--4 br {display:none}
+
+/* The route can grow without moving the other page sections. */
+.process[data-route-variant] {height:auto;min-height:0;padding:3cqw 4.18cqw 3.4cqw}
+.process[data-route-variant="1"],.process[data-route-variant="3"] {background:#faf5e9}
+[data-journey-main] {margin:2cqw -1cqw 0}
+.process[data-route-variant] .contact {position:relative;left:auto;top:auto;width:74%;margin:3cqw auto 0}
+.route-back {display:inline-block;margin-top:2cqw;border-bottom:1px solid #93aaa6;font:400 1.6cqw/1.5 var(--sans);color:#4f7069}
+.process[data-route-variant] .botanical {bottom:1.5cqw}
+
+@container journey (max-width:900px) {
+  .journey-list,.journey--2 .journey-list,.journey--3 .journey-list,.journey--4 .journey-list {height:auto;display:grid;grid-template-columns:1fr;gap:27px;padding:27px 20px 31px}
+  .journey-lines {display:none}
+  .journey .journey-node {position:relative;display:flex;gap:13px;left:auto!important;top:auto!important;width:auto!important;transform:none;align-self:auto;min-height:0;padding:0;background:none;border-radius:0;box-shadow:none}
+  .journey .journey-number {position:relative;left:auto;top:auto;flex-basis:25px;width:25px;height:25px;font-size:13px;z-index:1}
+  .journey .journey-node:not(:last-child)::after {content:'';position:absolute;left:11px;top:33px;width:13px;height:calc(100% - 14px);border-left:1.2px solid #8ca7ad;border-radius:50%;pointer-events:none}
+  .journey h3 {font-size:16px;line-height:1.3;letter-spacing:-.02em;margin:2px 0 7px}
+  .journey p {font-size:14px;line-height:1.45;letter-spacing:0}
+  .journey br {display:none}
+  .journey--2 .journey-node:not(:last-child)::after {width:0;border-radius:0}
+  .journey--3 .journey-node {padding-bottom:8px}
+  .journey--4 .journey-list {gap:31px;padding:31px 24px}
+  .journey--4 .journey-node {display:block;padding:23px 20px 21px;background:#fffdf7;border-radius:9px;box-shadow:1px 4px 9px #657e7914}
+  .journey--4 .journey-node:nth-child(even) {margin-left:10px}
+  .journey--4 .journey-number {position:absolute;left:calc(50% - 12px);top:-13px}
+  .journey--4 .journey-node:not(:last-child)::after {display:none}
+  .journey--4 h3 {margin-top:6px}
+}
+@media(max-width:600px) {
+  .process[data-route-variant] {padding:32px 24px 30px}
+  [data-journey-main] {margin:18px -13px 0}
+  .process[data-route-variant] .contact {width:calc(100% + 10px);margin:22px -5px 0}
+  .route-back {font-size:12px;margin-top:15px}
+}

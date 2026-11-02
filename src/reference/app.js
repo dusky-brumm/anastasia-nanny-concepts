@@ -1,3 +1,5 @@
+import {normalizeJourney, renderJourney} from './journeys.js?v=__VERSION__';
+
 export function formatRequest({name,contact,message}) {
   const lines=['Здравствуйте, Анастасия!','',`Меня зовут ${name.trim()}.`,`Связаться со мной: ${contact.trim()}.`];
   if(message.trim()) lines.push('','О нашей семье:',message.trim());
@@ -5,6 +7,12 @@ export function formatRequest({name,contact,message}) {
 }
 
 function initialize() {
+  const requestedRoute=new URLSearchParams(location.search).get('route');
+  const routeId=normalizeJourney(requestedRoute);
+  const journeyHost=document.querySelector('[data-journey-main]');
+  if(routeId!=='1')journeyHost.innerHTML=renderJourney(routeId);
+  journeyHost.closest('.process').dataset.routeVariant=routeId;
+  if(requestedRoute)document.querySelector('.route-back').hidden=false;
   const menuButton=document.querySelector('.menu-toggle');
   const navigation=document.querySelector('#navigation');
   function closeMenu(focus=false){navigation.hidden=true;menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Открыть меню');if(focus)menuButton.focus();}

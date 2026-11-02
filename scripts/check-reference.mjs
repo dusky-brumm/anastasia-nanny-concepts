@@ -1,7 +1,7 @@
 import {readFile,stat,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
-const root='reference-site';const html=await readFile(path.join(root,'index.html'),'utf8');
+const root='out';const html=await readFile(path.join(root,'index.html'),'utf8');
 const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
 for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)){const url=match[1];if(/^(?:https?:|data:)/.test(url))continue;if(url.startsWith('#')){if(!ids.has(url.slice(1)))throw Error('Missing anchor '+url);continue;}await stat(path.join(root,url.split('?')[0]));}
 if(!html.includes('Подберу няню')||!html.includes('Маршрут <span>подбора'))throw Error('Missing reference copy');

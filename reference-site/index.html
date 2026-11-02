@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f4ef">
+  <title>Настя — подбор нянь</title>
+  <meta name="description" content="Личный подбор няни, интервью кандидатов и спокойное сопровождение на каждом этапе.">
+  <link rel="stylesheet" href="fonts.css?v=2d75266e08">
+  <link rel="stylesheet" href="styles.css?v=2d75266e08">
+  <script type="module" src="app.js?v=2d75266e08"></script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-people" viewBox="0 0 32 32"><circle cx="12" cy="9" r="4"/><path d="M4 25v-3a8 8 0 0 1 16 0v3ZM20 5a4 4 0 0 1 0 8m3 4a6 6 0 0 1 5 6v2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 32 32"><path d="M16 27 4 15C-3 6 9-2 16 8 23-2 35 6 28 15Z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="23" rx="3"/><path d="M4 13h24M10 2v8M22 2v8M10 19h1m5 0h1m5 0h1m-13 5h1m5 0h1"/></symbol>
+    <symbol id="i-user" viewBox="0 0 32 32"><circle cx="16" cy="9" r="4"/><path d="M7 27v-3a9 9 0 0 1 18 0v3ZM7 27h18"/></symbol>
+    <symbol id="i-star" viewBox="0 0 32 32"><path d="m16 3 4 9 10 1-8 7 3 10-9-5-9 5 3-10-8-7 10-1Z"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="m22 3-7 19-4-8-9-4ZM11 14 22 3M11 14v6l4-4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 6-8 11-8 11S4 17 4 11V5ZM8 11l3 3 5-6"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M5 19 2 22l1-6a10 10 0 1 1 4 4Z"/><path d="m8 6 2 4-2 1c1 3 3 4 5 5l1-2 4 2c-1 5-12 1-13-7Z"/></symbol>
+  </svg>
+  <main class="page" id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <header class="header">
+        <a class="brand" href="#top">НАСТЯ · ПОДБОР НЯНЬ</a>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navigation"><span></span><span></span><span></span></button>
+        <nav class="navigation" id="navigation" aria-label="Меню" hidden><a href="#reviews">Отзывы</a><a href="#about">Обо мне</a><a href="#process">Маршрут подбора</a><a href="#contact">Связаться</a></nav>
+      </header>
+      <div class="hero-copy">
+        <h1 id="hero-title">Подберу няню<br><span>под ваш<br>ритм семьи</span></h1>
+        <p class="hero-intro">Личный подбор, интервью кандидатов<br class="reference-break"> и спокойное сопровождение<br class="reference-break"> на каждом этапе.</p>
+        <div class="hero-actions"><a class="button primary" href="#contact" data-request>Оставить запрос</a><a class="button secondary" href="https://t.me/inyfid" target="_blank" rel="noopener noreferrer"><svg><use href="#i-plane"/></svg>Telegram</a></div>
+        <ul class="statistics" aria-label="Опыт работы"><li><svg><use href="#i-people"/></svg><strong>500+</strong><span>собеседований</span></li><li><svg><use href="#i-heart"/></svg><strong>40+</strong><span>семей</span></li><li><svg><use href="#i-calendar"/></svg><span class="since">опыт с 2022</span></li></ul>
+      </div>
+      <figure class="hero-art"><img src="assets/hero-collage.webp" width="273" height="386" fetchpriority="high" alt="Фотография Насти, прикреплённая бумажным скотчем, цветы и записка: «Поиск с заботой и вниманием к вашей семье»."></figure>
+      <svg class="wave hero-wave" viewBox="0 0 526 38" preserveAspectRatio="none" aria-hidden="true"><path d="M0 7C86 42 147 38 228 14C300 2 335 24 410 21C455 23 491 15 526 0V38H0Z"/></svg>
+    </section>
+    <section class="reviews" id="reviews" aria-labelledby="reviews-title">
+      <h2 id="reviews-title">Отзывы</h2>
+      <svg class="heading-doodle" viewBox="0 0 90 30" aria-hidden="true"><path d="M2 24Q28 6 47 19m-7-15 8 4m17 6 11 1M60 24l6 4"/></svg>
+      <div class="review-grid">
+        <article class="review-card"><span class="pin pin-green" aria-hidden="true"></span><header><img src="assets/natalia.webp" width="25" height="26" alt="Наталья"><div><h3>Наталья</h3><p>мама двоих детей</p></div></header><blockquote>Настя помогла найти няню для дочки. Очень внимательная, отвечает быстро, понимает, что нужно семье. Няня уже полгода с нами — всё отлично!</blockquote><p class="rating"><span aria-hidden="true">♥</span> 5.0</p><svg class="card-doodle" viewBox="0 0 30 40" aria-hidden="true"><path d="M14 35C-10 13 6 2 14 16 24-6 40 11 14 35Z"/></svg></article>
+        <article class="review-card"><span class="pin pin-gold" aria-hidden="true"></span><header><img src="assets/julia.webp" width="26" height="26" alt="Юлия"><div><h3>Юлия</h3><p>мама мальчика, 4 года</p></div></header><blockquote>Спасибо за подбор чудесной няни!<br class="reference-break"> Настя провела собеседования,<br class="reference-break"> проверила рекомендации и была<br class="reference-break"> рядом до самого выхода на работу.<br class="reference-break"> Очень спокойный и надёжный<br class="reference-break"> человек.</blockquote><p class="rating"><span aria-hidden="true">♥</span> 5.0</p><svg class="card-doodle star-doodle" viewBox="0 0 30 40" aria-hidden="true"><path d="m15 4 3 10 10-2-7 8 8 7-11-2-4 12-3-12-10 1 7-8-6-8 11 3Z"/></svg></article>
+        <article class="review-card"><span class="pin pin-red" aria-hidden="true"></span><header><img src="assets/anastasia.webp" width="26" height="26" alt="Анастасия"><div><h3>Анастасия</h3><p>мама девочки, 6 лет</p></div></header><blockquote>Мы искали няню через агентства, но всё не то. Настя подошла по-человечески и учла все детали, предложила подходящих кандидатов. Рекомендуем!</blockquote><p class="rating"><span aria-hidden="true">♥</span> 5.0</p><svg class="card-doodle star-doodle" viewBox="0 0 30 40" aria-hidden="true"><path d="m15 7 2 7 7-1-5 5 5 5-7-1-2 8-2-8-8 1 6-5-5-5 7 1Z"/></svg></article>
+      </div>
+      <a class="more-reviews" href="https://t.me/anastasiadoroninaa" target="_blank" rel="noopener noreferrer">Смотреть больше отзывов <span aria-hidden="true">↗</span></a>
+      <svg class="wave reviews-wave" viewBox="0 0 526 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 12C80 43 152 30 262 17C340 1 404 4 455 21S500 30 526 24V40H0Z"/></svg>
+    </section>
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-copy"><h2 id="about-title">Я знаю поиск<br><span>с обеих сторон</span></h2><p>До рекрутинга 5 лет работала с детьми —<br class="reference-break"> няней, тренером, педагогом.<br class="reference-break"> Изучала детскую психологию и прошла<br class="reference-break"> проф. переподготовку по подбору<br class="reference-break"> домашнего персонала.</p><ul class="qualities"><li><svg><use href="#i-heart"/></svg>эмпатия</li><li><svg><use href="#i-user"/></svg>личный подход</li><li><svg><use href="#i-star"/></svg>опыт в подборе</li></ul></div>
+      <figure class="about-art"><img src="assets/about-collage.webp" width="284" height="310" loading="lazy" decoding="async" alt="Фотоколлаж: Настя в горах, за столиком в кафе и с группой детей. Фотографии в белых рамках, бумажный скотч и нарисованные растения."></figure>
+      <svg class="wave about-wave" viewBox="0 0 526 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H526V3C440 20 402 26 328 23C286 20 250 1 210 2C178 2 140 4 110 6C69 10 37 16 0 13Z"/></svg>
+    </section>
+    <section class="process" id="process" aria-labelledby="process-title">
+      <h2 id="process-title">Маршрут <span>подбора</span></h2>
+      <div class="route"><svg class="route-line" viewBox="0 0 490 42" preserveAspectRatio="none" aria-hidden="true"><path d="M5 31C32 23 58-14 93-2S148 31 188 3S244 20 288-3S346 6 383 13S457 30 479-20"/></svg><img class="route-heart-art" src="assets/route-heart.webp" width="12" height="19" alt=""><svg class="route-plane" aria-hidden="true"><use href="#i-plane"/></svg>
+      <ol class="steps"><li><span class="step-number">1</span><h3>запрос</h3><p>Вы оставляете заявку<br class="reference-break"> и рассказываете<br class="reference-break"> о своей семье<br class="reference-break"> и ожиданиях.</p></li><li><span class="step-number">2</span><h3>подбор</h3><p>Я ищу подходящих<br class="reference-break"> кандидатов и провожу<br class="reference-break"> первичный отбор.</p></li><li><span class="step-number">3</span><h3>интервью</h3><p>Провожу интервью,<br class="reference-break"> проверяю рекомендации<br class="reference-break"> и опыт.</p></li><li><span class="step-number">4</span><h3>знакомство</h3><p>Организуем встречи<br class="reference-break"> вашей семьи<br class="reference-break"> с кандидатами.</p></li><li><span class="step-number">5</span><h3>поддержка</h3><p>Я рядом после выхода<br class="reference-break"> няни на работу.<br class="reference-break"> Помогаю при любых<br class="reference-break"> вопросах.</p></li></ol></div>
+      <footer class="contact" id="contact"><div class="contact-copy"><h2>Связаться</h2><p>Отвечу на вопросы и помогу<br class="reference-break"> на первом этапе.</p></div><div class="contact-actions"><button class="button primary" type="button" data-whatsapp><svg><use href="#i-wa"/></svg>WhatsApp</button><a class="button secondary" href="https://t.me/inyfid" target="_blank" rel="noopener noreferrer"><svg><use href="#i-plane"/></svg>Telegram</a></div><button class="privacy-note" type="button" data-privacy><svg><use href="#i-shield"/></svg>Ваши данные в безопасности и не передаются третьим лицам.</button></footer>
+      <svg class="botanical" viewBox="0 0 70 150" aria-hidden="true"><path d="M33 149C38 105 29 73 32 28M33 117C4 115 8 91 8 91c22 1 27 18 25 26ZM34 113c26-8 24-28 24-28-22 5-24 20-24 28ZM31 85C7 83 3 61 3 61c23 0 29 16 28 24ZM33 79c24-11 25-29 25-29-21 3-27 18-25 29ZM31 50c-17-8-19-26-19-26 17 7 20 20 19 26ZM33 45c15-13 14-27 14-27-14 9-15 20-14 27ZM31 28C19 13 32 0 32 0c13 13 10 23-1 28Z"/></svg>
+      <img class="contact-flowers" src="assets/flowers.webp" width="70" height="114" loading="lazy" decoding="async" alt="">
+    </section>
+  </main>
+  <dialog id="request-dialog" aria-labelledby="request-title"><button class="dialog-close" type="button" data-close aria-label="Закрыть окно">×</button><h2 id="request-title">Оставить запрос</h2><p>Расскажите немного о вашей семье.</p><form id="request-form"><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label>Кратко о запросе <span>необязательно</span><textarea name="message" rows="3" maxlength="2000" placeholder="Возраст ребёнка, график и помощь, которая нужна"></textarea></label><p class="form-note">Вы получите текст сообщения, который сможете отправить Анастасии в Telegram.</p><button type="submit" class="button primary" disabled>Подготовить сообщение</button><section class="draft" hidden aria-label="Подготовленное сообщение"><h3>Сообщение готово</h3><label>Текст сообщения<textarea class="draft-text" readonly rows="6"></textarea></label><div class="draft-actions"><button type="button" data-copy>Скопировать</button><a href="https://t.me/inyfid" target="_blank" rel="noopener noreferrer">Открыть Telegram ↗</a></div><p role="status"></p></section></form></dialog>
+  <dialog id="privacy-dialog" aria-labelledby="privacy-title"><button class="dialog-close" type="button" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-title">О данных формы</h2><p>Текст сообщения составляется в вашем браузере. Данные здесь не сохраняются и автоматически не отправляются. Вы самостоятельно отправляете сообщение Анастасии в Telegram.</p></dialog>
+  <dialog id="channel-dialog" aria-labelledby="channel-title"><button class="dialog-close" type="button" data-close aria-label="Закрыть окно">×</button><h2 id="channel-title">Связаться с Настей</h2><p>Сейчас написать Анастасии можно в Telegram.</p><a class="button primary" href="https://t.me/inyfid" target="_blank" rel="noopener noreferrer">Написать в Telegram</a></dialog>
+</body>
+</html>

@@ -1,10 +1,6 @@
 import {normalizeJourney, renderJourney} from './journeys.js?v=__VERSION__';
-
-export function formatRequest({name,contact,message}) {
-  const lines=['Здравствуйте, Анастасия!','',`Меня зовут ${name.trim()}.`,`Связаться со мной: ${contact.trim()}.`];
-  if(message.trim()) lines.push('','О нашей семье:',message.trim());
-  return lines.join('\n');
-}
+import {formatRequest} from './request.js?v=__VERSION__';
+export {formatRequest};
 
 function initialize() {
   const requestedRoute=new URLSearchParams(location.search).get('route');

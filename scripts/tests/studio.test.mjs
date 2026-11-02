@@ -8,9 +8,14 @@ test('a shared mixed design round-trips without losing any of the nine choices',
   assert.deepEqual(readState(url.search),state);assert.equal(url.hash,'#apply');
 });
 test('corrupt saved state and untrusted query values safely use known choices',()=>{
-  assert.deepEqual(normalizeState({layout:'9x3',palette:'<script>',font:'missing'}),{layout:'113111111',palette:'sky',font:'tinos'});
-  assert.deepEqual(normalizeState(null),{layout:'111111111',palette:'sky',font:'tinos'});
-  assert.deepEqual(readState('?layout=555555555&name=private&contact=private'),{layout:'555555555',palette:'sky',font:'tinos'});
+  assert.deepEqual(normalizeState({layout:'9x3',palette:'<script>',font:'missing'}),{layout:'113111113',palette:'sky',font:'golos'});
+  assert.deepEqual(normalizeState(null),{layout:'112111113',palette:'sky',font:'golos'});
+  assert.deepEqual(readState('?layout=555555555&name=private&contact=private'),{layout:'555555555',palette:'sky',font:'golos'});
+});
+test('old route links change only the process block, while explicit designs take precedence',()=>{
+  assert.deepEqual(readState('?route=4'),{layout:'112141113',palette:'sky',font:'golos'});
+  assert.deepEqual(readState('?route=4&layout=222222222&font=lora'),{layout:'222222222',palette:'sky',font:'lora'});
+  assert.deepEqual(readState('?route=999'),normalizeState(null));
 });
 test('changing one block preserves every other design decision',()=>{
   const original={layout:'123455432',palette:'rose',font:'prata'};
@@ -22,8 +27,8 @@ test('share links contain only design choices, never request fields',()=>{
   assert.deepEqual([...url.searchParams.keys()],['layout','palette','font','v']);
 });
 function luminance(hex){const c=hex.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;}
-test('all six palettes keep body and accent text readable on both page backgrounds',()=>{
-  for(const p of palettes)for(const foreground of [p.ink,p.accent])for(const background of [p.paper,p.wash]){
+test('all six palettes keep body and accent text readable on all three page backgrounds',()=>{
+  for(const p of palettes)for(const foreground of [p.ink,p.accent])for(const background of [p.paper,p.wash,p.soft]){
     const ratio=(Math.max(luminance(foreground),luminance(background))+.05)/(Math.min(luminance(foreground),luminance(background))+.05);
     assert.ok(ratio>=4.5,`${p.id}: contrast ${ratio.toFixed(2)}`);
   }

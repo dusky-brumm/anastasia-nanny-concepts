@@ -1,9 +1,10 @@
-import {blocks,palettes,fontSets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=__VERSION__';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=__VERSION__';
 import {renderSite,renderBlock} from './render.js?v=__VERSION__';
+import {formatRequest} from '../request.js?v=__VERSION__';
 
 const mode=document.body.dataset.mode;
 let state=readState(location.search);
-const explicit=['layout','palette','font'].some(key=>new URLSearchParams(location.search).has(key));
+const explicit=['layout','palette','font','route'].some(key=>new URLSearchParams(location.search).has(key));
 if(mode==='studio'&&!explicit){try{state=normalizeState(JSON.parse(localStorage.getItem('nastya-design-studio-v1')??'{}'));}catch{/* Use the supplied defaults when saved settings are unavailable. */}}
 const root=document.querySelector('[data-site-root]');
 if(root)root.innerHTML=renderSite(state);
@@ -16,12 +17,15 @@ function applyTheme() {
   });
 }
 function currentUrl(page,hash='') {return designUrl(page,state,hash);}
+function persistState() {
+  if(mode==='studio'){try{localStorage.setItem('nastya-design-studio-v1',JSON.stringify(state));}catch{/* The shared link remains available without local storage. */}}
+}
 function refreshControls() {
   document.querySelectorAll('[data-palette]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.palette===state.palette));});
   document.querySelectorAll('[data-palette-select]').forEach(select=>select.value=state.palette);
   document.querySelectorAll('[data-font-select]').forEach(select=>select.value=state.font);
   document.querySelectorAll('[data-block-select]').forEach(select=>select.value=state.layout[blocks.findIndex(b=>b.id===select.dataset.blockSelect)]);
-  document.querySelectorAll('[data-preset]').forEach(button=>button.setAttribute('aria-pressed',String(state.layout===button.dataset.preset.repeat(9))));
+  document.querySelectorAll('[data-preset]').forEach(button=>button.setAttribute('aria-pressed',String(state.layout===presets.find(p=>p.id===button.dataset.preset)?.layout)));
   document.querySelectorAll('[data-library-link]').forEach(a=>a.href=currentUrl('blocks-'+a.dataset.libraryLink+'.html'));
   document.querySelectorAll('[data-open-preview]').forEach(a=>a.href=currentUrl('preview.html'));
   document.querySelectorAll('[data-back-builder]').forEach(a=>a.href=currentUrl('studio.html'));
@@ -44,8 +48,14 @@ async function markReady() {
   await document.fonts.ready;
   const images=[...document.images].filter(img=>capture||img.loading!=='lazy'||img.complete);
   await Promise.all(images.map(img=>img.decode().catch(()=>{})));
-  if(requestVersion===readinessVersion)document.documentElement.dataset.studioReady='true';
+  // Let decoded photos and the new anchor position reach the screen before capture.
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  // Background browser previews publish their image after the DOM paint completes.
+  if(capture)await new Promise(resolve=>setTimeout(resolve,180));
+  if(requestVersion===readinessVersion){document.documentElement.dataset.studioHash=location.hash;document.documentElement.dataset.studioReady='true';}
 }
+window.addEventListener('hashchange',markReady);
+if(new URLSearchParams(location.search).get('capture')==='1')window.addEventListener('scroll',markReady,{passive:true});
 function updateState(next,{blockId,all=false}={}) {
   const form=root?.querySelector('.s-consult-form');
   const draft=form?Object.fromEntries(['name','contact','message'].map(key=>[key,form.elements.namedItem(key).value])):null;
@@ -56,12 +66,13 @@ function updateState(next,{blockId,all=false}={}) {
   applyTheme();refreshControls();
   const filename=location.pathname.split('/').pop()||'studio.html';
   history.replaceState(null,'',currentUrl(filename)+location.hash);
-  if(mode==='studio'){try{localStorage.setItem('nastya-design-studio-v1',JSON.stringify(state));}catch{/* The shared link remains available without local storage. */}}
+  persistState();
   markReady();
   if(blockId)root?.querySelector(`[data-block="${blockId}"]`).scrollIntoView({block:'start',behavior:'instant'});
 }
 document.addEventListener('change',event=>{
   const control=event.target;
+  if(control.matches('[data-block-page-select]')){const block=blocks.find(b=>b.id===control.value);if(block)location.assign(currentUrl('blocks-'+block.id+'.html'));return;}
   if(control.matches('[data-font-select]'))updateState({...state,font:control.value});
   if(control.matches('[data-palette-select]'))updateState({...state,palette:control.value});
   if(control.matches('[data-block-select]'))updateState(selectVariant(state,control.dataset.blockSelect,control.value),{blockId:control.dataset.blockSelect});
@@ -70,13 +81,15 @@ document.addEventListener('click',async event=>{
   const button=event.target.closest('button');
   if(button?.matches('[data-mobile-settings]')){const open=document.querySelector('.studio-workspace').classList.toggle('settings-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'Скрыть настройки':'Настроить блоки, цвета и шрифты';}
   if(button?.dataset.palette)updateState({...state,palette:button.dataset.palette});
-  if(button?.dataset.preset)updateState({...state,layout:button.dataset.preset.repeat(9)},{all:true});
+  if(button?.dataset.preset){const preset=presets.find(p=>p.id===button.dataset.preset);if(preset)updateState({...state,layout:preset.layout},{all:true});}
   if(button?.dataset.view){const mobile=button.dataset.view==='mobile';document.querySelector('.studio-canvas').classList.toggle('is-mobile',mobile);document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));markReady();}
   if(button?.matches('[data-copy-design]')){const input=document.querySelector('[data-share-url]'),status=document.querySelector('[data-copy-status]');try{await navigator.clipboard.writeText(input.value);status.textContent='Ссылка скопирована.';}catch{input.focus();input.select();status.textContent='Скопируйте выделенную ссылку.';}}
   if(button?.matches('.s-privacy'))document.querySelector('#studio-privacy').showModal();
   if(button?.matches('[data-close]'))button.closest('dialog').close();
   if(button?.matches('.s-copy')){const form=button.closest('form'),output=form.elements.namedItem('draft'),status=form.querySelector('[role=status]');try{await navigator.clipboard.writeText(output.value);status.textContent='Текст скопирован.';}catch{output.focus();output.select();status.textContent='Скопируйте выделенный текст вручную.';}}
   const menuLink=event.target.closest('.s-menu a');if(menuLink)menuLink.closest('details').open=false;
+  document.querySelectorAll('.s-menu[open]').forEach(menu=>{if(!menu.contains(event.target))menu.open=false;});
+  if(event.target.matches('#studio-privacy')){const r=event.target.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)event.target.close();}
 });
 document.addEventListener('keydown',event=>{if(event.key==='Escape')document.querySelectorAll('.s-menu[open]').forEach(menu=>{menu.open=false;menu.querySelector('summary').focus();});});
 document.addEventListener('submit',event=>{
@@ -84,9 +97,9 @@ document.addEventListener('submit',event=>{
   const name=form.elements.namedItem('name'),contact=form.elements.namedItem('contact'),message=form.elements.namedItem('message');
   name.setCustomValidity(name.value.trim()?'':'Укажите ваше имя.');contact.setCustomValidity(contact.value.trim().length>=3?'':'Укажите телефон или Telegram для связи.');
   if(!form.reportValidity())return;
-  const lines=['Здравствуйте, Анастасия!','',`Меня зовут ${name.value.trim()}.`,`Связаться со мной: ${contact.value.trim()}.`];
-  if(message.value.trim())lines.push('','О нашей семье:',message.value.trim());
-  form.elements.namedItem('draft').value=lines.join('\n');form.querySelector('.s-draft').hidden=false;form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
+  form.elements.namedItem('draft').value=formatRequest({name:name.value,contact:contact.value,message:message.value});
+  const draft=form.querySelector('.s-draft');draft.hidden=false;form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
+  draft.scrollIntoView({block:'nearest',behavior:'instant'});
 });
 document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
-applyTheme();refreshControls();markReady();
+applyTheme();refreshControls();persistState();markReady();

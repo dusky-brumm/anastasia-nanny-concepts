@@ -14,26 +14,37 @@ export const palettes = [
   {id:'sage',name:'Шалфей и сливочный',paper:'#fcf8ed',wash:'#e8eee1',soft:'#f0e8d9',ink:'#3b5545',accent:'#526c4c',wine:'#865f52'},
   {id:'rose',name:'Пудровый и небо',paper:'#fcf8f5',wash:'#eee3e1',soft:'#e6eef1',ink:'#4e5153',accent:'#4c6a7a',wine:'#8e6269'},
   {id:'lilac',name:'Лаванда и молочный',paper:'#fbf9f2',wash:'#edeaf3',soft:'#e5ece9',ink:'#43564e',accent:'#586382',wine:'#7e657f'},
-  {id:'sand',name:'Песочный и голубой',paper:'#fbf6e9',wash:'#e5edf0',soft:'#f0e3d0',ink:'#4c5847',accent:'#526a74',wine:'#88674f'},
+  {id:'sand',name:'Песочный и голубой',paper:'#fbf6e9',wash:'#f1e6d1',soft:'#e5edf0',ink:'#4c5847',accent:'#526a74',wine:'#88674f'},
   {id:'mint',name:'Мята и персик',paper:'#fcf7ee',wash:'#e4efe9',soft:'#f4e6df',ink:'#31594e',accent:'#466e60',wine:'#966b5c'},
 ];
 export const fontSets = [
-  {id:'tinos',name:'Tinos + Manrope',note:'Спокойная классика'},
+  {id:'golos',name:'Manrope + Golos Text',note:'Современный основной набор'},
   {id:'lora',name:'Lora + Golos Text',note:'Мягкая книжная типографика'},
   {id:'prata',name:'Prata + Manrope',note:'Выразительные заголовки'},
-  {id:'golos',name:'Golos Text',note:'Чистый современный набор'},
+  {id:'tinos',name:'Tinos + Manrope',note:'Спокойная классика'},
 ];
-export const defaults={layout:'111111111',palette:'sky',font:'tinos'};
+export const defaults={layout:'112111113',palette:'sky',font:'golos'};
+export const presets=[
+  {id:'1',name:'Рекомендованный',layout:defaults.layout},
+  {id:'2',name:'Центральный',layout:'222222222'},
+  {id:'3',name:'Редакционный',layout:'333333333'},
+  {id:'4',name:'Бумажные записки',layout:'444444444'},
+  {id:'5',name:'Личная история',layout:'555555555'},
+];
 export function normalizeState(raw={}) {
   raw=raw&&typeof raw==='object'?raw:{};
   const layout=String(raw.layout??defaults.layout);
   return {
-    layout:blocks.map((_,i)=>/^[1-5]$/.test(layout[i]??'')?layout[i]:'1').join(''),
+    layout:blocks.map((_,i)=>/^[1-5]$/.test(layout[i]??'')?layout[i]:defaults.layout[i]).join(''),
     palette:palettes.some(p=>p.id===raw.palette)?raw.palette:defaults.palette,
     font:fontSets.some(p=>p.id===raw.font)?raw.font:defaults.font,
   };
 }
-export function readState(search='') {return normalizeState(Object.fromEntries(new URLSearchParams(search)));}
+export function readState(search='') {
+  const parameters=new URLSearchParams(search),raw=Object.fromEntries(parameters);
+  if(!parameters.has('layout')&&/^[1-5]$/.test(parameters.get('route')??''))raw.layout=selectVariant(defaults,'process',parameters.get('route')).layout;
+  return normalizeState(raw);
+}
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
   return `${page}?${new URLSearchParams({...clean,v:'__VERSION__'})}${hash?'#'+hash:''}`;

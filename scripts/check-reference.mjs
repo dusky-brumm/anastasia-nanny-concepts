@@ -1,7 +1,7 @@
 import {readFile,stat,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
-const root='out';const html=await readFile(path.join(root,'index.html'),'utf8');
+const root='out';const html=await readFile(path.join(root,'reference.html'),'utf8');
 for(const filename of (await readdir(root)).filter(name=>name.endsWith('.html'))){
   const content=await readFile(path.join(root,filename),'utf8');
   const matches=[...content.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
@@ -15,8 +15,10 @@ for(const filename of (await readdir(root)).filter(name=>name.endsWith('.html'))
   }
 }
 if(!html.includes('Подберу няню')||!html.includes('Маршрут <span>подбора'))throw Error('Missing reference copy');
+const index=await readFile(path.join(root,'index.html'),'utf8');
+for(const id of ['header','hero','service','about','process','pricing','reviews','apply','footer'])if(!index.includes('data-block="'+id+'"'))throw Error('Missing home-page block '+id);
 for(const file of ['styles.css','fonts.css','journeys.css','routes-gallery.css','studio/site.css','studio/ui.css','studio/fonts.css']){const css=await readFile(path.join(root,file),'utf8');if((css.match(/\{/g)||[]).length!==(css.match(/\}/g)||[]).length)throw Error('Unbalanced CSS '+file);for(const match of css.matchAll(/url\(([^)]+)\)/g)){const url=match[1].replaceAll(/["']/g,'');if(!url.startsWith('data:'))await stat(path.join(root,path.dirname(file),url));}}
-for(const file of ['app.js','journeys.js','studio/model.js','studio/render.js','studio/pages.js','studio/app.js']){
+for(const file of ['app.js','request.js','journeys.js','studio/model.js','studio/render.js','studio/pages.js','studio/app.js']){
   const js=await readFile(path.join(root,file),'utf8');
   if(/__\w+__/.test(js))throw Error('Unrendered module placeholder: '+file);
   execFileSync(process.execPath,['--check',path.join(root,file)]);

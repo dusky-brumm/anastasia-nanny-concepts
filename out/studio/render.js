@@ -1,7 +1,8 @@
-import {blocks,normalizeState,designUrl} from './model.js?v=7531ae06e6';
-import {renderJourney} from '../journeys.js?v=7531ae06e6';
+import {blocks,normalizeState,designUrl} from './model.js?v=0ca467f439';
+import {renderJourney} from '../journeys.js?v=0ca467f439';
+import {contacts,selectionFaq} from './content.js?v=0ca467f439';
 
-const telegram='https://t.me/inyfid';
+const telegram=contacts.telegram;
 const media='studio/media/';
 const headline='Найду няню, с\u00a0которой <em>спокойно вам</em> и\u00a0хорошо ребёнку';
 const introduction='Я беру на себя поиск, собеседования и проверки. Вы знакомитесь с кандидатами, которые подходят именно вашей семье.';
@@ -27,7 +28,7 @@ function action(ctx,label='Оставить заявку',secondary=false) {retu
 function tg(label='Написать в Telegram') {return `<a class="s-text-link" href="${telegram}" target="_blank" rel="noopener noreferrer">${label} <span aria-hidden="true">↗</span></a>`;}
 function photo(type='cafe',cls='',priority=false) {
   const load=`loading="${priority?'eager':'lazy'}"${priority?' fetchpriority="high"':''}`;
-  const image=type==='cafe'?`<img src="${media}cafe.webp" width="720" height="1280" alt="Анастасия в кафе" ${load}>`:`<img src="${media}${type}.webp" width="${type==='family'?960:640}" height="${type==='family'?1280:640}" alt="Анастасия с детьми" ${load}>`;
+  const image=type==='cafe'?`<img src="${media}cafe.webp" width="720" height="1280" alt="Анастасия Доронина — специалист по подбору нянь" ${load}>`:`<img src="${media}${type}.webp" width="${type==='family'?960:640}" height="${type==='family'?1280:640}" alt="Анастасия ${type==='family'?'с детьми':'с ребёнком'}" ${load}>`;
   return `<figure class="s-photo ${type==='cafe'?'s-cafe ':''}${cls}"><div class="s-photo-mask">${image}</div></figure>`;
 }
 function portraitComposition(priority=false) {
@@ -53,7 +54,7 @@ function hero(v,c) {
   return `<p class="s-eyebrow">Анастасия Доронина · индивидуальный подбор</p><h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p><div class="s-actions">${action(c)}${tg('Telegram')}</div>${scribble}</div></div>`;
 }
 function service(v) {
-  const heading=title('Подробнее об услуге','Подбор под задачи<br>вашей семьи');
+  const heading=title('Подробнее об услуге','Подбор няни<br>под задачи вашей семьи');
   if(v===5)return `${heading}<div class="s-service-panels"><article><span class="s-eyebrow">Ваш запрос</span><h3>График, привычки<br>и правила семьи</h3><p>${services[0][1]}</p><p>${services[1][1]}</p></article><article><span class="s-eyebrow">Результат подбора</span><h3>Подробные профили<br>и личные рекомендации</h3><p>${services[2][1]}</p><p>Обсуждаем каждого кандидата и готовимся к знакомству.</p></article></div>`;
   return `${heading}${v===3?scribble:''}${items(services)}`;
 }
@@ -66,12 +67,13 @@ function about(v) {
   return `<div class="s-about-pair">${photo('cafe')}${photo('child')}</div><div class="s-about-copy">${text}</div>`;
 }
 function process(v) {
-  return `${title('Как проходит подбор','Маршрут подбора')}${v<5?renderJourney(String(v)):`<ol class="s-outcomes">${outcomes.map(([a,b],i)=>`<li><span class="s-index">${i+1}</span><h3>${a}</h3><p>${b}</p></li>`).join('')}</ol>`}`;
+  return `${title('Как проходит подбор няни','Маршрут подбора')}${v<5?renderJourney(String(v)):`<ol class="s-outcomes">${outcomes.map(([a,b],i)=>`<li><span class="s-index">${i+1}</span><h3>${a}</h3><p>${b}</p></li>`).join('')}</ol>`}`;
 }
+function faq() {return `<div class="s-faq"><h3>Вопросы о подборе няни</h3>${selectionFaq.map(item=>`<details><summary>${item.question}</summary><p>${item.answer}</p></details>`).join('')}</div>`;}
 function pricing(v,c) {
   const price=`<div class="s-price"><span class="s-eyebrow">Разовая оплата</span><h3>1 оклад няни</h3><p>Предоплата — 25&nbsp;000&nbsp;₽.<br>Остаток — после одной-двух пробных недель.</p>${action(c,'Обсудить подбор')}</div>`;
   const terms=items(conditions,'s-conditions');
-  return `${title('Условия работы','Стоимость подбора')}<div class="s-pricing-layout">${v===3?'<p class="s-document-label">Индивидуальный подбор · условия сотрудничества</p>':''}${price}${terms}</div><a class="s-terms-link" href="https://t.me/anastasiadoroninaa/123" target="_blank" rel="noopener noreferrer">Подробнее об условиях в Telegram ↗</a>`;
+  return `${title('Условия работы','Стоимость подбора няни')}<div class="s-pricing-layout">${v===3?'<p class="s-document-label">Индивидуальный подбор · условия сотрудничества</p>':''}${price}${terms}</div><a class="s-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробнее об условиях в Telegram ↗</a>${faq()}`;
 }
 function reviewCard(row,i) {return `<article class="s-review"><span class="s-review-pin" aria-hidden="true"></span><span class="s-quote-mark" aria-hidden="true">“</span><blockquote>${row[2]}</blockquote><footer><img src="assets/${row[3]}.webp" width="40" height="40" alt=""><div><h3>${row[0]}</h3><p>${row[1]}</p></div></footer></article>`;}
 function reviews(v) {return `${title('Отзывы','Что говорят семьи')}<div class="s-review-grid">${testimonials.map(reviewCard).join('')}</div><a class="s-text-link" href="https://t.me/anastasiadoroninaa" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;}

@@ -202,6 +202,14 @@
 .s-conditions article+article {padding-top:20px;border-top:1px solid #8ca79b55}
 .s-conditions .s-index {display:none}
 .s-terms-link {display:inline-flex;align-items:center;min-height:40px;font-size:13px;margin-top:24px;color:var(--accent)!important;border-bottom:1px solid #9bada777}
+.s-faq {max-width:880px;margin:40px auto 0;text-align:left;border-top:1px solid color-mix(in srgb,var(--ink) 20%,transparent);padding-top:28px}
+.s-faq h3 {font-size:22px;margin-bottom:12px}
+.s-faq details {border-bottom:1px solid color-mix(in srgb,var(--ink) 18%,transparent)}
+.s-faq summary {position:relative;list-style:none;padding:19px 34px 19px 0;font:500 17px/1.5 var(--body);letter-spacing:-.015em;text-wrap:balance;cursor:pointer}
+.s-faq summary::-webkit-details-marker {display:none}
+.s-faq summary::after {content:'+';position:absolute;right:3px;top:17px;font-size:24px;font-weight:400;color:var(--accent)}
+.s-faq details[open] summary::after {content:'−'}
+.s-faq details p {max-width:72ch;padding:0 12px 20px 0;font-size:16px;line-height:1.6}
 .s-pricing--2 {text-align:center;background:var(--wash)}
 .s-pricing--2 .s-section-heading h2 {margin-inline:auto}
 .s-pricing--2 .s-pricing-layout {display:block}

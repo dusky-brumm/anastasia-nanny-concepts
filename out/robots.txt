@@ -1,0 +1,5 @@
+# Robots rules are read only at the origin root, not in a project subfolder.
+# Keep design pages crawlable so their HTML noindex rule can be read.
+User-agent: *
+Allow: /
+Sitemap: https://dusky-brumm.github.io/anastasia-nanny-concepts/sitemap.xml

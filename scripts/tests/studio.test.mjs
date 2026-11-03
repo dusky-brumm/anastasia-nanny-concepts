@@ -35,9 +35,18 @@ test('share links contain only design choices, never request fields',()=>{
   assert.deepEqual([...url.searchParams.keys()],['layout','palette','font','v']);
 });
 function luminance(hex){const c=hex.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;}
-test('all six palettes keep body and accent text readable on all three page backgrounds',()=>{
+test('old comparison links keep their version and an explicit version can use any palette',()=>{
+  assert.equal(readState('?palette=sky-previous').version,'previous');
+  for(const version of ['current','previous'])for(const palette of ['sky-previous','reference','soft-sage','blue-mist']){
+    const state=normalizeState({version,palette});
+    const url=new URL(designUrl('preview.html',state),'https://example.test/');
+    assert.deepEqual(readState(url.search),state);
+  }
+});
+test('palettes keep body and accent text readable on all three page backgrounds',()=>{
   for(const p of palettes)for(const foreground of [p.ink,p.accent])for(const background of [p.paper,p.wash,p.soft]){
     const ratio=(Math.max(luminance(foreground),luminance(background))+.05)/(Math.min(luminance(foreground),luminance(background))+.05);
     assert.ok(ratio>=4.5,`${p.id}: contrast ${ratio.toFixed(2)}`);
   }
+  for(const p of palettes)assert.ok(1.05/(luminance(p.button??p.ink)+.05)>=4.5,p.id);
 });

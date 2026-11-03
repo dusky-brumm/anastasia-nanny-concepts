@@ -5,12 +5,15 @@ import {formatRequest} from '../request.js?v=__VERSION__';
 const mode=document.body.dataset.mode;
 const capture=new URLSearchParams(location.search).get('capture')==='1';
 let state=readState(location.search);
-const explicit=['layout','palette','font','route'].some(key=>new URLSearchParams(location.search).has(key));
+const explicit=['layout','palette','font','route','version'].some(key=>new URLSearchParams(location.search).has(key));
 if(mode==='studio'&&!explicit){try{state=normalizeState(JSON.parse(localStorage.getItem('nastya-design-studio-v1')??'{}'));}catch{/* Use the supplied defaults when saved settings are unavailable. */}}
 const root=document.querySelector('[data-site-root]');
 const versionMenu=document.querySelector('.version-menu');
+if(versionMenu&&'ResizeObserver' in window){
+  new ResizeObserver(()=>root.style.setProperty('--comparison-offset',versionMenu.offsetHeight+20+'px')).observe(versionMenu);
+}
 if(root)root.innerHTML=renderSite(state);
-else if(state.palette==='sky-previous')renderReviews();
+else if(state.version==='previous')renderReviews();
 
 const chalkObserver=!capture&&'IntersectionObserver' in window
   ?new IntersectionObserver(entries=>{
@@ -43,6 +46,10 @@ function applyTheme() {
   document.querySelectorAll('.site-preview').forEach(site=>{
     site.dataset.font=state.font;site.dataset.palette=state.palette;
     for(const key of ['paper','wash','soft','ink','accent','wine'])site.style.setProperty('--'+key,palette[key]);
+    for(const [css,key] of Object.entries({'button-fill':'button','photo-backing':'backing','drawing-blue':'drawingBlue','drawing-rose':'drawingRose','drawing-green':'drawingGreen'})){
+      if(palette[key])site.style.setProperty('--'+css,palette[key]);
+      else site.style.removeProperty('--'+css);
+    }
   });
 }
 function currentUrl(page,hash='') {return designUrl(page,state,hash);}
@@ -52,6 +59,8 @@ function persistState() {
 function refreshControls() {
   document.querySelectorAll('[data-palette]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.palette===state.palette));});
   document.querySelectorAll('[data-palette-select]').forEach(select=>select.value=state.palette);
+  document.querySelectorAll('[data-version-select]').forEach(select=>select.value=state.version??'current');
+  if(versionMenu)versionMenu.querySelector('.new-designs-link').href='designs.html?palette='+state.palette;
   document.querySelectorAll('[data-font-select]').forEach(select=>select.value=state.font);
   document.querySelectorAll('[data-block-select]').forEach(select=>select.value=state.layout[blocks.findIndex(b=>b.id===select.dataset.blockSelect)]);
   document.querySelectorAll('[data-preset]').forEach(button=>button.setAttribute('aria-pressed',String(state.layout===presets.find(p=>p.id===button.dataset.preset)?.layout)));
@@ -87,11 +96,11 @@ if(capture)window.addEventListener('scroll',markReady,{passive:true});
 function updateState(next,{blockId,all=false}={}) {
   const form=root?.querySelector('.s-consult-form');
   const draft=form?Object.fromEntries(['name','contact','message'].map(key=>[key,form.elements.namedItem(key).value])):null;
-  const previousReviews=state.palette==='sky-previous';
+  const previousReviews=state.version==='previous';
   state=normalizeState(next);
   if(root&&all)root.innerHTML=renderSite(state);
   else if(root&&blockId){const index=blocks.findIndex(b=>b.id===blockId);root.querySelector(`[data-block="${blockId}"]`).outerHTML=renderBlock(blockId,state.layout[index],{state});}
-  else if(previousReviews!==(state.palette==='sky-previous'))renderReviews();
+  else if(previousReviews!==(state.version==='previous'))renderReviews();
   if(all||blockId==='service')observeServiceDrawings();
   if(draft){const newForm=root?.querySelector('.s-consult-form');if(newForm)for(const [key,value] of Object.entries(draft))newForm.elements.namedItem(key).value=value;}
   applyTheme();refreshControls();
@@ -101,12 +110,11 @@ function updateState(next,{blockId,all=false}={}) {
   markReady();
   if(blockId)root?.querySelector(`[data-block="${blockId}"]`).scrollIntoView({block:'start',behavior:'instant'});
 }
-function switchVersion(palette) {
-  if(palette===state.palette)return;
+function updateComparison(next) {
   const edge=versionMenu.getBoundingClientRect().bottom;
   const visibleBlock=[...root.children].find(block=>block.getBoundingClientRect().bottom>edge+32);
   const position=visibleBlock?.getBoundingClientRect().top;
-  updateState({...state,palette});
+  updateState(next);
   if(!visibleBlock)return;
   const updated=document.getElementById(visibleBlock.id).getBoundingClientRect();
   const targetTop=Math.max(position,edge-updated.height+2);
@@ -116,16 +124,18 @@ document.addEventListener('change',event=>{
   const control=event.target;
   if(control.matches('[data-block-page-select]')){const block=blocks.find(b=>b.id===control.value);if(block)location.assign(currentUrl('blocks-'+block.id+'.html'));return;}
   if(control.matches('[data-font-select]'))updateState({...state,font:control.value});
-  if(control.matches('[data-palette-select]'))updateState({...state,palette:control.value});
+  if(control.matches('[data-version-select]'))updateComparison({...state,version:control.value});
+  if(control.matches('[data-palette-select]')){
+    const next={...state,version:state.version??'current',palette:control.value};
+    if(versionMenu?.contains(control))updateComparison(next);
+    else updateState(next);
+  }
   if(control.matches('[data-block-select]'))updateState(selectVariant(state,control.dataset.blockSelect,control.value),{blockId:control.dataset.blockSelect});
 });
 document.addEventListener('click',async event=>{
   const button=event.target.closest('button');
   if(button?.matches('[data-mobile-settings]')){const open=document.querySelector('.studio-workspace').classList.toggle('settings-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'Скрыть настройки':'Настроить блоки, цвета и шрифты';}
-  if(button?.dataset.palette){
-    if(versionMenu?.contains(button))switchVersion(button.dataset.palette);
-    else updateState({...state,palette:button.dataset.palette});
-  }
+  if(button?.dataset.palette)updateState({...state,version:state.version??'current',palette:button.dataset.palette});
   if(button?.dataset.preset){const preset=presets.find(p=>p.id===button.dataset.preset);if(preset)updateState({...state,layout:preset.layout},{all:true});}
   if(button?.dataset.view){const mobile=button.dataset.view==='mobile';document.querySelector('.studio-canvas').classList.toggle('is-mobile',mobile);document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));markReady();}
   if(button?.matches('[data-copy-design]')){const input=document.querySelector('[data-share-url]'),status=document.querySelector('[data-copy-status]');try{await navigator.clipboard.writeText(input.value);status.textContent='Ссылка скопирована.';}catch{input.focus();input.select();status.textContent='Скопируйте выделенную ссылку.';}}

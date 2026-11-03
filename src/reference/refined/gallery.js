@@ -1,7 +1,25 @@
+import {addPaletteSelect,applyComparisonPalette,setPaletteUrl} from '../studio/theme-controls.js';
+
 (() => {
   'use strict';
   const buttons = [...document.querySelectorAll('[data-device]')];
   const windows = [...document.querySelectorAll('.preview-window')];
+  const frames=windows.map(win=>win.querySelector('iframe'));
+  const links=[...document.querySelectorAll('a[href^="refined/"]')];
+  const applyPalette=value=>{
+    for(const frame of frames){
+      if(frame.contentDocument)applyComparisonPalette(frame.contentDocument,value);
+    }
+    links.forEach(link=>{
+      link.href=setPaletteUrl(new URL(link.href),value).href;
+    });
+    history.replaceState(null,'',setPaletteUrl(new URL(location.href),value));
+  };
+  const palette=addPaletteSelect(buttons[0].parentElement,applyPalette);
+  for(const frame of frames)frame.addEventListener('load',()=>{
+    if(frame.contentDocument)applyComparisonPalette(frame.contentDocument,palette.value);
+  });
+  if(palette.value)applyPalette(palette.value);
   let mode = 'desktop';
   const resize = () => windows.forEach(win => {
     const frame = win.querySelector('iframe');

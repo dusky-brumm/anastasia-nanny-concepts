@@ -18,7 +18,10 @@ export const palettes = [
   {id:'mint',name:'Мята и персик',paper:'#fcf7ee',wash:'#e4efe9',soft:'#f4e6df',ink:'#31594e',accent:'#466e60',wine:'#966b5c'},
   {id:'sky-previous',name:'Голубой и молочный · прежний',paper:'#faf6ec',wash:'#e4edf1',soft:'#f0e8df',ink:'#294c3e',accent:'#426a80',wine:'#815c53'},
   {id:'reference',name:'Палитра с референса',paper:'#f5f0ed',wash:'#e2eaed',soft:'#eaeae2',ink:'#244238',accent:'#54655f',wine:'#673a3f'},
+  {id:'soft-sage',name:'Молочный и мягкий шалфей',paper:'#f8f5ef',wash:'#e1eaee',soft:'#f8f5ef',ink:'#29473c',accent:'#466576',wine:'#79535e',button:'#526c5d',backing:'#597060',drawingBlue:'#849fb3',drawingRose:'#b48791',drawingGreen:'#859b83'},
+  {id:'blue-mist',name:'Молочный и голубая дымка',paper:'#f7f4ee',wash:'#dce8f1',soft:'#f7f4ee',ink:'#2c453e',accent:'#47647a',wine:'#76515e',button:'#47675e',backing:'#61796a',drawingBlue:'#829db8',drawingRose:'#b59bb1',drawingGreen:'#8ca6a0'},
 ];
+export const comparisonPalettes=palettes.filter(p=>['sky','reference','soft-sage','blue-mist','sky-previous'].includes(p.id));
 export const fontSets = [
   {id:'golos',name:'Manrope + Golos Text',note:'Современный основной набор'},
   {id:'lora',name:'Lora + Golos Text',note:'Мягкая книжная типографика'},
@@ -40,6 +43,9 @@ export function normalizeState(raw={}) {
     layout:blocks.map((block,i)=>variantNumber(block,layout[i])||defaults.layout[i]).join(''),
     palette:palettes.some(p=>p.id===raw.palette)?raw.palette:defaults.palette,
     font:fontSets.some(p=>p.id===raw.font)?raw.font:defaults.font,
+    // Links created before the two controls were separated encoded the old reviews as a palette.
+    ...((raw.version==='previous'||raw.version==='current'||raw.palette==='sky-previous')
+      ?{version:raw.version==='current'?'current':'previous'}:{}),
   };
 }
 export function readState(search='') {
@@ -49,7 +55,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'06f00cb224'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'a219e3bc1a'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
   if(!/^[1-9]$/.test(String(value)))return 0;

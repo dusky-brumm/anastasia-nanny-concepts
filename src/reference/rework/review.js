@@ -1,3 +1,5 @@
+import {addPaletteSelect,applyComparisonPalette,setPaletteUrl,visibleSection} from '../studio/theme-controls.js';
+
 (() => {
   const variants = {
     method: {name:'По делу',description:'Крупная типографика, ясная структура и подробности работы.'},
@@ -8,6 +10,25 @@
   const stage=document.querySelector('.review-stage');
   const viewport=document.querySelector('.review-viewport');
   const tabs=Array.from(document.querySelectorAll('[data-design]'));
+  const openLink=document.querySelector('#open-design');
+  let current='method';
+  const palette=addPaletteSelect(document.querySelector('.review-controls'),value=>{
+    if(frame.contentDocument)applyComparisonPalette(frame.contentDocument,value);
+    history.replaceState(null,'',setPaletteUrl(new URL(location.href),value));
+    openLink.href=designUrl(current).href;
+  });
+  function designUrl(id,embedded=false,section='') {
+    const url=setPaletteUrl(new URL('rework/'+id+'.html',location.href),palette.value);
+    if(embedded)url.searchParams.set('embed','1');
+    url.hash=section;
+    return url;
+  }
+  frame.addEventListener('load',()=>{
+    if(frame.contentDocument)applyComparisonPalette(frame.contentDocument,palette.value);
+  });
+  openLink.addEventListener('click',()=>{
+    openLink.href=designUrl(current,false,frame.contentDocument?visibleSection(frame.contentDocument):'').href;
+  });
   let mobile=window.matchMedia('(max-width:650px)').matches;
   const resize=()=>{
     const available=stage.clientWidth-(innerWidth<=700?20:38);
@@ -23,12 +44,15 @@
   };
   const select=id=>{
     if(!variants[id])return;
+    const section=frame.contentDocument?visibleSection(frame.contentDocument):'';
+    current=id;
     tabs.forEach(button=>{const selected=button.dataset.design===id;button.setAttribute('aria-selected',String(selected));button.tabIndex=selected?0:-1;});
-    frame.src='rework/'+id+'.html?embed=1';
+    const url=designUrl(id,true,section);
+    if(frame.src!==url.href)frame.src=url.href;
     frame.title=variants[id].name+' — полный сайт';
     document.querySelector('#design-panel').setAttribute('aria-labelledby','tab-'+id);
     document.querySelector('#design-description').textContent=variants[id].description;
-    document.querySelector('#open-design').href='rework/'+id+'.html';
+    openLink.href=designUrl(id).href;
   };
   tabs.forEach((button,index)=>{
     button.addEventListener('click',()=>select(button.dataset.design));
@@ -44,4 +68,5 @@
   document.querySelectorAll('[data-device]').forEach(button=>button.addEventListener('click',()=>{mobile=button.dataset.device==='mobile';resize();}));
   new ResizeObserver(resize).observe(stage);
   resize();
+  if(palette.value)select(current);
 })();

@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=06f00cb224';
-import {renderJourney} from '../journeys.js?v=06f00cb224';
-import {contacts,selectionFaq} from './content.js?v=06f00cb224';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=a219e3bc1a';
+import {renderJourney} from '../journeys.js?v=a219e3bc1a';
+import {contacts,selectionFaq} from './content.js?v=a219e3bc1a';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -125,7 +125,7 @@ function reviewCard([name,role,quote,avatar],heart='') {
 }
 function reviews(v,c) {
   const story=`<article class="s-family-story"><p class="s-eyebrow">История семьи</p><h3>Первая кандидатка осталась на полтора года</h3><p>Светлана была первой няней, которую я предложила семье. Она работала с ребёнком до его выхода в детский сад, а затем перешла в другую семью, которой я помогала с подбором.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть анкету Светланы ↗</a></article>`;
-  if(v===1&&c.state.palette==='sky-previous') {
+  if(v===1&&c.state.version==='previous') {
     const pin='<span class="s-review-pin" aria-hidden="true"></span>';
     return `${title('Отзывы','Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row,pin)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>${story}`;
   }
@@ -145,7 +145,7 @@ export function renderBlock(id,value,context={}) {
   const state=normalizeState(context.state),ctx={...context,state};
   const block=blocks.find(b=>b.id===id)??blocks[0];
   const v=variantNumber(block,value)||1;
-  const previousReviews=id==='reviews'&&v===1&&ctx.state.palette==='sky-previous'?' s-reviews--previous':'';
+  const previousReviews=id==='reviews'&&v===1&&ctx.state.version==='previous'?' s-reviews--previous':'';
   return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }
 export function renderSite(state) {

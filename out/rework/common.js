@@ -1,3 +1,5 @@
+import {mountPagePalette} from '../studio/theme-controls.js';
+
 (() => {
   'use strict';
   const embedded = new URLSearchParams(window.location.search).get('embed') === '1';
@@ -8,6 +10,7 @@
     const choices = [{id:'method',name:'По делу'}, {id:'photo',name:'Живой кадр'}, {id:'contrast',name:'Контраст'}];
     holder.innerHTML = '<div class="rework-bar"><div class="rework-bar-inner"><a href="../designs.html">← <span class="bar-label">Сравнить варианты</span></a><nav aria-label="Варианты дизайна">' + choices.map((c,i) => '<a href="' + c.id + '.html"' + (c.id === current ? ' aria-current="page"' : '') + '>' + (i+1) + '. ' + c.name + '</a>').join('') + '</nav></div></div>';
   }
+  mountPagePalette(holder,holder?.querySelector('.rework-bar-inner'));
   document.querySelectorAll('[data-menu-toggle]').forEach(button => {
     const menu = document.getElementById(button.getAttribute('aria-controls'));
     if (!menu) return;

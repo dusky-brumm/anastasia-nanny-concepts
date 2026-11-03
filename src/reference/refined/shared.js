@@ -1,3 +1,5 @@
+import {mountPagePalette} from '../studio/theme-controls.js';
+
 (() => {
   'use strict';
   const embedded = new URLSearchParams(window.location.search).get('embed') === '1';
@@ -8,6 +10,7 @@
     const choices = [{id:'sky',name:'Воздух',color:'#d6e7ef'}, {id:'story',name:'История',color:'#ddbda5'}, {id:'garden',name:'Рядом',color:'#a9bdaa'}];
     holder.innerHTML = '<div class="design-bar"><div class="design-bar__inner"><a class="design-bar__back" href="../designs.html">← <span>Все варианты</span></a><span class="design-bar__label">ДИЗАЙН САЙТА</span><nav aria-label="Варианты дизайна">' + choices.map((c,i) => '<a href="' + c.id + '.html"' + (c.id === current ? ' aria-current="page"' : '') + '><span class="design-bar__dot" style="--chip:' + c.color + '" aria-hidden="true"></span><span>' + (i+1) + '. ' + c.name + '</span></a>').join('') + '</nav></div></div>';
   }
+  mountPagePalette(holder,holder?.querySelector('.design-bar__inner'));
   document.querySelectorAll('[data-menu-toggle]').forEach(button => {
     const menu = document.getElementById(button.getAttribute('aria-controls'));
     if (!menu) return;

@@ -1,6 +1,6 @@
-import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=a1da3c0ecf';
-import {renderSite,renderBlock} from './render.js?v=a1da3c0ecf';
-import {formatRequest} from '../request.js?v=a1da3c0ecf';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=bc41e7da84';
+import {renderSite,renderBlock} from './render.js?v=bc41e7da84';
+import {formatRequest} from '../request.js?v=bc41e7da84';
 
 const mode=document.body.dataset.mode;
 const capture=new URLSearchParams(location.search).get('capture')==='1';
@@ -59,7 +59,6 @@ function persistState() {
 function refreshControls() {
   document.querySelectorAll('[data-palette]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.palette===state.palette));});
   document.querySelectorAll('[data-palette-select]').forEach(select=>select.value=state.palette);
-  document.querySelectorAll('[data-version-select]').forEach(select=>select.value=state.version??'current');
   if(versionMenu)versionMenu.querySelector('.new-designs-link').href='designs.html?palette='+state.palette;
   document.querySelectorAll('[data-font-select]').forEach(select=>select.value=state.font);
   document.querySelectorAll('[data-block-select]').forEach(select=>select.value=state.layout[blocks.findIndex(b=>b.id===select.dataset.blockSelect)]);
@@ -110,25 +109,13 @@ function updateState(next,{blockId,all=false}={}) {
   markReady();
   if(blockId)root?.querySelector(`[data-block="${blockId}"]`).scrollIntoView({block:'start',behavior:'instant'});
 }
-function updateComparison(next) {
-  const edge=versionMenu.getBoundingClientRect().bottom;
-  const visibleBlock=[...root.children].find(block=>block.getBoundingClientRect().bottom>edge+32);
-  const position=visibleBlock?.getBoundingClientRect().top;
-  updateState(next);
-  if(!visibleBlock)return;
-  const updated=document.getElementById(visibleBlock.id).getBoundingClientRect();
-  const targetTop=Math.max(position,edge-updated.height+2);
-  window.scrollBy({top:updated.top-targetTop,behavior:'instant'});
-}
 document.addEventListener('change',event=>{
   const control=event.target;
   if(control.matches('[data-block-page-select]')){const block=blocks.find(b=>b.id===control.value);if(block)location.assign(currentUrl('blocks-'+block.id+'.html'));return;}
   if(control.matches('[data-font-select]'))updateState({...state,font:control.value});
-  if(control.matches('[data-version-select]'))updateComparison({...state,version:control.value});
   if(control.matches('[data-palette-select]')){
     const next={...state,version:state.version??'current',palette:control.value};
-    if(versionMenu?.contains(control))updateComparison(next);
-    else updateState(next);
+    updateState(next);
   }
   if(control.matches('[data-block-select]'))updateState(selectVariant(state,control.dataset.blockSelect,control.value),{blockId:control.dataset.blockSelect});
 });

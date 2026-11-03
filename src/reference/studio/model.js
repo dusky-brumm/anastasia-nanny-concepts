@@ -28,7 +28,7 @@ export const fontSets = [
   {id:'prata',name:'Prata + Manrope',note:'Выразительные заголовки'},
   {id:'tinos',name:'Tinos + Manrope',note:'Спокойная классика'},
 ];
-export const defaults={layout:'112111113',palette:'sky',font:'golos'};
+export const defaults={layout:'112111113',palette:'reference',font:'golos'};
 export const presets=[
   {id:'1',name:'Рекомендованный',layout:defaults.layout},
   {id:'2',name:'Центральный',layout:'222222222'},

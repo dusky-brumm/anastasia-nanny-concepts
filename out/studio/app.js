@@ -1,7 +1,7 @@
-import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=3d15d77d01';
-import {renderSite,renderBlock} from './render.js?v=3d15d77d01';
-import {formatRequest} from '../request.js?v=3d15d77d01';
-import {requestEndpoint} from './request-endpoint.js?v=3d15d77d01';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=c3107d7cd0';
+import {renderSite,renderBlock} from './render.js?v=c3107d7cd0';
+import {formatRequest} from '../request.js?v=c3107d7cd0';
+import {requestEndpoint} from './request-endpoint.js?v=c3107d7cd0';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
@@ -39,10 +39,46 @@ function observeServiceDrawings() {
 observeServiceDrawings();
 
 let aboutCarousels=[];
+function playAboutCarousel(section,carousel,motion){
+  if(capture)return;
+  const events=new AbortController();
+  const options={signal:events.signal};
+  let timer;
+  let visible=false;
+  let hovered=false;
+  let dragging=false;
+  const schedule=()=>{
+    clearTimeout(timer);
+    if(!visible||document.hidden||motion.matches||hovered||dragging||section.querySelector(':focus-visible'))return;
+    const delay=carousel.selectedScrollSnap()===0?16000:8000;
+    timer=setTimeout(()=>carousel.scrollNext(),delay);
+  };
+  const observer=new IntersectionObserver(([entry])=>{
+    visible=entry.isIntersecting;
+    schedule();
+  },{threshold:.3});
+  observer.observe(section);
+  section.addEventListener('pointerenter',event=>{hovered=event.pointerType==='mouse';schedule();},options);
+  section.addEventListener('pointerleave',()=>{hovered=false;schedule();},options);
+  section.addEventListener('focusin',schedule,options);
+  section.addEventListener('focusout',()=>queueMicrotask(schedule),options);
+  document.addEventListener('visibilitychange',schedule,options);
+  motion.addEventListener('change',schedule,options);
+  carousel.on('select',schedule).on('reInit',schedule)
+    .on('pointerDown',()=>{dragging=true;schedule();})
+    .on('pointerUp',()=>{dragging=false;schedule();})
+    .on('destroy',()=>{
+      visible=false;
+      clearTimeout(timer);
+      observer.disconnect();
+      events.abort();
+    });
+}
+
 function mountAboutCarousels(){
   aboutCarousels=[...document.querySelectorAll('[data-about-carousel]')].map(section=>{
     const viewport=section.querySelector('.s-about-viewport');
-    const controls=section.querySelector('.s-about-controls');
+    const controls=section.querySelector('.s-about-dots');
     const dots=[...section.querySelectorAll('[data-about-dot]')];
     const status=section.querySelector('.s-about-status');
     const motion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -56,13 +92,11 @@ function mountAboutCarousels(){
     };
     carousel.on('select',()=>{
       refresh();
-      status.textContent=dots[carousel.selectedScrollSnap()].getAttribute('aria-label');
+      if(section.contains(document.activeElement))status.textContent=dots[carousel.selectedScrollSnap()].getAttribute('aria-label');
     }).on('reInit',refresh);
     dots.forEach((dot,index)=>dot.addEventListener('click',()=>select(index)));
     const previous=()=>carousel.scrollPrev(motion.matches);
     const next=()=>carousel.scrollNext(motion.matches);
-    section.querySelector('[data-about-prev]').addEventListener('click',previous);
-    section.querySelector('[data-about-next]').addEventListener('click',next);
     viewport.addEventListener('keydown',event=>{
       if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
       event.preventDefault();
@@ -71,6 +105,7 @@ function mountAboutCarousels(){
     });
     refresh();
     controls.hidden=false;
+    playAboutCarousel(section,carousel,motion);
     return carousel;
   });
 }

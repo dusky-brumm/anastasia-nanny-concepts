@@ -1,6 +1,6 @@
-import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=af40982b42';
-import {renderSite,renderBlock} from './render.js?v=af40982b42';
-import {seoHead} from './seo.js?v=af40982b42';
+import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=a1da3c0ecf';
+import {renderSite,renderBlock} from './render.js?v=a1da3c0ecf';
+import {seoHead} from './seo.js?v=a1da3c0ecf';
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
@@ -29,8 +29,8 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
 ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6ec">
 <link rel="preload" href="fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="studio/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=af40982b42"><link rel="stylesheet" href="studio/fonts.css?v=af40982b42">
-<link rel="stylesheet" href="journeys.css?v=af40982b42"><link rel="stylesheet" href="studio/site.css?v=af40982b42"><link rel="stylesheet" href="studio/ui.css?v=af40982b42">
-<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=af40982b42"></script>
+<link rel="stylesheet" href="fonts.css?v=a1da3c0ecf"><link rel="stylesheet" href="studio/fonts.css?v=a1da3c0ecf">
+<link rel="stylesheet" href="journeys.css?v=a1da3c0ecf"><link rel="stylesheet" href="studio/site.css?v=a1da3c0ecf"><link rel="stylesheet" href="studio/ui.css?v=a1da3c0ecf">
+<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=a1da3c0ecf"></script>
 </head><body class="design-tool ${mode==='preview'?'preview-only':''}" data-mode="${mode}" data-library-block="${blockId}">${mode==='preview'?versionMenu:''}${content}${privacy}<noscript><p class="tool-noscript">${mode==='preview'?'Для подготовки заявки включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }

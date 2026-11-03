@@ -74,3 +74,5 @@
 html{scrollbar-gutter:stable}
 
 @media(min-width:601px){.review-card:nth-child(2){padding-inline:2.28cqw}.review-card:nth-child(2) blockquote{font-size:1.483cqw;line-height:1.667}.process>h2 span::after{left:.75cqw;right:auto;width:7.6cqw}}
+
+.about-art img.about-rainbow {position:absolute;right:4%;bottom:4%;width:38%;height:auto;border:4px solid #fffdf8;border-radius:4px;box-shadow:0 3px 12px #203e3440}

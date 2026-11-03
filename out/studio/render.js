@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=af40982b42';
-import {renderJourney} from '../journeys.js?v=af40982b42';
-import {contacts,selectionFaq} from './content.js?v=af40982b42';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=a1da3c0ecf';
+import {renderJourney} from '../journeys.js?v=a1da3c0ecf';
+import {contacts,selectionFaq} from './content.js?v=a1da3c0ecf';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -11,8 +11,9 @@ const services=[
   ['Созваниваюсь на 10–15 минут','Уточняю условия вакансии и рассказываю кандидатке о вашей семье.'],
   ['Провожу личное интервью','Задаю вопросы о ситуациях из жизни вашей семьи. В анкете объясняю, почему предлагаю познакомиться с няней и что стоит обсудить на встрече.'],
 ];
-const biography='С 2022 года подбираю нянь в семьи. Работала в двух агентствах, сейчас веду подбор лично.';
-const background='До рекрутинга пять лет работала с детьми — няней, тренером, педагогом. Изучала детскую психологию и прошла профессиональную переподготовку по подбору домашнего персонала.';
+const biography='Подбираю нянь с 2022 года. Начинала в двух агентствах, а теперь веду каждый подбор лично. За это время провела больше 500 собеседований и помогла найти няню более чем 40 семьям.';
+const background='До рекрутинга я пять лет работала няней, тренером и педагогом. Прошла очную переподготовку на няню-гувернантку и рекрутера по подбору домашнего персонала: больше 400 академических часов с практикой.';
+const familyStory='Я старшая сестра в многодетной семье. С 13 лет часто оставалась дома за главную и знаю, как можно любить детей и всё равно уставать. Поэтому на первом разговоре мне важно понять, где вам особенно нужна помощь.';
 const conditions=[['Неограниченное количество анкет','Продолжаем поиск подходящего кандидата.'],['Гарантия замены — 6 месяцев','Если сотрудничество не сложилось, подберу замену бесплатно.'],['Личное сопровождение','Помогаю с выбором, знакомством и адаптацией няни.']];
 const testimonials=[
   ['Наталья','мама двоих детей','Настя помогла найти няню для дочки. Очень внимательная, отвечает быстро, понимает, что нужно семье. Няня уже полгода с нами — всё отлично!','natalia'],
@@ -29,7 +30,9 @@ function tg(label='Написать в Telegram') {return `<a class="s-text-link
 function photo(type='cafe',cls='',priority=false) {
   const load=`loading="${priority?'eager':'lazy'}"${priority?' fetchpriority="high"':''}`;
   const portraits=['cafe','about-portrait'];
-  const image=portraits.includes(type)?`<img src="${media}${type}.webp" width="720" height="1280" alt="Анастасия Доронина за столиком в кафе" ${load}>`:`<img src="${media}${type}.webp" width="${type==='family'?960:640}" height="${type==='family'?1280:640}" alt="Анастасия ${type==='family'?'с детьми':'с ребёнком'}" ${load}>`;
+  const verticalPhoto=type==='family'||type==='rainbow';
+  const alt=type==='rainbow'?'с детьми на фоне радуги':verticalPhoto?'с детьми':'с ребёнком';
+  const image=portraits.includes(type)?`<img src="${media}${type}.webp" width="720" height="1280" alt="Анастасия Доронина за столиком в кафе" ${load}>`:`<img src="${media}${type}.webp" width="${verticalPhoto?960:640}" height="${verticalPhoto?1280:640}" alt="Анастасия ${alt}" ${load}>`;
   return `<figure class="s-photo ${type==='cafe'?'s-cafe ':''}${cls}"><div class="s-photo-mask">${image}</div></figure>`;
 }
 function portraitComposition(priority=false) {
@@ -74,17 +77,19 @@ function service(v) {
   return `${heading}${v===3?scribble:''}${items(services)}${interview}`;
 }
 const aboutSlides=[
-  ['Меня зовут Анастасия','about-portrait','Я подбираю нянь для семей с 2022 года. Начинала в агентствах, сейчас веду каждый подбор лично. Вместе мы обсуждаем ваш запрос, разбираем анкеты и выбираем, с кем познакомиться.'],
-  ['Я знаю поиск с обеих сторон','family','Семье важно понять, как няня будет общаться с ребёнком. Няне — представить рабочий день, обязанности и правила семьи. Я обсуждаю эти детали с обеими сторонами заранее.'],
+  ['Меня зовут Анастасия','about-portrait',biography],
+  ['Я старшая сестра','rainbow',familyStory],
+  ['От работы с детьми к подбору нянь','family',background],
   ['Я на связи и после знакомства','child','Перед пробными днями подскажу, как подготовить ребёнка к знакомству. После выхода няни со мной можно обсудить адаптацию и изменения, которые вы хотите предложить няне.'],
 ];
 function about(v) {
-  const text=`${title('Об Анастасии','Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p>`;
-  if(v===1)return `<div class="s-about-slides">${title('Об Анастасии','Давайте познакомимся')}<ol aria-label="Знакомство с Анастасией" tabindex="0">${aboutSlides.map(([name,image,copy],index)=>`<li>${photo(image,'s-frame')}<div><p class="s-eyebrow">${index+1} / ${aboutSlides.length}</p><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol><p class="s-about-hint">Листайте, чтобы увидеть все три фото</p></div>`;
-  if(v===2)return `${photo('about-portrait','s-frame')}<div class="s-about-copy">${text}<div class="s-tags"><span>Личное интервью</span><span>Поддержка семьи</span></div></div>`;
-  if(v===3)return `<div class="s-letter"><span class="s-eyebrow">Об Анастасии</span><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p>${scribble}</div>${photo('about-portrait','s-frame')}`;
-  if(v===4)return `${title('Об Анастасии','Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('about-portrait','s-taped')}<div><p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('child','s-frame')}</div>`;
-  return `<div class="s-about-pair">${photo('about-portrait')}${photo('child')}</div><div class="s-about-copy">${text}</div>`;
+  const aboutPhotos=`<div class="s-about-photos">${photo('about-portrait','s-frame')}${photo('rainbow','s-frame')}</div>`;
+  const text=`${title('Об Анастасии','Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>`;
+  if(v===1)return `<div class="s-about-slides">${title('Об Анастасии','Давайте познакомимся')}<ol aria-label="Знакомство с Анастасией" tabindex="0">${aboutSlides.map(([name,image,copy],index)=>`<li>${photo(image,'s-frame')}<div><p class="s-eyebrow">${index+1} / ${aboutSlides.length}</p><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol><p class="s-about-hint">Листайте, чтобы увидеть все фото</p></div>`;
+  if(v===2)return `${aboutPhotos}<div class="s-about-copy">${text}<div class="s-tags"><span>Личное интервью</span><span>Поддержка семьи</span></div></div>`;
+  if(v===3)return `<div class="s-letter"><span class="s-eyebrow">Об Анастасии</span><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>${scribble}</div>${aboutPhotos}`;
+  if(v===4)return `${title('Об Анастасии','Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('about-portrait','s-taped')}<div><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('rainbow','s-frame')}</div>`;
+  return `<div class="s-about-pair">${photo('about-portrait')}${photo('rainbow')}</div><div class="s-about-copy">${text}</div>`;
 }
 const routeIcons=[
   'M4 5h16v11H9l-5 4z M8 9h8 M8 12h5',

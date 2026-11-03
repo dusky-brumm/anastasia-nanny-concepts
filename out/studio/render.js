@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=17f7f11e33';
-import {renderJourney} from '../journeys.js?v=17f7f11e33';
-import {contacts,selectionFaq} from './content.js?v=17f7f11e33';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=ae6f1d5de7';
+import {renderJourney} from '../journeys.js?v=ae6f1d5de7';
+import {contacts,selectionFaq} from './content.js?v=ae6f1d5de7';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -85,7 +85,7 @@ const aboutSlides=[
 function about(v) {
   const aboutPhotos=`<div class="s-about-photos">${photo('about-portrait','s-frame')}${photo('rainbow','s-frame')}</div>`;
   const text=`${title('Об Анастасии','Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>`;
-  if(v===1)return `<div class="s-about-slides">${title('Об Анастасии','Давайте познакомимся')}<ol aria-label="Знакомство с Анастасией" tabindex="0">${aboutSlides.map(([name,image,copy],index)=>`<li>${photo(image,'s-frame')}<div><p class="s-eyebrow">${index+1} / ${aboutSlides.length}</p><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol><p class="s-about-hint">Листайте, чтобы увидеть все фото</p></div>`;
+  if(v===1)return `<div class="s-about-slides" data-about-carousel role="region" aria-roledescription="карусель" aria-label="Знакомство с Анастасией">${title('Об Анастасии','Давайте познакомимся')}<div class="s-about-viewport" tabindex="0" aria-label="Истории об Анастасии"><ol>${aboutSlides.map(([name,image,copy])=>`<li>${photo(image,'s-frame')}<div><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol></div><div class="s-about-controls" hidden><button type="button" class="s-about-arrow" data-about-prev aria-label="Предыдущий слайд">←</button><div class="s-about-dots" role="group" aria-label="Выбрать слайд">${aboutSlides.map(([name],index)=>`<button type="button" data-about-dot="${index}" aria-label="${name}"></button>`).join('')}</div><button type="button" class="s-about-arrow" data-about-next aria-label="Следующий слайд">→</button><span class="s-about-status" role="status"></span></div></div>`;
   if(v===2)return `${aboutPhotos}<div class="s-about-copy">${text}<div class="s-tags"><span>Личное интервью</span><span>Поддержка семьи</span></div></div>`;
   if(v===3)return `<div class="s-letter"><span class="s-eyebrow">Об Анастасии</span><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>${scribble}</div>${aboutPhotos}`;
   if(v===4)return `${title('Об Анастасии','Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('about-portrait','s-taped')}<div><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('rainbow','s-frame')}</div>`;

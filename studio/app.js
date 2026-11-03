@@ -1,17 +1,20 @@
-import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=52f1bff515';
-import {renderSite,renderBlock} from './render.js?v=52f1bff515';
-import {formatRequest} from '../request.js?v=52f1bff515';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=3cb3d939e7';
+import {renderSite,renderBlock} from './render.js?v=3cb3d939e7';
+import {formatRequest} from '../request.js?v=3cb3d939e7';
+import {requestEndpoint} from './request-endpoint.js?v=3cb3d939e7';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
+const liveRequests=Boolean(requestEndpoint)&&document.body.hasAttribute('data-live-request');
+if(liveRequests)document.querySelector('#studio-privacy p').textContent='При отправке имя, контакт и текст заявки передаются в Telegram Анастасии, чтобы она могла ответить.';
 const capture=new URLSearchParams(location.search).get('capture')==='1';
 let state=readState(location.search);
 const explicit=['layout','palette','font','route','version'].some(key=>new URLSearchParams(location.search).has(key));
 if(mode==='studio'&&!explicit){try{state=normalizeState(JSON.parse(localStorage.getItem('nastya-design-studio-v1')??'{}'));}catch{/* Use the supplied defaults when saved settings are unavailable. */}}
 const root=document.querySelector('[data-site-root]');
-const versionMenu=document.querySelector('.version-menu');
-if(versionMenu&&'ResizeObserver' in window){
-  new ResizeObserver(()=>root.style.setProperty('--comparison-offset',versionMenu.offsetHeight+20+'px')).observe(versionMenu);
+const designPanel=document.querySelector('.design-panel');
+if(designPanel&&'ResizeObserver' in window){
+  new ResizeObserver(()=>root.style.setProperty('--comparison-offset',designPanel.offsetHeight+14+'px')).observe(designPanel);
 }
 if(root)root.innerHTML=renderSite(state);
 else if(state.version==='previous')renderReviews();
@@ -36,10 +39,46 @@ function observeServiceDrawings() {
 observeServiceDrawings();
 
 let aboutCarousels=[];
+function playAboutCarousel(section,carousel,motion){
+  if(capture)return;
+  const events=new AbortController();
+  const options={signal:events.signal};
+  let timer;
+  let visible=false;
+  let hovered=false;
+  let dragging=false;
+  const schedule=()=>{
+    clearTimeout(timer);
+    if(!visible||document.hidden||motion.matches||hovered||dragging||section.querySelector(':focus-visible'))return;
+    const delay=carousel.selectedScrollSnap()===0?16000:8000;
+    timer=setTimeout(()=>carousel.scrollNext(),delay);
+  };
+  const observer=new IntersectionObserver(([entry])=>{
+    visible=entry.isIntersecting;
+    schedule();
+  },{threshold:.3});
+  observer.observe(section);
+  section.addEventListener('pointerenter',event=>{hovered=event.pointerType==='mouse';schedule();},options);
+  section.addEventListener('pointerleave',()=>{hovered=false;schedule();},options);
+  section.addEventListener('focusin',schedule,options);
+  section.addEventListener('focusout',()=>queueMicrotask(schedule),options);
+  document.addEventListener('visibilitychange',schedule,options);
+  motion.addEventListener('change',schedule,options);
+  carousel.on('select',schedule).on('reInit',schedule)
+    .on('pointerDown',()=>{dragging=true;schedule();})
+    .on('pointerUp',()=>{dragging=false;schedule();})
+    .on('destroy',()=>{
+      visible=false;
+      clearTimeout(timer);
+      observer.disconnect();
+      events.abort();
+    });
+}
+
 function mountAboutCarousels(){
   aboutCarousels=[...document.querySelectorAll('[data-about-carousel]')].map(section=>{
     const viewport=section.querySelector('.s-about-viewport');
-    const controls=section.querySelector('.s-about-controls');
+    const controls=section.querySelector('.s-about-dots');
     const dots=[...section.querySelectorAll('[data-about-dot]')];
     const status=section.querySelector('.s-about-status');
     const motion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -53,13 +92,11 @@ function mountAboutCarousels(){
     };
     carousel.on('select',()=>{
       refresh();
-      status.textContent=dots[carousel.selectedScrollSnap()].getAttribute('aria-label');
+      if(section.contains(document.activeElement))status.textContent=dots[carousel.selectedScrollSnap()].getAttribute('aria-label');
     }).on('reInit',refresh);
     dots.forEach((dot,index)=>dot.addEventListener('click',()=>select(index)));
     const previous=()=>carousel.scrollPrev(motion.matches);
     const next=()=>carousel.scrollNext(motion.matches);
-    section.querySelector('[data-about-prev]').addEventListener('click',previous);
-    section.querySelector('[data-about-next]').addEventListener('click',next);
     viewport.addEventListener('keydown',event=>{
       if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
       event.preventDefault();
@@ -68,6 +105,7 @@ function mountAboutCarousels(){
     });
     refresh();
     controls.hidden=false;
+    playAboutCarousel(section,carousel,motion);
     return carousel;
   });
 }
@@ -98,9 +136,9 @@ function persistState() {
 function refreshControls() {
   document.querySelectorAll('[data-palette]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.palette===state.palette));});
   document.querySelectorAll('[data-palette-select]').forEach(select=>select.value=state.palette);
-  if(versionMenu)versionMenu.querySelector('.new-designs-link').href='designs.html?palette='+state.palette;
   document.querySelectorAll('[data-font-select]').forEach(select=>select.value=state.font);
   document.querySelectorAll('[data-block-select]').forEach(select=>select.value=state.layout[blocks.findIndex(b=>b.id===select.dataset.blockSelect)]);
+  document.querySelectorAll('[data-preset-select]').forEach(select=>select.value=presets.find(preset=>preset.layout===state.layout)?.id??'');
   document.querySelectorAll('[data-preset]').forEach(button=>button.setAttribute('aria-pressed',String(state.layout===presets.find(p=>p.id===button.dataset.preset)?.layout)));
   document.querySelectorAll('[data-library-link]').forEach(a=>a.href=currentUrl('blocks-'+a.dataset.libraryLink+'.html'));
   document.querySelectorAll('[data-open-preview]').forEach(a=>a.href=currentUrl('preview.html'));
@@ -110,7 +148,13 @@ function refreshControls() {
   const share=document.querySelector('[data-share-url]');if(share)share.value=new URL(currentUrl('preview.html'),location.href).href;
   const summary=document.querySelector('[data-current-design]');if(summary)summary.textContent=palettes.find(p=>p.id===state.palette).name+' · '+fontSets.find(f=>f.id===state.font).name;
   const note=document.querySelector('[data-font-note]');if(note)note.textContent=fontSets.find(f=>f.id===state.font).note;
-  document.querySelectorAll('.s-consult-form [type=submit]').forEach(button=>button.disabled=false);
+  document.querySelectorAll('.s-consult-form').forEach(form=>{
+    const button=form.querySelector('[type=submit]');
+    button.disabled=form.getAttribute('aria-busy')==='true';
+    if(!liveRequests)return;
+    button.firstChild.textContent='Отправить заявку ';
+    form.querySelector('.s-form-note').textContent='Имя, контакт и сообщение будут отправлены Анастасии в Telegram.';
+  });
   // Isolated block previews keep their calls to action pointed at the full composition.
   if(mode==='library')document.querySelectorAll('.site-preview a[href*="preview.html"]').forEach(a=>{const url=new URL(a.href,location.href),variant=a.closest('[data-option]').dataset.option;const previewState=selectVariant(state,document.body.dataset.libraryBlock,variant);a.href=designUrl('preview.html',previewState,url.hash.slice(1));});
 }
@@ -154,6 +198,10 @@ function updateState(next,{blockId,all=false}={}) {
 document.addEventListener('change',event=>{
   const control=event.target;
   if(control.matches('[data-block-page-select]')){const block=blocks.find(b=>b.id===control.value);if(block)location.assign(currentUrl('blocks-'+block.id+'.html'));return;}
+  if(control.matches('[data-preset-select]')){
+    const preset=presets.find(item=>item.id===control.value);
+    if(preset)updateState({...state,layout:preset.layout},{all:true});
+  }
   if(control.matches('[data-font-select]'))updateState({...state,font:control.value});
   if(control.matches('[data-palette-select]')){
     const next={...state,version:state.version??'current',palette:control.value};
@@ -176,14 +224,53 @@ document.addEventListener('click',async event=>{
   if(event.target.matches('#studio-privacy')){const r=event.target.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)event.target.close();}
 });
 document.addEventListener('keydown',event=>{if(event.key==='Escape')document.querySelectorAll('.s-menu[open]').forEach(menu=>{menu.open=false;menu.querySelector('summary').focus();});});
-document.addEventListener('submit',event=>{
+document.addEventListener('submit',async event=>{
   const form=event.target;if(!form.matches('.s-consult-form'))return;event.preventDefault();
+  if(form.getAttribute('aria-busy')==='true')return;
   const name=form.elements.namedItem('name'),contact=form.elements.namedItem('contact'),message=form.elements.namedItem('message');
   name.setCustomValidity(name.value.trim()?'':'Укажите ваше имя.');contact.setCustomValidity(contact.value.trim().length>=3?'':'Укажите телефон или Telegram для связи.');
   if(!form.reportValidity())return;
-  form.elements.namedItem('draft').value=formatRequest({name:name.value,contact:contact.value,message:message.value});
-  const draft=form.querySelector('.s-draft');draft.hidden=false;form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
+  const application={name:name.value,contact:contact.value,message:message.value,website:form.elements.namedItem('website').value};
+  const draft=form.querySelector('.s-draft'),status=form.querySelector('[role=status]');
+  const deliveryError='Не удалось подтвердить отправку. Можно отправить текст ниже Анастасии в Telegram.';
+  let feedback='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
+  if(liveRequests){
+    const submit=form.querySelector('[type=submit]');
+    const fields=[name,contact,message];
+    draft.hidden=true;
+    form.setAttribute('aria-busy','true');
+    submit.disabled=true;
+    fields.forEach(field=>field.readOnly=true);
+    submit.firstChild.textContent='Отправляем… ';
+    status.textContent='';
+    try{
+      const response=await fetch(requestEndpoint,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(application),
+        credentials:'omit',
+        signal:AbortSignal.timeout(15000),
+      });
+      if(response.ok&&(await response.json()).ok===true){
+        form.reset();
+        status.textContent='Заявка отправлена. Анастасия свяжется с вами.';
+        return;
+      }
+      if(response.status===429)feedback='Слишком много попыток. Попробуйте через минуту или напишите Анастасии в Telegram.';
+      else feedback=deliveryError;
+    }catch{
+      feedback=deliveryError;
+    }finally{
+      form.removeAttribute('aria-busy');
+      submit.disabled=false;
+      fields.forEach(field=>field.readOnly=false);
+      submit.firstChild.textContent='Отправить заявку ';
+    }
+  }
+  form.elements.namedItem('draft').value=formatRequest(application);
+  status.textContent=feedback;
+  draft.hidden=false;
   draft.scrollIntoView({block:'nearest',behavior:'instant'});
 });
-document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
+document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.querySelector('[role=status]').textContent='';form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
 applyTheme();refreshControls();persistState();markReady();

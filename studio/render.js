@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=52f1bff515';
-import {renderJourney} from '../journeys.js?v=52f1bff515';
-import {contacts,selectionFaq} from './content.js?v=52f1bff515';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=3cb3d939e7';
+import {renderJourney} from '../journeys.js?v=3cb3d939e7';
+import {contacts,selectionFaq} from './content.js?v=3cb3d939e7';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -34,8 +34,22 @@ function photo(type='cafe',cls='',priority=false) {
   const image=portraits.includes(type)?`<img src="${media}${type}.webp" width="720" height="1280" alt="Анастасия Доронина за столиком в кафе" ${load}>`:`<img src="${media}${type}.webp" width="${verticalPhoto?960:640}" height="${verticalPhoto?1280:640}" alt="Анастасия ${alt}" ${load}>`;
   return `<figure class="s-photo ${type==='cafe'?'s-cafe ':''}${cls}"><div class="s-photo-mask">${image}</div></figure>`;
 }
-function portraitComposition(priority=false) {
-  return `<div class="s-live-portrait"><span class="s-photo-backing" aria-hidden="true"></span>${photo('family','s-live-frame',priority)}<span class="s-paper-tape" aria-hidden="true"></span><img class="s-portrait-flowers" src="assets/flowers.webp" width="70" height="114" alt=""></div>`;
+function shapedPortrait(variant) {
+  const shape=`hero-shape-${variant}`, pencil=`hero-pencil-${variant}`;
+  return `<figure class="s-shaped-portrait"><svg viewBox="0 0 400 440" role="img" aria-label="Анастасия Доронина за столиком в кафе">
+    <defs>
+      <path id="${shape}" pathLength="100" d="M35 217C35 105 89 37 173 28C255 19 345 47 361 133C371 187 370 268 352 322C332 381 278 413 204 413C133 413 64 405 43 347C27 305 35 257 35 217Z"/>
+      <clipPath id="${shape}-crop"><use href="#${shape}"/></clipPath>
+      <filter id="${pencil}">
+        <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
+        <feColorMatrix type="luminanceToAlpha"/>
+        <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
+        <feComposite in="SourceGraphic" operator="in"/>
+      </filter>
+    </defs>
+    <image href="${media}cafe.webp" x="30" y="-179" width="340" height="604.45" clip-path="url(#${shape}-crop)"/>
+    <use class="s-portrait-contour" href="#${shape}" transform="translate(200 220) scale(1.058) translate(-200 -220)" filter="url(#${pencil})"/>
+  </svg></figure>${variant===7?`<svg class="s-hero-background-line" viewBox="0 0 1120 130" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 91C130 135 237 100 356 77C500 49 584 109 715 101C853 92 967 21 1130 46" filter="url(#${pencil})"/></svg>`:''}`;
 }
 function title(text) {return `<div class="s-section-heading"><h2>${text}</h2></div>`;}
 function items(list,cls='') {return `<div class="s-items ${cls}">${list.map(([a,b],i)=>`<article><span class="s-index" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><h3>${a}</h3><p>${b}</p></article>`).join('')}</div>`;}
@@ -43,16 +57,18 @@ function nav(ctx,cls='') {return `<nav class="s-nav ${cls}" aria-label="Меню
 function menu(ctx) {return `<details class="s-menu"><summary aria-label="Открыть меню"><span></span><span></span><span></span></summary>${nav(ctx,'s-menu-links')}</details>`;}
 function header(v,c) {
   if(v===2)return `<div class="s-header-top">${tg('Telegram')}${action(c,'Обсудить подбор')}</div>${nav(c)}${menu(c)}`;
-  if(v===4)return `<div class="s-header-top">${tg('Telegram')}</div><div class="s-header-bottom">${nav(c)}${action(c,'Оставить заявку')}${menu(c)}</div>`;
-  return `${nav(c)}${v===5?tg('Telegram'):action(c,'Оставить заявку')}${menu(c)}`;
+  if(v===4)return `<div class="s-header-top">${tg('Telegram')}</div><div class="s-header-bottom">${nav(c)}${menu(c)}</div>`;
+  return `${nav(c)}${v===5?tg('Telegram'):''}${menu(c)}`;
 }
 function hero(v,c) {
-  const copy=`<div class="s-hero-copy"><h1>${headline}</h1><p class="s-intro">${introduction}</p><div class="s-actions">${action(c)}${tg('Telegram')}</div></div>`;
-  if(v===1)return `${copy}${portraitComposition(!c.library)}`;
-  if(v===2)return `${copy}<div class="s-hero-strip">${photo('child')}${photo('family','',!c.library)}${photo('cafe')}</div>`;
-  if(v===3)return `${photo('family','s-taped',!c.library)}<div class="s-hero-letter">${copy}</div>${sun}`;
-  if(v===4)return `<div class="s-hero-panel">${copy}${scribble}</div>${photo('family','s-frame',!c.library)}`;
-  return `<h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p><div class="s-actions">${action(c)}${tg('Telegram')}</div>${scribble}</div></div>`;
+  const application=`<div class="s-actions"><a class="s-button" href="${linkTo('apply',c)}">Оставить заявку</a></div>`;
+  const copy=`<div class="s-hero-copy"><h1>${headline}</h1><p class="s-intro">${introduction}</p>${application}</div>`;
+  if(v===1)return `${copy}${photo('cafe','s-main-portrait',!c.library)}`;
+  if(v===2)return `${copy}<div class="s-hero-strip">${photo('child')}${photo('cafe','',!c.library)}${photo('family')}</div>`;
+  if(v===3)return `${photo('cafe','s-taped',!c.library)}<div class="s-hero-letter">${copy}</div>${sun}`;
+  if(v===4)return `<div class="s-hero-panel">${copy}${scribble}</div>${photo('cafe','s-frame',!c.library)}`;
+  if(v===6||v===7)return `${copy}${shapedPortrait(v)}`;
+  return `<h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p>${application}${scribble}</div></div>`;
 }
 const serviceDrawings=`<svg class="s-service-drawing s-service-drawing--sky" viewBox="0 0 238 96" aria-hidden="true" focusable="false">
   <path pathLength="1" d="M8 76c20-14 40-15 55-8 11 5 13 15 4 16-10 1-11-13 1-22 14-10 37-13 61-7"/>
@@ -78,12 +94,21 @@ const aboutSlides=[
   ['Меня зовут Анастасия','about-portrait',biography],
   ['Я старшая сестра','rainbow',familyStory],
   ['От работы с детьми к подбору нянь','family',background],
-  ['Я на связи и после знакомства','child','Перед пробными днями подскажу, как подготовить ребёнка к знакомству. После выхода няни со мной можно обсудить адаптацию и изменения, которые вы хотите предложить няне.'],
+  ['Я играю в регби-7','child','Я мастер спорта по регби-7. Однажды провела собеседование с няней прямо в перерыве между играми. В итоге она подошла семье и работала с ребёнком до детского сада.'],
 ];
 function about(v) {
   const aboutPhotos=`<div class="s-about-photos">${photo('about-portrait','s-frame')}${photo('rainbow','s-frame')}</div>`;
   const text=`${title('Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>`;
-  if(v===1)return `<div class="s-about-slides" data-about-carousel role="region" aria-roledescription="карусель" aria-label="Знакомство с Анастасией">${title('Давайте познакомимся')}<div class="s-about-viewport" tabindex="0" aria-label="Истории об Анастасии"><ol>${aboutSlides.map(([name,image,copy])=>`<li>${photo(image,'s-frame')}<div><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol></div><div class="s-about-controls" hidden><button type="button" class="s-about-arrow" data-about-prev aria-label="Предыдущий слайд">←</button><div class="s-about-dots" role="group" aria-label="Выбрать слайд">${aboutSlides.map(([name],index)=>`<button type="button" data-about-dot="${index}" aria-label="${name}"></button>`).join('')}</div><button type="button" class="s-about-arrow" data-about-next aria-label="Следующий слайд">→</button><span class="s-about-status" role="status"></span></div></div>`;
+  if(v===1)return `<div class="s-about-slides" data-about-carousel role="region" aria-roledescription="карусель" aria-label="Знакомство с Анастасией">
+    ${title('Давайте познакомимся')}
+    <div class="s-about-dots" role="group" aria-label="Выбрать слайд" hidden>
+      ${aboutSlides.map(([name],index)=>`<button type="button" data-about-dot="${index}" aria-label="${name}"></button>`).join('')}
+    </div>
+    <div class="s-about-viewport" tabindex="0" aria-label="Истории об Анастасии">
+      <ol>${aboutSlides.map(([name,image,copy])=>`<li>${photo(image,'s-frame')}<div><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol>
+    </div>
+    <span class="s-about-status" role="status"></span>
+  </div>`;
   if(v===2)return `${aboutPhotos}<div class="s-about-copy">${text}<div class="s-tags"><span>Личное интервью</span><span>Поддержка семьи</span></div></div>`;
   if(v===3)return `<div class="s-letter"><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>${scribble}</div>${aboutPhotos}`;
   if(v===4)return `${title('Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('about-portrait','s-taped')}<div><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('rainbow','s-frame')}</div>`;
@@ -141,9 +166,9 @@ function reviews(v,c) {
   }
   return `${title('Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
 }
-function form() {return `<form class="s-consult-form"><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="3" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><p class="s-form-note">Вы получите текст сообщения для отправки Анастасии в Telegram. Данные здесь не сохраняются.</p><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div><p role="status"></p></div></form>`;}
+function form() {return `<form class="s-consult-form" method="post"><div hidden><label>Сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="3" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><p class="s-form-note">Вы получите текст сообщения для отправки Анастасии в Telegram. Данные здесь не сохраняются.</p><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div></div><p class="s-request-status" role="status"></p></form>`;}
 function apply(v) {return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
-function footer(v,c) {return `${v!==2?nav(c):''}<div class="s-footer-contact">${tg('Связаться в Telegram')}<button type="button" class="s-privacy">О данных формы</button></div><p class="s-copyright">© 2026 Анастасия Доронина</p>`;}
+function footer() {return `<div class="s-footer-contact">${tg('Telegram')}<button type="button" class="s-privacy">О данных формы</button></div>`;}
 const renderers={header,hero,service,about,process,pricing,reviews,apply,footer};
 export function renderBlock(id,value,context={}) {
   const state=normalizeState(context.state),ctx={...context,state};

@@ -78,6 +78,8 @@ function playAboutCarousel(section,carousel,motion){
 
 function mountAboutCarousels(){
   aboutCarousels=[...document.querySelectorAll('[data-about-carousel]')].map(section=>{
+    const events=new AbortController();
+    const eventOptions={signal:events.signal};
     const viewport=section.querySelector('.s-about-viewport');
     const controls=section.querySelector('.s-about-dots');
     const dots=[...section.querySelectorAll('[data-about-dot]')];
@@ -95,7 +97,7 @@ function mountAboutCarousels(){
       refresh();
       if(section.contains(document.activeElement))status.textContent=dots[carousel.selectedScrollSnap()].getAttribute('aria-label');
     }).on('reInit',refresh);
-    dots.forEach((dot,index)=>dot.addEventListener('click',()=>select(index)));
+    dots.forEach((dot,index)=>dot.addEventListener('click',()=>select(index),eventOptions));
     const previous=()=>carousel.scrollPrev(motion.matches);
     const next=()=>carousel.scrollNext(motion.matches);
     viewport.addEventListener('keydown',event=>{
@@ -103,7 +105,8 @@ function mountAboutCarousels(){
       event.preventDefault();
       if(event.key==='ArrowLeft')previous();
       else next();
-    });
+    },eventOptions);
+    carousel.on('destroy',()=>events.abort());
     refresh();
     controls.hidden=false;
     playAboutCarousel(section,carousel,motion);
@@ -111,6 +114,10 @@ function mountAboutCarousels(){
   });
 }
 mountAboutCarousels();
+document.addEventListener('comparison:about-changed',()=>{
+  aboutCarousels.forEach(carousel=>carousel.destroy());
+  mountAboutCarousels();
+});
 
 function renderReviews() {
   document.querySelectorAll('[data-block="reviews"][data-variant="1"]').forEach(review=>{
@@ -119,7 +126,7 @@ function renderReviews() {
 }
 
 function applyTheme() {
-  if(document.querySelector('.pencil-comparison + .site-preview'))return;
+  if(document.querySelector('.comparison-design'))return;
   const palette=palettes.find(p=>p.id===state.palette);
   if(mode==='preview')document.body.style.setProperty('--page-paper',palette.paper);
   document.querySelectorAll('.site-preview').forEach(site=>{

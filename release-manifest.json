@@ -1,37 +1,39 @@
 {
-  "build": "f566d749e6",
-  "base_commit": "f6ba267e61866bc9131420e2e64a484b4445231f",
+  "build": "ed1f7747c1",
+  "base_commit": "b38c850decfa7def53ca4a7f0e034cfce3db8a67",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
-    "scripts/build-reference.mjs": "c4e85dd1fa436e3d1cb0de1185102885c589aaa7d4fe4a543e983d5edc002082",
+    "scripts/build-reference.mjs": "1b37470457ee25162ce2ef2e16230d838355d31daba74bef802659472bca08dc",
     "src/reference/journeys.css": "a90111f8ec8f75b9374c82b3ed205b734490978d47baaadd02abbceff876c7af",
     "src/reference/journeys.js": "a80687254b9d241f25c5ceccb626cb121703dcbb719d4bd1de5b3a6851b25e35",
     "src/reference/studio/app.js": "4c599f1346d38bf628da639a103f8ef2aa9529d9b0c2465a3538672d390ec1d9",
-    "src/reference/studio/comparison-palettes.js": "02fe965596a701650d35e94938646ab7c60ac6621add44aedf0c8f2e26a49f81",
-    "src/reference/studio/editorial.css": "cc63dcc451205d155e987b7cbaa238a5c47b180c40bda52f4c766f92078e54e9",
+    "src/reference/studio/comparison-palettes.js": "c798859bebd0b765b27eef767aea1857afb35b5862de8059932b9e2863fff58e",
+    "src/reference/studio/editorial.css": "b3bfc818a08ac0f85fa3f71db169fe51ed6a016e205e3ca596d0aba37b8d2fb1",
     "src/reference/studio/model.js": "429412db8a2afb61ad6d8ef2c95b7432967b8368880b2564ce82017abcf0b24c",
-    "src/reference/studio/pages.js": "b451ad1ef3f19f4c2da128eefc6239dea5179c994b323695bd6287781c2cfab5",
-    "src/reference/studio/pencil-preview.css": "de06762a1c7e006e327f43e4e9feb38d2b471eb01470a33a5197f82012535387",
-    "src/reference/studio/render.js": "a5f9989ac6689b4095b3a426f01a968b02938598630d525fd7770c6283e6841c",
-    "src/reference/studio/site.css": "06885efbb1a374d7440935e052915a1d13f839456f33d6ec1198a6a0d12673c8",
+    "src/reference/studio/pages.js": "f702b3a2bafd33dcb8c871eb3eed2472ec14ab9b3337f1cdf713de5ba855fdc7",
+    "src/reference/studio/pencil-preview.css": "b2c2765e2f7b889181e029fb8ef898b09b8afa32102e5a40e0487e18bbc46fda",
+    "src/reference/studio/render.js": "e2a55ffeea0dc33d8442ae6006de340f37e9d1b3d196c33ff601d8a163890873",
+    "src/reference/studio/site.css": "b2807eca92b6fc9e2eecd318d861dcc6b27b6e5ae3937c59bcbd57d484ccecfb",
     "src/reference/studio/ui.css": "ed1e83437f6f04547dfd4f7ca43682dc2793bff7198f7dec9cbdc282e92b9ed7",
-    "src/reference/studio/comparison-design.css": "88b19a895dce2aae7e2498fdac0057ef462c18b38d1c3042b7767219c4f211c3",
-    "src/reference/studio/request-ui.js": "3a1582a3eb53022badea85e6453112c54ae8690527d698b34caf77d03645260f"
+    "src/reference/studio/comparison-design.css": "16a7130ba82c9a388f0ec1ff7230451748625a70b2a3234766328407222e77da",
+    "src/reference/studio/request-ui.js": "3a1582a3eb53022badea85e6453112c54ae8690527d698b34caf77d03645260f",
+    "src/reference/studio/comparison-assembly.js": "b2eb2d8a8632e0476f8962ee6d1ef64468c8ce83506defd651728b1501e9f5b6",
+    "src/reference/studio/comparison-sections.css": "17f0bd427f1235d78c6247c934e141e4f68df7fcfdb7029d3b2eee2acd6c3aa9"
   },
   "included": [
-    "Eight base/refined design pairs in the comparison menu",
-    "Wide pricing cards, three review arrangements, spacious forms and varied footers",
-    "Two gradient palettes: mist and garden",
-    "Refined typography and spacing, palette selection preserved across design links",
-    "Standalone comparison form UI; existing main-page request delivery retained"
+    "26 block choices across 7 galleries and a shareable assembly with clean view",
+    "New pricing, horizontal reviews, split contact forms and social icons",
+    "Almost-white default for comparisons, blue hero and green pricing/footer",
+    "Unified header and section position preserved when switching designs",
+    "Variant 2 removed; existing main palette set, request flow and four-slide About preserved"
   ],
   "excluded": [
-    "Cancelled designs 5 and 8",
-    "Image and photo-animation experiments without site integration",
+    "Cancelled designs 2, 5 and 8",
+    "Image and animation experiments without site integration",
     "Stale draft reversions to published content, form and About carousel"
   ],
   "chat_checkpoints": {
-    "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a0c9-f314-7db2-ba2a-81bbfc46c0f1",
+    "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a2e7-d374-7ba1-a731-4c4181e9c53d",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4"
   }
 }

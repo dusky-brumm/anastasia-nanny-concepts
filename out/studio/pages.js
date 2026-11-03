@@ -1,11 +1,10 @@
-import {blocks,comparisonPalettes as palettes,fontSets,defaults,presets,explorationPalettes,designUrl,selectVariant} from './model.js?v=f566d749e6';
-import {renderSite,renderBlock,renderEditorial,renderPencilPreview} from './render.js?v=f566d749e6';
-import {seoHead} from './seo.js?v=f566d749e6';
+import {blocks,comparisonPalettes as palettes,fontSets,defaults,presets,explorationPalettes,designUrl,selectVariant} from './model.js?v=ed1f7747c1';
+import {renderSite,renderBlock,renderEditorial,renderPencilPreview} from './render.js?v=ed1f7747c1';
+import {seoHead} from './seo.js?v=ed1f7747c1';
 
 export const comparisonDesigns=[
   {mode:'comparison-current',file:'comparison-current.html',name:'Текущий',reviews:'cards',form:1,footer:3,refinement:'quiet'},
   {mode:'pencil',file:'pencil-preview.html',name:'Вариант 1',reviews:'open',form:2,footer:2,refinement:'letter'},
-  {mode:'pencil-journal',file:'pencil-journal.html',name:'Вариант 2',reviews:'feature',form:1,footer:1,refinement:'journal'},
   {mode:'pencil-panorama',file:'pencil-panorama.html',name:'Вариант 3',reviews:'cards',form:2,footer:2,refinement:'panorama'},
   {mode:'pencil-album',file:'pencil-album.html',name:'Вариант 4',reviews:'feature',form:3,footer:5,refinement:'album'},
   {mode:'comparison-gradients',file:'comparison-gradients.html',name:'Вариант 6',reviews:'open',form:1,footer:2,refinement:'air'},
@@ -14,12 +13,117 @@ export const comparisonDesigns=[
 ];
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
+export const comparisonBlockChoices = {
+  pricing: ['Стоимость и гарантия', [
+    ['quiet','Светлая карточка',1], ['letter','Открытые колонки',1], ['album','Акцент на гарантии',1], ['route','Три условия в ряд',1], ['panorama','Цена над условиями',1],
+  ]],
+  reviews: ['Отзывы', [
+    ['quiet','Три карточки',1,'cards'], ['letter','Открытые цитаты',1,'open'], ['album','Широкие цитаты со стрелками',1,'ribbon'],
+  ]],
+  apply: ['Форма', [
+    ['quiet','Светлая карточка',1], ['letter','Тонкие линии',2], ['album','Мягкая рамка',3], ['route','Пунктирная рамка',3],
+  ]],
+  service: ['Об услуге', [
+    ['quiet','Три карточки с веточками',1], ['letter','Открытые строки',2], ['panorama','Запрос и результат',5],
+  ]],
+  about: ['Об Анастасии', [
+    ['quiet','Знакомство в четырёх кадрах',1], ['reference','Портрет и текст',2], ['letter','Личное письмо',3], ['album','Семейный альбом',4],
+  ]],
+  process: ['Маршрут', [
+    ['reference','Рисованные стрелки',1], ['air','Голубая волна',7], ['letter','Линия с иконками',6], ['album','Карточки на маршруте',8],
+  ]],
+  footer: ['Футер', [
+    ['quiet','Компактные контакты',3], ['letter','Меню и контакты',5], ['album','По центру',2],
+  ]],
+};
+
+const comparisonBaseTheme = 'almost-white';
+const comparisonState={layout:'161272113',palette:'sky',font:'golos'};
+const {id:baseThemeId, name:baseThemeName, ...baseColors} = explorationPalettes.find(item => item.id === comparisonBaseTheme);
+const comparisonBaseStyle = Object.entries({...baseColors, button:'#526c73', wine:baseColors.accent, pencil:baseColors.accent})
+    .map(([role, value]) => `--${role}:${value}`).join(';');
+
+function comparisonBlockGallery(blockId) {
+  const [title, choices] = comparisonBlockChoices[blockId];
+  const previews = choices.map(([style,label,variant,reviews='cards'], index) => {
+    const design = comparisonDesigns.find(item => item.refinement === style);
+    const previewFile = design.file.replace('.html','-refined.html') + '?v=ed1f7747c1';
+    const state = {...defaults, layout:design.layout ?? defaults.layout};
+    const context = {state, comparison:true, wavyArrows:design.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
+    return `<article id="choice-${index + 1}" class="block-compare-choice">
+      <header><h2>${label}</h2><div class="block-compare-actions">
+        <a href="${previewFile}#${blockId}">Макет в этом стиле ↗</a>
+        <a data-try-assembly="${blockId}" href="compare-assembly.html?v=ed1f7747c1&amp;${blockId}=${style}#${blockId}">Примерить в сборке</a>
+      </div></header>
+      <div class="site-preview comparison-design" data-block-style="${style}" data-review-layout="${reviews}" data-refinement="${style}" data-comparison-theme="${comparisonBaseTheme}" style="${comparisonBaseStyle}">
+        ${renderBlock(blockId,variant,context)}
+      </div>
+    </article>`;
+  });
+  return `<header class="block-compare-heading">
+    <div class="block-compare-actions"><a href="comparison-current.html?v=ed1f7747c1#${blockId}">← К целым макетам</a><a data-keep-assembly href="compare-assembly.html?v=ed1f7747c1">Собрать свой вариант ↗</a></div>
+    <h1>${title}</h1>
+    <nav aria-label="Блоки для сравнения">${Object.entries(comparisonBlockChoices).map(([key,[label]]) =>
+      `<a data-keep-assembly data-gallery-block="${key}" href="compare-block-${key}.html?v=ed1f7747c1"${key === blockId ? ' aria-current="page"' : ''}>${label}</a>`
+    ).join('')}</nav>
+    <nav aria-label="Варианты блока">${choices.map(([,label], index) => `<a href="#choice-${index + 1}">${label}</a>`).join('')}</nav>
+  </header>
+  <main class="block-compare-list">${previews.join('')}</main>`;
+}
+
+function comparisonAssembly() {
+  const order = ['service','about','process','pricing','reviews','apply','footer'];
+  const initial = {about:'reference'};
+  const top = ['header','hero'].map(id => {
+    const index = blocks.findIndex(block => block.id === id);
+    return renderBlock(id,comparisonState.layout[index],{state:comparisonState,comparison:true});
+  }).join('');
+  const parts = order.map(id => {
+    const [label, choices] = comparisonBlockChoices[id];
+    const selected = initial[id] ?? choices[0][0];
+    const previews = choices.map(([style,name,variant,reviews='cards']) => ({
+      style, name, reviews,
+      markup:renderBlock(id,variant,{
+        state:defaults,comparison:true,wavyArrows:style==='reference',
+        blockId:style===selected?id:`${id}-${style}`,
+        previewId:`assembly-quotes-${style}`,
+      }),
+    }));
+    const current = previews.find(preview => preview.style === selected);
+    return `<div class="assembly-part" data-assembly-part="${id}">
+      <div class="assembly-control">
+        <label>${label}<select data-assembly-choice>${previews.map(({style,name}) =>
+          `<option value="${style}"${style===selected?' selected':''}>${name}</option>`).join('')}</select></label>
+        <a data-assembly-gallery href="compare-block-${id}.html?v=ed1f7747c1">Сравнить варианты ↗</a>
+      </div>
+      <div class="comparison-design" data-assembly-preview data-block-style="${current.style}" data-refinement="${current.style}" data-review-layout="${current.reviews}">${current.markup}</div>
+      ${previews.filter(preview => preview.style !== selected).map(({style,reviews,markup}) =>
+        `<template data-style="${style}" data-reviews="${reviews}">${markup}</template>`).join('')}
+    </div>`;
+  }).join('');
+  return `<header class="block-compare-heading assembly-heading">
+    <a href="comparison-current.html?v=ed1f7747c1">← К целым макетам</a>
+    <h1>Собрать свой вариант</h1>
+    <p>Выбирайте оформление над каждым блоком. В ссылке сохраняется вся комбинация.</p>
+    <nav aria-label="Перейти к блоку">${order.map(id => `<a href="#${id}">${comparisonBlockChoices[id][0]}</a>`).join('')}</nav>
+    <div class="assembly-share">
+      <button type="button" data-copy-assembly>Скопировать ссылку</button>
+      <a href="?view=site" data-assembly-view>Посмотреть как сайт ↗</a>
+      <input readonly aria-label="Ссылка на сборку" data-assembly-url hidden>
+      <span role="status" data-assembly-status></span>
+    </div>
+    <a class="assembly-return" href="compare-assembly.html" data-assembly-view hidden>← Редактировать сборку</a>
+  </header>
+  <main class="site-preview comparison-design assembly-site" data-font="${defaults.font}" data-comparison-theme="${comparisonBaseTheme}" style="${comparisonBaseStyle}">
+    ${top}${parts}
+  </main>`;
+}
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
 const swatch=p=>`<span class="palette-swatch" aria-hidden="true">${[p.paper,p.wash,p.backing??p.soft,p.button??p.ink,p.wine].map(color=>`<i style="background:${color}"></i>`).join('')}</span>`;
 const selectedPalette=palettes.find(p=>p.id===defaults.palette);
 const designPanel=`<section class="design-panel" aria-label="Палитра текущего сайта">
-  <a class="design-panel-caption" href="comparison-current.html?v=f566d749e6">Варианты оформления ↗</a>
+  <a class="design-panel-caption" href="comparison-current.html?v=ed1f7747c1">Варианты оформления ↗</a>
   <details class="theme-picker">
     <summary><span>Палитра</span><span data-selected-palette>${swatch(selectedPalette)}<span>${selectedPalette.name}</span></span><span aria-hidden="true">⌄</span></summary>
     <div class="theme-options" role="group" aria-label="Выберите палитру">${palettes.map(p=>`<button type="button" data-palette="${p.id}" aria-pressed="${p.id===defaults.palette}">${swatch(p)}<span>${p.name}</span></button>`).join('')}</div>
@@ -52,47 +156,57 @@ ${isHero?'<div class="hero-gallery-controls" hidden><button class="tool-button" 
 ${block.variants.map((name,i)=>`<section class="library-option" id="variant-${i+1}" data-option="${i+1}"><header><div><p class="tool-kicker">ВАРИАНТ 0${i+1}</p><h2>${name}</h2>${isHero?`<p class="hero-direction">${heroDirections[i]}</p>`:''}</div><div class="library-actions"><a class="tool-link" data-open-option="${i+1}" href="${designUrl('preview.html',selectVariant(defaults,block.id,i+1),block.id)}" target="_blank" rel="noopener">На странице ↗</a><a class="tool-button" data-pick-block="${block.id}" data-pick-value="${i+1}" href="${designUrl('studio.html',selectVariant(defaults,block.id,i+1),block.id)}">Выбрать этот вариант</a></div></header><div class="site-preview" data-font="${defaults.font}" data-palette="${defaults.palette}">${renderBlock(block.id,i+1,{library:true,state:defaults})}</div></section>`).join('')}</main>`;
 }
 export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') {
-  const title=mode==='studio'?`Конструктор сайта — ${compositionCount} вариантов блоков`:mode==='library'?'Варианты блока — Настя':'Настя — индивидуальный подбор няни';
+  const blockCompare=mode==='comparison-library';
+  const assembling=mode==='comparison-assembly';
+  const title=assembling?'Собрать свой вариант — Настя':blockCompare?`${comparisonBlockChoices[blockId][0]} — сравнение вариантов`:mode==='studio'?`Конструктор сайта — ${compositionCount} вариантов блоков`:mode==='library'?'Варианты блока — Настя':'Настя — индивидуальный подбор няни';
   const content=mode==='studio'?`<header class="tool-top"><div><a class="tool-brand" data-back-builder href="./">НАСТЯ · ДИЗАЙН САЙТА</a><h1>Конструктор дизайна</h1><p>${compositionCount} композиций для 9 блоков · пастельные палитры · 4 набора шрифтов</p></div><a class="tool-button tool-button--dark" data-open-preview href="${designUrl('preview.html',defaults)}" target="_blank" rel="noopener">Открыть выбранный сайт ↗</a></header><main class="studio-workspace"><button class="mobile-settings-toggle tool-button" type="button" data-mobile-settings aria-expanded="false" aria-controls="studio-settings">Настроить блоки, цвета и шрифты</button>${controls()}<section class="studio-canvas" aria-label="Предпросмотр сайта"><div class="canvas-toolbar"><span data-current-design>Голубой и молочный · Manrope + Golos Text</span><div><button type="button" data-view="desktop" aria-pressed="true">Компьютер</button><button type="button" data-view="mobile" aria-pressed="false">Телефон</button></div></div><div class="site-preview" data-site-root data-font="${defaults.font}" data-palette="${defaults.palette}">${renderSite(defaults)}</div></section></main>`:mode==='library'?library(blockId):`<main class="site-preview" data-site-root data-font="${defaults.font}" data-palette="${defaults.palette}">${renderSite(defaults)}</main>`;
-  const comparisonState={layout:'161272113',palette:'sky',font:'golos'};
   const editorial=mode==='editorial';
   const refined=mode.endsWith('-refined');
   const design=comparisonDesigns.find(item=>item.mode===(refined?mode.slice(0,-8):mode));
   const comparing=Boolean(design);
   const pencil=design?.mode.startsWith('pencil');
-  const pencilSwitcher=comparing?`<nav class="pencil-comparison" aria-label="Сравнить варианты">
+  const defaultComparisonPalette=comparisonBaseTheme;
+  const pencilSwitcher=comparing?`<nav class="pencil-comparison" data-default-palette="${defaultComparisonPalette}" aria-label="Сравнить варианты">
     <div class="comparison-palette" role="group" aria-label="Палитра">
-      <a class="comparison-home" href="./?v=f566d749e6">Основной сайт</a>
+      <a class="comparison-home" href="./?v=ed1f7747c1">Основной сайт</a>
       <div class="comparison-palette-options">
-      <button type="button" data-comparison-palette="" aria-pressed="true">Исходная</button>
-${explorationPalettes.map(({id,name,...colors})=>`<button type="button" data-comparison-palette="${id}" data-colors='${JSON.stringify(colors)}' aria-pressed="false">${name}</button>`).join('')}
+      <button type="button" data-comparison-palette="" aria-pressed="false">Исходная</button>
+      ${explorationPalettes.map(({id,name,...colors})=>`<button type="button" data-comparison-palette="${id}" data-colors='${JSON.stringify(colors)}' aria-pressed="${id===defaultComparisonPalette}">${name}</button>`).join('')}
       </div>
-      <details class="comparison-colors">
-        <summary>Настроить цвета</summary>
-        <div class="comparison-color-panel">
-${Object.entries({paper:'Молочный фон',wash:'Голубой блок',soft:'Зелёный блок',ink:'Текст',button:'Кнопка заявки'}).map(([role,label])=>`
-            <label>${label}<input type="color" data-color-role="${role}" disabled><output></output></label>`).join('')}
-          <p data-color-hint>Выбери палитру, чтобы изменить цвета.</p>
-        </div>
-      </details>
     </div>
     <div class="comparison-pairs">${comparisonDesigns.map(item=>`<div class="comparison-pair">
-      <a href="${item.file}?v=f566d749e6"${mode===item.mode?' aria-current="page"':''}>${item.name}</a>
-      <a href="${item.file.replace('.html','-refined.html')}?v=f566d749e6"${mode===item.mode+'-refined'?' aria-current="page"':''} aria-label="${item.name} — улучшенный">Улучшенный</a>
+      <a href="${item.file}?v=ed1f7747c1"${mode===item.mode?' aria-current="page"':''}>${item.name}</a>
+      <a href="${item.file.replace('.html','-refined.html')}?v=ed1f7747c1"${mode===item.mode+'-refined'?' aria-current="page"':''} aria-label="${item.name} — улучшенный">Улучшенный</a>
     </div>`).join('')}</div>
+    <div class="block-compare-actions">
+      <a class="block-compare-link" href="compare-block-pricing.html?v=ed1f7747c1">Сравнить отдельные блоки ↗</a>
+      <a class="block-compare-link" href="compare-assembly.html?v=ed1f7747c1">Собрать свой вариант ↗</a>
+    </div>
   </nav>`:'';
   const description=mode==='preview'||editorial||comparing?'Личный подбор няни под задачи вашей семьи. Поиск, интервью и сопровождение. Анастасия Доронина.':`${compositionCount} композиций блоков сайта, пастельные палитры и согласованные наборы шрифтов.`;
-  let pageContent=content;
+  let pageContent=assembling?comparisonAssembly():blockCompare?comparisonBlockGallery(blockId):content;
   if(editorial)pageContent=`<main class="site-preview editorial" data-font="${defaults.font}">${renderEditorial(defaults)}</main>`;
   if(design){
     let state={...comparisonState,layout:design.layout??comparisonState.layout};
     if(design.process)state=selectVariant(state,'process',design.process);
+    if (refined) {
+      const changes = {
+        quiet: {about:1},
+        letter: {service:2,about:3},
+        panorama: {service:5,process:6},
+        album: {about:4,process:8},
+        air: {about:5},
+      }[design.refinement] ?? {};
+      for (const [block, variant] of Object.entries(changes)) {
+        state = selectVariant(state,block,variant);
+      }
+    }
     state=selectVariant(state,'apply',refined?({1:2,2:1,3:1})[design.form]:design.form);
     state=selectVariant(state,'footer',refined?({1:3,2:5,3:2,5:1})[design.footer]:design.footer);
-    const reviewLayout=refined?({cards:'feature',feature:'open',open:'cards'})[design.reviews]:design.reviews;
+    const reviewLayout=refined?({cards:'ribbon',feature:'open',open:'cards'})[design.reviews]:design.reviews;
     const context={comparison:true,wavyArrows:design.wavyArrows};
     const markup=pencil?renderPencilPreview(state,design.mode,context):renderSite(state,context);
-    pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}"${refined?` data-refinement="${design.refinement}"`:''}>${markup}</main>`;
+    pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${design.refinement}"${refined?` data-refinement="${design.refinement}"`:''}>${markup}</main>`;
   }
   return `<!doctype html>
 <html lang="ru"><head>
@@ -100,14 +214,13 @@ ${Object.entries({paper:'Молочный фон',wash:'Голубой блок'
 ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6ec">
 <link rel="preload" href="fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="studio/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=f566d749e6"><link rel="stylesheet" href="studio/fonts.css?v=f566d749e6">
-<link rel="stylesheet" href="journeys.css?v=f566d749e6"><link rel="stylesheet" href="studio/site.css?v=f566d749e6"><link rel="stylesheet" href="studio/ui.css?v=f566d749e6">
-${editorial?'<link rel="stylesheet" href="studio/editorial.css?v=f566d749e6">':''}
-${comparing?'<link rel="stylesheet" href="studio/pencil-preview.css?v=f566d749e6">':''}
-${comparing?'<link rel="stylesheet" href="studio/comparison-design.css?v=f566d749e6">':''}
-<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=f566d749e6"></script>
-${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=f566d749e6"></script>':''}
-${comparing?'<script defer src="studio/comparison-palettes.js?v=f566d749e6"></script>':''}
-${comparing?'<script defer src="studio/comparison-request.js?v=f566d749e6"></script>':''}
+<link rel="stylesheet" href="fonts.css?v=ed1f7747c1"><link rel="stylesheet" href="studio/fonts.css?v=ed1f7747c1">
+<link rel="stylesheet" href="journeys.css?v=ed1f7747c1"><link rel="stylesheet" href="studio/site.css?v=ed1f7747c1"><link rel="stylesheet" href="studio/ui.css?v=ed1f7747c1">
+${editorial?'<link rel="stylesheet" href="studio/editorial.css?v=ed1f7747c1">':''}
+${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/pencil-preview.css?v=ed1f7747c1"><link rel="stylesheet" href="studio/comparison-design.css?v=ed1f7747c1"><link rel="stylesheet" href="studio/comparison-sections.css?v=ed1f7747c1">':''}
+<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=ed1f7747c1"></script>
+${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=ed1f7747c1"></script>':''}
+${comparing||blockCompare||assembling?'<script defer src="studio/comparison-palettes.js?v=ed1f7747c1"></script><script defer src="studio/comparison-request.js?v=ed1f7747c1"></script>':''}
+${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=ed1f7747c1"></script>':''}
 </head><body class="design-tool ${mode==='preview'||(comparing&&!pencil)?'preview-only':''}" data-mode="${design?.mode??mode}" data-library-block="${blockId}"${pageFile==='index.html'?' data-live-request':''}>${mode==='preview'?designPanel:pencilSwitcher}${pageContent}${privacy}<noscript><p class="tool-noscript">${mode==='preview'||editorial||comparing?'Для подготовки заявки включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }

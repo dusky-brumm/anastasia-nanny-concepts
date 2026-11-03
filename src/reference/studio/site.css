@@ -76,7 +76,28 @@
 .s-brand i {font-style:normal;color:var(--accent);margin:0 4px}
 .s-nav {display:flex;align-items:center;justify-content:center;gap:22px;font-size:13px}
 .s-nav a {padding:9px 0}
-.s-header .s-button {font-size:13px;min-height:44px;padding:11px 18px;gap:16px}
+.s-header-socials {display:flex;align-items:center;gap:6px}
+.s-header-socials > :is(a,span) {display:grid;place-items:center;width:28px;height:34px;padding:0}
+.s-header-socials svg {
+  width:19px;
+  height:19px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.35;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.s-header-socials a:hover {color:var(--accent)}
+.s-header-brand {
+  font:500 11px/1.5 var(--body);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+:is(.s-header,.e-header)>.s-nav {margin-inline-start:auto;flex-shrink:0}
+@container (max-width:930px) {
+  :is(.s-header,.e-header)>.s-nav {display:none}
+  :is(.s-header,.e-header)>.s-menu {display:block;margin-inline-start:auto;flex-shrink:0}
+}
 .s-menu {display:none;position:relative}
 .s-menu summary {list-style:none;width:42px;height:42px;border:1px solid var(--accent);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer}
 .s-menu summary::-webkit-details-marker {display:none}
@@ -87,17 +108,9 @@
 .s-menu-links {position:absolute;right:0;top:46px;z-index:10;width:220px;padding:18px;background:var(--paper);border:1px solid #a5b9ad;border-radius:10px;box-shadow:0 8px 24px #293c3722;display:grid;gap:8px;justify-content:stretch;font-size:13px}
 .s-menu[open] .s-menu-links {animation:s-menu-appear .16s ease-out}
 @keyframes s-menu-appear {from {opacity:0;translate:0 -4px}to {opacity:1;translate:0 0}}
-.s-header--2 {display:block;border-bottom:1px solid #9eafa633}
-.s-header-top {display:flex;align-items:center;justify-content:space-between;gap:20px}
-.s-header--2 .s-header-top {display:grid;grid-template-columns:1fr 1fr}
-.s-header--2 .s-header-top>.s-text-link {justify-self:start}
-.s-header--2 .s-header-top>.s-button {justify-self:end}
-.s-header--2>.s-nav {margin-top:20px}
+.s-header--2 {border-bottom:1px solid #9eafa633}
 .s-header--3 {margin:20px 24px;border-radius:50px;padding:15px 22px;background:var(--wash)}
-.s-header--4 {display:block;background:var(--paper)}
-.s-header-top p,.s-header-caption {font-size:12px!important;color:var(--accent)}
-.s-header-bottom {margin-top:20px;padding-top:15px;border-top:1px solid #9eafa644;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.s-header--5>.s-menu {display:block}
+.s-header--4 {background:var(--paper)}
 
 /* 2. First screens */
 .s-hero {display:grid;grid-template-columns:1.1fr 1fr;gap:5cqw;align-items:center;padding-top:25px}
@@ -420,15 +433,6 @@
 .s-footer--5 .s-footer-contact {justify-content:flex-end}
 
 @container (max-width:850px) {
-  .s-header>.s-nav,.s-header--2>.s-nav,.s-header-bottom>.s-nav {display:none}
-  .s-header .s-menu {display:block;margin-inline-start:auto}
-  .s-header--2 {display:flex;gap:18px}
-  .s-header--2 .s-header-top {display:flex;flex:1}
-  .s-header--2 .s-header-top>.s-text-link {display:none}
-  .s-header--2 .s-brand {white-space:normal}
-  .s-header--4 .s-header-bottom {justify-content:space-between}
-  .s-header-top p,.s-header-caption {display:none}
-  .s-header--5>.s-text-link {display:none}
   .s-hero {gap:28px;grid-template-columns:1.15fr 1fr}
   .s-hero--1 h1,.s-hero--3 h1,.s-hero--4 h1 {font-size:38px}
   .s-hero--1 .s-actions,.s-hero--3 .s-actions {gap:14px}
@@ -450,14 +454,9 @@
   .site-preview .journey p,.site-preview .journey--1 p {font-size:16px;line-height:1.5}
 }
 @container (max-width:700px) {
-  .s-block {padding:44px 24px}
-  .s-header {padding:21px 24px;gap:15px}
-  .s-header .s-button {display:none}
+  .s-block {padding:36px 24px}
+  .s-header {padding:14px 24px;gap:15px}
   .s-header--3 {margin:16px 14px;padding:14px 16px}
-  .s-header--2 .s-header-top {justify-content:start}
-  .s-header--4 .s-header-top>.s-text-link {display:none}
-  .s-header--4 .s-header-bottom {margin-top:10px;padding-top:10px}
-  .s-header--4 .s-header-bottom>.s-button {display:inline-flex}
   .s-hero,.s-hero--3,.s-hero--4 {display:flex;flex-direction:column;align-items:stretch;gap:30px;padding-top:28px}
   .s-hero--1 h1,.s-hero--3 h1 {font-size:clamp(30px,9.6cqw,40px)}
   .s-hero--2 h1,.s-hero--5 h1 {font-size:clamp(30px,8.9cqw,36px);max-width:none}

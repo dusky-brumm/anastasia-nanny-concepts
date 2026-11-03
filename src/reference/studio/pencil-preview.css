@@ -137,7 +137,6 @@
 }
 .pencil-preview .s-block {padding-inline:var(--pencil-inset)}
 .pencil-header {border-bottom:1px solid #63757725}
-.pencil-brand {font:500 14px/1.3 var(--heading);letter-spacing:.08em;text-transform:uppercase}
 .pencil-hero {
   display:grid;
   grid-template-columns:1fr 1.12fr;
@@ -185,7 +184,6 @@
   --wine:#6c7979;
 }
 .pencil-journal .pencil-header {padding-block:20px;border:0}
-.pencil-journal .pencil-brand {font-size:10px;letter-spacing:.14em}
 .pencil-journal .s-nav {font-size:12px;gap:20px}
 .pencil-journal-hero {
   display:grid;

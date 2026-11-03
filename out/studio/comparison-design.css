@@ -30,7 +30,6 @@
   font-size:12px;
 }
 .comparison-pair a:nth-child(2):not([aria-current]) {background:#e8efec}
-.comparison-colors .comparison-color-panel {inset-inline:auto 0}
 .pencil-comparison + .comparison-design [id] {scroll-margin-top:var(--comparison-offset,126px)}
 
 .comparison-design {
@@ -85,32 +84,7 @@
 .comparison-design .s-review-grid {gap:clamp(14px,2cqw,24px)}
 .comparison-design .s-reviews .s-review {border-radius:var(--design-radius)}
 .comparison-design .s-family-story {max-width:none;background:var(--design-card)}
-.comparison-design[data-review-layout=open] .s-review-grid {grid-template-columns:1fr;gap:0}
-.comparison-design[data-review-layout=open] .s-review-grid .s-review {
-  display:grid;
-  grid-template-columns:24px minmax(0,1fr) minmax(145px,.42fr);
-  gap:16px;
-  align-items:center;
-  padding:22px 0;
-  background:transparent;
-  border:0;
-  border-top:1px solid var(--design-line);
-  border-radius:0;
-  box-shadow:none;
-}
-.comparison-design[data-review-layout=open] .s-review-grid footer {margin:0}
-.comparison-design[data-review-layout=feature] .s-reviews {
-  display:grid;
-  grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
-  gap:18px clamp(24px,4cqw,52px);
-}
-.comparison-design[data-review-layout=feature] .s-review-heading {grid-column:1/-1;margin-bottom:0}
-.comparison-design[data-review-layout=feature] .s-review-grid {grid-column:2;grid-row:2;grid-template-columns:1fr}
 .comparison-design[data-review-layout=feature] .s-family-story {
-  grid-column:1;
-  grid-row:2;
-  align-self:start;
-  margin:0;
   padding:clamp(24px,4cqw,50px);
 }
 .comparison-design[data-review-layout=feature] .s-family-story h3 {font:500 clamp(24px,3cqw,38px)/1.16 var(--heading)}
@@ -194,12 +168,21 @@
   background:radial-gradient(ellipse at 28% 30%,var(--soft),color-mix(in srgb,var(--soft) 45%,var(--paper)));
 }
 
+.comparison-design[data-comparison-theme=almost-white] #hero {
+  background:radial-gradient(ellipse 65% 80% at 50% 48%,var(--wash),transparent 78%),var(--paper);
+}
+
+.comparison-design[data-comparison-theme=almost-white] .s-pricing {
+  background:radial-gradient(ellipse 65% 80% at 50% 48%,var(--soft),transparent 78%),var(--paper);
+}
+
+.comparison-design[data-comparison-theme=almost-white] .s-footer {
+  background:var(--soft);
+}
+
 @container (max-width:760px) {
-  .comparison-price-sheet,.comparison-design[data-review-layout=feature] .s-reviews,
+  .comparison-price-sheet,
   .comparison-design :is(.s-apply--1,.s-apply--3) {grid-template-columns:minmax(0,1fr)}
-  .comparison-design[data-review-layout=feature] :is(.s-review-grid,.s-family-story) {grid-column:auto;grid-row:auto}
-  .comparison-design[data-review-layout=open] .s-review-grid .s-review {grid-template-columns:20px minmax(0,1fr);gap:8px}
-  .comparison-design[data-review-layout=open] .s-review-grid footer {grid-column:2}
   .comparison-design .s-review-grid {grid-template-columns:1fr}
   .comparison-design .s-footer--5 .s-nav {grid-column:auto;grid-row:auto}
   .comparison-design[data-refinement=reference] .s-hero--1 .s-main-portrait {max-width:380px}

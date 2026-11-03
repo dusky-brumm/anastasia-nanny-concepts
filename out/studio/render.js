@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=f566d749e6';
-import {renderJourney} from '../journeys.js?v=f566d749e6';
-import {contacts,selectionFaq} from './content.js?v=f566d749e6';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=ed1f7747c1';
+import {renderJourney} from '../journeys.js?v=ed1f7747c1';
+import {contacts,selectionFaq} from './content.js?v=ed1f7747c1';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -24,7 +24,7 @@ const testimonials=[
 const outcomes=[['Заявка','Обсуждаем семью, задачи, график и ваши пожелания.'],['Портрет няни','Вы согласовываете критерии поиска и подробное описание вакансии.'],['Поиск и интервью','Получаете подходящие профили с моими личными комментариями.'],['Знакомство','Встречаетесь с кандидатами и выбираете няню для пробных дней.'],['Сопровождение','Получаете поддержку после выхода няни и гарантию замены на шесть месяцев.']];
 const scribble='<svg class="s-scribble" viewBox="0 0 130 40" aria-hidden="true"><path d="M3 29C25 3 54 5 62 21s-17 24-16 6S100 3 124 19m-8-3 10 3-7 8"/></svg>';
 const sun='<svg class="s-sun" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="11"/><path d="M30 2v10m0 36v10M2 30h10m36 0h10M10 10l7 7m26 26 7 7M10 50l7-7m26-26 7-7"/></svg>';
-function linkTo(id,ctx) {return ctx.library?designUrl('preview.html',ctx.state,id):'#'+id;}
+function linkTo(id,ctx) {return ctx.previewFile?`${ctx.previewFile}#${id}`:ctx.library?designUrl('preview.html',ctx.state,id):'#'+id;}
 function action(ctx,label='Оставить заявку',secondary=false) {return `<a class="s-button${secondary?' s-button--light':''}" href="${linkTo('apply',ctx)}">${label}<span aria-hidden="true">→</span></a>`;}
 function tg(label='Написать в Telegram') {return `<a class="s-text-link" href="${telegram}" target="_blank" rel="noopener noreferrer">${label} <span aria-hidden="true">↗</span></a>`;}
 function photo(type='cafe',cls='',priority=false) {
@@ -85,13 +85,19 @@ ${variant===8?`<use class="s-portrait-contour s-portrait-contour--echo" href="#$
 }
 function title(text) {return `<div class="s-section-heading"><h2>${text}</h2></div>`;}
 function items(list,cls='') {return `<div class="s-items ${cls}">${list.map(([a,b],i)=>`<article><span class="s-index" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><h3>${a}</h3><p>${b}</p></article>`).join('')}</div>`;}
-function nav(ctx,cls='') {return `<nav class="s-nav ${cls}" aria-label="Меню сайта">${[['service','О подборе'],['about','Обо мне'],['process','Этапы'],['pricing','Стоимость'],['reviews','Отзывы']].map(([id,name])=>`<a href="${linkTo(id,ctx)}">${name}</a>`).join('')}</nav>`;}
-function menu(ctx) {return `<details class="s-menu"><summary aria-label="Открыть меню"><span></span><span></span><span></span></summary>${nav(ctx,'s-menu-links')}</details>`;}
-function header(v,c) {
-  if(v===2)return `<div class="s-header-top">${tg('Telegram')}${action(c,'Обсудить подбор')}</div>${nav(c)}${menu(c)}`;
-  if(v===4)return `<div class="s-header-top">${tg('Telegram')}</div><div class="s-header-bottom">${nav(c)}${menu(c)}</div>`;
-  const identity=c.comparison?'<a class="pencil-brand" href="#hero">Анастасия Доронина</a>':'';
-  return `${identity}${nav(c)}${v===5?tg('Telegram'):''}${menu(c)}`;
+const headerSocials = `<div class="s-header-socials">
+  <a href="${telegram}" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.7 21 4 17.2 20l-5.5-4.3-3 2.8-.1-5.2L3 10.7ZM8.6 13.3 17.5 7.5l-5.8 8.2"/></svg>
+  </a>
+  <span role="img" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.9c2.7-.2 5.6-.2 8.1 0 2.6.1 4 1.6 4 4.1.1 2.6.1 5.5 0 8-.1 2.6-1.6 4-4.1 4.1-2.8.1-5.4.1-8 0-2.6-.1-4.1-1.6-4.1-4.1-.1-2.7-.1-5.4 0-8 .1-2.5 1.6-4 4.1-4.1Z"/><path d="M15.3 12a3.3 3.3 0 1 1-6.6 0 3.3 3.3 0 0 1 6.6 0Z"/><circle cx="16.8" cy="7.3" r=".5"/></svg>
+  </span>
+</div>`;
+
+function nav(ctx,cls='',leading='') {return `<nav class="s-nav ${cls}" aria-label="Меню сайта">${leading}${[['service','О подборе'],['about','Обо мне'],['process','Этапы'],['pricing','Стоимость'],['reviews','Отзывы']].map(([id,name])=>`<a href="${linkTo(id,ctx)}">${name}</a>`).join('')}</nav>`;}
+function menu(ctx) {return `<details class="s-menu"><summary aria-label="Открыть меню"><span></span><span></span><span></span></summary>${nav(ctx,'s-menu-links',headerSocials)}</details>`;}
+function header(_variant,ctx) {
+  return `<a class="s-header-brand" href="${linkTo('hero',ctx)}">Анастасия Доронина · Индивидуальный подбор нянь</a>${nav(ctx,'',headerSocials)}${menu(ctx)}`;
 }
 function hero(v,c) {
   const application=`<div class="s-actions"><a class="s-button" href="${linkTo('apply',c)}">Оставить заявку</a></div>`;
@@ -186,15 +192,15 @@ function pricing(v,c) {
       <div class="comparison-price-main">
         <p class="comparison-price-label">Стоимость подбора</p>
         <h3>Один оклад няни</h3>
-        <p>За поиск, собеседования и сопровождение семьи.</p>
+        <p>В стоимость входят поиск, собеседования и сопровождение семьи.</p>
+        <a class="s-text-link comparison-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a>
       </div>
       <dl class="comparison-price-terms">
-        <div><dt>Предоплата</dt><dd>25&nbsp;000&nbsp;₽</dd></div>
-        <div><dt>Остаток</dt><dd>После одной-двух пробных недель</dd></div>
-        <div><dt>Гарантия бесплатной замены</dt><dd>6 месяцев</dd></div>
+        <div><dt>Предоплата</dt><dd>25&nbsp;000&nbsp;₽ <small>При начале подбора</small></dd></div>
+        <div><dt>Остаток</dt><dd>Через 1–2 пробные недели</dd></div>
+        <div class="comparison-guarantee"><dt>Бесплатная замена</dt><dd>6 месяцев</dd></div>
       </dl>
-      <a class="s-text-link comparison-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a>
-    </div>${faq()}`;
+    </div>${c.previewFile?'':faq()}`;
   const price=`<div class="s-price"><h3>1 оклад няни</h3><p>Предоплата — 25&nbsp;000&nbsp;₽.<br>Остаток — после одной-двух пробных недель.</p>${action(c,'Обсудить подбор')}</div>`;
   const terms=items(conditions,'s-conditions');
   return `${title('Стоимость подбора няни')}<div class="s-pricing-layout">${price}${terms}</div><a class="s-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробнее об условиях в Telegram ↗</a>${faq()}`;
@@ -211,17 +217,28 @@ function reviews(v,c) {
   if(v===1||v===2) {
     const sparkle='<svg class="s-review-sparkle" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2C16 11 11 16 2 16c9 0 14 5 14 14 0-9 5-14 14-14C21 16 16 11 16 2Z"/></svg>';
     const heart='<svg class="s-review-heart" viewBox="0 0 54 50" aria-hidden="true"><path d="M15 42C12 33 4 10 16 10c6 0 7 7 7 13C30 7 45 3 48 13c3 10-17 22-33 29 10-2 18-3 26-2"/></svg>';
+    if(!c.comparison){
     const [natalia,julia,anastasia]=testimonials;
     return `<div class="s-review-heading"><h2>Отзывы${sparkle}</h2><a class="s-review-more" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Смотреть больше отзывов <span aria-hidden="true">→</span></a></div><div class="s-review-grid">${reviewCard(anastasia)}${reviewCard(natalia)}${reviewCard(julia,heart)}</div>${story}`;
+    }
+    return `<div class="s-review-heading"><h2>Отзывы и история семьи${sparkle}</h2><a class="s-review-more" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Смотреть отзывы в Telegram <span aria-hidden="true">→</span></a></div>
+    ${c.comparison?`<div class="comparison-quote-strip">
+      <div class="s-review-grid" id="${c.previewId??'comparison-quotes'}" tabindex="0" role="region" aria-label="Цитаты семей">${testimonials.map(row=>reviewCard(row)).join('')}</div>
+      <div class="comparison-quote-controls" hidden>
+        <button type="button" data-quote-step="-1" aria-controls="${c.previewId??'comparison-quotes'}" aria-label="Предыдущий отзыв">←</button>
+        <button type="button" data-quote-step="1" aria-controls="${c.previewId??'comparison-quotes'}" aria-label="Следующий отзыв">→</button>
+      </div>
+    </div>`:`<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div>`}
+    <article class="s-review s-family-story">${heart}<h3>Первая кандидатка осталась на полтора года</h3><p>Светлана была первой няней, которую я предложила семье. Она работала с ребёнком до его выхода в детский сад, а затем перешла в другую семью, которой я помогала с подбором.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть анкету Светланы ↗</a></article>`;
   }
   return `${title('Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
 }
 function form(comparison=false) {return `<form class="s-consult-form" method="post"><div hidden><label>Сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="${comparison?4:3}" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><p class="s-form-note">Вы получите текст сообщения для отправки Анастасии в Telegram. Данные здесь не сохраняются.</p><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div></div><p class="s-request-status" role="status"></p></form>`;}
-function apply(v,c) {if(c.comparison)return `<div class="s-apply-intro">${title('Обсудить подбор')}<p>Оставьте контакт, чтобы договориться о созвоне.</p></div>${form(true)}`;return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
+function apply(v,c) {if(c.comparison)return `<div class="s-apply-intro">${title('Обсудить подбор')}<p>Оставьте контакт, чтобы договориться о созвоне.</p><div class="comparison-form-contact">${tg('Написать в Telegram')}</div></div>${form(true)}`;return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
 function footer(v,c) {
   if(!c.comparison)return `<div class="s-footer-contact">${tg('Telegram')}<button type="button" class="s-privacy">О данных формы</button></div>`;
-  const identity=c.comparison?'<div class="comparison-footer-name"><a href="#hero">Анастасия Доронина</a><p>Личный подбор нянь</p></div>':'';
-  return `${identity}${v!==2&&v!==3?nav(c):''}<div class="s-footer-contact">${tg('Связаться в Telegram')}<button type="button" class="s-privacy">О данных формы</button></div><p class="s-copyright">© 2026 Анастасия Доронина</p>`;
+  const identity=c.comparison?`<div class="comparison-footer-name"><a href="${linkTo('hero',c)}">Анастасия Доронина</a><p>Индивидуальный подбор нянь</p></div>`:'';
+  return `${identity}${v!==2&&v!==3?nav(c):''}<div class="s-footer-contact">${c.comparison?headerSocials:tg('Связаться в Telegram')}<button type="button" class="s-privacy">О данных формы</button></div><p class="s-copyright">© 2026 Анастасия Доронина</p>`;
 }
 const renderers={header,hero,service,about,process,pricing,reviews,apply,footer};
 export function renderBlock(id,value,context={}) {
@@ -229,7 +246,7 @@ export function renderBlock(id,value,context={}) {
   const block=blocks.find(b=>b.id===id)??blocks[0];
   const v=variantNumber(block,value)||1;
   const previousReviews=id==='reviews'&&v===1&&ctx.state.version==='previous'?' s-reviews--previous':'';
-  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
+  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library||context.previewFile?'':`id="${context.blockId??block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }
 const siteOrder=['header','hero','service','about','process','pricing','reviews','apply','footer'];
 export function renderSite(state, options={}) {
@@ -308,7 +325,6 @@ const pencilNewLayouts = {
 function pencilNewHero({edge,height=480}) {
   return `<section class="s-block pencil-new-hero" id="hero" aria-labelledby="pencil-title">
     <div class="pencil-headline">
-      <p class="pencil-label">Анастасия Доронина · личный подбор нянь</p>
       <h1 id="pencil-title">${headline}</h1>
     </div>
     <figure class="pencil-portrait">
@@ -335,12 +351,10 @@ export function renderPencilPreview(state, mode='pencil', options={}) {
   const sections=siteOrder.slice(2);
   return `
     <header class="s-block s-header pencil-header" id="header">
-      <a class="pencil-brand" href="#hero">${journal?'Личный подбор нянь':'Анастасия Доронина'}</a>
-${nav(ctx)}${menu(ctx)}
+      ${header(1,ctx)}
     </header>
 ${layout?pencilNewHero(layout):journal?pencilJournalHero():`<section class="s-block pencil-hero" id="hero" aria-labelledby="pencil-title">
       <div class="pencil-headline">
-        <p class="pencil-label">Индивидуальный подбор нянь</p>
         <h1 id="pencil-title">${headline}</h1>
       </div>
       <figure class="pencil-portrait">
@@ -384,8 +398,7 @@ export function renderEditorial(state) {
     </filter>
   </svg>
   <header class="e-section e-header" id="header">
-    <a class="e-brand" href="#hero">Анастасия Доронина <small>Личный подбор нянь</small></a>
-${nav(ctx)}${menu(ctx)}<a class="s-button" href="#apply">Обсудить подбор</a>
+    ${header(1,ctx)}
   </header>
   <section class="e-section e-hero" id="hero">
     <div class="e-stage">
@@ -393,7 +406,7 @@ ${nav(ctx)}${menu(ctx)}<a class="s-button" href="#apply">Обсудить под
         <path d="M34 112C18 50 41 25 111 20C268 9 511 20 642 13C689 11 709 39 706 91M705 375C714 460 703 529 652 541C532 567 352 533 183 548C110 555 68 552 48 533"/>
         <path d="M471 554C557 563 654 559 682 529"/>
       </svg>
-      <div class="e-hero-title"><span class="e-label">Индивидуальный подбор нянь</span><h1>${editorialContour([['Найду няню,'],['с которой спокойно'],['вам и хорошо ребёнку']])}</h1></div>
+      <div class="e-hero-title"><h1>${editorialContour([['Найду няню,'],['с которой спокойно'],['вам и хорошо ребёнку']])}</h1></div>
       <div class="e-hero-photo">${photo('cafe','',true)}</div>
       <div class="e-hero-note"><p>${introduction}</p><a class="s-button" href="#apply">Оставить заявку</a></div>
       <svg class="e-hero-sprig" viewBox="0 0 152 72" aria-hidden="true" focusable="false">

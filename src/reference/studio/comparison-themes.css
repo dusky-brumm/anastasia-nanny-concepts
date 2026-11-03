@@ -1,5 +1,7 @@
 .comparison-theme {display:inline-flex;align-items:center;gap:7px;min-width:0;font:500 13px/1.4 'Golos Text',sans-serif}
 .comparison-theme select {max-width:100%;min-width:0;min-height:36px;padding:4px 7px;border:1px solid #c9d4cd;border-radius:7px;background:#fff;color:#203e34;font:inherit}
+#hero img[src$="/family.webp"] {object-position:50% 38%}
+#about img[src$="/about-portrait.webp"] {object-position:50% 41%}
 html:not(.is-embedded) :is([data-rework-bar],[data-design-bar]) {position:sticky;top:0;z-index:40}
 :is(.rework-bar-inner,.design-bar__inner,.review-controls):has(.comparison-theme) {flex-wrap:wrap}
 @media(max-width:620px) {

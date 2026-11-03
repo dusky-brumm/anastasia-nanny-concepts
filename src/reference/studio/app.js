@@ -9,6 +9,13 @@ if(mode==='studio'&&!explicit){try{state=normalizeState(JSON.parse(localStorage.
 const root=document.querySelector('[data-site-root]');
 const versionMenu=document.querySelector('.version-menu');
 if(root)root.innerHTML=renderSite(state);
+else if(state.palette==='sky-previous')renderReviews();
+
+function renderReviews() {
+  document.querySelectorAll('[data-block="reviews"][data-variant="1"]').forEach(review=>{
+    review.outerHTML=renderBlock('reviews',1,{state,library:mode==='library'});
+  });
+}
 
 function applyTheme() {
   const palette=palettes.find(p=>p.id===state.palette);
@@ -64,14 +71,10 @@ function updateState(next,{blockId,all=false}={}) {
   state=normalizeState(next);
   if(root&&all)root.innerHTML=renderSite(state);
   else if(root&&blockId){const index=blocks.findIndex(b=>b.id===blockId);root.querySelector(`[data-block="${blockId}"]`).outerHTML=renderBlock(blockId,state.layout[index],{state});}
-  else if(previousReviews!==(state.palette==='sky-previous')){
-    document.querySelectorAll('[data-block="reviews"][data-variant="1"]').forEach(review=>{
-      review.outerHTML=renderBlock('reviews',1,{state,library:mode==='library'});
-    });
-  }
+  else if(previousReviews!==(state.palette==='sky-previous'))renderReviews();
   if(draft){const newForm=root?.querySelector('.s-consult-form');if(newForm)for(const [key,value] of Object.entries(draft))newForm.elements.namedItem(key).value=value;}
   applyTheme();refreshControls();
-  const filename=location.pathname.split('/').pop()||'studio.html';
+  const filename=location.pathname.split('/').pop()||'./';
   history.replaceState(null,'',currentUrl(filename)+location.hash);
   persistState();
   markReady();
@@ -80,7 +83,7 @@ function updateState(next,{blockId,all=false}={}) {
 function switchVersion(palette) {
   if(palette===state.palette)return;
   const edge=versionMenu.getBoundingClientRect().bottom;
-  const visibleBlock=[...root.children].find(block=>block.getBoundingClientRect().bottom>edge+1);
+  const visibleBlock=[...root.children].find(block=>block.getBoundingClientRect().bottom>edge+32);
   const position=visibleBlock?.getBoundingClientRect().top;
   updateState({...state,palette});
   if(!visibleBlock)return;

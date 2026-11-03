@@ -1,13 +1,21 @@
-import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=884e8ec750';
-import {renderSite,renderBlock} from './render.js?v=884e8ec750';
-import {formatRequest} from '../request.js?v=884e8ec750';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=6361d0119b';
+import {renderSite,renderBlock} from './render.js?v=6361d0119b';
+import {formatRequest} from '../request.js?v=6361d0119b';
 
 const mode=document.body.dataset.mode;
 let state=readState(location.search);
 const explicit=['layout','palette','font','route'].some(key=>new URLSearchParams(location.search).has(key));
 if(mode==='studio'&&!explicit){try{state=normalizeState(JSON.parse(localStorage.getItem('nastya-design-studio-v1')??'{}'));}catch{/* Use the supplied defaults when saved settings are unavailable. */}}
 const root=document.querySelector('[data-site-root]');
+const versionMenu=document.querySelector('.version-menu');
 if(root)root.innerHTML=renderSite(state);
+else if(state.palette==='sky-previous')renderReviews();
+
+function renderReviews() {
+  document.querySelectorAll('[data-block="reviews"][data-variant="1"]').forEach(review=>{
+    review.outerHTML=renderBlock('reviews',1,{state,library:mode==='library'});
+  });
+}
 
 function applyTheme() {
   const palette=palettes.find(p=>p.id===state.palette);
@@ -59,16 +67,29 @@ if(new URLSearchParams(location.search).get('capture')==='1')window.addEventList
 function updateState(next,{blockId,all=false}={}) {
   const form=root?.querySelector('.s-consult-form');
   const draft=form?Object.fromEntries(['name','contact','message'].map(key=>[key,form.elements.namedItem(key).value])):null;
+  const previousReviews=state.palette==='sky-previous';
   state=normalizeState(next);
   if(root&&all)root.innerHTML=renderSite(state);
   else if(root&&blockId){const index=blocks.findIndex(b=>b.id===blockId);root.querySelector(`[data-block="${blockId}"]`).outerHTML=renderBlock(blockId,state.layout[index],{state});}
+  else if(previousReviews!==(state.palette==='sky-previous'))renderReviews();
   if(draft){const newForm=root?.querySelector('.s-consult-form');if(newForm)for(const [key,value] of Object.entries(draft))newForm.elements.namedItem(key).value=value;}
   applyTheme();refreshControls();
-  const filename=location.pathname.split('/').pop()||'studio.html';
+  const filename=location.pathname.split('/').pop()||'./';
   history.replaceState(null,'',currentUrl(filename)+location.hash);
   persistState();
   markReady();
   if(blockId)root?.querySelector(`[data-block="${blockId}"]`).scrollIntoView({block:'start',behavior:'instant'});
+}
+function switchVersion(palette) {
+  if(palette===state.palette)return;
+  const edge=versionMenu.getBoundingClientRect().bottom;
+  const visibleBlock=[...root.children].find(block=>block.getBoundingClientRect().bottom>edge+32);
+  const position=visibleBlock?.getBoundingClientRect().top;
+  updateState({...state,palette});
+  if(!visibleBlock)return;
+  const updated=document.getElementById(visibleBlock.id).getBoundingClientRect();
+  const targetTop=Math.max(position,edge-updated.height+2);
+  window.scrollBy({top:updated.top-targetTop,behavior:'instant'});
 }
 document.addEventListener('change',event=>{
   const control=event.target;
@@ -80,7 +101,10 @@ document.addEventListener('change',event=>{
 document.addEventListener('click',async event=>{
   const button=event.target.closest('button');
   if(button?.matches('[data-mobile-settings]')){const open=document.querySelector('.studio-workspace').classList.toggle('settings-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'Скрыть настройки':'Настроить блоки, цвета и шрифты';}
-  if(button?.dataset.palette)updateState({...state,palette:button.dataset.palette});
+  if(button?.dataset.palette){
+    if(versionMenu?.contains(button))switchVersion(button.dataset.palette);
+    else updateState({...state,palette:button.dataset.palette});
+  }
   if(button?.dataset.preset){const preset=presets.find(p=>p.id===button.dataset.preset);if(preset)updateState({...state,layout:preset.layout},{all:true});}
   if(button?.dataset.view){const mobile=button.dataset.view==='mobile';document.querySelector('.studio-canvas').classList.toggle('is-mobile',mobile);document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));markReady();}
   if(button?.matches('[data-copy-design]')){const input=document.querySelector('[data-share-url]'),status=document.querySelector('[data-copy-status]');try{await navigator.clipboard.writeText(input.value);status.textContent='Ссылка скопирована.';}catch{input.focus();input.select();status.textContent='Скопируйте выделенную ссылку.';}}

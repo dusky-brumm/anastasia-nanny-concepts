@@ -10,7 +10,7 @@ export const blocks = [
   {id:'footer',name:'Футер с контактами',variants:['Одна строка','По центру','Колонки','Контактная карточка','Крупная подпись']},
 ];
 export const palettes = [
-  {id:'sky',name:'Голубой и молочный',paper:'#f8f5ef',wash:'#e1eaee',soft:'#efebe4',ink:'#203e34',accent:'#466576',wine:'#743b42'},
+  {id:'sky',name:'Голубой и молочный',paper:'#f8f5ef',wash:'#e1eaee',soft:'#f8f5ef',ink:'#203e34',accent:'#466576',wine:'#743b42'},
   {id:'sage',name:'Шалфей и сливочный',paper:'#fcf8ed',wash:'#e8eee1',soft:'#f0e8d9',ink:'#3b5545',accent:'#526c4c',wine:'#865f52'},
   {id:'rose',name:'Пудровый и небо',paper:'#fcf8f5',wash:'#eee3e1',soft:'#e6eef1',ink:'#4e5153',accent:'#4c6a7a',wine:'#8e6269'},
   {id:'lilac',name:'Лаванда и молочный',paper:'#fbf9f2',wash:'#edeaf3',soft:'#e5ece9',ink:'#43564e',accent:'#586382',wine:'#7e657f'},

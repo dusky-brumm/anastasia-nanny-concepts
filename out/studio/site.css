@@ -1,5 +1,5 @@
 .site-preview {
-  --paper:#f8f5ef;--wash:#e1eaee;--soft:#efebe4;--ink:#203e34;--accent:#466576;--wine:#743b42;
+  --paper:#f8f5ef;--wash:#e1eaee;--soft:var(--paper);--ink:#203e34;--accent:#466576;--wine:#743b42;
   --heading:'Manrope',Arial,sans-serif;--body:'Golos Text',Arial,sans-serif;--heading-weight:500;--heading-tracking:-.03em;
   position:relative;container-type:inline-size;width:100%;max-width:1120px;margin:auto;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);border-radius:22px;overflow:clip;
 }

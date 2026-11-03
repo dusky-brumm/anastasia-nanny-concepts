@@ -1,6 +1,6 @@
-import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=dead3d64ee';
-import {renderSite,renderBlock} from './render.js?v=dead3d64ee';
-import {formatRequest} from '../request.js?v=dead3d64ee';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=1c61ffbb4f';
+import {renderSite,renderBlock} from './render.js?v=1c61ffbb4f';
+import {formatRequest} from '../request.js?v=1c61ffbb4f';
 
 const mode=document.body.dataset.mode;
 let state=readState(location.search);

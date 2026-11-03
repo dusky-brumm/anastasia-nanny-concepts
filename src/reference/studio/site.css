@@ -547,3 +547,11 @@
   .s-hero-arch {order:2}
   .s-hero--9 {padding-bottom:80px}
 }
+
+.s-hero--6 {padding-bottom:clamp(62px,8cqw,96px)}
+.s-square-portrait {position:relative;width:min(100%,398px);padding:6%;margin:auto}
+.s-square-frame {aspect-ratio:1;border-radius:9px}
+.s-square-pencil {position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:var(--accent);stroke-width:1.5;stroke-linecap:round;pointer-events:none}
+.s-hero-transition {position:absolute;inset:auto 0 0;width:100%;height:clamp(36px,5cqw,62px);pointer-events:none}
+.s-hero-transition-fill {fill:var(--wash)}
+.s-hero-transition-pencil {fill:none;stroke:var(--accent);stroke-width:1.5;stroke-opacity:.72;vector-effect:non-scaling-stroke}

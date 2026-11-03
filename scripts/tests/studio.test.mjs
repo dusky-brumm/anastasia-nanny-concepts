@@ -3,6 +3,25 @@ import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,comparisonPalettes} from '../../src/reference/studio/model.js';
 import {studioPage} from '../../src/reference/studio/pages.js';
 
+test('completed design comparisons retain all sections and exclude the two cancelled options',()=>{
+  const modes=['comparison-current','pencil','pencil-journal','pencil-panorama','pencil-album','comparison-gradients','comparison-route','comparison-reference'];
+  const order=['header','hero','service','about','process','pricing','reviews','apply','footer'];
+  for(const mode of modes){
+    const html=studioPage(mode,'hero',mode+'.html');
+    const positions=order.map(id=>html.indexOf(`id="${id}"`));
+    assert.ok(positions.every((position,index)=>position>=0&&(index===0||position>positions[index-1])),mode);
+    assert.match(html,/Первая кандидатка осталась на полтора года/);
+    assert.match(html,/s-request-status/);
+    assert.doesNotMatch(html,/>Вариант (5|8)<\/a>/);
+    assert.match(html,/data-comparison-palette="new"/);
+    assert.match(html,/data-color-role="button"/);
+  }
+  const reference=studioPage('comparison-reference');
+  assert.equal([...reference.matchAll(/data-about-dot="/g)].length,4);
+  assert.match(reference,/M389 85C395 158/);
+  assert.match(studioPage('preview','hero','index.html'),/href="comparison-current.html/);
+});
+
 test('the live palette menu contains the five agreed themes and exactly two new themes',()=>{
   const ids=['sky','reference','fresh','reference-2','reference-3','sea-glass','oat-eucalyptus'];
   assert.deepEqual(comparisonPalettes.map(p=>p.id),ids);

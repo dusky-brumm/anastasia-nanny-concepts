@@ -1,7 +1,7 @@
-import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=60bb3c372e';
-import {renderSite,renderBlock} from './render.js?v=60bb3c372e';
-import {formatRequest} from '../request.js?v=60bb3c372e';
-import {requestEndpoint} from './request-endpoint.js?v=60bb3c372e';
+import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=5eafa8d46c';
+import {renderSite,renderBlock} from './render.js?v=5eafa8d46c';
+import {formatRequest} from '../request.js?v=5eafa8d46c';
+import {requestEndpoint} from './request-endpoint.js?v=5eafa8d46c';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
@@ -119,6 +119,7 @@ function renderReviews() {
 }
 
 function applyTheme() {
+  if(document.querySelector('.pencil-comparison + .site-preview'))return;
   const palette=palettes.find(p=>p.id===state.palette);
   if(mode==='preview')document.body.style.setProperty('--page-paper',palette.paper);
   document.querySelectorAll('.site-preview').forEach(site=>{

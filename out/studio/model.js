@@ -10,7 +10,7 @@ export const blocks = [
   {id:'footer',name:'Футер с контактами',variants:['Одна строка','По центру','Колонки','Контактная карточка','Крупная подпись']},
 ];
 export const palettes = [
-  {id:'sky',name:'Голубой и молочный',paper:'#f8f5ef',wash:'#e1eaee',soft:'#f8f5ef',ink:'#203e34',accent:'#466576',wine:'#743b42'},
+  {id:'sky',name:'Голубой и молочный',paper:'#fafaf6',wash:'#e1eaee',soft:'#fafaf6',ink:'#203e34',accent:'#466576',wine:'#743b42'},
   {id:'sage',name:'Шалфей и сливочный',paper:'#fcf8ed',wash:'#e8eee1',soft:'#f0e8d9',ink:'#3b5545',accent:'#526c4c',wine:'#865f52'},
   {id:'rose',name:'Пудровый и небо',paper:'#fcf8f5',wash:'#eee3e1',soft:'#e6eef1',ink:'#4e5153',accent:'#4c6a7a',wine:'#8e6269'},
   {id:'lilac',name:'Лаванда и молочный',paper:'#fbf9f2',wash:'#edeaf3',soft:'#e5ece9',ink:'#43564e',accent:'#586382',wine:'#7e657f'},
@@ -29,6 +29,12 @@ export const palettes = [
 // The five themes selected in «Палитры и типографика», followed by the two requested additions.
 // Earlier experiments remain readable in saved links, but are not offered in the menus.
 export const comparisonPalettes=['sky','reference','fresh','reference-2','reference-3','sea-glass','oat-eucalyptus'].map(id=>palettes.find(p=>p.id===id));
+export const explorationPalettes = [
+  {id:'light-milk',name:'Светлый молочный',paper:'#faf8f2',wash:'#e7f1f6',soft:'#e8efe4',card:'#ffffff',ink:'#28382d',leaf:'#a8c0a1',accent:'#4e6c5d'},
+  {id:'almost-white',name:'Почти белый',paper:'#fcfcfa',wash:'#e7f1f6',soft:'#e8efe4',card:'#ffffff',ink:'#28353c',leaf:'#a8c0a1',accent:'#385a6b'},
+  {id:'warm-white',name:'Белый с каплей тепла',paper:'#fafaf6',wash:'#e3f0f6',soft:'#e6eee3',card:'#ffffff',ink:'#28382d',leaf:'#a8c0a1',accent:'#4e6c5d'},
+  {id:'new',name:'Новая',paper:'#fafaf6',wash:'#e7f1f6',soft:'#e6eee3',card:'#ffffff',ink:'#28382d',leaf:'#a8c0a1',accent:'#4e6c5d',button:'#4e6c5d','blue-accent':'#385a6b'},
+];
 export const fontSets = [
   {id:'golos',name:'Manrope + Golos Text',note:'Современный основной набор'},
   {id:'lora',name:'Lora + Golos Text',note:'Мягкая книжная типографика'},
@@ -62,7 +68,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'60bb3c372e'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'5eafa8d46c'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
   if(!/^[1-9]$/.test(String(value)))return 0;

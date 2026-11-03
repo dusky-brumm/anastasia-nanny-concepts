@@ -13,6 +13,12 @@
 .journey-list {position:relative;height:38.6cqw;margin:0;padding:0;list-style:none}
 .journey-node {position:absolute;display:flex;align-items:flex-start;gap:1.45cqw}
 .journey-number {display:grid;place-items:center;flex:0 0 2.3cqw;width:2.3cqw;height:2.3cqw;border-radius:50%;background:var(--route-blue);color:white;font-size:1.46cqw;font-weight:700;line-height:1}
+.journey--1 .journey-number {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath d='M0 0H48V48H0Z' filter='url(%23grain)' opacity='.38'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(128deg,#ffffff27 0 1px,transparent 1px 3px,#17394530 3px 4px,transparent 4px 6px);
+  background-blend-mode:soft-light,normal;
+}
 .journey-copy {min-width:0}
 .journey h3 {margin:0 0 .65cqw;font:600 1.674cqw/1.15 Arial,sans-serif;letter-spacing:-.035em}
 .journey p {margin:0;font:400 1.674cqw/1.1 Arial,sans-serif;letter-spacing:-.012em}

@@ -119,6 +119,7 @@ function renderReviews() {
 }
 
 function applyTheme() {
+  if(document.querySelector('.pencil-comparison + .site-preview'))return;
   const palette=palettes.find(p=>p.id===state.palette);
   if(mode==='preview')document.body.style.setProperty('--page-paper',palette.paper);
   document.querySelectorAll('.site-preview').forEach(site=>{

@@ -1,6 +1,7 @@
 import {readFile,stat,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
+import {blocks} from '../src/reference/studio/model.js';
 const root='out';const html=await readFile(path.join(root,'reference.html'),'utf8');
 for(const filename of (await readdir(root)).filter(name=>name.endsWith('.html'))){
   const content=await readFile(path.join(root,filename),'utf8');
@@ -24,9 +25,9 @@ for(const file of ['app.js','request.js','journeys.js','studio/model.js','studio
   execFileSync(process.execPath,['--check',path.join(root,file)]);
   for(const match of js.matchAll(/from\s+['"]([^'"]+)['"]/g))await stat(path.join(root,path.dirname(file),match[1].split('?')[0]));
 }
-for(const id of ['header','hero','service','about','process','pricing','reviews','apply','footer']){
+for(const {id,variants} of blocks){
   const page=await readFile(path.join(root,'blocks-'+id+'.html'),'utf8');
-  if([...page.matchAll(/class="library-option"/g)].length!==5)throw Error('Expected five variations of '+id);
+  if([...page.matchAll(/class="library-option"/g)].length!==variants.length)throw Error('Wrong variation count for '+id);
 }
 const files=await readdir(root);if(files.includes('collection.html')||files.includes('atelier'))throw Error('Old gallery in publication');
-console.log('PASS: reference page, 45 block designs, studio/share previews, local assets and fonts, unique IDs, anchors, CSS/JS syntax and imports.');
+console.log('PASS: reference page, block designs, studio/share previews, local assets and fonts, unique IDs, anchors, CSS/JS syntax and imports.');

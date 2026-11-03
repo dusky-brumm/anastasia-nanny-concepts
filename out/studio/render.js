@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl} from './model.js?v=1c61ffbb4f';
-import {renderJourney} from '../journeys.js?v=1c61ffbb4f';
-import {contacts,selectionFaq} from './content.js?v=1c61ffbb4f';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=99dd329b28';
+import {renderJourney} from '../journeys.js?v=99dd329b28';
+import {contacts,selectionFaq} from './content.js?v=99dd329b28';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -66,8 +66,28 @@ function about(v) {
   if(v===4)return `${title('Об Анастасии','Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('family','s-taped')}<div><p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('child','s-frame')}</div>`;
   return `<div class="s-about-pair">${photo('cafe')}${photo('child')}</div><div class="s-about-copy">${text}</div>`;
 }
+const routeIcons=[
+  'M4 5h16v11H9l-5 4z M8 9h8 M8 12h5',
+  'M16 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0z M5 21v-2a7 7 0 0 1 14 0v2',
+  'M16 10a6 6 0 1 1-12 0 6 6 0 0 1 12 0z M14.5 14.5 20 20',
+  'M9 8a3 3 0 1 0-6 0 3 3 0 0 0 6 0z M21 8a3 3 0 1 0-6 0 3 3 0 0 0 6 0z M2 20v-2a4 4 0 0 1 8 0v2 M14 20v-2a4 4 0 0 1 8 0v2',
+  'M12 20 4.5 12.5C-.5 7.5 7 2 12 8c5-6 12.5-.5 7.5 4.5z',
+];
+function routeComparison(variant) {
+  const wave=variant===7;
+  const path=wave
+    ?'M0 44Q30 56 60 43C100 25 140 12 180 25S260 56 300 43 380 12 420 25 500 56 540 43Q570 35 600 26'
+    :'M60 32Q120 55 180 32Q240 55 300 32Q360 55 420 32Q480 55 540 32';
+  return `<div class="s-route-study">${variant===8?'':`<svg class="s-study-line" viewBox="0 0 600 64" preserveAspectRatio="none" aria-hidden="true"><path d="${path}"/></svg>`}
+    <ol class="s-study-steps" aria-label="Пять этапов подбора няни">${outcomes.map(([name,description],index)=>`
+      <li><span class="s-study-number" aria-hidden="true">${index+1}</span>
+      <div class="s-study-copy">${variant===6?`<svg class="s-study-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${routeIcons[index]}"/></svg>`:''}
+      <h3>${name}</h3><p>${description}</p></div></li>`).join('')}</ol></div>`;
+}
 function process(v) {
-  return `${title('Как проходит подбор няни','Маршрут подбора')}${v<5?renderJourney(String(v)):`<ol class="s-outcomes">${outcomes.map(([a,b],i)=>`<li><span class="s-index">${i+1}</span><h3>${a}</h3><p>${b}</p></li>`).join('')}</ol>`}`;
+  const heading=v===6?'Как всё проходит':v===7?'Маршрут <em>подбора</em>':'Маршрут подбора';
+  const steps=v<5?renderJourney(String(v)):v===5?`<ol class="s-outcomes">${outcomes.map(([a,b],i)=>`<li><span class="s-index">${i+1}</span><h3>${a}</h3><p>${b}</p></li>`).join('')}</ol>`:routeComparison(v);
+  return title('Как проходит подбор няни',heading)+steps;
 }
 function faq() {return `<div class="s-faq"><h3>Вопросы о подборе няни</h3>${selectionFaq.map(item=>`<details><summary>${item.question}</summary><p>${item.answer}</p></details>`).join('')}</div>`;}
 function pricing(v,c) {
@@ -96,9 +116,9 @@ function apply(v) {return `<div class="s-apply-intro">${v===5?'<div class="s-app
 function footer(v,c) {return `<div class="s-footer-brand">${brand}${v===3||v===5?'<p>Индивидуальный подбор няни<br>для вашей семьи</p>':''}</div>${v!==2?nav(c):''}<div class="s-footer-contact">${tg('Связаться в Telegram')}<button type="button" class="s-privacy">О данных формы</button></div><p class="s-copyright">© 2026 Анастасия Доронина</p>`;}
 const renderers={header,hero,service,about,process,pricing,reviews,apply,footer};
 export function renderBlock(id,value,context={}) {
-  const v=/^[1-5]$/.test(String(value))?Number(value):1;
   const state=normalizeState(context.state),ctx={...context,state};
   const block=blocks.find(b=>b.id===id)??blocks[0];
+  const v=variantNumber(block,value)||1;
   const previousReviews=id==='reviews'&&v===1&&ctx.state.palette==='sky-previous'?' s-reviews--previous':'';
   return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }

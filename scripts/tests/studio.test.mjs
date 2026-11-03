@@ -22,6 +22,14 @@ test('changing one block preserves every other design decision',()=>{
   assert.deepEqual(selectVariant(original,'pricing',2),{...original,layout:'123452432'});
   assert.equal(original.layout,'123455432');assert.deepEqual(selectVariant(original,'unknown',2),original);
 });
+test('the three additional process variants survive shared links and stay specific to the process block',()=>{
+  for(const route of [6,7,8]){
+    const state=readState('?route='+route);
+    assert.equal(state.layout[4],String(route));
+    assert.deepEqual(readState(new URL(designUrl('preview.html',state),'https://example.test/').search),state);
+    assert.deepEqual(selectVariant(state,'hero',route),state);
+  }
+});
 test('share links contain only design choices, never request fields',()=>{
   const url=new URL(designUrl('preview.html',{name:'Anna',contact:'private',layout:'111111111'}),'https://example.test/');
   assert.deepEqual([...url.searchParams.keys()],['layout','palette','font','v']);

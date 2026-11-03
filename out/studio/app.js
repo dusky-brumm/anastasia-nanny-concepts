@@ -1,7 +1,7 @@
-import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=c3107d7cd0';
-import {renderSite,renderBlock} from './render.js?v=c3107d7cd0';
-import {formatRequest} from '../request.js?v=c3107d7cd0';
-import {requestEndpoint} from './request-endpoint.js?v=c3107d7cd0';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=3cb3d939e7';
+import {renderSite,renderBlock} from './render.js?v=3cb3d939e7';
+import {formatRequest} from '../request.js?v=3cb3d939e7';
+import {requestEndpoint} from './request-endpoint.js?v=3cb3d939e7';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
@@ -12,9 +12,9 @@ let state=readState(location.search);
 const explicit=['layout','palette','font','route','version'].some(key=>new URLSearchParams(location.search).has(key));
 if(mode==='studio'&&!explicit){try{state=normalizeState(JSON.parse(localStorage.getItem('nastya-design-studio-v1')??'{}'));}catch{/* Use the supplied defaults when saved settings are unavailable. */}}
 const root=document.querySelector('[data-site-root]');
-const versionMenu=document.querySelector('.version-menu');
-if(versionMenu&&'ResizeObserver' in window){
-  new ResizeObserver(()=>root.style.setProperty('--comparison-offset',versionMenu.offsetHeight+20+'px')).observe(versionMenu);
+const designPanel=document.querySelector('.design-panel');
+if(designPanel&&'ResizeObserver' in window){
+  new ResizeObserver(()=>root.style.setProperty('--comparison-offset',designPanel.offsetHeight+14+'px')).observe(designPanel);
 }
 if(root)root.innerHTML=renderSite(state);
 else if(state.version==='previous')renderReviews();
@@ -136,9 +136,9 @@ function persistState() {
 function refreshControls() {
   document.querySelectorAll('[data-palette]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.palette===state.palette));});
   document.querySelectorAll('[data-palette-select]').forEach(select=>select.value=state.palette);
-  if(versionMenu)versionMenu.querySelector('.new-designs-link').href='designs.html?palette='+state.palette;
   document.querySelectorAll('[data-font-select]').forEach(select=>select.value=state.font);
   document.querySelectorAll('[data-block-select]').forEach(select=>select.value=state.layout[blocks.findIndex(b=>b.id===select.dataset.blockSelect)]);
+  document.querySelectorAll('[data-preset-select]').forEach(select=>select.value=presets.find(preset=>preset.layout===state.layout)?.id??'');
   document.querySelectorAll('[data-preset]').forEach(button=>button.setAttribute('aria-pressed',String(state.layout===presets.find(p=>p.id===button.dataset.preset)?.layout)));
   document.querySelectorAll('[data-library-link]').forEach(a=>a.href=currentUrl('blocks-'+a.dataset.libraryLink+'.html'));
   document.querySelectorAll('[data-open-preview]').forEach(a=>a.href=currentUrl('preview.html'));
@@ -198,6 +198,10 @@ function updateState(next,{blockId,all=false}={}) {
 document.addEventListener('change',event=>{
   const control=event.target;
   if(control.matches('[data-block-page-select]')){const block=blocks.find(b=>b.id===control.value);if(block)location.assign(currentUrl('blocks-'+block.id+'.html'));return;}
+  if(control.matches('[data-preset-select]')){
+    const preset=presets.find(item=>item.id===control.value);
+    if(preset)updateState({...state,layout:preset.layout},{all:true});
+  }
   if(control.matches('[data-font-select]'))updateState({...state,font:control.value});
   if(control.matches('[data-palette-select]')){
     const next={...state,version:state.version??'current',palette:control.value};

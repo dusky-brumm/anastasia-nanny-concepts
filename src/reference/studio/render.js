@@ -34,8 +34,22 @@ function photo(type='cafe',cls='',priority=false) {
   const image=portraits.includes(type)?`<img src="${media}${type}.webp" width="720" height="1280" alt="Анастасия Доронина за столиком в кафе" ${load}>`:`<img src="${media}${type}.webp" width="${verticalPhoto?960:640}" height="${verticalPhoto?1280:640}" alt="Анастасия ${alt}" ${load}>`;
   return `<figure class="s-photo ${type==='cafe'?'s-cafe ':''}${cls}"><div class="s-photo-mask">${image}</div></figure>`;
 }
-function portraitComposition(priority=false) {
-  return `<div class="s-live-portrait"><span class="s-photo-backing" aria-hidden="true"></span>${photo('family','s-live-frame',priority)}<span class="s-paper-tape" aria-hidden="true"></span><img class="s-portrait-flowers" src="assets/flowers.webp" width="70" height="114" alt=""></div>`;
+function shapedPortrait(variant) {
+  const shape=`hero-shape-${variant}`, pencil=`hero-pencil-${variant}`;
+  return `<figure class="s-shaped-portrait"><svg viewBox="0 0 400 440" role="img" aria-label="Анастасия Доронина за столиком в кафе">
+    <defs>
+      <path id="${shape}" pathLength="100" d="M35 217C35 105 89 37 173 28C255 19 345 47 361 133C371 187 370 268 352 322C332 381 278 413 204 413C133 413 64 405 43 347C27 305 35 257 35 217Z"/>
+      <clipPath id="${shape}-crop"><use href="#${shape}"/></clipPath>
+      <filter id="${pencil}">
+        <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
+        <feColorMatrix type="luminanceToAlpha"/>
+        <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
+        <feComposite in="SourceGraphic" operator="in"/>
+      </filter>
+    </defs>
+    <image href="${media}cafe.webp" x="30" y="-179" width="340" height="604.45" clip-path="url(#${shape}-crop)"/>
+    <use class="s-portrait-contour" href="#${shape}" transform="translate(200 220) scale(1.058) translate(-200 -220)" filter="url(#${pencil})"/>
+  </svg></figure>${variant===7?`<svg class="s-hero-background-line" viewBox="0 0 1120 130" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 91C130 135 237 100 356 77C500 49 584 109 715 101C853 92 967 21 1130 46" filter="url(#${pencil})"/></svg>`:''}`;
 }
 function title(text) {return `<div class="s-section-heading"><h2>${text}</h2></div>`;}
 function items(list,cls='') {return `<div class="s-items ${cls}">${list.map(([a,b],i)=>`<article><span class="s-index" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><h3>${a}</h3><p>${b}</p></article>`).join('')}</div>`;}
@@ -43,16 +57,18 @@ function nav(ctx,cls='') {return `<nav class="s-nav ${cls}" aria-label="Меню
 function menu(ctx) {return `<details class="s-menu"><summary aria-label="Открыть меню"><span></span><span></span><span></span></summary>${nav(ctx,'s-menu-links')}</details>`;}
 function header(v,c) {
   if(v===2)return `<div class="s-header-top">${tg('Telegram')}${action(c,'Обсудить подбор')}</div>${nav(c)}${menu(c)}`;
-  if(v===4)return `<div class="s-header-top">${tg('Telegram')}</div><div class="s-header-bottom">${nav(c)}${action(c,'Оставить заявку')}${menu(c)}</div>`;
-  return `${nav(c)}${v===5?tg('Telegram'):action(c,'Оставить заявку')}${menu(c)}`;
+  if(v===4)return `<div class="s-header-top">${tg('Telegram')}</div><div class="s-header-bottom">${nav(c)}${menu(c)}</div>`;
+  return `${nav(c)}${v===5?tg('Telegram'):''}${menu(c)}`;
 }
 function hero(v,c) {
-  const copy=`<div class="s-hero-copy"><h1>${headline}</h1><p class="s-intro">${introduction}</p><div class="s-actions">${action(c)}${tg('Telegram')}</div></div>`;
-  if(v===1)return `${copy}${portraitComposition(!c.library)}`;
-  if(v===2)return `${copy}<div class="s-hero-strip">${photo('child')}${photo('family','',!c.library)}${photo('cafe')}</div>`;
-  if(v===3)return `${photo('family','s-taped',!c.library)}<div class="s-hero-letter">${copy}</div>${sun}`;
-  if(v===4)return `<div class="s-hero-panel">${copy}${scribble}</div>${photo('family','s-frame',!c.library)}`;
-  return `<h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p><div class="s-actions">${action(c)}${tg('Telegram')}</div>${scribble}</div></div>`;
+  const application=`<div class="s-actions"><a class="s-button" href="${linkTo('apply',c)}">Оставить заявку</a></div>`;
+  const copy=`<div class="s-hero-copy"><h1>${headline}</h1><p class="s-intro">${introduction}</p>${application}</div>`;
+  if(v===1)return `${copy}${photo('cafe','s-main-portrait',!c.library)}`;
+  if(v===2)return `${copy}<div class="s-hero-strip">${photo('child')}${photo('cafe','',!c.library)}${photo('family')}</div>`;
+  if(v===3)return `${photo('cafe','s-taped',!c.library)}<div class="s-hero-letter">${copy}</div>${sun}`;
+  if(v===4)return `<div class="s-hero-panel">${copy}${scribble}</div>${photo('cafe','s-frame',!c.library)}`;
+  if(v===6||v===7)return `${copy}${shapedPortrait(v)}`;
+  return `<h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p>${application}${scribble}</div></div>`;
 }
 const serviceDrawings=`<svg class="s-service-drawing s-service-drawing--sky" viewBox="0 0 238 96" aria-hidden="true" focusable="false">
   <path pathLength="1" d="M8 76c20-14 40-15 55-8 11 5 13 15 4 16-10 1-11-13 1-22 14-10 37-13 61-7"/>

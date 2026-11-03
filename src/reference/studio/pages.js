@@ -5,7 +5,14 @@ import {seoHead} from './seo.js?v=__VERSION__';
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
-const versionMenu=`<nav class="version-menu" aria-label="Сравнение дизайна"><label class="tool-label">Палитра<select data-palette-select>${options(palettes,defaults.palette)}</select></label><a href="reference.html?v=__VERSION__">Прежняя</a><a href="./?v=__VERSION__" aria-current="page">Текущая</a><a class="new-designs-link" href="designs.html">Галерея дизайнов ↗</a></nav>`;
+const designPanel=`<section class="design-panel" aria-label="Настройки дизайна сайта">
+  <div class="design-panel-row">
+    <label class="tool-label">Версия<select data-preset-select>${options(presets.map(p=>p.id==='1'?{...p,name:'Текущая'}:p),'1')}<option value="" hidden>Своя сборка</option></select></label>
+    <label class="tool-label">Палитра<select data-palette-select>${options(palettes,defaults.palette)}</select></label>
+    <label class="tool-label">Шрифты<select data-font-select>${options(fontSets,defaults.font)}</select></label>
+  </div>
+  <details class="design-panel-blocks"><summary>Настроить отдельные блоки</summary><div class="design-panel-options">${blocks.map((block,index)=>`<label class="tool-label">${block.name}<select data-block-select="${block.id}">${block.variants.map((name,variant)=>`<option value="${variant+1}"${Number(defaults.layout[index])===variant+1?' selected':''}>${name}</option>`).join('')}</select></label>`).join('')}</div></details>
+</section>`;
 function controls() {
   return `<aside class="studio-controls" id="studio-settings" aria-label="Настройки дизайна"><section><h2>Готовые сборки</h2><p class="tool-hint">Сборка 1 — рекомендованная. Любой блок можно заменить.</p><div class="preset-buttons">${presets.map(p=>`<button type="button" data-preset="${p.id}" aria-label="Сборка ${p.id}: ${p.name}" title="${p.name}" aria-pressed="${p.id==='1'}">${p.id}</button>`).join('')}</div></section>
   <section><h2>Палитра</h2><div class="palette-buttons">${palettes.map(p=>`<button type="button" data-palette="${p.id}" aria-pressed="${p.id===defaults.palette}"><span class="palette-dots" aria-hidden="true"><i style="background:${p.paper}"></i><i style="background:${p.wash}"></i><i style="background:${p.ink}"></i></span><span>${p.name}</span></button>`).join('')}</div></section>
@@ -32,5 +39,5 @@ ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6e
 <link rel="stylesheet" href="fonts.css?v=__VERSION__"><link rel="stylesheet" href="studio/fonts.css?v=__VERSION__">
 <link rel="stylesheet" href="journeys.css?v=__VERSION__"><link rel="stylesheet" href="studio/site.css?v=__VERSION__"><link rel="stylesheet" href="studio/ui.css?v=__VERSION__">
 <link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=__VERSION__"></script>
-</head><body class="design-tool ${mode==='preview'?'preview-only':''}" data-mode="${mode}" data-library-block="${blockId}"${pageFile==='index.html'?' data-live-request':''}>${mode==='preview'&&pageFile!=='index.html'?versionMenu:''}${content}${privacy}<noscript><p class="tool-noscript">${mode==='preview'?'Для работы формы включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
+</head><body class="design-tool ${mode==='preview'?'preview-only':''}" data-mode="${mode}" data-library-block="${blockId}"${pageFile==='index.html'?' data-live-request':''}>${mode==='preview'?designPanel:''}${content}${privacy}<noscript><p class="tool-noscript">${mode==='preview'?'Для работы формы включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }

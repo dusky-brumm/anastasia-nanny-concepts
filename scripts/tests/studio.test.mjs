@@ -27,7 +27,7 @@ test('the three additional process variants survive shared links and stay specif
     const state=readState('?route='+route);
     assert.equal(state.layout[4],String(route));
     assert.deepEqual(readState(new URL(designUrl('preview.html',state),'https://example.test/').search),state);
-    assert.deepEqual(selectVariant(state,'hero',route),state);
+    assert.deepEqual(selectVariant(state,'header',route),state);
   }
 });
 test('share links contain only design choices, never request fields',()=>{

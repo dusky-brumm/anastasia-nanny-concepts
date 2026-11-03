@@ -3,14 +3,14 @@ export const blocks = [
   {id:'hero',name:'Первый экран',variants:['Фото и записка','Центральная композиция','Портрет в рамке','Светлая панель','Редакционная обложка']},
   {id:'service',name:'Подробнее об услуге',variants:['Три карточки','Открытые строки','Схема подбора','Бумажные записки','Запрос и результат']},
   {id:'about',name:'Об Анастасии',variants:['Текст и фотоколлаж','Портрет слева','Личное письмо','Фотоальбом','Краткое представление']},
-  {id:'process',name:'Как проходит подбор',variants:['Как в образце','Одна линия','Две строки','Записки','Результат каждого этапа']},
+  {id:'process',name:'Как проходит подбор',variants:['Как в образце','Одна линия','Две строки','Записки','Результат каждого этапа','Линия с иконками','Голубая волна','Карточки на маршруте']},
   {id:'pricing',name:'Стоимость и условия',variants:['Цена и условия','Центральная карточка','Лист с условиями','Две панели','Контрастный акцент']},
   {id:'reviews',name:'Отзывы',variants:['Карточки с цитатами','Открытые цитаты','Главный отзыв','Речевые облака','Письма семей']},
   {id:'apply',name:'Финальная заявка',variants:['Текст и форма','Центральная форма','Записная книжка','Форма и Telegram','Карточка с портретом']},
   {id:'footer',name:'Футер с контактами',variants:['Одна строка','По центру','Колонки','Контактная карточка','Крупная подпись']},
 ];
 export const palettes = [
-  {id:'sky',name:'Голубой и молочный',paper:'#f8f5ef',wash:'#e1eaee',soft:'#efebe4',ink:'#203e34',accent:'#466576',wine:'#743b42'},
+  {id:'sky',name:'Голубой и молочный',paper:'#f8f5ef',wash:'#e1eaee',soft:'#f8f5ef',ink:'#203e34',accent:'#466576',wine:'#743b42'},
   {id:'sage',name:'Шалфей и сливочный',paper:'#fcf8ed',wash:'#e8eee1',soft:'#f0e8d9',ink:'#3b5545',accent:'#526c4c',wine:'#865f52'},
   {id:'rose',name:'Пудровый и небо',paper:'#fcf8f5',wash:'#eee3e1',soft:'#e6eef1',ink:'#4e5153',accent:'#4c6a7a',wine:'#8e6269'},
   {id:'lilac',name:'Лаванда и молочный',paper:'#fbf9f2',wash:'#edeaf3',soft:'#e5ece9',ink:'#43564e',accent:'#586382',wine:'#7e657f'},
@@ -37,22 +37,28 @@ export function normalizeState(raw={}) {
   raw=raw&&typeof raw==='object'?raw:{};
   const layout=String(raw.layout??defaults.layout);
   return {
-    layout:blocks.map((_,i)=>/^[1-5]$/.test(layout[i]??'')?layout[i]:defaults.layout[i]).join(''),
+    layout:blocks.map((block,i)=>variantNumber(block,layout[i])||defaults.layout[i]).join(''),
     palette:palettes.some(p=>p.id===raw.palette)?raw.palette:defaults.palette,
     font:fontSets.some(p=>p.id===raw.font)?raw.font:defaults.font,
   };
 }
 export function readState(search='') {
   const parameters=new URLSearchParams(search),raw=Object.fromEntries(parameters);
-  if(!parameters.has('layout')&&/^[1-5]$/.test(parameters.get('route')??''))raw.layout=selectVariant(defaults,'process',parameters.get('route')).layout;
+  if(!parameters.has('layout')&&parameters.has('route'))raw.layout=selectVariant(defaults,'process',parameters.get('route')).layout;
   return normalizeState(raw);
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'dead3d64ee'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'99dd329b28'})}${hash?'#'+hash:''}`;
+}
+export function variantNumber(block,value) {
+  if(!/^[1-9]$/.test(String(value)))return 0;
+  const number=Number(value);
+  return number<=block.variants.length?number:0;
 }
 export function selectVariant(state,blockId,value) {
   const next=normalizeState(state),index=blocks.findIndex(b=>b.id===blockId);
-  if(index>=0&&/^[1-5]$/.test(String(value)))next.layout=next.layout.slice(0,index)+value+next.layout.slice(index+1);
+  const number=index>=0?variantNumber(blocks[index],value):0;
+  if(number)next.layout=next.layout.slice(0,index)+number+next.layout.slice(index+1);
   return next;
 }

@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl} from './model.js?v=884e8ec750';
-import {renderJourney} from '../journeys.js?v=884e8ec750';
-import {contacts,selectionFaq} from './content.js?v=884e8ec750';
+import {blocks,normalizeState,designUrl} from './model.js?v=6361d0119b';
+import {renderJourney} from '../journeys.js?v=6361d0119b';
+import {contacts,selectionFaq} from './content.js?v=6361d0119b';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -78,7 +78,11 @@ function pricing(v,c) {
 function reviewCard([name,role,quote,avatar],heart='') {
   return `<article class="s-review"><span class="s-quote-mark" aria-hidden="true">“</span><blockquote>${quote}</blockquote><footer><img src="assets/${avatar}.webp" width="40" height="40" loading="lazy" alt=""><div><h3>${name}</h3><p>${role}</p></div></footer>${heart}</article>`;
 }
-function reviews(v) {
+function reviews(v,c) {
+  if(v===1&&c.state.palette==='sky-previous') {
+    const pin='<span class="s-review-pin" aria-hidden="true"></span>';
+    return `${title('Отзывы','Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row,pin)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
+  }
   if(v===1) {
     const sparkle='<svg class="s-review-sparkle" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2C16 11 11 16 2 16c9 0 14 5 14 14 0-9 5-14 14-14C21 16 16 11 16 2Z"/></svg>';
     const heart='<svg class="s-review-heart" viewBox="0 0 54 50" aria-hidden="true"><path d="M15 42C12 33 4 10 16 10c6 0 7 7 7 13C30 7 45 3 48 13c3 10-17 22-33 29 10-2 18-3 26-2"/></svg>';
@@ -95,6 +99,7 @@ export function renderBlock(id,value,context={}) {
   const v=/^[1-5]$/.test(String(value))?Number(value):1;
   const state=normalizeState(context.state),ctx={...context,state};
   const block=blocks.find(b=>b.id===id)??blocks[0];
-  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
+  const previousReviews=id==='reviews'&&v===1&&ctx.state.palette==='sky-previous'?' s-reviews--previous':'';
+  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }
 export function renderSite(state) {const clean=normalizeState(state);return blocks.map((b,i)=>renderBlock(b.id,clean.layout[i],{state:clean})).join('');}

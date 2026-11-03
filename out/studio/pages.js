@@ -1,6 +1,6 @@
-import {blocks,comparisonPalettes as palettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=0ae686955b';
-import {renderSite,renderBlock} from './render.js?v=0ae686955b';
-import {seoHead} from './seo.js?v=0ae686955b';
+import {blocks,comparisonPalettes as palettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=60bb3c372e';
+import {renderSite,renderBlock} from './render.js?v=60bb3c372e';
+import {seoHead} from './seo.js?v=60bb3c372e';
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
@@ -21,11 +21,24 @@ function controls() {
   <section><h2>Блоки страницы</h2><div class="block-controls">${blocks.map((b,i)=>`<div class="block-control"><label class="tool-label">${i+1}. ${b.name}<select data-block-select="${b.id}">${b.variants.map((name,v)=>`<option value="${v+1}"${Number(defaults.layout[i])===v+1?' selected':''}>${v+1} · ${name}</option>`).join('')}</select></label><a data-library-link="${b.id}" href="${designUrl('blocks-'+b.id+'.html',defaults)}">Сравнить варианты ↗</a></div>`).join('')}</div></section>
   <section><label class="tool-label">Ссылка на выбранный сайт<input class="share-url" readonly data-share-url aria-label="Ссылка на выбранный сайт"></label><button class="tool-button" type="button" data-copy-design>Скопировать ссылку</button><p class="tool-hint">В ссылке сохраняются блоки, палитра и шрифты.</p><p class="tool-status" role="status" data-copy-status></p></section></aside>`;
 }
+const heroDirections=[
+  'Базовый вариант для сравнения. Акцент на заголовке и портрете.',
+  'Свободный штрих связывает снимки. Такой приём можно повторять в фотоколлажах и отзывах.',
+  'Карандашная дуга поддерживает форму фото. Тот же мотив подойдёт для карточек и фотографий ниже.',
+  'Линия проходит между текстом и фото. На остальных экранах она может вести взгляд от блока к блоку.',
+  'Широкий заголовок и лёгкая линия внизу. Этот приём подойдёт для переходов между крупными разделами.',
+  'Один карандашный контур повторяет край фотографии. Это тихий акцент для портретов по всему сайту.',
+  'Контур у фото и более бледный штрих на фоне. Один рисунок работает и в деталях, и в переходах.',
+  'Два штриха повторяют одну форму, но второй виден только на части края. Приём подходит для выделения отдельных деталей.',
+  'Линия с петлёй проходит под всей композицией. Она может продолжиться в маршруте подбора няни.',
+];
 function library(id) {
   const block=blocks.find(b=>b.id===id)??blocks[1];
+  const isHero=block.id==='hero';
   return `<header class="tool-top"><div><a class="tool-brand" data-back-builder href="${designUrl('studio.html',defaults)}">НАСТЯ · ДИЗАЙН САЙТА</a><h1>${block.name} · ${block.variants.length} вариантов</h1></div><a class="tool-button" data-back-builder href="${designUrl('studio.html',defaults)}">← В конструктор</a></header>
-  <main class="block-library"><div class="library-controls"><label class="tool-label library-block-select">Блок страницы<select data-block-page-select>${blocks.map((b,i)=>`<option value="${b.id}"${b.id===block.id?' selected':''}>${i+1}. ${b.name}</option>`).join('')}</select></label><label class="tool-label">Палитра<select data-palette-select>${options(palettes,defaults.palette)}</select></label><label class="tool-label">Шрифты<select data-font-select>${options(fontSets,defaults.font)}</select></label></div><nav class="block-tabs" aria-label="Все девять блоков">${blocks.map((b,i)=>`<a href="${designUrl('blocks-'+b.id+'.html',defaults)}" data-library-link="${b.id}"${b.id===block.id?' aria-current="page"':''}>${i+1}. ${b.name}</a>`).join('')}</nav><p class="library-hint">Сравните оформление и выберите вариант. Цвета и шрифты можно переключать сверху.</p><nav class="variant-jumps" aria-label="Перейти к варианту">${block.variants.map((_,i)=>`<a href="#variant-${i+1}">Вариант ${i+1}</a>`).join('')}</nav>
-  ${block.variants.map((name,i)=>`<section class="library-option" id="variant-${i+1}" data-option="${i+1}"><header><div><p class="tool-kicker">ВАРИАНТ 0${i+1}</p><h2>${name}</h2></div><div class="library-actions"><a class="tool-link" data-open-option="${i+1}" href="${designUrl('preview.html',selectVariant(defaults,block.id,i+1),block.id)}" target="_blank" rel="noopener">На странице ↗</a><a class="tool-button" data-pick-block="${block.id}" data-pick-value="${i+1}" href="${designUrl('studio.html',selectVariant(defaults,block.id,i+1),block.id)}">Выбрать этот вариант</a></div></header><div class="site-preview" data-font="${defaults.font}" data-palette="${defaults.palette}">${renderBlock(block.id,i+1,{library:true,state:defaults})}</div></section>`).join('')}</main>`;
+  <main class="block-library"${isHero?' data-hero-gallery':''}><div class="library-controls"><label class="tool-label library-block-select">Блок страницы<select data-block-page-select>${blocks.map((b,i)=>`<option value="${b.id}"${b.id===block.id?' selected':''}>${i+1}. ${b.name}</option>`).join('')}</select></label><label class="tool-label">Палитра<select data-palette-select>${options(palettes,defaults.palette)}</select></label><label class="tool-label">Шрифты<select data-font-select>${options(fontSets,defaults.font)}</select></label></div><nav class="block-tabs" aria-label="Все девять блоков">${blocks.map((b,i)=>`<a href="${designUrl('blocks-'+b.id+'.html',defaults)}" data-library-link="${b.id}"${b.id===block.id?' aria-current="page"':''}>${i+1}. ${b.name}</a>`).join('')}</nav><p class="library-hint">Сравните оформление и выберите вариант. Цвета и шрифты можно переключать сверху.</p><nav class="variant-jumps" aria-label="Перейти к варианту">${block.variants.map((_,i)=>`<a href="#variant-${i+1}">Вариант ${i+1}</a>`).join('')}</nav>
+${isHero?'<div class="hero-gallery-controls" hidden><button class="tool-button" type="button" data-hero-step="-1" aria-label="Предыдущий вариант">←</button><span data-hero-position aria-live="polite"></span><button class="tool-button" type="button" data-hero-step="1" aria-label="Следующий вариант">→</button></div>':''}
+  ${block.variants.map((name,i)=>`<section class="library-option" id="variant-${i+1}" data-option="${i+1}"><header><div><p class="tool-kicker">ВАРИАНТ 0${i+1}</p><h2>${name}</h2>${isHero?`<p class="hero-direction">${heroDirections[i]}</p>`:''}</div><div class="library-actions"><a class="tool-link" data-open-option="${i+1}" href="${designUrl('preview.html',selectVariant(defaults,block.id,i+1),block.id)}" target="_blank" rel="noopener">На странице ↗</a><a class="tool-button" data-pick-block="${block.id}" data-pick-value="${i+1}" href="${designUrl('studio.html',selectVariant(defaults,block.id,i+1),block.id)}">Выбрать этот вариант</a></div></header><div class="site-preview" data-font="${defaults.font}" data-palette="${defaults.palette}">${renderBlock(block.id,i+1,{library:true,state:defaults})}</div></section>`).join('')}</main>`;
 }
 export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') {
   const title=mode==='studio'?`Конструктор сайта — ${compositionCount} вариантов блоков`:mode==='library'?'Варианты блока — Настя':'Настя — индивидуальный подбор няни';
@@ -37,8 +50,9 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
 ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6ec">
 <link rel="preload" href="fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="studio/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=0ae686955b"><link rel="stylesheet" href="studio/fonts.css?v=0ae686955b">
-<link rel="stylesheet" href="journeys.css?v=0ae686955b"><link rel="stylesheet" href="studio/site.css?v=0ae686955b"><link rel="stylesheet" href="studio/ui.css?v=0ae686955b">
-<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=0ae686955b"></script>
+<link rel="stylesheet" href="fonts.css?v=60bb3c372e"><link rel="stylesheet" href="studio/fonts.css?v=60bb3c372e">
+<link rel="stylesheet" href="journeys.css?v=60bb3c372e"><link rel="stylesheet" href="studio/site.css?v=60bb3c372e"><link rel="stylesheet" href="studio/ui.css?v=60bb3c372e">
+<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=60bb3c372e"></script>
+${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=60bb3c372e"></script>':''}
 </head><body class="design-tool ${mode==='preview'?'preview-only':''}" data-mode="${mode}" data-library-block="${blockId}"${pageFile==='index.html'?' data-live-request':''}>${mode==='preview'?designPanel:''}${content}${privacy}<noscript><p class="tool-noscript">${mode==='preview'?'Для работы формы включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }

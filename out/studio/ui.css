@@ -142,3 +142,11 @@ html:has(.design-panel) {scroll-padding-top:0}
 }
 
 /* Complete November design directions. */
+
+.hero-gallery-controls {position:sticky;top:0;z-index:7;display:flex;align-items:center;justify-content:center;gap:18px;padding:10px;margin:0 0 12px;background:#faf9f4;border:1px solid #d7e2d3;border-radius:12px}
+.hero-gallery-controls[hidden],[data-hero-gallery] .library-option[hidden] {display:none}
+.hero-gallery-controls button {min-width:44px;min-height:44px;font-size:20px}
+.hero-gallery-controls [data-hero-position] {min-width:6ch;text-align:center;font-variant-numeric:tabular-nums}
+.hero-direction {max-width:58ch;margin:8px 0 0;font-size:14px;line-height:1.55}
+[data-hero-gallery] .variant-jumps [aria-current] {background:#315646;color:white}
+[data-hero-gallery] .library-option {scroll-margin-top:80px}

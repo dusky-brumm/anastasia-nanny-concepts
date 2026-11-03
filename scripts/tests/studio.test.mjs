@@ -36,6 +36,19 @@ test('changing one block preserves every other design decision',()=>{
   assert.deepEqual(selectVariant(original,'pricing',2),{...original,layout:'123452432'});
   assert.equal(original.layout,'123455432');assert.deepEqual(selectVariant(original,'unknown',2),original);
 });
+test('all nine hero choices have distinct gallery slides and survive full-page links',()=>{
+  const html=studioPage('library','hero','blocks-hero.html');
+  assert.equal([...html.matchAll(/class="library-option"/g)].length,9);
+  assert.match(html,/data-hero-step="-1"/);
+  assert.match(html,/data-hero-step="1"/);
+  assert.match(html,/studio\/hero-gallery.js/);
+  for(let variant=1;variant<=9;variant++){
+    const state=selectVariant(normalizeState(null),'hero',variant);
+    assert.equal(state.layout[1],String(variant));
+    assert.deepEqual(readState(new URL(designUrl('preview.html',state),'https://example.test/').search),state);
+    assert.ok(html.includes(`id="variant-${variant}"`));
+  }
+});
 test('the three additional process variants survive shared links and stay specific to the process block',()=>{
   for(const route of [6,7,8]){
     const state=readState('?route='+route);

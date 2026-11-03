@@ -34,21 +34,38 @@ function photo(type='cafe',cls='',priority=false) {
   const image=portraits.includes(type)?`<img src="${media}${type}.webp" width="720" height="1280" alt="Анастасия Доронина за столиком в кафе" ${load}>`:`<img src="${media}${type}.webp" width="${verticalPhoto?960:640}" height="${verticalPhoto?1280:640}" alt="Анастасия ${alt}" ${load}>`;
   return `<figure class="s-photo ${type==='cafe'?'s-cafe ':''}${cls}"><div class="s-photo-mask">${image}</div></figure>`;
 }
+function pencilFilter(id) {
+  return `<filter id="${id}">
+    <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
+    <feColorMatrix type="luminanceToAlpha"/>
+    <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
+    <feComposite in="SourceGraphic" operator="in"/>
+  </filter>`;
+}
+const heroStrokes={
+  2:['0 0 1120 155','M-10 93C151 128 234 23 385 48S627 132 787 87S1025 57 1130 81'],
+  3:['0 0 400 440','M15 348C16 208 13 105 84 56C142 15 257 5 321 57C369 97 384 166 384 224'],
+  4:['0 0 1120 500','M-10 420C116 418 158 452 259 451C457 451 588 430 614 310C632 223 591 115 679 76C742 48 878 62 952 34'],
+  5:['0 0 1120 155','M-10 122C180 116 229 55 423 63C572 68 645 127 798 88C918 57 1005 33 1130 59'],
+  9:['0 0 1120 155','M-10 64C154 127 268 111 416 70C535 37 589 54 648 79C703 102 730 68 707 53C677 34 660 80 712 104C810 149 959 113 1130 57'],
+};
+function heroStroke(variant) {
+  const [viewBox,path]=heroStrokes[variant], pencil=`hero-stroke-${variant}`;
+  return `<svg class="s-hero-stroke" viewBox="${viewBox}" preserveAspectRatio="none" aria-hidden="true">
+    <defs>${pencilFilter(pencil)}</defs><path d="${path}" filter="url(#${pencil})"/>
+  </svg>`;
+}
 function shapedPortrait(variant) {
   const shape=`hero-shape-${variant}`, pencil=`hero-pencil-${variant}`;
   return `<figure class="s-shaped-portrait"><svg viewBox="0 0 400 440" role="img" aria-label="Анастасия Доронина за столиком в кафе">
     <defs>
       <path id="${shape}" pathLength="100" d="M35 217C35 105 89 37 173 28C255 19 345 47 361 133C371 187 370 268 352 322C332 381 278 413 204 413C133 413 64 405 43 347C27 305 35 257 35 217Z"/>
       <clipPath id="${shape}-crop"><use href="#${shape}"/></clipPath>
-      <filter id="${pencil}">
-        <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
-        <feColorMatrix type="luminanceToAlpha"/>
-        <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
-        <feComposite in="SourceGraphic" operator="in"/>
-      </filter>
+      ${pencilFilter(pencil)}
     </defs>
     <image href="${media}cafe.webp" x="30" y="-179" width="340" height="604.45" clip-path="url(#${shape}-crop)"/>
     <use class="s-portrait-contour" href="#${shape}" transform="translate(200 220) scale(1.058) translate(-200 -220)" filter="url(#${pencil})"/>
+${variant===8?`<use class="s-portrait-contour s-portrait-contour--echo" href="#${shape}" transform="translate(200 220) scale(1.13) translate(-200 -220)" filter="url(#${pencil})"/>`:''}
   </svg></figure>${variant===7?`<svg class="s-hero-background-line" viewBox="0 0 1120 130" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 91C130 135 237 100 356 77C500 49 584 109 715 101C853 92 967 21 1130 46" filter="url(#${pencil})"/></svg>`:''}`;
 }
 function title(text) {return `<div class="s-section-heading"><h2>${text}</h2></div>`;}
@@ -64,11 +81,13 @@ function hero(v,c) {
   const application=`<div class="s-actions"><a class="s-button" href="${linkTo('apply',c)}">Оставить заявку</a></div>`;
   const copy=`<div class="s-hero-copy"><h1>${headline}</h1><p class="s-intro">${introduction}</p>${application}</div>`;
   if(v===1)return `${copy}${photo('cafe','s-main-portrait',!c.library)}`;
-  if(v===2)return `${copy}<div class="s-hero-strip">${photo('child')}${photo('cafe','',!c.library)}${photo('family')}</div>`;
-  if(v===3)return `${photo('cafe','s-taped',!c.library)}<div class="s-hero-letter">${copy}</div>${sun}`;
-  if(v===4)return `<div class="s-hero-panel">${copy}${scribble}</div>${photo('cafe','s-frame',!c.library)}`;
+  if(v===2)return `${copy}<div class="s-hero-strip">${heroStroke(v)}${photo('child')}${photo('cafe','',!c.library)}${photo('family')}</div>`;
+  if(v===3)return `<div class="s-hero-arch">${photo('cafe','',!c.library)}${heroStroke(v)}</div><div class="s-hero-letter">${copy}</div>`;
+  if(v===4)return `<div class="s-hero-panel">${copy}</div>${photo('cafe','s-main-portrait',!c.library)}${heroStroke(v)}`;
   if(v===6||v===7)return `${copy}${shapedPortrait(v)}`;
-  return `<h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p>${application}${scribble}</div></div>`;
+  if(v===8)return `${shapedPortrait(v)}${copy}`;
+  if(v===9)return `${copy}${photo('cafe','s-main-portrait',!c.library)}${heroStroke(v)}`;
+  return `<h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p>${application}</div></div>${heroStroke(v)}`;
 }
 const serviceDrawings=`<svg class="s-service-drawing s-service-drawing--sky" viewBox="0 0 238 96" aria-hidden="true" focusable="false">
   <path pathLength="1" d="M8 76c20-14 40-15 55-8 11 5 13 15 4 16-10 1-11-13 1-22 14-10 37-13 61-7"/>

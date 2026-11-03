@@ -3,7 +3,7 @@ export const blocks = [
   {id:'hero',name:'Первый экран',variants:['Фото и записка','Центральная композиция','Портрет в рамке','Светлая панель','Редакционная обложка']},
   {id:'service',name:'Подробнее об услуге',variants:['Три карточки','Открытые строки','Схема подбора','Бумажные записки','Запрос и результат']},
   {id:'about',name:'Об Анастасии',variants:['Текст и фотоколлаж','Портрет слева','Личное письмо','Фотоальбом','Краткое представление']},
-  {id:'process',name:'Как проходит подбор',variants:['Как в образце','Одна линия','Две строки','Записки','Результат каждого этапа','Линия с иконками','Голубая волна','Карточки на маршруте']},
+  {id:'process',name:'Как проходит подбор',variants:['Как в образце','Одна линия','Две строки','Записки','Результат каждого этапа','Линия с иконками','Голубая волна','Карточки на маршруте','Четыре шага']},
   {id:'pricing',name:'Стоимость и условия',variants:['Цена и условия','Центральная карточка','Лист с условиями','Две панели','Контрастный акцент']},
   {id:'reviews',name:'Отзывы',variants:['Карточки с цитатами','Открытые цитаты','Главный отзыв','Речевые облака','Письма семей']},
   {id:'apply',name:'Финальная заявка',variants:['Текст и форма','Центральная форма','Записная книжка','Форма и Telegram','Карточка с портретом']},
@@ -25,7 +25,7 @@ export const fontSets = [
   {id:'prata',name:'Prata + Manrope',note:'Выразительные заголовки'},
   {id:'tinos',name:'Tinos + Manrope',note:'Спокойная классика'},
 ];
-export const defaults={layout:'112111113',palette:'sky',font:'golos'};
+export const defaults={layout:'112191113',palette:'sky',font:'golos'};
 export const presets=[
   {id:'1',name:'Рекомендованный',layout:defaults.layout},
   {id:'2',name:'Центральный',layout:'222222222'},
@@ -49,7 +49,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'99dd329b28'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'aa0a5df1b6'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
   if(!/^[1-9]$/.test(String(value)))return 0;

@@ -39,14 +39,19 @@ export function normalizeJourney(value) {
   return journeyVariants.some(variant => variant.id === value) ? value : '1';
 }
 
-export function renderJourney(value) {
+export function renderJourney(value, {wavyArrows=false}={}) {
   const id = normalizeJourney(value);
+  const connectors = id==='1'&&wavyArrows ? [
+    ...paths[id].slice(0,2),
+    'M389 85C395 158 445 175 470 177S532 178 554 225',
+    'M608 232C651 211 622 183 652 161S679 126 666 94',
+  ] : paths[id];
   const arrow = `journey-arrow-${id}`;
   const heights = {'1': 369, '2': 335, '3': 410, '4': 375};
   return `<div class="journey journey--${id}" data-route="${id}">
     <svg class="journey-lines" viewBox="0 0 956 ${heights[id]}" preserveAspectRatio="none" aria-hidden="true">
       <defs><marker id="${arrow}" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="m2 1 5 3.5L2 8"/></marker></defs>
-      ${paths[id].map(d => `<path d="${d}" marker-end="url(#${arrow})"/>`).join('')}
+      ${connectors.map(d => `<path d="${d}" marker-end="url(#${arrow})"/>`).join('')}
     </svg>
     <ol class="journey-list" aria-label="Пять этапов подбора няни">
       ${steps.map(([title, text], index) => `<li class="journey-node"><span class="journey-number" aria-hidden="true">${index + 1}</span><div class="journey-copy"><h3>${title}</h3><p>${text}</p></div></li>`).join('')}
@@ -56,7 +61,7 @@ export function renderJourney(value) {
 
 export function renderJourneyOptions() {
   return journeyVariants.map(variant => `<section class="route-option" id="route-${variant.id}" aria-labelledby="option-${variant.id}">
-    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=60bb3c372e#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
+    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=5eafa8d46c#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
     <div class="option-preview option-preview--${variant.id}"><p class="preview-heading">Маршрут <span>подбора</span></p>${renderJourney(variant.id)}</div>
   </section>`).join('\n');
 }

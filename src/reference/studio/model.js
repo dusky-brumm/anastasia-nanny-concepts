@@ -17,6 +17,7 @@ export const palettes = [
   {id:'sand',name:'Песочный и голубой',paper:'#fbf6e9',wash:'#f1e6d1',soft:'#e5edf0',ink:'#4c5847',accent:'#526a74',wine:'#88674f'},
   {id:'mint',name:'Мята и персик',paper:'#fcf7ee',wash:'#e4efe9',soft:'#f4e6df',ink:'#31594e',accent:'#466e60',wine:'#966b5c'},
   {id:'sky-previous',name:'Голубой и молочный · прежний',paper:'#faf6ec',wash:'#e4edf1',soft:'#f0e8df',ink:'#294c3e',accent:'#426a80',wine:'#815c53'},
+  {id:'reference',name:'Палитра с референса',paper:'#f5f0ed',wash:'#e2eaed',soft:'#eaeae2',ink:'#244238',accent:'#54655f',wine:'#673a3f'},
 ];
 export const fontSets = [
   {id:'golos',name:'Manrope + Golos Text',note:'Современный основной набор'},

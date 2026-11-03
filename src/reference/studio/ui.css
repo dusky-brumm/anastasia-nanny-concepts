@@ -68,7 +68,7 @@ html:has(.version-menu) {scroll-padding-top:0}
 .version-menu button[aria-pressed=true] {background:#203e34;color:#fff}
 .version-menu button:hover {border-color:#466576}
 .version-menu button:disabled {cursor:default}
-@media(max-width:360px) {.version-menu span {display:none}}
+@media(max-width:480px) {.version-menu span {display:none}}
 .tool-noscript {padding:24px;font-size:14px}
 #studio-privacy {max-width:500px;width:calc(100% - 36px);border:1px solid #a7bdaa;border-radius:16px;padding:38px;color:#315646;background:#fcfaf4}
 #studio-privacy::backdrop {background:#263c3280}

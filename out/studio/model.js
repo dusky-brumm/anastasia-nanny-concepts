@@ -49,7 +49,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'2bbe96e736'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'dead3d64ee'})}${hash?'#'+hash:''}`;
 }
 export function selectVariant(state,blockId,value) {
   const next=normalizeState(state),index=blocks.findIndex(b=>b.id===blockId);

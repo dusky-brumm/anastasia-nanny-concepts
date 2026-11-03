@@ -17,7 +17,7 @@ const paths = {
   '1': [
     'M79 80C53 177 51 260 124 269C157 272 186 263 207 252',
     'M234 216C242 172 284 139 314 164C343 189 303 194 301 156C295 105 312 83 348 68',
-    'M371 86C378 164 420 181 505 166C547 157 510 117 505 169C501 204 531 224 565 224',
+    'M371 86C383 185 475 203 565 224',
     'M594 221C639 206 672 151 664 91',
   ],
   '2': ['M52 95C115 42 175 100 234 124C292 124 356 60 416 95C478 116 541 100 598 124C660 124 725 60 780 95L904 95'],
@@ -56,7 +56,7 @@ export function renderJourney(value) {
 
 export function renderJourneyOptions() {
   return journeyVariants.map(variant => `<section class="route-option" id="route-${variant.id}" aria-labelledby="option-${variant.id}">
-    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=2bbe96e736#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
+    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=dead3d64ee#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
     <div class="option-preview option-preview--${variant.id}"><p class="preview-heading">Маршрут <span>подбора</span></p>${renderJourney(variant.id)}</div>
   </section>`).join('\n');
 }

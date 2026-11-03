@@ -17,13 +17,18 @@ export const palettes = [
   {id:'sand',name:'Песочный и голубой',paper:'#fbf6e9',wash:'#f1e6d1',soft:'#e5edf0',ink:'#4c5847',accent:'#526a74',wine:'#88674f'},
   {id:'mint',name:'Мята и персик',paper:'#fcf7ee',wash:'#e4efe9',soft:'#f4e6df',ink:'#31594e',accent:'#466e60',wine:'#966b5c'},
   {id:'sky-previous',name:'Голубой и молочный · прежний',paper:'#faf6ec',wash:'#e4edf1',soft:'#f0e8df',ink:'#294c3e',accent:'#426a80',wine:'#815c53'},
-  {id:'reference',name:'Палитра с референса',paper:'#f5f0ed',wash:'#e2eaed',soft:'#eaeae2',ink:'#244238',accent:'#54655f',wine:'#673a3f'},
+  {id:'reference',name:'Reference 1',paper:'#f5f0ed',wash:'#e2eaed',soft:'#eaeae2',ink:'#244238',accent:'#54655f',wine:'#673a3f'},
+  {id:'fresh',name:'Свежее',paper:'#faf8f2',wash:'#dceef6',soft:'#edf1e7',ink:'#27463d',accent:'#4e6c5d',wine:'#743b42',button:'#4e6c5d',backing:'#738c7a',drawingBlue:'#80a9ba',drawingRose:'#a99c7e',drawingGreen:'#90a68b'},
+  {id:'reference-2',name:'Reference 2 · Небесно-голубая',paper:'#fcfcfa',wash:'#e7f1f6',soft:'#eff4f3',ink:'#28353c',accent:'#385a6b',wine:'#743b42',button:'#385a6b',backing:'#80acc4',drawingBlue:'#80acc4',drawingRose:'#a2acb1',drawingGreen:'#95ada5'},
+  {id:'reference-3',name:'Reference 3 · Ботаническая',paper:'#fafaf5',wash:'#e8efe4',soft:'#f0f2e8',ink:'#28382d',accent:'#48634d',wine:'#743b42',button:'#2d513d',backing:'#a8c0a1',drawingBlue:'#9cb7bd',drawingRose:'#b1aa8d',drawingGreen:'#a8c0a1'},
   {id:'soft-sage',name:'Молочный и мягкий шалфей',paper:'#f8f5ef',wash:'#e1eaee',soft:'#f8f5ef',ink:'#29473c',accent:'#466576',wine:'#79535e',button:'#526c5d',backing:'#597060',drawingBlue:'#849fb3',drawingRose:'#b48791',drawingGreen:'#859b83'},
   {id:'blue-mist',name:'Молочный и голубая дымка',paper:'#f7f4ee',wash:'#dce8f1',soft:'#f7f4ee',ink:'#2c453e',accent:'#47647a',wine:'#76515e',button:'#47675e',backing:'#61796a',drawingBlue:'#829db8',drawingRose:'#b59bb1',drawingGreen:'#8ca6a0'},
   {id:'sea-glass',name:'Морское стекло',paper:'#f7f7f1',wash:'#dceeed',soft:'#e5ecf3',ink:'#243d46',accent:'#46636c',wine:'#426570',button:'#385e64',backing:'#9bbab4',drawingBlue:'#7897ac',drawingRose:'#879ba9',drawingGreen:'#789e92'},
   {id:'oat-eucalyptus',name:'Овёс и эвкалипт',paper:'#f8f5eb',wash:'#e2ece5',soft:'#eee7d4',ink:'#303e38',accent:'#526558',wine:'#68603e',button:'#42635b',backing:'#a7beb1',drawingBlue:'#839fa2',drawingRose:'#a6986e',drawingGreen:'#809b86'},
 ];
-export const comparisonPalettes=palettes.filter(p=>['sky','reference','soft-sage','blue-mist','sky-previous','sea-glass','oat-eucalyptus'].includes(p.id));
+// The five themes selected in «Палитры и типографика», followed by the two requested additions.
+// Earlier experiments remain readable in saved links, but are not offered in the menus.
+export const comparisonPalettes=['sky','reference','fresh','reference-2','reference-3','sea-glass','oat-eucalyptus'].map(id=>palettes.find(p=>p.id===id));
 export const fontSets = [
   {id:'golos',name:'Manrope + Golos Text',note:'Современный основной набор'},
   {id:'lora',name:'Lora + Golos Text',note:'Мягкая книжная типографика'},

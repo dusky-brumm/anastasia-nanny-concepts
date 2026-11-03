@@ -1,6 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeState,readState,selectVariant,designUrl,palettes} from '../../src/reference/studio/model.js';
+import {normalizeState,readState,selectVariant,designUrl,palettes,comparisonPalettes} from '../../src/reference/studio/model.js';
+import {studioPage} from '../../src/reference/studio/pages.js';
+
+test('the live palette menu contains the five agreed themes and exactly two new themes',()=>{
+  const ids=['sky','reference','fresh','reference-2','reference-3','sea-glass','oat-eucalyptus'];
+  assert.deepEqual(comparisonPalettes.map(p=>p.id),ids);
+  const html=studioPage('preview','hero','index.html');
+  assert.deepEqual([...html.matchAll(/<button[^>]+data-palette="([^"]+)"/g)].map(match=>match[1]),ids);
+  for(const palette of comparisonPalettes){
+    assert.ok(html.includes(palette.name));
+    const state={layout:'112111113',palette:palette.id,font:'golos'};
+    assert.deepEqual(readState(new URL(designUrl('preview.html',state),'https://example.test/').search),state);
+  }
+  assert.doesNotMatch(html,/data-preset-select|data-block-select|data-font-select/);
+});
 
 test('a shared mixed design round-trips without losing any of the nine choices',()=>{
   const state={layout:'123455432',palette:'mint',font:'lora'};

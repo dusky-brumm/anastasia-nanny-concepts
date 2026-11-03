@@ -1,17 +1,18 @@
-import {blocks,palettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=3cb3d939e7';
-import {renderSite,renderBlock} from './render.js?v=3cb3d939e7';
-import {seoHead} from './seo.js?v=3cb3d939e7';
+import {blocks,comparisonPalettes as palettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=0ae686955b';
+import {renderSite,renderBlock} from './render.js?v=0ae686955b';
+import {seoHead} from './seo.js?v=0ae686955b';
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
-const designPanel=`<section class="design-panel" aria-label="Настройки дизайна сайта">
-  <div class="design-panel-row">
-    <label class="tool-label">Версия<select data-preset-select>${options(presets.map(p=>p.id==='1'?{...p,name:'Текущая'}:p),'1')}<option value="" hidden>Своя сборка</option></select></label>
-    <label class="tool-label">Палитра<select data-palette-select>${options(palettes,defaults.palette)}</select></label>
-    <label class="tool-label">Шрифты<select data-font-select>${options(fontSets,defaults.font)}</select></label>
-  </div>
-  <details class="design-panel-blocks"><summary>Настроить отдельные блоки</summary><div class="design-panel-options">${blocks.map((block,index)=>`<label class="tool-label">${block.name}<select data-block-select="${block.id}">${block.variants.map((name,variant)=>`<option value="${variant+1}"${Number(defaults.layout[index])===variant+1?' selected':''}>${name}</option>`).join('')}</select></label>`).join('')}</div></details>
+const swatch=p=>`<span class="palette-swatch" aria-hidden="true">${[p.paper,p.wash,p.backing??p.soft,p.button??p.ink,p.wine].map(color=>`<i style="background:${color}"></i>`).join('')}</span>`;
+const selectedPalette=palettes.find(p=>p.id===defaults.palette);
+const designPanel=`<section class="design-panel" aria-label="Палитра текущего сайта">
+  <span class="design-panel-caption">Текущая версия</span>
+  <details class="theme-picker">
+    <summary><span>Палитра</span><span data-selected-palette>${swatch(selectedPalette)}<span>${selectedPalette.name}</span></span><span aria-hidden="true">⌄</span></summary>
+    <div class="theme-options" role="group" aria-label="Выберите палитру">${palettes.map(p=>`<button type="button" data-palette="${p.id}" aria-pressed="${p.id===defaults.palette}">${swatch(p)}<span>${p.name}</span></button>`).join('')}</div>
+  </details>
 </section>`;
 function controls() {
   return `<aside class="studio-controls" id="studio-settings" aria-label="Настройки дизайна"><section><h2>Готовые сборки</h2><p class="tool-hint">Сборка 1 — рекомендованная. Любой блок можно заменить.</p><div class="preset-buttons">${presets.map(p=>`<button type="button" data-preset="${p.id}" aria-label="Сборка ${p.id}: ${p.name}" title="${p.name}" aria-pressed="${p.id==='1'}">${p.id}</button>`).join('')}</div></section>
@@ -36,8 +37,8 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
 ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6ec">
 <link rel="preload" href="fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="studio/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=3cb3d939e7"><link rel="stylesheet" href="studio/fonts.css?v=3cb3d939e7">
-<link rel="stylesheet" href="journeys.css?v=3cb3d939e7"><link rel="stylesheet" href="studio/site.css?v=3cb3d939e7"><link rel="stylesheet" href="studio/ui.css?v=3cb3d939e7">
-<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=3cb3d939e7"></script>
+<link rel="stylesheet" href="fonts.css?v=0ae686955b"><link rel="stylesheet" href="studio/fonts.css?v=0ae686955b">
+<link rel="stylesheet" href="journeys.css?v=0ae686955b"><link rel="stylesheet" href="studio/site.css?v=0ae686955b"><link rel="stylesheet" href="studio/ui.css?v=0ae686955b">
+<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=0ae686955b"></script>
 </head><body class="design-tool ${mode==='preview'?'preview-only':''}" data-mode="${mode}" data-library-block="${blockId}"${pageFile==='index.html'?' data-live-request':''}>${mode==='preview'?designPanel:''}${content}${privacy}<noscript><p class="tool-noscript">${mode==='preview'?'Для работы формы включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }

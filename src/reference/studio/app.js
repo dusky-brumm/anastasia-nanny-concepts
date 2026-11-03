@@ -3,6 +3,7 @@ import {renderSite,renderBlock} from './render.js?v=__VERSION__';
 import {formatRequest} from '../request.js?v=__VERSION__';
 
 const mode=document.body.dataset.mode;
+const capture=new URLSearchParams(location.search).get('capture')==='1';
 let state=readState(location.search);
 const explicit=['layout','palette','font','route'].some(key=>new URLSearchParams(location.search).has(key));
 if(mode==='studio'&&!explicit){try{state=normalizeState(JSON.parse(localStorage.getItem('nastya-design-studio-v1')??'{}'));}catch{/* Use the supplied defaults when saved settings are unavailable. */}}
@@ -10,6 +11,25 @@ const root=document.querySelector('[data-site-root]');
 const versionMenu=document.querySelector('.version-menu');
 if(root)root.innerHTML=renderSite(state);
 else if(state.palette==='sky-previous')renderReviews();
+
+const chalkObserver=!capture&&'IntersectionObserver' in window
+  ?new IntersectionObserver(entries=>{
+    for(const entry of entries){
+      if(entry.intersectionRatio<.15)continue;
+      entry.target.dataset.chalk='drawn';
+      chalkObserver.unobserve(entry.target);
+    }
+  },{threshold:.15})
+  :null;
+function observeServiceDrawings() {
+  if(!chalkObserver)return;
+  chalkObserver.disconnect();
+  document.querySelectorAll('.s-service:not([data-chalk="drawn"])').forEach(section=>{
+    section.dataset.chalk='waiting';
+    chalkObserver.observe(section);
+  });
+}
+observeServiceDrawings();
 
 function renderReviews() {
   document.querySelectorAll('[data-block="reviews"][data-variant="1"]').forEach(review=>{
@@ -19,6 +39,7 @@ function renderReviews() {
 
 function applyTheme() {
   const palette=palettes.find(p=>p.id===state.palette);
+  if(mode==='preview')document.body.style.setProperty('--page-paper',palette.paper);
   document.querySelectorAll('.site-preview').forEach(site=>{
     site.dataset.font=state.font;site.dataset.palette=state.palette;
     for(const key of ['paper','wash','soft','ink','accent','wine'])site.style.setProperty('--'+key,palette[key]);
@@ -51,7 +72,6 @@ async function markReady() {
   const requestVersion=++readinessVersion;
   delete document.documentElement.dataset.studioReady;
   await new Promise(requestAnimationFrame);
-  const capture=new URLSearchParams(location.search).get('capture')==='1';
   if(capture)document.querySelectorAll('img').forEach(img=>img.loading='eager');
   await document.fonts.ready;
   const images=[...document.images].filter(img=>capture||img.loading!=='lazy'||img.complete);
@@ -63,7 +83,7 @@ async function markReady() {
   if(requestVersion===readinessVersion){document.documentElement.dataset.studioHash=location.hash;document.documentElement.dataset.studioReady='true';}
 }
 window.addEventListener('hashchange',markReady);
-if(new URLSearchParams(location.search).get('capture')==='1')window.addEventListener('scroll',markReady,{passive:true});
+if(capture)window.addEventListener('scroll',markReady,{passive:true});
 function updateState(next,{blockId,all=false}={}) {
   const form=root?.querySelector('.s-consult-form');
   const draft=form?Object.fromEntries(['name','contact','message'].map(key=>[key,form.elements.namedItem(key).value])):null;
@@ -72,6 +92,7 @@ function updateState(next,{blockId,all=false}={}) {
   if(root&&all)root.innerHTML=renderSite(state);
   else if(root&&blockId){const index=blocks.findIndex(b=>b.id===blockId);root.querySelector(`[data-block="${blockId}"]`).outerHTML=renderBlock(blockId,state.layout[index],{state});}
   else if(previousReviews!==(state.palette==='sky-previous'))renderReviews();
+  if(all||blockId==='service')observeServiceDrawings();
   if(draft){const newForm=root?.querySelector('.s-consult-form');if(newForm)for(const [key,value] of Object.entries(draft))newForm.elements.namedItem(key).value=value;}
   applyTheme();refreshControls();
   const filename=location.pathname.split('/').pop()||'./';

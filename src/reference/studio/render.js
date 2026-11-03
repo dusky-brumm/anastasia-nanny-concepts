@@ -4,12 +4,12 @@ import {contacts,selectionFaq} from './content.js?v=__VERSION__';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
-const headline='Найду няню, с\u00a0которой <em>спокойно вам</em> и\u00a0хорошо ребёнку';
-const introduction='Я беру на себя поиск, собеседования и проверки. Вы знакомитесь с кандидатами, которые подходят именно вашей семье.';
+const headline='Найду няню, с\u00a0которой <em class="s-chalk-text">спокойно вам<svg viewBox="0 0 250 15" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M3 10Q62 2 119 7T246 6"/><path d="M8 12Q60 7 113 10T237 9"/></svg></em> и\u00a0хорошо ребёнку';
+const introduction='Я беру на себя поиск, собеседования и проверки, а вам оставляю главное — выбрать человека, с которым спокойно.';
 const services=[
-  ['Изучаю запрос семьи','Обсуждаем ваш график, правила, привычки ребёнка и ожидания от няни.'],
-  ['Провожу личные интервью','Обсуждаю с кандидатами именно вашу вакансию: от режима малыша до уроков и отношений между детьми.'],
-  ['Даю личные рекомендации','Вы получаете подробные профили кандидатов, мои комментарии и помощь с выбором.'],
+  ['Изучаю отклики','Сверяю опыт кандидатки и её пожелания по графику и условиям с вашим запросом.'],
+  ['Созваниваюсь на 10–15 минут','Уточняю условия вакансии и рассказываю кандидатке о вашей семье.'],
+  ['Провожу личное интервью','Задаю вопросы о ситуациях из жизни вашей семьи. В анкете объясняю, почему предлагаю познакомиться с няней и что стоит обсудить на встрече.'],
 ];
 const biography='С 2022 года подбираю нянь в семьи. Работала в двух агентствах, сейчас веду подбор лично.';
 const background='До рекрутинга пять лет работала с детьми — няней, тренером, педагогом. Изучала детскую психологию и прошла профессиональную переподготовку по подбору домашнего персонала.';
@@ -34,7 +34,6 @@ function photo(type='cafe',cls='',priority=false) {
 function portraitComposition(priority=false) {
   return `<div class="s-live-portrait"><span class="s-photo-backing" aria-hidden="true"></span>${photo('cafe','s-live-frame',priority)}<span class="s-paper-tape" aria-hidden="true"></span><img class="s-portrait-flowers" src="assets/flowers.webp" width="70" height="114" alt=""><div class="s-handwritten-note"><p>Поиск с заботой<br>и вниманием<br>к вашей семье</p><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27 5 15C-2 7 9 1 16 9 23 0 35 8 27 16Z"/></svg></div></div>`;
 }
-function photoAlbum() {return `<div class="s-live-album">${photo('family','s-album-main s-frame')}${photo('child','s-album-small s-frame')}${photo('cafe','s-album-mini s-frame')}${sun}</div>`;}
 function title(eyebrow,text) {return `<div class="s-section-heading"><p class="s-eyebrow">${eyebrow}</p><h2>${text}</h2></div>`;}
 function items(list,cls='') {return `<div class="s-items ${cls}">${list.map(([a,b],i)=>`<article><span class="s-index" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><h3>${a}</h3><p>${b}</p></article>`).join('')}</div>`;}
 function nav(ctx,cls='') {return `<nav class="s-nav ${cls}" aria-label="Меню сайта">${[['service','О подборе'],['about','Обо мне'],['process','Этапы'],['pricing','Стоимость'],['reviews','Отзывы']].map(([id,name])=>`<a href="${linkTo(id,ctx)}">${name}</a>`).join('')}</nav>`;}
@@ -53,14 +52,34 @@ function hero(v,c) {
   if(v===4)return `<div class="s-hero-panel">${copy}${scribble}</div>${photo('cafe','s-frame',!c.library)}`;
   return `<p class="s-eyebrow">Анастасия Доронина · индивидуальный подбор</p><h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p><div class="s-actions">${action(c)}${tg('Telegram')}</div>${scribble}</div></div>`;
 }
+const serviceDrawings=`<svg class="s-service-drawing s-service-drawing--sky" viewBox="0 0 238 96" aria-hidden="true" focusable="false">
+  <path pathLength="1" d="M8 76c20-14 40-15 55-8 11 5 13 15 4 16-10 1-11-13 1-22 14-10 37-13 61-7"/>
+  <path pathLength="1" d="M167 31c-8-7-22 1-18 13 3 10 18 13 24 4 6-8 1-17-6-17z"/>
+  <path pathLength="1" d="M160 24l-1-9"/><path pathLength="1" d="M175 26l5-8"/>
+  <path pathLength="1" d="M181 37l10-2"/><path pathLength="1" d="M180 50l9 4"/>
+  <path pathLength="1" d="M169 58l3 9"/><path pathLength="1" d="M153 57l-5 8"/>
+  <path pathLength="1" d="M142 46l-9 2"/><path pathLength="1" d="M145 32l-8-4"/>
+  <path pathLength="1" d="M210 32q9 0 11-11 1 10 10 12-9 1-11 10-1-9-10-11z"/>
+</svg><svg class="s-service-drawing s-service-drawing--sprig" viewBox="0 0 120 46" aria-hidden="true" focusable="false">
+  <path pathLength="1" d="M5 37c24 3 44-4 60-12 12-6 26-12 43-14"/>
+  <path pathLength="1" d="M59 28c-11-1-19-10-14-17 8 0 16 8 14 17z"/>
+  <path pathLength="1" d="M71 22c4 7 16 9 22 2-5-5-15-5-22-2z"/>
+  <path pathLength="1" d="M86 16c-4-6 0-13 9-14 2 7-2 12-9 14z"/>
+</svg>`;
 function service(v) {
-  const heading=title('Подробнее об услуге','Подбор няни<br>под задачи вашей семьи');
+  const heading=serviceDrawings+title('Подробнее об услуге','Подбор няни<br>под задачи вашей семьи');
+  const interview=`<div class="s-interview"><h3>Я собеседую няню под вашу семью</h3><p>Для семьи с двумя школьниками спрошу, как няня поступит, если один ребёнок просит помочь с уроками, а другой затевает ссору. Для семьи с трёхлеткой обсудим, как она отреагирует, если ребёнок расплачется и откажется уходить с площадки.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть пример анкеты ↗</a></div>`;
   if(v===5)return `${heading}<div class="s-service-panels"><article><span class="s-eyebrow">Ваш запрос</span><h3>График, привычки<br>и правила семьи</h3><p>${services[0][1]}</p><p>${services[1][1]}</p></article><article><span class="s-eyebrow">Результат подбора</span><h3>Подробные профили<br>и личные рекомендации</h3><p>${services[2][1]}</p><p>Обсуждаем каждого кандидата и готовимся к знакомству.</p></article></div>`;
-  return `${heading}${v===3?scribble:''}${items(services)}`;
+  return `${heading}${v===3?scribble:''}${items(services)}${interview}`;
 }
+const aboutSlides=[
+  ['Меня зовут Анастасия','cafe','Я подбираю нянь для семей с 2022 года. Начинала в агентствах, сейчас веду каждый подбор лично. Вместе мы обсуждаем ваш запрос, разбираем анкеты и выбираем, с кем познакомиться.'],
+  ['Я знаю поиск с обеих сторон','family','Семье важно понять, как няня будет общаться с ребёнком. Няне — представить рабочий день, обязанности и правила семьи. Я обсуждаю эти детали с обеими сторонами заранее.'],
+  ['Я на связи и после знакомства','child','Перед пробными днями подскажу, как подготовить ребёнка к знакомству. После выхода няни со мной можно обсудить адаптацию и изменения, которые вы хотите предложить няне.'],
+];
 function about(v) {
   const text=`${title('Об Анастасии','Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p>`;
-  if(v===1)return `<div class="s-about-copy">${text}</div>${photoAlbum()}`;
+  if(v===1)return `<div class="s-about-slides">${title('Об Анастасии','Давайте познакомимся')}<ol aria-label="Знакомство с Анастасией" tabindex="0">${aboutSlides.map(([name,image,copy],index)=>`<li>${photo(image,'s-frame')}<div><p class="s-eyebrow">${index+1} / ${aboutSlides.length}</p><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol><p class="s-about-hint">Листайте, чтобы увидеть все три фото</p></div>`;
   if(v===2)return `${photo('cafe','s-frame')}<div class="s-about-copy">${text}<div class="s-tags"><span>Личное интервью</span><span>Поддержка семьи</span></div></div>`;
   if(v===3)return `<div class="s-letter"><span class="s-eyebrow">Об Анастасии</span><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p>${scribble}</div>${photo('child','s-frame')}`;
   if(v===4)return `${title('Об Анастасии','Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('family','s-taped')}<div><p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('child','s-frame')}</div>`;
@@ -85,6 +104,12 @@ function routeComparison(variant) {
       <h3>${name}</h3><p>${description}</p></div></li>`).join('')}</ol></div>`;
 }
 function process(v) {
+  if(v===9)return title('Как проходит подбор няни','Четыре шага подбора')+`<ol class="s-outcomes">
+    <li><span class="s-index">1</span><h3>Обсуждаем запрос</h3><p>На созвоне составляем портрет няни. За один-два дня я оформляю описание вакансии, вы его подтверждаете и вносите предоплату.</p></li>
+    <li><span class="s-index">2</span><h3>Получаете первую подборку</h3><p>За две недели после предоплаты я собираю первые две-четыре анкеты с комментариями. При необходимости продолжаю поиск без лимита анкет.</p></li>
+    <li><span class="s-index">3</span><h3>Знакомитесь с нянями</h3><p>Назначаем встречи и пробные дни. Я подсказываю, как подготовить ребёнка, и помогаю с адаптацией.</p></li>
+    <li><span class="s-index">4</span><h3>Проверяю документы</h3><p>Когда вы определились с няней, я проверяю документы и рекомендации. Если нужен договор, помогу его подготовить.</p></li>
+  </ol>`;
   const heading=v===6?'Как всё проходит':v===7?'Маршрут <em>подбора</em>':'Маршрут подбора';
   const steps=v<5?renderJourney(String(v)):v===5?`<ol class="s-outcomes">${outcomes.map(([a,b],i)=>`<li><span class="s-index">${i+1}</span><h3>${a}</h3><p>${b}</p></li>`).join('')}</ol>`:routeComparison(v);
   return title('Как проходит подбор няни',heading)+steps;
@@ -106,8 +131,7 @@ function reviews(v,c) {
   if(v===1) {
     const sparkle='<svg class="s-review-sparkle" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2C16 11 11 16 2 16c9 0 14 5 14 14 0-9 5-14 14-14C21 16 16 11 16 2Z"/></svg>';
     const heart='<svg class="s-review-heart" viewBox="0 0 54 50" aria-hidden="true"><path d="M15 42C12 33 4 10 16 10c6 0 7 7 7 13C30 7 45 3 48 13c3 10-17 22-33 29 10-2 18-3 26-2"/></svg>';
-    const [natalia,julia,anastasia]=testimonials;
-    return `<div class="s-review-heading"><h2>Отзывы${sparkle}</h2><a class="s-review-more" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Смотреть больше отзывов <span aria-hidden="true">→</span></a></div><div class="s-review-grid">${reviewCard(anastasia)}${reviewCard(natalia)}${reviewCard(julia,heart)}</div>`;
+    return `<div class="s-review-heading"><h2>Отзывы и история семьи${sparkle}</h2><a class="s-review-more" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Смотреть отзывы в Telegram <span aria-hidden="true">→</span></a></div><article class="s-review s-family-story">${heart}<h3>Первая кандидатка осталась на полтора года</h3><p>Светлана была первой няней, которую я предложила семье. Она работала с ребёнком до его выхода в детский сад, а затем перешла в другую семью, которой я помогала с подбором.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть анкету Светланы ↗</a></article>`;
   }
   return `${title('Отзывы','Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
 }
@@ -122,4 +146,8 @@ export function renderBlock(id,value,context={}) {
   const previousReviews=id==='reviews'&&v===1&&ctx.state.palette==='sky-previous'?' s-reviews--previous':'';
   return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }
-export function renderSite(state) {const clean=normalizeState(state);return blocks.map((b,i)=>renderBlock(b.id,clean.layout[i],{state:clean})).join('');}
+export function renderSite(state) {
+  const clean=normalizeState(state);
+  const sections=new Map(blocks.map((block,index)=>[block.id,renderBlock(block.id,clean.layout[index],{state:clean})]));
+  return ['header','hero','service','about','reviews','process','pricing','apply','footer'].map(id=>sections.get(id)).join('');
+}

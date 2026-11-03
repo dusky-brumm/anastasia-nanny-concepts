@@ -1,9 +1,12 @@
 import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=__VERSION__';
 import {renderSite,renderBlock} from './render.js?v=__VERSION__';
 import {formatRequest} from '../request.js?v=__VERSION__';
+import {requestEndpoint} from './request-endpoint.js?v=__VERSION__';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
+const liveRequests=Boolean(requestEndpoint)&&document.body.hasAttribute('data-live-request');
+if(liveRequests)document.querySelector('#studio-privacy p').textContent='При отправке имя, контакт и текст заявки передаются в Telegram Анастасии, чтобы она могла ответить.';
 const capture=new URLSearchParams(location.search).get('capture')==='1';
 let state=readState(location.search);
 const explicit=['layout','palette','font','route','version'].some(key=>new URLSearchParams(location.search).has(key));
@@ -110,7 +113,13 @@ function refreshControls() {
   const share=document.querySelector('[data-share-url]');if(share)share.value=new URL(currentUrl('preview.html'),location.href).href;
   const summary=document.querySelector('[data-current-design]');if(summary)summary.textContent=palettes.find(p=>p.id===state.palette).name+' · '+fontSets.find(f=>f.id===state.font).name;
   const note=document.querySelector('[data-font-note]');if(note)note.textContent=fontSets.find(f=>f.id===state.font).note;
-  document.querySelectorAll('.s-consult-form [type=submit]').forEach(button=>button.disabled=false);
+  document.querySelectorAll('.s-consult-form').forEach(form=>{
+    const button=form.querySelector('[type=submit]');
+    button.disabled=form.getAttribute('aria-busy')==='true';
+    if(!liveRequests)return;
+    button.firstChild.textContent='Отправить заявку ';
+    form.querySelector('.s-form-note').textContent='Имя, контакт и сообщение будут отправлены Анастасии в Telegram.';
+  });
   // Isolated block previews keep their calls to action pointed at the full composition.
   if(mode==='library')document.querySelectorAll('.site-preview a[href*="preview.html"]').forEach(a=>{const url=new URL(a.href,location.href),variant=a.closest('[data-option]').dataset.option;const previewState=selectVariant(state,document.body.dataset.libraryBlock,variant);a.href=designUrl('preview.html',previewState,url.hash.slice(1));});
 }
@@ -176,14 +185,53 @@ document.addEventListener('click',async event=>{
   if(event.target.matches('#studio-privacy')){const r=event.target.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)event.target.close();}
 });
 document.addEventListener('keydown',event=>{if(event.key==='Escape')document.querySelectorAll('.s-menu[open]').forEach(menu=>{menu.open=false;menu.querySelector('summary').focus();});});
-document.addEventListener('submit',event=>{
+document.addEventListener('submit',async event=>{
   const form=event.target;if(!form.matches('.s-consult-form'))return;event.preventDefault();
+  if(form.getAttribute('aria-busy')==='true')return;
   const name=form.elements.namedItem('name'),contact=form.elements.namedItem('contact'),message=form.elements.namedItem('message');
   name.setCustomValidity(name.value.trim()?'':'Укажите ваше имя.');contact.setCustomValidity(contact.value.trim().length>=3?'':'Укажите телефон или Telegram для связи.');
   if(!form.reportValidity())return;
-  form.elements.namedItem('draft').value=formatRequest({name:name.value,contact:contact.value,message:message.value});
-  const draft=form.querySelector('.s-draft');draft.hidden=false;form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
+  const application={name:name.value,contact:contact.value,message:message.value,website:form.elements.namedItem('website').value};
+  const draft=form.querySelector('.s-draft'),status=form.querySelector('[role=status]');
+  const deliveryError='Не удалось подтвердить отправку. Можно отправить текст ниже Анастасии в Telegram.';
+  let feedback='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
+  if(liveRequests){
+    const submit=form.querySelector('[type=submit]');
+    const fields=[name,contact,message];
+    draft.hidden=true;
+    form.setAttribute('aria-busy','true');
+    submit.disabled=true;
+    fields.forEach(field=>field.readOnly=true);
+    submit.firstChild.textContent='Отправляем… ';
+    status.textContent='';
+    try{
+      const response=await fetch(requestEndpoint,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(application),
+        credentials:'omit',
+        signal:AbortSignal.timeout(15000),
+      });
+      if(response.ok&&(await response.json()).ok===true){
+        form.reset();
+        status.textContent='Заявка отправлена. Анастасия свяжется с вами.';
+        return;
+      }
+      if(response.status===429)feedback='Слишком много попыток. Попробуйте через минуту или напишите Анастасии в Telegram.';
+      else feedback=deliveryError;
+    }catch{
+      feedback=deliveryError;
+    }finally{
+      form.removeAttribute('aria-busy');
+      submit.disabled=false;
+      fields.forEach(field=>field.readOnly=false);
+      submit.firstChild.textContent='Отправить заявку ';
+    }
+  }
+  form.elements.namedItem('draft').value=formatRequest(application);
+  status.textContent=feedback;
+  draft.hidden=false;
   draft.scrollIntoView({block:'nearest',behavior:'instant'});
 });
-document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
+document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.querySelector('[role=status]').textContent='';form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
 applyTheme();refreshControls();persistState();markReady();

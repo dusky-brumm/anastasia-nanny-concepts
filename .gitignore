@@ -2,3 +2,7 @@
 project-notes/
 artifacts/
 *.tar.gz
+
+server/.wrangler/
+server/.dev.vars*
+server/.env*

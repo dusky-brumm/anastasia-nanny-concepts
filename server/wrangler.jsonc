@@ -1,0 +1,17 @@
+{
+  "name": "anastasia-nanny-requests",
+  "main": "telegram-worker.js",
+  "compatibility_date": "2025-12-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {
+    "SITE_ORIGINS": "https://dusky-brumm.github.io"
+  },
+  "ratelimits": [
+    {
+      "name": "REQUEST_LIMIT",
+      "namespace_id": "82501",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ]
+}

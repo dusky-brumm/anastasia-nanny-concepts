@@ -49,7 +49,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'aa0a5df1b6'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'d7651a8075'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
   if(!/^[1-9]$/.test(String(value)))return 0;

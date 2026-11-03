@@ -63,3 +63,16 @@ git diff --check
 Статическая проверка охватывает ресурсы, шрифты, якоря, уникальность ID, синтаксис CSS/JS, девять блоков главной и 45 вариантов библиотеки, канонические адреса, индексацию, JSON-LD, FAQ, обложку и sitemap. 13 тестов проверяют общий текст заявки, сохранность выбранной сборки в ссылке, повреждённые настройки, совместимость старых маршрутов, изолированное изменение блока, контраст всех палитр на трёх фонах и SEO-шаблоны.
 
 Визуальные проверки, скриншоты и дизайнерская критика находятся локально в `../../reference-work/studio/` и `../../reference-work/type-refine-20261102/` и не публикуются.
+
+
+## Three refined directions — 3 November 2026
+
+The new review page is `designs.html`. It presents live desktop/mobile previews and links to three complete, independent compositions:
+
+- `refined/sky.html` — «Воздух»: milk/blue palette, sans-serif headings with Lora accents, right-hand portrait, open service and process layouts.
+- `refined/story.html` — «История»: warm editorial layout, left-hand portrait, serif headings, vertical process and a contrasting contact section.
+- `refined/garden.html` — «Рядом»: centered introduction, natural green palette, a photographic strip and a clearly separated pricing section.
+
+Source files are in `src/reference/refined/` and `src/reference/designs.html`; the existing build copies them into `out/`. Shared navigation and browser-local message composition live in `refined/shared.js`. Forms never submit automatically, are disabled until their handler is installed, and invalidate an old draft when inputs change. Existing design URLs and the page builder remain available; the current homepage links to the new gallery.
+
+Validation: existing build, static/SEO checks and all 14 existing tests passed. Browser review covered complete desktop pages, narrow mobile views, intermediate widths, mobile menus, pricing anchors, all three form integrations and draft invalidation. Corrected 320px overflow, image aspect ratios, small-label contrast and missing spaces around hidden line breaks. Temporary QA frames are excluded from publication.

@@ -133,3 +133,6 @@ html:has(.version-menu) {scroll-padding-top:0}
   .library-actions {gap:20px;flex-wrap:wrap}
   .library-actions .tool-button {font-size:13px}
 }
+
+/* Complete November design directions. */
+.version-menu .new-designs-link{display:inline-flex;align-items:center;min-height:34px;padding:8px 12px;color:#284c3c;background:#e2e9d9;border-radius:6px;text-decoration:none;font:500 12px/1.4 'Golos Text',sans-serif;white-space:nowrap}.version-menu .new-designs-link:hover{background:#d2dec8}.version-menu .new-designs-link:focus-visible{outline:2px solid #9d654a;outline-offset:3px}@media(max-width:580px){.version-menu{flex-wrap:wrap;justify-content:center;max-width:calc(100% - 20px);width:max-content}.version-menu>span{display:none}.version-menu .new-designs-link{font-size:10px;padding:7px 9px}}

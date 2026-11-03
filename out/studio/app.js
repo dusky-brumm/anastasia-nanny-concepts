@@ -1,6 +1,6 @@
-import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=aa0a5df1b6';
-import {renderSite,renderBlock} from './render.js?v=aa0a5df1b6';
-import {formatRequest} from '../request.js?v=aa0a5df1b6';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=d7651a8075';
+import {renderSite,renderBlock} from './render.js?v=d7651a8075';
+import {formatRequest} from '../request.js?v=d7651a8075';
 
 const mode=document.body.dataset.mode;
 const capture=new URLSearchParams(location.search).get('capture')==='1';

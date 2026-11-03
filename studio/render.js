@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=a223c09484';
-import {renderJourney} from '../journeys.js?v=a223c09484';
-import {contacts,selectionFaq} from './content.js?v=a223c09484';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=bc41e7da84';
+import {renderJourney} from '../journeys.js?v=bc41e7da84';
+import {contacts,selectionFaq} from './content.js?v=bc41e7da84';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -11,8 +11,9 @@ const services=[
   ['Созваниваюсь на 10–15 минут','Уточняю условия вакансии и рассказываю кандидатке о вашей семье.'],
   ['Провожу личное интервью','Задаю вопросы о ситуациях из жизни вашей семьи. В анкете объясняю, почему предлагаю познакомиться с няней и что стоит обсудить на встрече.'],
 ];
-const biography='С 2022 года подбираю нянь в семьи. Работала в двух агентствах, сейчас веду подбор лично.';
-const background='До рекрутинга пять лет работала с детьми — няней, тренером, педагогом. Изучала детскую психологию и прошла профессиональную переподготовку по подбору домашнего персонала.';
+const biography='Подбираю нянь с 2022 года. Начинала в двух агентствах, а теперь веду каждый подбор лично. За это время провела больше 500 собеседований и помогла найти няню более чем 40 семьям.';
+const background='До рекрутинга я пять лет работала няней, тренером и педагогом. Прошла очную переподготовку на няню-гувернантку и рекрутера по подбору домашнего персонала: больше 400 академических часов с практикой.';
+const familyStory='Я старшая сестра в многодетной семье. С 13 лет часто оставалась дома за главную и знаю, как можно любить детей и всё равно уставать. Поэтому на первом разговоре мне важно понять, где вам особенно нужна помощь.';
 const conditions=[['Неограниченное количество анкет','Продолжаем поиск подходящего кандидата.'],['Гарантия замены — 6 месяцев','Если сотрудничество не сложилось, подберу замену бесплатно.'],['Личное сопровождение','Помогаю с выбором, знакомством и адаптацией няни.']];
 const testimonials=[
   ['Наталья','мама двоих детей','Настя помогла найти няню для дочки. Очень внимательная, отвечает быстро, понимает, что нужно семье. Няня уже полгода с нами — всё отлично!','natalia'],
@@ -28,11 +29,14 @@ function action(ctx,label='Оставить заявку',secondary=false) {retu
 function tg(label='Написать в Telegram') {return `<a class="s-text-link" href="${telegram}" target="_blank" rel="noopener noreferrer">${label} <span aria-hidden="true">↗</span></a>`;}
 function photo(type='cafe',cls='',priority=false) {
   const load=`loading="${priority?'eager':'lazy'}"${priority?' fetchpriority="high"':''}`;
-  const image=type==='cafe'?`<img src="${media}cafe.webp" width="720" height="1280" alt="Анастасия Доронина — специалист по подбору нянь" ${load}>`:`<img src="${media}${type}.webp" width="${type==='family'?960:640}" height="${type==='family'?1280:640}" alt="Анастасия ${type==='family'?'с детьми':'с ребёнком'}" ${load}>`;
+  const portraits=['cafe','about-portrait'];
+  const verticalPhoto=type==='family'||type==='rainbow';
+  const alt=type==='rainbow'?'с детьми на фоне радуги':verticalPhoto?'с детьми':'с ребёнком';
+  const image=portraits.includes(type)?`<img src="${media}${type}.webp" width="720" height="1280" alt="Анастасия Доронина за столиком в кафе" ${load}>`:`<img src="${media}${type}.webp" width="${verticalPhoto?960:640}" height="${verticalPhoto?1280:640}" alt="Анастасия ${alt}" ${load}>`;
   return `<figure class="s-photo ${type==='cafe'?'s-cafe ':''}${cls}"><div class="s-photo-mask">${image}</div></figure>`;
 }
 function portraitComposition(priority=false) {
-  return `<div class="s-live-portrait"><span class="s-photo-backing" aria-hidden="true"></span>${photo('cafe','s-live-frame',priority)}<span class="s-paper-tape" aria-hidden="true"></span><img class="s-portrait-flowers" src="assets/flowers.webp" width="70" height="114" alt=""><div class="s-handwritten-note"><p>Поиск с заботой<br>и вниманием<br>к вашей семье</p><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27 5 15C-2 7 9 1 16 9 23 0 35 8 27 16Z"/></svg></div></div>`;
+  return `<div class="s-live-portrait"><span class="s-photo-backing" aria-hidden="true"></span>${photo('family','s-live-frame',priority)}<span class="s-paper-tape" aria-hidden="true"></span><img class="s-portrait-flowers" src="assets/flowers.webp" width="70" height="114" alt=""><div class="s-handwritten-note"><p>Поиск с заботой<br>и вниманием<br>к вашей семье</p><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27 5 15C-2 7 9 1 16 9 23 0 35 8 27 16Z"/></svg></div></div>`;
 }
 function title(eyebrow,text) {return `<div class="s-section-heading"><p class="s-eyebrow">${eyebrow}</p><h2>${text}</h2></div>`;}
 function items(list,cls='') {return `<div class="s-items ${cls}">${list.map(([a,b],i)=>`<article><span class="s-index" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><h3>${a}</h3><p>${b}</p></article>`).join('')}</div>`;}
@@ -47,9 +51,9 @@ function header(v,c) {
 function hero(v,c) {
   const copy=`<div class="s-hero-copy"><p class="s-eyebrow">Персональный подбор няни</p><h1>${headline}</h1><p class="s-intro">${introduction}</p><div class="s-actions">${action(c)}${tg('Telegram')}</div></div>`;
   if(v===1)return `${copy}${portraitComposition(!c.library)}`;
-  if(v===2)return `${copy}<div class="s-hero-strip">${photo('child')}${photo('cafe','',!c.library)}${photo('family')}</div>`;
-  if(v===3)return `${photo('cafe','s-taped',!c.library)}<div class="s-hero-letter">${copy}<blockquote class="s-quote-note">«Поиск с заботой<br>и вниманием к вашей семье»</blockquote></div>${sun}`;
-  if(v===4)return `<div class="s-hero-panel">${copy}${scribble}</div>${photo('cafe','s-frame',!c.library)}`;
+  if(v===2)return `${copy}<div class="s-hero-strip">${photo('child')}${photo('family','',!c.library)}${photo('cafe')}</div>`;
+  if(v===3)return `${photo('family','s-taped',!c.library)}<div class="s-hero-letter">${copy}<blockquote class="s-quote-note">«Поиск с заботой<br>и вниманием к вашей семье»</blockquote></div>${sun}`;
+  if(v===4)return `<div class="s-hero-panel">${copy}${scribble}</div>${photo('family','s-frame',!c.library)}`;
   return `<p class="s-eyebrow">Анастасия Доронина · индивидуальный подбор</p><h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p><div class="s-actions">${action(c)}${tg('Telegram')}</div>${scribble}</div></div>`;
 }
 const serviceDrawings=`<svg class="s-service-drawing s-service-drawing--sky" viewBox="0 0 238 96" aria-hidden="true" focusable="false">
@@ -73,17 +77,19 @@ function service(v) {
   return `${heading}${v===3?scribble:''}${items(services)}${interview}`;
 }
 const aboutSlides=[
-  ['Меня зовут Анастасия','cafe','Я подбираю нянь для семей с 2022 года. Начинала в агентствах, сейчас веду каждый подбор лично. Вместе мы обсуждаем ваш запрос, разбираем анкеты и выбираем, с кем познакомиться.'],
-  ['Я знаю поиск с обеих сторон','family','Семье важно понять, как няня будет общаться с ребёнком. Няне — представить рабочий день, обязанности и правила семьи. Я обсуждаю эти детали с обеими сторонами заранее.'],
+  ['Меня зовут Анастасия','about-portrait',biography],
+  ['Я старшая сестра','rainbow',familyStory],
+  ['От работы с детьми к подбору нянь','family',background],
   ['Я на связи и после знакомства','child','Перед пробными днями подскажу, как подготовить ребёнка к знакомству. После выхода няни со мной можно обсудить адаптацию и изменения, которые вы хотите предложить няне.'],
 ];
 function about(v) {
-  const text=`${title('Об Анастасии','Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p>`;
-  if(v===1)return `<div class="s-about-slides">${title('Об Анастасии','Давайте познакомимся')}<ol aria-label="Знакомство с Анастасией" tabindex="0">${aboutSlides.map(([name,image,copy],index)=>`<li>${photo(image,'s-frame')}<div><p class="s-eyebrow">${index+1} / ${aboutSlides.length}</p><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol><p class="s-about-hint">Листайте, чтобы увидеть все три фото</p></div>`;
-  if(v===2)return `${photo('cafe','s-frame')}<div class="s-about-copy">${text}<div class="s-tags"><span>Личное интервью</span><span>Поддержка семьи</span></div></div>`;
-  if(v===3)return `<div class="s-letter"><span class="s-eyebrow">Об Анастасии</span><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p>${scribble}</div>${photo('child','s-frame')}`;
-  if(v===4)return `${title('Об Анастасии','Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('family','s-taped')}<div><p>${biography}</p><p>${background}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('child','s-frame')}</div>`;
-  return `<div class="s-about-pair">${photo('cafe')}${photo('child')}</div><div class="s-about-copy">${text}</div>`;
+  const aboutPhotos=`<div class="s-about-photos">${photo('about-portrait','s-frame')}${photo('rainbow','s-frame')}</div>`;
+  const text=`${title('Об Анастасии','Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>`;
+  if(v===1)return `<div class="s-about-slides">${title('Об Анастасии','Давайте познакомимся')}<ol aria-label="Знакомство с Анастасией" tabindex="0">${aboutSlides.map(([name,image,copy],index)=>`<li>${photo(image,'s-frame')}<div><p class="s-eyebrow">${index+1} / ${aboutSlides.length}</p><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol><p class="s-about-hint">Листайте, чтобы увидеть все фото</p></div>`;
+  if(v===2)return `${aboutPhotos}<div class="s-about-copy">${text}<div class="s-tags"><span>Личное интервью</span><span>Поддержка семьи</span></div></div>`;
+  if(v===3)return `<div class="s-letter"><span class="s-eyebrow">Об Анастасии</span><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>${scribble}</div>${aboutPhotos}`;
+  if(v===4)return `${title('Об Анастасии','Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('about-portrait','s-taped')}<div><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('rainbow','s-frame')}</div>`;
+  return `<div class="s-about-pair">${photo('about-portrait')}${photo('rainbow')}</div><div class="s-about-copy">${text}</div>`;
 }
 const routeIcons=[
   'M4 5h16v11H9l-5 4z M8 9h8 M8 12h5',
@@ -125,7 +131,7 @@ function reviewCard([name,role,quote,avatar],heart='') {
 }
 function reviews(v,c) {
   const story=`<article class="s-family-story"><p class="s-eyebrow">История семьи</p><h3>Первая кандидатка осталась на полтора года</h3><p>Светлана была первой няней, которую я предложила семье. Она работала с ребёнком до его выхода в детский сад, а затем перешла в другую семью, которой я помогала с подбором.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть анкету Светланы ↗</a></article>`;
-  if(v===1&&c.state.palette==='sky-previous') {
+  if(v===1&&c.state.version==='previous') {
     const pin='<span class="s-review-pin" aria-hidden="true"></span>';
     return `${title('Отзывы','Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row,pin)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>${story}`;
   }
@@ -145,7 +151,7 @@ export function renderBlock(id,value,context={}) {
   const state=normalizeState(context.state),ctx={...context,state};
   const block=blocks.find(b=>b.id===id)??blocks[0];
   const v=variantNumber(block,value)||1;
-  const previousReviews=id==='reviews'&&v===1&&ctx.state.palette==='sky-previous'?' s-reviews--previous':'';
+  const previousReviews=id==='reviews'&&v===1&&ctx.state.version==='previous'?' s-reviews--previous':'';
   return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }
 export function renderSite(state) {

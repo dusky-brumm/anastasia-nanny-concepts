@@ -76,3 +76,18 @@ The new review page is `designs.html`. It presents live desktop/mobile previews 
 Source files are in `src/reference/refined/` and `src/reference/designs.html`; the existing build copies them into `out/`. Shared navigation and browser-local message composition live in `refined/shared.js`. Forms never submit automatically, are disabled until their handler is installed, and invalidate an old draft when inputs change. Existing design URLs and the page builder remain available; the current homepage links to the new gallery.
 
 Validation: existing build, static/SEO checks and all 14 existing tests passed. Browser review covered complete desktop pages, narrow mobile views, intermediate widths, mobile menus, pricing anchors, all three form integrations and draft invalidation. Corrected 320px overflow, image aspect ratios, small-label contrast and missing spaces around hidden line breaks. Temporary QA frames are excluded from publication.
+
+
+## Rebuilt directions — 3 November 2026
+
+The second review rejected the earlier three variants. The new series replaces their presentation code and the comparison page:
+
+- `rework/method.html` — «По делу»: large Golos headings, a small author portrait and a concrete description of the detailed profiles the family receives.
+- `rework/photo.html` — «Живой кадр»: a wide original family photograph below the headline, open sections and a row-based price table.
+- `rework/contrast.html` — «Контраст»: a dark-green introductory composition, large Lora headings, rectangular portrait and pale-blue service/contact sections.
+
+`designs.html` shows one full-size working page at a time with accessible tabs and desktop/phone sizes. `designs-v1.html` preserves the preceding comparison. All earlier page URLs remain available. Source is in `src/reference/rework`; the three desktop first-screen previews are in its `previews/` directory.
+
+The current service facts and actual photographs are retained. The Telegram form only prepares a local message for the visitor to copy and send; it clears the old draft when the inputs change. Native mobile menus, anchor navigation, all three form integrations and the gallery controls were checked in the browser. Layout overflow was checked at nominal iframe widths 320, 390, 768, 1440, 1920 and 2560. Corrections include the biography photo height in the method page and a full-width readable introduction on the contrast page at phone widths. Desktop first screens and full method/contrast pages were reviewed; the photo page was reviewed in viewport sections because the browser's full-page screenshot operation timed out.
+
+The existing 14 regression tests pass. Before packaging, run the build and static/SEO checks with the temporary responsive QA harness removed. Publication uses the existing owner-private Site. GitHub synchronization remains blocked by the previously returned integration write-access 403; no GitHub write retry is part of this round.

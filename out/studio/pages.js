@@ -1,11 +1,11 @@
-import {blocks,palettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=ae6f1d5de7';
-import {renderSite,renderBlock} from './render.js?v=ae6f1d5de7';
-import {seoHead} from './seo.js?v=ae6f1d5de7';
+import {blocks,palettes,fontSets,defaults,presets,designUrl,selectVariant} from './model.js?v=b0f4b92491';
+import {renderSite,renderBlock} from './render.js?v=b0f4b92491';
+import {seoHead} from './seo.js?v=b0f4b92491';
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
-const versionMenu=`<nav class="version-menu" aria-label="Версии сайта"><a href="reference.html?v=ae6f1d5de7">Прежняя</a><a href="./?v=ae6f1d5de7" aria-current="page">Текущая</a><a class="new-designs-link" href="designs.html">Галерея дизайнов ↗</a></nav>`;
+const versionMenu=`<nav class="version-menu" aria-label="Версии сайта"><a href="reference.html?v=b0f4b92491">Прежняя</a><a href="./?v=b0f4b92491" aria-current="page">Текущая</a><a class="new-designs-link" href="designs.html">Галерея дизайнов ↗</a></nav>`;
 function controls() {
   return `<aside class="studio-controls" id="studio-settings" aria-label="Настройки дизайна"><section><h2>Готовые сборки</h2><p class="tool-hint">Сборка 1 — рекомендованная. Любой блок можно заменить.</p><div class="preset-buttons">${presets.map(p=>`<button type="button" data-preset="${p.id}" aria-label="Сборка ${p.id}: ${p.name}" title="${p.name}" aria-pressed="${p.id==='1'}">${p.id}</button>`).join('')}</div></section>
   <section><h2>Палитра</h2><div class="palette-buttons">${palettes.map(p=>`<button type="button" data-palette="${p.id}" aria-pressed="${p.id===defaults.palette}"><span class="palette-dots" aria-hidden="true"><i style="background:${p.paper}"></i><i style="background:${p.wash}"></i><i style="background:${p.ink}"></i></span><span>${p.name}</span></button>`).join('')}</div></section>
@@ -29,8 +29,8 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
 ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6ec">
 <link rel="preload" href="fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="studio/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=ae6f1d5de7"><link rel="stylesheet" href="studio/fonts.css?v=ae6f1d5de7">
-<link rel="stylesheet" href="journeys.css?v=ae6f1d5de7"><link rel="stylesheet" href="studio/site.css?v=ae6f1d5de7"><link rel="stylesheet" href="studio/ui.css?v=ae6f1d5de7">
-<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=ae6f1d5de7"></script>
+<link rel="stylesheet" href="fonts.css?v=b0f4b92491"><link rel="stylesheet" href="studio/fonts.css?v=b0f4b92491">
+<link rel="stylesheet" href="journeys.css?v=b0f4b92491"><link rel="stylesheet" href="studio/site.css?v=b0f4b92491"><link rel="stylesheet" href="studio/ui.css?v=b0f4b92491">
+<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=b0f4b92491"></script>
 </head><body class="design-tool ${mode==='preview'?'preview-only':''}" data-mode="${mode}" data-library-block="${blockId}">${mode==='preview'&&pageFile!=='index.html'?versionMenu:''}${content}${privacy}<noscript><p class="tool-noscript">${mode==='preview'?'Для подготовки заявки включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }

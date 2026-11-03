@@ -34,6 +34,8 @@ export const explorationPalettes = [
   {id:'almost-white',name:'Почти белый',paper:'#fcfcfa',wash:'#e7f1f6',soft:'#e8efe4',card:'#ffffff',ink:'#28353c',leaf:'#a8c0a1',accent:'#385a6b'},
   {id:'warm-white',name:'Белый с каплей тепла',paper:'#fafaf6',wash:'#e3f0f6',soft:'#e6eee3',card:'#ffffff',ink:'#28382d',leaf:'#a8c0a1',accent:'#4e6c5d'},
   {id:'new',name:'Новая',paper:'#fafaf6',wash:'#e7f1f6',soft:'#e6eee3',card:'#ffffff',ink:'#28382d',leaf:'#a8c0a1',accent:'#4e6c5d',button:'#4e6c5d','blue-accent':'#385a6b'},
+  {id:'mist',name:'Утренний туман',paper:'#fcfaf5',wash:'#e6f0f4',soft:'#e7eee7',card:'#ffffff',ink:'#2e4140',leaf:'#a8c0b4',accent:'#49686d',button:'#49686d'},
+  {id:'garden',name:'Сад после дождя',paper:'#fafaf4',wash:'#e8f1f4',soft:'#e4efe8',card:'#ffffff',ink:'#293e36',leaf:'#abc3ac',accent:'#456756',button:'#456756'},
 ];
 export const fontSets = [
   {id:'golos',name:'Manrope + Golos Text',note:'Современный основной набор'},
@@ -68,7 +70,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'5eafa8d46c'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'f566d749e6'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
   if(!/^[1-9]$/.test(String(value)))return 0;

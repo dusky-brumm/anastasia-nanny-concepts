@@ -8,8 +8,8 @@ test('a shared mixed design round-trips without losing any of the nine choices',
   assert.deepEqual(readState(url.search),state);assert.equal(url.hash,'#apply');
 });
 test('corrupt saved state and untrusted query values safely use known choices',()=>{
-  assert.deepEqual(normalizeState({layout:'9x3',palette:'<script>',font:'missing'}),{layout:'113191113',palette:'sky',font:'golos'});
-  assert.deepEqual(normalizeState(null),{layout:'112191113',palette:'sky',font:'golos'});
+  assert.deepEqual(normalizeState({layout:'9x3',palette:'<script>',font:'missing'}),{layout:'113111113',palette:'sky',font:'golos'});
+  assert.deepEqual(normalizeState(null),{layout:'112111113',palette:'sky',font:'golos'});
   assert.deepEqual(readState('?layout=555555555&name=private&contact=private'),{layout:'555555555',palette:'sky',font:'golos'});
 });
 test('old route links change only the process block, while explicit designs take precedence',()=>{

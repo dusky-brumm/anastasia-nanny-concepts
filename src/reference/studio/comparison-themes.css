@@ -1,5 +1,9 @@
 .comparison-theme {display:inline-flex;align-items:center;gap:7px;min-width:0;font:500 13px/1.4 'Golos Text',sans-serif}
 .comparison-theme select {max-width:100%;min-width:0;min-height:36px;padding:4px 7px;border:1px solid #c9d4cd;border-radius:7px;background:#fff;color:#203e34;font:inherit}
+.review-controls {
+  position:sticky;top:0;z-index:40;padding-block:8px;
+  background:#eef1ee;border-bottom:1px solid #cdd6d0;
+}
 #hero img[src$="/family.webp"] {object-position:50% 38%}
 #about img[src$="/about-portrait.webp"] {object-position:50% 41%}
 #about :is(figure,.gd-about-image):has(>.about-rainbow) {position:relative}
@@ -27,6 +31,10 @@ html[data-comparison-palette] body {background:var(--compare-paper)}
 }
 [data-comparison-palette] :is(.md-about,.md-contact,.ph-about,.ph-apply,.ct-pricing,.gd-about,.gd-apply,.st-pricing) {
   background:var(--compare-blue);
+}
+:is([data-comparison-palette="sea-glass"],[data-comparison-palette="oat-eucalyptus"])
+  :is(.md-contact,.ph-apply,.ct-pricing,.gd-apply,.st-pricing) {
+  background:var(--compare-soft);
 }
 [data-comparison-palette] :is(.md-button:not(.md-button-light),.ph-button,.ct-button:not(.ct-button-light),.sk-button,.st-btn:not(.st-btn-light),.gd-button) {
   background:var(--compare-button);

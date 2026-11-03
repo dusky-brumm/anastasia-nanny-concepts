@@ -6,18 +6,15 @@
     new ResizeObserver(() => document.documentElement.style.setProperty('--comparison-offset', nav.offsetHeight + 12 + 'px')).observe(nav);
   }
   const buttons = [...nav.querySelectorAll('[data-comparison-palette]')];
-  const links = nav.querySelectorAll('a');
-  const inputs = [...nav.querySelectorAll('[data-color-role]')];
-  const hint = nav.querySelector('[data-color-hint]');
+  const links = nav.querySelectorAll('.comparison-pairs a');
+  const colorRoles = ['paper', 'wash', 'soft', 'ink', 'button'];
   const originalStyle = site.getAttribute('style');
   const defaultButton = '#526c73';
-  let activeId = '';
-  let overrides = {};
 
   function selectPalette(id, custom = {}) {
     const selected = buttons.find(button => button.dataset.comparisonPalette === id) ?? buttons[0];
-    activeId = selected.dataset.comparisonPalette;
-    overrides = activeId ? custom : {};
+    const activeId = selected.dataset.comparisonPalette;
+    const overrides = activeId ? custom : {};
     const colors = activeId ? {button:defaultButton,...JSON.parse(selected.dataset.colors),...overrides} : null;
     for (const button of buttons) button.setAttribute('aria-pressed', String(button === selected));
     if (originalStyle === null) site.removeAttribute('style');
@@ -29,26 +26,12 @@
       site.style.setProperty('--wine', colors.accent);
       site.style.setProperty('--pencil', colors.accent);
     }
-    const computed = getComputedStyle(site);
-    for (const input of inputs) {
-      const role = input.dataset.colorRole;
-      const original = role === 'button'
-        ? getComputedStyle(site.querySelector('#hero .s-button')).backgroundColor
-        : computed.getPropertyValue('--' + role).trim();
-      const rgb = original.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-      const hex = rgb ? '#' + rgb.slice(1).map(value => Number(value).toString(16).padStart(2,'0')).join('') : original;
-      input.disabled = !colors;
-      input.value = colors?.[role] ?? hex;
-      input.nextElementSibling.textContent = input.value.toUpperCase();
-    }
-    hint.hidden = Boolean(colors);
 
     function withPalette(href) {
       const url = new URL(href, location.href);
-      if (colors) url.searchParams.set('palette', selected.dataset.comparisonPalette);
-      else url.searchParams.delete('palette');
-      for (const input of inputs) {
-        const role = input.dataset.colorRole;
+      url.searchParams.delete('compare-scroll');
+      url.searchParams.set('palette', activeId);
+      for (const role of colorRoles) {
         if (overrides[role]) url.searchParams.set('color-' + role, overrides[role].slice(1));
         else url.searchParams.delete('color-' + role);
       }
@@ -65,14 +48,54 @@
 
   const params = new URLSearchParams(location.search);
   const savedColors = {};
-  for (const input of inputs) {
-    const role = input.dataset.colorRole;
+  for (const role of colorRoles) {
     const value = params.get('color-' + role);
     if (/^[\da-f]{6}$/i.test(value ?? '')) savedColors[role] = '#' + value;
-    input.addEventListener('input', () => selectPalette(activeId, {...overrides,[role]:input.value}));
   }
-  selectPalette(params.get('palette'), savedColors);
+  selectPalette(params.get('palette') ?? nav.dataset.defaultPalette, savedColors);
   for (const button of buttons) button.addEventListener('click', () => selectPalette(button.dataset.comparisonPalette));
+
+  const sections = [...site.querySelectorAll(':scope > [id], :scope > .pencil-section > [id]')];
+  for (const link of links) {
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      if (window.scrollY === 0) return;
+
+      const readingLine = nav.getBoundingClientRect().bottom;
+      const anchored = sections.find(item => '#' + item.id === location.hash);
+      const anchorBounds = anchored?.getBoundingClientRect();
+      const nearAnchor = anchorBounds && anchorBounds.bottom > readingLine
+        && anchorBounds.top < window.innerHeight;
+      const section = nearAnchor ? anchored : sections.find(item => item.getBoundingClientRect().bottom > readingLine);
+      if (!section) return;
+
+      const bounds = section.getBoundingClientRect();
+      const progress = Math.max(0, (readingLine - bounds.top) / bounds.height);
+      const destination = new URL(link.href);
+      destination.hash = section.id;
+      destination.searchParams.set('compare-scroll', `${section.id}:${progress.toFixed(5)}`);
+      event.preventDefault();
+      location.assign(destination.href);
+    });
+  }
+
+  const [sectionId, progressText] = (params.get('compare-scroll') ?? '').split(':');
+  const section = sections.find(item => item.id === sectionId);
+  const progress = Number(progressText);
+  if (section && progressText && progress >= 0 && progress <= 1) {
+    // Start at the native anchor, then apply the offset after layout settles.
+    const loaded = document.readyState === 'complete'
+      ? Promise.resolve()
+      : new Promise(resolve => window.addEventListener('load', resolve, {once:true}));
+    Promise.all([loaded, document.fonts.ready]).then(() => requestAnimationFrame(() => {
+      const bounds = section.getBoundingClientRect();
+      window.scrollTo({
+        top: window.scrollY + bounds.top + bounds.height * progress - nav.offsetHeight,
+        behavior: 'instant'
+      });
+    }));
+  }
+
   for (const selector of ['.comparison-pairs a[aria-current]', '.comparison-palette button[aria-pressed=true]']) {
     const active = nav.querySelector(selector);
     const track = active.closest('.comparison-pairs,.comparison-palette-options');
@@ -83,3 +106,28 @@
     }
   }
 })();
+
+function bindComparisonQuotes(strip) {
+    const quoteTrack = strip.querySelector('.s-review-grid');
+    const controls = strip.querySelector('.comparison-quote-controls');
+    const [previous, next] = controls.querySelectorAll('button');
+    function updateQuoteControls() {
+      const limit = quoteTrack.scrollWidth - quoteTrack.clientWidth;
+      controls.hidden = limit < 4;
+      previous.disabled = quoteTrack.scrollLeft < 2;
+      next.disabled = quoteTrack.scrollLeft >= limit - 2;
+    }
+    for (const button of [previous, next]) {
+      button.addEventListener('click', () => {
+        const gap = parseFloat(getComputedStyle(quoteTrack).columnGap);
+        const step = quoteTrack.firstElementChild.getBoundingClientRect().width + gap;
+        const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        quoteTrack.scrollBy({left:step * Number(button.dataset.quoteStep), behavior:reduced ? 'instant' : 'smooth'});
+      });
+    }
+    quoteTrack.addEventListener('scroll', updateQuoteControls, {passive:true});
+    new ResizeObserver(updateQuoteControls).observe(quoteTrack);
+    updateQuoteControls();
+}
+
+document.querySelectorAll('.comparison-quote-strip').forEach(bindComparisonQuotes);

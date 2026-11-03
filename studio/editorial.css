@@ -18,8 +18,6 @@ body[data-mode=editorial] {background:#fff}
   padding-block:22px;
 }
 .e-header .s-menu {z-index:5}
-.e-brand {font:700 17px/1.2 var(--heading);letter-spacing:-.035em}
-.e-brand small {display:block;margin-top:5px;font:400 12px/1.3 var(--body);letter-spacing:0}
 .e-stage {
   display:flex;
   position:relative;

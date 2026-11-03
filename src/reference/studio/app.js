@@ -216,6 +216,7 @@ document.addEventListener('change',event=>{
 });
 document.addEventListener('click',async event=>{
   const button=event.target.closest('button');
+  if(document.querySelector('.comparison-design')&&(button?.matches('.s-privacy,[data-close],.s-copy')||event.target.matches('#studio-privacy')))return;
   if(button?.matches('[data-mobile-settings]')){const open=document.querySelector('.studio-workspace').classList.toggle('settings-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'Скрыть настройки':'Настроить блоки, цвета и шрифты';}
   if(button?.dataset.palette){
     updateState({...state,version:state.version??'current',palette:button.dataset.palette});
@@ -235,7 +236,7 @@ document.addEventListener('click',async event=>{
 });
 document.addEventListener('keydown',event=>{if(event.key==='Escape')document.querySelectorAll('.s-menu[open],.theme-picker[open]').forEach(menu=>{menu.open=false;menu.querySelector('summary').focus({preventScroll:true});});});
 document.addEventListener('submit',async event=>{
-  const form=event.target;if(!form.matches('.s-consult-form'))return;event.preventDefault();
+  const form=event.target;if(!form.matches('.s-consult-form')||form.closest('.comparison-design'))return;event.preventDefault();
   if(form.getAttribute('aria-busy')==='true')return;
   const name=form.elements.namedItem('name'),contact=form.elements.namedItem('contact'),message=form.elements.namedItem('message');
   name.setCustomValidity(name.value.trim()?'':'Укажите ваше имя.');contact.setCustomValidity(contact.value.trim().length>=3?'':'Укажите телефон или Telegram для связи.');
@@ -282,5 +283,5 @@ document.addEventListener('submit',async event=>{
   draft.hidden=false;
   draft.scrollIntoView({block:'nearest',behavior:'instant'});
 });
-document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.querySelector('[role=status]').textContent='';form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
+document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||form.closest('.comparison-design')||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.querySelector('[role=status]').textContent='';form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
 applyTheme();refreshControls();persistState();markReady();

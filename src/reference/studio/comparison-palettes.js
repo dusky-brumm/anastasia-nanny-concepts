@@ -73,4 +73,13 @@
   }
   selectPalette(params.get('palette'), savedColors);
   for (const button of buttons) button.addEventListener('click', () => selectPalette(button.dataset.comparisonPalette));
+  for (const selector of ['.comparison-pairs a[aria-current]', '.comparison-palette button[aria-pressed=true]']) {
+    const active = nav.querySelector(selector);
+    const track = active.closest('.comparison-pairs,.comparison-palette-options');
+    if (!track) continue;
+    const offset = active.getBoundingClientRect().left - track.getBoundingClientRect().left;
+    if (offset < 0 || offset + active.offsetWidth > track.clientWidth) {
+      track.scrollLeft += offset - (track.clientWidth - active.offsetWidth) / 2;
+    }
+  }
 })();

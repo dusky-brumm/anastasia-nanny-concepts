@@ -90,7 +90,8 @@ function menu(ctx) {return `<details class="s-menu"><summary aria-label="Отк�
 function header(v,c) {
   if(v===2)return `<div class="s-header-top">${tg('Telegram')}${action(c,'Обсудить подбор')}</div>${nav(c)}${menu(c)}`;
   if(v===4)return `<div class="s-header-top">${tg('Telegram')}</div><div class="s-header-bottom">${nav(c)}${menu(c)}</div>`;
-  return `${nav(c)}${v===5?tg('Telegram'):''}${menu(c)}`;
+  const identity=c.comparison?'<a class="pencil-brand" href="#hero">Анастасия Доронина</a>':'';
+  return `${identity}${nav(c)}${v===5?tg('Telegram'):''}${menu(c)}`;
 }
 function hero(v,c) {
   const application=`<div class="s-actions"><a class="s-button" href="${linkTo('apply',c)}">Оставить заявку</a></div>`;
@@ -180,6 +181,20 @@ function process(v,c) {
 }
 function faq() {return `<div class="s-faq"><h3>Вопросы о подборе няни</h3>${selectionFaq.map(item=>`<details><summary>${item.question}</summary><p>${item.answer}</p></details>`).join('')}</div>`;}
 function pricing(v,c) {
+  if(c.comparison)return `${title('Стоимость и гарантия')}
+    <div class="comparison-price-sheet">
+      <div class="comparison-price-main">
+        <p class="comparison-price-label">Стоимость подбора</p>
+        <h3>Один оклад няни</h3>
+        <p>За поиск, собеседования и сопровождение семьи.</p>
+      </div>
+      <dl class="comparison-price-terms">
+        <div><dt>Предоплата</dt><dd>25&nbsp;000&nbsp;₽</dd></div>
+        <div><dt>Остаток</dt><dd>После одной-двух пробных недель</dd></div>
+        <div><dt>Гарантия бесплатной замены</dt><dd>6 месяцев</dd></div>
+      </dl>
+      <a class="s-text-link comparison-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a>
+    </div>${faq()}`;
   const price=`<div class="s-price"><h3>1 оклад няни</h3><p>Предоплата — 25&nbsp;000&nbsp;₽.<br>Остаток — после одной-двух пробных недель.</p>${action(c,'Обсудить подбор')}</div>`;
   const terms=items(conditions,'s-conditions');
   return `${title('Стоимость подбора няни')}<div class="s-pricing-layout">${price}${terms}</div><a class="s-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробнее об условиях в Telegram ↗</a>${faq()}`;
@@ -201,9 +216,13 @@ function reviews(v,c) {
   }
   return `${title('Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
 }
-function form() {return `<form class="s-consult-form" method="post"><div hidden><label>Сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="3" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><p class="s-form-note">Вы получите текст сообщения для отправки Анастасии в Telegram. Данные здесь не сохраняются.</p><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div></div><p class="s-request-status" role="status"></p></form>`;}
-function apply(v) {return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
-function footer() {return `<div class="s-footer-contact">${tg('Telegram')}<button type="button" class="s-privacy">О данных формы</button></div>`;}
+function form(comparison=false) {return `<form class="s-consult-form" method="post"><div hidden><label>Сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="${comparison?4:3}" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><p class="s-form-note">Вы получите текст сообщения для отправки Анастасии в Telegram. Данные здесь не сохраняются.</p><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div></div><p class="s-request-status" role="status"></p></form>`;}
+function apply(v,c) {if(c.comparison)return `<div class="s-apply-intro">${title('Обсудить подбор')}<p>Оставьте контакт, чтобы договориться о созвоне.</p></div>${form(true)}`;return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
+function footer(v,c) {
+  if(!c.comparison)return `<div class="s-footer-contact">${tg('Telegram')}<button type="button" class="s-privacy">О данных формы</button></div>`;
+  const identity=c.comparison?'<div class="comparison-footer-name"><a href="#hero">Анастасия Доронина</a><p>Личный подбор нянь</p></div>':'';
+  return `${identity}${v!==2&&v!==3?nav(c):''}<div class="s-footer-contact">${tg('Связаться в Telegram')}<button type="button" class="s-privacy">О данных формы</button></div><p class="s-copyright">© 2026 Анастасия Доронина</p>`;
+}
 const renderers={header,hero,service,about,process,pricing,reviews,apply,footer};
 export function renderBlock(id,value,context={}) {
   const state=normalizeState(context.state),ctx={...context,state};
@@ -308,11 +327,11 @@ ${pencilFilter('preview-pencil')}
   </section>`;
 }
 
-export function renderPencilPreview(state, mode='pencil') {
+export function renderPencilPreview(state, mode='pencil', options={}) {
   const journal=mode==='pencil-journal';
   const layout=pencilNewLayouts[mode];
   const dividers=layout?.dividers??(journal?pencilJournalDividers:pencilDividers);
-  const ctx={state};
+  const ctx={...options,state};
   const sections=siteOrder.slice(2);
   return `
     <header class="s-block s-header pencil-header" id="header">

@@ -1,0 +1,20 @@
+export function bindRequestUi(formatRequest) {
+  document.querySelectorAll('.s-consult-form [type=submit]').forEach(button => { button.disabled = false; });
+  document.addEventListener('click', async event => {
+    const button = event.target.closest('button');
+    if(button?.matches('.s-privacy'))document.querySelector('#studio-privacy').showModal();
+    if(button?.matches('[data-close]'))button.closest('dialog').close();
+    if(button?.matches('.s-copy')){const form=button.closest('form'),output=form.elements.namedItem('draft'),status=form.querySelector('[role=status]');try{await navigator.clipboard.writeText(output.value);status.textContent='Текст скопирован.';}catch{output.focus();output.select();status.textContent='Скопируйте выделенный текст вручную.';}}
+    if(event.target.matches('#studio-privacy')){const r=event.target.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)event.target.close();}
+  });
+  document.addEventListener('submit',event=>{
+    const form=event.target;if(!form.matches('.s-consult-form'))return;event.preventDefault();
+    const name=form.elements.namedItem('name'),contact=form.elements.namedItem('contact'),message=form.elements.namedItem('message');
+    name.setCustomValidity(name.value.trim()?'':'Укажите ваше имя.');contact.setCustomValidity(contact.value.trim().length>=3?'':'Укажите телефон или Telegram для связи.');
+    if(!form.reportValidity())return;
+    form.elements.namedItem('draft').value=formatRequest({name:name.value,contact:contact.value,message:message.value});
+    const draft=form.querySelector('.s-draft');draft.hidden=false;form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
+    draft.scrollIntoView({block:'nearest',behavior:'instant'});
+  });
+  document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.querySelector('[role=status]').textContent='';form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
+}

@@ -1,26 +1,29 @@
 {
-  "build": "5eafa8d46c",
-  "base_commit": "91b641357c707a7c8f550a07affbb402a0e8a89f",
+  "build": "f566d749e6",
+  "base_commit": "f6ba267e61866bc9131420e2e64a484b4445231f",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
-    "scripts/build-reference.mjs": "6da00b7b6122ea9e9c488e7de38f4c8b19d8a2193c7da10f25aaed0a954f6835",
+    "scripts/build-reference.mjs": "c4e85dd1fa436e3d1cb0de1185102885c589aaa7d4fe4a543e983d5edc002082",
     "src/reference/journeys.css": "a90111f8ec8f75b9374c82b3ed205b734490978d47baaadd02abbceff876c7af",
     "src/reference/journeys.js": "a80687254b9d241f25c5ceccb626cb121703dcbb719d4bd1de5b3a6851b25e35",
-    "src/reference/studio/app.js": "6d5f1ab7677b458cf88b9b56d8b5b2d29e8537f638b738edae14ba94b2f5d75e",
-    "src/reference/studio/comparison-palettes.js": "89b93c4e59c31b9ce1c642823f11ed87b6cea8e9fa3e28173ba9c4cd7c5d8a91",
+    "src/reference/studio/app.js": "4c599f1346d38bf628da639a103f8ef2aa9529d9b0c2465a3538672d390ec1d9",
+    "src/reference/studio/comparison-palettes.js": "02fe965596a701650d35e94938646ab7c60ac6621add44aedf0c8f2e26a49f81",
     "src/reference/studio/editorial.css": "cc63dcc451205d155e987b7cbaa238a5c47b180c40bda52f4c766f92078e54e9",
-    "src/reference/studio/model.js": "d55e18c1e2bb5f6238693c6e771626f38e7de2d842f4e287f8ee63d7dc1706e2",
-    "src/reference/studio/pages.js": "3fe3412b7c1d2fec761cab7df829438154aa298c050442e947590f3345dd6a31",
+    "src/reference/studio/model.js": "429412db8a2afb61ad6d8ef2c95b7432967b8368880b2564ce82017abcf0b24c",
+    "src/reference/studio/pages.js": "b451ad1ef3f19f4c2da128eefc6239dea5179c994b323695bd6287781c2cfab5",
     "src/reference/studio/pencil-preview.css": "de06762a1c7e006e327f43e4e9feb38d2b471eb01470a33a5197f82012535387",
-    "src/reference/studio/render.js": "4d61ca29259b521a25451e9e064aa50cc7d0911a2bb1ae27baa6e749f05a817c",
+    "src/reference/studio/render.js": "a5f9989ac6689b4095b3a426f01a968b02938598630d525fd7770c6283e6841c",
     "src/reference/studio/site.css": "06885efbb1a374d7440935e052915a1d13f839456f33d6ec1198a6a0d12673c8",
-    "src/reference/studio/ui.css": "ed1e83437f6f04547dfd4f7ca43682dc2793bff7198f7dec9cbdc282e92b9ed7"
+    "src/reference/studio/ui.css": "ed1e83437f6f04547dfd4f7ca43682dc2793bff7198f7dec9cbdc282e92b9ed7",
+    "src/reference/studio/comparison-design.css": "88b19a895dce2aae7e2498fdac0057ef462c18b38d1c3042b7767219c4f211c3",
+    "src/reference/studio/request-ui.js": "3a1582a3eb53022badea85e6453112c54ae8690527d698b34caf77d03645260f"
   },
   "included": [
-    "Completed comparison layouts: current, 1, 2, 3, 4, 6, 7, 9",
-    "Four comparison palettes, buttons and five customizable colors persisted in links",
-    "Section order, larger portraits, calm-word underline and variant 9 arrows",
-    "Entry from main site; existing seven main palettes, About carousel and request form retained"
+    "Eight base/refined design pairs in the comparison menu",
+    "Wide pricing cards, three review arrangements, spacious forms and varied footers",
+    "Two gradient palettes: mist and garden",
+    "Refined typography and spacing, palette selection preserved across design links",
+    "Standalone comparison form UI; existing main-page request delivery retained"
   ],
   "excluded": [
     "Cancelled designs 5 and 8",
@@ -28,7 +31,7 @@
     "Stale draft reversions to published content, form and About carousel"
   ],
   "chat_checkpoints": {
-    "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a0b9-7aa9-7932-b2bf-5df799c3a11a",
+    "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a0c9-f314-7db2-ba2a-81bbfc46c0f1",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4"
   }
 }

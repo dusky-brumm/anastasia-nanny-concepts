@@ -6,7 +6,7 @@ import {studioPage} from '../../src/reference/studio/pages.js';
 test('completed design comparisons retain all sections and exclude the two cancelled options',()=>{
   const modes=['comparison-current','pencil','pencil-journal','pencil-panorama','pencil-album','comparison-gradients','comparison-route','comparison-reference'];
   const order=['header','hero','service','about','process','pricing','reviews','apply','footer'];
-  for(const mode of modes){
+  for(const mode of modes.flatMap(mode=>[mode,mode+'-refined'])){
     const html=studioPage(mode,'hero',mode+'.html');
     const positions=order.map(id=>html.indexOf(`id="${id}"`));
     assert.ok(positions.every((position,index)=>position>=0&&(index===0||position>positions[index-1])),mode);
@@ -15,6 +15,10 @@ test('completed design comparisons retain all sections and exclude the two cance
     assert.doesNotMatch(html,/>Вариант (5|8)<\/a>/);
     assert.match(html,/data-comparison-palette="new"/);
     assert.match(html,/data-color-role="button"/);
+    assert.match(html,/comparison-price-sheet/);
+    assert.match(html,/studio\/comparison-request.js/);
+    assert.equal([...html.matchAll(/aria-label="[^"]+ — улучшенный"/g)].length,8);
+    if(mode.endsWith('-refined'))assert.match(html,/data-refinement=/);
   }
   const reference=studioPage('comparison-reference');
   assert.equal([...reference.matchAll(/data-about-dot="/g)].length,4);

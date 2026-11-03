@@ -1,6 +1,7 @@
-import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=17f7f11e33';
-import {renderSite,renderBlock} from './render.js?v=17f7f11e33';
-import {formatRequest} from '../request.js?v=17f7f11e33';
+import {blocks,palettes,fontSets,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=52f1bff515';
+import {renderSite,renderBlock} from './render.js?v=52f1bff515';
+import {formatRequest} from '../request.js?v=52f1bff515';
+import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
 const capture=new URLSearchParams(location.search).get('capture')==='1';
@@ -33,6 +34,44 @@ function observeServiceDrawings() {
   });
 }
 observeServiceDrawings();
+
+let aboutCarousels=[];
+function mountAboutCarousels(){
+  aboutCarousels=[...document.querySelectorAll('[data-about-carousel]')].map(section=>{
+    const viewport=section.querySelector('.s-about-viewport');
+    const controls=section.querySelector('.s-about-controls');
+    const dots=[...section.querySelectorAll('[data-about-dot]')];
+    const status=section.querySelector('.s-about-status');
+    const motion=matchMedia('(prefers-reduced-motion: reduce)');
+    viewport.dataset.ready='';
+    const carousel=EmblaCarousel(viewport,{loop:true,breakpoints:{'(prefers-reduced-motion: reduce)':{duration:0}}});
+    const select=index=>carousel.scrollTo(index,motion.matches);
+    const refresh=()=>{
+      const current=carousel.selectedScrollSnap();
+      carousel.slideNodes().forEach((slide,index)=>slide.setAttribute('aria-hidden',String(index!==current)));
+      dots.forEach((dot,index)=>dot.setAttribute('aria-current',String(index===current)));
+    };
+    carousel.on('select',()=>{
+      refresh();
+      status.textContent=dots[carousel.selectedScrollSnap()].getAttribute('aria-label');
+    }).on('reInit',refresh);
+    dots.forEach((dot,index)=>dot.addEventListener('click',()=>select(index)));
+    const previous=()=>carousel.scrollPrev(motion.matches);
+    const next=()=>carousel.scrollNext(motion.matches);
+    section.querySelector('[data-about-prev]').addEventListener('click',previous);
+    section.querySelector('[data-about-next]').addEventListener('click',next);
+    viewport.addEventListener('keydown',event=>{
+      if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
+      event.preventDefault();
+      if(event.key==='ArrowLeft')previous();
+      else next();
+    });
+    refresh();
+    controls.hidden=false;
+    return carousel;
+  });
+}
+mountAboutCarousels();
 
 function renderReviews() {
   document.querySelectorAll('[data-block="reviews"][data-variant="1"]').forEach(review=>{
@@ -96,11 +135,14 @@ function updateState(next,{blockId,all=false}={}) {
   const form=root?.querySelector('.s-consult-form');
   const draft=form?Object.fromEntries(['name','contact','message'].map(key=>[key,form.elements.namedItem(key).value])):null;
   const previousReviews=state.version==='previous';
+  const remountAbout=Boolean(root&&(all||blockId==='about'));
+  if(remountAbout)aboutCarousels.forEach(carousel=>carousel.destroy());
   state=normalizeState(next);
   if(root&&all)root.innerHTML=renderSite(state);
   else if(root&&blockId){const index=blocks.findIndex(b=>b.id===blockId);root.querySelector(`[data-block="${blockId}"]`).outerHTML=renderBlock(blockId,state.layout[index],{state});}
   else if(previousReviews!==(state.version==='previous'))renderReviews();
   if(all||blockId==='service')observeServiceDrawings();
+  if(remountAbout)mountAboutCarousels();
   if(draft){const newForm=root?.querySelector('.s-consult-form');if(newForm)for(const [key,value] of Object.entries(draft))newForm.elements.namedItem(key).value=value;}
   applyTheme();refreshControls();
   const filename=location.pathname.split('/').pop()||'./';

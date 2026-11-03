@@ -8,7 +8,8 @@ export function applyComparisonPalette(doc,id) {
     muted:theme.accent,button:theme.button??theme.ink,rose:theme.wine,
     backing:theme.backing??theme.ink,
   }:null;
-  root.toggleAttribute('data-comparison-palette',Boolean(theme));
+  if(theme)root.dataset.comparisonPalette=theme.id;
+  else delete root.dataset.comparisonPalette;
   for(const key of ['paper','blue','soft','ink','muted','button','rose','backing']){
     if(colors)root.style.setProperty('--compare-'+key,colors[key]);
     else root.style.removeProperty('--compare-'+key);

@@ -20,8 +20,10 @@ export const palettes = [
   {id:'reference',name:'Палитра с референса',paper:'#f5f0ed',wash:'#e2eaed',soft:'#eaeae2',ink:'#244238',accent:'#54655f',wine:'#673a3f'},
   {id:'soft-sage',name:'Молочный и мягкий шалфей',paper:'#f8f5ef',wash:'#e1eaee',soft:'#f8f5ef',ink:'#29473c',accent:'#466576',wine:'#79535e',button:'#526c5d',backing:'#597060',drawingBlue:'#849fb3',drawingRose:'#b48791',drawingGreen:'#859b83'},
   {id:'blue-mist',name:'Молочный и голубая дымка',paper:'#f7f4ee',wash:'#dce8f1',soft:'#f7f4ee',ink:'#2c453e',accent:'#47647a',wine:'#76515e',button:'#47675e',backing:'#61796a',drawingBlue:'#829db8',drawingRose:'#b59bb1',drawingGreen:'#8ca6a0'},
+  {id:'sea-glass',name:'Морское стекло',paper:'#f7f7f1',wash:'#dceeed',soft:'#e5ecf3',ink:'#243d46',accent:'#46636c',wine:'#426570',button:'#385e64',backing:'#9bbab4',drawingBlue:'#7897ac',drawingRose:'#879ba9',drawingGreen:'#789e92'},
+  {id:'oat-eucalyptus',name:'Овёс и эвкалипт',paper:'#f8f5eb',wash:'#e2ece5',soft:'#eee7d4',ink:'#303e38',accent:'#526558',wine:'#68603e',button:'#42635b',backing:'#a7beb1',drawingBlue:'#839fa2',drawingRose:'#a6986e',drawingGreen:'#809b86'},
 ];
-export const comparisonPalettes=palettes.filter(p=>['sky','reference','soft-sage','blue-mist','sky-previous'].includes(p.id));
+export const comparisonPalettes=palettes.filter(p=>['sky','reference','soft-sage','blue-mist','sky-previous','sea-glass','oat-eucalyptus'].includes(p.id));
 export const fontSets = [
   {id:'golos',name:'Manrope + Golos Text',note:'Современный основной набор'},
   {id:'lora',name:'Lora + Golos Text',note:'Мягкая книжная типографика'},
@@ -55,7 +57,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'17f7f11e33'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'52f1bff515'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
   if(!/^[1-9]$/.test(String(value)))return 0;

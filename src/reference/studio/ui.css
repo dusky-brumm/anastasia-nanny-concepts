@@ -60,6 +60,14 @@ body.design-tool {margin:0;background:#edf0ec;color:#2b4639;font:400 14px/1.5 Ma
 .library-option:has(.s-menu[open]) {position:relative;z-index:6}
 .library-option .s-header {border-radius:0 0 17px 17px}
 .preview-only {padding:32px 24px}
+html:has(.version-menu) {scroll-padding-top:68px}
+.version-menu {position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:center;gap:6px;width:fit-content;max-width:100%;margin:0 auto 14px;padding:5px;background:#f8f5ef;border:1px solid #c9d4cd;border-radius:14px;box-shadow:0 3px 14px #203e341a}
+.version-menu span {padding-inline:8px;font-size:12px}
+.version-menu button {min-height:36px;padding:5px 12px;border:1px solid transparent;border-radius:9px;background:transparent;color:#203e34;font:600 13px/1.2 Manrope,Arial,sans-serif}
+.version-menu button[aria-pressed=true] {background:#203e34;color:#fff}
+.version-menu button:hover {border-color:#466576}
+.version-menu button:disabled {cursor:default}
+@media(max-width:360px) {.version-menu span {display:none}}
 .tool-noscript {padding:24px;font-size:14px}
 #studio-privacy {max-width:500px;width:calc(100% - 36px);border:1px solid #a7bdaa;border-radius:16px;padding:38px;color:#315646;background:#fcfaf4}
 #studio-privacy::backdrop {background:#263c3280}

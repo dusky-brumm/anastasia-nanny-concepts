@@ -1,5 +1,5 @@
 .site-preview {
-  --paper:#faf6ec;--wash:#e4edf1;--soft:#f0e8df;--ink:#294c3e;--accent:#426a80;--wine:#815c53;
+  --paper:#f8f5ef;--wash:#e1eaee;--soft:#efebe4;--ink:#203e34;--accent:#466576;--wine:#743b42;
   --heading:'Manrope',Arial,sans-serif;--body:'Golos Text',Arial,sans-serif;--heading-weight:500;--heading-tracking:-.03em;
   position:relative;container-type:inline-size;width:100%;max-width:1120px;margin:auto;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);border-radius:22px;overflow:clip;
 }
@@ -238,10 +238,20 @@
 .s-review h3 {font-size:14px;font-weight:500}
 .s-review footer p {font-size:12px;line-height:1.45;margin-top:3px;letter-spacing:0}
 .s-quote-mark {font:400 44px/.8 var(--heading);color:var(--accent);margin-bottom:12px}
-.s-review-pin {display:none}
-.s-reviews--1 .s-review {box-shadow:0 5px 13px #31544817;margin-top:13px;transform:rotate(-1deg)}
-.s-reviews--1 .s-review:nth-child(2) {transform:translateY(-7px) rotate(1deg)}
-.s-reviews--1 .s-review-pin {display:block;position:absolute;left:calc(50% - 8px);top:-9px;width:17px;height:17px;border-radius:50%;background:var(--accent);box-shadow:1px 3px 4px #31544833}
+.s-review-heading {display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 24px;margin-bottom:26px}
+.s-review-heading h2 {display:flex;align-items:flex-start;gap:10px}
+.site-preview[data-font=golos] .s-review-heading h2 {font-family:Tinos,Georgia,serif;font-weight:400}
+.s-review-sparkle,.s-review-heart {fill:none;stroke:var(--wine);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.s-review-sparkle {width:22px;height:22px;opacity:.55}
+.s-review-more {display:inline-flex;align-items:center;gap:12px;min-height:40px;padding:8px 16px;border:1px solid var(--ink);border-radius:999px;font:500 13px/1.35 var(--body)}
+.s-review-more:hover {background:var(--paper)}
+.s-reviews--1 .s-review-grid {gap:18px;margin-bottom:0}
+.s-reviews--1 .s-review {padding:25px 23px;background:color-mix(in srgb,var(--paper) 45%,white);border:1px solid color-mix(in srgb,var(--ink) 9%,transparent);border-radius:20px;box-shadow:0 3px 10px #203e340a}
+.s-reviews--1 .s-quote-mark {height:24px;margin-bottom:10px;color:var(--ink);font:700 52px/.85 Georgia,serif}
+.s-reviews--1 blockquote {font-size:clamp(15px,1.5cqw,17px);line-height:1.58}
+.s-reviews--1 .s-review footer img {flex-basis:40px;width:40px;height:40px}
+.s-reviews--1 .s-review:last-child footer {padding-right:37px}
+.s-review-heart {position:absolute;right:12px;bottom:24px;width:40px;height:38px;opacity:.65}
 .s-reviews--2 {background:var(--paper)}
 .s-reviews--2 .s-review {background:transparent;border-radius:0;padding:15px 24px 0 0}
 .s-reviews--2 .s-review+.s-review {border-left:1px solid #9fb1a877;padding-left:24px}
@@ -401,8 +411,6 @@
   .s-pricing--4 .s-conditions {padding:25px}
   .s-review-grid,.s-reviews--3 .s-review-grid,.s-reviews--5 .s-review-grid {grid-template-columns:1fr;gap:23px}
   .s-reviews--3 .s-review:first-child,.s-reviews--5 .s-review:first-child {grid-row:auto;grid-column:auto;padding:28px}
-  .s-reviews--1 .s-review {transform:none}
-  .s-reviews--1 .s-review:nth-child(2) {transform:none}
   .s-apply,.s-apply--3 {grid-template-columns:1fr;gap:28px}
   .s-consult-form {grid-template-columns:1fr}
   .s-apply--2 .s-consult-form,.s-apply--3 .s-consult-form,.s-apply--5 .s-consult-form {padding:25px 20px;grid-template-columns:1fr}
@@ -428,8 +436,8 @@
   .site-preview[data-font=prata] .s-hero--4 h1 {font-size:24px}
 }
 @media(hover:hover) and (pointer:fine) {
-  .s-frame,.s-taped,.s-reviews--1 .s-review,.s-service--4 .s-items article {transition:translate .25s ease,box-shadow .25s ease}
-  .s-frame:hover,.s-taped:hover,.s-reviews--1 .s-review:hover,.s-service--4 .s-items article:hover {translate:0 -4px;box-shadow:0 10px 25px #253e3021}
+  .s-frame,.s-taped,.s-service--4 .s-items article {transition:translate .25s ease,box-shadow .25s ease}
+  .s-frame:hover,.s-taped:hover,.s-service--4 .s-items article:hover {translate:0 -4px;box-shadow:0 10px 25px #253e3021}
   .s-nav a:hover {color:var(--accent);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
 }
 @media(prefers-reduced-motion:reduce) {.site-preview *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}

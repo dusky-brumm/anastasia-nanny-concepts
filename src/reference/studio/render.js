@@ -75,8 +75,22 @@ function pricing(v,c) {
   const terms=items(conditions,'s-conditions');
   return `${title('Условия работы','Стоимость подбора няни')}<div class="s-pricing-layout">${v===3?'<p class="s-document-label">Индивидуальный подбор · условия сотрудничества</p>':''}${price}${terms}</div><a class="s-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробнее об условиях в Telegram ↗</a>${faq()}`;
 }
-function reviewCard(row,i) {return `<article class="s-review"><span class="s-review-pin" aria-hidden="true"></span><span class="s-quote-mark" aria-hidden="true">“</span><blockquote>${row[2]}</blockquote><footer><img src="assets/${row[3]}.webp" width="40" height="40" alt=""><div><h3>${row[0]}</h3><p>${row[1]}</p></div></footer></article>`;}
-function reviews(v) {return `${title('Отзывы','Что говорят семьи')}<div class="s-review-grid">${testimonials.map(reviewCard).join('')}</div><a class="s-text-link" href="https://t.me/anastasiadoroninaa" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;}
+function reviewCard([name,role,quote,avatar],heart='') {
+  return `<article class="s-review"><span class="s-quote-mark" aria-hidden="true">“</span><blockquote>${quote}</blockquote><footer><img src="assets/${avatar}.webp" width="40" height="40" loading="lazy" alt=""><div><h3>${name}</h3><p>${role}</p></div></footer>${heart}</article>`;
+}
+function reviews(v,c) {
+  if(v===1&&c.state.palette==='sky-previous') {
+    const pin='<span class="s-review-pin" aria-hidden="true"></span>';
+    return `${title('Отзывы','Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row,pin)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
+  }
+  if(v===1) {
+    const sparkle='<svg class="s-review-sparkle" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2C16 11 11 16 2 16c9 0 14 5 14 14 0-9 5-14 14-14C21 16 16 11 16 2Z"/></svg>';
+    const heart='<svg class="s-review-heart" viewBox="0 0 54 50" aria-hidden="true"><path d="M15 42C12 33 4 10 16 10c6 0 7 7 7 13C30 7 45 3 48 13c3 10-17 22-33 29 10-2 18-3 26-2"/></svg>';
+    const [natalia,julia,anastasia]=testimonials;
+    return `<div class="s-review-heading"><h2>Отзывы${sparkle}</h2><a class="s-review-more" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Смотреть больше отзывов <span aria-hidden="true">→</span></a></div><div class="s-review-grid">${reviewCard(anastasia)}${reviewCard(natalia)}${reviewCard(julia,heart)}</div>`;
+  }
+  return `${title('Отзывы','Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
+}
 function form() {return `<form class="s-consult-form"><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="3" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><p class="s-form-note">Вы получите текст сообщения для отправки Анастасии в Telegram. Данные здесь не сохраняются.</p><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div><p role="status"></p></div></form>`;}
 function apply(v) {return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Оставьте заявку','Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
 function footer(v,c) {return `<div class="s-footer-brand">${brand}${v===3||v===5?'<p>Индивидуальный подбор няни<br>для вашей семьи</p>':''}</div>${v!==2?nav(c):''}<div class="s-footer-contact">${tg('Связаться в Telegram')}<button type="button" class="s-privacy">О данных формы</button></div><p class="s-copyright">© 2026 Анастасия Доронина</p>`;}
@@ -85,6 +99,7 @@ export function renderBlock(id,value,context={}) {
   const v=/^[1-5]$/.test(String(value))?Number(value):1;
   const state=normalizeState(context.state),ctx={...context,state};
   const block=blocks.find(b=>b.id===id)??blocks[0];
-  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
+  const previousReviews=id==='reviews'&&v===1&&ctx.state.palette==='sky-previous'?' s-reviews--previous':'';
+  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library?'':`id="${block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }
 export function renderSite(state) {const clean=normalizeState(state);return blocks.map((b,i)=>renderBlock(b.id,clean.layout[i],{state:clean})).join('');}

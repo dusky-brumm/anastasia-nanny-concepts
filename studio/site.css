@@ -186,7 +186,7 @@
 .s-about-slides img {display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 .s-about-slides h3 {margin-block:8px}
 .s-about-hint {font-size:.85rem;margin-top:10px}
-.s-family-story {max-width:70ch}
+.s-family-story {max-width:70ch;margin-top:32px;padding-top:24px;border-top:1px solid color-mix(in srgb,var(--ink) 25%,transparent)}
 .s-chalk-text {display:inline-block;position:relative}
 .s-chalk-text svg {position:absolute;inset:auto 0 -.16em;width:100%;height:.24em;pointer-events:none;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round;opacity:.48}
 .s-chalk-text path+path {stroke-width:1.5;stroke-dasharray:8 3 2 3;opacity:.65}

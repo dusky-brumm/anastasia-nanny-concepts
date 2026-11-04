@@ -214,3 +214,12 @@ body:has(.pencil-comparison) .s-footer :focus-visible {outline-color:var(--paper
 
 .design-panel-caption {text-decoration:underline;text-underline-offset:3px}
 .design-panel-caption[href] {display:block;max-width:150px;line-height:1.4}
+
+@media(max-width:480px) {
+  .design-panel {gap:10px;margin-bottom:8px;padding:4px 9px}
+  .design-panel-caption[href] {display:flex;align-items:center;min-height:44px}
+  .theme-picker summary {justify-content:end}
+  .theme-picker summary > span:first-child {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  [data-selected-palette] {flex:0 1 auto;min-width:0;overflow-wrap:anywhere}
+  .theme-options {right:-9px}
+}

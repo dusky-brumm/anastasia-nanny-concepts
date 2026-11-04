@@ -1,5 +1,7 @@
 .comparison-theme {display:inline-flex;align-items:center;gap:7px;min-width:0;font:500 13px/1.4 'Golos Text',sans-serif}
 .comparison-theme select {max-width:100%;min-width:0;min-height:36px;padding:4px 7px;border:1px solid #c9d4cd;border-radius:7px;background:#fff;color:#203e34;font:inherit}
+.collection-controls {flex-wrap:wrap}
+.collection-controls .comparison-theme {max-width:100%}
 .review-controls {
   position:sticky;top:0;z-index:40;padding-block:8px;
   background:#eef1ee;border-bottom:1px solid #cdd6d0;
@@ -17,6 +19,14 @@ html:not(.is-embedded) :is([data-rework-bar],[data-design-bar]) {position:sticky
 @media(max-width:620px) {
   :is(.rework-bar-inner,.design-bar__inner,.review-controls) .comparison-theme {margin-inline:auto}
   html:not(.is-embedded):has(:is([data-rework-bar],[data-design-bar])) {scroll-padding-top:105px}
+  .collection-controls {justify-content:start;gap:10px}
+  .collection-controls > span {flex-basis:100%}
+  .comparison-theme select {min-height:44px;font-size:16px}
+  .device-toggle button,.review-devices button {min-height:44px}
+  .review-tabs button {min-width:0;white-space:normal;line-height:1.2}
+  .review-caption {flex-wrap:wrap;gap:8px}
+  .review-caption p {max-width:none}
+  .review-caption a {display:flex;align-items:center;min-height:44px}
 }
 @media(min-width:621px) {
   html:not(.is-embedded):has([data-rework-bar]) {scroll-padding-top:60px}

@@ -5,6 +5,8 @@
   gap:6px;
   padding:7px clamp(10px,3vw,24px);
 }
+.comparison-disclosure,.comparison-content {display:contents}
+.comparison-disclosure > summary {display:none}
 .pencil-comparison .comparison-palette {
   display:flex;
   flex-wrap:nowrap;
@@ -192,6 +194,45 @@
   .pencil-comparison .comparison-palette {justify-content:start}
   .comparison-pair {min-width:83px}
   .pencil-comparison .comparison-pair a {font-size:11px;padding-inline:7px}
+}
+
+@media (max-width:760px) {
+  .pencil-comparison {padding:0 14px;font:500 13px/1.35 var(--body,Arial,sans-serif)}
+  .comparison-disclosure {display:block;width:100%;min-width:0}
+  .comparison-disclosure > summary {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,auto) 7px;
+    align-items:center;
+    gap:9px;
+    min-height:50px;
+    padding:8px 2px;
+    list-style:none;
+  }
+  .comparison-disclosure > summary::-webkit-details-marker {display:none}
+  .comparison-disclosure > summary:focus-visible {outline-offset:-2px}
+  .comparison-disclosure > summary span {color:#526c73;font-size:11px;text-align:right}
+  .comparison-disclosure > summary::after {
+    content:'';
+    width:6px;
+    height:6px;
+    margin-top:-3px;
+    border:solid currentColor;
+    border-width:0 1px 1px 0;
+    transform:rotate(45deg);
+  }
+  .comparison-disclosure[open] > summary::after {transform:rotate(225deg);margin-top:3px}
+  .comparison-disclosure[open] .comparison-content {
+    display:grid;
+    gap:6px;
+    max-height:65dvh;
+    overflow:auto;
+    padding:6px 0 10px;
+    border-top:1px solid #64767930;
+  }
+  .pencil-comparison .comparison-palette {justify-content:start}
+  .pencil-comparison :is(a,button),.pencil-comparison .comparison-pair a {min-block-size:44px;font-size:12px}
+  .comparison-content > .block-compare-actions {gap:6px}
+  .comparison-content .block-compare-link {white-space:normal;text-align:center}
 }
 
 .site-preview.comparison-design .s-footer {display:grid;grid-template-columns:1fr auto;align-items:center}

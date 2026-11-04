@@ -163,7 +163,7 @@ const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><bu
 const swatch=p=>`<span class="palette-swatch" aria-hidden="true">${[p.paper,p.wash,p.backing??p.soft,p.button??p.ink,p.wine].map(color=>`<i style="background:${color}"></i>`).join('')}</span>`;
 const selectedPalette=palettes.find(p=>p.id===defaults.palette);
 const designPanel=`<section class="design-panel" aria-label="Палитра текущего сайта">
-  <a class="design-panel-caption" href="comparison-current.html?v=__VERSION__">Варианты оформления ↗</a>
+  <a class="design-panel-caption" href="comparison-current.html?v=__VERSION__">Варианты дизайна ↗</a>
   <details class="theme-picker">
     <summary><span>Палитра</span><span data-selected-palette>${swatch(selectedPalette)}<span>${selectedPalette.name}</span></span><span aria-hidden="true">⌄</span></summary>
     <div class="theme-options" role="group" aria-label="Выберите палитру">${palettes.map(p=>`<button type="button" data-palette="${p.id}" aria-pressed="${p.id===defaults.palette}">${swatch(p)}<span>${p.name}</span></button>`).join('')}</div>
@@ -207,6 +207,9 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   const pencil=design?.mode.startsWith('pencil');
   const defaultComparisonPalette=comparisonBaseTheme;
   const pencilSwitcher=comparing?`<nav class="pencil-comparison" data-default-palette="${defaultComparisonPalette}" aria-label="Сравнить варианты">
+    <details class="comparison-disclosure" open>
+      <summary>Варианты и палитры <span>${design.name}${refined?' · улучшенный':''}</span></summary>
+      <div class="comparison-content">
     <div class="comparison-palette" role="group" aria-label="Палитра">
       <a class="comparison-home" href="./?v=__VERSION__">Основной сайт</a>
       <div class="comparison-palette-options">
@@ -222,6 +225,8 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
       <a class="block-compare-link" href="compare-block-pricing.html?v=__VERSION__">Сравнить отдельные блоки ↗</a>
       <a class="block-compare-link" href="compare-assembly.html?v=__VERSION__">Собрать свой вариант ↗</a>
     </div>
+      </div>
+    </details>
   </nav>`:'';
   const description=mode==='preview'||editorial||comparing?'Личный подбор няни под задачи вашей семьи. Поиск, интервью и сопровождение. Анастасия Доронина.':`${compositionCount} композиций блоков сайта, пастельные палитры и согласованные наборы шрифтов.`;
   let pageContent=assembling?comparisonAssembly():blockCompare?comparisonBlockGallery(blockId):content;

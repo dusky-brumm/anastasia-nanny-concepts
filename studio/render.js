@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=2a1d3538ff';
-import {renderJourney} from '../journeys.js?v=2a1d3538ff';
-import {contacts,selectionFaq} from './content.js?v=2a1d3538ff';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=ed4b4dd940';
+import {renderJourney} from '../journeys.js?v=ed4b4dd940';
+import {contacts,selectionFaq} from './content.js?v=ed4b4dd940';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -181,7 +181,21 @@ function routeComparison(variant) {
       <div class="s-study-copy">${variant===6?`<svg class="s-study-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${routeIcons[index]}"/></svg>`:''}
       <h3>${name}</h3><p>${description}</p></div></li>`).join('')}</ol></div>`;
 }
+function pencilRoute(c) {
+  const grain=`route-pencil-${c.previewId??c.blockId??'main'}`;
+  const stops=[90,54,134,54,94];
+  return `<div class="s-pencil-route">
+    <svg class="s-pencil-defs" width="0" height="0" aria-hidden="true"><defs>${pencilFilter(grain)}</defs></svg>
+    <svg class="s-pencil-route-line" viewBox="0 0 1120 200" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 92C40 120 74 112 112 90S250 10 336 54C390 83 486 152 463 168C438 184 407 116 439 96C475 72 513 114 560 134C646 169 705 44 784 54S943 126 1008 94Q1070 62 1120 74" filter="url(#${grain})"/></svg>
+    <ol class="s-pencil-route-steps" aria-label="Пять этапов подбора няни">${outcomes.map(([name,description],index)=>`
+      <li style="--route-stop:${stops[index]}">${index<outcomes.length-1?`<svg class="s-pencil-route-connector" viewBox="0 0 60 160" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M28 0C4 24 51 47 28 78C10 104 3 82 18 76C41 67 48 130 28 160" filter="url(#${grain})"/></svg>`:''}
+        <span class="s-pencil-route-number" aria-hidden="true">${index+1}</span>
+        <div><h3>${name}</h3><p>${description}</p></div>
+      </li>`).join('')}</ol>
+  </div>`;
+}
 function process(v,c) {
+  if(v===7&&c.blockStyle==='route')return title('Маршрут <em>подбора</em>')+pencilRoute(c);
   if(v===9)return title('Четыре шага подбора')+`<ol class="s-outcomes">
     <li><span class="s-index">1</span><h3>Обсуждаем запрос</h3><p>На созвоне составляем портрет няни. За один-два дня я оформляю описание вакансии, вы его подтверждаете и вносите предоплату.</p></li>
     <li><span class="s-index">2</span><h3>Получаете первую подборку</h3><p>За две недели после предоплаты я собираю первые две-четыре анкеты с комментариями. При необходимости продолжаю поиск без лимита анкет.</p></li>
@@ -255,9 +269,16 @@ function reviews(v,c) {
 function form(comparison=false,lines=!comparison) {return `<form class="s-consult-form${lines?' s-form-lines':''}" method="post"><div hidden><label>Сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="${comparison?4:3}" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div></div><p class="s-request-status" role="status"></p></form>`;}
 function apply(v,c) {if(c.comparison)return `<div class="s-apply-intro">${title('Обсудить подбор')}<p>Оставьте контакт, чтобы договориться о созвоне.</p><div class="comparison-form-contact">${tg('Написать в Telegram')}</div></div>${form(true,c.blockStyle==='letter'||c.formStyle==='letter')}`;return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
 function footer(v,c) {
-  if(!c.comparison)return `<div class="s-footer-contact">${tg('Telegram')}<button type="button" class="s-privacy">О данных формы</button></div>`;
-  const identity=c.comparison?`<div class="comparison-footer-name"><a href="${linkTo('hero',c)}">Анастасия Доронина</a><p>Индивидуальный подбор нянь</p></div>`:'';
-  return `${identity}${v!==2&&v!==3?nav(c):''}<div class="s-footer-contact">${c.comparison?headerSocials:tg('Связаться в Telegram')}<button type="button" class="s-privacy">О данных формы</button></div><p class="s-copyright">© 2026 Анастасия Доронина</p>`;
+  const grain=`footer-pencil-${c.previewId??c.blockId??v}`;
+  return `<a class="s-footer-name" href="${linkTo('hero',c)}">Анастасия Доронина</a>
+    <svg class="s-footer-drawing" viewBox="0 0 190 70" aria-hidden="true" focusable="false"><defs>${pencilFilter(grain)}</defs>
+      <g filter="url(#${grain})"><g transform="translate(-128 -6)">
+        <path d="M167 31c-8-7-22 1-18 13 3 10 18 13 24 4 6-8 1-17-6-17zM160 24l-1-9M175 26l5-8M181 37l10-2M180 50l9 4M169 58l3 9M153 57l-5 8M142 46l-9 2M145 32l-8-4"/>
+      </g><g transform="translate(75 18)">
+        <path d="M5 37c24 3 44-4 60-12 12-6 26-12 43-14M59 28c-11-1-19-10-14-17 8 0 16 8 14 17zM71 22c4 7 16 9 22 2-5-5-15-5-22-2zM86 16c-4-6 0-13 9-14 2 7-2 12-9 14z"/>
+      </g></g>
+    </svg>
+    <div class="s-footer-contact">${tg('Telegram')}<button type="button" class="s-privacy">О данных формы</button></div>`;
 }
 const renderers={header,hero,service,about,process,pricing,reviews,apply,footer};
 export function renderBlock(id,value,context={}) {
@@ -265,7 +286,7 @@ export function renderBlock(id,value,context={}) {
   const block=blocks.find(b=>b.id===id)??blocks[0];
   const v=variantNumber(block,value)||1;
   const previousReviews=id==='reviews'&&v===1&&ctx.state.version==='previous'?' s-reviews--previous':'';
-  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${previousReviews}" ${context.library||context.previewFile?'':`id="${context.blockId??block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
+  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${id==='footer'?' s-footer-simple':''}${previousReviews}" ${context.library||context.previewFile?'':`id="${context.blockId??block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }
 const siteOrder=['header','hero','service','about','process','pricing','reviews','apply','footer'];
 export function renderSite(state, options={}) {

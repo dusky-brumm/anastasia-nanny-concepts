@@ -150,7 +150,7 @@ function refreshControls() {
   if(paletteLabel&&paletteButton)paletteLabel.replaceChildren(...[...paletteButton.childNodes].map(node=>node.cloneNode(true)));
   document.querySelectorAll('[data-palette-select]').forEach(select=>select.value=state.palette);
   document.querySelectorAll('[data-font-select]').forEach(select=>select.value=state.font);
-  document.querySelectorAll('[data-block-select]').forEach(select=>select.value=state.layout[blocks.findIndex(b=>b.id===select.dataset.blockSelect)]);
+  document.querySelectorAll('[data-block-select]').forEach(select=>select.value=String(parseInt(state.layout[blocks.findIndex(b=>b.id===select.dataset.blockSelect)],36)));
   document.querySelectorAll('[data-preset-select]').forEach(select=>select.value=presets.find(preset=>preset.layout===state.layout)?.id??'');
   document.querySelectorAll('[data-preset]').forEach(button=>button.setAttribute('aria-pressed',String(state.layout===presets.find(p=>p.id===button.dataset.preset)?.layout)));
   document.querySelectorAll('[data-library-link]').forEach(a=>a.href=currentUrl('blocks-'+a.dataset.libraryLink+'.html'));

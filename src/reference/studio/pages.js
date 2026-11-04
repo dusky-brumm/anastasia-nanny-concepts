@@ -10,6 +10,8 @@ export const comparisonDesigns=[
   {mode:'comparison-gradients',file:'comparison-gradients.html',name:'Вариант 6',reviews:'open',form:1,footer:2,refinement:'air'},
   {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:7,refinement:'route'},
   {mode:'comparison-reference',file:'comparison-reference.html',name:'Вариант 9',reviews:'open',form:2,footer:5,layout:'112111113',wavyArrows:true,refinement:'reference'},
+  {mode:'comparison-contour',file:'comparison-contour.html',name:'Плавный контур',reviews:'cards',form:1,footer:3,hero:10,contour:'wave'},
+  {mode:'comparison-thread',file:'comparison-thread.html',name:'Линия-письмо',reviews:'open',form:2,footer:5,hero:11,contour:'letter',single:true},
 ];
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
@@ -186,6 +188,8 @@ const heroDirections=[
   'Контур у фото и более бледный штрих на фоне. Один рисунок работает и в деталях, и в переходах.',
   'Два штриха повторяют одну форму, но второй виден только на части края. Приём подходит для выделения отдельных деталей.',
   'Линия с петлёй проходит под всей композицией. Она может продолжиться в маршруте подбора няни.',
+  'Мягкий срез открывает портрет, а тонкий карандашный штрих повторяет его верхний и нижний края.',
+  'Узкий портрет, заголовок с засечками и плавный штрих, как на краю листа бумаги.',
 ];
 function library(id) {
   const block=blocks.find(b=>b.id===id)??blocks[1];
@@ -193,7 +197,7 @@ function library(id) {
   return `<header class="tool-top"><div><a class="tool-brand" data-back-builder href="${designUrl('studio.html',defaults)}">НАСТЯ · ДИЗАЙН САЙТА</a><h1>${block.name} · ${block.variants.length} вариантов</h1></div><a class="tool-button" data-back-builder href="${designUrl('studio.html',defaults)}">← В конструктор</a></header>
   <main class="block-library"${isHero?' data-hero-gallery':''}><div class="library-controls"><label class="tool-label library-block-select">Блок страницы<select data-block-page-select>${blocks.map((b,i)=>`<option value="${b.id}"${b.id===block.id?' selected':''}>${i+1}. ${b.name}</option>`).join('')}</select></label><label class="tool-label">Палитра<select data-palette-select>${options(palettes,defaults.palette)}</select></label><label class="tool-label">Шрифты<select data-font-select>${options(fontSets,defaults.font)}</select></label></div><nav class="block-tabs" aria-label="Все девять блоков">${blocks.map((b,i)=>`<a href="${designUrl('blocks-'+b.id+'.html',defaults)}" data-library-link="${b.id}"${b.id===block.id?' aria-current="page"':''}>${i+1}. ${b.name}</a>`).join('')}</nav><p class="library-hint">Сравните оформление и выберите вариант. Цвета и шрифты можно переключать сверху.</p><nav class="variant-jumps" aria-label="Перейти к варианту">${block.variants.map((_,i)=>`<a href="#variant-${i+1}">Вариант ${i+1}</a>`).join('')}</nav>
 ${isHero?'<div class="hero-gallery-controls" hidden><button class="tool-button" type="button" data-hero-step="-1" aria-label="Предыдущий вариант">←</button><span data-hero-position aria-live="polite"></span><button class="tool-button" type="button" data-hero-step="1" aria-label="Следующий вариант">→</button></div>':''}
-${block.variants.map((name,i)=>`<section class="library-option" id="variant-${i+1}" data-option="${i+1}"><header><div><p class="tool-kicker">ВАРИАНТ 0${i+1}</p><h2>${name}</h2>${isHero?`<p class="hero-direction">${heroDirections[i]}</p>`:''}</div><div class="library-actions"><a class="tool-link" data-open-option="${i+1}" href="${designUrl('preview.html',selectVariant(defaults,block.id,i+1),block.id)}" target="_blank" rel="noopener">На странице ↗</a><a class="tool-button" data-pick-block="${block.id}" data-pick-value="${i+1}" href="${designUrl('studio.html',selectVariant(defaults,block.id,i+1),block.id)}">Выбрать этот вариант</a></div></header><div class="site-preview" data-font="${defaults.font}" data-palette="${defaults.palette}">${renderBlock(block.id,i+1,{library:true,state:defaults})}</div></section>`).join('')}</main>`;
+${block.variants.map((name,i)=>`<section class="library-option" id="variant-${i+1}" data-option="${i+1}"><header><div><p class="tool-kicker">ВАРИАНТ ${String(i+1).padStart(2,'0')}</p><h2>${name}</h2>${isHero?`<p class="hero-direction">${heroDirections[i]}</p>`:''}</div><div class="library-actions"><a class="tool-link" data-open-option="${i+1}" href="${designUrl('preview.html',selectVariant(defaults,block.id,i+1),block.id)}" target="_blank" rel="noopener">На странице ↗</a><a class="tool-button" data-pick-block="${block.id}" data-pick-value="${i+1}" href="${designUrl('studio.html',selectVariant(defaults,block.id,i+1),block.id)}">Выбрать этот вариант</a></div></header><div class="site-preview" data-font="${defaults.font}" data-palette="${defaults.palette}">${renderBlock(block.id,i+1,{library:true,state:defaults})}</div></section>`).join('')}</main>`;
 }
 export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') {
   const blockCompare=mode==='comparison-library';
@@ -205,6 +209,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   const design=comparisonDesigns.find(item=>item.mode===(refined?mode.slice(0,-8):mode));
   const comparing=Boolean(design);
   const pencil=design?.mode.startsWith('pencil');
+  const contourDirection=design?.contour==='wave'&&!refined ? '' : design?.contour;
   const defaultComparisonPalette=comparisonBaseTheme;
   const pencilSwitcher=comparing?`<nav class="pencil-comparison" data-default-palette="${defaultComparisonPalette}" aria-label="Сравнить варианты">
     <details class="comparison-disclosure" open>
@@ -219,7 +224,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
     </div>
     <div class="comparison-pairs">${comparisonDesigns.map(item=>`<div class="comparison-pair">
       <a href="${item.file}?v=__VERSION__"${mode===item.mode?' aria-current="page"':''}>${item.name}</a>
-      <a href="${item.file.replace('.html','-refined.html')}?v=__VERSION__"${mode===item.mode+'-refined'?' aria-current="page"':''} aria-label="${item.name} — улучшенный">Улучшенный</a>
+${item.single?'':`<a href="${item.file.replace('.html','-refined.html')}?v=__VERSION__"${mode===item.mode+'-refined'?' aria-current="page"':''} aria-label="${item.name} — улучшенный">Улучшенный</a>`}
     </div>`).join('')}</div>
     <div class="block-compare-actions">
       <a class="block-compare-link" href="compare-block-pricing.html?v=__VERSION__">Сравнить отдельные блоки ↗</a>
@@ -233,6 +238,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   if(editorial)pageContent=`<main class="site-preview editorial" data-font="${defaults.font}">${renderEditorial(defaults)}</main>`;
   if(design){
     let state={...comparisonState,layout:design.layout??comparisonState.layout};
+    if(design.hero)state=selectVariant(state,'hero',design.hero);
     if(design.refinement==='quiet')state=selectVariant(state,'about',1);
     if(design.process)state=selectVariant(state,'process',design.process);
     if (refined) {
@@ -247,12 +253,18 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
         state = selectVariant(state,block,variant);
       }
     }
-    state=selectVariant(state,'apply',refined?({1:2,2:1,3:1})[design.form]:design.form);
-    state=selectVariant(state,'footer',refined?({1:3,2:5,3:2,5:1})[design.footer]:design.footer);
+    if(contourDirection==='letter') {
+      state=selectVariant(state,'service',2);
+      state=selectVariant(state,'about',3);
+      state=selectVariant(state,'process',1);
+    }
+    state=selectVariant(state,'apply',refined&&!contourDirection?({1:2,2:1,3:1})[design.form]:design.form);
+    state=selectVariant(state,'footer',refined&&!contourDirection?({1:3,2:5,3:2,5:1})[design.footer]:design.footer);
     const reviewLayout=refined?({cards:'ribbon',feature:'open',open:'cards'})[design.reviews]:design.reviews;
-    const context={comparison:true,blockStyle:design.refinement,formStyle:design.refinement==='quiet'?'letter':undefined,wavyArrows:design.wavyArrows};
+    const blockStyle=contourDirection==='wave'?'reference':contourDirection==='letter'?'letter':design.refinement??'quiet';
+    const context={comparison:true,blockStyle,contourDirection,formStyle:design.refinement==='quiet'||contourDirection?'letter':undefined,wavyArrows:design.wavyArrows||contourDirection==='letter'};
     const markup=pencil?renderPencilPreview(state,design.mode,context):renderSite(state,context);
-    pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${design.refinement}"${refined?` data-refinement="${design.refinement}"`:''}>${markup}</main>`;
+    pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;
   }
   return `<!doctype html>
 <html lang="ru"><head>
@@ -265,6 +277,7 @@ ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6e
 ${editorial?'<link rel="stylesheet" href="studio/editorial.css?v=__VERSION__">':''}
 ${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/pencil-preview.css?v=__VERSION__"><link rel="stylesheet" href="studio/comparison-design.css?v=__VERSION__"><link rel="stylesheet" href="studio/comparison-sections.css?v=__VERSION__">':''}
 <link rel="stylesheet" href="studio/clear-sections.css?v=__VERSION__">
+${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=__VERSION__"><script defer src="studio/contour-motion.js?v=__VERSION__"></script>':''}
 <link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=__VERSION__"></script>
 <script defer src="studio/review-carousel.js?v=__VERSION__"></script>
 ${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=__VERSION__"></script>':''}

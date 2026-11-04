@@ -51,7 +51,7 @@ export function renderJourney(value, {wavyArrows=false}={}) {
   return `<div class="journey journey--${id}" data-route="${id}">
     <svg class="journey-lines" viewBox="0 0 956 ${heights[id]}" preserveAspectRatio="none" aria-hidden="true">
       <defs><marker id="${arrow}" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="m2 1 5 3.5L2 8"/></marker></defs>
-      ${connectors.map(d => `<path d="${d}" marker-end="url(#${arrow})"/>`).join('')}
+      ${connectors.map(d => `<path pathLength="1" d="${d}" marker-end="url(#${arrow})"/>`).join('')}
     </svg>
     <ol class="journey-list" aria-label="Пять этапов подбора няни">
       ${steps.map(([title, text], index) => `<li class="journey-node"><span class="journey-number" aria-hidden="true">${index + 1}</span><div class="journey-copy"><h3>${title}</h3><p>${text}</p></div></li>`).join('')}

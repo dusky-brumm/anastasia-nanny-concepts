@@ -1,5 +1,5 @@
-import {normalizeJourney, renderJourney} from './journeys.js?v=1c54769ca4';
-import {formatRequest} from './request.js?v=1c54769ca4';
+import {normalizeJourney, renderJourney} from './journeys.js?v=687978379a';
+import {formatRequest} from './request.js?v=687978379a';
 export {formatRequest};
 
 function initialize() {

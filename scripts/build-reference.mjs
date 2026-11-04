@@ -32,8 +32,9 @@ await writeFile(path.join(output,'compare-assembly.html'),studioPage('comparison
 await rm(path.join(output,'comparison-quotes.html'),{force:true});
 await rm(path.join(output,'pencil-journal.html'),{force:true});
 await rm(path.join(output,'pencil-journal-refined.html'),{force:true});
-for(const {mode,file} of comparisonDesigns){
+for(const {mode,file,single} of comparisonDesigns){
   await writeFile(path.join(output,file),studioPage(mode,'hero',file).replaceAll('__VERSION__',version));
+  if(single)continue;
   const refinedFile=file.replace('.html','-refined.html');
   await writeFile(path.join(output,refinedFile),studioPage(mode+'-refined','hero',refinedFile).replaceAll('__VERSION__',version));
 }

@@ -1,6 +1,6 @@
 export const blocks = [
   {id:'header',name:'Хедер с меню',variants:['Открытая строка','Логотип по центру','Меню в капсуле','Два уровня','Компактное меню']},
-  {id:'hero',name:'Первый экран',variants:['Простой портрет','Семейный альбом','Открытая арка','Линия между текстом и фото','Редакционная обложка','Карандашный контур портрета','Карандашный контур и линия на фоне','Двойной контур','Линия-маршрут']},
+  {id:'hero',name:'Первый экран',variants:['Простой портрет','Семейный альбом','Открытая арка','Линия между текстом и фото','Редакционная обложка','Карандашный контур портрета','Карандашный контур и линия на фоне','Двойной контур','Линия-маршрут','Портрет с плавным контуром','Линия-письмо']},
   {id:'service',name:'Подробнее об услуге',variants:['Три карточки','Открытые строки','Схема подбора','Бумажные записки','Запрос и результат']},
   {id:'about',name:'Об Анастасии',variants:['Текст и фотоколлаж','Портрет слева','Личное письмо','Фотоальбом','Краткое представление']},
   {id:'process',name:'Как проходит подбор',variants:['Как в образце','Одна линия','Две строки','Записки','Результат каждого этапа','Линия с иконками','Голубая волна','Карточки на маршруте','Четыре шага']},
@@ -55,7 +55,10 @@ export function normalizeState(raw={}) {
   raw=raw&&typeof raw==='object'?raw:{};
   const layout=String(raw.layout??defaults.layout);
   return {
-    layout:blocks.map((block,i)=>variantNumber(block,layout[i])||defaults.layout[i]).join(''),
+    layout:blocks.map((block,i)=>{
+      const number=variantNumber(block,layout[i]);
+      return number?number.toString(36):defaults.layout[i];
+    }).join(''),
     palette:palettes.some(p=>p.id===raw.palette)?raw.palette:defaults.palette,
     font:fontSets.some(p=>p.id===raw.font)?raw.font:defaults.font,
     // Links created before the two controls were separated encoded the old reviews as a palette.
@@ -70,16 +73,17 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'1c54769ca4'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'687978379a'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
-  if(!/^[1-9]$/.test(String(value)))return 0;
-  const number=Number(value);
+  const token=String(value);
+  if(!/^(?:[1-9]\d*|[a-z])$/.test(token))return 0;
+  const number=/^[a-z]$/.test(token)?parseInt(token,36):Number(token);
   return number<=block.variants.length?number:0;
 }
 export function selectVariant(state,blockId,value) {
   const next=normalizeState(state),index=blocks.findIndex(b=>b.id===blockId);
   const number=index>=0?variantNumber(blocks[index],value):0;
-  if(number)next.layout=next.layout.slice(0,index)+number+next.layout.slice(index+1);
+  if(number)next.layout=next.layout.slice(0,index)+number.toString(36)+next.layout.slice(index+1);
   return next;
 }

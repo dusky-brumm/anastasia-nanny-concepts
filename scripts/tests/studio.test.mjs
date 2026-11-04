@@ -1,12 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,comparisonPalettes} from '../../src/reference/studio/model.js';
-import {studioPage,comparisonBlockChoices} from '../../src/reference/studio/pages.js';
+import {studioPage,comparisonBlockChoices,comparisonDesigns} from '../../src/reference/studio/pages.js';
 
 test('completed design comparisons retain all sections and exclude the three cancelled options',()=>{
-  const modes=['comparison-current','pencil','pencil-panorama','pencil-album','comparison-gradients','comparison-route','comparison-reference'];
+  const modes=comparisonDesigns.flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
   const order=['header','hero','service','about','process','pricing','reviews','apply','footer'];
-  for(const mode of modes.flatMap(mode=>[mode,mode+'-refined'])){
+  for(const mode of modes){
     const html=studioPage(mode,'hero',mode+'.html');
     const positions=order.map(id=>html.indexOf(`id="${id}"`));
     assert.ok(positions.every((position,index)=>position>=0&&(index===0||position>positions[index-1])),mode);
@@ -20,7 +20,7 @@ test('completed design comparisons retain all sections and exclude the three can
     assert.match(html,/data-default-palette="almost-white"/);
     assert.match(html,/comparison-price-(?:sheet|duet)|s-clear-pricing/);
     assert.match(html,/studio\/comparison-request.js/);
-    assert.equal([...html.matchAll(/aria-label="[^"]+ — улучшенный"/g)].length,7);
+    assert.equal([...html.matchAll(/aria-label="[^"]+ — улучшенный"/g)].length,8);
     if(mode.endsWith('-refined'))assert.match(html,/data-refinement=/);
   }
   const reference=studioPage('comparison-reference');
@@ -100,15 +100,16 @@ test('changing one block preserves every other design decision',()=>{
   assert.deepEqual(selectVariant(original,'pricing',2),{...original,layout:'123452432'});
   assert.equal(original.layout,'123455432');assert.deepEqual(selectVariant(original,'unknown',2),original);
 });
-test('all nine hero choices have distinct gallery slides and survive full-page links',()=>{
+test('all eleven hero choices have distinct slides and preserve the nine-block shared layout',()=>{
   const html=studioPage('library','hero','blocks-hero.html');
-  assert.equal([...html.matchAll(/class="library-option"/g)].length,9);
+  assert.equal([...html.matchAll(/class="library-option"/g)].length,11);
   assert.match(html,/data-hero-step="-1"/);
   assert.match(html,/data-hero-step="1"/);
   assert.match(html,/studio\/hero-gallery.js/);
-  for(let variant=1;variant<=9;variant++){
+  for(let variant=1;variant<=11;variant++){
     const state=selectVariant(normalizeState(null),'hero',variant);
-    assert.equal(state.layout[1],String(variant));
+    assert.equal(state.layout[1],variant.toString(36));
+    assert.equal(state.layout.length,9);
     assert.deepEqual(readState(new URL(designUrl('preview.html',state),'https://example.test/').search),state);
     assert.ok(html.includes(`id="variant-${variant}"`));
   }

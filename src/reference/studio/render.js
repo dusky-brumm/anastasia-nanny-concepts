@@ -82,7 +82,57 @@ ${pencilFilter(pencil)}
 ${variant===8?`<use class="s-portrait-contour s-portrait-contour--echo" href="#${shape}" transform="translate(200 220) scale(1.13) translate(-200 -220)" filter="url(#${pencil})"/>`:''}
   </svg></figure>${variant===7?`<svg class="s-hero-background-line" viewBox="0 0 1120 130" preserveAspectRatio="none" aria-hidden="true"><path d="M-10 91C130 135 237 100 356 77C500 49 584 109 715 101C853 92 967 21 1130 46" filter="url(#${pencil})"/></svg>`:''}`;
 }
-function title(text) {return `<div class="s-section-heading"><h2>${text}</h2></div>`;}
+function wavePortrait(letter=false) {
+  const outline = letter ? 'hero-letter' : 'hero-wave';
+  const top = letter
+    ? 'M52 165C52 92 94 66 147 60C221 50 253 64 312 57C378 47 445 30 486 60'
+    : 'M34 293C71 275 55 155 116 85C172 19 247 21 306 25C383 25 446 53 494 57';
+  const corner = letter ? '486 509' : '494 535';
+  const bottom = letter
+    ? 'C453 539 383 548 318 540C244 531 206 520 152 532C106 542 75 539 52 515'
+    : 'C447 548 414 529 365 534C314 540 286 572 230 562C165 551 115 505 34 520';
+  const shape = `${top}L${corner}${bottom}Z`;
+  return `<figure class="s-wave-portrait">
+    <svg viewBox="0 0 526 592" role="img" aria-label="Анастасия Доронина за столиком в кафе">
+      <defs>
+        <path id="${outline}-edge" d="${shape}"/>
+        <clipPath id="${outline}-crop"><use href="#${outline}-edge"/></clipPath>
+        ${pencilFilter(`${outline}-pencil`)}
+      </defs>
+      <image href="${media}cafe.webp" x="8" y="${letter?-273:-294}" width="528" height="938.67" clip-path="url(#${outline}-crop)"/>
+      <use class="s-wave-frame" href="#${outline}-edge"/>
+      <g transform="translate(263 296) scale(1.045) translate(-263 -296)" filter="url(#${outline}-pencil)">
+        <path class="s-wave-contour" pathLength="1" d="${top}"/>
+        <path class="s-wave-contour" pathLength="1" d="M${corner}${bottom}"/>
+      </g>
+    </svg>
+  </figure>`;
+}
+const contourDrawings = {
+  hero:['02-hero',213], service:['03-service',320], about:['04-about',320],
+  process:['05-process',213], pricing:['06-guarantee',213], reviews:['07-reviews',320],
+  apply:['08-apply',213], footer:['09-footer',213],
+};
+function contourDrawing(id) {
+  const [file,height] = contourDrawings[id];
+  return `<img class="contour-drawing contour-drawing--${id}" src="${media}line-drawings/${file}.png" width="640" height="${height}" alt="" decoding="async" loading="${id==='hero'?'eager':'lazy'}">`;
+}
+
+const contourTransitions = {
+  hero:'M0 36C234 44 370 9 573 17S906 51 1240 28',
+  about:'M0 32C207 13 321 39 505 34S789 14 970 22S1141 38 1240 25',
+  apply:'M0 28C245 20 402 45 599 31S950 14 1240 30',
+};
+function contourTransition(id) {
+  const curve = contourTransitions[id];
+  if (!curve) return '';
+  return `<svg class="contour-transition" viewBox="0 0 1240 52" preserveAspectRatio="none" aria-hidden="true">
+    <defs>${pencilFilter('contour-transition-'+id)}</defs>
+    <path class="contour-transition-fill" d="${curve}V52H0Z"/>
+    <path class="contour-transition-line" pathLength="1" d="${curve}" filter="url(#contour-transition-${id})"/>
+  </svg>`;
+}
+function title(text,after='') {return `<div class="s-section-heading"><h2>${text}</h2>${after}</div>`;}
 function items(list,cls='') {return `<div class="s-items ${cls}">${list.map(([a,b],i)=>`<article><span class="s-index" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><h3>${a}</h3><p>${b}</p></article>`).join('')}</div>`;}
 const headerSocials = `<div class="s-header-socials">
   <a href="${telegram}" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
@@ -100,7 +150,10 @@ function header(_variant,ctx) {
 }
 function hero(v,c) {
   const application=`<div class="s-actions"><a class="s-button" href="${linkTo('apply',c)}">Оставить заявку</a></div>`;
-  const copy=`<div class="s-hero-copy"><h1>${headline}</h1><p class="s-intro">${introduction}</p>${application}</div>`;
+  const heroHeadline = v===10 || v===11
+    ? `<span>Найду няню,</span> <span>с\u00a0которой ${calmWord}</span> <span>вам и\u00a0хорошо ребёнку</span>`
+    : headline;
+  const copy=`<div class="s-hero-copy"><h1>${heroHeadline}</h1><p class="s-intro">${introduction}</p>${application}${c.contourDirection==='letter'?contourDrawing('hero'):''}</div>`;
   if(v===1)return `${copy}${photo('cafe','s-main-portrait',!c.library)}`;
   if(v===2)return `${copy}<div class="s-hero-strip">${heroStroke(v)}${photo('child')}${photo('cafe','',!c.library)}${photo('family')}</div>`;
   if(v===3)return `<div class="s-hero-arch">${photo('cafe','',!c.library)}${heroStroke(v)}</div><div class="s-hero-letter">${copy}</div>`;
@@ -109,6 +162,8 @@ function hero(v,c) {
   if(v===7)return `${copy}${shapedPortrait(v)}`;
   if(v===8)return `${shapedPortrait(v)}${copy}`;
   if(v===9)return `${copy}${photo('cafe','s-main-portrait',!c.library)}${heroStroke(v)}`;
+  if(v===10)return `${copy}${wavePortrait()}`;
+  if(v===11)return `${copy}${wavePortrait(true)}`;
   return `<h1>${headline}</h1><div class="s-hero-bottom">${photo('family','',!c.library)}<div><p class="s-intro">${introduction}</p>${application}</div></div>${heroStroke(v)}`;
 }
 const serviceDrawings=`<svg class="s-service-drawing s-service-drawing--sky" viewBox="0 0 238 96" aria-hidden="true" focusable="false">
@@ -125,9 +180,9 @@ const serviceDrawings=`<svg class="s-service-drawing s-service-drawing--sky" vie
   <path pathLength="1" d="M71 22c4 7 16 9 22 2-5-5-15-5-22-2z"/>
   <path pathLength="1" d="M86 16c-4-6 0-13 9-14 2 7-2 12-9 14z"/>
 </svg>`;
-function service(v) {
+function service(v,c) {
   if(v===1||v===2)return `<div class="s-service-personal">
-    <div class="s-service-intro">${title('Собеседую под вашу семью.')}<p>Обсуждаю с кандидаткой ваш ритм жизни, привычки ребёнка и правила дома. Задаю вопросы о ситуациях, с которыми ей предстоит столкнуться.</p></div>
+    <div class="s-service-intro">${title('Собеседую под вашу семью.')}<p>Обсуждаю с кандидаткой ваш ритм жизни, привычки ребёнка и правила дома. Задаю вопросы о ситуациях, с которыми ей предстоит столкнуться.</p>${c.contourDirection?contourDrawing('service'):''}</div>
     <figure class="s-service-photo"><img src="${media}family.webp" width="960" height="1280" loading="lazy" alt="Анастасия с детьми на прогулке"><svg viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true" focusable="false"><defs>${pencilFilter('service-photo-pencil-'+v)}</defs><path d="M12 170L14 35Q13 11 39 14L203 10M388 318L390 465Q390 489 366 488L202 491" filter="url(#service-photo-pencil-${v})"/></svg></figure>
     <div class="s-service-examples"><h3>Например, спрошу</h3><dl>
       <div><dt>Если ребёнку три года</dt><dd>«Что вы сделаете, если ребёнок расплачется и откажется уходить с площадки?»</dd></div>
@@ -146,9 +201,9 @@ const aboutSlides=[
   ['От работы с детьми к подбору нянь','family',background],
   ['Я играю в регби-7','child','Я мастер спорта по регби-7. Однажды провела собеседование с няней прямо в перерыве между играми. В итоге она подошла семье и работала с ребёнком до детского сада.'],
 ];
-function about(v) {
+function about(v,c) {
   const aboutPhotos=`<div class="s-about-photos">${photo('about-portrait','s-frame')}${photo('rainbow','s-frame')}</div>`;
-  const text=`${title('Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>`;
+  const text=`${title('Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>${c.contourDirection?contourDrawing('about'):''}`;
   if(v===1)return `<div class="s-about-slides" data-about-carousel role="region" aria-roledescription="карусель" aria-label="Знакомство с Анастасией">
     <div class="s-about-viewport" tabindex="0" aria-label="Истории об Анастасии">
       <ol>${aboutSlides.map(([name,image,copy])=>`<li>${photo(image,'s-frame')}<div><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol>
@@ -159,7 +214,7 @@ ${aboutSlides.map(([name],index)=>`<button type="button" data-about-dot="${index
     <span class="s-about-status" role="status"></span>
   </div>`;
   if(v===2)return `${aboutPhotos}<div class="s-about-copy">${text}<div class="s-tags"><span>Личное интервью</span><span>Поддержка семьи</span></div></div>`;
-  if(v===3)return `<div class="s-letter"><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>${scribble}</div>${aboutPhotos}`;
+  if(v===3)return `<div class="s-letter"><h2>Я знаю поиск<br><em>с обеих сторон</em></h2><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>${c.contourDirection?contourDrawing('about'):scribble}</div>${aboutPhotos}`;
   if(v===4)return `${title('Лично веду подбор<br>на каждом этапе')}<div class="s-album">${photo('about-portrait','s-taped')}<div><p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p></div>${photo('rainbow','s-frame')}</div>`;
   return `<div class="s-about-pair">${photo('about-portrait')}${photo('rainbow')}</div><div class="s-about-copy">${text}</div>`;
 }
@@ -175,7 +230,7 @@ function routeComparison(variant) {
   const path=wave
     ?'M0 44Q30 56 60 43C100 25 140 12 180 25S260 56 300 43 380 12 420 25 500 56 540 43Q570 35 600 26'
     :'M60 32Q120 55 180 32Q240 55 300 32Q360 55 420 32Q480 55 540 32';
-  return `<div class="s-route-study">${variant===8?'':`<svg class="s-study-line" viewBox="0 0 600 64" preserveAspectRatio="none" aria-hidden="true"><path d="${path}"/></svg>`}
+  return `<div class="s-route-study">${variant===8?'':`<svg class="s-study-line" viewBox="0 0 600 64" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="${path}"/></svg>`}
     <ol class="s-study-steps" aria-label="Пять этапов подбора няни">${outcomes.map(([name,description],index)=>`
       <li><span class="s-study-number" aria-hidden="true">${index+1}</span>
       <div class="s-study-copy">${variant===6?`<svg class="s-study-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${routeIcons[index]}"/></svg>`:''}
@@ -211,12 +266,13 @@ function faq(comparison=false,compact=false) {
   const items = questions.map(({question,answer}) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join('');
   return `<div class="s-faq"><h3>Вопросы о подборе няни</h3>${comparison?`<div class="comparison-faq-questions">${items}</div>`:items}</div>`;
 }
-function comparisonPricing({blockStyle, previewFile}) {
+function comparisonPricing({blockStyle, previewFile, contourDirection}) {
   const price = `<div class="comparison-price-main">
     <p class="comparison-price-label">Стоимость подбора</p>
     <h3>Один оклад няни</h3>
     <p>В стоимость входят поиск, собеседования и сопровождение семьи.</p>
     <a class="s-text-link comparison-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a>
+${contourDirection==='letter'?contourDrawing('pricing'):''}
   </div>`;
   const payments = `<div><dt>Предоплата</dt><dd>25&nbsp;000&nbsp;₽ <small>При начале подбора</small></dd></div>
     <div><dt>Остаток</dt><dd>Через 1–2 пробные недели</dd></div>`;
@@ -227,7 +283,7 @@ function comparisonPricing({blockStyle, previewFile}) {
         <div class="comparison-price-duet-warranty">
           <p class="comparison-price-label">Гарантия</p>
           <dl>${warranty}</dl>
-          <svg viewBox="0 0 144 106" aria-hidden="true"><path d="M14 93C40 79 61 56 77 20m-36 56c-8-16-3-31 6-42 7 15 7 25-6 42Zm15-15c5-16 20-24 35-23-9 14-21 22-35 23Zm12-19c-4-15 0-25 11-32 3 13 0 24-11 32ZM73 92c15-14 31-25 50-29m-31 15c-2-11 3-20 14-25 0 10-4 19-14 25Zm14-8c9 2 18-1 24-9-10-2-19 2-24 9Z"/></svg>
+          ${contourDirection==='wave'?contourDrawing('pricing'):`<svg viewBox="0 0 144 106" aria-hidden="true"><path d="M14 93C40 79 61 56 77 20m-36 56c-8-16-3-31 6-42 7 15 7 25-6 42Zm15-15c5-16 20-24 35-23-9 14-21 22-35 23Zm12-19c-4-15 0-25 11-32 3 13 0 24-11 32ZM73 92c15-14 31-25 50-29m-31 15c-2-11 3-20 14-25 0 10-4 19-14 25Zm14-8c9 2 18-1 24-9-10-2-19 2-24 9Z"/></svg>`}
         </div>
       </div>`
     : `<div class="comparison-price-sheet">${price}<dl class="comparison-price-terms">${payments}${warranty}</dl></div>`;
@@ -262,22 +318,22 @@ function reviews(v,c) {
         <button type="button" data-quote-step="-1" aria-controls="${trackId}" aria-label="Предыдущий отзыв">←</button>
         <button type="button" data-quote-step="1" aria-controls="${trackId}" aria-label="Следующий отзыв">→</button>
       </div>
-    </div>`;
+    </div>${c.contourDirection?contourDrawing('reviews'):''}`;
   }
   return `${title('Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
 }
 function form(comparison=false,lines=!comparison) {return `<form class="s-consult-form${lines?' s-form-lines':''}" method="post"><div hidden><label>Сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="${comparison?4:3}" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div></div><p class="s-request-status" role="status"></p></form>`;}
-function apply(v,c) {if(c.comparison)return `<div class="s-apply-intro">${title('Обсудить подбор')}<p>Оставьте контакт, чтобы договориться о созвоне.</p><div class="comparison-form-contact">${tg('Написать в Telegram')}</div></div>${form(true,c.blockStyle==='letter'||c.formStyle==='letter')}`;return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
+function apply(v,c) {if(c.comparison)return `<div class="s-apply-intro">${title('Обсудить подбор')}<p>Оставьте контакт, чтобы договориться о созвоне.</p><div class="comparison-form-contact">${tg('Написать в Telegram')}</div>${c.contourDirection?contourDrawing('apply'):''}</div>${form(true,c.blockStyle==='letter'||c.formStyle==='letter')}`;return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
 function footer(v,c) {
   const grain=`footer-pencil-${c.previewId??c.blockId??v}`;
   return `<a class="s-footer-name" href="${linkTo('hero',c)}">Анастасия Доронина</a>
-    <svg class="s-footer-drawing" viewBox="0 0 190 70" aria-hidden="true" focusable="false"><defs>${pencilFilter(grain)}</defs>
+    ${c.contourDirection?contourDrawing('footer'):`<svg class="s-footer-drawing" viewBox="0 0 190 70" aria-hidden="true" focusable="false"><defs>${pencilFilter(grain)}</defs>
       <g filter="url(#${grain})"><g transform="translate(-128 -6)">
         <path d="M167 31c-8-7-22 1-18 13 3 10 18 13 24 4 6-8 1-17-6-17zM160 24l-1-9M175 26l5-8M181 37l10-2M180 50l9 4M169 58l3 9M153 57l-5 8M142 46l-9 2M145 32l-8-4"/>
       </g><g transform="translate(75 18)">
         <path d="M5 37c24 3 44-4 60-12 12-6 26-12 43-14M59 28c-11-1-19-10-14-17 8 0 16 8 14 17zM71 22c4 7 16 9 22 2-5-5-15-5-22-2zM86 16c-4-6 0-13 9-14 2 7-2 12-9 14z"/>
       </g></g>
-    </svg>
+    </svg>`}
     <div class="s-footer-contact">${tg('Telegram')}<button type="button" class="s-privacy">О данных формы</button></div>`;
 }
 const renderers={header,hero,service,about,process,pricing,reviews,apply,footer};
@@ -286,7 +342,9 @@ export function renderBlock(id,value,context={}) {
   const block=blocks.find(b=>b.id===id)??blocks[0];
   const v=variantNumber(block,value)||1;
   const previousReviews=id==='reviews'&&v===1&&ctx.state.version==='previous'?' s-reviews--previous':'';
-  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${id==='footer'?' s-footer-simple':''}${previousReviews}" ${context.library||context.previewFile?'':`id="${context.blockId??block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
+  const illustration=ctx.contourDirection&&id==='process'?contourDrawing(id):'';
+  const transition=ctx.contourDirection?contourTransition(id):'';
+  return `<${id==='header'?'header':id==='footer'?'footer':'section'} class="s-block s-${block.id} s-${block.id}--${v}${id==='footer'?' s-footer-simple':''}${previousReviews}" ${context.library||context.previewFile?'':`id="${context.blockId??block.id}"`} data-block="${block.id}" data-variant="${v}">${renderers[block.id](v,ctx)}${illustration}${transition}</${id==='header'?'header':id==='footer'?'footer':'section'}>`;
 }
 const siteOrder=['header','hero','service','about','process','pricing','reviews','apply','footer'];
 export function renderSite(state, options={}) {

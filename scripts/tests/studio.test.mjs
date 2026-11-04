@@ -20,13 +20,13 @@ test('completed design comparisons retain all sections and exclude the three can
     assert.match(html,/data-comparison-theme="almost-white"/);
     assert.match(html,/comparison-price-(?:sheet|duet)|s-clear-pricing|id="pricing"/);
     assert.match(html,/studio\/comparison-request.js/);
-    assert.equal([...html.matchAll(/aria-label="[^"]+ — улучшенный"/g)].length,8);
+    assert.doesNotMatch(html,/>Улучшенный<\/a>/);
     if(mode.endsWith('-refined'))assert.match(html,/data-refinement=/);
   }
   const reference=studioPage('comparison-reference');
   assert.equal([...reference.matchAll(/data-about-dot="/g)].length,4);
   assert.match(reference,/M389 85C395 158/);
-  assert.match(studioPage('preview','hero','index.html'),/value="comparison-current.html/);
+  assert.match(studioPage('preview','hero','index.html'),/value="comparison-current-refined.html/);
 });
 
 test('all six formerly separate designs share navigation and retain the selected blocks',()=>{
@@ -96,6 +96,15 @@ test('the final theme is fixed and the top navigation offers only designs and bl
     assert.ok(nav,mode);
     assert.match(nav,/data-design-navigation/);
     assert.match(nav,/href="compare-block-pricing.html/);
+    for(const design of comparisonDesigns){
+      const file=design.single?design.file:design.file.replace('.html','-refined.html');
+      assert.equal(nav.split(`value="${file}?v=`).length-1,1);
+      if(mode!=='preview')assert.equal(nav.split(`href="${file}?v=`).length-1,1);
+      if(!design.single){
+        assert.ok(!nav.includes(`"${design.file}?v=`));
+        assert.match(studioPage(design.mode,'hero',design.file),/data-refinement=/);
+      }
+    }
     assert.doesNotMatch(nav,/Основной сайт|Собрать свой вариант|Выбранные блоки|Палитра|data-palette|data-comparison-palette|href="\.\//);
     assert.match(html,/data-fixed-theme="almost-white"/);
     assert.match(html,/--paper:#fcfcfa;--wash:#e7f1f6;--soft:#e8efe4/);

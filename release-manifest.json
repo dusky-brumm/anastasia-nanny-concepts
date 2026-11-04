@@ -1,6 +1,6 @@
 {
-  "build": "aa993d7b31",
-  "base_commit": "97cf96fda0cb22c158974a01a2b22889c0352dcf",
+  "build": "b6b5173283",
+  "base_commit": "efe2d4b22fe8a8ac0e7c77088d54f407b69214b6",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,16 +23,16 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Remove Main site, palette controls and the assembly shortcut from the design toolbar; keep design viewing and block comparison",
-    "Fix all current and imported designs to the approved Almost white palette; old palette/color URL parameters cannot override it",
-    "Restore blue radial hero gradient, green pricing gradient and green concise footer across designs",
-    "Preserve all completed design choices and selected block content; retain section position while switching designs"
+    "Keep only the improved version in each of the eight paired designs",
+    "Remove ordinary duplicates from design links and dropdowns; keep unpaired designs",
+    "Legacy base URLs render their improved design; comparison and assembly return links open the improved current design"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
     "Old family-story review content and stale form/footer/service markup",
     "Superseded palette menus and custom color controls",
-    "Main site navigation entry"
+    "Main site navigation entry",
+    "Ordinary versions of the eight paired designs"
   ],
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
@@ -157,10 +157,11 @@
     "source_chat": "Первый блок",
     "source_thread": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
     "source_messages_utc": [
-      "2026-11-03T17:43:12.040Z",
+      "2026-11-03T17:43:12.04Z",
       "2026-11-03T17:51:11.637Z",
       "2026-11-03T18:01:38.057Z"
     ],
-    "source_note": "Later decisions in the continued rollout supersede earlier requests for palette menus. Preserve these decisions when integrating separate design projects unless the user changes them explicitly."
+    "source_note": "Later decisions in the continued rollout supersede earlier requests for palette menus. Preserve these decisions when integrating separate design projects unless the user changes them explicitly.",
+    "paired_design_policy": "Keep only improved variants; base URLs remain compatible and render the improved variant."
   }
 }

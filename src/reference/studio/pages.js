@@ -15,6 +15,7 @@ export const comparisonDesigns=[
   {mode:'comparison-thread',file:'comparison-thread.html',name:'Линия-письмо',reviews:'open',form:2,footer:5,hero:11,contour:'letter',single:true},
   ...additionalDesigns,
 ];
+const preferredDesignFile=design=>design.single?design.file:design.file.replace('.html','-refined.html');
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 export const comparisonBlockChoices = {
@@ -68,7 +69,7 @@ function comparisonBlockGallery(blockId) {
   const [title, choices] = comparisonBlockChoices[blockId];
   const previews = choices.map(([style,label,variant,reviews='cards'], index) => {
     const design = comparisonDesigns.find(item => item.refinement === style);
-    const previewFile = design.file.replace('.html','-refined.html') + '?v=__VERSION__';
+    const previewFile = preferredDesignFile(design) + '?v=__VERSION__';
     const state = {...defaults, layout:design.layout ?? defaults.layout};
     const context = {state, comparison:true, blockStyle:style, wavyArrows:design.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
     return `<article id="choice-${index + 1}" class="block-compare-choice" data-gallery-choice="${style}">
@@ -82,7 +83,7 @@ function comparisonBlockGallery(blockId) {
     </article>`;
   });
   return `<header class="block-compare-heading">
-    <div class="block-compare-actions"><a href="comparison-current.html?v=__VERSION__#${blockId}">← К целым макетам</a><a data-keep-assembly href="compare-assembly.html?v=__VERSION__">Собрать свой вариант ↗</a></div>
+    <div class="block-compare-actions"><a href="comparison-current-refined.html?v=__VERSION__#${blockId}">← К целым макетам</a><a data-keep-assembly href="compare-assembly.html?v=__VERSION__">Собрать свой вариант ↗</a></div>
     <h1>${title}</h1>
     <nav aria-label="Блоки для сравнения">${Object.entries(comparisonBlockChoices).map(([key,[label]]) =>
       `<a data-keep-assembly data-gallery-block="${key}" href="compare-block-${key}.html?v=__VERSION__"${key === blockId ? ' aria-current="page"' : ''}>${label}</a>`
@@ -135,7 +136,7 @@ ${previews.filter(preview => preview.style !== selected).map(({style,reviews,mar
     </div>`;
   }).join('');
   return `<header class="block-compare-heading assembly-heading">
-    <a href="comparison-current.html?v=__VERSION__">← К целым макетам</a>
+    <a href="comparison-current-refined.html?v=__VERSION__">← К целым макетам</a>
     <h1>Собрать свой вариант</h1>
     <p>Выбирайте оформление над каждым блоком. В ссылке сохраняется вся комбинация.</p>
     <section class="assembly-presets" aria-labelledby="assembly-presets-heading">
@@ -164,7 +165,7 @@ ${previews.filter(preview => preview.style !== selected).map(({style,reviews,mar
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
 const designPanel=`<nav class="design-panel" aria-label="Просмотр вариантов">
-  <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта">${comparisonDesigns.map(item=>`<option value="${item.file}?v=__VERSION__">${item.name}</option>`).join('')}</select></label>
+  <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта">${comparisonDesigns.map(item=>`<option value="${preferredDesignFile(item)}?v=__VERSION__">${item.name}</option>`).join('')}</select></label>
   <a class="design-panel-caption" href="compare-block-pricing.html?v=__VERSION__">Сравнение блоков ↗</a>
 </nav>`;
 function controls() {
@@ -200,8 +201,9 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   const title=assembling?'Собрать свой вариант — Настя':blockCompare?`${comparisonBlockChoices[blockId][0]} — сравнение вариантов`:mode==='studio'?`Конструктор сайта — ${compositionCount} вариантов блоков`:mode==='library'?'Варианты блока — Настя':'Настя — индивидуальный подбор няни';
   const content=mode==='studio'?`<header class="tool-top"><div><a class="tool-brand" data-back-builder href="./">НАСТЯ · ДИЗАЙН САЙТА</a><h1>Конструктор дизайна</h1><p>${compositionCount} композиций для 9 блоков · 4 набора шрифтов</p></div><a class="tool-button tool-button--dark" data-open-preview href="${designUrl('preview.html',defaults)}" target="_blank" rel="noopener">Открыть выбранный сайт ↗</a></header><main class="studio-workspace"><button class="mobile-settings-toggle tool-button" type="button" data-mobile-settings aria-expanded="false" aria-controls="studio-settings">Настроить блоки и шрифты</button>${controls()}<section class="studio-canvas" aria-label="Предпросмотр сайта"><div class="canvas-toolbar"><span data-current-design>Почти белый · Manrope + Golos Text</span><div><button type="button" data-view="desktop" aria-pressed="true">Компьютер</button><button type="button" data-view="mobile" aria-pressed="false">Телефон</button></div></div><div class="site-preview" data-site-root data-font="${defaults.font}" data-palette="${defaults.palette}" ${fixedThemeAttributes}>${renderSite(defaults)}</div></section></main>`:mode==='library'?library(blockId):`<main class="site-preview" data-site-root data-font="${defaults.font}" data-palette="${defaults.palette}" ${fixedThemeAttributes}>${renderSite(defaults)}</main>`;
   const editorial=mode==='editorial';
-  const refined=mode.endsWith('-refined');
-  const design=comparisonDesigns.find(item=>item.mode===(refined?mode.slice(0,-8):mode));
+  const design=comparisonDesigns.find(item=>item.mode===mode.replace(/-refined$/,''));
+  // Retired base URLs also render the retained, improved design.
+  const refined=Boolean(design&&!design.single);
   const comparing=Boolean(design);
   const pencil=design?.mode.startsWith('pencil');
   const contourDirection=design?.contour==='wave'&&!refined ? '' : design?.contour;
@@ -209,10 +211,9 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
     <details class="comparison-disclosure" open>
       <summary>Варианты дизайна <span>${design.name}${refined?' · улучшенный':''}</span></summary>
       <div class="comparison-content">
-    <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта">${comparisonDesigns.map(item=>`<option value="${item.file}?v=__VERSION__"${design.mode===item.mode?' selected':''}>${item.name}</option>`).join('')}</select></label>
+    <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта">${comparisonDesigns.map(item=>`<option value="${preferredDesignFile(item)}?v=__VERSION__"${design.mode===item.mode?' selected':''}>${item.name}</option>`).join('')}</select></label>
     <div class="comparison-pairs">${comparisonDesigns.map(item=>`<div class="comparison-pair">
-      <a href="${item.file}?v=__VERSION__"${mode===item.mode?' aria-current="page"':''}>${item.name}</a>
-${item.single?'':`<a href="${item.file.replace('.html','-refined.html')}?v=__VERSION__"${mode===item.mode+'-refined'?' aria-current="page"':''} aria-label="${item.name} — улучшенный">Улучшенный</a>`}
+      <a href="${preferredDesignFile(item)}?v=__VERSION__"${design.mode===item.mode?' aria-current="page"':''}>${item.name}</a>
     </div>`).join('')}</div>
     <div class="block-compare-actions">
       <a class="block-compare-link" href="compare-block-pricing.html?v=__VERSION__">Сравнение блоков ↗</a>

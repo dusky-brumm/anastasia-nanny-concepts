@@ -48,7 +48,7 @@ test('block galleries and assembly preserve the current hero and local request w
     assert.doesNotMatch(gallery,/data-live-request/);
     total+=choices.length;
   }
-  assert.equal(total,28);
+  assert.equal(total,26);
 });
 
 test('the live service starts with the family interview and About keeps four slides without a block heading',()=>{

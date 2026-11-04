@@ -8,7 +8,7 @@ export const comparisonDesigns=[
   {mode:'pencil-panorama',file:'pencil-panorama.html',name:'Вариант 3',reviews:'cards',form:2,footer:2,refinement:'panorama'},
   {mode:'pencil-album',file:'pencil-album.html',name:'Вариант 4',reviews:'feature',form:3,footer:5,refinement:'album'},
   {mode:'comparison-gradients',file:'comparison-gradients.html',name:'Вариант 6',reviews:'open',form:1,footer:2,refinement:'air'},
-  {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:1,refinement:'route'},
+  {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:1,wavyArrows:true,refinement:'route'},
   {mode:'comparison-reference',file:'comparison-reference.html',name:'Вариант 9',reviews:'open',form:2,footer:5,layout:'112111113',wavyArrows:true,refinement:'reference'},
 ];
 
@@ -30,7 +30,7 @@ export const comparisonBlockChoices = {
     ['quiet','Знакомство в четырёх кадрах',1], ['reference','Портрет и текст',2], ['letter','Личное письмо',3], ['album','Семейный альбом',4],
   ]],
   process: ['Маршрут', [
-    ['reference','Рисованные стрелки',1], ['air','Голубая волна',7], ['letter','Линия с иконками',6], ['album','Карточки на маршруте',8],
+    ['reference','Рисованные стрелки',1], ['air','Голубая волна',7],
   ]],
   footer: ['Футер', [
     ['quiet','Компактные контакты',3], ['letter','Меню и контакты',5], ['album','По центру',2],
@@ -57,7 +57,7 @@ const assemblyPresets = [
   {
     name:'Чёткий маршрут',
     description:'Услуга в двух панелях, условия в ряд и форма с тонкими подчёркиваниями.',
-    choices:{service:'panorama',about:'reference',process:'letter',pricing:'route',reviews:'quiet',apply:'reference',footer:'letter'},
+    choices:{service:'panorama',about:'reference',process:'reference',pricing:'route',reviews:'quiet',apply:'reference',footer:'letter'},
   },
 ];
 
@@ -234,8 +234,8 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
       const changes = {
         quiet: {about:1},
         letter: {service:2,about:3},
-        panorama: {service:5,process:6},
-        album: {about:4,process:8},
+        panorama: {service:5},
+        album: {about:4},
         air: {about:5},
       }[design.refinement] ?? {};
       for (const [block, variant] of Object.entries(changes)) {

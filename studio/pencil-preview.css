@@ -298,13 +298,14 @@
 
 @container (max-width:680px) {
   .pencil-hero {
-    grid-template-columns:1fr;
-    grid-template-areas:"headline" "portrait" "intro";
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"headline" "intro" "portrait";
     grid-template-rows:auto;
-    gap:16px;
+    gap:18px;
   }
-  .pencil-hero h1 {font-size:clamp(32px,8.5cqw,50px)}
-  .pencil-portrait {width:min(100%,460px);justify-self:center}
+  .pencil-hero h1 {max-width:19ch;font-size:clamp(30px,8.5cqw,48px);text-wrap:balance}
+  .pencil-intro .s-button {margin-top:16px}
+  .pencil-portrait {width:min(100%,460px);justify-self:center;margin-top:10px}
   .pencil-journal-hero {grid-template-columns:1fr;grid-template-areas:"masthead" "portrait" "copy";row-gap:18px;padding-top:16px}
   .pencil-masthead {display:block}
   .pencil-journal .pencil-name {font-size:clamp(34px,9.8cqw,66px)}
@@ -315,12 +316,22 @@
   .pencil-journal-copy p {max-width:46ch}
   .pencil-journal-tail {width:50%;margin-top:4px}
   .pencil-preview .pencil-new-hero {
-    grid-template-columns:1fr;
-    grid-template-areas:"headline" "portrait" "intro";
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"headline" "intro" "portrait";
     grid-template-rows:auto;
   }
   .pencil-new-hero .pencil-portrait {width:min(100%,520px);justify-self:center}
   .pencil-new-hero h1 {font-size:clamp(32px,8.5cqw,46px)}
+  .pencil-panorama .pencil-headline::after {content:none}
+  .pencil-panorama .pencil-portrait {position:relative}
+  .pencil-panorama .pencil-portrait::before {
+    content:'';
+    position:absolute;
+    z-index:-1;
+    inset:13% -100vw -50px;
+    background:var(--wash);
+    pointer-events:none;
+  }
 }
 @media(max-width:1100px) {
   .pencil-comparison {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:8px 6px}

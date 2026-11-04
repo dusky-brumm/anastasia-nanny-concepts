@@ -51,7 +51,7 @@ export function renderJourney(value, {wavyArrows=false}={}) {
   return `<div class="journey journey--${id}" data-route="${id}">
     <svg class="journey-lines" viewBox="0 0 956 ${heights[id]}" preserveAspectRatio="none" aria-hidden="true">
       <defs><marker id="${arrow}" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="m2 1 5 3.5L2 8"/></marker></defs>
-      ${connectors.map(d => `<path d="${d}" marker-end="url(#${arrow})"/>`).join('')}
+      ${connectors.map(d => `<path pathLength="1" d="${d}" marker-end="url(#${arrow})"/>`).join('')}
     </svg>
     <ol class="journey-list" aria-label="Пять этапов подбора няни">
       ${steps.map(([title, text], index) => `<li class="journey-node"><span class="journey-number" aria-hidden="true">${index + 1}</span><div class="journey-copy"><h3>${title}</h3><p>${text}</p></div></li>`).join('')}
@@ -61,7 +61,7 @@ export function renderJourney(value, {wavyArrows=false}={}) {
 
 export function renderJourneyOptions() {
   return journeyVariants.map(variant => `<section class="route-option" id="route-${variant.id}" aria-labelledby="option-${variant.id}">
-    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=ed4b4dd940#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
+    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=687978379a#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
     <div class="option-preview option-preview--${variant.id}"><p class="preview-heading">Маршрут <span>подбора</span></p>${renderJourney(variant.id)}</div>
   </section>`).join('\n');
 }

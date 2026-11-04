@@ -15,12 +15,17 @@ import {addPaletteSelect,applyComparisonPalette,setPaletteUrl} from '../studio/t
     });
     history.replaceState(null,'',setPaletteUrl(new URL(location.href),value));
   };
-  const palette=addPaletteSelect(buttons[0].parentElement,applyPalette);
+  const palette=addPaletteSelect(document.querySelector('.collection-controls'),applyPalette);
   for(const frame of frames)frame.addEventListener('load',()=>{
     if(frame.contentDocument)applyComparisonPalette(frame.contentDocument,palette.value);
   });
   if(palette.value)applyPalette(palette.value);
-  let mode = 'desktop';
+  let mode = window.matchMedia('(max-width:650px)').matches ? 'mobile' : 'desktop';
+  const updateDevice = () => {
+    document.body.dataset.device = mode;
+    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.device === mode)));
+    resize();
+  };
   const resize = () => windows.forEach(win => {
     const frame = win.querySelector('iframe');
     const width = mode === 'mobile' ? 390 : 1120;
@@ -31,11 +36,9 @@ import {addPaletteSelect,applyComparisonPalette,setPaletteUrl} from '../studio/t
   });
   buttons.forEach(button => button.addEventListener('click', () => {
     mode = button.dataset.device;
-    document.body.dataset.device = mode;
-    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    resize();
+    updateDevice();
   }));
   if ('ResizeObserver' in window) { const observer = new ResizeObserver(resize); windows.forEach(win => observer.observe(win)); }
   window.addEventListener('resize', resize);
-  resize();
+  updateDevice();
 })();

@@ -103,7 +103,7 @@ function comparisonBlockGallery(blockId) {
 
 function comparisonAssembly() {
   const order = ['service','about','process','pricing','reviews','apply','footer'];
-  const initial = {about:'reference'};
+  const initial = {about:'reference',apply:'letter'};
   const top = ['header','hero'].map(id => {
     const index = blocks.findIndex(block => block.id === id);
     return renderBlock(id,comparisonState.layout[index],{state:comparisonState,comparison:true});
@@ -244,7 +244,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
     state=selectVariant(state,'apply',refined?({1:2,2:1,3:1})[design.form]:design.form);
     state=selectVariant(state,'footer',refined?({1:3,2:5,3:2,5:1})[design.footer]:design.footer);
     const reviewLayout=refined?({cards:'ribbon',feature:'open',open:'cards'})[design.reviews]:design.reviews;
-    const context={comparison:true,blockStyle:design.refinement,wavyArrows:design.wavyArrows};
+    const context={comparison:true,blockStyle:design.refinement,formStyle:design.refinement==='quiet'?'letter':undefined,wavyArrows:design.wavyArrows};
     const markup=pencil?renderPencilPreview(state,design.mode,context):renderSite(state,context);
     pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${design.refinement}"${refined?` data-refinement="${design.refinement}"`:''}>${markup}</main>`;
   }

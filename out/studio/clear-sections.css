@@ -1,3 +1,7 @@
+/* Section headings follow the font selected for the hero. */
+.site-preview:is([data-font],.comparison-design) .s-block h2 {font-family:var(--heading);font-weight:var(--heading-weight);letter-spacing:var(--heading-tracking)}
+.assembly-site [data-assembly-preview] {--heading:inherit;--heading-weight:inherit;--body:inherit}
+
 /* One total fee, two payment stages, one replacement promise. */
 .s-clear-pricing {text-align:left}
 .s-clear-pricing .s-fee-intro {display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-bottom:36px}
@@ -41,6 +45,18 @@
 /* Two fine, slightly irregular pencil strokes around primary actions. */
 .site-preview .s-button {position:relative;border-radius:8px 10px 7px 9px}
 .site-preview .s-button::before {content:'';position:absolute;inset:-5px;pointer-events:none;background:var(--button,var(--button-fill,var(--ink)));mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 60' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='1' d='M14 3C65 1 213 4 265 2Q277 2 276 13L278 46Q277 56 265 56C198 59 80 55 14 58Q3 57 4 46L3 14Q2 4 14 3Z'/%3E%3Cpath opacity='.5' stroke-width='.65' d='M10 5C74 5 218 1 269 5Q274 5 274 14L275 47Q276 54 264 54L17 56Q6 55 6 46L5 15Q5 7 11 6'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat}
+/* The selected open form uses the same graphite grain as the portrait lines. */
+.site-preview .s-apply .s-consult-form.s-form-lines {position:relative;grid-template-columns:1fr 1fr;gap:26px 24px;padding:28px 0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:left}
+.s-form-lines::before,.s-form-lines::after,.s-form-lines>label::after {content:'';position:absolute;left:0;right:0;height:10px;background:var(--accent);mask:url('pencil-rule.svg') center/100% 100% no-repeat;pointer-events:none}
+.s-form-lines::before {top:-5px}
+.s-form-lines::after {bottom:-5px;transform:scaleX(-1)}
+.s-form-lines>label {position:relative;font-family:var(--body)}
+.s-form-lines>label::after {bottom:-4px}
+.site-preview .s-apply .s-form-lines :is(input,textarea) {border:0;border-radius:0;background:transparent;padding:10px 4px;font-family:var(--body);outline-offset:5px}
+.site-preview .s-apply .s-form-lines :is(input,textarea):focus-visible {outline:1px solid var(--accent)}
+.site-preview .s-apply .s-form-lines>.s-button {margin-top:4px}
+.site-preview .s-form-lines .s-draft {padding:20px;background:var(--wash)}
+
 @container (max-width:650px) {
   .s-clear-pricing .s-fee-intro {grid-template-columns:1fr;gap:16px;margin-bottom:28px}
   .s-clear-pricing .s-payment-steps {grid-template-columns:1fr;gap:0}
@@ -48,4 +64,5 @@
   .s-replacement-note {grid-template-columns:1fr;gap:19px;padding:24px}
   .s-fee-actions {gap:20px 24px}
   .site-preview .s-reviews [data-open-quotes] .s-review-grid {grid-auto-columns:100%}
+  .site-preview .s-apply .s-consult-form.s-form-lines {grid-template-columns:1fr}
 }

@@ -1,5 +1,5 @@
 {
-  "build": "4a7f4705d3",
+  "build": "0cee90c3a7",
   "base_commit": "63eeb3c739db9c2c98e499b0b98018852f9592ce",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
@@ -24,7 +24,8 @@
     "Direct user request: explain the total selection fee, two payment stages and six-month free replacement in one coherent layout",
     "Remove the family story; show open review quotes with manual arrows, touch scrolling, keyboard controls and a position counter",
     "Add a fine hand-drawn pencil outline to primary application buttons",
-    "Keep review carousels functional after palette and assembly changes; preserve all existing palettes and comparison choices"
+    "Keep review carousels functional after palette and assembly changes; preserve all existing palettes and comparison choices",
+    "Follow-up request: remove the form explainer, select the thin-line form with shared pencil grain, and match section headings to the hero typeface"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",

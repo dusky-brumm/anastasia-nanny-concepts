@@ -35,6 +35,8 @@ test('block galleries and assembly preserve the current hero and local request w
   assert.match(assembly,/data-about-dot="3"/);
   assert.match(assembly,/studio\/comparison-assembly.js/);
   assert.match(assembly,/studio\/comparison-request.js/);
+  assert.match(assembly,/option value="letter" selected>Тонкие линии/);
+  assert.doesNotMatch(assembly,/Вы получите текст сообщения|s-form-note/);
   assert.doesNotMatch(assembly,/data-live-request/);
   let total=0;
   for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){

@@ -10,13 +10,15 @@ test('completed design comparisons retain all sections and exclude the three can
     const html=studioPage(mode,'hero',mode+'.html');
     const positions=order.map(id=>html.indexOf(`id="${id}"`));
     assert.ok(positions.every((position,index)=>position>=0&&(index===0||position>positions[index-1])),mode);
-    assert.match(html,/Первая кандидатка (?:<span[^>]*>)?осталась на полтора года/);
+    assert.doesNotMatch(html,/s-family-story|История семьи|Первая кандидатка/);
+    assert.match(html,/data-open-quotes/);
+    assert.match(html,/studio\/review-carousel.js/);
     assert.match(html,/s-request-status/);
     assert.doesNotMatch(html,/>Вариант (2|5|8)<\/a>/);
     assert.match(html,/data-comparison-palette="new"/);
     assert.doesNotMatch(html,/data-color-role=/);
     assert.match(html,/data-default-palette="almost-white"/);
-    assert.match(html,/comparison-price-(?:sheet|duet)/);
+    assert.match(html,/comparison-price-(?:sheet|duet)|s-clear-pricing/);
     assert.match(html,/studio\/comparison-request.js/);
     assert.equal([...html.matchAll(/aria-label="[^"]+ — улучшенный"/g)].length,7);
     if(mode.endsWith('-refined'))assert.match(html,/data-refinement=/);

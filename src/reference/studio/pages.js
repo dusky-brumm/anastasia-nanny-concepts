@@ -15,10 +15,10 @@ export const comparisonDesigns=[
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 export const comparisonBlockChoices = {
   pricing: ['Стоимость и гарантия', [
-    ['quiet','Светлая карточка',1], ['letter','Открытые колонки',1], ['album','Акцент на гарантии',1], ['route','Три условия в ряд',1], ['panorama','Цена над условиями',1], ['reference','Цена и гарантия в двух панелях',1],
+    ['quiet','Оплата в два этапа',1], ['letter','Открытые колонки',1], ['album','Акцент на гарантии',1], ['route','Три условия в ряд',1], ['panorama','Цена над условиями',1], ['reference','Цена и гарантия в двух панелях',1],
   ]],
   reviews: ['Отзывы', [
-    ['quiet','Три карточки',1,'cards'], ['letter','Открытые цитаты',1,'open'], ['album','Широкие цитаты со стрелками',1,'ribbon'],
+    ['quiet','Две открытые цитаты',1,'cards'], ['letter','Цитаты с тонкими линиями',1,'open'], ['album','Одна большая цитата',1,'ribbon'],
   ]],
   apply: ['Форма', [
     ['quiet','Светлая карточка',1], ['letter','Тонкие линии',2], ['album','Мягкая рамка',3], ['route','Пунктирная рамка',3], ['reference','Поля с подчёркиванием',1],
@@ -258,7 +258,9 @@ ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6e
 <link rel="stylesheet" href="journeys.css?v=__VERSION__"><link rel="stylesheet" href="studio/site.css?v=__VERSION__"><link rel="stylesheet" href="studio/ui.css?v=__VERSION__">
 ${editorial?'<link rel="stylesheet" href="studio/editorial.css?v=__VERSION__">':''}
 ${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/pencil-preview.css?v=__VERSION__"><link rel="stylesheet" href="studio/comparison-design.css?v=__VERSION__"><link rel="stylesheet" href="studio/comparison-sections.css?v=__VERSION__">':''}
+<link rel="stylesheet" href="studio/clear-sections.css?v=__VERSION__">
 <link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=__VERSION__"></script>
+<script defer src="studio/review-carousel.js?v=__VERSION__"></script>
 ${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=__VERSION__"></script>':''}
 ${comparing||blockCompare||assembling?'<script defer src="studio/comparison-palettes.js?v=__VERSION__"></script><script defer src="studio/comparison-request.js?v=__VERSION__"></script>':''}
 ${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=__VERSION__"></script>':''}

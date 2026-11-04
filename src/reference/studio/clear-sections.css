@@ -1,0 +1,51 @@
+/* One total fee, two payment stages, one replacement promise. */
+.s-clear-pricing {text-align:left}
+.s-clear-pricing .s-fee-intro {display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-bottom:36px}
+.s-clear-pricing .s-fee-intro h3 {font:var(--heading-weight) clamp(30px,4cqw,46px)/1.14 var(--heading);letter-spacing:-.035em}
+.s-clear-pricing .s-fee-intro p {max-width:34ch}
+.s-clear-pricing .s-payment-steps {display:grid;grid-template-columns:1fr 1fr;gap:36px;list-style:none;padding:0;margin:0}
+.s-payment-steps li {display:flex;gap:18px;padding:24px 0 30px;border-top:1px solid color-mix(in srgb,var(--ink) 25%,transparent)}
+.s-payment-number {color:var(--accent);font-size:13px;line-height:25px;font-variant-numeric:tabular-nums}
+.s-payment-steps h3 {font:500 15px/1.5 var(--body);letter-spacing:0}
+.s-payment-steps p.s-payment-amount {margin:10px 0;font:500 clamp(24px,3cqw,32px)/1.2 var(--heading);letter-spacing:-.03em}
+.s-payment-steps p {max-width:32ch;font-size:16px}
+.s-replacement-note {display:grid;grid-template-columns:1fr 1.7fr;align-items:center;gap:28px;padding:28px 30px;border-radius:5px 14px 8px 12px;background:color-mix(in srgb,var(--paper) 72%,white)}
+.s-replacement-period {font:var(--heading-weight) clamp(25px,3.2cqw,36px)/1.2 var(--heading);letter-spacing:-.03em}
+.s-replacement-period small {display:block;font:400 13px/1.5 var(--body);letter-spacing:0;margin-top:7px}
+.s-replacement-note h3 {font-size:17px;margin-bottom:7px}
+.s-replacement-note p {font-size:16px;max-width:46ch}
+.s-fee-actions {display:flex;align-items:center;flex-wrap:wrap;gap:20px 30px;margin-top:30px}
+.s-clear-pricing+.s-faq {max-width:none;margin-top:42px}
+
+/* Open quotes retain their natural height and scroll by hand. */
+.site-preview .s-reviews .comparison-quote-strip[data-open-quotes] {--quote-gap:clamp(24px,4cqw,48px);margin:0}
+.site-preview .s-reviews [data-open-quotes] .s-review-grid {display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - var(--quote-gap)) / 2);gap:var(--quote-gap);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:6px 0 18px;margin:0}
+.site-preview .s-reviews [data-open-quotes]:has(.comparison-quote-controls:not([hidden])) .s-review-grid {scrollbar-width:none}
+.site-preview .s-reviews [data-open-quotes] .s-review-grid .s-review {display:flex;flex-direction:column;min-width:0;padding:10px 0 0;margin:0;background:transparent;border:0;border-radius:0;box-shadow:none;transform:none;scroll-snap-align:start}
+.site-preview .s-reviews [data-open-quotes] .s-quote-mark {position:static;height:32px;margin:0 0 15px;font:400 64px/.9 Georgia,serif;color:var(--accent)}
+.site-preview .s-reviews [data-open-quotes] blockquote {font:400 clamp(19px,2.2cqw,25px)/1.48 var(--heading);letter-spacing:-.02em;flex:1}
+.site-preview .s-reviews [data-open-quotes] .s-review footer {padding:24px 0 0;margin-top:auto}
+.site-preview .s-reviews [data-open-quotes] .s-review footer h3 {font:500 14px/1.4 var(--body)}
+.site-preview .s-reviews [data-open-quotes] .s-review footer p {font:400 12px/1.5 var(--body);margin-top:3px}
+.site-preview .s-reviews .s-review-more {border:0;border-radius:0;padding:0;font-weight:400}
+.site-preview .s-reviews .s-review-more:hover {background:none;text-decoration:underline;text-underline-offset:5px}
+.site-preview .s-reviews [data-open-quotes] .comparison-quote-controls:not([hidden]) {display:flex;align-items:center;gap:10px;margin-top:16px}
+.comparison-quote-position {margin-inline-end:auto;color:var(--accent);font-size:13px;font-variant-numeric:tabular-nums}
+.site-preview .s-reviews [data-open-quotes] .comparison-quote-controls button {display:grid;place-items:center;width:46px;height:46px;border:1px solid color-mix(in srgb,var(--ink) 45%,transparent);border-radius:50%;background:transparent;font-size:21px;line-height:1}
+.site-preview .s-reviews [data-open-quotes] .comparison-quote-controls button:disabled {opacity:.3;cursor:default}
+.site-preview .s-reviews [data-open-quotes] .comparison-quote-controls button:hover:not(:disabled) {background:var(--paper)}
+.site-preview[data-block-style=letter] .s-reviews [data-open-quotes] .s-review-grid .s-review {border-top:1px solid color-mix(in srgb,var(--ink) 25%,transparent);padding-top:20px}
+.site-preview[data-block-style=album] .s-reviews [data-open-quotes] .s-review-grid {grid-auto-columns:100%}
+.site-preview[data-block-style=album] .s-reviews [data-open-quotes] blockquote {max-width:42ch;font-size:clamp(22px,3cqw,32px)}
+
+/* Two fine, slightly irregular pencil strokes around primary actions. */
+.site-preview .s-button {position:relative;border-radius:8px 10px 7px 9px}
+.site-preview .s-button::before {content:'';position:absolute;inset:-5px;pointer-events:none;background:var(--button,var(--button-fill,var(--ink)));mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 60' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='1' d='M14 3C65 1 213 4 265 2Q277 2 276 13L278 46Q277 56 265 56C198 59 80 55 14 58Q3 57 4 46L3 14Q2 4 14 3Z'/%3E%3Cpath opacity='.5' stroke-width='.65' d='M10 5C74 5 218 1 269 5Q274 5 274 14L275 47Q276 54 264 54L17 56Q6 55 6 46L5 15Q5 7 11 6'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat}
+@container (max-width:650px) {
+  .s-clear-pricing .s-fee-intro {grid-template-columns:1fr;gap:16px;margin-bottom:28px}
+  .s-clear-pricing .s-payment-steps {grid-template-columns:1fr;gap:0}
+  .s-payment-steps li {padding:22px 0;gap:17px}
+  .s-replacement-note {grid-template-columns:1fr;gap:19px;padding:24px}
+  .s-fee-actions {gap:20px 24px}
+  .site-preview .s-reviews [data-open-quotes] .s-review-grid {grid-auto-columns:100%}
+}

@@ -17,7 +17,7 @@ for(const file of (await readdir('out')).filter(f=>f.endsWith('.html'))) {
 }
 const main=await readFile('out/index.html','utf8');
 assert.equal((main.match(/<h1\b/g)||[]).length,1,'One main H1');
-assert.ok(main.includes('Сколько стоит подбор няни?'),'FAQ is in source HTML');
+assert.ok(main.includes('Сколько анкет можно получить?'),'FAQ is in source HTML');
 assert.equal(metadata(main,'description'),seoConfig.description);
 assert.equal(metadata(main,'og:url'),seoConfig.url);
 assert.equal(metadata(main,'twitter:card'),'summary_large_image');

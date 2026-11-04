@@ -143,6 +143,7 @@ function persistState() {
   if(mode==='studio'){try{localStorage.setItem('nastya-design-studio-v1',JSON.stringify(state));}catch{/* The shared link remains available without local storage. */}}
 }
 function refreshControls() {
+  document.dispatchEvent(new Event('reviews:refresh'));
   document.querySelectorAll('[data-palette]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.palette===state.palette));});
   const paletteLabel=document.querySelector('[data-selected-palette]');
   const paletteButton=document.querySelector(`.theme-options [data-palette="${state.palette}"]`);

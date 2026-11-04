@@ -1,7 +1,7 @@
-import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=f215aad846';
-import {renderSite,renderBlock} from './render.js?v=f215aad846';
-import {formatRequest} from '../request.js?v=f215aad846';
-import {requestEndpoint} from './request-endpoint.js?v=f215aad846';
+import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=4a7f4705d3';
+import {renderSite,renderBlock} from './render.js?v=4a7f4705d3';
+import {formatRequest} from '../request.js?v=4a7f4705d3';
+import {requestEndpoint} from './request-endpoint.js?v=4a7f4705d3';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
@@ -143,6 +143,7 @@ function persistState() {
   if(mode==='studio'){try{localStorage.setItem('nastya-design-studio-v1',JSON.stringify(state));}catch{/* The shared link remains available without local storage. */}}
 }
 function refreshControls() {
+  document.dispatchEvent(new Event('reviews:refresh'));
   document.querySelectorAll('[data-palette]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.palette===state.palette));});
   const paletteLabel=document.querySelector('[data-selected-palette]');
   const paletteButton=document.querySelector(`.theme-options [data-palette="${state.palette}"]`);

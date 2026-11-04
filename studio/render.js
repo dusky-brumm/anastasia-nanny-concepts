@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=ed1f7747c1';
-import {renderJourney} from '../journeys.js?v=ed1f7747c1';
-import {contacts,selectionFaq} from './content.js?v=ed1f7747c1';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=f215aad846';
+import {renderJourney} from '../journeys.js?v=f215aad846';
+import {contacts,selectionFaq} from './content.js?v=f215aad846';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -185,22 +185,34 @@ function process(v,c) {
   const steps=v<5?renderJourney(String(v),{wavyArrows:c.wavyArrows}):v===5?`<ol class="s-outcomes">${outcomes.map(([a,b],i)=>`<li><span class="s-index">${i+1}</span><h3>${a}</h3><p>${b}</p></li>`).join('')}</ol>`:routeComparison(v);
   return title(heading)+steps;
 }
-function faq() {return `<div class="s-faq"><h3>Вопросы о подборе няни</h3>${selectionFaq.map(item=>`<details><summary>${item.question}</summary><p>${item.answer}</p></details>`).join('')}</div>`;}
+function faq(comparison=false) {
+  const items = selectionFaq.map(({question,answer}) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join('');
+  return `<div class="s-faq"><h3>Вопросы о подборе няни</h3>${comparison?`<div class="comparison-faq-questions">${items}</div>`:items}</div>`;
+}
+function comparisonPricing({blockStyle, previewFile}) {
+  const price = `<div class="comparison-price-main">
+    <p class="comparison-price-label">Стоимость подбора</p>
+    <h3>Один оклад няни</h3>
+    <p>В стоимость входят поиск, собеседования и сопровождение семьи.</p>
+    <a class="s-text-link comparison-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a>
+  </div>`;
+  const payments = `<div><dt>Предоплата</dt><dd>25&nbsp;000&nbsp;₽ <small>При начале подбора</small></dd></div>
+    <div><dt>Остаток</dt><dd>Через 1–2 пробные недели</dd></div>`;
+  const warranty = '<div class="comparison-guarantee"><dt>Бесплатная замена</dt><dd>6 месяцев</dd></div>';
+  const body = blockStyle === 'reference'
+    ? `<div class="comparison-price-duet">
+        <div class="comparison-price-duet-terms">${price}<dl class="comparison-price-terms">${payments}</dl></div>
+        <div class="comparison-price-duet-warranty">
+          <p class="comparison-price-label">Гарантия</p>
+          <dl>${warranty}</dl>
+          <svg viewBox="0 0 144 106" aria-hidden="true"><path d="M14 93C40 79 61 56 77 20m-36 56c-8-16-3-31 6-42 7 15 7 25-6 42Zm15-15c5-16 20-24 35-23-9 14-21 22-35 23Zm12-19c-4-15 0-25 11-32 3 13 0 24-11 32ZM73 92c15-14 31-25 50-29m-31 15c-2-11 3-20 14-25 0 10-4 19-14 25Zm14-8c9 2 18-1 24-9-10-2-19 2-24 9Z"/></svg>
+        </div>
+      </div>`
+    : `<div class="comparison-price-sheet">${price}<dl class="comparison-price-terms">${payments}${warranty}</dl></div>`;
+  return `${title('Стоимость и гарантия')}${body}${previewFile?'':faq(true)}`;
+}
 function pricing(v,c) {
-  if(c.comparison)return `${title('Стоимость и гарантия')}
-    <div class="comparison-price-sheet">
-      <div class="comparison-price-main">
-        <p class="comparison-price-label">Стоимость подбора</p>
-        <h3>Один оклад няни</h3>
-        <p>В стоимость входят поиск, собеседования и сопровождение семьи.</p>
-        <a class="s-text-link comparison-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a>
-      </div>
-      <dl class="comparison-price-terms">
-        <div><dt>Предоплата</dt><dd>25&nbsp;000&nbsp;₽ <small>При начале подбора</small></dd></div>
-        <div><dt>Остаток</dt><dd>Через 1–2 пробные недели</dd></div>
-        <div class="comparison-guarantee"><dt>Бесплатная замена</dt><dd>6 месяцев</dd></div>
-      </dl>
-    </div>${c.previewFile?'':faq()}`;
+  if(c.comparison)return comparisonPricing(c);
   const price=`<div class="s-price"><h3>1 оклад няни</h3><p>Предоплата — 25&nbsp;000&nbsp;₽.<br>Остаток — после одной-двух пробных недель.</p>${action(c,'Обсудить подбор')}</div>`;
   const terms=items(conditions,'s-conditions');
   return `${title('Стоимость подбора няни')}<div class="s-pricing-layout">${price}${terms}</div><a class="s-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробнее об условиях в Telegram ↗</a>${faq()}`;
@@ -225,11 +237,17 @@ function reviews(v,c) {
     ${c.comparison?`<div class="comparison-quote-strip">
       <div class="s-review-grid" id="${c.previewId??'comparison-quotes'}" tabindex="0" role="region" aria-label="Цитаты семей">${testimonials.map(row=>reviewCard(row)).join('')}</div>
       <div class="comparison-quote-controls" hidden>
+        <span class="comparison-quote-position" aria-live="polite" aria-atomic="true"></span>
         <button type="button" data-quote-step="-1" aria-controls="${c.previewId??'comparison-quotes'}" aria-label="Предыдущий отзыв">←</button>
         <button type="button" data-quote-step="1" aria-controls="${c.previewId??'comparison-quotes'}" aria-label="Следующий отзыв">→</button>
       </div>
     </div>`:`<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div>`}
-    <article class="s-review s-family-story">${heart}<h3>Первая кандидатка осталась на полтора года</h3><p>Светлана была первой няней, которую я предложила семье. Она работала с ребёнком до его выхода в детский сад, а затем перешла в другую семью, которой я помогала с подбором.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть анкету Светланы ↗</a></article>`;
+    <article class="s-review s-family-story">${heart}
+      ${c.comparison?'<span class="comparison-story-mark">1,5 <small>года</small></span><div class="comparison-story-copy"><p class="comparison-story-label">История семьи</p>':''}
+      <h3>Первая кандидатка ${c.comparison?'<span class="comparison-story-duration">осталась на полтора года</span><span class="comparison-story-fit">подошла семье</span>':'осталась на полтора года'}</h3>
+      <p>Светлана была первой няней, которую я предложила семье. Она работала с ребёнком до его выхода в детский сад, а затем перешла в другую семью, которой я помогала с подбором.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть анкету Светланы ↗</a>
+      ${c.comparison?'</div>':''}
+    </article>`;
   }
   return `${title('Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
 }

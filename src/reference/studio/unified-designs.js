@@ -1,13 +1,19 @@
 (() => {
+  // Saved comparison links must not restore a palette the user has retired.
+  const current=new URL(location.href);
+  for(const key of [...current.searchParams.keys()]) {
+    if(key==='palette'||key.startsWith('color-'))current.searchParams.delete(key);
+  }
+  if(current.href!==location.href) {
+    try {history.replaceState(history.state,'',current);} catch(error) {
+      if(error.name!=='SecurityError')throw error;
+    }
+  }
   for(const select of document.querySelectorAll('[data-design-navigation]')) {
     select.addEventListener('change',()=>{
       const destination=new URL(select.value,location.href);
       const activeLink=[...document.querySelectorAll('.comparison-pairs a')].find(link=>new URL(link.href).pathname===destination.pathname);
-      if(activeLink)destination.search=new URL(activeLink.href).search;
-      else {
-        const palette=document.querySelector('.theme-options [data-palette][aria-pressed="true"]')?.dataset.palette;
-        if(palette)destination.searchParams.set('palette',palette);
-      }
+      if(activeLink){activeLink.click();return;}
       destination.hash=location.hash;
       location.assign(destination.href);
     });

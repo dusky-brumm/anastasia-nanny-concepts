@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeState,readState,selectVariant,designUrl,palettes,comparisonPalettes} from '../../src/reference/studio/model.js';
+import {normalizeState,readState,selectVariant,designUrl,palettes,approvedTheme} from '../../src/reference/studio/model.js';
 import {studioPage,comparisonBlockChoices,comparisonDesigns} from '../../src/reference/studio/pages.js';
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
 
@@ -16,9 +16,8 @@ test('completed design comparisons retain all sections and exclude the three can
     assert.match(html,/studio\/review-carousel.js/);
     assert.match(html,/s-request-status/);
     assert.doesNotMatch(html,/>Вариант (2|5|8)<\/a>/);
-    assert.match(html,/data-comparison-palette="new"/);
-    assert.doesNotMatch(html,/data-color-role=/);
-    assert.match(html,/data-default-palette="almost-white"/);
+    assert.doesNotMatch(html,/data-comparison-palette|data-color-role=|Основной сайт/);
+    assert.match(html,/data-comparison-theme="almost-white"/);
     assert.match(html,/comparison-price-(?:sheet|duet)|s-clear-pricing|id="pricing"/);
     assert.match(html,/studio\/comparison-request.js/);
     assert.equal([...html.matchAll(/aria-label="[^"]+ — улучшенный"/g)].length,8);
@@ -27,7 +26,7 @@ test('completed design comparisons retain all sections and exclude the three can
   const reference=studioPage('comparison-reference');
   assert.equal([...reference.matchAll(/data-about-dot="/g)].length,4);
   assert.match(reference,/M389 85C395 158/);
-  assert.match(studioPage('preview','hero','index.html'),/href="comparison-current.html/);
+  assert.match(studioPage('preview','hero','index.html'),/value="comparison-current.html/);
 });
 
 test('all six formerly separate designs share navigation and retain the selected blocks',()=>{
@@ -86,17 +85,21 @@ test('the live service starts with the family interview and About keeps four sli
   }
 });
 
-test('the live palette menu contains the five agreed themes and exactly two new themes',()=>{
-  const ids=['sky','reference','fresh','reference-2','reference-3','sea-glass','oat-eucalyptus'];
-  assert.deepEqual(comparisonPalettes.map(p=>p.id),ids);
-  const html=studioPage('preview','hero','index.html');
-  assert.deepEqual([...html.matchAll(/<button[^>]+data-palette="([^"]+)"/g)].map(match=>match[1]),ids);
-  for(const palette of comparisonPalettes){
-    assert.ok(html.includes(palette.name));
-    const state={layout:'112111113',palette:palette.id,font:'golos'};
-    assert.deepEqual(readState(new URL(designUrl('preview.html',state),'https://example.test/').search),state);
+test('the final theme is fixed and the top navigation offers only designs and block comparison',()=>{
+  assert.equal(approvedTheme.id,'almost-white');
+  assert.equal(approvedTheme.paper,'#fcfcfa');
+  assert.equal(approvedTheme.wash,'#e7f1f6');
+  assert.equal(approvedTheme.soft,'#e8efe4');
+  for(const mode of ['preview',...comparisonDesigns.map(design=>design.mode)]){
+    const html=studioPage(mode,'hero',mode==='preview'?'index.html':mode+'.html');
+    const nav=html.match(/<nav class="(?:design-panel|pencil-comparison)"[\s\S]*?<\/nav>/)?.[0];
+    assert.ok(nav,mode);
+    assert.match(nav,/data-design-navigation/);
+    assert.match(nav,/href="compare-block-pricing.html/);
+    assert.doesNotMatch(nav,/Основной сайт|Собрать свой вариант|Выбранные блоки|Палитра|data-palette|data-comparison-palette|href="\.\//);
+    assert.match(html,/data-fixed-theme="almost-white"/);
+    assert.match(html,/--paper:#fcfcfa;--wash:#e7f1f6;--soft:#e8efe4/);
   }
-  assert.doesNotMatch(html,/data-preset-select|data-block-select|data-font-select/);
 });
 
 test('a shared mixed design round-trips without losing any of the nine choices',()=>{

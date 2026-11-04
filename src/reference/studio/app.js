@@ -1,4 +1,4 @@
-import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=__VERSION__';
+import {blocks,palettes,approvedTheme,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=__VERSION__';
 import {renderSite,renderBlock} from './render.js?v=__VERSION__';
 import {formatRequest} from '../request.js?v=__VERSION__';
 import {requestEndpoint} from './request-endpoint.js?v=__VERSION__';
@@ -13,7 +13,6 @@ const explicit=['layout','palette','font','route','version'].some(key=>new URLSe
 if(mode==='studio'&&!explicit){try{state=normalizeState(JSON.parse(localStorage.getItem('nastya-design-studio-v1')??'{}'));}catch{/* Use the supplied defaults when saved settings are unavailable. */}}
 const root=document.querySelector('[data-site-root]');
 const designPanel=document.querySelector('.design-panel');
-if(designPanel&&!comparisonPalettes.some(p=>p.id===state.palette))state.palette=defaults.palette;
 if(designPanel&&'ResizeObserver' in window){
   new ResizeObserver(()=>root.style.setProperty('--comparison-offset',designPanel.offsetHeight+14+'px')).observe(designPanel);
 }
@@ -127,7 +126,7 @@ function renderReviews() {
 
 function applyTheme() {
   if(document.querySelector('.comparison-design'))return;
-  const palette=palettes.find(p=>p.id===state.palette);
+  const palette=document.body.dataset.fixedTheme?approvedTheme:palettes.find(p=>p.id===state.palette);
   if(mode==='preview')document.body.style.setProperty('--page-paper',palette.paper);
   document.querySelectorAll('.site-preview').forEach(site=>{
     site.dataset.font=state.font;site.dataset.palette=state.palette;
@@ -159,7 +158,7 @@ function refreshControls() {
   document.querySelectorAll('[data-pick-block]').forEach(a=>a.href=designUrl('studio.html',selectVariant(state,a.dataset.pickBlock,a.dataset.pickValue),a.dataset.pickBlock));
   document.querySelectorAll('[data-open-option]').forEach(a=>a.href=designUrl('preview.html',selectVariant(state,document.body.dataset.libraryBlock,a.dataset.openOption),document.body.dataset.libraryBlock));
   const share=document.querySelector('[data-share-url]');if(share)share.value=new URL(currentUrl('preview.html'),location.href).href;
-  const summary=document.querySelector('[data-current-design]');if(summary)summary.textContent=palettes.find(p=>p.id===state.palette).name+' · '+fontSets.find(f=>f.id===state.font).name;
+  const summary=document.querySelector('[data-current-design]');if(summary)summary.textContent=(document.body.dataset.fixedTheme?approvedTheme:palettes.find(p=>p.id===state.palette)).name+' · '+fontSets.find(f=>f.id===state.font).name;
   const note=document.querySelector('[data-font-note]');if(note)note.textContent=fontSets.find(f=>f.id===state.font).note;
   document.querySelectorAll('.s-consult-form').forEach(form=>{
     const button=form.querySelector('[type=submit]');

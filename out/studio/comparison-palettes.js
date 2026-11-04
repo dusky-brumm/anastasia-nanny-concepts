@@ -13,71 +13,7 @@
     new ResizeObserver(() => document.documentElement.style.setProperty('--comparison-offset', nav.offsetHeight + 12 + 'px')).observe(nav);
   }
   const params = new URLSearchParams(location.search);
-  const homePalettes = JSON.parse(nav.dataset.homePalettes ?? '[]');
-  const carriedPalette = homePalettes.find(palette => palette.id === params.get('palette'));
-  if (carriedPalette) {
-    const {id, name, ...colors} = carriedPalette;
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.dataset.comparisonPalette = id;
-    button.dataset.colors = JSON.stringify(colors);
-    button.textContent = name;
-    nav.querySelector('.comparison-palette-options').append(button);
-  }
-  const buttons = [...nav.querySelectorAll('[data-comparison-palette]')];
   const links = nav.querySelectorAll('.comparison-pairs a');
-  const colorRoles = ['paper', 'wash', 'soft', 'ink', 'button'];
-  const originalStyle = site.getAttribute('style');
-  const defaultButton = '#526c73';
-
-  function selectPalette(id, custom = {}) {
-    const selected = buttons.find(button => button.dataset.comparisonPalette === id) ?? buttons[0];
-    const activeId = selected.dataset.comparisonPalette;
-    const overrides = activeId ? custom : {};
-    const colors = activeId ? {button:defaultButton,...JSON.parse(selected.dataset.colors),...overrides} : null;
-    for (const button of buttons) button.setAttribute('aria-pressed', String(button === selected));
-    if (originalStyle === null) site.removeAttribute('style');
-    else site.setAttribute('style', originalStyle);
-    if (colors) site.dataset.comparisonTheme = activeId;
-    else site.removeAttribute('data-comparison-theme');
-    if (colors) {
-      for (const [role, value] of Object.entries(colors)) site.style.setProperty('--' + role, value);
-      site.style.setProperty('--wine', colors.wine ?? colors.accent);
-      site.style.setProperty('--pencil', colors.accent);
-      site.style.setProperty('--button-fill', colors.button);
-    }
-
-    function withPalette(href) {
-      const url = new URL(href, location.href);
-      url.searchParams.delete('compare-scroll');
-      url.searchParams.set('palette', activeId);
-      for (const role of colorRoles) {
-        if (overrides[role]) url.searchParams.set('color-' + role, overrides[role].slice(1));
-        else url.searchParams.delete('color-' + role);
-      }
-      return url;
-    }
-    for (const link of links) link.href = withPalette(link.href);
-    const home = nav.querySelector('.comparison-home');
-    const homeUrl = new URL(home.href);
-    if (homePalettes.some(palette => palette.id === activeId)) homeUrl.searchParams.set('palette', activeId);
-    else homeUrl.searchParams.delete('palette');
-    home.href = homeUrl;
-    const url = withPalette(location.href);
-    try {
-      if (url.href !== location.href) history.replaceState(history.state, '', url);
-    } catch (error) {
-      if (error.name !== 'SecurityError') throw error;
-    }
-  }
-
-  const savedColors = {};
-  for (const role of colorRoles) {
-    const value = params.get('color-' + role);
-    if (/^[\da-f]{6}$/i.test(value ?? '')) savedColors[role] = '#' + value;
-  }
-  selectPalette(params.get('palette') ?? nav.dataset.defaultPalette, savedColors);
-  for (const button of buttons) button.addEventListener('click', () => selectPalette(button.dataset.comparisonPalette));
 
   const sections = [...site.querySelectorAll('[data-block][id]')];
   for (const link of links) {
@@ -122,9 +58,9 @@
 
   function revealCurrentChoices() {
     if (!disclosure.open) return;
-    for (const selector of ['.comparison-pairs a[aria-current]', '.comparison-palette button[aria-pressed=true]']) {
+    for (const selector of ['.comparison-pairs a[aria-current]']) {
       const active = nav.querySelector(selector);
-      const track = active?.closest('.comparison-pairs,.comparison-palette-options');
+      const track = active?.closest('.comparison-pairs');
       if (!track) continue;
       const offset = active.getBoundingClientRect().left - track.getBoundingClientRect().left;
       if (offset < 0 || offset + active.offsetWidth > track.clientWidth) {

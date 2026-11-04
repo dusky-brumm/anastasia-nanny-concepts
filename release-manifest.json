@@ -1,6 +1,6 @@
 {
-  "build": "b41e877658",
-  "base_commit": "a7413fcc6e0813a5aaf0fea649f0b786d2dd3b8b",
+  "build": "aa993d7b31",
+  "base_commit": "97cf96fda0cb22c158974a01a2b22889c0352dcf",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,15 +23,16 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Six completed design directions in the existing site: Семейный фотоальбом, Семейный журнал, Тихая редакция, Кремовая дуга, Семейный альбом, Маршрут семьи",
-    "One design selector on the homepage and all comparison pages; preserve palette and section while switching",
-    "Preserve selected four-frame About without heading, three route choices, open quote carousel, textured thin-line form and concise illustrated footer",
-    "Preserve original new hero, service and pricing compositions; normalize service introduction to Собеседую под вашу семью.",
-    "Fix narrow-screen review card sizing and preserve current review after resizing; prevent the expanded design navigation overflowing desktop"
+    "Remove Main site, palette controls and the assembly shortcut from the design toolbar; keep design viewing and block comparison",
+    "Fix all current and imported designs to the approved Almost white palette; old palette/color URL parameters cannot override it",
+    "Restore blue radial hero gradient, green pricing gradient and green concise footer across designs",
+    "Preserve all completed design choices and selected block content; retain section position while switching designs"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
-    "Old family-story review content and stale form/footer/service markup"
+    "Old family-story review content and stale form/footer/service markup",
+    "Superseded palette menus and custom color controls",
+    "Main site navigation entry"
   ],
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
@@ -141,5 +142,25 @@
       "sha256_binary": "b044c7a45ad3704c58e1a1b1bb8be531604e6e8f50de12da2f2818814cd495d7"
     }
   },
-  "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched."
+  "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched.",
+  "design_decisions": {
+    "theme": "almost-white",
+    "palette_controls": false,
+    "home_navigation": false,
+    "top_navigation": [
+      "design_variants",
+      "block_comparison"
+    ],
+    "hero_background": "soft blue radial gradient",
+    "pricing_background": "soft green radial gradient",
+    "footer_background": "green #e8efe4",
+    "source_chat": "Первый блок",
+    "source_thread": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
+    "source_messages_utc": [
+      "2026-11-03T17:43:12.040Z",
+      "2026-11-03T17:51:11.637Z",
+      "2026-11-03T18:01:38.057Z"
+    ],
+    "source_note": "Later decisions in the continued rollout supersede earlier requests for palette menus. Preserve these decisions when integrating separate design projects unless the user changes them explicitly."
+  }
 }

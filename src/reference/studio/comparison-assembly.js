@@ -113,6 +113,7 @@ function bindBlockPair(url) {
   const choices = [...tools.querySelectorAll('[data-pair-choice]')];
   const layout = tools.querySelector('[data-pair-layout]');
   const articles = [...list.querySelectorAll('[data-gallery-choice]')];
+  if (articles.length < 2) return;
   const byChoice = new Map(articles.map(article => [article.dataset.galleryChoice,article]));
   const requested = url.searchParams.get('compare')?.split(',');
   let active = requested?.length === 2 && requested[0] !== requested[1]

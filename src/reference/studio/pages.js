@@ -8,7 +8,7 @@ export const comparisonDesigns=[
   {mode:'pencil-panorama',file:'pencil-panorama.html',name:'Вариант 3',reviews:'cards',form:2,footer:2,refinement:'panorama'},
   {mode:'pencil-album',file:'pencil-album.html',name:'Вариант 4',reviews:'feature',form:3,footer:5,refinement:'album'},
   {mode:'comparison-gradients',file:'comparison-gradients.html',name:'Вариант 6',reviews:'open',form:1,footer:2,refinement:'air'},
-  {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:1,wavyArrows:true,refinement:'route'},
+  {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:7,refinement:'route'},
   {mode:'comparison-reference',file:'comparison-reference.html',name:'Вариант 9',reviews:'open',form:2,footer:5,layout:'112111113',wavyArrows:true,refinement:'reference'},
 ];
 
@@ -30,10 +30,10 @@ export const comparisonBlockChoices = {
     ['quiet','Знакомство в четырёх кадрах',1], ['reference','Портрет и текст',2], ['letter','Личное письмо',3], ['album','Семейный альбом',4],
   ]],
   process: ['Маршрут', [
-    ['reference','Рисованные стрелки',1], ['air','Голубая волна',7],
+    ['reference','Рисованные стрелки',1], ['air','Голубая волна',7], ['route','Изогнутая линия',7],
   ]],
   footer: ['Футер', [
-    ['quiet','Компактные контакты',3], ['letter','Меню и контакты',5], ['album','По центру',2],
+    ['quiet','Лаконичный с рисунками',3],
   ]],
 };
 
@@ -52,12 +52,12 @@ const assemblyPresets = [
   {
     name:'Как личное письмо',
     description:'Открытые строки, семейный альбом и отдельный акцент на гарантии.',
-    choices:{service:'letter',about:'album',process:'reference',pricing:'album',reviews:'album',apply:'album',footer:'album'},
+    choices:{service:'letter',about:'album',process:'reference',pricing:'album',reviews:'album',apply:'album',footer:'quiet'},
   },
   {
     name:'Чёткий маршрут',
     description:'Услуга в двух панелях, условия в ряд и форма с тонкими подчёркиваниями.',
-    choices:{service:'panorama',about:'reference',process:'reference',pricing:'route',reviews:'quiet',apply:'reference',footer:'letter'},
+    choices:{service:'panorama',about:'reference',process:'route',pricing:'route',reviews:'quiet',apply:'reference',footer:'quiet'},
   },
 ];
 
@@ -122,12 +122,12 @@ function comparisonAssembly() {
     const current = previews.find(preview => preview.style === selected);
     return `<div class="assembly-part" data-assembly-part="${id}">
       <div class="assembly-control">
-        <label>${label}<select data-assembly-choice>${previews.map(({style,name}) =>
+        <label>${label}<select data-assembly-choice${previews.length===1?' disabled':''}>${previews.map(({style,name}) =>
           `<option value="${style}"${style===selected?' selected':''}>${name}</option>`).join('')}</select></label>
-        <a data-assembly-gallery href="compare-block-${id}.html?v=__VERSION__">Сравнить варианты ↗</a>
+        <a data-assembly-gallery href="compare-block-${id}.html?v=__VERSION__">${previews.length===1?'Посмотреть блок':'Сравнить варианты'} ↗</a>
       </div>
       <div class="comparison-design" data-assembly-preview data-block-style="${current.style}" data-refinement="${current.style}" data-review-layout="${current.reviews}">${current.markup}</div>
-      ${previews.filter(preview => preview.style !== selected).map(({style,reviews,markup}) =>
+${previews.filter(preview => preview.style !== selected).map(({style,reviews,markup}) =>
         `<template data-style="${style}" data-reviews="${reviews}">${markup}</template>`).join('')}
     </div>`;
   }).join('');

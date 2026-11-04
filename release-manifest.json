@@ -1,6 +1,6 @@
 {
-  "build": "2a1d3538ff",
-  "base_commit": "585f64bbfeda59e8f2ae8721e04c673b2be4a6b3",
+  "build": "ed4b4dd940",
+  "base_commit": "9032de84063cb92dad596000f5dd47f9e8ef0f9c",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "1b37470457ee25162ce2ef2e16230d838355d31daba74bef802659472bca08dc",
@@ -21,15 +21,16 @@
     "src/reference/studio/comparison-sections.css": "14e9e47a47315fbcfcc921c57105e18793e904caec50a9acfc47d23c1bdc05d5"
   },
   "included": [
-    "Service begins with the exact heading Собеседую под вашу семью.; replace checklist cards with an existing photo and two concrete interview questions",
-    "Preserve the profile example link and explain the personal comments families receive after the interview",
-    "Keep the four-frame About carousel, remove the general heading and place its controls below the slides",
-    "Use four-frame About in the current comparison and as the default assembly choice"
+    "Keep the approved hand-drawn arrows and blue wave; add a third continuous pencil route with stronger curves and a loop",
+    "Adapt the new route to a textured vertical path on narrow screens; preserve five steps and shareable assembly choices",
+    "Replace previous footer layouts with one concise footer: name, Telegram, form privacy link, existing sun and sprig drawings",
+    "Update comparison designs, presets and galleries to the final set; disable pair comparison for the single footer choice"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
     "Image and animation experiments without site integration",
-    "Stale draft reversions to published content, form and About carousel"
+    "Stale draft reversions to published content, form and About carousel",
+    "Rejected route icon line and route cards; rejected footer menu layouts"
   ],
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a431-b029-7be0-b7e7-8ea330cf8ae6",

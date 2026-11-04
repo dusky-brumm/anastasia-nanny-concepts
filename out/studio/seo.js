@@ -1,4 +1,4 @@
-import {contacts} from './content.js?v=ed1f7747c1';
+import {contacts} from './content.js?v=f215aad846';
 
 // The public service page is canonical. Design tools and the private Sites copy
 // must not create competing search results. Change this URL when the domain changes.
@@ -21,7 +21,7 @@ export function metadataFor(file='index.html',overrides={}) {
     description:main?seoConfig.description:(overrides.description??'Варианты оформления сайта Анастасии Дорониной.'),
     canonical:publicUrl(main?'':file),
     robots:main?'index, follow, max-image-preview:large':'noindex, follow',
-    image:publicUrl('assets/social-card.png?v=ed1f7747c1'),
+    image:publicUrl('assets/social-card.png?v=f215aad846'),
   };
 }
 

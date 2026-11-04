@@ -24,10 +24,17 @@
   border-radius:32px 6px 32px 6px;
 }
 .comparison-design:is([data-block-style=album],[data-block-style=air]) .comparison-guarantee {
-  padding-inline:14px;
+  margin-top:12px;
+  padding:14px;
   background:var(--soft);
-  border-bottom:0;
-  border-radius:0 0 15px 15px;
+  border:1px solid var(--design-line);
+  border-radius:15px;
+}
+.comparison-design[data-block-style=album] .comparison-guarantee dd {
+  font-family:var(--heading);
+  font-weight:500;
+  line-height:1.1;
+  letter-spacing:-.035em;
 }
 .comparison-design[data-block-style=air] .comparison-price-sheet {border-radius:34px}
 .comparison-design:is([data-block-style=panorama],[data-block-style=route]) .comparison-price-sheet {
@@ -60,6 +67,79 @@
 }
 .comparison-design[data-refinement=quiet] .comparison-price-sheet {background:color-mix(in srgb,var(--design-card) 70%,transparent)}
 .comparison-design[data-refinement] .comparison-guarantee dd {font-size:clamp(19px,2cqw,25px)}
+.comparison-design[data-block-style=album] .comparison-guarantee dd {font-size:clamp(24px,3cqw,36px)}
+
+.comparison-price-duet {
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
+  gap:clamp(14px,2.5cqw,28px);
+}
+.comparison-price-duet-terms,.comparison-price-duet-warranty {
+  padding:clamp(19px,3.6cqw,44px);
+  border:1px solid var(--design-line);
+  border-radius:var(--design-radius);
+}
+.comparison-price-duet-terms {background:var(--design-card)}
+.comparison-price-duet-terms .comparison-price-terms {margin-top:20px}
+.comparison-price-duet-warranty {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:230px;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 83% 78%,color-mix(in srgb,var(--soft) 70%,var(--accent)),transparent 84%),var(--soft);
+}
+.comparison-price-duet-warranty :is(p,dl) {position:relative;z-index:1;margin:0}
+.comparison-price-duet-warranty p {
+  margin-bottom:14px;
+  color:var(--accent);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.comparison-price-duet-warranty .comparison-guarantee {display:flex;flex-direction:column-reverse;gap:12px}
+.comparison-design .comparison-price-duet-warranty .comparison-guarantee dd {
+  margin:0;
+  font:400 clamp(33px,4.6cqw,58px)/1.05 var(--heading);
+  letter-spacing:-.035em;
+}
+.comparison-price-duet-warranty svg {
+  position:absolute;
+  inset-inline-end:0;
+  inset-block-end:-8px;
+  width:clamp(93px,16cqw,165px);
+  fill:none;
+  stroke:var(--accent);
+  stroke-width:1;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.28;
+}
+@container (max-width:720px) {
+  .comparison-price-duet {grid-template-columns:minmax(0,1fr)}
+  .comparison-price-duet-warranty {min-height:158px}
+}
+
+.comparison-design .s-faq {
+  display:grid;
+  grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);
+  column-gap:clamp(22px,5cqw,64px);
+  margin-top:clamp(32px,5cqw,60px);
+  padding-top:24px;
+}
+.comparison-design .s-faq h3 {
+  max-width:16ch;
+  font:500 clamp(23px,3cqw,36px)/1.15 var(--heading);
+  letter-spacing:-.025em;
+}
+.comparison-faq-questions details:first-child summary {padding-top:0}
+.comparison-faq-questions details:first-child summary::after {top:-4px}
+@container (max-width:650px) {
+  .comparison-design .s-faq {grid-template-columns:minmax(0,1fr);gap:10px}
+  .comparison-design .s-faq h3 {max-width:none}
+}
 
 .comparison-design .s-reviews .comparison-quote-strip .s-review-grid {
   display:grid;
@@ -98,7 +178,8 @@
   background:color-mix(in srgb,var(--design-card) 90%,var(--wash));
 }
 .comparison-design .comparison-quote-strip .s-review:last-child footer {padding-right:0}
-.comparison-quote-controls:not([hidden]) {display:flex;gap:8px;justify-content:flex-end;margin-top:9px}
+.comparison-quote-controls:not([hidden]) {display:flex;align-items:center;gap:8px;justify-content:flex-end;margin-top:9px}
+.comparison-quote-position {margin-inline-end:auto;color:var(--accent);font-size:13px;font-variant-numeric:tabular-nums}
 .comparison-quote-controls button {
   width:44px;
   height:44px;
@@ -109,6 +190,55 @@
   cursor:pointer;
 }
 .comparison-quote-controls button:disabled {opacity:.4;cursor:default}
+.comparison-quote-controls button:hover:not(:disabled) {border-color:var(--accent);color:var(--accent)}
+
+.comparison-design .s-family-story .comparison-story-copy {max-width:68ch}
+.comparison-story-mark,.comparison-story-fit {display:none}
+.comparison-design .s-family-story .comparison-story-label {
+  margin:0 0 9px;
+  color:var(--accent);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.comparison-design .comparison-story-copy h3 {font:500 clamp(21px,2.9cqw,35px)/1.15 var(--heading)}
+.comparison-design .s-family-story .s-review-heart {top:16px;right:18px;bottom:auto;opacity:.42}
+.comparison-design[data-review-layout=open] .s-family-story {
+  padding-inline:0;
+  background:none;
+  border-width:1px 0;
+  border-radius:0;
+  box-shadow:none;
+}
+.comparison-design[data-review-layout=ribbon] .s-family-story {
+  display:grid;
+  grid-template-columns:minmax(0,.5fr) minmax(0,1.5fr);
+  gap:clamp(16px,4cqw,50px);
+  align-items:center;
+  background:radial-gradient(ellipse at 14% 50%,var(--wash),transparent 65%),var(--design-card);
+}
+.comparison-design[data-review-layout=ribbon] .comparison-story-mark {
+  display:block;
+  padding:14px 10px;
+  border-inline-end:1px solid var(--design-line);
+  color:var(--accent);
+  font:400 clamp(38px,6cqw,74px)/.95 var(--heading);
+  text-align:center;
+}
+.comparison-design[data-review-layout=ribbon] .comparison-story-fit {display:inline}
+.comparison-design[data-review-layout=ribbon] .comparison-story-duration {display:none}
+.comparison-story-mark small {display:block;margin-top:8px;font:500 14px/1.25 var(--body)}
+@container (max-width:540px) {
+  .comparison-design[data-review-layout=ribbon] .s-family-story {grid-template-columns:1fr}
+  .comparison-design[data-review-layout=ribbon] .comparison-story-mark {
+    justify-self:start;
+    border:0;
+    padding:0;
+    text-align:start;
+  }
+  .comparison-story-mark small {display:inline}
+}
 
 .comparison-design .s-apply {
   display:grid;
@@ -126,6 +256,16 @@
   padding-inline:0;
 }
 .comparison-design:is([data-block-style=album],[data-block-style=air]) .s-consult-form {border-radius:30px}
+.comparison-design[data-block-style=reference] .s-consult-form :is(input,textarea) {
+  border:0;
+  border-bottom:1px solid var(--design-line);
+  border-radius:0;
+  background:transparent;
+  padding-inline:4px;
+}
+.comparison-design[data-block-style=reference] .s-consult-form :is(input,textarea):focus {
+  border-color:var(--accent);
+}
 .comparison-design[data-block-style=route] .s-consult-form {border-style:dashed}
 .comparison-design:is([data-block-style=air],[data-block-style=route]) .s-consult-form {
   grid-template-columns:minmax(0,1fr);
@@ -163,6 +303,7 @@
 .block-compare-heading a,.block-compare-choice > header a {color:#37574f}
 .block-compare-heading h1 {margin:12px 0 18px;font-size:clamp(30px,5vw,56px)}
 .block-compare-heading nav {display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.block-compare-heading nav[hidden] {display:none}
 .block-compare-heading nav a {
   padding:8px 12px;
   border:1px solid #bacac3;
@@ -226,3 +367,70 @@
 }
 .assembly-clean-view .assembly-site .s-block {padding-inline:var(--section-inset)}
 .assembly-clean-view .assembly-site [data-assembly-preview] > [id] {scroll-margin-top:16px}
+
+.block-pair-tools:not([hidden]) {
+  display:flex;
+  align-items:end;
+  flex-wrap:wrap;
+  gap:12px 20px;
+  margin-top:18px;
+}
+.block-pair-settings:not([hidden]) {display:flex;align-items:end;flex-wrap:wrap;gap:8px 12px}
+.block-pair-settings label {display:grid;gap:4px;font-size:12px}
+.block-pair-toggle,.block-pair-settings select {
+  min-height:42px;
+  max-width:100%;
+  padding:8px 12px;
+  border:1px solid #9eafa6;
+  border-radius:8px;
+  background:#fff;
+  color:#28353c;
+  font:inherit;
+  font-size:14px;
+  font-weight:500;
+}
+.block-pair-toggle {background:#526c73;color:white;cursor:pointer}
+.block-compare-choice[hidden] {display:none}
+@media (min-width:1050px) {
+  .block-compare-list[data-pair-layout=side] {
+    width:min(100% - 32px,1600px);
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:clamp(12px,2vw,24px);
+    align-items:start;
+  }
+  .block-compare-list[data-pair-layout=side] .block-compare-choice > header {min-height:70px}
+  .block-compare-list[data-pair-layout=side] .s-block:not(.s-footer) {padding-block:clamp(24px,5cqw,48px)}
+  .block-compare-list[data-pair-layout=side] .comparison-price-sheet {padding:clamp(18px,4cqw,32px)}
+  .block-compare-list[data-pair-layout=side] :is([data-block-style=letter],[data-block-style=reference]) .comparison-price-sheet {padding-inline:0}
+  @container (min-width:590px) {
+    .block-compare-list[data-pair-layout=side] .comparison-design:not([data-block-style=panorama],[data-block-style=route]) .comparison-price-sheet,
+    .block-compare-list[data-pair-layout=side] .comparison-design .s-apply {
+      grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+    }
+    .block-compare-list[data-pair-layout=side] .s-apply .s-section-heading h2 {font-size:clamp(24px,4.8cqw,36px)}
+  }
+}
+
+.assembly-presets {margin:20px 0}
+.assembly-presets h2 {margin:0 0 9px;font-size:14px;font-weight:650}
+.assembly-preset-list {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.assembly-preset {
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:4px 11px;
+  align-content:start;
+  padding:14px;
+  border:1px solid #bacac3;
+  border-radius:12px;
+  background:#fff;
+  text-decoration:none;
+}
+.assembly-preset:hover {border-color:#526c73;background:#f8fbfa}
+.assembly-preset-number {grid-row:span 2;color:#526c73;font-size:12px;letter-spacing:.1em}
+.assembly-preset strong {font-size:15px;line-height:1.25}
+.assembly-preset > span:last-child {font-size:13px;line-height:1.45}
+@media (max-width:700px) {
+  .assembly-preset-list {grid-template-columns:minmax(0,1fr)}
+  .block-pair-settings label {min-width:0;max-width:100%}
+}

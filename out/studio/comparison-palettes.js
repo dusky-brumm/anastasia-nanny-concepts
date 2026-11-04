@@ -111,11 +111,23 @@ function bindComparisonQuotes(strip) {
     const quoteTrack = strip.querySelector('.s-review-grid');
     const controls = strip.querySelector('.comparison-quote-controls');
     const [previous, next] = controls.querySelectorAll('button');
+    const position = controls.querySelector('.comparison-quote-position');
+    const cards = [...quoteTrack.children];
     function updateQuoteControls() {
       const limit = quoteTrack.scrollWidth - quoteTrack.clientWidth;
       controls.hidden = limit < 4;
       previous.disabled = quoteTrack.scrollLeft < 2;
       next.disabled = quoteTrack.scrollLeft >= limit - 2;
+      if (controls.hidden) return;
+      const {left, right} = quoteTrack.getBoundingClientRect();
+      const visible = cards.flatMap((card,index) => {
+        const bounds = card.getBoundingClientRect();
+        return bounds.left >= left - 4 && bounds.right <= right + 4 ? [index + 1] : [];
+      });
+      if (!visible.length) return;
+      const range = visible.length === 1 ? visible[0] : `${visible[0]}–${visible.at(-1)}`;
+      const label = `${range} из ${cards.length}`;
+      if (position.textContent !== label) position.textContent = label;
     }
     for (const button of [previous, next]) {
       button.addEventListener('click', () => {

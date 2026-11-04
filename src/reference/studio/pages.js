@@ -15,13 +15,13 @@ export const comparisonDesigns=[
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 export const comparisonBlockChoices = {
   pricing: ['Стоимость и гарантия', [
-    ['quiet','Светлая карточка',1], ['letter','Открытые колонки',1], ['album','Акцент на гарантии',1], ['route','Три условия в ряд',1], ['panorama','Цена над условиями',1],
+    ['quiet','Светлая карточка',1], ['letter','Открытые колонки',1], ['album','Акцент на гарантии',1], ['route','Три условия в ряд',1], ['panorama','Цена над условиями',1], ['reference','Цена и гарантия в двух панелях',1],
   ]],
   reviews: ['Отзывы', [
     ['quiet','Три карточки',1,'cards'], ['letter','Открытые цитаты',1,'open'], ['album','Широкие цитаты со стрелками',1,'ribbon'],
   ]],
   apply: ['Форма', [
-    ['quiet','Светлая карточка',1], ['letter','Тонкие линии',2], ['album','Мягкая рамка',3], ['route','Пунктирная рамка',3],
+    ['quiet','Светлая карточка',1], ['letter','Тонкие линии',2], ['album','Мягкая рамка',3], ['route','Пунктирная рамка',3], ['reference','Поля с подчёркиванием',1],
   ]],
   service: ['Об услуге', [
     ['quiet','Три карточки с веточками',1], ['letter','Открытые строки',2], ['panorama','Запрос и результат',5],
@@ -43,14 +43,32 @@ const {id:baseThemeId, name:baseThemeName, ...baseColors} = explorationPalettes.
 const comparisonBaseStyle = Object.entries({...baseColors, button:'#526c73', wine:baseColors.accent, pencil:baseColors.accent})
     .map(([role, value]) => `--${role}:${value}`).join(';');
 
+const assemblyPresets = [
+  {
+    name:'Свет и воздух',
+    description:'Карточки с веточками, портрет, голубая волна и прозрачная форма.',
+    choices:{service:'quiet',about:'reference',process:'air',pricing:'quiet',reviews:'letter',apply:'letter',footer:'quiet'},
+  },
+  {
+    name:'Как личное письмо',
+    description:'Открытые строки, семейный альбом и отдельный акцент на гарантии.',
+    choices:{service:'letter',about:'album',process:'reference',pricing:'album',reviews:'album',apply:'album',footer:'album'},
+  },
+  {
+    name:'Чёткий маршрут',
+    description:'Услуга в двух панелях, условия в ряд и форма с тонкими подчёркиваниями.',
+    choices:{service:'panorama',about:'reference',process:'letter',pricing:'route',reviews:'quiet',apply:'reference',footer:'letter'},
+  },
+];
+
 function comparisonBlockGallery(blockId) {
   const [title, choices] = comparisonBlockChoices[blockId];
   const previews = choices.map(([style,label,variant,reviews='cards'], index) => {
     const design = comparisonDesigns.find(item => item.refinement === style);
     const previewFile = design.file.replace('.html','-refined.html') + '?v=__VERSION__';
     const state = {...defaults, layout:design.layout ?? defaults.layout};
-    const context = {state, comparison:true, wavyArrows:design.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
-    return `<article id="choice-${index + 1}" class="block-compare-choice">
+    const context = {state, comparison:true, blockStyle:style, wavyArrows:design.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
+    return `<article id="choice-${index + 1}" class="block-compare-choice" data-gallery-choice="${style}">
       <header><h2>${label}</h2><div class="block-compare-actions">
         <a href="${previewFile}#${blockId}">Макет в этом стиле ↗</a>
         <a data-try-assembly="${blockId}" href="compare-assembly.html?v=__VERSION__&amp;${blockId}=${style}#${blockId}">Примерить в сборке</a>
@@ -66,9 +84,21 @@ function comparisonBlockGallery(blockId) {
     <nav aria-label="Блоки для сравнения">${Object.entries(comparisonBlockChoices).map(([key,[label]]) =>
       `<a data-keep-assembly data-gallery-block="${key}" href="compare-block-${key}.html?v=__VERSION__"${key === blockId ? ' aria-current="page"' : ''}>${label}</a>`
     ).join('')}</nav>
-    <nav aria-label="Варианты блока">${choices.map(([,label], index) => `<a href="#choice-${index + 1}">${label}</a>`).join('')}</nav>
+    <nav aria-label="Варианты блока" data-gallery-jumps>${choices.map(([,label], index) => `<a href="#choice-${index + 1}">${label}</a>`).join('')}</nav>
+    <div class="block-pair-tools" data-block-pair-tools hidden>
+      <button class="block-pair-toggle" type="button" data-block-pair-toggle aria-expanded="false" aria-controls="block-pair-settings">Сравнить два варианта</button>
+      <div class="block-pair-settings" id="block-pair-settings" hidden>
+        ${['Первый вариант','Второй вариант'].map((label, side) => `<label>${label}
+          <select data-pair-choice>${choices.map(([style, name], index) => `<option value="${style}"${index===side?' selected':''}>${name}</option>`).join('')}</select>
+        </label>`).join('')}
+        <label>Расположение<select data-pair-layout>
+          <option value="side">Рядом на широком экране</option>
+          <option value="stack">На всю ширину</option>
+        </select></label>
+      </div>
+    </div>
   </header>
-  <main class="block-compare-list">${previews.join('')}</main>`;
+  <main class="block-compare-list" data-gallery-list>${previews.join('')}</main>`;
 }
 
 function comparisonAssembly() {
@@ -84,7 +114,7 @@ function comparisonAssembly() {
     const previews = choices.map(([style,name,variant,reviews='cards']) => ({
       style, name, reviews,
       markup:renderBlock(id,variant,{
-        state:defaults,comparison:true,wavyArrows:style==='reference',
+        state:defaults,comparison:true,blockStyle:style,wavyArrows:style==='reference',
         blockId:style===selected?id:`${id}-${style}`,
         previewId:`assembly-quotes-${style}`,
       }),
@@ -105,6 +135,16 @@ function comparisonAssembly() {
     <a href="comparison-current.html?v=__VERSION__">← К целым макетам</a>
     <h1>Собрать свой вариант</h1>
     <p>Выбирайте оформление над каждым блоком. В ссылке сохраняется вся комбинация.</p>
+    <section class="assembly-presets" aria-labelledby="assembly-presets-heading">
+      <h2 id="assembly-presets-heading">Готовые сочетания</h2>
+      <div class="assembly-preset-list">${assemblyPresets.map(({name,description,choices}, index) => {
+        const query = new URLSearchParams({v:'__VERSION__', ...choices});
+        return `<a class="assembly-preset" href="compare-assembly.html?${query.toString().replaceAll('&','&amp;')}">
+          <span class="assembly-preset-number" aria-hidden="true">0${index+1}</span>
+          <strong>${name}</strong><span>${description}</span>
+        </a>`;
+      }).join('')}</div>
+    </section>
     <nav aria-label="Перейти к блоку">${order.map(id => `<a href="#${id}">${comparisonBlockChoices[id][0]}</a>`).join('')}</nav>
     <div class="assembly-share">
       <button type="button" data-copy-assembly>Скопировать ссылку</button>
@@ -204,7 +244,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
     state=selectVariant(state,'apply',refined?({1:2,2:1,3:1})[design.form]:design.form);
     state=selectVariant(state,'footer',refined?({1:3,2:5,3:2,5:1})[design.footer]:design.footer);
     const reviewLayout=refined?({cards:'ribbon',feature:'open',open:'cards'})[design.reviews]:design.reviews;
-    const context={comparison:true,wavyArrows:design.wavyArrows};
+    const context={comparison:true,blockStyle:design.refinement,wavyArrows:design.wavyArrows};
     const markup=pencil?renderPencilPreview(state,design.mode,context):renderSite(state,context);
     pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${design.refinement}"${refined?` data-refinement="${design.refinement}"`:''}>${markup}</main>`;
   }

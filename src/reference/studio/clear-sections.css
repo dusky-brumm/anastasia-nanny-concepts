@@ -86,7 +86,7 @@
 
 /* Open quotes retain their natural height and scroll by hand. */
 .site-preview .s-reviews .comparison-quote-strip[data-open-quotes] {--quote-gap:clamp(24px,4cqw,48px);margin:0}
-.site-preview .s-reviews [data-open-quotes] .s-review-grid {display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - var(--quote-gap)) / 2);gap:var(--quote-gap);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:6px 0 18px;margin:0}
+.site-preview .s-reviews .comparison-quote-strip[data-open-quotes] .s-review-grid {display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - var(--quote-gap)) / 2);gap:var(--quote-gap);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:6px 0 18px;margin:0}
 .site-preview .s-reviews [data-open-quotes]:has(.comparison-quote-controls:not([hidden])) .s-review-grid {scrollbar-width:none}
 .site-preview .s-reviews [data-open-quotes] .s-review-grid .s-review {display:flex;flex-direction:column;min-width:0;padding:10px 0 0;margin:0;background:transparent;border:0;border-radius:0;box-shadow:none;transform:none;scroll-snap-align:start}
 .site-preview .s-reviews [data-open-quotes] .s-quote-mark {position:static;height:32px;margin:0 0 15px;font:400 64px/.9 Georgia,serif;color:var(--accent)}
@@ -132,6 +132,6 @@
   .s-payment-steps li {padding:22px 0;gap:17px}
   .s-replacement-note {grid-template-columns:1fr;gap:19px;padding:24px}
   .s-fee-actions {gap:20px 24px}
-  .site-preview .s-reviews [data-open-quotes] .s-review-grid {grid-auto-columns:100%}
+  .site-preview .s-reviews .comparison-quote-strip[data-open-quotes] .s-review-grid {grid-auto-columns:100%}
   .site-preview .s-apply .s-consult-form.s-form-lines {grid-template-columns:1fr}
 }

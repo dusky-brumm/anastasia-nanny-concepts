@@ -41,7 +41,16 @@ function bindComparisonQuotes(strip) {
     move(destination);
   }, {signal:controller.signal});
   track.addEventListener('scroll', update, {passive:true, signal:controller.signal});
-  const observer = new ResizeObserver(update);
+  let previousStep = stepSize();
+  const observer = new ResizeObserver(() => {
+    const nextStep = stepSize();
+    if (previousStep > 0 && Math.abs(nextStep - previousStep) > 1) {
+      const index = Math.round(track.scrollLeft / previousStep);
+      track.scrollTo({left:index * nextStep, behavior:'instant'});
+    }
+    previousStep = nextStep;
+    update();
+  });
   observer.observe(track);
   quoteBindings.set(strip, {update, destroy(){observer.disconnect();controller.abort();}});
   update();

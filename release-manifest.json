@@ -1,6 +1,6 @@
 {
-  "build": "687978379a",
-  "base_commit": "2f40d17e969c62e859ae7f6bbfef88f765a53e22",
+  "build": "b41e877658",
+  "base_commit": "a7413fcc6e0813a5aaf0fea649f0b786d2dd3b8b",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,25 +23,26 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Mobile refinements already published in Sites 54: compact comparison panel, responsive headings, touch controls and mobile gallery defaults",
-    "Hero variants 10 and 11 with shaped portraits and pencil contours; safe base-36 nine-block layout links",
-    "Плавный контур base/refined and Линия-письмо complete comparisons with selected chalk illustrations and progressive line motion",
-    "Preserve current service copy/photo, open review carousel, textured line form, three route choices and concise footer when integrating old-base drafts"
+    "Six completed design directions in the existing site: Семейный фотоальбом, Семейный журнал, Тихая редакция, Кремовая дуга, Семейный альбом, Маршрут семьи",
+    "One design selector on the homepage and all comparison pages; preserve palette and section while switching",
+    "Preserve selected four-frame About without heading, three route choices, open quote carousel, textured thin-line form and concise illustrated footer",
+    "Preserve original new hero, service and pricing compositions; normalize service introduction to Собеседую под вашу семью.",
+    "Fix narrow-screen review card sizing and preserve current review after resizing; prevent the expanded design navigation overflowing desktop"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
-    "Old family-story review content and stale form/footer/service markup",
-    "Standalone photoalbum, journal and editorial Sites belong to separate projects",
-    "Three chalk directions in the visualization are concept previews, not integrated site source"
+    "Old family-story review content and stale form/footer/service markup"
   ],
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4",
     "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1a6c1-4301-7e10-987d-d776c3f8927e",
-    "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b"
+    "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
+    "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
+    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1a6c0-bec3-7192-bde1-592bda278806"
   },
   "direct_request_thread": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
-  "direct_request_date": "2026-11-04",
+  "direct_request_date": "2026-11-05",
   "draft_snapshot_note": "Hashes describe consumed shared-draft states, not the release checkout. Integrate only future deltas. Old service, family-story reviews, forms and footer in the shared draft were deliberately rejected; preserve the published replacements and Sites 54 mobile fixes.",
   "sites_mobile_base_commit": "748107a32aaae8030965862022cea65c22e1e727",
   "draft_snapshot_sha256_binary": {
@@ -53,5 +54,92 @@
     "src/reference/studio/media/line-drawings/07-reviews.png": "0634c46f608ddbf30e4044f7d5715e3eba9aa3e22f8a0f01046e2475037a08da",
     "src/reference/studio/media/line-drawings/08-apply.png": "1ab7761c4ef4227a326367b0f2c98f870ad3380a5973dd21c50569cc615cf76a",
     "src/reference/studio/media/line-drawings/09-footer.png": "19c14ea113d6aa7b5300589a58ea79b23adcbc13e62f5786ba0f5aa33854bcaa"
-  }
+  },
+  "imported_sources": {
+    "nastya-fotoalbum": {
+      "path": "C:/Users/Нат/Documents/ChatGPT/Anastasia/sites/nastya-fotoalbum",
+      "commit": "bd9bd2d7c98ad858bb0a541ad3c13124d73d478e",
+      "sha256_binary": {
+        "dist/album.css": "fb3b9e3c0c4578d327718d3c04a5c2f8ea03de52bea26c77bd0befa1158b0ef3",
+        "dist/album.js": "c12cd6d309b5397eb65002291db959967e96512cd33c9d95a85161712a2b4cb5",
+        "dist/assets/about-portrait.webp": "cb7bc53925d87c810c3dd6e1f0c305957ca2e10a9a9a78f15c2859f313e98f83",
+        "dist/assets/child.webp": "b8a4eec3dc69884ca9b0f08527c119bdaae9a7d02d5d3208625899e9944a0a5f",
+        "dist/assets/family.webp": "b886eaee4110e18aece546fcd3be57cf4a0a9ce092bf99c1373e697140f4923c",
+        "dist/assets/favicon.svg": "f3ba1535d18eeea136b022afe2f6c80a8c169d72f3c9f1987092b681b391240c",
+        "dist/assets/rainbow.webp": "694cd93caa508a3cd81f2822dd4a5b1fb0814e72035524a66e3545522efb5fc7",
+        "dist/fonts/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nA.woff2": "723cc14fe86bc9fadb2f5f34efb421d246edb240a18d2a7828d2edc041d79996",
+        "dist/fonts/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoqt2nOeZ.woff2": "aaeb039ba0ecdbc75108a6f66ee9f6745315412de78a4061cc90365b513fc4a3",
+        "dist/fonts/0QIvMX1D_JOuMw77I-NP.woff2": "c57d9ca3bd42e6bc093badc7744dd2059a78f66a3a4dc6ca40574480c870f553",
+        "dist/fonts/0QIvMX1D_JOuMwr7Iw.woff2": "ddb8c66035104e233fc024669183aad3738b6daa16deee2ebb1241bd0f98ace1",
+        "dist/fonts/caveat-OFL.txt": "6be75733f5ff1e7eb72f147f489db88752c890c9c70292be8e2460d7ef77f5bb",
+        "dist/fonts/Golos-Text-OFL.txt": "c297dc35f0589d211d1c5ca02e0c0309a8dff1b433a606a0e281593b172e2fa1",
+        "dist/fonts/Lora-OFL.txt": "dbb965f4564a8a75bd563ce3773962517deeaf0c2929ba89690d89f8418af911",
+        "dist/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2": "17d048ca05cb1218af3c0d6dcdf882989e6d1cc5dcb598ea50eaf54850ff7229",
+        "dist/fonts/q5uCsoe9Lv5t7Meb31EcExN8hA.woff2": "9a69d0aa4734c4022224c002a3d944a702e0204972a49d892789f5668b922c2a",
+        "dist/fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SII.ttf": "012f33f9814bf9614973983335c3a375fe267c094e7c09a02a276cd1dcd4180a",
+        "dist/index.html": "af87cd90ccc2f6e82ee4e15cc061284e26d5737cd963a8cec1c0a80022d9755c",
+        "dist/request-ui.js": "acdbfe9e2c0955109ced25c47c0771d4363ec3e8a0a2a8d8d014f8bf960e4e1a",
+        "dist/request.js": "f2943bf391b4dd4810c0e6d0637819748c9bf31f92c21ea2eb7baf6e4a09980b"
+      }
+    },
+    "nastya-zhurnal": {
+      "path": "C:/Users/Нат/Documents/ChatGPT/Anastasia/sites/nastya-zhurnal",
+      "commit": "519cd12e8476ed57de7f95a603472841a2547702",
+      "sha256_binary": {
+        "dist/assets/about-portrait.webp": "cb7bc53925d87c810c3dd6e1f0c305957ca2e10a9a9a78f15c2859f313e98f83",
+        "dist/assets/child.webp": "b8a4eec3dc69884ca9b0f08527c119bdaae9a7d02d5d3208625899e9944a0a5f",
+        "dist/assets/family.webp": "b886eaee4110e18aece546fcd3be57cf4a0a9ce092bf99c1373e697140f4923c",
+        "dist/assets/favicon.svg": "f3ba1535d18eeea136b022afe2f6c80a8c169d72f3c9f1987092b681b391240c",
+        "dist/assets/rainbow.webp": "694cd93caa508a3cd81f2822dd4a5b1fb0814e72035524a66e3545522efb5fc7",
+        "dist/fonts/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nA.woff2": "723cc14fe86bc9fadb2f5f34efb421d246edb240a18d2a7828d2edc041d79996",
+        "dist/fonts/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoqt2nOeZ.woff2": "aaeb039ba0ecdbc75108a6f66ee9f6745315412de78a4061cc90365b513fc4a3",
+        "dist/fonts/0QIvMX1D_JOuMw77I-NP.woff2": "c57d9ca3bd42e6bc093badc7744dd2059a78f66a3a4dc6ca40574480c870f553",
+        "dist/fonts/0QIvMX1D_JOuMwr7Iw.woff2": "ddb8c66035104e233fc024669183aad3738b6daa16deee2ebb1241bd0f98ace1",
+        "dist/fonts/caveat-OFL.txt": "6be75733f5ff1e7eb72f147f489db88752c890c9c70292be8e2460d7ef77f5bb",
+        "dist/fonts/Golos-Text-OFL.txt": "c297dc35f0589d211d1c5ca02e0c0309a8dff1b433a606a0e281593b172e2fa1",
+        "dist/fonts/Lora-OFL.txt": "dbb965f4564a8a75bd563ce3773962517deeaf0c2929ba89690d89f8418af911",
+        "dist/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2": "17d048ca05cb1218af3c0d6dcdf882989e6d1cc5dcb598ea50eaf54850ff7229",
+        "dist/fonts/q5uCsoe9Lv5t7Meb31EcExN8hA.woff2": "9a69d0aa4734c4022224c002a3d944a702e0204972a49d892789f5668b922c2a",
+        "dist/fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SII.ttf": "012f33f9814bf9614973983335c3a375fe267c094e7c09a02a276cd1dcd4180a",
+        "dist/fonts.css": "d7c7dafbd2bf191821a14f6dab044491a5a5024f3de089ee71d56d9310e19800",
+        "dist/index.html": "e10864a483f3b66beebc718802fb00f1b2c796b02ab1f1646c65640b504c076d",
+        "dist/journal.css": "fae4080e57af2817a4eef3e4aeb355e638ce5f577c816739baccad73fc0c0e79",
+        "dist/journal.js": "c12cd6d309b5397eb65002291db959967e96512cd33c9d95a85161712a2b4cb5",
+        "dist/request-ui.js": "acdbfe9e2c0955109ced25c47c0771d4363ec3e8a0a2a8d8d014f8bf960e4e1a",
+        "dist/request.js": "f2943bf391b4dd4810c0e6d0637819748c9bf31f92c21ea2eb7baf6e4a09980b"
+      }
+    },
+    "nastya-tihaya-redaktsiya": {
+      "path": "C:/Users/Нат/Documents/ChatGPT/Anastasia/sites/nastya-tihaya-redaktsiya",
+      "commit": "ad29bbbedd54277dcd23e885a1bc1b8d454ba006",
+      "sha256_binary": {
+        "dist/assets/cafe.webp": "cb7bc53925d87c810c3dd6e1f0c305957ca2e10a9a9a78f15c2859f313e98f83",
+        "dist/assets/child.webp": "b8a4eec3dc69884ca9b0f08527c119bdaae9a7d02d5d3208625899e9944a0a5f",
+        "dist/assets/family.webp": "b886eaee4110e18aece546fcd3be57cf4a0a9ce092bf99c1373e697140f4923c",
+        "dist/assets/favicon.svg": "f3ba1535d18eeea136b022afe2f6c80a8c169d72f3c9f1987092b681b391240c",
+        "dist/assets/rainbow.webp": "694cd93caa508a3cd81f2822dd4a5b1fb0814e72035524a66e3545522efb5fc7",
+        "dist/editorial.css": "9e350325954cb7382b6bd55d40d942d11443618f3183303ba1102db17c64c204",
+        "dist/editorial.js": "11f14a442f0cb4ea49da17955630275b6ee2cc51c2e63f924e2e45824ccc6c36",
+        "dist/fonts/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nA.woff2": "723cc14fe86bc9fadb2f5f34efb421d246edb240a18d2a7828d2edc041d79996",
+        "dist/fonts/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoqt2nOeZ.woff2": "aaeb039ba0ecdbc75108a6f66ee9f6745315412de78a4061cc90365b513fc4a3",
+        "dist/fonts/0QIvMX1D_JOuMw77I-NP.woff2": "c57d9ca3bd42e6bc093badc7744dd2059a78f66a3a4dc6ca40574480c870f553",
+        "dist/fonts/0QIvMX1D_JOuMwr7Iw.woff2": "ddb8c66035104e233fc024669183aad3738b6daa16deee2ebb1241bd0f98ace1",
+        "dist/fonts/caveat-OFL.txt": "6be75733f5ff1e7eb72f147f489db88752c890c9c70292be8e2460d7ef77f5bb",
+        "dist/fonts/Golos-Text-OFL.txt": "c297dc35f0589d211d1c5ca02e0c0309a8dff1b433a606a0e281593b172e2fa1",
+        "dist/fonts/Lora-OFL.txt": "dbb965f4564a8a75bd563ce3773962517deeaf0c2929ba89690d89f8418af911",
+        "dist/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2": "17d048ca05cb1218af3c0d6dcdf882989e6d1cc5dcb598ea50eaf54850ff7229",
+        "dist/fonts/q5uCsoe9Lv5t7Meb31EcExN8hA.woff2": "9a69d0aa4734c4022224c002a3d944a702e0204972a49d892789f5668b922c2a",
+        "dist/fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SII.ttf": "012f33f9814bf9614973983335c3a375fe267c094e7c09a02a276cd1dcd4180a",
+        "dist/fonts.css": "211f33b4cbd6da603c0cf036b8ac59034abda0eceb756e8938b5ae5b52f2353d",
+        "dist/index.html": "32b401515ec8cb26c00cc4240ab91538345552d1632f72b5429872d7aafc382e",
+        "dist/request-ui.js": "acdbfe9e2c0955109ced25c47c0771d4363ec3e8a0a2a8d8d014f8bf960e4e1a",
+        "dist/request.js": "f2943bf391b4dd4810c0e6d0637819748c9bf31f92c21ea2eb7baf6e4a09980b"
+      }
+    },
+    "chalk-directions": {
+      "path": "C:/Users/Нат/.codex/visualizations/2026/11/03/01a19f7b-5b25-7e03-8715-e4afa371b7f3/chalk-site-directions.html",
+      "sha256_binary": "b044c7a45ad3704c58e1a1b1bb8be531604e6e8f50de12da2f2818814cd495d7"
+    }
+  },
+  "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched."
 }

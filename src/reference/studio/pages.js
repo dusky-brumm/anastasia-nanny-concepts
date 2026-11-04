@@ -1,6 +1,7 @@
 import {blocks,comparisonPalettes as palettes,fontSets,defaults,presets,explorationPalettes,designUrl,selectVariant} from './model.js?v=__VERSION__';
 import {renderSite,renderBlock,renderEditorial,renderPencilPreview} from './render.js?v=__VERSION__';
 import {seoHead} from './seo.js?v=__VERSION__';
+import {additionalDesigns,additionalStyles,renderAdditionalDesign} from './additional-designs.js?v=__VERSION__';
 
 export const comparisonDesigns=[
   {mode:'comparison-current',file:'comparison-current.html',name:'Текущий',reviews:'cards',form:1,footer:3,refinement:'quiet'},
@@ -12,6 +13,7 @@ export const comparisonDesigns=[
   {mode:'comparison-reference',file:'comparison-reference.html',name:'Вариант 9',reviews:'open',form:2,footer:5,layout:'112111113',wavyArrows:true,refinement:'reference'},
   {mode:'comparison-contour',file:'comparison-contour.html',name:'Плавный контур',reviews:'cards',form:1,footer:3,hero:10,contour:'wave'},
   {mode:'comparison-thread',file:'comparison-thread.html',name:'Линия-письмо',reviews:'open',form:2,footer:5,hero:11,contour:'letter',single:true},
+  ...additionalDesigns,
 ];
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
@@ -166,6 +168,8 @@ const swatch=p=>`<span class="palette-swatch" aria-hidden="true">${[p.paper,p.wa
 const selectedPalette=palettes.find(p=>p.id===defaults.palette);
 const designPanel=`<section class="design-panel" aria-label="Палитра текущего сайта">
   <a class="design-panel-caption" href="comparison-current.html?v=__VERSION__">Варианты дизайна ↗</a>
+  <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта"><option value="./?v=__VERSION__">Текущая страница</option>${comparisonDesigns.map(item=>`<option value="${item.file}?v=__VERSION__">${item.name}</option>`).join('')}</select></label>
+  <a class="design-panel-caption" href="compare-assembly.html?v=__VERSION__">Выбранные блоки ↗</a>
   <details class="theme-picker">
     <summary><span>Палитра</span><span data-selected-palette>${swatch(selectedPalette)}<span>${selectedPalette.name}</span></span><span aria-hidden="true">⌄</span></summary>
     <div class="theme-options" role="group" aria-label="Выберите палитру">${palettes.map(p=>`<button type="button" data-palette="${p.id}" aria-pressed="${p.id===defaults.palette}">${swatch(p)}<span>${p.name}</span></button>`).join('')}</div>
@@ -211,10 +215,11 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   const pencil=design?.mode.startsWith('pencil');
   const contourDirection=design?.contour==='wave'&&!refined ? '' : design?.contour;
   const defaultComparisonPalette=comparisonBaseTheme;
-  const pencilSwitcher=comparing?`<nav class="pencil-comparison" data-default-palette="${defaultComparisonPalette}" aria-label="Сравнить варианты">
+  const pencilSwitcher=comparing?`<nav class="pencil-comparison" data-default-palette="${defaultComparisonPalette}" data-home-palettes='${JSON.stringify(palettes)}' aria-label="Сравнить варианты">
     <details class="comparison-disclosure" open>
       <summary>Варианты и палитры <span>${design.name}${refined?' · улучшенный':''}</span></summary>
       <div class="comparison-content">
+    <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта">${comparisonDesigns.map(item=>`<option value="${item.file}?v=__VERSION__"${design.mode===item.mode?' selected':''}>${item.name}</option>`).join('')}</select></label>
     <div class="comparison-palette" role="group" aria-label="Палитра">
       <a class="comparison-home" href="./?v=__VERSION__">Основной сайт</a>
       <div class="comparison-palette-options">
@@ -236,7 +241,7 @@ ${item.single?'':`<a href="${item.file.replace('.html','-refined.html')}?v=__VER
   const description=mode==='preview'||editorial||comparing?'Личный подбор няни под задачи вашей семьи. Поиск, интервью и сопровождение. Анастасия Доронина.':`${compositionCount} композиций блоков сайта, пастельные палитры и согласованные наборы шрифтов.`;
   let pageContent=assembling?comparisonAssembly():blockCompare?comparisonBlockGallery(blockId):content;
   if(editorial)pageContent=`<main class="site-preview editorial" data-font="${defaults.font}">${renderEditorial(defaults)}</main>`;
-  if(design){
+  if(design&&!design.imported){
     let state={...comparisonState,layout:design.layout??comparisonState.layout};
     if(design.hero)state=selectVariant(state,'hero',design.hero);
     if(design.refinement==='quiet')state=selectVariant(state,'about',1);
@@ -266,10 +271,12 @@ ${item.single?'':`<a href="${item.file.replace('.html','-refined.html')}?v=__VER
     const markup=pencil?renderPencilPreview(state,design.mode,context):renderSite(state,context);
     pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;
   }
+  if(design?.imported)pageContent=renderAdditionalDesign(design);
   return `<!doctype html>
 <html lang="ru"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6ec">
+${design?.imported?additionalStyles(design):''}
 <link rel="preload" href="fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="studio/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=__VERSION__"><link rel="stylesheet" href="studio/fonts.css?v=__VERSION__">
@@ -277,6 +284,7 @@ ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6e
 ${editorial?'<link rel="stylesheet" href="studio/editorial.css?v=__VERSION__">':''}
 ${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/pencil-preview.css?v=__VERSION__"><link rel="stylesheet" href="studio/comparison-design.css?v=__VERSION__"><link rel="stylesheet" href="studio/comparison-sections.css?v=__VERSION__">':''}
 <link rel="stylesheet" href="studio/clear-sections.css?v=__VERSION__">
+<link rel="stylesheet" href="studio/unified-designs.css?v=__VERSION__"><script defer src="studio/unified-designs.js?v=__VERSION__"></script>
 ${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=__VERSION__"><script defer src="studio/contour-motion.js?v=__VERSION__"></script>':''}
 <link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=__VERSION__"></script>
 <script defer src="studio/review-carousel.js?v=__VERSION__"></script>

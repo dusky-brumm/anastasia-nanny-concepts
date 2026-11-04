@@ -29,5 +29,21 @@ for(const {id,variants} of blocks){
   const page=await readFile(path.join(root,'blocks-'+id+'.html'),'utf8');
   if([...page.matchAll(/class="library-option"/g)].length!==variants.length)throw Error('Wrong variation count for '+id);
 }
+// Include imported local styles and scripts in the same syntax/asset checks.
+async function checkImported(directory){
+  for(const entry of await readdir(directory,{withFileTypes:true})){
+    const file=path.join(directory,entry.name);
+    if(entry.isDirectory()){await checkImported(file);continue;}
+    if(!file.endsWith('.css'))continue;
+    const css=await readFile(file,'utf8');
+    if((css.match(/\{/g)||[]).length!==(css.match(/\}/g)||[]).length)throw Error('Unbalanced CSS '+file);
+    for(const match of css.matchAll(/url\(([^)]+)\)/g)){
+      const url=match[1].replaceAll(/["']/g,'');
+      if(!url.startsWith('data:'))await stat(path.join(path.dirname(file),url));
+    }
+  }
+}
+await checkImported(path.join(root,'studio','variants'));
+for(const file of ['additional-designs.js','additional-templates.js','unified-designs.js'])execFileSync(process.execPath,['--check',path.join(root,'studio',file)]);
 const files=await readdir(root);if(files.includes('collection.html')||files.includes('atelier'))throw Error('Old gallery in publication');
 console.log('PASS: reference page, block designs, studio/share previews, local assets and fonts, unique IDs, anchors, CSS/JS syntax and imports.');

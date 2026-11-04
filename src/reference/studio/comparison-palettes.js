@@ -12,6 +12,18 @@
   if ('ResizeObserver' in window) {
     new ResizeObserver(() => document.documentElement.style.setProperty('--comparison-offset', nav.offsetHeight + 12 + 'px')).observe(nav);
   }
+  const params = new URLSearchParams(location.search);
+  const homePalettes = JSON.parse(nav.dataset.homePalettes ?? '[]');
+  const carriedPalette = homePalettes.find(palette => palette.id === params.get('palette'));
+  if (carriedPalette) {
+    const {id, name, ...colors} = carriedPalette;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.comparisonPalette = id;
+    button.dataset.colors = JSON.stringify(colors);
+    button.textContent = name;
+    nav.querySelector('.comparison-palette-options').append(button);
+  }
   const buttons = [...nav.querySelectorAll('[data-comparison-palette]')];
   const links = nav.querySelectorAll('.comparison-pairs a');
   const colorRoles = ['paper', 'wash', 'soft', 'ink', 'button'];
@@ -30,8 +42,9 @@
     else site.removeAttribute('data-comparison-theme');
     if (colors) {
       for (const [role, value] of Object.entries(colors)) site.style.setProperty('--' + role, value);
-      site.style.setProperty('--wine', colors.accent);
+      site.style.setProperty('--wine', colors.wine ?? colors.accent);
       site.style.setProperty('--pencil', colors.accent);
+      site.style.setProperty('--button-fill', colors.button);
     }
 
     function withPalette(href) {
@@ -45,6 +58,11 @@
       return url;
     }
     for (const link of links) link.href = withPalette(link.href);
+    const home = nav.querySelector('.comparison-home');
+    const homeUrl = new URL(home.href);
+    if (homePalettes.some(palette => palette.id === activeId)) homeUrl.searchParams.set('palette', activeId);
+    else homeUrl.searchParams.delete('palette');
+    home.href = homeUrl;
     const url = withPalette(location.href);
     try {
       if (url.href !== location.href) history.replaceState(history.state, '', url);
@@ -53,7 +71,6 @@
     }
   }
 
-  const params = new URLSearchParams(location.search);
   const savedColors = {};
   for (const role of colorRoles) {
     const value = params.get('color-' + role);
@@ -62,7 +79,7 @@
   selectPalette(params.get('palette') ?? nav.dataset.defaultPalette, savedColors);
   for (const button of buttons) button.addEventListener('click', () => selectPalette(button.dataset.comparisonPalette));
 
-  const sections = [...site.querySelectorAll(':scope > [id], :scope > .pencil-section > [id]')];
+  const sections = [...site.querySelectorAll('[data-block][id]')];
   for (const link of links) {
     link.addEventListener('click', event => {
       if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;

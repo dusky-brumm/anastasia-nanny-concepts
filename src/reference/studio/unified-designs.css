@@ -1,0 +1,45 @@
+/* Shared controls live outside each imported page's visual language. */
+.design-version-label {display:flex;align-items:center;gap:10px;font:500 12px/1.4 system-ui,sans-serif}
+.design-version-label select {max-width:230px;width:100%;min-height:40px;border:1px solid #bdc9c1;border-radius:6px;background:#fffefa;color:#29473c;padding:6px 26px 6px 10px;font:400 13px/1.4 system-ui,sans-serif}
+.pencil-comparison .design-version-label {justify-content:center;margin:4px 0}
+.pencil-comparison {min-width:0;max-width:100%;width:100%}
+.pencil-comparison .comparison-disclosure {display:block;width:100%;min-width:0}
+.pencil-comparison .comparison-content {display:grid;grid-template-columns:minmax(0,1fr);width:100%;min-width:0;gap:4px}
+.pencil-comparison :is(.comparison-pairs,.block-compare-actions,.design-version-label) {min-width:0;max-width:100%;width:100%}
+.imported-design {--paper:#fcfcfa;--wash:#e7f1f6;--soft:#e8efe4;--ink:#28382d;--accent:#385a6b;--button:#385a6b;--blue:var(--wash);--milk:var(--paper);--sage:var(--soft);--white:var(--paper);--muted:var(--ink);--rule:color-mix(in srgb,var(--accent) 30%,transparent);--display:'Lora',Georgia,serif;--body:'Golos Text',Arial,sans-serif;--wine:var(--accent);max-width:1280px;margin:auto;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--body);isolation:isolate}
+.imported-design * {min-width:0}
+.imported-design .masthead {position:relative;top:auto;z-index:1}
+.imported-design :is(section,header,footer)[id] {scroll-margin-top:var(--comparison-offset,170px)}
+.imported-design > main {display:block}
+.imported-design .selected-section {--paper:inherit;--wash:inherit;--soft:inherit;--ink:inherit;--accent:inherit;--button:inherit;--wine:inherit;--heading:var(--display);--heading-weight:400;--body:'Golos Text',Arial,sans-serif;max-width:none;width:100%;border-radius:0;box-shadow:none;margin:0;border:0}
+.imported-design .selected-section .s-block h2,.imported-design .selected-section .s-block h3 {font-family:var(--display)}
+.imported-design .selected-section .s-block {padding-inline:clamp(22px,5cqw,64px)}
+.imported-design .selected-section .s-about-slides h3 {font-size:clamp(25px,3.2cqw,38px);font-weight:400}
+.imported-design .selected-section .s-about--1 {background:var(--wash)}
+.imported-design .selected-section .s-consult-form {border:0;box-shadow:none;padding:0;background:transparent}
+.imported-design .selected-section .s-consult-form label {font-family:var(--display)}
+.imported-design .selected-section .s-clear-apply {background:var(--wash)}
+.imported-design :is(.button,.action) {position:relative;background:var(--button);color:#fff;border:0}
+.imported-design :is(.button,.action)::after {content:'';position:absolute;inset:-3px;pointer-events:none;border:1px solid var(--accent);border-radius:49% 48% 46% 45%/14% 11% 13% 10%;transform:rotate(-.6deg);opacity:.7}
+.imported-design .journal {width:100%;max-width:980px;margin:auto}
+.imported-journal {max-width:1080px;padding:22px clamp(8px,2vw,28px);background:var(--wash)}
+.imported-design .s-footer-simple {background:var(--paper)}
+.imported-design .s-contour-drawing {display:block;max-width:210px;height:auto;mix-blend-mode:multiply}
+.imported-design .s-footer-simple .s-contour-drawing {max-width:110px}
+.imported-design #chalk-site-directions {--milk:var(--paper);--sky:var(--wash);--slate:var(--accent);--sage:var(--accent);--ink:inherit;--cream:var(--soft)}
+.imported-design #chalk-site-directions .landing {border-radius:0;font-family:var(--body)}
+.imported-design #chalk-site-directions .landing h1,.imported-design #chalk-site-directions .landing h2 {font-family:var(--display)}
+.imported-design #chalk-site-directions .lead {padding-block:64px}
+.imported-design #chalk-site-directions .section {padding-inline:clamp(22px,5cqw,64px)}
+.imported-design #chalk-site-directions .selected-section p {max-width:none}
+.imported-design #chalk-site-directions .selected-section .s-block h2 {font-size:clamp(30px,4cqw,48px)}
+.imported-design #chalk-site-directions .selected-section .s-service-intro h2 {max-width:18ch}
+.imported-design #chalk-site-directions .selected-section .s-about-dots {display:flex}
+@media (max-width:760px) {
+ .design-panel {flex-wrap:wrap;gap:8px}
+ .design-version-label {max-width:100%;flex:1 1 180px}
+ .design-version-label select {max-width:100%}
+ .imported-design .header-inner {flex-wrap:wrap}
+ .imported-design #chalk-site-directions .lead {padding-block:36px}
+ .imported-journal {padding:0}
+}

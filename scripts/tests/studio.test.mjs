@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,comparisonPalettes} from '../../src/reference/studio/model.js';
 import {studioPage,comparisonBlockChoices,comparisonDesigns} from '../../src/reference/studio/pages.js';
+import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
 
 test('completed design comparisons retain all sections and exclude the three cancelled options',()=>{
   const modes=comparisonDesigns.flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
@@ -18,7 +19,7 @@ test('completed design comparisons retain all sections and exclude the three can
     assert.match(html,/data-comparison-palette="new"/);
     assert.doesNotMatch(html,/data-color-role=/);
     assert.match(html,/data-default-palette="almost-white"/);
-    assert.match(html,/comparison-price-(?:sheet|duet)|s-clear-pricing/);
+    assert.match(html,/comparison-price-(?:sheet|duet)|s-clear-pricing|id="pricing"/);
     assert.match(html,/studio\/comparison-request.js/);
     assert.equal([...html.matchAll(/aria-label="[^"]+ — улучшенный"/g)].length,8);
     if(mode.endsWith('-refined'))assert.match(html,/data-refinement=/);
@@ -27,6 +28,24 @@ test('completed design comparisons retain all sections and exclude the three can
   assert.equal([...reference.matchAll(/data-about-dot="/g)].length,4);
   assert.match(reference,/M389 85C395 158/);
   assert.match(studioPage('preview','hero','index.html'),/href="comparison-current.html/);
+});
+
+test('all six formerly separate designs share navigation and retain the selected blocks',()=>{
+  assert.equal(additionalDesigns.length,6);
+  for(const design of additionalDesigns){
+    const html=studioPage(design.mode,'hero',design.file);
+    assert.match(html,/data-design-navigation/);
+    for(const option of additionalDesigns)assert.ok(html.includes(`href="${option.file}?v=`));
+    const about=html.match(/<section[^>]*id="about"[\s\S]*?<\/section>/)[0];
+    assert.equal([...about.matchAll(/data-about-dot=/g)].length,4);
+    assert.doesNotMatch(about,/<h2\b|Давайте познакомимся/);
+    assert.match(html,/Собеседую под вашу семью\./);
+    assert.match(html,/data-review-layout="open"/);
+    assert.match(html,/<form class="s-consult-form s-form-lines"/);
+    assert.match(html,/s-footer-simple/);
+    assert.doesNotMatch(html,/История семьи|история семьи|Форма подготовит текст|data-live-request|\.chatgpt\.site/);
+    assert.equal([...html.matchAll(/<form\b/g)].length,1);
+  }
 });
 
 test('block galleries and assembly preserve the current hero and local request workflow',()=>{

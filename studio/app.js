@@ -1,7 +1,7 @@
-import {blocks,palettes,approvedTheme,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=b6b5173283';
-import {renderSite,renderBlock} from './render.js?v=b6b5173283';
-import {formatRequest} from '../request.js?v=b6b5173283';
-import {requestEndpoint} from './request-endpoint.js?v=b6b5173283';
+import {blocks,palettes,approvedTheme,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=7243f4a467';
+import {renderSite,renderBlock} from './render.js?v=7243f4a467';
+import {formatRequest} from '../request.js?v=7243f4a467';
+import {requestEndpoint} from './request-endpoint.js?v=7243f4a467';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;

@@ -18,7 +18,8 @@
       location.assign(destination.href);
     });
   }
-  const menu=document.querySelector('.imported-design .mobile-menu');
-  menu?.addEventListener('click',event=>{if(event.target.closest('a'))menu.open=false;});
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu?.open){menu.open=false;menu.querySelector('summary')?.focus();}});
+  for(const menu of document.querySelectorAll('.imported-design .mobile-menu,.design-site-menu')){
+    menu.addEventListener('click',event=>{if(event.target.closest('a'))menu.open=false;});
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary')?.focus();}});
+  }
 })();

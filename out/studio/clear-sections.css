@@ -2,6 +2,28 @@
 .site-preview:is([data-font],.comparison-design) .s-block h2 {font-family:var(--heading);font-weight:var(--heading-weight);letter-spacing:var(--heading-tracking)}
 .assembly-site [data-assembly-preview] {--heading:inherit;--heading-weight:inherit;--body:inherit}
 
+/* A personal interview, illustrated with an existing photo of Anastasia. */
+.s-service-personal {grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);grid-template-areas:'intro photo' 'examples photo' 'result result';column-gap:clamp(30px,5cqw,64px);row-gap:30px;align-items:start}
+.s-service--2 .s-service-personal {grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);grid-template-areas:'photo intro' 'photo examples' 'result result'}
+.s-service-intro {grid-area:intro}
+.s-service-intro .s-section-heading {margin-bottom:22px}
+.s-service-intro h2 {max-width:17ch}
+.s-service-intro>p {max-width:46ch}
+.s-service-photo {grid-area:photo;position:relative;width:100%;aspect-ratio:4/5;align-self:center;min-height:0}
+.s-service-photo img {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;border-radius:12px 18px 10px 16px}
+.s-service-photo svg {position:absolute;inset:-12px;width:calc(100% + 24px);height:calc(100% + 24px);fill:none;stroke:var(--accent);stroke-width:1.7;pointer-events:none}
+.s-service-examples {grid-area:examples}
+.s-service-examples>h3 {margin-bottom:14px;font:500 15px/1.5 var(--body)}
+.s-service-examples dl {margin:0;display:grid;gap:20px}
+.s-service-examples dl>div {position:relative;padding-top:16px}
+.s-service-examples dl>div::before,.s-service-result::before {content:'';position:absolute;left:0;right:0;top:-4px;height:10px;background:var(--accent);mask:url('pencil-rule.svg') center/100% 100% no-repeat;pointer-events:none;opacity:.75}
+.s-service-examples dt {font:400 13px/1.45 var(--body);color:var(--accent);margin-bottom:8px}
+.s-service-examples dd {margin:0;max-width:43ch;font:400 clamp(17px,1.85cqw,21px)/1.5 var(--heading);letter-spacing:-.02em}
+.s-service-result {grid-area:result;position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:24px}
+.s-service-result p {max-width:62ch;font-size:16px}
+.s-service-result .s-text-link {flex-shrink:0}
+.s-about-slides .s-about-dots {margin-top:10px}
+
 /* One total fee, two payment stages, one replacement promise. */
 .s-clear-pricing {text-align:left}
 .s-clear-pricing .s-fee-intro {display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-bottom:36px}
@@ -58,6 +80,12 @@
 .site-preview .s-form-lines .s-draft {padding:20px;background:var(--wash)}
 
 @container (max-width:650px) {
+  .s-service-personal,.s-service--2 .s-service-personal {grid-template-columns:1fr;grid-template-areas:'intro' 'photo' 'examples' 'result';gap:28px}
+  .s-service-photo {width:min(100%,400px);justify-self:center;aspect-ratio:1.15}
+  .s-service-photo img {min-height:0;position:absolute;inset:0;border-radius:28px 28px 9px 9px;object-position:50% 54%}
+  .s-service-photo svg {inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px)}
+  .s-service-result {display:block}
+  .s-service-result .s-text-link {margin-top:14px}
   .s-clear-pricing .s-fee-intro {grid-template-columns:1fr;gap:16px;margin-bottom:28px}
   .s-clear-pricing .s-payment-steps {grid-template-columns:1fr;gap:0}
   .s-payment-steps li {padding:22px 0;gap:17px}

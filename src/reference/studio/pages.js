@@ -24,7 +24,7 @@ export const comparisonBlockChoices = {
     ['quiet','Светлая карточка',1], ['letter','Тонкие линии',2], ['album','Мягкая рамка',3], ['route','Пунктирная рамка',3], ['reference','Поля с подчёркиванием',1],
   ]],
   service: ['Об услуге', [
-    ['quiet','Три карточки с веточками',1], ['letter','Открытые строки',2], ['panorama','Запрос и результат',5],
+    ['quiet','Личное интервью и фото',1], ['letter','Фото и открытые строки',2], ['panorama','Запрос и результат',5],
   ]],
   about: ['Об Анастасии', [
     ['quiet','Знакомство в четырёх кадрах',1], ['reference','Портрет и текст',2], ['letter','Личное письмо',3], ['album','Семейный альбом',4],
@@ -46,7 +46,7 @@ const comparisonBaseStyle = Object.entries({...baseColors, button:'#526c73', win
 const assemblyPresets = [
   {
     name:'Свет и воздух',
-    description:'Карточки с веточками, портрет, голубая волна и прозрачная форма.',
+    description:'Личное интервью, портрет, голубая волна и прозрачная форма.',
     choices:{service:'quiet',about:'reference',process:'air',pricing:'quiet',reviews:'letter',apply:'letter',footer:'quiet'},
   },
   {
@@ -103,7 +103,7 @@ function comparisonBlockGallery(blockId) {
 
 function comparisonAssembly() {
   const order = ['service','about','process','pricing','reviews','apply','footer'];
-  const initial = {about:'reference',apply:'letter'};
+  const initial = {about:'quiet',apply:'letter'};
   const top = ['header','hero'].map(id => {
     const index = blocks.findIndex(block => block.id === id);
     return renderBlock(id,comparisonState.layout[index],{state:comparisonState,comparison:true});
@@ -228,6 +228,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   if(editorial)pageContent=`<main class="site-preview editorial" data-font="${defaults.font}">${renderEditorial(defaults)}</main>`;
   if(design){
     let state={...comparisonState,layout:design.layout??comparisonState.layout};
+    if(design.refinement==='quiet')state=selectVariant(state,'about',1);
     if(design.process)state=selectVariant(state,'process',design.process);
     if (refined) {
       const changes = {

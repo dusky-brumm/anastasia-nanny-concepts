@@ -33,6 +33,7 @@ test('block galleries and assembly preserve the current hero and local request w
   const assembly=studioPage('comparison-assembly','hero','compare-assembly.html');
   assert.match(assembly,/s-hero--6/);
   assert.match(assembly,/data-about-dot="3"/);
+  assert.match(assembly,/option value="quiet" selected>Знакомство в четырёх кадрах/);
   assert.match(assembly,/studio\/comparison-assembly.js/);
   assert.match(assembly,/studio\/comparison-request.js/);
   assert.match(assembly,/option value="letter" selected>Тонкие линии/);
@@ -48,6 +49,22 @@ test('block galleries and assembly preserve the current hero and local request w
     total+=choices.length;
   }
   assert.equal(total,28);
+});
+
+test('the live service starts with the family interview and About keeps four slides without a block heading',()=>{
+  for(const mode of ['preview','comparison-current','comparison-current-refined']){
+    const html=studioPage(mode,'hero',mode==='preview'?'index.html':mode+'.html');
+    const service=html.match(/<section[^>]*id="service"[\s\S]*?<\/section>/)?.[0];
+    const about=html.match(/<section[^>]*id="about"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(service&&about,mode);
+    assert.match(service,/<h2>Собеседую под вашу семью\.<\/h2>/);
+    assert.match(service,/<img[^>]+src="studio\/media\/family.webp"/);
+    assert.match(service,/Посмотреть пример анкеты/);
+    assert.doesNotMatch(service,/s-items|Изучаю отклики/);
+    assert.doesNotMatch(about,/<h2\b|Давайте познакомимся/);
+    assert.equal([...about.matchAll(/data-about-dot=/g)].length,4);
+    assert.equal([...about.matchAll(/<h3>/g)].length,4);
+  }
 });
 
 test('the live palette menu contains the five agreed themes and exactly two new themes',()=>{

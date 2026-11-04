@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=0cee90c3a7';
-import {renderJourney} from '../journeys.js?v=0cee90c3a7';
-import {contacts,selectionFaq} from './content.js?v=0cee90c3a7';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=2a1d3538ff';
+import {renderJourney} from '../journeys.js?v=2a1d3538ff';
+import {contacts,selectionFaq} from './content.js?v=2a1d3538ff';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -126,7 +126,16 @@ const serviceDrawings=`<svg class="s-service-drawing s-service-drawing--sky" vie
   <path pathLength="1" d="M86 16c-4-6 0-13 9-14 2 7-2 12-9 14z"/>
 </svg>`;
 function service(v) {
-  const heading=serviceDrawings+title('Подбор няни<br>под задачи вашей семьи');
+  if(v===1||v===2)return `<div class="s-service-personal">
+    <div class="s-service-intro">${title('Собеседую под вашу семью.')}<p>Обсуждаю с кандидаткой ваш ритм жизни, привычки ребёнка и правила дома. Задаю вопросы о ситуациях, с которыми ей предстоит столкнуться.</p></div>
+    <figure class="s-service-photo"><img src="${media}family.webp" width="960" height="1280" loading="lazy" alt="Анастасия с детьми на прогулке"><svg viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true" focusable="false"><defs>${pencilFilter('service-photo-pencil-'+v)}</defs><path d="M12 170L14 35Q13 11 39 14L203 10M388 318L390 465Q390 489 366 488L202 491" filter="url(#service-photo-pencil-${v})"/></svg></figure>
+    <div class="s-service-examples"><h3>Например, спрошу</h3><dl>
+      <div><dt>Если ребёнку три года</dt><dd>«Что вы сделаете, если ребёнок расплачется и откажется уходить с площадки?»</dd></div>
+      <div><dt>Если в семье двое школьников</dt><dd>«Один просит помочь с уроками, а другой затевает ссору. Как вы поступите?»</dd></div>
+    </dl></div>
+    <div class="s-service-result"><p>После интервью вы получите анкету с моими комментариями: почему я предлагаю эту няню и что стоит обсудить при встрече.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть пример анкеты ↗</a></div>
+  </div>`;
+  const heading=serviceDrawings+title('Собеседую под вашу семью.');
   const interview=`<div class="s-interview"><h3>Я собеседую няню под вашу семью</h3><p>Для семьи с двумя школьниками спрошу, как няня поступит, если один ребёнок просит помочь с уроками, а другой затевает ссору. Для семьи с трёхлеткой обсудим, как она отреагирует, если ребёнок расплачется и откажется уходить с площадки.</p><a class="s-text-link" href="https://telegra.ph/Nyanya-Ispravnikova-Svetlana-10-11" target="_blank" rel="noopener noreferrer">Посмотреть пример анкеты ↗</a></div>`;
   if(v===5)return `${heading}<div class="s-service-panels"><article><h3>График, привычки<br>и правила семьи</h3><p>${services[0][1]}</p><p>${services[1][1]}</p></article><article><h3>Подробные профили<br>и личные рекомендации</h3><p>${services[2][1]}</p><p>Обсуждаем каждого кандидата и готовимся к знакомству.</p></article></div>`;
   return `${heading}${v===3?scribble:''}${items(services)}${interview}`;
@@ -141,12 +150,11 @@ function about(v) {
   const aboutPhotos=`<div class="s-about-photos">${photo('about-portrait','s-frame')}${photo('rainbow','s-frame')}</div>`;
   const text=`${title('Я знаю поиск<br><em>с обеих сторон</em>')}<p>${biography}</p><p>${background}</p><p>${familyStory}</p><p class="s-signature">Анастасия Доронина</p>`;
   if(v===1)return `<div class="s-about-slides" data-about-carousel role="region" aria-roledescription="карусель" aria-label="Знакомство с Анастасией">
-${title('Давайте познакомимся')}
-    <div class="s-about-dots" role="group" aria-label="Выбрать слайд" hidden>
-${aboutSlides.map(([name],index)=>`<button type="button" data-about-dot="${index}" aria-label="${name}"></button>`).join('')}
-    </div>
     <div class="s-about-viewport" tabindex="0" aria-label="Истории об Анастасии">
       <ol>${aboutSlides.map(([name,image,copy])=>`<li>${photo(image,'s-frame')}<div><h3>${name}</h3><p>${copy}</p></div></li>`).join('')}</ol>
+    </div>
+    <div class="s-about-dots" role="group" aria-label="Выбрать слайд" hidden>
+${aboutSlides.map(([name],index)=>`<button type="button" data-about-dot="${index}" aria-label="${name}"></button>`).join('')}
     </div>
     <span class="s-about-status" role="status"></span>
   </div>`;

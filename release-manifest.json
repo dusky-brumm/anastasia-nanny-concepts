@@ -1,6 +1,6 @@
 {
-  "build": "0cee90c3a7",
-  "base_commit": "63eeb3c739db9c2c98e499b0b98018852f9592ce",
+  "build": "2a1d3538ff",
+  "base_commit": "585f64bbfeda59e8f2ae8721e04c673b2be4a6b3",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "1b37470457ee25162ce2ef2e16230d838355d31daba74bef802659472bca08dc",
@@ -21,11 +21,10 @@
     "src/reference/studio/comparison-sections.css": "14e9e47a47315fbcfcc921c57105e18793e904caec50a9acfc47d23c1bdc05d5"
   },
   "included": [
-    "Direct user request: explain the total selection fee, two payment stages and six-month free replacement in one coherent layout",
-    "Remove the family story; show open review quotes with manual arrows, touch scrolling, keyboard controls and a position counter",
-    "Add a fine hand-drawn pencil outline to primary application buttons",
-    "Keep review carousels functional after palette and assembly changes; preserve all existing palettes and comparison choices",
-    "Follow-up request: remove the form explainer, select the thin-line form with shared pencil grain, and match section headings to the hero typeface"
+    "Service begins with the exact heading Собеседую под вашу семью.; replace checklist cards with an existing photo and two concrete interview questions",
+    "Preserve the profile example link and explain the personal comments families receive after the interview",
+    "Keep the four-frame About carousel, remove the general heading and place its controls below the slides",
+    "Use four-frame About in the current comparison and as the default assembly choice"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
@@ -38,5 +37,5 @@
   },
   "direct_request_thread": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
   "direct_request_date": "2026-11-04",
-  "draft_snapshot_note": "These hashes still describe the last consumed shared draft, not this release checkout. Apply future shared-draft deltas against that snapshot; do not restore its old family story, pricing or quote controller."
+  "draft_snapshot_note": "These hashes still describe the last consumed shared draft, not this release checkout. Apply only future shared-draft deltas; do not restore its old service, About heading, family story, pricing or quote controller."
 }

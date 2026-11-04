@@ -65,6 +65,7 @@
         sections.set(style,section);
       }
       preview.replaceChildren(section);
+      document.dispatchEvent(new Event('reviews:refresh'));
       if (part.dataset.assemblyPart === 'about') document.dispatchEvent(new Event('comparison:about-changed'));
       preview.dataset.blockStyle = style;
       preview.dataset.refinement = style;

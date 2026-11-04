@@ -1,7 +1,7 @@
-import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=f215aad846';
-import {renderSite,renderBlock} from './render.js?v=f215aad846';
-import {formatRequest} from '../request.js?v=f215aad846';
-import {requestEndpoint} from './request-endpoint.js?v=f215aad846';
+import {blocks,palettes,comparisonPalettes,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=0cee90c3a7';
+import {renderSite,renderBlock} from './render.js?v=0cee90c3a7';
+import {formatRequest} from '../request.js?v=0cee90c3a7';
+import {requestEndpoint} from './request-endpoint.js?v=0cee90c3a7';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
@@ -143,6 +143,7 @@ function persistState() {
   if(mode==='studio'){try{localStorage.setItem('nastya-design-studio-v1',JSON.stringify(state));}catch{/* The shared link remains available without local storage. */}}
 }
 function refreshControls() {
+  document.dispatchEvent(new Event('reviews:refresh'));
   document.querySelectorAll('[data-palette]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.palette===state.palette));});
   const paletteLabel=document.querySelector('[data-selected-palette]');
   const paletteButton=document.querySelector(`.theme-options [data-palette="${state.palette}"]`);
@@ -165,7 +166,6 @@ function refreshControls() {
     button.disabled=form.getAttribute('aria-busy')==='true';
     if(!liveRequests)return;
     button.firstChild.textContent='Отправить заявку ';
-    form.querySelector('.s-form-note').textContent='Имя, контакт и сообщение будут отправлены Анастасии в Telegram.';
   });
   // Isolated block previews keep their calls to action pointed at the full composition.
   if(mode==='library')document.querySelectorAll('.site-preview a[href*="preview.html"]').forEach(a=>{const url=new URL(a.href,location.href),variant=a.closest('[data-option]').dataset.option;const previewState=selectVariant(state,document.body.dataset.libraryBlock,variant);a.href=designUrl('preview.html',previewState,url.hash.slice(1));});

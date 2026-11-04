@@ -18,7 +18,7 @@ for(const filename of (await readdir(root)).filter(name=>name.endsWith('.html'))
 if(!html.includes('Подберу няню')||!html.includes('Маршрут <span>подбора'))throw Error('Missing reference copy');
 const index=await readFile(path.join(root,'index.html'),'utf8');
 for(const id of ['header','hero','service','about','process','pricing','reviews','apply','footer'])if(!index.includes('data-block="'+id+'"'))throw Error('Missing home-page block '+id);
-for(const file of ['styles.css','fonts.css','journeys.css','routes-gallery.css','studio/site.css','studio/ui.css','studio/pencil-preview.css','studio/comparison-design.css','studio/comparison-sections.css','studio/clear-sections.css','studio/unified-designs.css','studio/contour-design.css','studio/fonts.css']){const css=await readFile(path.join(root,file),'utf8');if((css.match(/\{/g)||[]).length!==(css.match(/\}/g)||[]).length)throw Error('Unbalanced CSS '+file);for(const match of css.matchAll(/url\(([^)]+)\)/g)){const url=match[1].replaceAll(/["']/g,'');if(!url.startsWith('data:'))await stat(path.join(root,path.dirname(file),url));}}
+for(const file of ['styles.css','fonts.css','journeys.css','routes-gallery.css','studio/site.css','studio/ui.css','studio/pencil-preview.css','studio/comparison-design.css','studio/comparison-sections.css','studio/clear-sections.css','studio/unified-designs.css','studio/design-chrome.css','studio/reference-integration.css','studio/contour-design.css','studio/fonts.css']){const css=await readFile(path.join(root,file),'utf8');if((css.match(/\{/g)||[]).length!==(css.match(/\}/g)||[]).length)throw Error('Unbalanced CSS '+file);for(const match of css.matchAll(/url\(([^)]+)\)/g)){const url=match[1].replaceAll(/["']/g,'');if(!url.startsWith('data:')&&!url.startsWith('#'))await stat(path.join(root,path.dirname(file),url));}}
 for(const file of ['app.js','request.js','journeys.js','studio/model.js','studio/render.js','studio/pages.js','studio/app.js','studio/request-endpoint.js','studio/comparison-palettes.js','studio/review-carousel.js','studio/contour-motion.js','studio/comparison-assembly.js','studio/request-ui.js','studio/comparison-request.js','studio/content.js','studio/seo.js']){
   const js=await readFile(path.join(root,file),'utf8');
   if(/__\w+__/.test(js))throw Error('Unrendered module placeholder: '+file);
@@ -39,11 +39,11 @@ async function checkImported(directory){
     if((css.match(/\{/g)||[]).length!==(css.match(/\}/g)||[]).length)throw Error('Unbalanced CSS '+file);
     for(const match of css.matchAll(/url\(([^)]+)\)/g)){
       const url=match[1].replaceAll(/["']/g,'');
-      if(!url.startsWith('data:'))await stat(path.join(path.dirname(file),url));
+      if(!url.startsWith('data:')&&!url.startsWith('#'))await stat(path.join(path.dirname(file),url));
     }
   }
 }
 await checkImported(path.join(root,'studio','variants'));
-for(const file of ['additional-designs.js','additional-templates.js','unified-designs.js'])execFileSync(process.execPath,['--check',path.join(root,'studio',file)]);
+for(const file of ['additional-designs.js','additional-templates.js','unified-designs.js','design-chrome.js','reference-designs.js','reference-templates.js','reference-interactions.js'])execFileSync(process.execPath,['--check',path.join(root,'studio',file)]);
 const files=await readdir(root);if(files.includes('collection.html')||files.includes('atelier'))throw Error('Old gallery in publication');
 console.log('PASS: reference page, block designs, studio/share previews, local assets and fonts, unique IDs, anchors, CSS/JS syntax and imports.');

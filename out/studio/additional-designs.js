@@ -1,6 +1,7 @@
 import {additionalTemplates} from './additional-templates.js';
-import {renderBlock} from './render.js?v=b6b5173283';
-import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=b6b5173283';
+import {renderBlock} from './render.js?v=7243f4a467';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=7243f4a467';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=7243f4a467';
 
 export const additionalDesigns=[
   {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css'},
@@ -13,7 +14,7 @@ export const additionalDesigns=[
 
 export function additionalStyles(design){
   const directory=design.chalk?'chalk':design.mode;
-  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=b6b5173283">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=b6b5173283">`;
+  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=7243f4a467">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=7243f4a467">`;
 }
 
 export function selectedBlock(id,style='quiet',variant=1,drawings=false){
@@ -29,6 +30,6 @@ export function renderAdditionalDesign(design){
   const reviews=selectedBlock('reviews','letter');
   const apply=selectedBlock('apply','letter',2);
   const footer=selectedBlock('footer','quiet',3,Boolean(design.chalk));
-  const content=`${composition.header}<main>${composition.hero}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
+  const content=`${sharedDesignHeader()}<main>${withoutRepeatedHeroLabel(composition.hero)}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
   return `<div class="imported-design imported-${design.mode}" data-font="lora" data-comparison-theme="${approvedTheme.id}" style="${approvedThemeStyle}">${design.chalk?`<div id="chalk-site-directions"><article class="landing ${design.chalk}-page">${content}</article></div>`:design.mode==='journal'?`<div class="journal">${content}</div>`:content}</div>`;
 }

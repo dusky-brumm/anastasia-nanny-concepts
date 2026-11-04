@@ -2,6 +2,7 @@ import {blocks,fontSets,defaults,presets,approvedTheme,approvedThemeStyle,design
 import {renderSite,renderBlock,renderEditorial,renderPencilPreview} from './render.js?v=__VERSION__';
 import {seoHead} from './seo.js?v=__VERSION__';
 import {additionalDesigns,additionalStyles,renderAdditionalDesign} from './additional-designs.js?v=__VERSION__';
+import {referenceDesigns,referencePage} from './reference-designs.js?v=__VERSION__';
 
 export const comparisonDesigns=[
   {mode:'comparison-current',file:'comparison-current.html',name:'Текущий',reviews:'cards',form:1,footer:3,refinement:'quiet'},
@@ -14,6 +15,7 @@ export const comparisonDesigns=[
   {mode:'comparison-contour',file:'comparison-contour.html',name:'Плавный контур',reviews:'cards',form:1,footer:3,hero:10,contour:'wave'},
   {mode:'comparison-thread',file:'comparison-thread.html',name:'Линия-письмо',reviews:'open',form:2,footer:5,hero:11,contour:'letter',single:true},
   ...additionalDesigns,
+  ...referenceDesigns,
 ];
 const preferredDesignFile=design=>design.single?design.file:design.file.replace('.html','-refined.html');
 
@@ -221,6 +223,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
       </div>
     </details>
   </nav>`:'';
+  if(design?.reference)return referencePage(design,pencilSwitcher);
   const description=mode==='preview'||editorial||comparing?'Личный подбор няни под задачи вашей семьи. Поиск, интервью и сопровождение. Анастасия Доронина.':`${compositionCount} композиций блоков сайта, пастельные палитры и согласованные наборы шрифтов.`;
   let pageContent=assembling?comparisonAssembly():blockCompare?comparisonBlockGallery(blockId):content;
   if(editorial)pageContent=`<main class="site-preview editorial" data-font="${defaults.font}" ${fixedThemeAttributes}>${renderEditorial(defaults)}</main>`;
@@ -268,6 +271,7 @@ ${editorial?'<link rel="stylesheet" href="studio/editorial.css?v=__VERSION__">':
 ${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/pencil-preview.css?v=__VERSION__"><link rel="stylesheet" href="studio/comparison-design.css?v=__VERSION__"><link rel="stylesheet" href="studio/comparison-sections.css?v=__VERSION__">':''}
 <link rel="stylesheet" href="studio/clear-sections.css?v=__VERSION__">
 <link rel="stylesheet" href="studio/unified-designs.css?v=__VERSION__"><script defer src="studio/unified-designs.js?v=__VERSION__"></script>
+<link rel="stylesheet" href="studio/design-chrome.css?v=__VERSION__">
 ${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=__VERSION__"><script defer src="studio/contour-motion.js?v=__VERSION__"></script>':''}
 <link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=__VERSION__"></script>
 <script defer src="studio/review-carousel.js?v=__VERSION__"></script>

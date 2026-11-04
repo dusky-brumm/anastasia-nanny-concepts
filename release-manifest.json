@@ -1,6 +1,6 @@
 {
-  "build": "b6b5173283",
-  "base_commit": "efe2d4b22fe8a8ac0e7c77088d54f407b69214b6",
+  "build": "7243f4a467",
+  "base_commit": "7f4284b02628fc55f3c312632c2d7d34f47bad38",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,9 +23,12 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Keep only the improved version in each of the eight paired designs",
-    "Remove ordinary duplicates from design links and dropdowns; keep unpaired designs",
-    "Legacy base URLs render their improved design; comparison and assembly return links open the improved current design"
+    "Eight completed reference designs added to the unified design picker, retaining all nine sections and their distinct full-page compositions",
+    "Shared brand/header/social links and mobile menu in all fourteen imported designs; remove repeated hero label",
+    "Apply the fixed Almost White palette, blue hero glow, green pricing glow and green footer; no retired palette controls",
+    "Four-slide About without a block heading, thin textured form lines, pencil button outline, open review quotes and mobile slider in the new designs",
+    "Latest approved chalk drawings integrated into interview, guarantee, request and compact footer",
+    "Only calmly is underlined; design changes preserve the viewed section"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
@@ -37,10 +40,10 @@
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4",
-    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1a6c1-4301-7e10-987d-d776c3f8927e",
+    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1a896-a3c1-7e22-bdb0-24af8544fe20",
     "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
     "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
-    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1a6c0-bec3-7192-bde1-592bda278806"
+    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1a8a7-326c-7563-b6ed-08093bbbd827"
   },
   "direct_request_thread": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
   "direct_request_date": "2026-11-05",
@@ -140,6 +143,62 @@
     "chalk-directions": {
       "path": "C:/Users/Нат/.codex/visualizations/2026/11/03/01a19f7b-5b25-7e03-8715-e4afa371b7f3/chalk-site-directions.html",
       "sha256_binary": "b044c7a45ad3704c58e1a1b1bb8be531604e6e8f50de12da2f2818814cd495d7"
+    },
+    "nastya-eight-references": {
+      "path": "C:\\Users\\Нат\\Documents\\ChatGPT\\Anastasia\\sites\\nastya-eight-references\\dist",
+      "source_chat": "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc",
+      "source_turn": "01a1a8a7-326c-7563-b6ed-08093bbbd827",
+      "sha256_binary": {
+        "01-jenny.html": "de0996184a5af4aecd54b3ca9d1e270d8d89b452a3a76a9ad1d3a212619d50cd",
+        "02-elliot.html": "788c83a7613ecd68ac48f7982aad474035415426cff10e69588fee0a82a85f45",
+        "03-josephine.html": "a9e264bb83219194ff6d8ff7c056b34fa4cd312ce5763736686287c82a509e8d",
+        "04-leyla.html": "bb4dac93133790daecaa9637fe7e47f0c572b8c7402ab8ecd9ac372a2a53d748",
+        "05-yoga.html": "403b5d089dfe79d4cfb8ac9d639725c4c0dbeec80e0108725f30a61bd231d426",
+        "06-maren.html": "3fa2eebf7bec2b583cdb17c92038e9268397ecb458782c67afc9f0354079290b",
+        "07-marina.html": "075688f54d346941d4b2a3c47d3778d864c18fb9f87001c4a270aa1223a4b947",
+        "08-elena.html": "5ec573b39eed4df2daadd512c5e8bfcebff42ccdd9253ec882dee94ba5fb72cd",
+        "assets/anastasia.webp": "5e6ec29ecc0d0b51eef02bae01c3a355363cf2dc719ba1ab0d00c1b1f788eb4a",
+        "assets/cafe.webp": "cb7bc53925d87c810c3dd6e1f0c305957ca2e10a9a9a78f15c2859f313e98f83",
+        "assets/child.webp": "b8a4eec3dc69884ca9b0f08527c119bdaae9a7d02d5d3208625899e9944a0a5f",
+        "assets/family.webp": "b886eaee4110e18aece546fcd3be57cf4a0a9ce092bf99c1373e697140f4923c",
+        "assets/favicon.svg": "effd9e877002fccb3357fd99db4c015445a89f378e972b120538982f02bd23c6",
+        "assets/julia.webp": "ee67d9cca0a815c6e3ec7d1256cd651f704c7ed99d63004b592dc7da10ea4211",
+        "assets/natalia.webp": "28551bb7e68dbbc5c8ce9b594e7a1c768491abf334679e2b61a7e46827538012",
+        "assets/rainbow.webp": "694cd93caa508a3cd81f2822dd4a5b1fb0814e72035524a66e3545522efb5fc7",
+        "base.css": "b224de6fae357f8bd7b1bb0d8be502aee80bcecc70e3b25134bc20e30d617162",
+        "fonts/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nA.woff2": "723cc14fe86bc9fadb2f5f34efb421d246edb240a18d2a7828d2edc041d79996",
+        "fonts/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoqt2nOeZ.woff2": "aaeb039ba0ecdbc75108a6f66ee9f6745315412de78a4061cc90365b513fc4a3",
+        "fonts/0QIvMX1D_JOuMw77I-NP.woff2": "c57d9ca3bd42e6bc093badc7744dd2059a78f66a3a4dc6ca40574480c870f553",
+        "fonts/0QIvMX1D_JOuMwr7Iw.woff2": "ddb8c66035104e233fc024669183aad3738b6daa16deee2ebb1241bd0f98ace1",
+        "fonts/caveat-OFL.txt": "6be75733f5ff1e7eb72f147f489db88752c890c9c70292be8e2460d7ef77f5bb",
+        "fonts/Golos-Text-OFL.txt": "c297dc35f0589d211d1c5ca02e0c0309a8dff1b433a606a0e281593b172e2fa1",
+        "fonts/Lora-OFL.txt": "dbb965f4564a8a75bd563ce3773962517deeaf0c2929ba89690d89f8418af911",
+        "fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2": "17d048ca05cb1218af3c0d6dcdf882989e6d1cc5dcb598ea50eaf54850ff7229",
+        "fonts/q5uCsoe9Lv5t7Meb31EcExN8hA.woff2": "9a69d0aa4734c4022224c002a3d944a702e0204972a49d892789f5668b922c2a",
+        "fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SII.ttf": "012f33f9814bf9614973983335c3a375fe267c094e7c09a02a276cd1dcd4180a",
+        "fonts.css": "211f33b4cbd6da603c0cf036b8ac59034abda0eceb756e8938b5ae5b52f2353d",
+        "index.html": "f46aa454f71adeff2395964f434ca59a8c7040a356fc76fbd7064f18e3f53121",
+        "looks/01-jenny.css": "1cf2ed84f0fd730bd7113bfba5dcbe46c82ddf3933831d0f044be80b65b50bc4",
+        "looks/02-elliot.css": "2404da132a4ef6c2ae7cc49e9a5ee3ea80ca8d8220097e2264b6927f49b091bc",
+        "looks/03-josephine.css": "d06b4a5b6cef23caa6d9292511066dbc8b4baccbd57c1ac78e6ca86ba46b31d6",
+        "looks/04-leyla.css": "8cbf60155d743ed77f8d3348c0e69ecea09b8a0335e1459d1ebb91c52220da2d",
+        "looks/05-yoga.css": "b1a83bf2a1ba995a8fcdd0659f153ddccf8f03a7e3773582b97f1873958df84b",
+        "looks/06-maren.css": "770887d02fe10be6fef7b3f581a529f05911b6d70250a3c1c79ae19d26529698",
+        "looks/07-marina.css": "8c580c1cd2e57a3e43327268dd2290f8d29b65a59125f6088035f683a0246f75",
+        "looks/08-elena.css": "9ed8a3b7790c9773923e5c9fc114c0686f43937f2ca23e9e5de97bc521a7fa3b",
+        "looks/common.css": "1efa1f0c69ef5579ddbfff932db19220d4390ed7e7cd3bd69a3bc5aeb0ed45ec",
+        "looks/gallery.css": "336cea075e09e12882c861fe611c4814c89ea642ed1e68724d2efd9c1f62ebf8",
+        "page.js": "7b15179b04e904ed01fcf75751246bd3d8c7c5da11d7193b17e676ae8ec51734",
+        "palette.css": "0c6dff03394fda8054562c133321bcde2c708fdb7800fd779d802d4944538ee7",
+        "previews/01-jenny.jpg": "1a875ea5f39164d627618cb78f93f4678c541a33e661e52b35bbfb1a3c08df74",
+        "previews/02-elliot.jpg": "4d33a1036915d35c94a188136c8b47b02355f394e1bdc9325cc5e4f2d797d5ec",
+        "previews/03-josephine.jpg": "75ea930c2969307fa661a16ccab1bf26077c079ead9f730cd508976dcb29263f",
+        "previews/04-leyla.jpg": "f076e11934ef6fdc3ef68d93c72d9d35fe26055c1b4ff4e915dcabd1e8a46216",
+        "previews/05-yoga.jpg": "697d90dc0b06ad0eef5c74f14ad32524f5eae0b2f749d5f2d365a9a1cef523c0",
+        "previews/06-maren.jpg": "c010147317ab8c31ff49af8879d8c794bf5f469485c1e209d13fd82f4c361364",
+        "previews/07-marina.jpg": "e31881620b94d10b4d6768982c998bc00ac6e54c891057b08a3606eaa6d670a0",
+        "previews/08-elena.jpg": "1cb296a7f0390b4d0dc5f6bc66b7222ac6ec2582c64adcf245edde9cb8bd39a1"
+      }
     }
   },
   "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched.",
@@ -163,5 +222,33 @@
     ],
     "source_note": "Later decisions in the continued rollout supersede earlier requests for palette menus. Preserve these decisions when integrating separate design projects unless the user changes them explicitly.",
     "paired_design_policy": "Keep only improved variants; base URLs remain compatible and render the improved variant."
+  },
+  "reviewed_decisions": {
+    "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
+    "theme": "Almost White; blue center hero gradient; green pricing gradient; green footer; no color controls",
+    "header": "Anastasia Doronina · Individual nanny selection, uniform uppercase lettering; Telegram and Instagram before service menu; collapse on mobile",
+    "content": "Remove repeated hero labels; preserve current section when switching designs; underline only спокойно; white photo frames",
+    "current_chat_overrides": "Four-frame About without heading; reviews without family stories; textured thin form lines and pencil button; only improved designs where paired",
+    "reference_compositions": "The later eight-reference request retains each full native composition and section order; shared controls/content adapted without replacing designs with one template"
+  },
+  "validation": {
+    "build": "passed",
+    "static": "passed",
+    "tests": "22/22",
+    "browser": {
+      "desktop_width": 1280,
+      "mobile_width": 320,
+      "new_designs": 8,
+      "horizontal_overflow": false,
+      "controls": [
+        "mobile menu",
+        "four About slides",
+        "review next",
+        "Yoga service tabs",
+        "local request preparation",
+        "cross-design section restoration"
+      ],
+      "console_errors": 0
+    }
   }
 }

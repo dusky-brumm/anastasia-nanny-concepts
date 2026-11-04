@@ -43,6 +43,7 @@ body[data-fixed-theme=almost-white] :is(.site-preview,.imported-design) #pricing
  background:radial-gradient(ellipse 65% 80% at 50% 48%,var(--soft),transparent 78%),var(--paper);
 }
 body[data-fixed-theme=almost-white] :is(.site-preview,.imported-design) #footer {background:var(--soft)}
+body[data-fixed-theme=almost-white] :is(.site-preview,.imported-design) #apply {background:var(--paper)}
 @media (max-width:760px) {
  .design-panel {flex-wrap:wrap;gap:8px}
  .design-version-label {max-width:100%;flex:1 1 180px}

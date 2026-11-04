@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,approvedTheme} from '../../src/reference/studio/model.js';
 import {studioPage,comparisonBlockChoices,comparisonDesigns} from '../../src/reference/studio/pages.js';
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
+import {referenceDesigns} from '../../src/reference/studio/reference-designs.js';
 
 test('completed design comparisons retain all sections and exclude the three cancelled options',()=>{
-  const modes=comparisonDesigns.flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
+  const modes=comparisonDesigns.filter(design=>!design.reference).flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
   const order=['header','hero','service','about','process','pricing','reviews','apply','footer'];
   for(const mode of modes){
     const html=studioPage(mode,'hero',mode+'.html');
@@ -27,6 +28,30 @@ test('completed design comparisons retain all sections and exclude the three can
   assert.equal([...reference.matchAll(/data-about-dot="/g)].length,4);
   assert.match(reference,/M389 85C395 158/);
   assert.match(studioPage('preview','hero','index.html'),/value="comparison-current-refined.html/);
+});
+
+test('eight finished reference compositions keep their layouts and the latest shared decisions',()=>{
+  assert.equal(referenceDesigns.length,8);
+  for(const design of referenceDesigns){
+    const html=studioPage(design.mode,'hero',design.file);
+    for(const id of ['header','hero','service','about','process','pricing','reviews','apply','footer']){
+      assert.equal(html.split(`data-block="${id}"`).length-1,1,`${design.id}: ${id}`);
+    }
+    assert.match(html,new RegExp(`look-${design.id}`));
+    assert.match(html,/Анастасия Доронина · Индивидуальный подбор нянь/);
+    assert.match(html,/aria-label="Telegram"/);
+    assert.match(html,/aria-label="Instagram"/);
+    assert.match(html,/Собеседую/);
+    assert.equal([...html.matchAll(/data-reference-story="/g)].length,4);
+    assert.doesNotMatch(html,/id="about-title"|История семьи|Форму на сайте можно использовать/);
+    const hero=html.match(/<section id="hero"[\s\S]*?<\/section>/)[0];
+    assert.doesNotMatch(hero,/Индивидуальный подбор нян/);
+    assert.match(html,/id="review-cards"/);
+    assert.match(html,/reference-drawing--plane/);
+    assert.match(html,/reference-drawing--calendar/);
+    assert.match(html,/studio\/comparison-request.js/);
+    assert.match(html,/data-comparison-site/);
+  }
 });
 
 test('all six formerly separate designs share navigation and retain the selected blocks',()=>{

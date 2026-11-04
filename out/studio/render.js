@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=b6b5173283';
-import {renderJourney} from '../journeys.js?v=b6b5173283';
-import {contacts,selectionFaq} from './content.js?v=b6b5173283';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=7243f4a467';
+import {renderJourney} from '../journeys.js?v=7243f4a467';
+import {contacts,selectionFaq} from './content.js?v=7243f4a467';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -134,7 +134,7 @@ function contourTransition(id) {
 }
 function title(text,after='') {return `<div class="s-section-heading"><h2>${text}</h2>${after}</div>`;}
 function items(list,cls='') {return `<div class="s-items ${cls}">${list.map(([a,b],i)=>`<article><span class="s-index" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><h3>${a}</h3><p>${b}</p></article>`).join('')}</div>`;}
-const headerSocials = `<div class="s-header-socials">
+export const headerSocials = `<div class="s-header-socials">
   <a href="${telegram}" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.7 21 4 17.2 20l-5.5-4.3-3 2.8-.1-5.2L3 10.7ZM8.6 13.3 17.5 7.5l-5.8 8.2"/></svg>
   </a>
@@ -195,7 +195,7 @@ function service(v,c) {
   if(v===5)return `${heading}<div class="s-service-panels"><article><h3>График, привычки<br>и правила семьи</h3><p>${services[0][1]}</p><p>${services[1][1]}</p></article><article><h3>Подробные профили<br>и личные рекомендации</h3><p>${services[2][1]}</p><p>Обсуждаем каждого кандидата и готовимся к знакомству.</p></article></div>`;
   return `${heading}${v===3?scribble:''}${items(services)}${interview}`;
 }
-const aboutSlides=[
+export const aboutSlides=[
   ['Меня зовут Анастасия','about-portrait',biography],
   ['Я старшая сестра','rainbow',familyStory],
   ['От работы с детьми к подбору нянь','family',background],

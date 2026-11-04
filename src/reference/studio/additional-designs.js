@@ -1,6 +1,7 @@
 import {additionalTemplates} from './additional-templates.js';
 import {renderBlock} from './render.js?v=__VERSION__';
 import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=__VERSION__';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=__VERSION__';
 
 export const additionalDesigns=[
   {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css'},
@@ -29,6 +30,6 @@ export function renderAdditionalDesign(design){
   const reviews=selectedBlock('reviews','letter');
   const apply=selectedBlock('apply','letter',2);
   const footer=selectedBlock('footer','quiet',3,Boolean(design.chalk));
-  const content=`${composition.header}<main>${composition.hero}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
+  const content=`${sharedDesignHeader()}<main>${withoutRepeatedHeroLabel(composition.hero)}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
   return `<div class="imported-design imported-${design.mode}" data-font="lora" data-comparison-theme="${approvedTheme.id}" style="${approvedThemeStyle}">${design.chalk?`<div id="chalk-site-directions"><article class="landing ${design.chalk}-page">${content}</article></div>`:design.mode==='journal'?`<div class="journal">${content}</div>`:content}</div>`;
 }

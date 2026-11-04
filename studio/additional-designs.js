@@ -1,6 +1,6 @@
 import {additionalTemplates} from './additional-templates.js';
-import {renderBlock} from './render.js?v=b41e877658';
-import {defaults} from './model.js?v=b41e877658';
+import {renderBlock} from './render.js?v=aa993d7b31';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=aa993d7b31';
 
 export const additionalDesigns=[
   {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css'},
@@ -13,7 +13,7 @@ export const additionalDesigns=[
 
 export function additionalStyles(design){
   const directory=design.chalk?'chalk':design.mode;
-  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=b41e877658">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=b41e877658">`;
+  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=aa993d7b31">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=aa993d7b31">`;
 }
 
 export function selectedBlock(id,style='quiet',variant=1,drawings=false){
@@ -30,5 +30,5 @@ export function renderAdditionalDesign(design){
   const apply=selectedBlock('apply','letter',2);
   const footer=selectedBlock('footer','quiet',3,Boolean(design.chalk));
   const content=`${composition.header}<main>${composition.hero}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
-  return `<div class="imported-design imported-${design.mode}" data-font="lora">${design.chalk?`<div id="chalk-site-directions"><article class="landing ${design.chalk}-page">${content}</article></div>`:design.mode==='journal'?`<div class="journal">${content}</div>`:content}</div>`;
+  return `<div class="imported-design imported-${design.mode}" data-font="lora" data-comparison-theme="${approvedTheme.id}" style="${approvedThemeStyle}">${design.chalk?`<div id="chalk-site-directions"><article class="landing ${design.chalk}-page">${content}</article></div>`:design.mode==='journal'?`<div class="journal">${content}</div>`:content}</div>`;
 }

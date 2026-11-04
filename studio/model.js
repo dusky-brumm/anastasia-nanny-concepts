@@ -37,6 +37,14 @@ export const explorationPalettes = [
   {id:'mist',name:'Утренний туман',paper:'#fcfaf5',wash:'#e6f0f4',soft:'#e7eee7',card:'#ffffff',ink:'#2e4140',leaf:'#a8c0b4',accent:'#49686d',button:'#49686d'},
   {id:'garden',name:'Сад после дождя',paper:'#fafaf4',wash:'#e8f1f4',soft:'#e4efe8',card:'#ffffff',ink:'#293e36',leaf:'#abc3ac',accent:'#456756',button:'#456756'},
 ];
+// Final decision in «Первый блок», 3 November: one fixed palette, no colour controls.
+export const approvedTheme = Object.freeze({
+  ...explorationPalettes.find(theme=>theme.id==='almost-white'),
+  button:'#526c73',wine:'#385a6b',pencil:'#385a6b',
+});
+export const approvedThemeStyle = Object.entries(approvedTheme)
+  .filter(([key])=>key!=='id'&&key!=='name')
+  .map(([key,value])=>`--${key}:${value}`).join(';');
 export const fontSets = [
   {id:'golos',name:'Manrope + Golos Text',note:'Современный основной набор'},
   {id:'lora',name:'Lora + Golos Text',note:'Мягкая книжная типографика'},
@@ -73,7 +81,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'b41e877658'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'aa993d7b31'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
   const token=String(value);

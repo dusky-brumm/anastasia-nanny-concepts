@@ -1,6 +1,6 @@
 {
-  "build": "793c3907eb",
-  "base_commit": "71584bdee4df9c544051b41ccedd9758e79ac31f",
+  "build": "be173e1347",
+  "base_commit": "24466a56e83b3a80c07bee50f09253483ceca7c7",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,15 +23,15 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Replace all six legacy price options with one concise layout: one nanny salary, included search/interviews/family support, advance 25,000 rubles at start, remainder after 1–2 trial weeks, six months free replacement",
-    "Use modest typography and three graphite-separated conditions across legacy full designs and mixed assembly; retain all eight new reference designs unchanged"
+    "Remove complete designs 3, 4 and 6 from all navigation and delete their base/refined published pages",
+    "Retain the improved form layouts from designs 4 and 6 in comparison and mixed assembly; use graphite-textured frames, fields and buttons instead of solid/dashed decorative borders"
   ],
   "excluded": [
-    "Cancelled designs 2, 5 and 8",
+    "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
     "Old family-story review content and stale form/footer/service markup",
     "Superseded palette menus and custom color controls",
     "Main site navigation entry",
-    "Ordinary versions of the eight paired designs"
+    "Ordinary versions of retained paired designs"
   ],
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
@@ -228,22 +228,31 @@
     "reference_compositions": "The later eight-reference request retains each full native composition and section order; shared controls/content adapted without replacing designs with one template",
     "full_width_reference_backgrounds": "Explicit user request, 5 November: new design backgrounds extend across the full viewport like the first designs",
     "reference_block_comparison": "Explicit user request: add blocks from the new versions to comparison; include the first screen and retain existing choices",
-    "legacy_pricing": "User explicitly rejected the six old price layouts through the two-panel option; replace them with one compact explanation and three equal conditions, preserving the eight new designs"
+    "legacy_pricing": "User explicitly rejected the six old price layouts through the two-panel option; replace them with one compact explanation and three equal conditions, preserving the eight new designs",
+    "retired_designs": "Explicit user request: completely withdraw full designs 3, 4 and 6; keep form block layouts from improved designs 4 and 6 with drawn outlines"
   },
   "validation": {
     "build": "passed",
     "static": "passed",
-    "tests": "23/23",
+    "tests": "24/24",
     "browser": {
       "viewport_widths": [
         1440,
         390
       ],
-      "desktop_heading_px": 32,
-      "desktop_values_px": 22,
-      "conditions": "three columns desktop / stacked mobile",
-      "legacy_price_links": "fall back to the replacement while retaining other selected blocks",
-      "new_reference_designs": "all eight full designs and price previews unchanged except build stamps",
+      "design_navigation_count": 20,
+      "removed_full_designs": [
+        3,
+        4,
+        6
+      ],
+      "forms": [
+        "album: original variant 1, two input columns on wide screens",
+        "air: original variant 2, one input column"
+      ],
+      "borders": "native borders removed; graphite frame asset used by form, fields and button",
+      "request_draft": "passed",
+      "assembly_selection_reload": "passed",
       "horizontal_overflow": false
     }
   }

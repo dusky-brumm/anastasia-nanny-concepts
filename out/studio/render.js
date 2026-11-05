@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=793c3907eb';
-import {renderJourney} from '../journeys.js?v=793c3907eb';
-import {contacts,selectionFaq} from './content.js?v=793c3907eb';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=be173e1347';
+import {renderJourney} from '../journeys.js?v=be173e1347';
+import {contacts,selectionFaq} from './content.js?v=be173e1347';
 
 const telegram=contacts.telegram;
 const media='studio/media/';
@@ -296,7 +296,7 @@ function reviews(v,c) {
   }
   return `${title('Что говорят семьи')}<div class="s-review-grid">${testimonials.map(row=>reviewCard(row)).join('')}</div><a class="s-text-link" href="${contacts.channel}" target="_blank" rel="noopener noreferrer">Больше отзывов в Telegram ↗</a>`;
 }
-function form(comparison=false,lines=!comparison) {return `<form class="s-consult-form${lines?' s-form-lines':''}" method="post"><div hidden><label>Сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="${comparison?4:3}" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div></div><p class="s-request-status" role="status"></p></form>`;}
+function form(comparison=false,lines=!comparison) {return `<form class="s-consult-form${lines?' s-form-lines':' s-form-pencil'}" method="post"><div hidden><label>Сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="80" required></label><label>Телефон или Telegram<input name="contact" autocomplete="tel" maxlength="100" required></label><label class="s-form-message">Несколько слов о запросе<textarea name="message" rows="${comparison?4:3}" maxlength="2000" placeholder="Возраст ребёнка, график и необходимая помощь"></textarea></label><button class="s-button" type="submit" disabled>Подготовить заявку <span aria-hidden="true">→</span></button><div class="s-draft" hidden><label>Текст заявки<textarea name="draft" rows="6" readonly></textarea></label><div class="s-actions"><button type="button" class="s-copy">Скопировать</button>${tg('Открыть Telegram')}</div></div><p class="s-request-status" role="status"></p></form>`;}
 function apply(v,c) {if(c.comparison)return `<div class="s-apply-intro">${title('Обсудить подбор')}<p>Оставьте контакт, чтобы договориться о созвоне.</p><div class="comparison-form-contact">${tg('Написать в Telegram')}</div>${c.contourDirection?contourDrawing('apply'):''}</div>${form(true,c.blockStyle==='letter'||c.formStyle==='letter')}`;return `<div class="s-apply-intro">${v===5?'<div class="s-apply-avatar">'+photo('cafe')+'</div>':''}${title('Готовы обсудить подбор?')}<p>Оставьте контакт для связи. Я уточню задачи семьи и расскажу, как проходит подбор.</p>${v===3?'<p class="s-signature">Анастасия</p>':tg()}${v===4?'<p class="s-contact-caption">Можно сразу написать мне лично.</p>':''}${v===3?scribble:''}</div>${form()}`;}
 function footer(v,c) {
   const grain=`footer-pencil-${c.previewId??c.blockId??v}`;

@@ -7,9 +7,6 @@ import {referenceDesigns,referencePage,referenceBlockFile} from './reference-des
 export const comparisonDesigns=[
   {mode:'comparison-current',file:'comparison-current.html',name:'Текущий',reviews:'cards',form:1,footer:3,refinement:'quiet'},
   {mode:'pencil',file:'pencil-preview.html',name:'Вариант 1',reviews:'open',form:2,footer:2,refinement:'letter'},
-  {mode:'pencil-panorama',file:'pencil-panorama.html',name:'Вариант 3',reviews:'cards',form:2,footer:2,refinement:'panorama'},
-  {mode:'pencil-album',file:'pencil-album.html',name:'Вариант 4',reviews:'feature',form:3,footer:5,refinement:'album'},
-  {mode:'comparison-gradients',file:'comparison-gradients.html',name:'Вариант 6',reviews:'open',form:1,footer:2,refinement:'air'},
   {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:7,refinement:'route'},
   {mode:'comparison-reference',file:'comparison-reference.html',name:'Вариант 9',reviews:'open',form:2,footer:5,layout:'112111113',wavyArrows:true,refinement:'reference'},
   {mode:'comparison-contour',file:'comparison-contour.html',name:'Плавный контур',reviews:'cards',form:1,footer:3,hero:10,contour:'wave'},
@@ -31,7 +28,7 @@ export const comparisonBlockChoices = {
     ['quiet','Две открытые цитаты',1,'cards'], ['letter','Цитаты с тонкими линиями',1,'open'], ['album','Одна большая цитата',1,'ribbon'],
   ]],
   apply: ['Форма', [
-    ['quiet','Светлая карточка',1], ['letter','Тонкие линии',2], ['album','Мягкая рамка',3], ['route','Пунктирная рамка',3], ['reference','Поля с подчёркиванием',1],
+    ['quiet','Светлая карточка',1], ['letter','Тонкие линии',2], ['album','Два поля рядом · из варианта 4',1], ['air','Поля друг под другом · из варианта 6',2], ['route','Рисованная рамка',3], ['reference','Поля с подчёркиванием',1],
   ]],
   service: ['Об услуге', [
     ['quiet','Личное интервью и фото',1], ['letter','Фото и открытые строки',2], ['panorama','Запрос и результат',5],
@@ -83,9 +80,10 @@ function comparisonBlockGallery(blockId) {
   const [title, choices] = comparisonBlockChoices[blockId];
   const previews = choices.map(([style,label,variant,reviews='cards'], index) => {
     const design = comparisonDesigns.find(item => item.refinement === style || item.mode === style);
-    const previewFile = preferredDesignFile(design) + '?v=__VERSION__';
-    const state = {...defaults, layout:design.layout ?? defaults.layout};
-    const context = {state, comparison:true, blockStyle:style, wavyArrows:design.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
+    const previewFile = design ? preferredDesignFile(design) + '?v=__VERSION__'
+      : `compare-assembly.html?v=__VERSION__&amp;${blockId}=${style}`;
+    const state = {...defaults, layout:design?.layout ?? defaults.layout};
+    const context = {state, comparison:true, blockStyle:style, wavyArrows:design?.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
     return `<article id="choice-${index + 1}" class="block-compare-choice" data-gallery-choice="${style}">
       <header><h2>${label}</h2><div class="block-compare-actions">
         <a href="${previewFile}#${blockId}">Макет в этом стиле ↗</a>
@@ -248,9 +246,6 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
       const changes = {
         quiet: {about:1},
         letter: {service:2,about:3},
-        panorama: {service:5},
-        album: {about:4},
-        air: {about:5},
       }[design.refinement] ?? {};
       for (const [block, variant] of Object.entries(changes)) {
         state = selectVariant(state,block,variant);

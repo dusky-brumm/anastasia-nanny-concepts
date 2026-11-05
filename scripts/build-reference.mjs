@@ -38,6 +38,10 @@ for(const design of referenceDesigns){
 await rm(path.join(output,'comparison-quotes.html'),{force:true});
 await rm(path.join(output,'pencil-journal.html'),{force:true});
 await rm(path.join(output,'pencil-journal-refined.html'),{force:true});
+// These complete designs were withdrawn; their selected blocks remain in the gallery.
+for(const name of ['pencil-panorama','pencil-album','comparison-gradients']){
+  for(const suffix of ['','-refined'])await rm(path.join(output,`${name}${suffix}.html`),{force:true});
+}
 for(const {mode,file,single} of comparisonDesigns){
   await writeFile(path.join(output,file),studioPage(mode,'hero',file).replaceAll('__VERSION__',version));
   if(single)continue;

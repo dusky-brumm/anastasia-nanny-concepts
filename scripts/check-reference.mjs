@@ -46,4 +46,7 @@ async function checkImported(directory){
 await checkImported(path.join(root,'studio','variants'));
 for(const file of ['additional-designs.js','additional-templates.js','unified-designs.js','design-chrome.js','reference-designs.js','reference-templates.js','reference-interactions.js','reference-frames.js'])execFileSync(process.execPath,['--check',path.join(root,'studio',file)]);
 const files=await readdir(root);if(files.includes('collection.html')||files.includes('atelier'))throw Error('Old gallery in publication');
+for(const name of ['pencil-panorama','pencil-album','comparison-gradients']){
+  for(const suffix of ['','-refined'])if(files.includes(`${name}${suffix}.html`))throw Error('Withdrawn design in publication: '+name);
+}
 console.log('PASS: reference page, block designs, studio/share previews, local assets and fonts, unique IDs, anchors, CSS/JS syntax and imports.');

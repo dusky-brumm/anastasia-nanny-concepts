@@ -5,7 +5,7 @@ import {studioPage,comparisonBlockChoices,comparisonDesigns} from '../../src/ref
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../../src/reference/studio/reference-designs.js';
 
-test('completed design comparisons retain all sections and exclude the three cancelled options',()=>{
+test('completed design comparisons retain all sections and exclude cancelled options',()=>{
   const modes=comparisonDesigns.filter(design=>!design.reference).flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
   const order=['header','hero','service','about','process','pricing','reviews','apply','footer'];
   for(const mode of modes){
@@ -16,7 +16,7 @@ test('completed design comparisons retain all sections and exclude the three can
     assert.match(html,/data-open-quotes/);
     assert.match(html,/studio\/review-carousel.js/);
     assert.match(html,/s-request-status/);
-    assert.doesNotMatch(html,/>Вариант (2|5|8)<\/a>/);
+    assert.doesNotMatch(html,/>Вариант (2|3|4|5|6|8)<\/(?:a|option)>/);
     assert.doesNotMatch(html,/data-comparison-palette|data-color-role=|Основной сайт/);
     assert.match(html,/data-comparison-theme="almost-white"/);
     assert.match(html,/s-pricing-summary/);
@@ -92,8 +92,23 @@ test('block galleries and assembly preserve the current hero and local request w
     assert.doesNotMatch(gallery,/data-live-request/);
     total+=choices.length;
   }
-  assert.equal(total,85);
+  assert.equal(total,86);
   assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet',...referenceDesigns.map(design=>design.mode)]);
+});
+
+test('withdrawn full designs preserve the two selected form layouts without dead links',()=>{
+  assert.ok(!comparisonDesigns.some(({mode})=>['pencil-panorama','pencil-album','comparison-gradients'].includes(mode)));
+  const gallery=studioPage('comparison-library','apply','compare-block-apply.html');
+  for(const [style,variant] of [['album',1],['air',2]]){
+    const article=gallery.match(new RegExp(`data-gallery-choice="${style}"[\\s\\S]*?</article>`))[0];
+    assert.ok(article.includes(`s-apply--${variant}`));
+    assert.ok(article.includes('s-form-pencil'));
+    assert.ok(article.includes(`compare-assembly.html?v=__VERSION__&amp;apply=${style}#apply`));
+  }
+  for(const id of Object.keys(comparisonBlockChoices)){
+    const html=studioPage('comparison-library',id,`compare-block-${id}.html`);
+    assert.doesNotMatch(html,/(?:pencil-panorama|pencil-album|comparison-gradients)(?:-refined)?\.html/);
+  }
 });
 
 test('new designs expose eight isolated, complete blocks with working cross-section links',()=>{

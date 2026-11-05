@@ -113,6 +113,14 @@
 .site-preview .s-apply .s-form-lines>.s-button {margin-top:4px}
 .site-preview .s-form-lines .s-draft {padding:20px;background:var(--wash)}
 
+/* Keep the two retained form layouts; replace every decorative border with pencil grain. */
+.site-preview .s-apply .s-consult-form.s-form-pencil {position:relative;border:0;box-shadow:none}
+.s-form-pencil::before {content:'';position:absolute;inset:-3px;background:var(--accent);mask:url('pencil-frame.svg') center/100% 100% no-repeat;pointer-events:none;opacity:.8}
+.site-preview .s-apply .s-form-pencil :is(input,textarea) {border:0;border-radius:6px;background:var(--paper) url('pencil-frame.svg') center/100% 100% no-repeat;padding:13px 14px}
+.site-preview .s-form-pencil .s-button::before {mask-image:url('pencil-frame.svg')}
+.comparison-form-contact .s-text-link {position:relative;border:0}
+.comparison-form-contact .s-text-link::after {content:'';position:absolute;inset:auto 0 -3px;height:9px;background:var(--accent);mask:url('pencil-rule.svg') center/100% 100% no-repeat;pointer-events:none}
+
 @container (max-width:650px) {
   .s-service-personal,.s-service--2 .s-service-personal {grid-template-columns:1fr;grid-template-areas:'intro' 'photo' 'examples' 'result';gap:28px}
   .s-service-photo {width:min(100%,400px);justify-self:center;aspect-ratio:1.15}

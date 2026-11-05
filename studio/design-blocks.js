@@ -33,7 +33,7 @@ export function designBlockPage(design,id,html) {
   const ids=new Set([...markup.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
   const file=design.single?design.file:design.file.replace('.html','-refined.html');
   const block=markup.replace(/href="#([^"]+)"/g,(attribute,target)=>ids.has(target)?attribute:
-    `href="${file}?v=71b1cdab93#${target}" target="_top" data-reference-target="${target}"`);
+    `href="${file}?v=0da2c899b1#${target}" target="_top" data-reference-target="${target}"`);
   const open=ancestors.map(node=>node.open.replace(/ data-site-root\b/,'')).join('');
   const close=ancestors.toReversed().map(node=>`</${node.tag}>`).join('');
   const dialog=html.match(/<dialog\b[\s\S]*?<\/dialog>/)?.[0]??'';
@@ -46,9 +46,9 @@ export function designBlockPage(design,id,html) {
 // IDs and cross-section destinations differ between a gallery and a full page.
 // They do not make a second visual option. Explicit shared sections have one key.
 export function blockIdentity(id,markup,style='quiet',family='native') {
-  if(id==='header')return 'shared-header';
-  if(id==='pricing'&&family!=='reference')return 'approved-three-conditions';
-  if(id==='footer'&&family!=='reference')return /contour-drawing/.test(markup)?'footer-plane':'footer-sketch';
+  if(id==='header'&&family!=='illustrated')return 'shared-header';
+  if(id==='pricing'&&!['reference','illustrated'].includes(family))return 'approved-three-conditions';
+  if(id==='footer'&&!['reference','illustrated'].includes(family))return /contour-drawing/.test(markup)?'footer-plane':'footer-sketch';
   // The shared components have the same composition in several full designs.
   // Font inheritance alone is not another block; keep real layout and drawing changes.
   if(id!=='hero'&&family!=='reference'){

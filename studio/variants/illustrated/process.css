@@ -1,0 +1,112 @@
+#chalk-process-designs { --process-paper:#fcfcfa; --process-wash:#e7f1f6; --process-soft:#e8efe4; --process-ink:#28353c; --process-blue:#385a6b; --process-leaf:#879e80; }
+    #chalk-process-designs .process-design { container-type:inline-size; overflow:hidden; border-radius:16px; background:var(--process-paper); color:var(--process-ink); font:400 15px/1.55 'Golos Text',Arial,sans-serif; --process-chalk:.96; }
+    #chalk-process-designs .process-design[hidden] { display:none; }
+    #chalk-process-designs .process-scene { min-height:865px; padding:clamp(28px,4.8cqw,48px); }
+    #chalk-process-designs .process-eyebrow { margin:0 0 13px; color:var(--process-blue); font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+    #chalk-process-designs h2 { margin:0; font:400 clamp(34px,4.9cqw,48px)/1.08 'Lora',Georgia,serif; letter-spacing:-.03em; text-wrap:balance; }
+    #chalk-process-designs .process-intro { max-width:49ch; margin:18px 0 0; }
+    #chalk-process-designs .process-art { display:block; width:100%; height:100%; overflow:visible; opacity:var(--process-chalk); pointer-events:none; }
+    #chalk-process-designs h3 { margin:0; font:500 17px/1.3 'Golos Text',Arial,sans-serif; letter-spacing:-.02em; text-wrap:balance; }
+    #chalk-process-designs .step-copy { margin:10px 0 0; font-size:15px; line-height:1.65; }
+    #chalk-process-designs .step-id { display:block; margin-bottom:9px; font-size:12px; color:var(--process-blue); letter-spacing:.07em; }
+    #chalk-process-designs .step-list { list-style:none; margin:0; padding:0; }
+    #chalk-process-designs .process-link { display:inline-block; color:var(--process-blue); text-decoration:none; border-bottom:1px solid #a9bec6; font-size:13px; padding:4px 0; }
+    #chalk-process-designs .process-link:focus-visible { outline:3px solid var(--process-blue); outline-offset:4px; }
+    #chalk-process-designs .process-foot { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:33px; }
+    #chalk-process-designs .process-foot p { margin:0; font-size:13px; color:#526773; max-width:47ch; }
+    #chalk-process-designs .flow { background:radial-gradient(ellipse at 50% 45%,var(--process-wash),var(--process-paper) 86%); }
+    #chalk-process-designs .flow .process-heading { max-width:none; }
+    #chalk-process-designs .flow .process-intro { max-width:none; text-wrap:pretty; }
+    #chalk-process-designs .flow-map { position:relative; margin-top:39px; }
+    #chalk-process-designs .flow .step-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); grid-template-rows:92px 86px auto auto; column-gap:22px; margin:0; }
+    #chalk-process-designs .flow .step { display:contents; }
+    #chalk-process-designs .flow .step-figure { grid-row:1; }
+    #chalk-process-designs .flow .step-id { grid-row:3; }
+    #chalk-process-designs .flow .step-content { grid-row:4; }
+    #chalk-process-designs .flow .step-figure { width:100%; height:92px; margin:0; padding:0 9px; }
+    #chalk-process-designs .flow .step-id { margin-top:18px; }
+    #chalk-process-designs .flow .flow-path { position:absolute; top:92px; left:7.5%; width:85%; height:86px; margin:0; }
+    #chalk-process-designs .flow .step-content { margin-top:7px; }
+    #chalk-process-designs .flow .process-foot { margin-top:25px; padding-top:23px; border-top:1px solid #cbd9db; }
+    #chalk-process-designs .notes { background:var(--process-wash); }
+    #chalk-process-designs .notes .process-heading { text-align:center; }
+    #chalk-process-designs .notes .process-intro { margin-inline:auto; }
+    #chalk-process-designs .notes .step-list { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:24px; margin-top:28px; }
+    #chalk-process-designs .note { grid-column:span 2; min-width:0; background:var(--process-paper); border-radius:5px; padding:18px 19px 21px; box-shadow:0 5px 13px #28353c0d; }
+    #chalk-process-designs .note:nth-child(1) { transform:rotate(-1deg); }
+    #chalk-process-designs .note:nth-child(3) { transform:rotate(1deg); }
+    #chalk-process-designs .note:nth-child(4) { grid-column:2 / span 2; transform:rotate(1deg); }
+    #chalk-process-designs .note:nth-child(5) { grid-column:4 / span 2; transform:rotate(-1deg); }
+    #chalk-process-designs .note .step-figure { height:102px; margin:0 0 15px; }
+    #chalk-process-designs .note .step-id { display:inline-block; margin:0 8px 0 0; font-size:11px; }
+    #chalk-process-designs .note h3 { display:inline; font-size:16px; }
+    #chalk-process-designs .note .step-copy { font-size:14px; margin-top:9px; }
+    #chalk-process-designs .notes-thread { width:76%; height:27px; margin:25px auto 0; }
+    #chalk-process-designs .notes .process-foot { margin-top:15px; justify-content:center; }
+    #chalk-process-designs .notes .process-foot p { display:none; }
+    #chalk-process-designs .journal { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr); gap:clamp(24px,5cqw,50px); align-items:start; background:radial-gradient(ellipse at 10% 45%,var(--process-wash),var(--process-paper) 80%); }
+    #chalk-process-designs .journal .process-heading { padding-top:10px; }
+    #chalk-process-designs .journal .process-intro { font-size:14px; }
+    #chalk-process-designs .journal .heading-illustration { margin:32px 0 0; width:min(100%,220px); height:160px; }
+    #chalk-process-designs .journal .process-link { margin-top:17px; }
+    #chalk-process-designs .journal .step-list { position:relative; display:grid; gap:19px; padding-left:33px; }
+    #chalk-process-designs .journal-list { position:relative; }
+    #chalk-process-designs .journal .step { position:relative; display:grid; grid-template-columns:minmax(0,1fr) 93px; gap:18px; align-items:center; min-height:112px; }
+    #chalk-process-designs .journal .step-id { position:absolute; right:calc(100% + 12px); top:0; margin:0; width:27px; height:27px; border-radius:50%; background:var(--process-paper); border:1px solid #c0cfc1; text-align:center; line-height:25px; font-size:11px; }
+    #chalk-process-designs .journal .step-figure { grid-column:2; grid-row:1; height:88px; margin:0; }
+    #chalk-process-designs .journal .step-content { grid-column:1; grid-row:1; }
+    #chalk-process-designs .journal .step h3 { font-size:17px; }
+    #chalk-process-designs .journal .step-copy { margin-top:7px; font-size:14px; }
+    #chalk-process-designs .journal-spine { position:absolute; width:22px; top:12px; left:9px; height:calc(100% - 65px); opacity:var(--process-chalk); pointer-events:none; }
+    @container (max-width:760px) {
+      #chalk-process-designs .process-scene { min-height:0; }
+      #chalk-process-designs .flow .step-list { gap:14px; }
+      #chalk-process-designs .flow .step-list { grid-template-rows:85px clamp(90px,14cqw,144px) auto auto; row-gap:0; }
+      #chalk-process-designs .flow .flow-path { top:85px; }
+      #chalk-process-designs .flow .step-figure { height:85px; padding:0; }
+      #chalk-process-designs .flow h3 { font-size:15px; }
+      #chalk-process-designs .flow .step-copy { font-size:12px; }
+      #chalk-process-designs .notes .step-list { gap:17px; }
+      #chalk-process-designs .note { padding:17px 14px; }
+      #chalk-process-designs .journal { grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr); gap:25px; }
+      #chalk-process-designs .journal .step { grid-template-columns:minmax(0,1fr) 70px; gap:12px; }
+    }
+    @container (max-width:560px) {
+      #chalk-process-designs .process-scene { min-height:0; padding:30px 24px; }
+      #chalk-process-designs h2 { font-size:36px; }
+      #chalk-process-designs .process-eyebrow { font-size:10px; }
+      #chalk-process-designs .process-intro { font-size:14px; margin-top:16px; }
+      #chalk-process-designs .flow-map { margin-top:29px; }
+      #chalk-process-designs .flow .step-list { grid-template-columns:1fr; grid-template-rows:none; gap:27px; margin:0; }
+      #chalk-process-designs .flow .step { display:grid; grid-template-columns:82px minmax(0,1fr); column-gap:17px; }
+      #chalk-process-designs .flow .step-figure { grid-column:1; grid-row:1 / span 2; height:98px; margin:0; }
+      #chalk-process-designs .flow .step-id { grid-column:2; grid-row:1; margin:0 0 6px; }
+      #chalk-process-designs .flow .step-content { grid-column:2; grid-row:2; margin:0; }
+      #chalk-process-designs .flow h3 { font-size:17px; }
+      #chalk-process-designs .flow .step-copy { font-size:14px; }
+      #chalk-process-designs .flow .flow-path { display:none; }
+      #chalk-process-designs .flow .process-foot { margin-top:28px; }
+      #chalk-process-designs .process-foot { display:grid; gap:14px; }
+      #chalk-process-designs .process-foot .process-link { justify-self:start; }
+      #chalk-process-designs .notes .process-heading { text-align:left; }
+      #chalk-process-designs .notes .step-list { grid-template-columns:1fr; gap:18px; }
+      #chalk-process-designs .note, #chalk-process-designs .note:nth-child(4), #chalk-process-designs .note:nth-child(5) { grid-column:auto; display:grid; grid-template-columns:83px minmax(0,1fr); column-gap:16px; align-items:center; transform:none; padding:18px 16px; }
+      #chalk-process-designs .note .step-figure { grid-column:1; grid-row:1 / span 2; height:100px; margin:0; }
+      #chalk-process-designs .note .step-content { grid-column:2; }
+      #chalk-process-designs .note .step-copy { font-size:14px; }
+      #chalk-process-designs .notes-thread { width:100%; }
+      #chalk-process-designs .notes .process-foot { justify-content:start; }
+      #chalk-process-designs .journal { grid-template-columns:1fr; gap:28px; }
+      #chalk-process-designs .journal .process-heading { padding-top:0; }
+      #chalk-process-designs .journal .heading-illustration { display:none; }
+      #chalk-process-designs .journal .step-list { gap:24px; }
+      #chalk-process-designs .journal .step { grid-template-columns:minmax(0,1fr) 80px; min-height:110px; }
+      #chalk-process-designs .journal .step-copy { font-size:14px; }
+    }
+    @container (max-width:350px) {
+      #chalk-process-designs .process-scene { padding-inline:20px; min-height:0; }
+      #chalk-process-designs h2 { font-size:33px; }
+      #chalk-process-designs .flow .step { grid-template-columns:65px minmax(0,1fr); gap:12px; }
+      #chalk-process-designs .note, #chalk-process-designs .note:nth-child(4), #chalk-process-designs .note:nth-child(5) { grid-template-columns:60px minmax(0,1fr); gap:12px; padding:17px 13px; }
+      #chalk-process-designs .journal .step { grid-template-columns:minmax(0,1fr) 58px; gap:10px; }
+    }

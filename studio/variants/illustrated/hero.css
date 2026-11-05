@@ -1,0 +1,84 @@
+#chalk-hero-designs {
+      --hero-paper:#fcfcfa; --hero-wash:#e7f1f6; --hero-soft:#e8efe4;
+      --hero-ink:#28353c; --hero-blue:#385a6b;
+      --hero-photo:url("../../media/cafe.webp");
+      --hero-family:url("../../media/family.webp");
+    }
+    #chalk-hero-designs .hero-variant { container-type:inline-size; color:var(--hero-ink); background:var(--hero-paper); overflow:hidden; border-radius:16px; font:400 15px/1.5 'Golos Text',Arial,sans-serif; --art-opacity:.95; }
+    #chalk-hero-designs .hero-variant[hidden] { display:none; }
+    #chalk-hero-designs .hero-scene { position:relative; min-height:0; padding:clamp(26px,4.7cqw,48px); }
+    #chalk-hero-designs .eyebrow { margin:0 0 16px; color:var(--hero-blue); font-size:11px; letter-spacing:.09em; text-transform:uppercase; }
+    #chalk-hero-designs h1 { margin:0; font:400 clamp(35px,5cqw,52px)/1.08 'Lora',Georgia,serif; letter-spacing:-.035em; text-wrap:balance; }
+    #chalk-hero-designs .word { position:relative; display:inline-block; color:var(--hero-blue); }
+    #chalk-hero-designs .word .underline { position:absolute; left:-3%; width:106%; top:88%; height:.3em; }
+    #chalk-hero-designs .intro { max-width:37ch; margin:22px 0 0; font-size:15px; line-height:1.6; }
+    #chalk-hero-designs .actions { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:24px; }
+    #chalk-hero-designs .cta { display:inline-flex; min-height:44px; padding:11px 18px; align-items:center; justify-content:center; color:var(--hero-paper); background:var(--hero-blue); border:1px solid var(--hero-blue); border-radius:8px; text-decoration:none; font-size:13px; }
+    #chalk-hero-designs .quiet-link { color:var(--hero-blue); font-size:13px; text-decoration:none; border-bottom:1px solid #a8bec6; padding:7px 0; }
+    #chalk-hero-designs a:focus-visible { outline:3px solid var(--hero-blue); outline-offset:4px; }
+    #chalk-hero-designs .caption { margin:14px 0 0; color:#566a72; font-size:12px; }
+    #chalk-hero-designs .drawing { display:block; overflow:visible; opacity:var(--art-opacity); pointer-events:none; }
+    #chalk-hero-designs .care { width:86px; height:120px; }
+    #chalk-hero-designs .portrait { position:relative; margin:0; min-width:0; width:100%; }
+    #chalk-hero-designs .portrait-picture { position:absolute; inset:0; background:var(--hero-photo) 50% 67%/cover no-repeat; }
+    #chalk-hero-designs .arc { position:absolute; inset:-6% -7% auto; width:114%; height:auto; aspect-ratio:1517/620; }
+    #chalk-hero-designs .scene-arc { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.86fr); gap:36px; align-items:center; background:radial-gradient(ellipse at 70% 52%,var(--hero-wash),var(--hero-paper) 80%); }
+    #chalk-hero-designs .scene-arc .portrait { width:min(100%,358px); height:410px; justify-self:center; }
+    #chalk-hero-designs .scene-arc .portrait-picture { border-radius:48% 48% 10px 10px / 36% 36% 10px 10px; }
+    #chalk-hero-designs .care-note { display:flex; align-items:flex-end; gap:17px; margin-top:22px; }
+    #chalk-hero-designs .care-note .care { width:53px; height:75px; }
+    #chalk-hero-designs .care-note p { margin:0 0 7px; max-width:22ch; color:var(--hero-blue); font-size:12px; }
+    #chalk-hero-designs .scene-thread { padding-top:32px; background:var(--hero-wash); }
+    #chalk-hero-designs .thread-heading { text-align:center; margin:0 auto; max-width:790px; }
+    #chalk-hero-designs .thread-heading h1 { font-size:clamp(34px,4.9cqw,50px); }
+    #chalk-hero-designs .thread-bottom { position:relative; display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:45px; align-items:center; margin:30px auto 0; max-width:780px; }
+    #chalk-hero-designs .scene-thread .portrait { width:min(100%,290px); height:280px; margin:0 auto; }
+    #chalk-hero-designs .scene-thread .portrait-picture { border-radius:10px 64px 10px 48px; border:5px solid var(--hero-paper); transform:rotate(-3deg); box-shadow:0 7px 18px #28353c18; }
+    #chalk-hero-designs .scene-thread .intro { margin-top:0; }
+    #chalk-hero-designs .scene-thread .care-note { margin-top:22px; justify-content:flex-end; padding-right:22px; }
+    #chalk-hero-designs .scene-thread .care-note .care { width:76px; height:102px; }
+    #chalk-hero-designs .thread-line { position:absolute; width:68%; height:35px; bottom:-12px; left:14%; transform:rotate(-4deg); }
+    #chalk-hero-designs .scene-album { display:grid; grid-template-columns:minmax(0,.95fr) minmax(0,1fr); gap:30px; align-items:center; background:radial-gradient(ellipse at 75% 40%,var(--hero-wash),var(--hero-paper) 75%); }
+    #chalk-hero-designs .scene-album h1 { font-size:clamp(34px,5cqw,52px); }
+    #chalk-hero-designs .album-figure { position:relative; height:445px; margin:0; }
+    #chalk-hero-designs .album-main { position:absolute; inset:14px 14% 77px 4%; background:var(--hero-photo) 50% 69%/cover no-repeat; transform:rotate(-4deg); border:6px solid var(--hero-paper); border-radius:8px; box-shadow:0 6px 16px #28353c22; }
+    #chalk-hero-designs .album-small { position:absolute; width:47%; height:175px; right:-1%; bottom:19px; background:var(--hero-family) center 43%/cover no-repeat; border:5px solid var(--hero-paper); border-radius:7px; transform:rotate(7deg); box-shadow:0 5px 12px #28353c22; }
+    #chalk-hero-designs .album-figure .care { position:absolute; width:63px; height:90px; left:6%; bottom:12px; }
+    #chalk-hero-designs .album-figure .thread-line { width:82%; left:0; bottom:-5px; height:24px; transform:rotate(1deg); }
+    #chalk-hero-designs .album-corner { position:absolute; width:75px; height:75px; top:0; right:8%; opacity:var(--art-opacity); }
+    @container (max-width:760px) {
+      #chalk-hero-designs .hero-scene { min-height:550px; }
+      #chalk-hero-designs .scene-arc { gap:24px; }
+      #chalk-hero-designs .scene-arc .portrait { height:350px; }
+      #chalk-hero-designs .intro { font-size:14px; }
+      #chalk-hero-designs .album-figure { height:390px; }
+      #chalk-hero-designs .album-small { height:150px; }
+    }
+    @container (max-width:560px) {
+      #chalk-hero-designs .hero-scene { min-height:840px; padding:28px 24px; }
+      #chalk-hero-designs .scene-arc, #chalk-hero-designs .scene-album { grid-template-columns:1fr; gap:22px; align-content:start; }
+      #chalk-hero-designs h1, #chalk-hero-designs .scene-album h1, #chalk-hero-designs .thread-heading h1 { font-size:36px; }
+      #chalk-hero-designs .eyebrow { font-size:10px; }
+      #chalk-hero-designs .intro { margin-top:18px; }
+      #chalk-hero-designs .actions { margin-top:18px; gap:12px; }
+      #chalk-hero-designs .scene-arc .portrait { width:min(80%,300px); height:310px; margin-top:4px; }
+      #chalk-hero-designs .care-note { margin-top:16px; }
+      #chalk-hero-designs .care-note .care { width:40px; height:55px; }
+      #chalk-hero-designs .thread-bottom { grid-template-columns:1fr; gap:28px; margin-top:26px; }
+      #chalk-hero-designs .thread-heading { text-align:left; }
+      #chalk-hero-designs .scene-thread .portrait { height:250px; width:min(82%,280px); }
+      #chalk-hero-designs .scene-thread .thread-copy { padding-bottom:36px; }
+      #chalk-hero-designs .scene-thread .care-note { position:absolute; right:-3px; top:151px; padding:0; }
+      #chalk-hero-designs .scene-thread .care-note .care { width:56px; height:80px; }
+      #chalk-hero-designs .scene-thread .thread-line { width:90%; left:3%; bottom:12px; }
+      #chalk-hero-designs .scene-thread .intro { margin:0; }
+      #chalk-hero-designs .album-figure { width:min(100%,340px); height:365px; margin:0 auto; }
+      #chalk-hero-designs .album-main { inset-inline-start:2%; }
+      #chalk-hero-designs .album-small { height:145px; right:0; }
+      #chalk-hero-designs .album-figure .care { width:52px; height:75px; }
+    }
+    @container (max-width:350px) {
+      #chalk-hero-designs .hero-scene { padding-inline:20px; min-height:855px; }
+      #chalk-hero-designs h1, #chalk-hero-designs .scene-album h1, #chalk-hero-designs .thread-heading h1 { font-size:33px; }
+      #chalk-hero-designs .cta { padding-inline:14px; }
+    }

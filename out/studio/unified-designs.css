@@ -6,14 +6,16 @@
 .pencil-comparison .comparison-disclosure {display:block;width:100%;min-width:0}
 .pencil-comparison .comparison-content {display:grid;grid-template-columns:minmax(0,1fr);width:100%;min-width:0;gap:4px}
 .pencil-comparison :is(.comparison-pairs,.block-compare-actions,.design-version-label) {min-width:0;max-width:100%;width:100%}
-.imported-design {--paper:#fcfcfa;--wash:#e7f1f6;--soft:#e8efe4;--ink:#28382d;--accent:#385a6b;--button:#385a6b;--blue:var(--wash);--milk:var(--paper);--sage:var(--soft);--white:var(--paper);--muted:var(--ink);--rule:color-mix(in srgb,var(--accent) 30%,transparent);--display:'Lora',Georgia,serif;--body:'Golos Text',Arial,sans-serif;--wine:var(--accent);max-width:1280px;margin:auto;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--body);isolation:isolate}
+.imported-design {--paper:#fcfcfa;--wash:#e7f1f6;--soft:#e8efe4;--ink:#28382d;--accent:#385a6b;--button:#385a6b;--blue:var(--wash);--milk:var(--paper);--sage:var(--soft);--white:var(--paper);--muted:var(--ink);--rule:color-mix(in srgb,var(--accent) 30%,transparent);--display:'Lora',Georgia,serif;--body:'Golos Text',Arial,sans-serif;--wine:var(--accent);--content-width:1120px;width:100%;max-width:none;margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--body);isolation:isolate}
 .imported-design * {min-width:0}
 .imported-design .masthead {position:relative;top:auto;z-index:1}
 .imported-design :is(section,header,footer)[id] {scroll-margin-top:var(--comparison-offset,170px)}
 .imported-design > main {display:block}
 .imported-design .selected-section {--paper:inherit;--wash:inherit;--soft:inherit;--ink:inherit;--accent:inherit;--button:inherit;--wine:inherit;--heading:var(--display);--heading-weight:400;--body:'Golos Text',Arial,sans-serif;max-width:none;width:100%;border-radius:0;box-shadow:none;margin:0;border:0}
 .imported-design .selected-section .s-block h2,.imported-design .selected-section .s-block h3 {font-family:var(--display)}
-.imported-design .selected-section .s-block {padding-inline:clamp(22px,5cqw,64px)}
+.imported-design .selected-section .s-block {padding-inline:max(clamp(22px,5vw,64px),calc((100% - var(--content-width))/2))}
+.imported-design .wrap {width:min(var(--content-width),calc(100% - 2 * var(--gutter,24px)));margin-inline:auto}
+.imported-design .design-site-header {padding-inline:max(clamp(22px,4vw,60px),calc((100% - var(--content-width))/2))}
 .imported-design .selected-section .s-about-slides h3 {font-size:clamp(25px,3.2cqw,38px);font-weight:400}
 .imported-design .selected-section .s-about--1 {background:var(--wash)}
 .imported-design .selected-section .s-consult-form {border:0;box-shadow:none;padding:0;background:transparent}
@@ -30,7 +32,7 @@
 .imported-design #chalk-site-directions .landing {border-radius:0;font-family:var(--body)}
 .imported-design #chalk-site-directions .landing h1,.imported-design #chalk-site-directions .landing h2 {font-family:var(--display)}
 .imported-design #chalk-site-directions .lead {padding-block:64px}
-.imported-design #chalk-site-directions .section {padding-inline:clamp(22px,5cqw,64px)}
+.imported-design #chalk-site-directions .section {padding-inline:max(clamp(22px,5vw,64px),calc((100% - var(--content-width))/2))}
 .imported-design #chalk-site-directions .selected-section p {max-width:none}
 .imported-design #chalk-site-directions .selected-section .s-block h2 {font-size:clamp(30px,4cqw,48px)}
 .imported-design #chalk-site-directions .selected-section .s-service-intro h2 {max-width:18ch}

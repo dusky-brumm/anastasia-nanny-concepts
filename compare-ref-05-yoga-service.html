@@ -14,14 +14,14 @@
   <link rel="stylesheet" href="studio/variants/eight-references/looks/common.css">
   <link rel="stylesheet" href="studio/variants/eight-references/looks/05-yoga.css">
 
-<link rel="stylesheet" href="studio/pencil-preview.css?v=dfc49f7bfc">
-<link rel="stylesheet" href="studio/comparison-design.css?v=dfc49f7bfc">
-<link rel="stylesheet" href="studio/unified-designs.css?v=dfc49f7bfc">
-<link rel="stylesheet" href="studio/design-chrome.css?v=dfc49f7bfc">
-<link rel="stylesheet" href="studio/reference-integration.css?v=dfc49f7bfc">
-<script defer src="studio/comparison-request.js?v=dfc49f7bfc"></script>
-<script defer src="studio/variants/eight-references/gallery-ui.js?v=dfc49f7bfc"></script>
-<script defer src="studio/reference-interactions.js?v=dfc49f7bfc"></script>
+<link rel="stylesheet" href="studio/pencil-preview.css?v=7dd48290bf">
+<link rel="stylesheet" href="studio/comparison-design.css?v=7dd48290bf">
+<link rel="stylesheet" href="studio/unified-designs.css?v=7dd48290bf">
+<link rel="stylesheet" href="studio/design-chrome.css?v=7dd48290bf">
+<link rel="stylesheet" href="studio/reference-integration.css?v=7dd48290bf">
+<script defer src="studio/comparison-request.js?v=7dd48290bf"></script>
+<script defer src="studio/variants/eight-references/gallery-ui.js?v=7dd48290bf"></script>
+<script defer src="studio/reference-interactions.js?v=7dd48290bf"></script>
 
 </head>
 <body class="look-05-yoga reference-design reference-block-page" data-fixed-theme="almost-white" style="--paper:#fcfcfa;--wash:#e7f1f6;--soft:#e8efe4;--card:#ffffff;--ink:#28353c;--leaf:#a8c0a1;--accent:#385a6b;--button:#526c73;--wine:#385a6b;--pencil:#385a6b"><div class="sheet" data-reference-block-root><main><section id="service" data-block="service" class="service pad" aria-labelledby="service-title">
@@ -31,23 +31,26 @@
             <h2 id="service-title">Собеседую <em>под вашу семью.</em></h2>
             <p>Обсуждаю с кандидаткой ваш ритм жизни, привычки ребёнка и правила дома. Задаю вопросы о ситуациях, с которыми ей предстоит столкнуться.</p>
           </header>
-          <ol class="screening screening-tabs">
-            <li id="screening-1"><figure class="screening-photo"><img src="studio/variants/eight-references/assets/child.webp" width="640" height="640" alt="" loading="lazy" decoding="async"></figure><div class="screening-copy"><div class="screening-label"><span>01</span><span class="hand" aria-hidden="true">поиск</span></div>
+          <p class="screening-eyebrow">От отклика до интервью</p><ol class="screening screening-tabs">
+            <li id="screening-1"><figure class="screening-photo"><img src="studio/variants/eight-references/assets/rainbow.webp" width="960" height="1280" alt="" loading="lazy" decoding="async"></figure><div class="screening-copy"><div class="screening-label"><span>01</span><span class="hand" aria-hidden="true">поиск</span></div>
               <h3>Изучаю отклики</h3>
               <p>Сверяю опыт кандидатки и её пожелания по графику и условиям с вашим запросом.</p></div></li>
             <li id="screening-2"><figure class="screening-photo"><img src="studio/variants/eight-references/assets/family.webp" width="960" height="1280" alt="" loading="lazy" decoding="async"></figure><div class="screening-copy"><div class="screening-label"><span>02</span><span class="hand" aria-hidden="true">созвон</span></div>
               <h3>Созваниваюсь на 10–15 минут</h3>
               <p>Уточняю условия вакансии и рассказываю кандидатке о вашей семье.</p></div></li>
-            <li id="screening-3"><figure class="screening-photo"><img src="studio/variants/eight-references/assets/rainbow.webp" width="960" height="1280" alt="" loading="lazy" decoding="async"></figure><div class="screening-copy"><div class="screening-label"><span>03</span><span class="hand" aria-hidden="true">интервью</span></div>
+            <li id="screening-3"><figure class="screening-photo"><img src="studio/variants/eight-references/assets/child.webp" width="640" height="640" alt="" loading="lazy" decoding="async"></figure><div class="screening-copy"><div class="screening-label"><span>03</span><span class="hand" aria-hidden="true">интервью</span></div>
               <h3>Провожу личное интервью</h3>
               <p>В анкете объясняю, почему предлагаю познакомиться с няней и что стоит обсудить на встрече.</p></div></li>
-          </ol><div class="step-buttons" aria-label="Показать шаг собеседования" hidden>
-      <button type="button" aria-controls="screening-1" aria-pressed="false">Отклики</button><button type="button" aria-controls="screening-2" aria-pressed="false">Созвон</button><button type="button" aria-controls="screening-3" aria-pressed="false">Интервью</button>
-    </div>
+          </ol><div class="screening-navigation" hidden>
+        <button class="step-arrow" type="button" data-step-change="-1" aria-label="Предыдущий шаг собеседования">←</button>
+        <div class="step-buttons" aria-label="Показать шаг собеседования">
+          <button type="button" aria-controls="screening-1" aria-pressed="false">Отклики</button><button type="button" aria-controls="screening-2" aria-pressed="false">Созвон</button><button type="button" aria-controls="screening-3" aria-pressed="false">Интервью</button>
+        </div>
+        <button class="step-arrow" type="button" data-step-change="1" aria-label="Следующий шаг собеседования">→</button>
+        <span class="step-status" role="status"></span>
+      </div>
           <div class="interview"><span class="reference-drawing reference-drawing--profile" aria-hidden="true"></span>
-            <figure class="interview-photo">
-              <img src="studio/variants/eight-references/assets/child.webp" alt="Анастасия с маленьким ребёнком" width="640" height="640" loading="lazy" decoding="async">
-            </figure>
+
             <div class="interview-copy">
               <p class="kicker">Вопросы из жизни семьи</p>
               <h3>Например, <em>спрошу</em></h3>

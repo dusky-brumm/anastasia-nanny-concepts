@@ -12,7 +12,12 @@
       }
       link.href = target.href;
     }
-    bindBlockPair(url);
+    // Old pair links now open the complete gallery without hiding any choices.
+    if (url.searchParams.has('compare') || url.searchParams.has('arrange')) {
+      url.searchParams.delete('compare');
+      url.searchParams.delete('arrange');
+      history.replaceState(history.state, '', url);
+    }
     return;
   }
 
@@ -78,7 +83,9 @@
       }
     }
 
-    const requested = url.searchParams.get(part.dataset.assemblyPart);
+    const aliases=JSON.parse(decodeURIComponent(part.dataset.choiceAliases??'%7B%7D'));
+    const stored = url.searchParams.get(part.dataset.assemblyPart);
+    const requested = aliases[stored]??stored;
     if ([...select.options].some(option => option.value === requested)) select.value = requested;
     showChoice();
     select.addEventListener('change', () => {
@@ -103,60 +110,3 @@
     }
   });
 })();
-
-function bindBlockPair(url) {
-  const list = document.querySelector('[data-gallery-list]');
-  const tools = document.querySelector('[data-block-pair-tools]');
-  const toggle = tools.querySelector('[data-block-pair-toggle]');
-  const settings = tools.querySelector('#block-pair-settings');
-  const jumps = document.querySelector('[data-gallery-jumps]');
-  const choices = [...tools.querySelectorAll('[data-pair-choice]')];
-  const layout = tools.querySelector('[data-pair-layout]');
-  const articles = [...list.querySelectorAll('[data-gallery-choice]')];
-  if (articles.length < 2) return;
-  const byChoice = new Map(articles.map(article => [article.dataset.galleryChoice,article]));
-  const requested = url.searchParams.get('compare')?.split(',');
-  let active = requested?.length === 2 && requested[0] !== requested[1]
-    && requested.every(choice => byChoice.has(choice));
-  if (active) choices.forEach((choice,index) => { choice.value = requested[index]; });
-  if (url.searchParams.get('arrange') === 'stack') layout.value = 'stack';
-  tools.hidden = false;
-  let previous = choices.map(choice => choice.value);
-
-  function update() {
-    const selected = choices.map(choice => choice.value);
-    toggle.setAttribute('aria-expanded', String(Boolean(active)));
-    toggle.textContent = active ? 'Показать все варианты' : 'Сравнить два варианта';
-    settings.hidden = !active;
-    jumps.hidden = Boolean(active);
-    list.dataset.pairLayout = active ? layout.value : 'all';
-    for (const article of articles) article.hidden = active && !selected.includes(article.dataset.galleryChoice);
-    const order = active ? [...selected.map(choice => byChoice.get(choice)), ...articles.filter(article => article.hidden)] : articles;
-    list.append(...order);
-    if (active) url.searchParams.set('compare', selected.join(','));
-    else url.searchParams.delete('compare');
-    if (active && layout.value === 'stack') url.searchParams.set('arrange','stack');
-    else url.searchParams.delete('arrange');
-    try {
-      const current = new URL(location.href);
-      url.hash = current.hash;
-      if (active && list.querySelector(':target')?.hidden) url.hash = '';
-      if (url.href !== current.href) history.replaceState(history.state, '', url);
-    } catch (error) {
-      if (error.name !== 'SecurityError') throw error;
-    }
-    previous = selected;
-  }
-
-  toggle.addEventListener('click', () => {
-    active = !active;
-    update();
-  });
-  choices.forEach((select,index) => select.addEventListener('change', () => {
-    const other = choices[1-index];
-    if (select.value === other.value) other.value = previous[index];
-    update();
-  }));
-  layout.addEventListener('change', update);
-  update();
-}

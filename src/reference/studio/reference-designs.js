@@ -54,3 +54,35 @@ export function referencePage(design,navigation){
     .replace('</body>','</div></body>');
   return html;
 }
+
+export const referenceBlockFile=(design,id)=>`compare-ref-${design.id}-${id}.html`;
+
+// Extract the complete section, including nested sections, from the adapted page.
+// Each preview gets its own document so the original global styles stay isolated.
+export function referenceBlockPage(design,id){
+  if (!['hero','service','about','process','pricing','reviews','apply','footer'].includes(id)) {
+    throw new Error(`Unknown reference block: ${id}`);
+  }
+  const html=referencePage(design,'');
+  const start=html.indexOf(`<${id==='footer'?'footer':'section'} id="${id}"`);
+  if(start<0)throw new Error(`Missing ${id} in ${design.id}`);
+  const tag=id==='footer'?'footer':'section';
+  const tokens=new RegExp(`<\\/?${tag}\\b[^>]*>`,'g');
+  tokens.lastIndex=start;
+  let depth=0,end=-1;
+  for(let match;(match=tokens.exec(html));){
+    depth+=match[0].startsWith('</')?-1:1;
+    if(depth===0){end=tokens.lastIndex;break;}
+  }
+  if(end<0)throw new Error(`Unclosed ${id} in ${design.id}`);
+  let block=html.slice(start,end);
+  const ids=new Set([...block.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
+  block=block.replace(/href="#([^"]+)"/g,(attribute,target)=>ids.has(target)?attribute:
+    `href="${design.file}?v=__VERSION__#${target}" target="_top" data-reference-target="${target}"`);
+  const dialog=html.match(/<dialog\b[\s\S]*?<\/dialog>/)?.[0]??'';
+  return html
+    .replace(/<body([^>]*)>[\s\S]*<\/body>/,`<body$1><div class="sheet" data-reference-block-root><main>${block}</main></div>${dialog}</body>`)
+    .replace('reference-design"','reference-design reference-block-page"')
+    .replace(/<link rel="canonical"[^>]+>/,utilityIndexingTags(referenceBlockFile(design,id)).match(/<link[^>]+>/)[0])
+    .replace(/<script defer src="studio\/(?:unified-designs|comparison-palettes)\.js[^\"]*"><\/script>/g,'');
+}

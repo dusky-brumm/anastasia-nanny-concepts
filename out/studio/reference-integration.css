@@ -1,4 +1,7 @@
 body.reference-design{background:var(--paper);margin:0}
+body.reference-block-page{display:flow-root;min-height:0}
+.reference-block-page .sheet,.reference-block-page main{display:flow-root;min-height:0}
+.reference-block-page .sheet{overflow:clip}
 .reference-design [hidden]{display:none!important}
 .reference-design [data-block]{scroll-margin-top:var(--comparison-offset,180px)}
 .reference-design .sheet{width:100%;max-width:none;margin:0;border-radius:0;box-shadow:none}

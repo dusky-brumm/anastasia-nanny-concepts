@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,approvedTheme} from '../../src/reference/studio/model.js';
 import {studioPage,comparisonBlockChoices,comparisonDesigns} from '../../src/reference/studio/pages.js';
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
-import {referenceDesigns} from '../../src/reference/studio/reference-designs.js';
+import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../../src/reference/studio/reference-designs.js';
 
 test('completed design comparisons retain all sections and exclude the three cancelled options',()=>{
   const modes=comparisonDesigns.filter(design=>!design.reference).flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
@@ -91,7 +91,30 @@ test('block galleries and assembly preserve the current hero and local request w
     assert.doesNotMatch(gallery,/data-live-request/);
     total+=choices.length;
   }
-  assert.equal(total,25);
+  assert.equal(total,90);
+});
+
+test('new designs expose eight isolated, complete blocks with working cross-section links',()=>{
+  for(const design of referenceDesigns){
+    for(const id of Object.keys(comparisonBlockChoices)){
+      const html=referenceBlockPage(design,id);
+      assert.deepEqual([...html.matchAll(/data-block="([^"]+)"/g)].map(match=>match[1]),[id]);
+      assert.match(html,new RegExp(`looks/${design.id}.css`));
+      assert.match(html,/reference-block-page/);
+      assert.match(html,/data-fixed-theme="almost-white"/);
+      assert.ok(html.includes(referenceBlockFile(design,id)));
+      assert.doesNotMatch(html,/data-design-navigation|class="skip"/);
+      const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
+      for(const [,target] of html.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(target),`${design.id}/${id}: ${target}`);
+      const gallery=studioPage('comparison-library',id,`compare-block-${id}.html`);
+      assert.ok(gallery.includes(`src="${referenceBlockFile(design,id)}?v=`));
+      assert.ok(gallery.includes(`value="${design.mode}"`));
+      if(id==='about')assert.equal([...html.matchAll(/data-reference-story="/g)].length,4);
+      if(id==='apply')assert.match(html,/<form class="s-consult-form"/);
+      if(id==='hero'&&design.id==='05-yoga')assert.match(html,/id="organic-photo"/);
+    }
+  }
+  assert.throws(()=>referenceBlockPage(referenceDesigns[0],'unknown'),/Unknown reference block/);
 });
 
 test('the live service starts with the family interview and About keeps four slides without a block heading',()=>{

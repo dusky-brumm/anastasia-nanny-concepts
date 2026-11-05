@@ -326,6 +326,8 @@
 .block-compare-choice > header h2 {font-size:19px}
 .block-compare-choice > header a {font-size:13px;text-decoration:underline;text-underline-offset:3px}
 .block-compare-choice .site-preview {max-width:none}
+.reference-block-preview {width:100%;min-width:0}
+.reference-block-preview iframe {display:block;width:100%;max-width:none;border:0;background:var(--paper)}
 .block-compare-actions {display:flex;flex-wrap:wrap;gap:8px 18px}
 .assembly-site {width:min(100% - 24px,1200px);max-width:none;margin-bottom:24px}
 .assembly-control {

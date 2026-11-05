@@ -2,7 +2,7 @@ import {blocks,fontSets,defaults,presets,approvedTheme,approvedThemeStyle,design
 import {renderSite,renderBlock,renderEditorial,renderPencilPreview} from './render.js?v=__VERSION__';
 import {seoHead} from './seo.js?v=__VERSION__';
 import {additionalDesigns,additionalStyles,renderAdditionalDesign} from './additional-designs.js?v=__VERSION__';
-import {referenceDesigns,referencePage} from './reference-designs.js?v=__VERSION__';
+import {referenceDesigns,referencePage,referenceBlockFile} from './reference-designs.js?v=__VERSION__';
 
 export const comparisonDesigns=[
   {mode:'comparison-current',file:'comparison-current.html',name:'Текущий',reviews:'cards',form:1,footer:3,refinement:'quiet'},
@@ -21,6 +21,9 @@ const preferredDesignFile=design=>design.single?design.file:design.file.replace(
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 export const comparisonBlockChoices = {
+  hero: ['Первый блок', [
+    ['quiet','Основной вариант',6],
+  ]],
   pricing: ['Стоимость и гарантия', [
     ['quiet','Оплата в два этапа',1], ['letter','Открытые колонки',1], ['album','Акцент на гарантии',1], ['route','Три условия в ряд',1], ['panorama','Цена над условиями',1], ['reference','Цена и гарантия в двух панелях',1],
   ]],
@@ -43,6 +46,15 @@ export const comparisonBlockChoices = {
     ['quiet','Лаконичный с рисунками',3],
   ]],
 };
+for (const [, choices] of Object.values(comparisonBlockChoices)) {
+  choices.push(...referenceDesigns.map(design => [design.mode,design.name,null]));
+}
+
+function comparisonBlockMarkup(id,style,variant,context) {
+  const design = referenceDesigns.find(item => item.mode === style);
+  if (!design) return renderBlock(id,variant,context);
+  return `<div class="reference-block-preview" id="${context.blockId ?? id}"><iframe data-reference-frame src="${referenceBlockFile(design,id)}?v=__VERSION__" title="${comparisonBlockChoices[id][0]} — ${design.name}" loading="lazy" height="320"></iframe></div>`;
+}
 
 const comparisonBaseTheme = approvedTheme.id;
 const comparisonState={layout:'161272113',palette:'sky',font:'golos'};
@@ -70,7 +82,7 @@ const assemblyPresets = [
 function comparisonBlockGallery(blockId) {
   const [title, choices] = comparisonBlockChoices[blockId];
   const previews = choices.map(([style,label,variant,reviews='cards'], index) => {
-    const design = comparisonDesigns.find(item => item.refinement === style);
+    const design = comparisonDesigns.find(item => item.refinement === style || item.mode === style);
     const previewFile = preferredDesignFile(design) + '?v=__VERSION__';
     const state = {...defaults, layout:design.layout ?? defaults.layout};
     const context = {state, comparison:true, blockStyle:style, wavyArrows:design.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
@@ -80,7 +92,7 @@ function comparisonBlockGallery(blockId) {
         <a data-try-assembly="${blockId}" href="compare-assembly.html?v=__VERSION__&amp;${blockId}=${style}#${blockId}">Примерить в сборке</a>
       </div></header>
       <div class="site-preview comparison-design" data-block-style="${style}" data-review-layout="${reviews}" data-refinement="${style}" data-comparison-theme="${comparisonBaseTheme}" style="${comparisonBaseStyle}">
-        ${renderBlock(blockId,variant,context)}
+        ${comparisonBlockMarkup(blockId,style,variant,{...context,blockId:`${blockId}-choice-${index+1}`})}
       </div>
     </article>`;
   });
@@ -108,9 +120,9 @@ function comparisonBlockGallery(blockId) {
 }
 
 function comparisonAssembly() {
-  const order = ['service','about','process','pricing','reviews','apply','footer'];
+  const order = ['hero','service','about','process','pricing','reviews','apply','footer'];
   const initial = {about:'quiet',apply:'letter'};
-  const top = ['header','hero'].map(id => {
+  const top = ['header'].map(id => {
     const index = blocks.findIndex(block => block.id === id);
     return renderBlock(id,comparisonState.layout[index],{state:comparisonState,comparison:true});
   }).join('');
@@ -119,7 +131,7 @@ function comparisonAssembly() {
     const selected = initial[id] ?? choices[0][0];
     const previews = choices.map(([style,name,variant,reviews='cards']) => ({
       style, name, reviews,
-      markup:renderBlock(id,variant,{
+      markup:comparisonBlockMarkup(id,style,variant,{
         state:defaults,comparison:true,blockStyle:style,wavyArrows:style==='reference',
         blockId:style===selected?id:`${id}-${style}`,
         previewId:`assembly-quotes-${style}`,
@@ -277,6 +289,6 @@ ${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=__V
 <script defer src="studio/review-carousel.js?v=__VERSION__"></script>
 ${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=__VERSION__"></script>':''}
 ${comparing||blockCompare||assembling?'<script defer src="studio/comparison-palettes.js?v=__VERSION__"></script><script defer src="studio/comparison-request.js?v=__VERSION__"></script>':''}
-${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=__VERSION__"></script>':''}
+${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=__VERSION__"></script><script defer src="studio/reference-frames.js?v=__VERSION__"></script>':''}
 </head><body data-fixed-theme="${comparisonBaseTheme}" class="design-tool ${mode==='preview'||(comparing&&!pencil)?'preview-only':''}" data-mode="${design?.mode??mode}" data-library-block="${blockId}"${pageFile==='index.html'?' data-live-request':''}>${mode==='preview'?designPanel:pencilSwitcher}${pageContent}${privacy}<noscript><p class="tool-noscript">${mode==='preview'||editorial||comparing?'Для подготовки заявки включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }

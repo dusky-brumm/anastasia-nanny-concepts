@@ -1,6 +1,6 @@
 {
-  "build": "46d898010c",
-  "base_commit": "e9eb3d8494810c26fe70e1a1613f5710a80fad99",
+  "build": "d7f7548d41",
+  "base_commit": "2867f9406abb0094f6894d5e0b36561ed7f3e6eb",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,7 +23,8 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Full-width section backgrounds in all eight new reference designs on desktop and mobile; remove outer sheet margins, width cap, rounding and shadow while retaining inner content widths"
+    "All eight new reference designs added to block comparison and mixed assembly: hero, service, About, process, pricing, reviews, form and footer (64 new blocks)",
+    "Side-by-side/full-width comparison, isolated native styles and responsive height, working story/service/review controls, form and in-assembly links; preserve selection in share URLs"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
@@ -225,21 +226,30 @@
     "content": "Remove repeated hero labels; preserve current section when switching designs; underline only спокойно; white photo frames",
     "current_chat_overrides": "Four-frame About without heading; reviews without family stories; textured thin form lines and pencil button; only improved designs where paired",
     "reference_compositions": "The later eight-reference request retains each full native composition and section order; shared controls/content adapted without replacing designs with one template",
-    "full_width_reference_backgrounds": "Explicit user request, 5 November: new design backgrounds extend across the full viewport like the first designs"
+    "full_width_reference_backgrounds": "Explicit user request, 5 November: new design backgrounds extend across the full viewport like the first designs",
+    "reference_block_comparison": "Explicit user request: add blocks from the new versions to comparison; include the first screen and retain existing choices"
   },
   "validation": {
     "build": "passed",
     "static": "passed",
-    "tests": "22/22",
+    "tests": "23/23",
     "browser": {
       "viewport_widths": [
-        1920,
+        1440,
         390
       ],
-      "designs": 8,
-      "all_section_backgrounds_full_width": true,
-      "horizontal_overflow": false,
-      "inner_content_widths_retained": true
+      "new_blocks": 64,
+      "comparison": "new/new and old/new; side and stack",
+      "mixed_assembly": "eight selections survive reload",
+      "interactions": [
+        "About slides",
+        "service tabs",
+        "review carousel",
+        "request draft",
+        "privacy dialog",
+        "hero to assembly form"
+      ],
+      "horizontal_overflow": false
     }
   }
 }

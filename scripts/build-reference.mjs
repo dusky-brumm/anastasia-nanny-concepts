@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {renderJourney,renderJourneyOptions} from '../src/reference/journeys.js';
 import {comparisonBlockChoices,comparisonDesigns,studioPage} from '../src/reference/studio/pages.js';
+import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../src/reference/studio/reference-designs.js';
 import {blocks} from '../src/reference/studio/model.js';
 import {formatRequest} from '../src/reference/request.js';
 import {bindRequestUi} from '../src/reference/studio/request-ui.js';
@@ -29,6 +30,11 @@ for (const blockId of Object.keys(comparisonBlockChoices)) {
   await writeFile(path.join(output,file),studioPage('comparison-library',blockId,file).replaceAll('__VERSION__',version));
 }
 await writeFile(path.join(output,'compare-assembly.html'),studioPage('comparison-assembly','hero','compare-assembly.html').replaceAll('__VERSION__',version));
+for(const design of referenceDesigns){
+  for(const id of Object.keys(comparisonBlockChoices)){
+    await writeFile(path.join(output,referenceBlockFile(design,id)),referenceBlockPage(design,id).replaceAll('__VERSION__',version).replace(/[ \t]+$/gm,''));
+  }
+}
 await rm(path.join(output,'comparison-quotes.html'),{force:true});
 await rm(path.join(output,'pencil-journal.html'),{force:true});
 await rm(path.join(output,'pencil-journal-refined.html'),{force:true});

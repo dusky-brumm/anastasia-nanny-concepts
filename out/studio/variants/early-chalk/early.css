@@ -88,7 +88,11 @@
  .early-design .early-term-picture {grid-column:1;grid-row:1/span 2;margin:0}
  .early-design .early-price-term dt {grid-column:2;grid-row:1}
  .early-design .early-price-term dd {grid-column:2;grid-row:2}
- .early-design .early-apply-picture {width:128px;height:86px}
+ .early-design .s-apply-intro {display:grid;grid-template-columns:minmax(0,1fr) clamp(84px,22cqw,108px);column-gap:12px;align-items:start}
+ .early-design .s-apply-intro > .s-section-heading {grid-column:1/-1;grid-row:1;margin-bottom:20px}
+ .early-design .s-apply-intro > p {grid-column:1;grid-row:2}
+ .early-design .s-apply-intro > .comparison-form-contact {grid-column:1;grid-row:3;margin-top:16px}
+ .early-design .early-apply-picture {grid-column:2;grid-row:2/span 2;align-self:center;width:100%;height:88px;margin:0}
  .early-design .early-footer-picture {width:160px;height:46px}
  .early-design .s-review blockquote {font-size:20px}
 }

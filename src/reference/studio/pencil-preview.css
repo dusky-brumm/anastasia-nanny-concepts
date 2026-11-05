@@ -44,17 +44,17 @@
 .comparison-color-panel p {margin:0;font-size:12px}
 .pencil-comparison :is(a[aria-current],button[aria-pressed=true]) {background:#526c73;color:white;border-color:#526c73}
 .pencil-comparison a:focus-visible {outline:2px solid #344741;outline-offset:3px}
-.pencil-comparison + .site-preview [id] {scroll-margin-top:var(--comparison-offset,76px)}
-.pencil-comparison + .site-preview[data-palette=sky] {
+.site-preview.comparison-design [id] {scroll-margin-top:var(--comparison-offset,76px)}
+.site-preview.comparison-design[data-palette=sky] {
   --paper:#fafaf6;--wash:#e1eaee;--soft:var(--paper);--ink:#203e34;--accent:#466576;--wine:#743b42;
 }
-.pencil-comparison + .site-preview {
+.site-preview.comparison-design {
   --comparison-inset:max(clamp(24px,4vw,60px),calc((100% - 1280px)/2));
 }
-.pencil-comparison + .site-preview :is(.s-block,.e-section) {
+.site-preview.comparison-design :is(.s-block,.e-section) {
   padding-inline:var(--comparison-inset);
 }
-.pencil-comparison + .site-preview .s-square-portrait {
+.site-preview.comparison-design .s-square-portrait {
   width:min(100%,560px);
   max-width:none;
   padding:clamp(12px,2.4vw,30px);
@@ -71,7 +71,7 @@
 .site-preview[data-comparison-theme] :is(.s-service,.e-service,.pencil-section--service,.s-reviews,.pencil-section--reviews) {background:var(--wash)}
 .site-preview[data-comparison-theme] .s-process {background:var(--soft)}
 [data-comparison-theme] :is(.s-family-story,.s-service .s-items article) {background:var(--card)}
-.pencil-comparison + .site-preview .s-photo {background-color:#fff}
+.site-preview.comparison-design .s-photo {background-color:#fff}
 .comparison-photo-frame {fill:none;stroke:#fff;stroke-width:6;vector-effect:non-scaling-stroke}
 .site-preview[data-comparison-theme] .s-button:not(.s-button--light) {background:var(--button);border-color:var(--button)}
 .site-preview[data-comparison-theme] .s-button:not(.s-button--light):hover {background:color-mix(in srgb,var(--button) 88%,black)}
@@ -97,7 +97,7 @@
   stroke-width:2;
 }
 @container (min-width:681px) {
-  .pencil-comparison + .site-preview .s-hero--6 {
+  .site-preview.comparison-design .s-hero--6 {
     grid-template-columns:minmax(0,1fr) minmax(0,1.24fr);
   }
   .pencil-preview .pencil-hero {grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}
@@ -346,5 +346,5 @@
   .comparison-palette {grid-column:1/-1;padding:0 0 3px;border:0}
   .comparison-color-panel {inset-inline-start:auto;inset-inline-end:0}
   .pencil-comparison :is(a,button) {padding:6px 4px;font-size:11px}
-  .pencil-comparison + .site-preview [id] {scroll-margin-top:var(--comparison-offset,144px)}
+  .site-preview.comparison-design [id] {scroll-margin-top:var(--comparison-offset,144px)}
 }

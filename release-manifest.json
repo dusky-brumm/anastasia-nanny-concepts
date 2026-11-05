@@ -1,6 +1,6 @@
 {
-  "build": "7243f4a467",
-  "base_commit": "7f4284b02628fc55f3c312632c2d7d34f47bad38",
+  "build": "46d898010c",
+  "base_commit": "e9eb3d8494810c26fe70e1a1613f5710a80fad99",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,12 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Eight completed reference designs added to the unified design picker, retaining all nine sections and their distinct full-page compositions",
-    "Shared brand/header/social links and mobile menu in all fourteen imported designs; remove repeated hero label",
-    "Apply the fixed Almost White palette, blue hero glow, green pricing glow and green footer; no retired palette controls",
-    "Four-slide About without a block heading, thin textured form lines, pencil button outline, open review quotes and mobile slider in the new designs",
-    "Latest approved chalk drawings integrated into interview, guarantee, request and compact footer",
-    "Only calmly is underlined; design changes preserve the viewed section"
+    "Full-width section backgrounds in all eight new reference designs on desktop and mobile; remove outer sheet margins, width cap, rounding and shadow while retaining inner content widths"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
@@ -229,26 +224,22 @@
     "header": "Anastasia Doronina · Individual nanny selection, uniform uppercase lettering; Telegram and Instagram before service menu; collapse on mobile",
     "content": "Remove repeated hero labels; preserve current section when switching designs; underline only спокойно; white photo frames",
     "current_chat_overrides": "Four-frame About without heading; reviews without family stories; textured thin form lines and pencil button; only improved designs where paired",
-    "reference_compositions": "The later eight-reference request retains each full native composition and section order; shared controls/content adapted without replacing designs with one template"
+    "reference_compositions": "The later eight-reference request retains each full native composition and section order; shared controls/content adapted without replacing designs with one template",
+    "full_width_reference_backgrounds": "Explicit user request, 5 November: new design backgrounds extend across the full viewport like the first designs"
   },
   "validation": {
     "build": "passed",
     "static": "passed",
     "tests": "22/22",
     "browser": {
-      "desktop_width": 1280,
-      "mobile_width": 320,
-      "new_designs": 8,
-      "horizontal_overflow": false,
-      "controls": [
-        "mobile menu",
-        "four About slides",
-        "review next",
-        "Yoga service tabs",
-        "local request preparation",
-        "cross-design section restoration"
+      "viewport_widths": [
+        1920,
+        390
       ],
-      "console_errors": 0
+      "designs": 8,
+      "all_section_backgrounds_full_width": true,
+      "horizontal_overflow": false,
+      "inner_content_widths_retained": true
     }
   }
 }

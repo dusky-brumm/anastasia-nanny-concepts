@@ -14,7 +14,7 @@
     #chalk-header-designs .chalk-mark { display:block; overflow:visible; opacity:var(--drawing-opacity); pointer-events:none; }
     #chalk-header-designs .name-underline { position:absolute; width:125px; height:14px; left:2px; bottom:-16px; }
     #chalk-header-designs .tiny-plane { width:32px; height:16px; }
-    #chalk-header-designs .arch-badge { display:block; width:95px; height:38px; }
+    #chalk-header-designs .arch-badge { display:block; width:48px; height:54px; flex-shrink:0; }
     #chalk-header-designs .door-brand { display:flex; align-items:center; gap:15px; }
     #chalk-header-designs .header-line { position:absolute; left:32px; right:32px; bottom:4px; height:23px; width:calc(100% - 64px); }
     #chalk-header-designs .version-signature .design-header { padding-bottom:35px; }
@@ -26,7 +26,7 @@
     #chalk-header-designs .version-trail .header-name small { font-size:11px; letter-spacing:.04em; }
     #chalk-header-designs .version-trail .telegram { border:0; padding-right:0; }
     #chalk-header-designs .mobile-menu { display:none; position:relative; flex-shrink:0; font:400 13px/1.4 'Golos Text',Arial,sans-serif; }
-    #chalk-header-designs .mobile-menu summary { padding:10px 12px; border:1px solid #b3c3c8; border-radius:20px; color:var(--header-accent); cursor:pointer; }
+    #chalk-header-designs .mobile-menu summary { display:flex;align-items:center;min-height:44px;padding:10px 12px; border:1px solid #b3c3c8; border-radius:20px; color:var(--header-accent); cursor:pointer; }
     #chalk-header-designs .mobile-menu .header-nav { position:absolute; z-index:3; right:0; top:45px; width:170px; padding:15px; margin:0; display:grid; gap:14px; border:1px solid #dbe4df; border-radius:10px; background:var(--header-paper); }
     #chalk-header-designs .hero-glimpse { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.76fr); gap:28px; padding:32px 40px 26px; background:radial-gradient(ellipse at 60% 70%,var(--header-sky),var(--header-paper) 78%); align-items:center; }
     #chalk-header-designs .hero-copy h2 { margin:0; font:400 clamp(27px,4cqw,38px)/1.12 'Lora',Georgia,serif; letter-spacing:-.025em; text-wrap:balance; }
@@ -47,7 +47,7 @@
       #chalk-header-designs .header-nav { font-size:12px; }
       #chalk-header-designs .design-header { padding-inline:22px; }
       #chalk-header-designs .version-door .design-header { padding-inline:22px; }
-      #chalk-header-designs .arch-badge { width:70px; }
+      #chalk-header-designs .arch-badge { width:40px; height:46px; }
     }
     @container (max-width:560px) {
       #chalk-header-designs .design-header, #chalk-header-designs .version-door .design-header { padding:20px 18px 30px; }
@@ -58,7 +58,7 @@
       #chalk-header-designs .header-name strong { display:block; text-wrap:balance; }
       #chalk-header-designs .door-brand { min-width:0; }
       #chalk-header-designs .header-name small { font-size:10px; }
-      #chalk-header-designs .arch-badge { width:45px; height:30px; }
+      #chalk-header-designs .arch-badge { width:36px; height:44px; }
       #chalk-header-designs .door-brand { gap:6px; }
       #chalk-header-designs .version-door .header-name strong { font-size:18px; }
       #chalk-header-designs .version-door .header-name small { max-width:18ch; font-size:10px; letter-spacing:.02em; }
@@ -70,7 +70,7 @@
     }
     @container (max-width:400px) {
       #chalk-header-designs .header-name strong { font-size:20px; }
-      #chalk-header-designs .version-door .arch-badge { width:30px; flex-shrink:0; }
+      #chalk-header-designs .version-door .arch-badge { width:36px; flex-shrink:0; }
       #chalk-header-designs .version-door .header-name strong { font-size:17px; }
       #chalk-header-designs .header-row { gap:10px; }
     }

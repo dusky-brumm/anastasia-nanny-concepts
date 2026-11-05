@@ -12,14 +12,14 @@
     #chalk-service-designs .service-link:focus-visible { outline:3px solid var(--service-blue); outline-offset:5px; }
     #chalk-service-designs .service-example { margin-top:32px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:20px; align-items:center; }
     #chalk-service-designs .service-example h3 { font:400 24px/1.15 'Lora',Georgia,serif; }
-    #chalk-service-designs .service-example p { max-width:67ch; font-size:13px; line-height:1.6; }
+    #chalk-service-designs .service-example p { max-width:67ch; font-size:15px; line-height:1.65; }
     #chalk-service-designs .drawing-line { display:block; width:100%; height:31px; opacity:var(--service-chalk); overflow:visible; pointer-events:none; }
     #chalk-service-designs .studies-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; }
-    #chalk-service-designs .studies-heading .heading-art { width:140px; height:125px; flex-shrink:0; transform:rotate(5deg); }
+    #chalk-service-designs .studies-heading .heading-art { width:95px; height:85px; flex-shrink:0; transform:rotate(5deg); }
     #chalk-service-designs .study-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; margin-top:23px; position:relative; }
     #chalk-service-designs .study { min-width:0; }
-    #chalk-service-designs .study-picture { height:157px; padding:8px 17px; margin:0 0 20px; background:radial-gradient(ellipse at center,var(--service-wash),var(--service-paper) 74%); }
-    #chalk-service-designs .study p { font-size:13px; line-height:1.6; }
+    #chalk-service-designs .study-picture { height:136px; padding:8px 17px; margin:0 0 20px; background:radial-gradient(ellipse at center,var(--service-wash),var(--service-paper) 74%); }
+    #chalk-service-designs .study p { font-size:15px; line-height:1.65; }
     #chalk-service-designs .studies-thread { margin:20px 0 0; }
     #chalk-service-designs .studies .service-example { margin-top:22px; }
     #chalk-service-designs .studies .service-link { white-space:nowrap; margin:0; }
@@ -27,7 +27,7 @@
     #chalk-service-designs .interview-grid { display:grid; grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr); gap:clamp(24px,5cqw,50px); margin-top:29px; align-items:start; }
     #chalk-service-designs .service-rows { display:grid; gap:16px; }
     #chalk-service-designs .service-row { position:relative; padding-bottom:15px; }
-    #chalk-service-designs .service-row p { font-size:13px; line-height:1.6; }
+    #chalk-service-designs .service-row p { font-size:15px; line-height:1.65; }
     #chalk-service-designs .row-divider { display:block; width:100%; height:10px; margin-top:11px; opacity:var(--service-chalk); }
     #chalk-service-designs .interview-picture { height:255px; margin:0; }
     #chalk-service-designs .interview-note { padding:20px 0 0 18px; border-left:2px solid #b6c9c2; margin:22px 0 0; }
@@ -38,7 +38,7 @@
     #chalk-service-designs .dossier-heading h2, #chalk-service-designs .dossier-heading .service-intro { margin-inline:auto; }
     #chalk-service-designs .dossier-grid { display:grid; grid-template-columns:minmax(0,.87fr) minmax(0,1.13fr); gap:clamp(24px,5cqw,50px); align-items:center; margin-top:35px; }
     #chalk-service-designs .dossier-sheet { position:relative; padding:18px; border-radius:45% 40% 38% 44%; background:radial-gradient(ellipse at center,var(--service-wash),var(--service-paper) 74%); }
-    #chalk-service-designs .dossier-picture { height:293px; margin:0; transform:rotate(-5deg); }
+    #chalk-service-designs .dossier-picture { height:260px; margin:0; transform:rotate(-5deg); }
     #chalk-service-designs .dossier-sheet .drawing-line { position:absolute; bottom:-8px; right:-20px; width:110%; height:30px; transform:rotate(3deg); }
     #chalk-service-designs .dossier .service-row { padding:0 0 0 20px; border-left:1px solid #c1cfc4; }
     #chalk-service-designs .dossier .service-row h3 { margin-bottom:6px; }

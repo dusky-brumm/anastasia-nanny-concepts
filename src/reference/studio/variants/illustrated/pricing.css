@@ -5,7 +5,7 @@
     #chalk-pricing-designs .price-eyebrow { margin:0 0 12px; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--price-blue); }
     #chalk-pricing-designs h2 { margin:0; font:400 clamp(34px,4.8cqw,48px)/1.08 'Lora',Georgia,serif; letter-spacing:-.03em; text-wrap:balance; }
     #chalk-pricing-designs .price-art { display:block; width:100%; height:100%; overflow:visible; opacity:var(--price-chalk); pointer-events:none; }
-    #chalk-pricing-designs .cost { margin:8px 0 0; font:400 clamp(34px,4.8cqw,48px)/1.08 'Lora',Georgia,serif; letter-spacing:-.035em; text-wrap:balance; }
+    #chalk-pricing-designs .cost { margin:8px 0 0; font:400 clamp(32px,4.5cqw,42px)/1.12 'Lora',Georgia,serif; letter-spacing:-.025em; text-wrap:pretty; }
     #chalk-pricing-designs .cost-copy { margin:17px 0 0; max-width:37ch; font-size:14px; line-height:1.6; }
     #chalk-pricing-designs .terms-link { display:inline-block; margin-top:17px; padding:4px 0; color:var(--price-blue); text-decoration:none; border-bottom:1px solid #a7bdc5; font-size:13px; }
     #chalk-pricing-designs a:focus-visible, #chalk-pricing-designs summary:focus-visible { outline:3px solid var(--price-blue); outline-offset:4px; }
@@ -16,14 +16,14 @@
     #chalk-pricing-designs .payment-rows dd { margin:0; font-size:17px; font-weight:500; line-height:1.35; }
     #chalk-pricing-designs .payment-rows small { display:block; margin-top:7px; font-size:12px; font-weight:400; color:#526773; }
     #chalk-pricing-designs .guarantee-number { display:block; font:400 37px/1.1 'Lora',Georgia,serif; letter-spacing:-.025em; margin-top:7px; }
-    #chalk-pricing-designs .guarantee-copy { margin:11px 0 0; max-width:35ch; font-size:13px; line-height:1.6; }
+    #chalk-pricing-designs .guarantee-copy { margin:11px 0 0; max-width:35ch; font-size:15px; line-height:1.65; }
     #chalk-pricing-designs .faq { margin-top:39px; }
     #chalk-pricing-designs .faq-heading { display:flex; align-items:center; gap:17px; margin-bottom:10px; }
     #chalk-pricing-designs .faq-heading h3 { margin:0; font:400 27px/1.15 'Lora',Georgia,serif; letter-spacing:-.02em; }
     #chalk-pricing-designs .faq-picture { width:62px; height:45px; flex-shrink:0; }
     #chalk-pricing-designs .faq details { border-bottom:1px solid #ccd9da; }
     #chalk-pricing-designs .faq summary { padding:15px 4px; color:var(--price-ink); font-size:14px; line-height:1.45; cursor:pointer; }
-    #chalk-pricing-designs .faq details p { margin:0; padding:0 4px 18px; max-width:78ch; font-size:13px; line-height:1.65; color:#455d68; }
+    #chalk-pricing-designs .faq details p { margin:0; padding:0 4px 18px; max-width:78ch; font-size:15px; line-height:1.65; color:#455d68; }
     #chalk-pricing-designs .price-bottom { margin-top:24px; }
     #chalk-pricing-designs .price-bottom a { margin:0; }
     #chalk-pricing-designs .sheet { background:radial-gradient(ellipse at 75% 25%,var(--price-wash),var(--price-paper) 80%); }
@@ -37,7 +37,7 @@
     #chalk-pricing-designs .care { background:var(--price-paper); }
     #chalk-pricing-designs .care-panels { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:24px; margin-top:30px; }
     #chalk-pricing-designs .care-price { position:relative; padding:25px 28px; border:1px solid #d4dfde; border-radius:10px; }
-    #chalk-pricing-designs .care-price .cost { max-width:12ch; }
+    #chalk-pricing-designs .care-price .cost { max-width:calc(100% - 90px); }
     #chalk-pricing-designs .care-price .payment-rows { margin-top:13px; }
     #chalk-pricing-designs .care-picture { position:absolute; width:78px; height:78px; top:20px; right:21px; margin:0; opacity:.8; }
     #chalk-pricing-designs .care-guarantee { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:25px; background:var(--price-soft); border-radius:10px; }
@@ -69,6 +69,7 @@
       #chalk-pricing-designs .sheet-guarantee .guarantee-copy { grid-column:2; max-width:none; }
       #chalk-pricing-designs .sheet-guarantee figure { grid-row:1 / span 2; }
       #chalk-pricing-designs .care-picture { display:none; }
+      #chalk-pricing-designs .care-price .cost { max-width:none; }
       #chalk-pricing-designs .care-panels { grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:17px; }
       #chalk-pricing-designs .care-price { padding:24px 20px; }
       #chalk-pricing-designs .care-guarantee { padding:23px 17px; }

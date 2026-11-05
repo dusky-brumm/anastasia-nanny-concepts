@@ -37,6 +37,10 @@
 .imported-design #chalk-site-directions .selected-section .s-block h2 {font-size:clamp(30px,4cqw,48px)}
 .imported-design #chalk-site-directions .selected-section .s-service-intro h2 {max-width:18ch}
 .imported-design #chalk-site-directions .selected-section .s-about-dots {display:flex}
+/* Retained chalk compositions use the same section colors as the early designs. */
+.imported-design #chalk-site-directions :is(#service,#reviews) {background:var(--wash)}
+.imported-design #chalk-site-directions #about {background:var(--paper)}
+.imported-design #chalk-site-directions #process {background:var(--soft)}
 /* The selected palette applies to every composition, including imported ones. */
 body[data-fixed-theme=almost-white] :is(.site-preview,.imported-design) #hero {
  background:radial-gradient(ellipse 65% 80% at 50% 48%,var(--wash),transparent 78%),var(--paper);

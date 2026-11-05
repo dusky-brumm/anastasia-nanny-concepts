@@ -24,7 +24,7 @@ export function selectedBlock(id,style='quiet',variant=1,drawings=false){
 export function renderAdditionalDesign(design){
   const composition=additionalTemplates[design.mode];
   const service=composition.service??selectedBlock('service','quiet',1,true);
-  const pricing=composition.pricing??selectedBlock('pricing',design.chalk==='album'?'album':'quiet',1,true);
+  const pricing=selectedBlock('pricing','quiet',1,true);
   const about=selectedBlock('about');
   const process=selectedBlock('process',design.chalk==='route'?'route':design.chalk==='arc'?'air':'reference',design.chalk==='route'||design.chalk==='arc'?7:1);
   const reviews=selectedBlock('reviews','letter');

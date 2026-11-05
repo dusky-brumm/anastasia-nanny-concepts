@@ -25,7 +25,7 @@ export const comparisonBlockChoices = {
     ['quiet','Основной вариант',6],
   ]],
   pricing: ['Стоимость и гарантия', [
-    ['quiet','Оплата в два этапа',1], ['letter','Открытые колонки',1], ['album','Акцент на гарантии',1], ['route','Три условия в ряд',1], ['panorama','Цена над условиями',1], ['reference','Цена и гарантия в двух панелях',1],
+    ['quiet','Один оклад · три условия',1],
   ]],
   reviews: ['Отзывы', [
     ['quiet','Две открытые цитаты',1,'cards'], ['letter','Цитаты с тонкими линиями',1,'open'], ['album','Одна большая цитата',1,'ribbon'],
@@ -70,12 +70,12 @@ const assemblyPresets = [
   {
     name:'Как личное письмо',
     description:'Открытые строки, семейный альбом и отдельный акцент на гарантии.',
-    choices:{service:'letter',about:'album',process:'reference',pricing:'album',reviews:'album',apply:'album',footer:'quiet'},
+    choices:{service:'letter',about:'album',process:'reference',pricing:'quiet',reviews:'album',apply:'album',footer:'quiet'},
   },
   {
     name:'Чёткий маршрут',
     description:'Услуга в двух панелях, условия в ряд и форма с тонкими подчёркиваниями.',
-    choices:{service:'panorama',about:'reference',process:'route',pricing:'route',reviews:'quiet',apply:'reference',footer:'quiet'},
+    choices:{service:'panorama',about:'reference',process:'route',pricing:'quiet',reviews:'quiet',apply:'reference',footer:'quiet'},
   },
 ];
 

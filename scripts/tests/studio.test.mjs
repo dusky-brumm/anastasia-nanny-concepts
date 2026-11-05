@@ -19,7 +19,8 @@ test('completed design comparisons retain all sections and exclude the three can
     assert.doesNotMatch(html,/>Вариант (2|5|8)<\/a>/);
     assert.doesNotMatch(html,/data-comparison-palette|data-color-role=|Основной сайт/);
     assert.match(html,/data-comparison-theme="almost-white"/);
-    assert.match(html,/comparison-price-(?:sheet|duet)|s-clear-pricing|id="pricing"/);
+    assert.match(html,/s-pricing-summary/);
+    assert.doesNotMatch(html,/comparison-price-(?:sheet|duet)|s-clear-pricing/);
     assert.match(html,/studio\/comparison-request.js/);
     assert.doesNotMatch(html,/>Улучшенный<\/a>/);
     if(mode.endsWith('-refined'))assert.match(html,/data-refinement=/);
@@ -91,7 +92,8 @@ test('block galleries and assembly preserve the current hero and local request w
     assert.doesNotMatch(gallery,/data-live-request/);
     total+=choices.length;
   }
-  assert.equal(total,90);
+  assert.equal(total,85);
+  assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet',...referenceDesigns.map(design=>design.mode)]);
 });
 
 test('new designs expose eight isolated, complete blocks with working cross-section links',()=>{

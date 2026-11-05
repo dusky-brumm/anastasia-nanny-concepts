@@ -40,6 +40,6 @@ test('the indexable HTML includes nine sections, one approved H1 and readable FA
   assert.equal((html.match(/<h1\b/g)||[]).length,1);
   assert.ok(html.includes('Найду няню, с\u00a0которой'));
   assert.ok(html.includes('Сколько анкет можно получить?'));
-  assert.ok(html.includes('Один месячный<br>оклад няни'));
-  assert.ok(html.includes('6 месяцев<small>бесплатной замены'));
+  assert.ok(html.includes('Стоимость подбора — один оклад няни'));
+  assert.ok(html.includes('<dt>Бесплатная замена</dt><dd>6 месяцев</dd>'));
 });

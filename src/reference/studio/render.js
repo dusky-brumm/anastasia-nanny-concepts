@@ -266,42 +266,16 @@ function faq(comparison=false,compact=false) {
   const items = questions.map(({question,answer}) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join('');
   return `<div class="s-faq"><h3>Вопросы о подборе няни</h3>${comparison?`<div class="comparison-faq-questions">${items}</div>`:items}</div>`;
 }
-function comparisonPricing({blockStyle, previewFile, contourDirection}) {
-  const price = `<div class="comparison-price-main">
-    <p class="comparison-price-label">Стоимость подбора</p>
-    <h3>Один оклад няни</h3>
-    <p>В стоимость входят поиск, собеседования и сопровождение семьи.</p>
-    <a class="s-text-link comparison-terms-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a>
-${contourDirection==='letter'?contourDrawing('pricing'):''}
-  </div>`;
-  const payments = `<div><dt>Предоплата</dt><dd>25&nbsp;000&nbsp;₽ <small>При начале подбора</small></dd></div>
-    <div><dt>Остаток</dt><dd>Через 1–2 пробные недели</dd></div>`;
-  const warranty = '<div class="comparison-guarantee"><dt>Бесплатная замена</dt><dd>6 месяцев</dd></div>';
-  const body = blockStyle === 'reference'
-    ? `<div class="comparison-price-duet">
-        <div class="comparison-price-duet-terms">${price}<dl class="comparison-price-terms">${payments}</dl></div>
-        <div class="comparison-price-duet-warranty">
-          <p class="comparison-price-label">Гарантия</p>
-          <dl>${warranty}</dl>
-          ${contourDirection==='wave'?contourDrawing('pricing'):`<svg viewBox="0 0 144 106" aria-hidden="true"><path d="M14 93C40 79 61 56 77 20m-36 56c-8-16-3-31 6-42 7 15 7 25-6 42Zm15-15c5-16 20-24 35-23-9 14-21 22-35 23Zm12-19c-4-15 0-25 11-32 3 13 0 24-11 32ZM73 92c15-14 31-25 50-29m-31 15c-2-11 3-20 14-25 0 10-4 19-14 25Zm14-8c9 2 18-1 24-9-10-2-19 2-24 9Z"/></svg>`}
-        </div>
-      </div>`
-    : `<div class="comparison-price-sheet">${price}<dl class="comparison-price-terms">${payments}${warranty}</dl></div>`;
-  return `${title('Стоимость и гарантия')}${body}${previewFile?'':faq(true)}`;
-}
 function pricing(v,c) {
-  if(!c.comparison||c.blockStyle==='quiet')return clearPricing(c);
-  return comparisonPricing(c);
-}
-function clearPricing(c) {
-  return `${title('Стоимость подбора')}<div class="s-clear-pricing">
-    <div class="s-fee-intro"><h3>Один месячный<br>оклад няни</h3><p>За весь подбор: поиск, собеседования и сопровождение вашей семьи.</p></div>
-    <ol class="s-payment-steps">
-      <li><span class="s-payment-number" aria-hidden="true">01</span><div><h3>В начале подбора</h3><p class="s-payment-amount">25&nbsp;000&nbsp;₽</p><p>Предоплата. Она входит в общую стоимость.</p></div></li>
-      <li><span class="s-payment-number" aria-hidden="true">02</span><div><h3>После пробных недель</h3><p class="s-payment-amount">Оставшаяся сумма</p><p>После 1–2 пробных недель с выбранной няней.</p></div></li>
-    </ol>
-    <div class="s-replacement-note"><span class="s-replacement-period">6 месяцев<small>бесплатной замены</small></span><div><h3>Если сотрудничество не сложится</h3><p>Я бесплатно подберу другую няню. Вам не придётся оплачивать подбор заново.</p></div></div>
-    <div class="s-fee-actions">${action(c,'Обсудить подбор')}<a class="s-text-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a></div>
+  return `<div class="s-pricing-summary">
+    <h2>Стоимость подбора — один оклад няни</h2>
+    <p class="s-pricing-includes">В стоимость входят поиск, собеседования и сопровождение семьи.</p>
+    <dl class="s-pricing-terms">
+      <div><dt>Предоплата</dt><dd>25&nbsp;000&nbsp;₽<span>В начале подбора.</span></dd></div>
+      <div><dt>Остальная сумма</dt><dd>После 1–2 пробных недель</dd></div>
+      <div><dt>Бесплатная замена</dt><dd>6 месяцев</dd></div>
+    </dl>
+    <a class="s-text-link" href="${contacts.terms}" target="_blank" rel="noopener noreferrer">Подробные условия ↗</a>
   </div>${c.previewFile?'':faq(Boolean(c.comparison),true)}`;
 }
 function reviewCard([name,role,quote,avatar],heart='') {

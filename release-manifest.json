@@ -1,6 +1,6 @@
 {
-  "build": "d7f7548d41",
-  "base_commit": "2867f9406abb0094f6894d5e0b36561ed7f3e6eb",
+  "build": "793c3907eb",
+  "base_commit": "71584bdee4df9c544051b41ccedd9758e79ac31f",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,8 +23,8 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "All eight new reference designs added to block comparison and mixed assembly: hero, service, About, process, pricing, reviews, form and footer (64 new blocks)",
-    "Side-by-side/full-width comparison, isolated native styles and responsive height, working story/service/review controls, form and in-assembly links; preserve selection in share URLs"
+    "Replace all six legacy price options with one concise layout: one nanny salary, included search/interviews/family support, advance 25,000 rubles at start, remainder after 1–2 trial weeks, six months free replacement",
+    "Use modest typography and three graphite-separated conditions across legacy full designs and mixed assembly; retain all eight new reference designs unchanged"
   ],
   "excluded": [
     "Cancelled designs 2, 5 and 8",
@@ -227,7 +227,8 @@
     "current_chat_overrides": "Four-frame About without heading; reviews without family stories; textured thin form lines and pencil button; only improved designs where paired",
     "reference_compositions": "The later eight-reference request retains each full native composition and section order; shared controls/content adapted without replacing designs with one template",
     "full_width_reference_backgrounds": "Explicit user request, 5 November: new design backgrounds extend across the full viewport like the first designs",
-    "reference_block_comparison": "Explicit user request: add blocks from the new versions to comparison; include the first screen and retain existing choices"
+    "reference_block_comparison": "Explicit user request: add blocks from the new versions to comparison; include the first screen and retain existing choices",
+    "legacy_pricing": "User explicitly rejected the six old price layouts through the two-panel option; replace them with one compact explanation and three equal conditions, preserving the eight new designs"
   },
   "validation": {
     "build": "passed",
@@ -238,17 +239,11 @@
         1440,
         390
       ],
-      "new_blocks": 64,
-      "comparison": "new/new and old/new; side and stack",
-      "mixed_assembly": "eight selections survive reload",
-      "interactions": [
-        "About slides",
-        "service tabs",
-        "review carousel",
-        "request draft",
-        "privacy dialog",
-        "hero to assembly form"
-      ],
+      "desktop_heading_px": 32,
+      "desktop_values_px": 22,
+      "conditions": "three columns desktop / stacked mobile",
+      "legacy_price_links": "fall back to the replacement while retaining other selected blocks",
+      "new_reference_designs": "all eight full designs and price previews unchanged except build stamps",
       "horizontal_overflow": false
     }
   }

@@ -1,7 +1,7 @@
 import {additionalTemplates} from './additional-templates.js';
-import {renderBlock} from './render.js?v=d7f7548d41';
-import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=d7f7548d41';
-import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=d7f7548d41';
+import {renderBlock} from './render.js?v=793c3907eb';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=793c3907eb';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=793c3907eb';
 
 export const additionalDesigns=[
   {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css'},
@@ -14,7 +14,7 @@ export const additionalDesigns=[
 
 export function additionalStyles(design){
   const directory=design.chalk?'chalk':design.mode;
-  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=d7f7548d41">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=d7f7548d41">`;
+  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=793c3907eb">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=793c3907eb">`;
 }
 
 export function selectedBlock(id,style='quiet',variant=1,drawings=false){
@@ -24,7 +24,7 @@ export function selectedBlock(id,style='quiet',variant=1,drawings=false){
 export function renderAdditionalDesign(design){
   const composition=additionalTemplates[design.mode];
   const service=composition.service??selectedBlock('service','quiet',1,true);
-  const pricing=composition.pricing??selectedBlock('pricing',design.chalk==='album'?'album':'quiet',1,true);
+  const pricing=selectedBlock('pricing','quiet',1,true);
   const about=selectedBlock('about');
   const process=selectedBlock('process',design.chalk==='route'?'route':design.chalk==='arc'?'air':'reference',design.chalk==='route'||design.chalk==='arc'?7:1);
   const reviews=selectedBlock('reviews','letter');

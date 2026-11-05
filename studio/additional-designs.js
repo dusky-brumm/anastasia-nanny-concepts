@@ -1,20 +1,18 @@
 import {additionalTemplates} from './additional-templates.js';
-import {renderBlock} from './render.js?v=be173e1347';
-import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=be173e1347';
-import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=be173e1347';
+import {renderBlock} from './render.js?v=dfc49f7bfc';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=dfc49f7bfc';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=dfc49f7bfc';
 
 export const additionalDesigns=[
   {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css'},
-  {mode:'journal',file:'comparison-journal.html',name:'Семейный журнал',css:'journal.css'},
   {mode:'editorial-new',file:'comparison-editorial.html',name:'Тихая редакция',css:'editorial.css'},
-  {mode:'chalk-arc',file:'comparison-chalk-arc.html',name:'Кремовая дуга',chalk:'arc'},
   {mode:'chalk-album',file:'comparison-chalk-album.html',name:'Семейный альбом',chalk:'album'},
   {mode:'chalk-route',file:'comparison-chalk-route.html',name:'Маршрут семьи',chalk:'route'},
 ].map(design=>({...design,single:true,imported:true}));
 
 export function additionalStyles(design){
   const directory=design.chalk?'chalk':design.mode;
-  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=be173e1347">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=be173e1347">`;
+  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=dfc49f7bfc">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=dfc49f7bfc">`;
 }
 
 export function selectedBlock(id,style='quiet',variant=1,drawings=false){

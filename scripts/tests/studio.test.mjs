@@ -5,6 +5,8 @@ import {studioPage,comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,c
 import {extractDesignBlock} from '../../src/reference/studio/design-blocks.js';
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../../src/reference/studio/reference-designs.js';
+import {illustratedDesigns} from '../../src/reference/studio/illustrated-designs.js';
+import {illustratedAssets} from '../../src/reference/studio/illustrated-assets.js';
 
 test('completed design comparisons retain all sections and exclude cancelled options',()=>{
   const modes=comparisonDesigns.filter(design=>!design.reference).flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
@@ -20,7 +22,12 @@ test('completed design comparisons retain all sections and exclude cancelled opt
     assert.doesNotMatch(html,/>Вариант (2|3|4|5|6|8)<\/(?:a|option)>/);
     assert.doesNotMatch(html,/data-comparison-palette|data-color-role=|Основной сайт/);
     assert.match(html,/data-comparison-theme="almost-white"/);
-    assert.match(html,/s-pricing-summary/);
+    if(!illustratedDesigns.some(design=>design.mode===mode))assert.match(html,/s-pricing-summary/);
+    else {
+      assert.match(html,/Один оклад няни/);
+      assert.match(html,/25(?:\s|&nbsp;)*000(?:\s|&nbsp;)*₽/);
+      assert.match(html,/6 месяцев/);
+    }
     assert.doesNotMatch(html,/comparison-price-(?:sheet|duet)|s-clear-pricing/);
     assert.match(html,/studio\/comparison-request.js/);
     assert.doesNotMatch(html,/>Улучшенный<\/a>/);
@@ -30,6 +37,24 @@ test('completed design comparisons retain all sections and exclude cancelled opt
   assert.equal([...reference.matchAll(/data-about-dot="/g)].length,4);
   assert.match(reference,/M389 85C395 158/);
   assert.match(studioPage('preview','hero','index.html'),/value="comparison-current-refined.html/);
+});
+
+test('chalk designs preserve all artwork, complete sections and reusable isolated compositions',()=>{
+  const used=new Set();
+  for(const design of illustratedDesigns){
+    const html=studioPage(design.mode,'hero',design.file);
+    assert.equal([...html.matchAll(/<form\b/g)].length,1);
+    assert.match(html,/class="cafe-crop" viewBox="0 420 720 860"/);
+    assert.doesNotMatch(html,/data:image|__ARC_ID__|github\.io\/anastasia-nanny-concepts\/#/);
+    for(const asset of illustratedAssets)if(html.includes(`/${asset.id}.webp`))used.add(asset.id);
+    for(const id of Object.keys(comparisonBlockChoices)){
+      const selected=designBlockCoverage[design.mode][id];
+      assert.equal(selected,design.mode,`${design.mode}/${id} must retain its own composition`);
+      const details=comparisonChoiceDetails[id][selected];
+      assert.ok(details.file,`${design.mode}/${id} needs an isolated preview`);
+    }
+  }
+  assert.equal(used.size,illustratedAssets.length);
 });
 
 test('retained reference compositions keep their layouts and the latest shared decisions',()=>{
@@ -91,7 +116,7 @@ test('block galleries and assembly preserve the current hero and local request w
     for(const [style] of choices) assert.ok(gallery.includes(`&amp;${id}=${style}#${id}`));
     assert.doesNotMatch(gallery,/data-live-request/);
   }
-  assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet',...referenceDesigns.map(design=>design.mode)]);
+  assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet','chalk-light','chalk-letter','chalk-story',...referenceDesigns.map(design=>design.mode)]);
 });
 
 test('withdrawn full designs preserve the two selected form layouts without dead links',()=>{

@@ -1,0 +1,47 @@
+/* The original studies share the site's approved paper, blue and sage palette. */
+.illustrated-site {max-width:1280px;margin-inline:auto;--heading:'Lora',Georgia,serif;--heading-weight:400;--heading-tracking:-.025em;--body:'Golos Text',Arial,sans-serif}
+.illustrated-site :where(h1,h2,h3,p,figure,blockquote,ul,ol) {margin:0}
+.illustrated-site a {color:inherit}
+.illustrated-site > main {display:block}
+.illustrated-site :is(section,header,footer)[id] {scroll-margin-top:var(--comparison-offset,24px)}
+.illustrated-site :is(.hero-scene,.service-scene,.about-scene,.process-scene,.price-scene) {max-width:1120px;margin-inline:auto}
+#chalk-header-designs .header-stage {padding:0;min-height:0}
+#chalk-header-designs .header-site {border-radius:0;overflow:visible}
+#chalk-header-designs .design-header {max-width:1120px;margin-inline:auto}
+#chalk-header-designs .mobile-menu .header-nav {z-index:5;box-shadow:0 8px 24px #28353c14}
+#chalk-header-designs .header-row > .header-nav {gap:12px}
+#chalk-hero-designs .hero-scene,#chalk-service-designs .service-scene,#chalk-about-designs .about-scene,#chalk-process-designs .process-scene,#chalk-pricing-designs .price-scene {min-height:0;padding-block:64px}
+#chalk-hero-designs .hero-variant,#chalk-service-designs .service-design,#chalk-about-designs .about-design,#chalk-process-designs .process-design,#chalk-pricing-designs .price-design {border-radius:0}
+#chalk-hero-designs .portrait-picture,#chalk-hero-designs .album-main {background:none;overflow:hidden}
+#chalk-hero-designs .cafe-crop {display:block;width:100%;height:100%}
+.illustrated-site .chalk-tail {overflow:visible}
+.illustrated-site .chalk-tail-block {position:relative;padding-block:64px}
+.illustrated-site .chalk-motif {display:block;pointer-events:none;overflow:visible}
+.illustrated-site .chalk-reviews-intro {display:flex;align-items:center;gap:20px;margin-bottom:25px;color:var(--accent);font-size:12px}
+.illustrated-site .chalk-reviews-picture {width:90px;height:63px;flex-shrink:0}
+.illustrated-site .chalk-quote {width:41px;height:23px;margin-bottom:17px}
+.illustrated-site .chalk-tail .s-review {background:transparent;border:0;box-shadow:none}
+.illustrated-site .chalk-tail--2.s-reviews {background:var(--wash)}
+.illustrated-site .chalk-tail--2 .chalk-reviews-picture {width:140px;height:95px}
+.illustrated-site .chalk-tail--2 .s-review {padding:25px;background:var(--paper);border-radius:4px;transform:rotate(-.6deg)}
+.illustrated-site .chalk-tail--2 .s-review:nth-child(even) {transform:rotate(.6deg)}
+.illustrated-site .chalk-tail--3 .s-review {border-top:1px solid #bfcec9;padding-top:25px}
+.illustrated-site .chalk-apply-picture {width:190px;height:125px;margin-top:24px}
+.illustrated-site .chalk-tail--2.s-apply {background:var(--wash)}
+.illustrated-site .chalk-tail--2 .s-consult-form {padding:25px;background:var(--paper);border:1px solid #d7e0de;border-radius:4px 20px 4px 20px}
+.illustrated-site .chalk-tail--3.s-apply {background:var(--paper)}
+.illustrated-site .chalk-form-line {grid-column:1/-1;width:100%;height:16px;order:-1;margin-bottom:12px}
+.illustrated-site .chalk-footer-picture {width:230px;height:67px;justify-self:center}
+.illustrated-site .chalk-tail--2.s-footer {background:var(--wash)}
+.illustrated-site .chalk-tail--2 .chalk-footer-picture {width:180px;height:56px}
+.illustrated-site .chalk-tail--3.s-footer {border-top:1px solid #bfcec9;background:var(--paper)}
+.illustrated-site .chalk-tail--3 .chalk-footer-picture {width:125px;height:50px}
+.illustrated-site .chalk-reveal {clip-path:inset(-8% 108% -8% -8%)}
+.illustrated-site .chalk-reveal.chalk-visible {animation:chalk-appear 1.1s cubic-bezier(.22,.7,.35,1) both}
+@keyframes chalk-appear {from {clip-path:inset(-8% 108% -8% -8%)}to {clip-path:inset(-8% -8% -8% -8%)}}
+@media(max-width:760px){
+ #chalk-hero-designs .hero-scene,#chalk-service-designs .service-scene,#chalk-about-designs .about-scene,#chalk-process-designs .process-scene,#chalk-pricing-designs .price-scene {padding-block:38px}
+ .illustrated-site .chalk-tail-block {padding-block:38px}
+ .illustrated-site .chalk-footer-picture {width:160px;height:50px}
+}
+@media(prefers-reduced-motion:reduce){.illustrated-site .chalk-reveal,.illustrated-site .chalk-reveal.chalk-visible {clip-path:none;animation:none}}

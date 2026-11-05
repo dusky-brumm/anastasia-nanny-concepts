@@ -21,7 +21,7 @@ for(const file of ['index.html','routes.html']){
   await writeFile(path.join(output,target),html.replace('</head>',utilityIndexingTags(target)+'</head>'));
 }
 for(const file of ['app.js','journeys.js'])await writeFile(path.join(output,file),(await readFile(path.join(source,file),'utf8')).replaceAll('__VERSION__',version));
-for(const file of ['model.js','render.js','pages.js','app.js','content.js','seo.js','additional-designs.js','design-chrome.js','reference-designs.js','design-blocks.js'])await writeFile(path.join(output,'studio',file),(await readFile(path.join(source,'studio',file),'utf8')).replaceAll('__VERSION__',version));
+for(const file of ['model.js','render.js','pages.js','app.js','content.js','seo.js','additional-designs.js','design-chrome.js','reference-designs.js','design-blocks.js','illustrated-designs.js'])await writeFile(path.join(output,'studio',file),(await readFile(path.join(source,'studio',file),'utf8')).replaceAll('__VERSION__',version));
 for(const [file,mode,id] of [['index.html','preview','hero'],['studio.html','studio','hero'],['preview.html','preview','hero'],['routes.html','library','process'],['blocks.html','library','hero'],...blocks.map(b=>['blocks-'+b.id+'.html','library',b.id])])await writeFile(path.join(output,file),studioPage(mode,id,file).replaceAll('__VERSION__',version));
 await writeFile(path.join(output,'next.html'),`<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./"><title>Настя — подбор нянь</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="${seoConfig.url}"></head><body><a href="./">Открыть сайт</a></body></html>`);
 await writeFile(path.join(output,'sitemap.xml'),sitemapXml());

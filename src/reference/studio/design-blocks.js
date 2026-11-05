@@ -46,9 +46,9 @@ export function designBlockPage(design,id,html) {
 // IDs and cross-section destinations differ between a gallery and a full page.
 // They do not make a second visual option. Explicit shared sections have one key.
 export function blockIdentity(id,markup,style='quiet',family='native') {
-  if(id==='header')return 'shared-header';
-  if(id==='pricing'&&family!=='reference')return 'approved-three-conditions';
-  if(id==='footer'&&family!=='reference')return /contour-drawing/.test(markup)?'footer-plane':'footer-sketch';
+  if(id==='header'&&family!=='illustrated')return 'shared-header';
+  if(id==='pricing'&&!['reference','illustrated'].includes(family))return 'approved-three-conditions';
+  if(id==='footer'&&!['reference','illustrated'].includes(family))return /contour-drawing/.test(markup)?'footer-plane':'footer-sketch';
   // The shared components have the same composition in several full designs.
   // Font inheritance alone is not another block; keep real layout and drawing changes.
   if(id!=='hero'&&family!=='reference'){

@@ -1,0 +1,116 @@
+#chalk-pricing-designs { --price-paper:#fcfcfa; --price-wash:#e7f1f6; --price-soft:#e8efe4; --price-ink:#28353c; --price-blue:#385a6b; }
+    #chalk-pricing-designs .price-design { container-type:inline-size; background:var(--price-paper); color:var(--price-ink); border-radius:16px; overflow:hidden; font:400 15px/1.55 'Golos Text',Arial,sans-serif; --price-chalk:.96; }
+    #chalk-pricing-designs .price-design[hidden] { display:none; }
+    #chalk-pricing-designs .price-scene { min-height:0; padding:clamp(28px,4.8cqw,48px); }
+    #chalk-pricing-designs .price-eyebrow { margin:0 0 12px; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--price-blue); }
+    #chalk-pricing-designs h2 { margin:0; font:400 clamp(34px,4.8cqw,48px)/1.08 'Lora',Georgia,serif; letter-spacing:-.03em; text-wrap:balance; }
+    #chalk-pricing-designs .price-art { display:block; width:100%; height:100%; overflow:visible; opacity:var(--price-chalk); pointer-events:none; }
+    #chalk-pricing-designs .cost { margin:8px 0 0; font:400 clamp(34px,4.8cqw,48px)/1.08 'Lora',Georgia,serif; letter-spacing:-.035em; text-wrap:balance; }
+    #chalk-pricing-designs .cost-copy { margin:17px 0 0; max-width:37ch; font-size:14px; line-height:1.6; }
+    #chalk-pricing-designs .terms-link { display:inline-block; margin-top:17px; padding:4px 0; color:var(--price-blue); text-decoration:none; border-bottom:1px solid #a7bdc5; font-size:13px; }
+    #chalk-pricing-designs a:focus-visible, #chalk-pricing-designs summary:focus-visible { outline:3px solid var(--price-blue); outline-offset:4px; }
+    #chalk-pricing-designs .terms-heading { margin:0; color:var(--price-blue); font-size:12px; }
+    #chalk-pricing-designs .payment-rows { margin:0; }
+    #chalk-pricing-designs .payment-rows > div { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:18px; border-bottom:1px solid #d2dfdf; padding:19px 0; }
+    #chalk-pricing-designs .payment-rows dt { font-size:13px; color:#526773; }
+    #chalk-pricing-designs .payment-rows dd { margin:0; font-size:17px; font-weight:500; line-height:1.35; }
+    #chalk-pricing-designs .payment-rows small { display:block; margin-top:7px; font-size:12px; font-weight:400; color:#526773; }
+    #chalk-pricing-designs .guarantee-number { display:block; font:400 37px/1.1 'Lora',Georgia,serif; letter-spacing:-.025em; margin-top:7px; }
+    #chalk-pricing-designs .guarantee-copy { margin:11px 0 0; max-width:35ch; font-size:13px; line-height:1.6; }
+    #chalk-pricing-designs .faq { margin-top:39px; }
+    #chalk-pricing-designs .faq-heading { display:flex; align-items:center; gap:17px; margin-bottom:10px; }
+    #chalk-pricing-designs .faq-heading h3 { margin:0; font:400 27px/1.15 'Lora',Georgia,serif; letter-spacing:-.02em; }
+    #chalk-pricing-designs .faq-picture { width:62px; height:45px; flex-shrink:0; }
+    #chalk-pricing-designs .faq details { border-bottom:1px solid #ccd9da; }
+    #chalk-pricing-designs .faq summary { padding:15px 4px; color:var(--price-ink); font-size:14px; line-height:1.45; cursor:pointer; }
+    #chalk-pricing-designs .faq details p { margin:0; padding:0 4px 18px; max-width:78ch; font-size:13px; line-height:1.65; color:#455d68; }
+    #chalk-pricing-designs .price-bottom { margin-top:24px; }
+    #chalk-pricing-designs .price-bottom a { margin:0; }
+    #chalk-pricing-designs .sheet { background:radial-gradient(ellipse at 75% 25%,var(--price-wash),var(--price-paper) 80%); }
+    #chalk-pricing-designs .sheet-card { margin-top:29px; padding:28px 28px 0; background:var(--price-paper); border:1px solid #d4dfde; border-radius:27px 8px 23px 8px; }
+    #chalk-pricing-designs .sheet-top { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:36px; }
+    #chalk-pricing-designs .sheet-picture { width:95px; height:89px; margin:16px 0 13px; transform:rotate(-4deg); }
+    #chalk-pricing-designs .sheet .payment-rows { align-self:center; }
+    #chalk-pricing-designs .sheet-guarantee { display:grid; grid-template-columns:85px minmax(0,1fr) auto; gap:22px; align-items:center; margin:8px -28px 0; padding:20px 28px; background:var(--price-soft); border-radius:0 0 23px 8px; }
+    #chalk-pricing-designs .sheet-guarantee figure { margin:0; height:78px; }
+    #chalk-pricing-designs .sheet-guarantee .guarantee-copy { max-width:29ch; margin:0; }
+    #chalk-pricing-designs .care { background:var(--price-paper); }
+    #chalk-pricing-designs .care-panels { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:24px; margin-top:30px; }
+    #chalk-pricing-designs .care-price { position:relative; padding:25px 28px; border:1px solid #d4dfde; border-radius:10px; }
+    #chalk-pricing-designs .care-price .cost { max-width:12ch; }
+    #chalk-pricing-designs .care-price .payment-rows { margin-top:13px; }
+    #chalk-pricing-designs .care-picture { position:absolute; width:78px; height:78px; top:20px; right:21px; margin:0; opacity:.8; }
+    #chalk-pricing-designs .care-guarantee { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:25px; background:var(--price-soft); border-radius:10px; }
+    #chalk-pricing-designs .care-calendar { margin:0 0 18px; width:159px; height:139px; }
+    #chalk-pricing-designs .care-guarantee .guarantee-number { font-size:45px; }
+    #chalk-pricing-designs .care-guarantee .guarantee-copy { max-width:25ch; }
+    #chalk-pricing-designs .care-divider { height:25px; margin:22px 0 0; }
+    #chalk-pricing-designs .care .faq { margin-top:25px; }
+    #chalk-pricing-designs .payment { background:radial-gradient(ellipse at 60% 26%,var(--price-wash),var(--price-paper) 83%); }
+    #chalk-pricing-designs .payment .price-heading { text-align:center; }
+    #chalk-pricing-designs .payment-intro { margin:25px auto 0; display:grid; grid-template-columns:minmax(0,1fr) 130px; gap:25px; align-items:center; max-width:700px; }
+    #chalk-pricing-designs .payment-intro .cost { margin:0; }
+    #chalk-pricing-designs .payment-intro figure { margin:0; height:123px; }
+    #chalk-pricing-designs .payment-intro .cost-copy { max-width:40ch; margin-top:12px; }
+    #chalk-pricing-designs .payment-timeline { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:38px; margin:20px auto 0; max-width:700px; }
+    #chalk-pricing-designs .payment-step { position:relative; padding:22px 22px 20px; background:var(--price-paper); border-radius:8px; border-top:2px solid #b2c5bf; }
+    #chalk-pricing-designs .payment-step span { display:block; font-size:12px; color:var(--price-blue); }
+    #chalk-pricing-designs .payment-step h3 { margin:10px 0 0; font:400 27px/1.15 'Lora',Georgia,serif; text-wrap:balance; }
+    #chalk-pricing-designs .payment-step p { margin:10px 0 0; font-size:12px; line-height:1.6; }
+    #chalk-pricing-designs .payment-connector { position:absolute; width:calc(100% - 40px); height:16px; left:20px; top:-8px; }
+    #chalk-pricing-designs .payment-guarantee { display:grid; grid-template-columns:87px minmax(0,1fr); gap:20px; max-width:700px; align-items:center; margin:23px auto 0; padding:17px 22px; border-radius:8px; background:var(--price-soft); }
+    #chalk-pricing-designs .payment-guarantee figure { margin:0; height:78px; }
+    #chalk-pricing-designs .payment-guarantee .guarantee-number { font-size:29px; }
+    #chalk-pricing-designs .payment-guarantee .guarantee-copy { margin-top:6px; max-width:none; }
+    @container (max-width:760px) {
+      #chalk-pricing-designs .price-scene { min-height:0; }
+      #chalk-pricing-designs .sheet-top { gap:24px; }
+      #chalk-pricing-designs .sheet-guarantee { grid-template-columns:72px minmax(0,1fr); gap:17px; }
+      #chalk-pricing-designs .sheet-guarantee .guarantee-copy { grid-column:2; max-width:none; }
+      #chalk-pricing-designs .sheet-guarantee figure { grid-row:1 / span 2; }
+      #chalk-pricing-designs .care-picture { display:none; }
+      #chalk-pricing-designs .care-panels { grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:17px; }
+      #chalk-pricing-designs .care-price { padding:24px 20px; }
+      #chalk-pricing-designs .care-guarantee { padding:23px 17px; }
+      #chalk-pricing-designs .care-calendar { width:127px; height:120px; }
+      #chalk-pricing-designs .payment-timeline { gap:24px; }
+    }
+    @container (max-width:560px) {
+      #chalk-pricing-designs .price-scene { min-height:0; padding:30px 24px; }
+      #chalk-pricing-designs h2 { font-size:36px; }
+      #chalk-pricing-designs .price-eyebrow { font-size:10px; }
+      #chalk-pricing-designs .cost { font-size:38px; }
+      #chalk-pricing-designs .sheet-card { padding:23px 20px 0; }
+      #chalk-pricing-designs .sheet-top { grid-template-columns:1fr; gap:15px; }
+      #chalk-pricing-designs .sheet-picture { display:none; }
+      #chalk-pricing-designs .sheet .payment-rows { margin:7px 0 15px; }
+      #chalk-pricing-designs .payment-rows > div { gap:13px; padding:16px 0; }
+      #chalk-pricing-designs .payment-rows dd { font-size:16px; }
+      #chalk-pricing-designs .sheet-guarantee { margin:0 -20px; padding:20px; grid-template-columns:58px minmax(0,1fr); gap:12px; }
+      #chalk-pricing-designs .sheet-guarantee .guarantee-number { font-size:32px; }
+      #chalk-pricing-designs .sheet-guarantee figure { height:65px; }
+      #chalk-pricing-designs .faq { margin-top:29px; }
+      #chalk-pricing-designs .faq-heading h3 { font-size:26px; }
+      #chalk-pricing-designs .faq-picture { width:49px; height:40px; }
+      #chalk-pricing-designs .faq summary { font-size:13px; padding-block:14px; }
+      #chalk-pricing-designs .care-panels { grid-template-columns:1fr; gap:19px; }
+      #chalk-pricing-designs .care-guarantee { display:grid; grid-template-columns:80px minmax(0,1fr); text-align:left; gap:8px 17px; padding:21px; }
+      #chalk-pricing-designs .care-calendar { width:80px; height:83px; margin:0; grid-row:1 / span 3; }
+      #chalk-pricing-designs .care-guarantee .guarantee-number { font-size:34px; }
+      #chalk-pricing-designs .care-guarantee .guarantee-copy { margin:0; max-width:none; }
+      #chalk-pricing-designs .payment .price-heading { text-align:left; }
+      #chalk-pricing-designs .payment-intro { grid-template-columns:1fr; gap:8px; }
+      #chalk-pricing-designs .payment-intro figure { display:none; }
+      #chalk-pricing-designs .payment-timeline { grid-template-columns:1fr; gap:16px; margin-top:24px; }
+      #chalk-pricing-designs .payment-connector { display:none; }
+      #chalk-pricing-designs .payment-step { padding:19px; }
+      #chalk-pricing-designs .payment-step h3 { font-size:27px; }
+      #chalk-pricing-designs .payment-guarantee { grid-template-columns:61px minmax(0,1fr); gap:14px; padding:18px; }
+      #chalk-pricing-designs .payment-guarantee .guarantee-number { font-size:27px; }
+    }
+    @container (max-width:350px) {
+      #chalk-pricing-designs .price-scene { padding-inline:20px; min-height:0; }
+      #chalk-pricing-designs h2 { font-size:33px; }
+      #chalk-pricing-designs .cost { font-size:35px; }
+      #chalk-pricing-designs .payment-rows > div { grid-template-columns:1fr; gap:8px; }
+    }

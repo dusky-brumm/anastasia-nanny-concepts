@@ -4,6 +4,7 @@ import {seoHead} from './seo.js?v=__VERSION__';
 import {additionalDesigns,additionalStyles,renderAdditionalDesign} from './additional-designs.js?v=__VERSION__';
 import {referenceDesigns,referencePage,referenceBlockFile} from './reference-designs.js?v=__VERSION__';
 import {extractDesignBlock,designBlockFile,designBlockPage,blockIdentity} from './design-blocks.js?v=__VERSION__';
+import {illustratedDesigns,illustratedBlockLabel,renderIllustratedDesign,illustratedStyles} from './illustrated-designs.js?v=__VERSION__';
 
 export const comparisonDesigns=[
   {mode:'comparison-current',file:'comparison-current.html',name:'Текущий',reviews:'cards',form:1,footer:3,refinement:'quiet'},
@@ -11,6 +12,7 @@ export const comparisonDesigns=[
   {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:7,refinement:'route'},
   {mode:'comparison-reference',file:'comparison-reference.html',name:'Вариант 9',reviews:'open',form:2,footer:5,layout:'112111113',wavyArrows:true,refinement:'reference'},
   {mode:'comparison-thread',file:'comparison-thread.html',name:'Линия-письмо',reviews:'open',form:2,footer:5,hero:11,contour:'letter',single:true},
+  ...illustratedDesigns,
   ...additionalDesigns,
   ...referenceDesigns,
 ];
@@ -83,6 +85,11 @@ const assemblyPresets = [
     description:'Услуга в двух панелях, условия в ряд и форма с тонкими подчёркиваниями.',
     choices:{service:'panorama',about:'reference',process:'route',pricing:'quiet',reviews:'quiet',apply:'reference',footer:'quiet'},
   },
+  ...illustratedDesigns.map((design,index)=>({
+    name:design.name,
+    description:['Портрет в дуге, светлый фотоальбом и пять шагов на меловой линии.','Личный рассказ, иллюстрированные заметки и открытка с заявкой.','Фотоколлаж, анкета с комментариями и маршрут с пояснениями.'][index],
+    choices:Object.fromEntries(Object.keys(comparisonBlockChoices).map(id=>[id,design.mode])),
+  })),
 ];
 
 function comparisonBlockGallery(blockId) {
@@ -232,7 +239,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   const description=mode==='preview'||editorial||comparing?'Личный подбор няни под задачи вашей семьи. Поиск, интервью и сопровождение. Анастасия Доронина.':`${compositionCount} композиций блоков сайта, пастельные палитры и согласованные наборы шрифтов.`;
   let pageContent=assembling?comparisonAssembly():blockCompare?comparisonBlockGallery(blockId):content;
   if(editorial)pageContent=`<main class="site-preview editorial" data-font="${defaults.font}" ${fixedThemeAttributes}>${renderEditorial(defaults)}</main>`;
-  if(design&&!design.imported){
+  if(design&&!design.imported&&!design.illustrated){
     let state={...comparisonState,layout:design.layout??comparisonState.layout};
     if(design.hero)state=selectVariant(state,'hero',design.hero);
     if(design.refinement==='quiet')state=selectVariant(state,'about',1);
@@ -260,6 +267,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
     pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" ${fixedThemeAttributes} data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;
   }
   if(design?.imported)pageContent=renderAdditionalDesign(design);
+  if(design?.illustrated)pageContent=renderIllustratedDesign(design);
   return `<!doctype html>
 <html lang="ru"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -274,6 +282,7 @@ ${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/penci
 <link rel="stylesheet" href="studio/clear-sections.css?v=__VERSION__">
 <link rel="stylesheet" href="studio/unified-designs.css?v=__VERSION__"><script defer src="studio/unified-designs.js?v=__VERSION__"></script>
 <link rel="stylesheet" href="studio/design-chrome.css?v=__VERSION__">
+${design?.illustrated?illustratedStyles():''}
 ${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=__VERSION__"><script defer src="studio/contour-motion.js?v=__VERSION__"></script>':''}
 <link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=__VERSION__"></script>
 <script defer src="studio/review-carousel.js?v=__VERSION__"></script>
@@ -300,14 +309,14 @@ for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
     const {markup}=extractDesignBlock(html,id);
     const shared=design.imported&&!design.reference&&!['hero','service'].includes(id);
     const selectedService=design.imported&&!design.reference&&id==='service'&&markup.includes('s-service-personal');
-    const family=design.reference?'reference':design.contour?'contour':shared||selectedService?'imported-shared':design.imported?design.mode:'native';
+    const family=design.illustrated?'illustrated':design.reference?'reference':design.contour?'contour':shared||selectedService?'imported-shared':design.imported?design.mode:'native';
     const style=design.reference?design.mode:family==='imported-shared'?({reviews:'letter',apply:'letter',process:design.chalk==='route'?'route':'reference'}[id]??'quiet'):design.refinement??'quiet';
     const identity=blockIdentity(id,markup,style,family);
     let key=identities.get(identity);
     if(!key){
       key=design.mode;
       identities.set(identity,key);
-      choices.push([key,design.name,null]);
+      choices.push([key,design.illustrated?`Мелок · ${illustratedBlockLabel(design,id)}`:design.name,null]);
       const preview=design.reference?referenceBlockFile(design,id):designBlockFile(design,id);
       comparisonChoiceDetails[id][key]={identity,sources:[],file:preview};
       if(!design.reference)isolatedDesignBlocks.push({file:preview,html:designBlockPage(design,id,html),design:design.mode,block:id});

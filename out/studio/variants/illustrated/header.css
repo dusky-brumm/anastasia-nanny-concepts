@@ -1,0 +1,76 @@
+#chalk-header-designs { --header-paper:#fcfcfa; --header-sky:#e7f1f6; --header-ink:#28353c; --header-accent:#385a6b; }
+    #chalk-header-designs .header-stage { min-height:0; padding:18px 0; }
+    #chalk-header-designs .header-stage[hidden] { display:none; }
+    #chalk-header-designs .header-site { container-type:inline-size; border-radius:14px; overflow:hidden; background:var(--header-paper); color:var(--header-ink); }
+    #chalk-header-designs .design-header { position:relative; padding:24px 32px; --drawing-opacity:.92; }
+    #chalk-header-designs .header-row { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    #chalk-header-designs .header-name { position:relative; display:block; flex-shrink:0; text-decoration:none; color:inherit; }
+    #chalk-header-designs .header-name strong { font:400 25px/1.1 'Lora',Georgia,serif; letter-spacing:-.025em; }
+    #chalk-header-designs .header-name small { display:block; margin-top:6px; color:var(--header-accent); font:400 11px/1.4 'Golos Text',Arial,sans-serif; letter-spacing:.11em; text-transform:uppercase; }
+    #chalk-header-designs .header-nav { display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; font:400 13px/1.4 'Golos Text',Arial,sans-serif; }
+    #chalk-header-designs .header-nav a { color:inherit; text-decoration:none; }
+    #chalk-header-designs .header-nav a:hover { text-decoration:underline; text-underline-offset:4px; }
+    #chalk-header-designs .telegram { display:inline-flex; align-items:center; justify-content:center; gap:5px; min-height:38px; border:1px solid #a9bbc2; border-radius:22px; padding:8px 14px; color:var(--header-accent); text-decoration:none; font:400 13px/1.2 'Golos Text',Arial,sans-serif; white-space:nowrap; }
+    #chalk-header-designs .chalk-mark { display:block; overflow:visible; opacity:var(--drawing-opacity); pointer-events:none; }
+    #chalk-header-designs .name-underline { position:absolute; width:125px; height:14px; left:2px; bottom:-16px; }
+    #chalk-header-designs .tiny-plane { width:32px; height:16px; }
+    #chalk-header-designs .arch-badge { display:block; width:95px; height:38px; }
+    #chalk-header-designs .door-brand { display:flex; align-items:center; gap:15px; }
+    #chalk-header-designs .header-line { position:absolute; left:32px; right:32px; bottom:4px; height:23px; width:calc(100% - 64px); }
+    #chalk-header-designs .version-signature .design-header { padding-bottom:35px; }
+    #chalk-header-designs .version-door .design-header { padding:20px 32px 0; }
+    #chalk-header-designs .version-door .header-name strong { font-size:28px; }
+    #chalk-header-designs .version-door .header-nav { margin-top:20px; padding:13px 0 15px; border-top:1px solid #dbe4df; justify-content:center; gap:28px; }
+    #chalk-header-designs .version-trail .design-header { padding-bottom:44px; }
+    #chalk-header-designs .version-trail .header-name strong { font:500 17px/1.2 'Golos Text',Arial,sans-serif; letter-spacing:0; }
+    #chalk-header-designs .version-trail .header-name small { font-size:11px; letter-spacing:.04em; }
+    #chalk-header-designs .version-trail .telegram { border:0; padding-right:0; }
+    #chalk-header-designs .mobile-menu { display:none; position:relative; flex-shrink:0; font:400 13px/1.4 'Golos Text',Arial,sans-serif; }
+    #chalk-header-designs .mobile-menu summary { padding:10px 12px; border:1px solid #b3c3c8; border-radius:20px; color:var(--header-accent); cursor:pointer; }
+    #chalk-header-designs .mobile-menu .header-nav { position:absolute; z-index:3; right:0; top:45px; width:170px; padding:15px; margin:0; display:grid; gap:14px; border:1px solid #dbe4df; border-radius:10px; background:var(--header-paper); }
+    #chalk-header-designs .hero-glimpse { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.76fr); gap:28px; padding:32px 40px 26px; background:radial-gradient(ellipse at 60% 70%,var(--header-sky),var(--header-paper) 78%); align-items:center; }
+    #chalk-header-designs .hero-copy h2 { margin:0; font:400 clamp(27px,4cqw,38px)/1.12 'Lora',Georgia,serif; letter-spacing:-.025em; text-wrap:balance; }
+    #chalk-header-designs .hero-copy em { font-style:normal; color:var(--header-accent); }
+    #chalk-header-designs .hero-copy p { margin:13px 0 0; font:400 13px/1.5 'Golos Text',Arial,sans-serif; max-width:34ch; }
+    #chalk-header-designs .hero-glimpse figure { position:relative; height:245px; width:min(100%,280px); margin:0 auto; }
+    #chalk-header-designs .hero-photo { position:absolute; inset:12px 14px 0; border-radius:48% 48% 8px 8px / 36% 36% 8px 8px; background:url("../../media/cafe.webp") 50% 67%/cover no-repeat; }
+    #chalk-header-designs .hero-arc { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+    #chalk-header-designs a:focus-visible, #chalk-header-designs summary:focus-visible { outline:3px solid var(--header-accent); outline-offset:4px; }
+    @container (max-width:840px) {
+      #chalk-header-designs .header-row > .header-nav { display:none; }
+      #chalk-header-designs .mobile-menu { display:block; }
+    }
+    @container (max-width:700px) {
+      #chalk-header-designs .header-row { gap:14px; }
+      #chalk-header-designs .header-row > .header-nav { gap:8px 12px; }
+      #chalk-header-designs .header-name strong { font-size:22px; }
+      #chalk-header-designs .header-nav { font-size:12px; }
+      #chalk-header-designs .design-header { padding-inline:22px; }
+      #chalk-header-designs .version-door .design-header { padding-inline:22px; }
+      #chalk-header-designs .arch-badge { width:70px; }
+    }
+    @container (max-width:560px) {
+      #chalk-header-designs .design-header, #chalk-header-designs .version-door .design-header { padding:20px 18px 30px; }
+      #chalk-header-designs .header-row > .header-nav, #chalk-header-designs .design-header > .header-nav, #chalk-header-designs .header-row > .telegram { display:none; }
+      #chalk-header-designs .mobile-menu { display:block; }
+      #chalk-header-designs .header-name strong, #chalk-header-designs .version-door .header-name strong { font-size:21px; }
+      #chalk-header-designs .header-name { flex-shrink:1; min-width:0; }
+      #chalk-header-designs .header-name strong { display:block; text-wrap:balance; }
+      #chalk-header-designs .door-brand { min-width:0; }
+      #chalk-header-designs .header-name small { font-size:10px; }
+      #chalk-header-designs .arch-badge { width:45px; height:30px; }
+      #chalk-header-designs .door-brand { gap:6px; }
+      #chalk-header-designs .version-door .header-name strong { font-size:18px; }
+      #chalk-header-designs .version-door .header-name small { max-width:18ch; font-size:10px; letter-spacing:.02em; }
+      #chalk-header-designs .hero-glimpse { gap:12px; padding:20px 20px 24px; grid-template-columns:minmax(0,1fr) minmax(0,.65fr); }
+      #chalk-header-designs .hero-glimpse figure { height:204px; }
+      #chalk-header-designs .hero-copy h2 { font-size:25px; }
+      #chalk-header-designs .hero-copy p { font-size:12px; }
+      #chalk-header-designs .header-line { left:18px; right:18px; width:calc(100% - 36px); height:15px; bottom:2px; }
+    }
+    @container (max-width:400px) {
+      #chalk-header-designs .header-name strong { font-size:20px; }
+      #chalk-header-designs .version-door .arch-badge { width:30px; flex-shrink:0; }
+      #chalk-header-designs .version-door .header-name strong { font-size:17px; }
+      #chalk-header-designs .header-row { gap:10px; }
+    }

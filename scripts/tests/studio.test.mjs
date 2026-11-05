@@ -7,6 +7,29 @@ import {additionalDesigns} from '../../src/reference/studio/additional-designs.j
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../../src/reference/studio/reference-designs.js';
 import {illustratedDesigns} from '../../src/reference/studio/illustrated-designs.js';
 import {illustratedAssets} from '../../src/reference/studio/illustrated-assets.js';
+import {earlyDesigns} from '../../src/reference/studio/early-designs.js';
+
+test('two early compositions retain their layouts, stories and local request form with added artwork',()=>{
+  assert.equal(earlyDesigns.length,2);
+  for(const design of earlyDesigns){
+    const html=studioPage(design.mode,'hero',design.file);
+    assert.match(html,/data-early-art/);
+    assert.match(html,/s-service-personal/);
+    assert.match(html,/s-pricing-summary/);
+    assert.equal([...html.matchAll(/<form\b/g)].length,1);
+    for(const id of Object.keys(comparisonBlockChoices)){
+      assert.equal([...html.matchAll(new RegExp(`data-block="${id}"`,'g'))].length,1,`${design.mode}/${id}`);
+      assert.equal(designBlockCoverage[design.mode][id],design.mode,`${design.mode}/${id} must stay selectable`);
+    }
+    if(design.tone==='classic'){
+      assert.match(html,/s-hero--6/);
+      assert.equal([...extractDesignBlock(html,'about').markup.matchAll(/data-about-dot=/g)].length,4);
+    }else{
+      assert.match(html,/pencil-hero/);
+      assert.match(extractDesignBlock(html,'about').markup,/s-letter/);
+    }
+  }
+});
 
 test('completed design comparisons retain all sections and exclude cancelled options',()=>{
   const modes=comparisonDesigns.filter(design=>!design.reference).flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
@@ -116,7 +139,7 @@ test('block galleries and assembly preserve the current hero and local request w
     for(const [style] of choices) assert.ok(gallery.includes(`&amp;${id}=${style}#${id}`));
     assert.doesNotMatch(gallery,/data-live-request/);
   }
-  assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet','chalk-light','chalk-letter','chalk-story',...referenceDesigns.map(design=>design.mode)]);
+  assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet',...earlyDesigns.map(design=>design.mode),'chalk-light','chalk-letter','chalk-story',...referenceDesigns.map(design=>design.mode)]);
 });
 
 test('withdrawn full designs preserve the two selected form layouts without dead links',()=>{

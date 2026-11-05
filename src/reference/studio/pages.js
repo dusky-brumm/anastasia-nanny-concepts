@@ -5,6 +5,7 @@ import {additionalDesigns,additionalStyles,renderAdditionalDesign} from './addit
 import {referenceDesigns,referencePage,referenceBlockFile} from './reference-designs.js?v=__VERSION__';
 import {extractDesignBlock,designBlockFile,designBlockPage,blockIdentity} from './design-blocks.js?v=__VERSION__';
 import {illustratedDesigns,illustratedBlockLabel,renderIllustratedDesign,illustratedStyles} from './illustrated-designs.js?v=__VERSION__';
+import {earlyDesigns,decorateEarlyDesign,earlyStyles} from './early-designs.js?v=__VERSION__';
 
 export const comparisonDesigns=[
   {mode:'comparison-current',file:'comparison-current.html',name:'Текущий',reviews:'cards',form:1,footer:3,refinement:'quiet'},
@@ -12,6 +13,7 @@ export const comparisonDesigns=[
   {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:7,refinement:'route'},
   {mode:'comparison-reference',file:'comparison-reference.html',name:'Вариант 9',reviews:'open',form:2,footer:5,layout:'112111113',wavyArrows:true,refinement:'reference'},
   {mode:'comparison-thread',file:'comparison-thread.html',name:'Линия-письмо',reviews:'open',form:2,footer:5,hero:11,contour:'letter',single:true},
+  ...earlyDesigns,
   ...illustratedDesigns,
   ...additionalDesigns,
   ...referenceDesigns,
@@ -70,6 +72,11 @@ const comparisonBaseStyle = approvedThemeStyle;
 const fixedThemeAttributes = `data-comparison-theme="${comparisonBaseTheme}" style="${comparisonBaseStyle}"`;
 
 const assemblyPresets = [
+  ...earlyDesigns.map(design=>({
+    name:design.name,
+    description:design.tone==='classic'?'Ранний лаконичный макет с меловыми анкетами и рисунками этапов.':'Ранний журнальный макет с живыми фотографиями и меловыми заметками.',
+    choices:Object.fromEntries(Object.keys(comparisonBlockChoices).map(id=>[id,design.mode])),
+  })),
   {
     name:'Свет и воздух',
     description:'Личное интервью, портрет, голубая волна и прозрачная форма.',
@@ -217,13 +224,13 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   const editorial=mode==='editorial';
   const design=comparisonDesigns.find(item=>item.mode===mode.replace(/-refined$/,''));
   // Retired base URLs also render the retained, improved design.
-  const refined=Boolean(design&&!design.single);
+  const refined=Boolean(design&&(!design.single||design.early));
   const comparing=Boolean(design);
-  const pencil=design?.mode.startsWith('pencil');
+  const pencil=design?.baseMode==='pencil'||design?.mode.startsWith('pencil');
   const contourDirection=design?.contour==='wave'&&!refined ? '' : design?.contour;
   const pencilSwitcher=comparing?`<nav class="pencil-comparison" aria-label="Сравнить варианты">
     <details class="comparison-disclosure" open>
-      <summary>Варианты дизайна <span>${design.name}${refined?' · улучшенный':''}</span></summary>
+      <summary>Варианты дизайна <span>${design.name}${refined&&!design.single?' · улучшенный':''}</span></summary>
       <div class="comparison-content">
     <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта">${comparisonDesigns.map(item=>`<option value="${preferredDesignFile(item)}?v=__VERSION__"${design.mode===item.mode?' selected':''}>${item.name}</option>`).join('')}</select></label>
     <div class="comparison-pairs">${comparisonDesigns.map(item=>`<div class="comparison-pair">
@@ -263,8 +270,9 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
     const reviewLayout=refined?({cards:'ribbon',feature:'open',open:'cards'})[design.reviews]:design.reviews;
     const blockStyle=contourDirection==='wave'?'reference':contourDirection==='letter'?'letter':design.refinement??'quiet';
     const context={comparison:true,blockStyle,contourDirection,formStyle:design.refinement==='quiet'||contourDirection?'letter':undefined,wavyArrows:design.wavyArrows||contourDirection==='letter'};
-    const markup=pencil?renderPencilPreview(state,design.mode,context):renderSite(state,context);
-    pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview '+design.mode:''}" ${fixedThemeAttributes} data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;
+    const originalMarkup=pencil?renderPencilPreview(state,design.baseMode??design.mode,context):renderSite(state,context);
+    const markup=design.early?decorateEarlyDesign(originalMarkup,design):originalMarkup;
+    pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview'+(design.early?'':' '+design.mode):''}${design.early?' early-design '+design.mode:''}" ${fixedThemeAttributes} data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;
   }
   if(design?.imported)pageContent=renderAdditionalDesign(design);
   if(design?.illustrated)pageContent=renderIllustratedDesign(design);
@@ -283,6 +291,7 @@ ${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/penci
 <link rel="stylesheet" href="studio/unified-designs.css?v=__VERSION__"><script defer src="studio/unified-designs.js?v=__VERSION__"></script>
 <link rel="stylesheet" href="studio/design-chrome.css?v=__VERSION__">
 ${design?.illustrated?illustratedStyles():''}
+${design?.early?earlyStyles():''}
 ${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=__VERSION__"><script defer src="studio/contour-motion.js?v=__VERSION__"></script>':''}
 <link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=__VERSION__"></script>
 <script defer src="studio/review-carousel.js?v=__VERSION__"></script>
@@ -309,7 +318,7 @@ for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
     const {markup}=extractDesignBlock(html,id);
     const shared=design.imported&&!design.reference&&!['hero','service'].includes(id);
     const selectedService=design.imported&&!design.reference&&id==='service'&&markup.includes('s-service-personal');
-    const family=design.illustrated?'illustrated':design.reference?'reference':design.contour?'contour':shared||selectedService?'imported-shared':design.imported?design.mode:'native';
+    const family=design.illustrated||design.early?'illustrated':design.reference?'reference':design.contour?'contour':shared||selectedService?'imported-shared':design.imported?design.mode:'native';
     const style=design.reference?design.mode:family==='imported-shared'?({reviews:'letter',apply:'letter',process:design.chalk==='route'?'route':'reference'}[id]??'quiet'):design.refinement??'quiet';
     const identity=blockIdentity(id,markup,style,family);
     let key=identities.get(identity);

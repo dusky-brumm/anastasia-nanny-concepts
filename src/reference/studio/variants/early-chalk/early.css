@@ -1,0 +1,90 @@
+/* Two earlier compositions, with chalk accents attached to their existing content. */
+.site-preview.early-design {--comparison-inset:max(clamp(24px,4vw,64px),calc((100% - 1120px)/2));--pencil-inset:var(--comparison-inset);--design-space:clamp(48px,6cqw,76px);--early-blue:#385a6b;--early-sage:#6e8067}
+.early-design .early-block {position:relative}
+.early-design .s-block {padding-inline:var(--comparison-inset)}
+.early-design p {text-wrap:pretty}
+.early-design .early-chalk {display:block;flex-shrink:0;pointer-events:none;overflow:visible}
+.early-design .early-header-line {position:absolute;bottom:10px;left:var(--comparison-inset);width:155px;height:12px}
+.early-design.early-personal .early-header-line {left:auto;right:var(--comparison-inset);width:240px;height:13px;bottom:2px}
+.early-design #hero {padding-block:48px 64px}
+.early-design.early-classic #hero {grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:40px}
+.early-design.early-classic #hero h1 {font-size:clamp(35px,4.6cqw,52px);line-height:1.13;letter-spacing:-.05em}
+.early-design #hero .s-intro,.early-design .pencil-intro p {font-size:16px;line-height:1.7;max-width:43ch}
+.early-design .s-chalk-text .early-underline {position:absolute;left:-3%;width:106%;top:auto;bottom:-.1em;height:.24em;stroke:none}
+.early-design.early-classic .s-square-portrait {position:relative;width:min(100%,450px);max-width:450px;padding:0;justify-self:end;isolation:isolate}
+.early-design .s-square-frame {z-index:1;margin:0}
+.early-design .s-square-pencil {inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);z-index:2;opacity:.8}
+.early-design .early-care-note {display:flex;align-items:center;gap:16px;margin-top:22px;color:var(--early-blue)}
+.early-design .early-care-note svg {width:48px;height:66px}
+.early-design .early-care-note p {font-size:13px;line-height:1.55}
+.early-design .pencil-hero {grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:48px;row-gap:22px}
+.early-design .pencil-hero h1 {font-size:clamp(38px,4.8cqw,54px);line-height:1.1;letter-spacing:-.035em}
+.early-design .pencil-headline {align-self:end}
+.early-design .pencil-portrait {position:relative;isolation:isolate;width:min(100%,460px);justify-self:end}
+.early-design .pencil-portrait > svg:not(.early-chalk) {position:relative;z-index:1}
+.early-design .early-hero-leaf {position:absolute;z-index:0;left:-43px;bottom:-18px;width:92px;height:132px;transform:rotate(-12deg)}
+.early-design .s-service-result {display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:20px;align-items:center}
+.early-design .early-profile {width:82px;height:80px}
+.early-design .s-service-result p {font-size:16px;line-height:1.65}
+.early-design .s-service-result .s-text-link {max-width:22ch;text-wrap:pretty}
+.early-design .s-service-examples {position:relative}
+.early-design .early-interview {width:155px;height:103px;margin:0 0 20px}
+.early-design .s-about .s-photo {isolation:isolate}
+.early-design .s-about .s-photo-mask {z-index:1}
+.early-design .early-photo-corners {position:absolute;inset:-10px;z-index:0;width:calc(100% + 20px);height:calc(100% + 20px)}
+.early-design .early-signoff {display:flex;align-items:center;gap:16px;margin-top:24px}
+.early-design .early-signoff svg {width:90px;height:65px}
+.early-design .early-signoff .s-signature {margin:0}
+.early-design .s-about .s-scribble {display:none}
+.early-design .early-step-picture {width:100%;height:68px;margin:0 0 14px}
+.early-design .s-study-copy p {font-size:15px;line-height:1.6}
+.early-design.early-personal .s-process .s-section-heading {display:flex;justify-content:space-between;align-items:center;gap:32px}
+.early-design .early-process-emblem {width:125px;height:83px}
+.early-design .s-pricing-terms > .early-price-term {display:grid;grid-template-columns:58px minmax(0,1fr);gap:6px 16px;align-content:start}
+.early-design .early-term-picture {grid-column:1;grid-row:1/span 2;width:58px;height:53px;align-self:start}
+.early-design .early-price-term dt {grid-column:2;grid-row:1;margin:0}
+.early-design .early-price-term dd {grid-column:2;grid-row:2}
+.early-design .early-quote {width:38px;height:22px;margin-bottom:16px}
+.early-design .s-review blockquote {font-size:22px;line-height:1.55}
+.early-design .early-apply-picture {width:155px;height:108px;margin:22px 0 6px}
+.early-design .early-footer-picture {width:220px;height:58px;justify-self:center}
+.early-design .early-reveal {clip-path:inset(-8% 108% -8% -8%)}
+.early-design .early-reveal.is-visible {animation:early-chalk-line .85s cubic-bezier(.22,.7,.35,1) both}
+.early-design .early-chalk:not(.early-reveal).is-visible {animation:early-chalk-settle .35s ease-out both}
+@keyframes early-chalk-line {to{clip-path:inset(-8%)}}
+@keyframes early-chalk-settle {from{filter:opacity(.45)}to{filter:opacity(1)}}
+@container(max-width:850px){
+ .early-design .s-service-result {grid-template-columns:70px minmax(0,1fr)}
+ .early-design .s-service-result .s-text-link {grid-column:2;justify-self:start;max-width:none}
+ .early-design .early-profile {width:65px;height:64px;grid-row:1/span 2}
+ .early-design .s-pricing-terms {gap:22px}
+ .early-design .s-pricing-terms > .early-price-term {grid-template-columns:1fr}
+ .early-design .early-term-picture {grid-column:1;grid-row:1;margin-bottom:8px}
+ .early-design .early-price-term dt {grid-column:1;grid-row:2}
+ .early-design .early-price-term dd {grid-column:1;grid-row:3}
+}
+@container(max-width:620px){
+ .early-design #hero {padding-block:32px 44px}
+ .early-design.early-classic #hero,.early-design .pencil-hero {grid-template-columns:1fr;gap:28px}
+ .early-design .pencil-hero {grid-template-areas:'headline' 'portrait' 'intro';grid-template-rows:auto}
+ .early-design .pencil-headline {align-self:start}
+ .early-design.early-classic #hero h1,.early-design .pencil-hero h1 {font-size:clamp(33px,8.3cqw,42px);max-width:none;line-height:1.12}
+ .early-design #hero .s-intro,.early-design .pencil-intro p {font-size:15px}
+ .early-design.early-classic .s-square-portrait,.early-design .pencil-portrait {width:min(90%,370px);justify-self:center;margin:0}
+ .early-design .early-care-note {margin-top:18px}
+ .early-design .early-care-note svg {height:53px;width:39px}
+ .early-design .early-hero-leaf {width:70px;height:106px;left:-32px}
+ .early-design .early-step-picture {width:74px;height:60px;float:right;margin:0 0 8px 14px}
+ .early-design .s-study-copy p {font-size:14px}
+ .early-design .s-study-copy h3 {min-height:32px}
+ .early-design .s-process .early-process-emblem {width:84px;height:64px}
+ .early-design.early-personal .s-process .s-section-heading {gap:16px}
+ .early-design .s-pricing-terms > .early-price-term {grid-template-columns:58px minmax(0,1fr);gap:5px 16px}
+ .early-design .early-term-picture {grid-column:1;grid-row:1/span 2;margin:0}
+ .early-design .early-price-term dt {grid-column:2;grid-row:1}
+ .early-design .early-price-term dd {grid-column:2;grid-row:2}
+ .early-design .early-apply-picture {width:128px;height:86px}
+ .early-design .early-footer-picture {width:160px;height:46px}
+ .early-design .s-review blockquote {font-size:20px}
+}
+@media(prefers-reduced-motion:reduce){.early-design .early-chalk,.early-design .early-chalk.is-visible{animation:none;clip-path:none}}

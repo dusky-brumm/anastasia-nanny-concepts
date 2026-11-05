@@ -1,8 +1,8 @@
 import {referenceTemplates} from './reference-templates.js';
-import {aboutSlides} from './render.js?v=7243f4a467';
-import {approvedThemeStyle} from './model.js?v=7243f4a467';
-import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=7243f4a467';
-import {utilityIndexingTags} from './seo.js?v=7243f4a467';
+import {aboutSlides} from './render.js?v=46d898010c';
+import {approvedThemeStyle} from './model.js?v=46d898010c';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=46d898010c';
+import {utilityIndexingTags} from './seo.js?v=46d898010c';
 
 export const referenceDesigns=[
   ['01-jenny','Альбом · Jenny'],['02-elliot','Бумажные карточки · Elliot'],
@@ -40,16 +40,16 @@ export function referencePage(design,navigation){
     .replace(/<div class="interview">/,`<div class="interview">${drawing('profile')}`);
   // The original page's script depends on its own header; the shared header has its own handler.
   html=html.replace(/<script defer src="[^\"]*page.js"><\/script>/,'')
-    .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=7243f4a467">
-<link rel="stylesheet" href="studio/comparison-design.css?v=7243f4a467">
-<link rel="stylesheet" href="studio/unified-designs.css?v=7243f4a467">
-<link rel="stylesheet" href="studio/design-chrome.css?v=7243f4a467">
-<link rel="stylesheet" href="studio/reference-integration.css?v=7243f4a467">
-<script defer src="studio/comparison-request.js?v=7243f4a467"></script>
-<script defer src="studio/variants/eight-references/gallery-ui.js?v=7243f4a467"></script>
-<script defer src="studio/reference-interactions.js?v=7243f4a467"></script>
-<script defer src="studio/comparison-palettes.js?v=7243f4a467"></script>
-<script defer src="studio/unified-designs.js?v=7243f4a467"></script></head>`)
+    .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=46d898010c">
+<link rel="stylesheet" href="studio/comparison-design.css?v=46d898010c">
+<link rel="stylesheet" href="studio/unified-designs.css?v=46d898010c">
+<link rel="stylesheet" href="studio/design-chrome.css?v=46d898010c">
+<link rel="stylesheet" href="studio/reference-integration.css?v=46d898010c">
+<script defer src="studio/comparison-request.js?v=46d898010c"></script>
+<script defer src="studio/variants/eight-references/gallery-ui.js?v=46d898010c"></script>
+<script defer src="studio/reference-interactions.js?v=46d898010c"></script>
+<script defer src="studio/comparison-palettes.js?v=46d898010c"></script>
+<script defer src="studio/unified-designs.js?v=46d898010c"></script></head>`)
     .replace(/<body class="([^"]+)">/,`<body class="$1 reference-design" data-fixed-theme="almost-white" style="${approvedThemeStyle}">${navigation}<div data-comparison-site>`)
     .replace('</body>','</div></body>');
   return html;

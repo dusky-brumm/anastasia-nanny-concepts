@@ -1,4 +1,4 @@
-import {headerSocials} from './render.js?v=793c3907eb';
+import {headerSocials} from './render.js?v=be173e1347';
 
 export function sharedDesignHeader(){
   const links=headerSocials+[['service','О подборе'],['about','Обо мне'],['process','Этапы'],['pricing','Стоимость'],['reviews','Отзывы']].map(([id,label])=>`<a href="#${id}">${label}</a>`).join('');

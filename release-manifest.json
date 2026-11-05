@@ -1,6 +1,6 @@
 {
-  "build": "be173e1347",
-  "base_commit": "24466a56e83b3a80c07bee50f09253483ceca7c7",
+  "build": "dfc49f7bfc",
+  "base_commit": "44ebda52378bd8b228b81735957e97854f1757aa",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,8 +23,8 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Remove complete designs 3, 4 and 6 from all navigation and delete their base/refined published pages",
-    "Retain the improved form layouts from designs 4 and 6 in comparison and mixed assembly; use graphite-textured frames, fields and buttons instead of solid/dashed decorative borders"
+    "Remove the complete Smooth Contour, Family Journal and Cream Arc designs and their published pages",
+    "Remove Jenny, Josephine, Leyla, Maren, Marina and Elena from full-design navigation, block galleries and assembly, including their obsolete preview pages; preserve the two pencil forms retained from variants 4 and 6"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -217,7 +217,26 @@
       "2026-11-03T18:01:38.057Z"
     ],
     "source_note": "Later decisions in the continued rollout supersede earlier requests for palette menus. Preserve these decisions when integrating separate design projects unless the user changes them explicitly.",
-    "paired_design_policy": "Keep only improved variants; base URLs remain compatible and render the improved variant."
+    "paired_design_policy": "Keep only improved variants; base URLs remain compatible and render the improved variant.",
+    "retired_modes": [
+      "pencil-panorama",
+      "pencil-album",
+      "comparison-gradients",
+      "comparison-contour",
+      "journal",
+      "chalk-arc",
+      "reference-01-jenny",
+      "reference-03-josephine",
+      "reference-04-leyla",
+      "reference-06-maren",
+      "reference-07-marina",
+      "reference-08-elena"
+    ],
+    "retained_reference_modes": [
+      "reference-02-elliot",
+      "reference-05-yoga"
+    ],
+    "retirement_policy": "Do not restore explicitly retired designs or their reference block previews from other sources. Preserve the separately approved forms from designs 4 and 6."
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
@@ -229,31 +248,25 @@
     "full_width_reference_backgrounds": "Explicit user request, 5 November: new design backgrounds extend across the full viewport like the first designs",
     "reference_block_comparison": "Explicit user request: add blocks from the new versions to comparison; include the first screen and retain existing choices",
     "legacy_pricing": "User explicitly rejected the six old price layouts through the two-panel option; replace them with one compact explanation and three equal conditions, preserving the eight new designs",
-    "retired_designs": "Explicit user request: completely withdraw full designs 3, 4 and 6; keep form block layouts from improved designs 4 and 6 with drawn outlines"
+    "retired_designs": "Explicit user request: completely withdraw full designs 3, 4 and 6; keep form block layouts from improved designs 4 and 6 with drawn outlines",
+    "retired_named_designs": "User named Плавный контур, Семейный журнал, Кремовая дуга, Jenny, Josephine, Leyla, Maren, Марина, Елена for removal. Exact-title match removes comparison-contour; optional question about similarly named Yoga remains unanswered, so Yoga is retained pending explicit clarification."
   },
   "validation": {
     "build": "passed",
     "static": "passed",
     "tests": "24/24",
     "browser": {
-      "viewport_widths": [
-        1440,
-        390
+      "design_navigation_count": 11,
+      "price_choices": [
+        "quiet",
+        "reference-02-elliot",
+        "reference-05-yoga"
       ],
-      "design_navigation_count": 20,
-      "removed_full_designs": [
-        3,
-        4,
-        6
+      "retained_forms": [
+        "album",
+        "air"
       ],
-      "forms": [
-        "album: original variant 1, two input columns on wide screens",
-        "air: original variant 2, one input column"
-      ],
-      "borders": "native borders removed; graphite frame asset used by form, fields and button",
-      "request_draft": "passed",
-      "assembly_selection_reload": "passed",
-      "horizontal_overflow": false
+      "retired_design_links": false
     }
   }
 }

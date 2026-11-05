@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,approvedTheme} from '../../src/reference/studio/model.js';
-import {studioPage,comparisonBlockChoices,comparisonDesigns} from '../../src/reference/studio/pages.js';
+import {studioPage,comparisonBlockChoices,comparisonDesigns,retiredDesignFiles} from '../../src/reference/studio/pages.js';
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../../src/reference/studio/reference-designs.js';
 
@@ -31,8 +31,8 @@ test('completed design comparisons retain all sections and exclude cancelled opt
   assert.match(studioPage('preview','hero','index.html'),/value="comparison-current-refined.html/);
 });
 
-test('eight finished reference compositions keep their layouts and the latest shared decisions',()=>{
-  assert.equal(referenceDesigns.length,8);
+test('retained reference compositions keep their layouts and the latest shared decisions',()=>{
+  assert.deepEqual(referenceDesigns.map(({id})=>id),['02-elliot','05-yoga']);
   for(const design of referenceDesigns){
     const html=studioPage(design.mode,'hero',design.file);
     for(const id of ['header','hero','service','about','process','pricing','reviews','apply','footer']){
@@ -55,8 +55,8 @@ test('eight finished reference compositions keep their layouts and the latest sh
   }
 });
 
-test('all six formerly separate designs share navigation and retain the selected blocks',()=>{
-  assert.equal(additionalDesigns.length,6);
+test('retained formerly separate designs share navigation and retain the selected blocks',()=>{
+  assert.equal(additionalDesigns.length,4);
   for(const design of additionalDesigns){
     const html=studioPage(design.mode,'hero',design.file);
     assert.match(html,/data-design-navigation/);
@@ -92,7 +92,7 @@ test('block galleries and assembly preserve the current hero and local request w
     assert.doesNotMatch(gallery,/data-live-request/);
     total+=choices.length;
   }
-  assert.equal(total,86);
+  assert.equal(total,38);
   assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet',...referenceDesigns.map(design=>design.mode)]);
 });
 
@@ -107,7 +107,8 @@ test('withdrawn full designs preserve the two selected form layouts without dead
   }
   for(const id of Object.keys(comparisonBlockChoices)){
     const html=studioPage('comparison-library',id,`compare-block-${id}.html`);
-    assert.doesNotMatch(html,/(?:pencil-panorama|pencil-album|comparison-gradients)(?:-refined)?\.html/);
+    for(const file of retiredDesignFiles)assert.ok(!html.includes(file),file);
+    assert.doesNotMatch(html,/reference-(?:01-jenny|03-josephine|04-leyla|06-maren|07-marina|08-elena)/);
   }
 });
 

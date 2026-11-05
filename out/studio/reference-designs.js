@@ -1,14 +1,12 @@
 import {referenceTemplates} from './reference-templates.js';
-import {aboutSlides} from './render.js?v=be173e1347';
-import {approvedThemeStyle} from './model.js?v=be173e1347';
-import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=be173e1347';
-import {utilityIndexingTags} from './seo.js?v=be173e1347';
+import {aboutSlides} from './render.js?v=dfc49f7bfc';
+import {approvedThemeStyle} from './model.js?v=dfc49f7bfc';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=dfc49f7bfc';
+import {utilityIndexingTags} from './seo.js?v=dfc49f7bfc';
 
 export const referenceDesigns=[
-  ['01-jenny','Альбом · Jenny'],['02-elliot','Бумажные карточки · Elliot'],
-  ['03-josephine','Фотоколлаж · Josephine'],['04-leyla','Арка и волна · Leyla'],
-  ['05-yoga','Плавный контур · Yoga'],['06-maren','Фотообложка · Maren'],
-  ['07-marina','Личная поддержка · Марина'],['08-elena','Голубая рамка · Елена'],
+  ['02-elliot','Бумажные карточки · Elliot'],
+  ['05-yoga','Плавный контур · Yoga'],
 ].map(([id,name])=>({id,name,mode:`reference-${id}`,file:`comparison-ref-${id}.html`,reference:true,imported:true,single:true}));
 
 const drawing=name=>`<span class="reference-drawing reference-drawing--${name}" aria-hidden="true"></span>`;
@@ -40,16 +38,16 @@ export function referencePage(design,navigation){
     .replace(/<div class="interview">/,`<div class="interview">${drawing('profile')}`);
   // The original page's script depends on its own header; the shared header has its own handler.
   html=html.replace(/<script defer src="[^\"]*page.js"><\/script>/,'')
-    .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=be173e1347">
-<link rel="stylesheet" href="studio/comparison-design.css?v=be173e1347">
-<link rel="stylesheet" href="studio/unified-designs.css?v=be173e1347">
-<link rel="stylesheet" href="studio/design-chrome.css?v=be173e1347">
-<link rel="stylesheet" href="studio/reference-integration.css?v=be173e1347">
-<script defer src="studio/comparison-request.js?v=be173e1347"></script>
-<script defer src="studio/variants/eight-references/gallery-ui.js?v=be173e1347"></script>
-<script defer src="studio/reference-interactions.js?v=be173e1347"></script>
-<script defer src="studio/comparison-palettes.js?v=be173e1347"></script>
-<script defer src="studio/unified-designs.js?v=be173e1347"></script></head>`)
+    .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=dfc49f7bfc">
+<link rel="stylesheet" href="studio/comparison-design.css?v=dfc49f7bfc">
+<link rel="stylesheet" href="studio/unified-designs.css?v=dfc49f7bfc">
+<link rel="stylesheet" href="studio/design-chrome.css?v=dfc49f7bfc">
+<link rel="stylesheet" href="studio/reference-integration.css?v=dfc49f7bfc">
+<script defer src="studio/comparison-request.js?v=dfc49f7bfc"></script>
+<script defer src="studio/variants/eight-references/gallery-ui.js?v=dfc49f7bfc"></script>
+<script defer src="studio/reference-interactions.js?v=dfc49f7bfc"></script>
+<script defer src="studio/comparison-palettes.js?v=dfc49f7bfc"></script>
+<script defer src="studio/unified-designs.js?v=dfc49f7bfc"></script></head>`)
     .replace(/<body class="([^"]+)">/,`<body class="$1 reference-design" data-fixed-theme="almost-white" style="${approvedThemeStyle}">${navigation}<div data-comparison-site>`)
     .replace('</body>','</div></body>');
   return html;
@@ -78,7 +76,7 @@ export function referenceBlockPage(design,id){
   let block=html.slice(start,end);
   const ids=new Set([...block.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
   block=block.replace(/href="#([^"]+)"/g,(attribute,target)=>ids.has(target)?attribute:
-    `href="${design.file}?v=be173e1347#${target}" target="_top" data-reference-target="${target}"`);
+    `href="${design.file}?v=dfc49f7bfc#${target}" target="_top" data-reference-target="${target}"`);
   const dialog=html.match(/<dialog\b[\s\S]*?<\/dialog>/)?.[0]??'';
   return html
     .replace(/<body([^>]*)>[\s\S]*<\/body>/,`<body$1><div class="sheet" data-reference-block-root><main>${block}</main></div>${dialog}</body>`)

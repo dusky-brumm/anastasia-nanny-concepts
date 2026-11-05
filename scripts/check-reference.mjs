@@ -2,6 +2,8 @@ import {readFile,stat,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {blocks} from '../src/reference/studio/model.js';
+import {retiredDesignFiles,comparisonBlockChoices} from '../src/reference/studio/pages.js';
+import {referenceDesigns,referenceBlockFile} from '../src/reference/studio/reference-designs.js';
 const root='out';const html=await readFile(path.join(root,'reference.html'),'utf8');
 for(const filename of (await readdir(root)).filter(name=>name.endsWith('.html'))){
   const content=await readFile(path.join(root,filename),'utf8');
@@ -46,7 +48,11 @@ async function checkImported(directory){
 await checkImported(path.join(root,'studio','variants'));
 for(const file of ['additional-designs.js','additional-templates.js','unified-designs.js','design-chrome.js','reference-designs.js','reference-templates.js','reference-interactions.js','reference-frames.js'])execFileSync(process.execPath,['--check',path.join(root,'studio',file)]);
 const files=await readdir(root);if(files.includes('collection.html')||files.includes('atelier'))throw Error('Old gallery in publication');
-for(const name of ['pencil-panorama','pencil-album','comparison-gradients']){
-  for(const suffix of ['','-refined'])if(files.includes(`${name}${suffix}.html`))throw Error('Withdrawn design in publication: '+name);
+for(const file of retiredDesignFiles)if(files.includes(file))throw Error('Withdrawn design in publication: '+file);
+const retainedReferenceFiles=new Set(referenceDesigns.flatMap(design=>[
+  design.file,...Object.keys(comparisonBlockChoices).map(id=>referenceBlockFile(design,id)),
+]));
+for(const file of files){
+  if(/^(?:comparison-ref-|compare-ref-).*\.html$/.test(file)&&!retainedReferenceFiles.has(file))throw Error('Withdrawn reference block in publication: '+file);
 }
 console.log('PASS: reference page, block designs, studio/share previews, local assets and fonts, unique IDs, anchors, CSS/JS syntax and imports.');

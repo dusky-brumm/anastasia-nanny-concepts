@@ -9,11 +9,14 @@ export const comparisonDesigns=[
   {mode:'pencil',file:'pencil-preview.html',name:'Вариант 1',reviews:'open',form:2,footer:2,refinement:'letter'},
   {mode:'comparison-route',file:'comparison-route.html',name:'Вариант 7',reviews:'cards',form:3,footer:3,process:7,refinement:'route'},
   {mode:'comparison-reference',file:'comparison-reference.html',name:'Вариант 9',reviews:'open',form:2,footer:5,layout:'112111113',wavyArrows:true,refinement:'reference'},
-  {mode:'comparison-contour',file:'comparison-contour.html',name:'Плавный контур',reviews:'cards',form:1,footer:3,hero:10,contour:'wave'},
   {mode:'comparison-thread',file:'comparison-thread.html',name:'Линия-письмо',reviews:'open',form:2,footer:5,hero:11,contour:'letter',single:true},
   ...additionalDesigns,
   ...referenceDesigns,
 ];
+export const retiredDesignFiles = [
+  'pencil-panorama','pencil-album','comparison-gradients',
+  'comparison-contour','comparison-journal','comparison-chalk-arc',
+].flatMap(name=>[`${name}.html`,`${name}-refined.html`]);
 const preferredDesignFile=design=>design.single?design.file:design.file.replace('.html','-refined.html');
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);

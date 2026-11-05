@@ -5,10 +5,8 @@ import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=
 import {utilityIndexingTags} from './seo.js?v=__VERSION__';
 
 export const referenceDesigns=[
-  ['01-jenny','Альбом · Jenny'],['02-elliot','Бумажные карточки · Elliot'],
-  ['03-josephine','Фотоколлаж · Josephine'],['04-leyla','Арка и волна · Leyla'],
-  ['05-yoga','Плавный контур · Yoga'],['06-maren','Фотообложка · Maren'],
-  ['07-marina','Личная поддержка · Марина'],['08-elena','Голубая рамка · Елена'],
+  ['02-elliot','Бумажные карточки · Elliot'],
+  ['05-yoga','Плавный контур · Yoga'],
 ].map(([id,name])=>({id,name,mode:`reference-${id}`,file:`comparison-ref-${id}.html`,reference:true,imported:true,single:true}));
 
 const drawing=name=>`<span class="reference-drawing reference-drawing--${name}" aria-hidden="true"></span>`;

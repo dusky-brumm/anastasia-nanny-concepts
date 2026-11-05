@@ -5,9 +5,7 @@ import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=
 
 export const additionalDesigns=[
   {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css'},
-  {mode:'journal',file:'comparison-journal.html',name:'Семейный журнал',css:'journal.css'},
   {mode:'editorial-new',file:'comparison-editorial.html',name:'Тихая редакция',css:'editorial.css'},
-  {mode:'chalk-arc',file:'comparison-chalk-arc.html',name:'Кремовая дуга',chalk:'arc'},
   {mode:'chalk-album',file:'comparison-chalk-album.html',name:'Семейный альбом',chalk:'album'},
   {mode:'chalk-route',file:'comparison-chalk-route.html',name:'Маршрут семьи',chalk:'route'},
 ].map(design=>({...design,single:true,imported:true}));

@@ -2,7 +2,7 @@ import {cp,mkdir,readFile,writeFile,readdir,rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {renderJourney,renderJourneyOptions} from '../src/reference/journeys.js';
-import {comparisonBlockChoices,comparisonDesigns,studioPage} from '../src/reference/studio/pages.js';
+import {comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,studioPage} from '../src/reference/studio/pages.js';
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../src/reference/studio/reference-designs.js';
 import {blocks} from '../src/reference/studio/model.js';
 import {formatRequest} from '../src/reference/request.js';
@@ -39,8 +39,14 @@ await rm(path.join(output,'comparison-quotes.html'),{force:true});
 await rm(path.join(output,'pencil-journal.html'),{force:true});
 await rm(path.join(output,'pencil-journal-refined.html'),{force:true});
 // These complete designs were withdrawn; their selected blocks remain in the gallery.
-for(const name of ['pencil-panorama','pencil-album','comparison-gradients']){
-  for(const suffix of ['','-refined'])await rm(path.join(output,`${name}${suffix}.html`),{force:true});
+for(const file of retiredDesignFiles)await rm(path.join(output,file),{force:true});
+const retainedReferenceFiles=new Set(referenceDesigns.flatMap(design=>[
+  design.file,...Object.keys(comparisonBlockChoices).map(id=>referenceBlockFile(design,id)),
+]));
+for(const file of await readdir(output)){
+  if(/^(?:comparison-ref-|compare-ref-).*\.html$/.test(file)&&!retainedReferenceFiles.has(file)){
+    await rm(path.join(output,file),{force:true});
+  }
 }
 for(const {mode,file,single} of comparisonDesigns){
   await writeFile(path.join(output,file),studioPage(mode,'hero',file).replaceAll('__VERSION__',version));

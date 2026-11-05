@@ -6,6 +6,7 @@
 .pencil-comparison .comparison-disclosure {display:block;width:100%;min-width:0}
 .pencil-comparison .comparison-content {display:grid;grid-template-columns:minmax(0,1fr);width:100%;min-width:0;gap:4px}
 .pencil-comparison :is(.comparison-pairs,.block-compare-actions,.design-version-label) {min-width:0;max-width:100%;width:100%}
+.pencil-comparison .comparison-pairs {scrollbar-width:none}
 @media(min-width:761px){
  .pencil-comparison .comparison-content {grid-template-columns:minmax(0,1fr) auto;grid-template-areas:'picker blocks' 'designs designs';align-items:center;gap:4px 20px}
  .pencil-comparison .design-version-label {grid-area:picker;justify-content:flex-start;margin:0}

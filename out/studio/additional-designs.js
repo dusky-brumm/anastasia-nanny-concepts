@@ -1,7 +1,7 @@
 import {additionalTemplates} from './additional-templates.js';
-import {renderBlock} from './render.js?v=dd8ab2bf89';
-import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=dd8ab2bf89';
-import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=dd8ab2bf89';
+import {renderBlock} from './render.js?v=567bedbbf9';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=567bedbbf9';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=567bedbbf9';
 
 export const additionalDesigns=[
   {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css'},
@@ -12,7 +12,7 @@ export const additionalDesigns=[
 
 export function additionalStyles(design){
   const directory=design.chalk?'chalk':design.mode;
-  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=dd8ab2bf89">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=dd8ab2bf89">`;
+  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=567bedbbf9">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=567bedbbf9">`;
 }
 
 export function selectedBlock(id,style='quiet',variant=1,drawings=false){
@@ -28,6 +28,7 @@ export function renderAdditionalDesign(design){
   const reviews=selectedBlock('reviews','letter');
   const apply=selectedBlock('apply','letter',2);
   const footer=selectedBlock('footer','quiet',3,Boolean(design.chalk));
-  const content=`${sharedDesignHeader()}<main>${withoutRepeatedHeroLabel(composition.hero)}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
+  const hero=withoutRepeatedHeroLabel(composition.hero).replaceAll('вам и хорошо ребёнку','вам и&nbsp;хорошо ребёнку');
+  const content=`${sharedDesignHeader()}<main>${hero}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
   return `<div class="imported-design imported-${design.mode}" data-font="lora" data-comparison-theme="${approvedTheme.id}" style="${approvedThemeStyle}">${design.chalk?`<div id="chalk-site-directions"><article class="landing ${design.chalk}-page">${content}</article></div>`:design.mode==='journal'?`<div class="journal">${content}</div>`:content}</div>`;
 }

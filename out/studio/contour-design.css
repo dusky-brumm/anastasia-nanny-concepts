@@ -110,6 +110,13 @@
 }
 [data-contour-direction=letter] .contour-transition-line {stroke-opacity:.56}
 
+@container (min-width:901px) {
+  .comparison-design[data-contour-direction=letter] > .s-hero {padding-block:40px 64px}
+  .comparison-design[data-contour-direction=letter] .s-wave-portrait {max-width:440px}
+  .comparison-design[data-contour-direction=letter] .s-hero-copy {position:relative}
+  .comparison-design[data-contour-direction=letter] .contour-drawing--hero {position:absolute;left:222px;bottom:0;width:160px;margin:0;opacity:.7}
+}
+
 @container (max-width:700px) {
   .comparison-design[data-contour-direction] > .s-block {padding-inline:24px}
   .contour-drawing--service,.contour-drawing--process {inset-inline-end:24px;width:82px}

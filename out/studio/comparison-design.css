@@ -153,7 +153,7 @@
  .comparison-design:not(.early-design) .s-hero--6 {padding-block:40px 64px}
  .comparison-design:not(.early-design) .s-square-portrait {width:min(100%,480px);padding:18px}
  .comparison-design[data-refinement=reference] .s-hero--1 {padding-block:48px 56px}
- .comparison-design[data-refinement=reference] .s-hero--1 .s-main-portrait {width:min(100%,420px)}
+ .comparison-design[data-refinement=reference] .s-hero--1 .s-main-portrait {width:min(100%,400px)}
 }
 .comparison-design[data-refinement=reference] .comparison-price-sheet {border-radius:0;border-inline:0}
 .comparison-design[data-refinement]:is([data-refinement=letter],[data-refinement=journal],[data-refinement=album],[data-refinement=air],[data-refinement=reference]) .s-block :is(h1,h2) {font-weight:400;letter-spacing:-.025em}
@@ -167,6 +167,11 @@
   }
   .comparison-design[data-refinement=journal] .pencil-masthead {align-self:end}
   .comparison-design[data-refinement=journal] .pencil-journal-copy {align-self:start}
+}
+@container (min-width:901px) {
+  .comparison-design:not(.early-design) .s-hero--6 {grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)}
+  .comparison-design:not(.early-design) .s-hero--6 .s-square-portrait {width:min(100%,460px)}
+  .comparison-design[data-refinement=letter]:not(.early-design) .pencil-hero {grid-template-columns:minmax(0,1.18fr) minmax(0,1fr)}
 }
 
 .comparison-design:is([data-comparison-theme=mist],[data-comparison-theme=garden]) :is(.s-service,.s-reviews) {

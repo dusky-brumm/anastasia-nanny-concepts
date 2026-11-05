@@ -28,6 +28,7 @@ export function renderAdditionalDesign(design){
   const reviews=selectedBlock('reviews','letter');
   const apply=selectedBlock('apply','letter',2);
   const footer=selectedBlock('footer','quiet',3,Boolean(design.chalk));
-  const content=`${sharedDesignHeader()}<main>${withoutRepeatedHeroLabel(composition.hero)}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
+  const hero=withoutRepeatedHeroLabel(composition.hero).replaceAll('вам и хорошо ребёнку','вам и&nbsp;хорошо ребёнку');
+  const content=`${sharedDesignHeader()}<main>${hero}${service}${about}${process}${pricing}${reviews}${apply}</main>${footer}`;
   return `<div class="imported-design imported-${design.mode}" data-font="lora" data-comparison-theme="${approvedTheme.id}" style="${approvedThemeStyle}">${design.chalk?`<div id="chalk-site-directions"><article class="landing ${design.chalk}-page">${content}</article></div>`:design.mode==='journal'?`<div class="journal">${content}</div>`:content}</div>`;
 }

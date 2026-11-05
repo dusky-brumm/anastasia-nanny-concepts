@@ -67,6 +67,9 @@
     #chalk-site-directions .route-page .step-number { display:inline-block; margin:0 7px 0 0; }
     #chalk-site-directions .route-page .route-line { display:none; }
     #chalk-site-directions .route-page .process .chalk-picture { margin:10px 0 0; }
+    @container (min-width:901px) {
+      #chalk-site-directions .album-page .lead .photo-collage { width:min(100%,430px); }
+    }
     @container (max-width:560px) {
       #chalk-site-directions .pair, #chalk-site-directions .album-page .lead, #chalk-site-directions .album-page .reviews,
       #chalk-site-directions .route-page .process { grid-template-columns:1fr; }

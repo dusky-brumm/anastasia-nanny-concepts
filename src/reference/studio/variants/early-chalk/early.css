@@ -53,6 +53,9 @@
 .early-design .early-chalk:not(.early-reveal).is-visible {animation:early-chalk-settle .35s ease-out both}
 @keyframes early-chalk-line {to{clip-path:inset(-8%)}}
 @keyframes early-chalk-settle {from{filter:opacity(.45)}to{filter:opacity(1)}}
+@container(min-width:901px){
+ .comparison-design.early-personal .pencil-hero {grid-template-columns:minmax(0,1.14fr) minmax(0,1fr)}
+}
 @container(max-width:850px){
  .early-design .s-service-result {grid-template-columns:70px minmax(0,1fr)}
  .early-design .s-service-result .s-text-link {grid-column:2;justify-self:start;max-width:none}

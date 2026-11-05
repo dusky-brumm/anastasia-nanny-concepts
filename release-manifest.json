@@ -1,6 +1,6 @@
 {
-  "build": "7dd48290bf",
-  "base_commit": "d5c7cb06d648dc434260d13db0d994484b120101",
+  "build": "0da2c899b1",
+  "base_commit": "41757549ccf1f3465e65adb04e2dc02d71fce8ff",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,10 +23,11 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "All nine block galleries cover every retained design plus saved historical block choices, with visual duplicates grouped and source designs listed",
-    "Remove pair comparison controls and ignore obsolete pair parameters; open comparison at the first screen",
-    "Preserve selected forms and old assembly URLs via aliases; all blocks including the hero can be combined",
-    "Import the completed Yoga refinement into both full design and block previews"
+    "Three completed illustrated designs: Chalk Light, Chalk Letter and Chalk Story, with all 28 chalk illustrations",
+    "All 27 distinct illustrated blocks available across the nine galleries and mixed assembly",
+    "Completed typography, spacing, portrait, route and mobile refinements from the Accents chat",
+    "Keep backgrounds full width while preserving centered content containers",
+    "Consolidate prior full-width release metadata and latest chat checkpoints"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -38,10 +39,10 @@
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4",
-    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1a896-a3c1-7e22-bdb0-24af8544fe20",
+    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1ad1c-c7b7-7800-9bf6-9279d9c43095",
     "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
     "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
-    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1aa13-bc0f-7351-8f14-34683301e929"
+    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1ac05-116f-7370-9629-445830e5052d"
   },
   "direct_request_thread": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
   "direct_request_date": "2026-11-05",
@@ -202,6 +203,46 @@
         "script_source": "sites/nastya-eight-references/src/gallery-ui.js",
         "script_sha256": "d8cb3659b651ecc7d6b025132b384a73e24dc4d67097a4d446dd468d005e211a"
       }
+    },
+    "chalk-complete-kit": {
+      "path": "C:/Users/Нат/Documents/ChatGPT/Anastasia/artifacts/chalk-complete-kit",
+      "sha256_binary": {
+        "image-checks.json": "8ab62e1ca87c0b6d3403f1232f0b803c5193eda43cf64f9b9a9ced1bfadbeb8e",
+        "manifest.json": "b2cd884a96cc6e9e9b5a3cc303e0c0b5da0b564b97418a860cdfe3b0665128da",
+        "overview.png": "f423b0d0f4820701871635bbf06db07dfd3b3013be12b4513e89bdbdf2e2b281",
+        "png/01-header-welcome.png": "e2a418865f72fa27bc3d14bb583386381710d60d6d425880d22cde19815ad645",
+        "png/02-hero-care.png": "98a21cfac8fd2ad0e86e457896ab3200418ba65e4e92fe4c2100fc4ba9a6bdd7",
+        "png/03-hero-photo-arch.png": "f46fdcaab96b97b8fdf71ecd3636bae3eaec88b16a8bba8953f9323dd37e139d",
+        "png/04-text-underline.png": "6164b181d91abfc85b0a3e175910cd41f373ba2c0bdbdef5d17fbe1f011b49ba",
+        "png/05-service-profile.png": "0926e5fe5ae2a9af4dd0ee9d231919b4db8875ba2a5eaa12603ef561a78913eb",
+        "png/06-service-family-request.png": "97620ebd0c0fdb3343da90efb47a2c158b95a1a62dfa4c538e21ffabb960d4ae",
+        "png/07-service-interview.png": "7dd5aa2f8a0f54c71cb488c828843dfdfa08c911b6c916b3b23d41bdf22a2b91",
+        "png/08-service-recommendation.png": "4075c4d7c2b5a864e9e6fa2b9e7f404034431b4812adcc6c16b3f3751f5dca59",
+        "png/09-about-personal-work.png": "3198dc193ff68b072a3758a5a09c6f411ee7f0d54500966b65b348bf6771bfbe",
+        "png/10-about-photo-corners.png": "b485ac85fb78f71729ddb5d1b9ba7ac4316280aac638bbb158bc85f241840a64",
+        "png/11-about-photo-link.png": "4b6d900c9aec3761602d39facef62361a96aec2a2196f0ad9656af5d51912b66",
+        "png/12-process-route.png": "c2f0d2eb15164ee213dcf53b67dbdea2b470b0238e0edf5b256641c8e63732ce",
+        "png/13-step-application.png": "211a720d0374c72444f1d8677659ed193e7c1eade5b766db1a2b2004c082b482",
+        "png/14-step-nanny-profile.png": "5f55d69d4f2ecaf316ba8adaac00e7f79ec74f041567626744a368328c7ad57c",
+        "png/15-step-search-interview.png": "6bea18a3ff37fbbfb171ef915c29f20c19cf36ec8e9d85935c906b4d6ec0d587",
+        "png/16-step-first-meeting.png": "11074edb3aefe76dd54c969fbed74dafd4f64fcf6268fd2baa283a438068c098",
+        "png/17-step-support.png": "e30ee04ca255fd8cef610fda84ff68a0b4e4af19dcec664f7ca64e74d9ad7e74",
+        "png/18-pricing-terms.png": "48563a0c916ea86a26ccb5e58fbd718975e1d755c4f8de2bda4e24047552b3d8",
+        "png/19-guarantee-calendar.png": "0e7b290785d5d5445d3fbfdc515be411cec5ecad1ba0f69d410d749c279f2b8f",
+        "png/20-faq-book.png": "6c1c84203023cb6650e32a5480c5e79dacd7dd9a06d2f65cd75bec0c8427bd9e",
+        "png/21-reviews-quote.png": "89642a6706e3f45b8597219d5c1c0c48ddd96a27eea50ce75c529560967df108",
+        "png/22-reviews-family-album.png": "3790487412de048620f42dc437b5bd7052863e3ebce82f60e4359f15d5d8e2b9",
+        "png/23-apply-writing.png": "ca318e44dccb90d474d77b2c949c08cb82eedece397eb093cbff3a8747715c52",
+        "png/24-apply-ready-message.png": "4faf0f6e58b744fe1931c5816b7957a0d48eddb00f8c734be19110398efbecf9",
+        "png/25-footer-contact.png": "5618e76a6669559da15358178ee16fd78f2065ede881afd4a31aaa5b063a10b5",
+        "png/26-section-divider.png": "ac4a8855fac9026a8b359ef0478024ad953ff7b133aad62c02fb5683ec309f46",
+        "png/27-support-sprig.png": "e0385e6ed6a86ab2dde74657695154f853c81309e848e45747231ed642fcc97b",
+        "png/28-photo-side-contour.png": "c128352323ce031904ff3fc38ca08faed3d02251641200eefae4669f9f95cbea"
+      },
+      "imported_as": "src/reference/studio/media/chalk-kit/*.webp",
+      "artwork_count": 28,
+      "completed_source_commit": "41757549ccf1f3465e65adb04e2dc02d71fce8ff",
+      "chat_checkpoint": "01a1ad1c-c7b7-7800-9bf6-9279d9c43095"
     }
   },
   "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched.",
@@ -249,15 +290,15 @@
       "pair_controls": false,
       "entry": "hero",
       "counts": {
-        "header": 1,
-        "hero": 11,
-        "service": 9,
-        "about": 7,
-        "process": 6,
-        "pricing": 3,
-        "reviews": 6,
-        "apply": 6,
-        "footer": 4
+        "header": 4,
+        "hero": 14,
+        "service": 12,
+        "about": 10,
+        "process": 9,
+        "pricing": 6,
+        "reviews": 9,
+        "apply": 9,
+        "footer": 7
       },
       "design_coverage": {
         "comparison-current": {
@@ -314,6 +355,39 @@
           "reviews": "comparison-thread",
           "apply": "comparison-thread",
           "footer": "comparison-thread"
+        },
+        "chalk-light": {
+          "header": "chalk-light",
+          "hero": "chalk-light",
+          "service": "chalk-light",
+          "about": "chalk-light",
+          "process": "chalk-light",
+          "pricing": "chalk-light",
+          "reviews": "chalk-light",
+          "apply": "chalk-light",
+          "footer": "chalk-light"
+        },
+        "chalk-letter": {
+          "header": "chalk-letter",
+          "hero": "chalk-letter",
+          "service": "chalk-letter",
+          "about": "chalk-letter",
+          "process": "chalk-letter",
+          "pricing": "chalk-letter",
+          "reviews": "chalk-letter",
+          "apply": "chalk-letter",
+          "footer": "chalk-letter"
+        },
+        "chalk-story": {
+          "header": "chalk-story",
+          "hero": "chalk-story",
+          "service": "chalk-story",
+          "about": "chalk-story",
+          "process": "chalk-story",
+          "pricing": "chalk-story",
+          "reviews": "chalk-story",
+          "apply": "chalk-story",
+          "footer": "chalk-story"
         },
         "fotoalbum": {
           "header": "quiet",
@@ -386,7 +460,15 @@
         "quiet": "album",
         "route": "air",
         "reference": "album"
-      }
+      },
+      "design_count": 14,
+      "total_choices": 80
+    },
+    "full_width_layout": {
+      "background": "viewport width",
+      "content_max_width_px": 1120,
+      "yoga_portrait": "inside content container",
+      "illustrated": "Full viewport backgrounds; scene width up to 1120px, inset content 1024px"
     }
   },
   "reviewed_decisions": {
@@ -406,21 +488,41 @@
   "validation": {
     "build": "passed",
     "static": "passed",
-    "tests": "26/26",
+    "tests": "27/27",
     "browser": {
+      "source_refinement_report": "artifacts/chalk-refinement-20261106/review.html",
       "viewports": [
-        "desktop",
-        "390px"
+        1920,
+        390
       ],
-      "all_choices_visible": true,
-      "pair_mode_removed": true,
-      "source_design_coverage": "11 designs × 9 blocks",
-      "yoga_steps": "2 of 3 after click",
-      "assembly_selection_reload": "passed",
-      "old_form_alias": "reference -> album",
-      "iframe_hero_to_form_navigation": "passed",
+      "all_three_backgrounds_fill_viewport": true,
+      "content_scene_max_width": 1120,
+      "green_footers": true,
       "horizontal_overflow": false,
-      "console_errors": 0
+      "console_errors": 0,
+      "new_hero_choices_visible": true,
+      "proof": "artifacts/chalk-release-0da2c899b1/desktop.png"
     }
-  }
+  },
+  "completed_css_sha256": {
+    "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
+    "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
+  },
+  "previous_confirmed_build": "71b1cdab93",
+  "pending_changes": [
+    {
+      "thread_id": "01a1ac09-bafe-7330-b307-286bdd0fd74a",
+      "turn_id": "01a1ac0a-87c4-7d50-9ef7-12697370a9b1",
+      "status": "unfinished",
+      "reason": "Model capacity error interrupted portrait and mobile QA; no completed final answer",
+      "checkout": "sites/nastya-unified-20261105",
+      "files": [
+        "src/reference/studio/paper-chalk.js",
+        "src/reference/studio/paper-chalk.css",
+        "src/reference/studio/pages.js",
+        "src/reference/studio/design-blocks.js",
+        "scripts/tests/studio.test.mjs"
+      ]
+    }
+  ]
 }

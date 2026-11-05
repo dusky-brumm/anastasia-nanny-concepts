@@ -1,5 +1,5 @@
 /* The original studies share the site's approved paper, blue and sage palette. */
-.illustrated-site {max-width:1280px;margin-inline:auto;--content-width:1024px;--heading:'Lora',Georgia,serif;--heading-weight:400;--heading-tracking:-.025em;--body:'Golos Text',Arial,sans-serif}
+.illustrated-site {width:100%;max-width:none;margin:0;--content-width:1024px;--heading:'Lora',Georgia,serif;--heading-weight:400;--heading-tracking:-.025em;--body:'Golos Text',Arial,sans-serif}
 .illustrated-site :where(h1,h2,h3,p,figure,blockquote,ul,ol) {margin:0}
 .illustrated-site a {color:inherit}
 .illustrated-site p {text-wrap:pretty}

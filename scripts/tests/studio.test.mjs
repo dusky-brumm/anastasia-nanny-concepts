@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,approvedTheme} from '../../src/reference/studio/model.js';
-import {studioPage,comparisonBlockChoices,comparisonDesigns,retiredDesignFiles} from '../../src/reference/studio/pages.js';
+import {studioPage,comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,comparisonChoiceDetails,designBlockCoverage,isolatedDesignBlocks,comparisonChoiceAliases} from '../../src/reference/studio/pages.js';
+import {extractDesignBlock} from '../../src/reference/studio/design-blocks.js';
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../../src/reference/studio/reference-designs.js';
 
@@ -83,16 +84,13 @@ test('block galleries and assembly preserve the current hero and local request w
   assert.match(assembly,/option value="letter" selected>Тонкие линии/);
   assert.doesNotMatch(assembly,/Вы получите текст сообщения|s-form-note/);
   assert.doesNotMatch(assembly,/data-live-request/);
-  let total=0;
   for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
     const gallery=studioPage('comparison-library',id,`compare-block-${id}.html`);
     assert.equal([...gallery.matchAll(/class="block-compare-choice"/g)].length,choices.length);
     assert.equal([...assembly.matchAll(new RegExp(`data-assembly-part="${id}"`,'g'))].length,1);
     for(const [style] of choices) assert.ok(gallery.includes(`&amp;${id}=${style}#${id}`));
     assert.doesNotMatch(gallery,/data-live-request/);
-    total+=choices.length;
   }
-  assert.equal(total,38);
   assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet',...referenceDesigns.map(design=>design.mode)]);
 });
 
@@ -115,6 +113,7 @@ test('withdrawn full designs preserve the two selected form layouts without dead
 test('new designs expose eight isolated, complete blocks with working cross-section links',()=>{
   for(const design of referenceDesigns){
     for(const id of Object.keys(comparisonBlockChoices)){
+      if(id==='header')continue;
       const html=referenceBlockPage(design,id);
       assert.deepEqual([...html.matchAll(/data-block="([^"]+)"/g)].map(match=>match[1]),[id]);
       assert.match(html,new RegExp(`looks/${design.id}.css`));
@@ -126,7 +125,7 @@ test('new designs expose eight isolated, complete blocks with working cross-sect
       for(const [,target] of html.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(target),`${design.id}/${id}: ${target}`);
       const gallery=studioPage('comparison-library',id,`compare-block-${id}.html`);
       assert.ok(gallery.includes(`src="${referenceBlockFile(design,id)}?v=`));
-      assert.ok(gallery.includes(`value="${design.mode}"`));
+      assert.ok(gallery.includes(`data-gallery-choice="${design.mode}"`));
       if(id==='about')assert.equal([...html.matchAll(/data-reference-story="/g)].length,4);
       if(id==='apply')assert.match(html,/<form class="s-consult-form"/);
       if(id==='hero'&&design.id==='05-yoga')assert.match(html,/id="organic-photo"/);
@@ -161,7 +160,7 @@ test('the final theme is fixed and the top navigation offers only designs and bl
     const nav=html.match(/<nav class="(?:design-panel|pencil-comparison)"[\s\S]*?<\/nav>/)?.[0];
     assert.ok(nav,mode);
     assert.match(nav,/data-design-navigation/);
-    assert.match(nav,/href="compare-block-pricing.html/);
+    assert.match(nav,/href="compare-block-hero.html/);
     for(const design of comparisonDesigns){
       const file=design.single?design.file:design.file.replace('.html','-refined.html');
       assert.equal(nav.split(`value="${file}?v=`).length-1,1);
@@ -238,4 +237,38 @@ test('palettes keep body and accent text readable on all three page backgrounds'
     assert.ok(ratio>=4.5,`${p.id}: contrast ${ratio.toFixed(2)}`);
   }
   for(const p of palettes)assert.ok(1.05/(luminance(p.button??p.ink)+.05)>=4.5,p.id);
+});
+
+
+test('every retained design is covered in every gallery without duplicate block identities or pair controls',()=>{
+  for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
+    const keys=new Set(choices.map(choice=>choice[0]));
+    assert.equal(keys.size,choices.length);
+    const details=comparisonChoiceDetails[id];
+    assert.equal(new Set(Object.values(details).map(d=>d.identity)).size,choices.length,id);
+    for(const design of comparisonDesigns){
+      const key=designBlockCoverage[design.mode][id];
+      assert.ok(keys.has(key),design.mode+'/'+id);
+      assert.ok(details[key].sources.some(source=>source.mode===design.mode));
+    }
+    const html=studioPage('comparison-library',id,'compare-block-'+id+'.html');
+    assert.doesNotMatch(html,/data-block-pair|data-pair-choice|Сравнить два варианта/);
+  }
+  assert.deepEqual(comparisonChoiceAliases.apply,{quiet:'album',route:'air',reference:'album'});
+  assert.equal(comparisonBlockChoices.hero[1].length,comparisonDesigns.length);
+});
+
+test('isolated design blocks preserve complete nested markup and all local anchor targets',()=>{
+  for(const {html,block,design} of isolatedDesignBlocks){
+    assert.ok(extractDesignBlock(html,block).markup.includes('id="'+block+'"'));
+    for(const other of Object.keys(comparisonBlockChoices)){
+      if(other!==block)assert.doesNotMatch(html,new RegExp('<(?:section|header|footer)[^>]*id="'+other+'"'));
+    }
+    const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
+    for(const [,target] of html.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(target),design+'/'+block+': '+target);
+    assert.doesNotMatch(html,/data-design-navigation|data-site-root/);
+    assert.match(html,/data-reference-block-root/);
+  }
+  const nested='<body><main class="native"><section id="service"><section id="nested">Inner</section>End</section><footer id="footer">Other</footer></main></body>';
+  assert.equal(extractDesignBlock(nested,'service').markup,'<section id="service"><section id="nested">Inner</section>End</section>');
 });

@@ -370,50 +370,6 @@
 .assembly-clean-view .assembly-site .s-block {padding-inline:var(--section-inset)}
 .assembly-clean-view .assembly-site [data-assembly-preview] > [id] {scroll-margin-top:16px}
 
-.block-pair-tools:not([hidden]) {
-  display:flex;
-  align-items:end;
-  flex-wrap:wrap;
-  gap:12px 20px;
-  margin-top:18px;
-}
-.block-pair-settings:not([hidden]) {display:flex;align-items:end;flex-wrap:wrap;gap:8px 12px}
-.block-pair-settings label {display:grid;gap:4px;font-size:12px}
-.block-pair-toggle,.block-pair-settings select {
-  min-height:42px;
-  max-width:100%;
-  padding:8px 12px;
-  border:1px solid #9eafa6;
-  border-radius:8px;
-  background:#fff;
-  color:#28353c;
-  font:inherit;
-  font-size:14px;
-  font-weight:500;
-}
-.block-pair-toggle {background:#526c73;color:white;cursor:pointer}
-.block-compare-choice[hidden] {display:none}
-@media (min-width:1050px) {
-  .block-compare-list[data-pair-layout=side] {
-    width:min(100% - 32px,1600px);
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:clamp(12px,2vw,24px);
-    align-items:start;
-  }
-  .block-compare-list[data-pair-layout=side] .block-compare-choice > header {min-height:70px}
-  .block-compare-list[data-pair-layout=side] .s-block:not(.s-footer) {padding-block:clamp(24px,5cqw,48px)}
-  .block-compare-list[data-pair-layout=side] .comparison-price-sheet {padding:clamp(18px,4cqw,32px)}
-  .block-compare-list[data-pair-layout=side] :is([data-block-style=letter],[data-block-style=reference]) .comparison-price-sheet {padding-inline:0}
-  @container (min-width:590px) {
-    .block-compare-list[data-pair-layout=side] .comparison-design:not([data-block-style=panorama],[data-block-style=route]) .comparison-price-sheet,
-    .block-compare-list[data-pair-layout=side] .comparison-design .s-apply {
-      grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
-    }
-    .block-compare-list[data-pair-layout=side] .s-apply .s-section-heading h2 {font-size:clamp(24px,4.8cqw,36px)}
-  }
-}
-
 .assembly-presets {margin:20px 0}
 .assembly-presets h2 {margin:0 0 9px;font-size:14px;font-weight:650}
 .assembly-preset-list {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -434,5 +390,10 @@
 .assembly-preset > span:last-child {font-size:13px;line-height:1.45}
 @media (max-width:700px) {
   .assembly-preset-list {grid-template-columns:minmax(0,1fr)}
-  .block-pair-settings label {min-width:0;max-width:100%}
 }
+
+.block-gallery-intro {max-width:68ch;margin:0 0 20px;line-height:1.6;color:#526c73}
+.block-choice-sources {max-width:90ch;font-size:12px;line-height:1.6;margin-top:6px;color:#526c73}
+body[data-isolated-block] {margin:0;padding:0;min-height:0;display:flow-root}
+body[data-isolated-block] [data-reference-block-root] {display:flow-root}
+body[data-isolated-block] :is(.site-preview,.imported-design) {margin:0;max-width:none;width:100%;border:0;border-radius:0;box-shadow:none}

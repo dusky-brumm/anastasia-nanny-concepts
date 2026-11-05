@@ -46,7 +46,7 @@ async function checkImported(directory){
   }
 }
 await checkImported(path.join(root,'studio','variants'));
-for(const file of ['additional-designs.js','additional-templates.js','unified-designs.js','design-chrome.js','reference-designs.js','reference-templates.js','reference-interactions.js','reference-frames.js'])execFileSync(process.execPath,['--check',path.join(root,'studio',file)]);
+for(const file of ['design-blocks.js','additional-designs.js','additional-templates.js','unified-designs.js','design-chrome.js','reference-designs.js','reference-templates.js','reference-interactions.js','reference-frames.js'])execFileSync(process.execPath,['--check',path.join(root,'studio',file)]);
 const files=await readdir(root);if(files.includes('collection.html')||files.includes('atelier'))throw Error('Old gallery in publication');
 for(const file of retiredDesignFiles)if(files.includes(file))throw Error('Withdrawn design in publication: '+file);
 const retainedReferenceFiles=new Set(referenceDesigns.flatMap(design=>[

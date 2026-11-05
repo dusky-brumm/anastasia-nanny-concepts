@@ -2,18 +2,26 @@ const tabs = document.querySelector('.step-buttons');
 if (tabs) {
   const buttons = [...tabs.querySelectorAll('button')];
   const panels = buttons.map(button => document.getElementById(button.getAttribute('aria-controls')));
+  const navigation = tabs.closest('.screening-navigation');
+  let currentStep = 0;
   function showStep(current) {
+    currentStep = (current + buttons.length) % buttons.length;
     buttons.forEach((button, index) => {
-      button.setAttribute('aria-pressed', String(index === current));
-      panels[index].hidden = index !== current;
+      button.setAttribute('aria-pressed', String(index === currentStep));
+      panels[index].hidden = index !== currentStep;
     });
+    navigation.querySelector('.step-status').textContent = `${currentStep + 1} из ${buttons.length}`;
   }
   tabs.addEventListener('click', event => {
     const index = buttons.indexOf(event.target.closest('button'));
     if (index !== -1) showStep(index);
   });
-  showStep(1);
-  tabs.hidden = false;
+  navigation.addEventListener('click', event => {
+    const change = Number(event.target.closest('[data-step-change]')?.dataset.stepChange);
+    if (change) showStep(currentStep + change);
+  });
+  showStep(0);
+  navigation.hidden = false;
 }
 
 const reviewTrack = document.querySelector('#review-cards');

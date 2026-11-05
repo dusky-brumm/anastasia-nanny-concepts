@@ -1,6 +1,6 @@
 {
-  "build": "dfc49f7bfc",
-  "base_commit": "44ebda52378bd8b228b81735957e97854f1757aa",
+  "build": "7dd48290bf",
+  "base_commit": "d5c7cb06d648dc434260d13db0d994484b120101",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,8 +23,10 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Remove the complete Smooth Contour, Family Journal and Cream Arc designs and their published pages",
-    "Remove Jenny, Josephine, Leyla, Maren, Marina and Elena from full-design navigation, block galleries and assembly, including their obsolete preview pages; preserve the two pencil forms retained from variants 4 and 6"
+    "All nine block galleries cover every retained design plus saved historical block choices, with visual duplicates grouped and source designs listed",
+    "Remove pair comparison controls and ignore obsolete pair parameters; open comparison at the first screen",
+    "Preserve selected forms and old assembly URLs via aliases; all blocks including the hero can be combined",
+    "Import the completed Yoga refinement into both full design and block previews"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -39,7 +41,7 @@
     "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1a896-a3c1-7e22-bdb0-24af8544fe20",
     "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
     "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
-    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1a8a7-326c-7563-b6ed-08093bbbd827"
+    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1aa13-bc0f-7351-8f14-34683301e929"
   },
   "direct_request_thread": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
   "direct_request_date": "2026-11-05",
@@ -143,13 +145,13 @@
     "nastya-eight-references": {
       "path": "C:\\Users\\Нат\\Documents\\ChatGPT\\Anastasia\\sites\\nastya-eight-references\\dist",
       "source_chat": "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc",
-      "source_turn": "01a1a8a7-326c-7563-b6ed-08093bbbd827",
+      "source_turn": "01a1aa13-bc0f-7351-8f14-34683301e929",
       "sha256_binary": {
         "01-jenny.html": "de0996184a5af4aecd54b3ca9d1e270d8d89b452a3a76a9ad1d3a212619d50cd",
         "02-elliot.html": "788c83a7613ecd68ac48f7982aad474035415426cff10e69588fee0a82a85f45",
         "03-josephine.html": "a9e264bb83219194ff6d8ff7c056b34fa4cd312ce5763736686287c82a509e8d",
         "04-leyla.html": "bb4dac93133790daecaa9637fe7e47f0c572b8c7402ab8ecd9ac372a2a53d748",
-        "05-yoga.html": "403b5d089dfe79d4cfb8ac9d639725c4c0dbeec80e0108725f30a61bd231d426",
+        "05-yoga.html": "c0e72a2f295e6055ae8a05c8b0b0c4d21993fc515150c9a7cdfb412673a1d074",
         "06-maren.html": "3fa2eebf7bec2b583cdb17c92038e9268397ecb458782c67afc9f0354079290b",
         "07-marina.html": "075688f54d346941d4b2a3c47d3778d864c18fb9f87001c4a270aa1223a4b947",
         "08-elena.html": "5ec573b39eed4df2daadd512c5e8bfcebff42ccdd9253ec882dee94ba5fb72cd",
@@ -178,7 +180,7 @@
         "looks/02-elliot.css": "2404da132a4ef6c2ae7cc49e9a5ee3ea80ca8d8220097e2264b6927f49b091bc",
         "looks/03-josephine.css": "d06b4a5b6cef23caa6d9292511066dbc8b4baccbd57c1ac78e6ca86ba46b31d6",
         "looks/04-leyla.css": "8cbf60155d743ed77f8d3348c0e69ecea09b8a0335e1459d1ebb91c52220da2d",
-        "looks/05-yoga.css": "b1a83bf2a1ba995a8fcdd0659f153ddccf8f03a7e3773582b97f1873958df84b",
+        "looks/05-yoga.css": "985db1890647ec2cc7b940307a4aefa4f9b011330a4991531e7adfa02de4bdab",
         "looks/06-maren.css": "770887d02fe10be6fef7b3f581a529f05911b6d70250a3c1c79ae19d26529698",
         "looks/07-marina.css": "8c580c1cd2e57a3e43327268dd2290f8d29b65a59125f6088035f683a0246f75",
         "looks/08-elena.css": "9ed8a3b7790c9773923e5c9fc114c0686f43937f2ca23e9e5de97bc521a7fa3b",
@@ -194,6 +196,11 @@
         "previews/06-maren.jpg": "c010147317ab8c31ff49af8879d8c794bf5f469485c1e209d13fd82f4c361364",
         "previews/07-marina.jpg": "e31881620b94d10b4d6768982c998bc00ac6e54c891057b08a3606eaa6d670a0",
         "previews/08-elena.jpg": "1cb296a7f0390b4d0dc5f6bc66b7222ac6ec2582c64adcf245edde9cb8bd39a1"
+      },
+      "completed_update": {
+        "scope": "Yoga only; other reference designs remain withdrawn",
+        "script_source": "sites/nastya-eight-references/src/gallery-ui.js",
+        "script_sha256": "d8cb3659b651ecc7d6b025132b384a73e24dc4d67097a4d446dd468d005e211a"
       }
     }
   },
@@ -236,7 +243,151 @@
       "reference-02-elliot",
       "reference-05-yoga"
     ],
-    "retirement_policy": "Do not restore explicitly retired designs or their reference block previews from other sources. Preserve the separately approved forms from designs 4 and 6."
+    "retirement_policy": "Do not restore explicitly retired designs or their reference block previews from other sources. Preserve the separately approved forms from designs 4 and 6.",
+    "block_comparison": {
+      "mode": "all-stacked",
+      "pair_controls": false,
+      "entry": "hero",
+      "counts": {
+        "header": 1,
+        "hero": 11,
+        "service": 9,
+        "about": 7,
+        "process": 6,
+        "pricing": 3,
+        "reviews": 6,
+        "apply": 6,
+        "footer": 4
+      },
+      "design_coverage": {
+        "comparison-current": {
+          "header": "quiet",
+          "hero": "quiet",
+          "service": "quiet",
+          "about": "quiet",
+          "process": "air",
+          "pricing": "quiet",
+          "reviews": "quiet",
+          "apply": "letter",
+          "footer": "quiet"
+        },
+        "pencil": {
+          "header": "quiet",
+          "hero": "pencil",
+          "service": "letter",
+          "about": "letter",
+          "process": "air",
+          "pricing": "quiet",
+          "reviews": "letter",
+          "apply": "letter",
+          "footer": "quiet"
+        },
+        "comparison-route": {
+          "header": "quiet",
+          "hero": "comparison-route",
+          "service": "quiet",
+          "about": "reference",
+          "process": "route",
+          "pricing": "quiet",
+          "reviews": "quiet",
+          "apply": "air",
+          "footer": "quiet"
+        },
+        "comparison-reference": {
+          "header": "quiet",
+          "hero": "comparison-reference",
+          "service": "letter",
+          "about": "quiet",
+          "process": "reference",
+          "pricing": "quiet",
+          "reviews": "quiet",
+          "apply": "album",
+          "footer": "quiet"
+        },
+        "comparison-thread": {
+          "header": "quiet",
+          "hero": "comparison-thread",
+          "service": "comparison-thread",
+          "about": "comparison-thread",
+          "process": "comparison-thread",
+          "pricing": "quiet",
+          "reviews": "comparison-thread",
+          "apply": "comparison-thread",
+          "footer": "comparison-thread"
+        },
+        "fotoalbum": {
+          "header": "quiet",
+          "hero": "fotoalbum",
+          "service": "fotoalbum",
+          "about": "quiet",
+          "process": "reference",
+          "pricing": "quiet",
+          "reviews": "letter",
+          "apply": "letter",
+          "footer": "quiet"
+        },
+        "editorial-new": {
+          "header": "quiet",
+          "hero": "editorial-new",
+          "service": "editorial-new",
+          "about": "quiet",
+          "process": "reference",
+          "pricing": "quiet",
+          "reviews": "letter",
+          "apply": "letter",
+          "footer": "quiet"
+        },
+        "chalk-album": {
+          "header": "quiet",
+          "hero": "chalk-album",
+          "service": "chalk-album",
+          "about": "quiet",
+          "process": "reference",
+          "pricing": "quiet",
+          "reviews": "letter",
+          "apply": "letter",
+          "footer": "comparison-thread"
+        },
+        "chalk-route": {
+          "header": "quiet",
+          "hero": "chalk-route",
+          "service": "chalk-album",
+          "about": "quiet",
+          "process": "route",
+          "pricing": "quiet",
+          "reviews": "letter",
+          "apply": "letter",
+          "footer": "comparison-thread"
+        },
+        "reference-02-elliot": {
+          "header": "quiet",
+          "hero": "reference-02-elliot",
+          "service": "reference-02-elliot",
+          "about": "reference-02-elliot",
+          "process": "reference-02-elliot",
+          "pricing": "reference-02-elliot",
+          "reviews": "reference-02-elliot",
+          "apply": "reference-02-elliot",
+          "footer": "reference-02-elliot"
+        },
+        "reference-05-yoga": {
+          "header": "quiet",
+          "hero": "reference-05-yoga",
+          "service": "reference-05-yoga",
+          "about": "reference-05-yoga",
+          "process": "reference-05-yoga",
+          "pricing": "reference-05-yoga",
+          "reviews": "reference-05-yoga",
+          "apply": "reference-05-yoga",
+          "footer": "reference-05-yoga"
+        }
+      },
+      "old_form_aliases": {
+        "quiet": "album",
+        "route": "air",
+        "reference": "album"
+      }
+    }
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
@@ -249,24 +400,27 @@
     "reference_block_comparison": "Explicit user request: add blocks from the new versions to comparison; include the first screen and retain existing choices",
     "legacy_pricing": "User explicitly rejected the six old price layouts through the two-panel option; replace them with one compact explanation and three equal conditions, preserving the eight new designs",
     "retired_designs": "Explicit user request: completely withdraw full designs 3, 4 and 6; keep form block layouts from improved designs 4 and 6 with drawn outlines",
-    "retired_named_designs": "User named Плавный контур, Семейный журнал, Кремовая дуга, Jenny, Josephine, Leyla, Maren, Марина, Елена for removal. Exact-title match removes comparison-contour; optional question about similarly named Yoga remains unanswered, so Yoga is retained pending explicit clarification."
+    "retired_named_designs": "User named Плавный контур, Семейный журнал, Кремовая дуга, Jenny, Josephine, Leyla, Maren, Марина, Елена for removal. Exact-title match removes comparison-contour; optional question about similarly named Yoga remains unanswered, so Yoga is retained pending explicit clarification.",
+    "complete_block_catalog": "Latest explicit request: show saved historical blocks and each distinct block from every currently retained full design, without duplicates or pair mode. Include hero and header. Keep prior removals."
   },
   "validation": {
     "build": "passed",
     "static": "passed",
-    "tests": "24/24",
+    "tests": "26/26",
     "browser": {
-      "design_navigation_count": 11,
-      "price_choices": [
-        "quiet",
-        "reference-02-elliot",
-        "reference-05-yoga"
+      "viewports": [
+        "desktop",
+        "390px"
       ],
-      "retained_forms": [
-        "album",
-        "air"
-      ],
-      "retired_design_links": false
+      "all_choices_visible": true,
+      "pair_mode_removed": true,
+      "source_design_coverage": "11 designs × 9 blocks",
+      "yoga_steps": "2 of 3 after click",
+      "assembly_selection_reload": "passed",
+      "old_form_alias": "reference -> album",
+      "iframe_hero_to_form_navigation": "passed",
+      "horizontal_overflow": false,
+      "console_errors": 0
     }
   }
 }

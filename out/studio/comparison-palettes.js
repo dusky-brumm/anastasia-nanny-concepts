@@ -14,6 +14,19 @@
   }
   const params = new URLSearchParams(location.search);
   const links = nav.querySelectorAll('.comparison-pairs a');
+  // Native and reference compositions also need stable anchors after fonts load.
+  const initialHash = location.hash;
+  if (initialHash && !params.has('compare-scroll') && !site.matches('.early-design,.illustrated-site')) {
+    const loaded = document.readyState === 'complete'
+      ? Promise.resolve()
+      : new Promise(resolve => window.addEventListener('load', resolve, {once:true}));
+    Promise.all([loaded, document.fonts.ready]).then(() => requestAnimationFrame(() => {
+      if (location.hash !== initialHash) return;
+      const target = document.getElementById(initialHash.slice(1));
+      if (!target || !site.contains(target)) return;
+      window.scrollTo({top:window.scrollY + target.getBoundingClientRect().top - nav.offsetHeight - 24,behavior:'instant'});
+    }));
+  }
 
   const sections = [...site.querySelectorAll('[data-block][id]')];
   for (const link of links) {

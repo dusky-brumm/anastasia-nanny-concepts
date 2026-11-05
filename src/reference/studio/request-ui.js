@@ -1,4 +1,12 @@
 export function bindRequestUi(formatRequest) {
+  function fitDraft(output) {
+    output.style.height='auto';
+    const limit=Math.max(220,Math.min(520,window.innerHeight*.65));
+    output.style.height=Math.min(limit,Math.max(220,output.scrollHeight+2))+'px';
+  }
+  window.addEventListener('resize',()=>{
+    document.querySelectorAll('.s-draft:not([hidden]) textarea').forEach(fitDraft);
+  });
   document.querySelectorAll('.s-consult-form [type=submit]').forEach(button => { button.disabled = false; });
   document.addEventListener('click', async event => {
     const button = event.target.closest('button');
@@ -13,7 +21,7 @@ export function bindRequestUi(formatRequest) {
     name.setCustomValidity(name.value.trim()?'':'Укажите ваше имя.');contact.setCustomValidity(contact.value.trim().length>=3?'':'Укажите телефон или Telegram для связи.');
     if(!form.reportValidity())return;
     form.elements.namedItem('draft').value=formatRequest({name:name.value,contact:contact.value,message:message.value});
-    const draft=form.querySelector('.s-draft');draft.hidden=false;form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
+    const draft=form.querySelector('.s-draft');draft.hidden=false;fitDraft(form.elements.namedItem('draft'));form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
     draft.scrollIntoView({block:'nearest',behavior:'instant'});
   });
   document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.querySelector('[role=status]').textContent='';form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});

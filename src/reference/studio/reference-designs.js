@@ -3,13 +3,18 @@ import {aboutSlides} from './render.js?v=__VERSION__';
 import {approvedThemeStyle} from './model.js?v=__VERSION__';
 import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=__VERSION__';
 import {utilityIndexingTags} from './seo.js?v=__VERSION__';
+import {illustratedAssets} from './illustrated-assets.js';
 
 export const referenceDesigns=[
   ['02-elliot','Бумажные карточки · Elliot'],
   ['05-yoga','Плавный контур · Yoga'],
 ].map(([id,name])=>({id,name,mode:`reference-${id}`,file:`comparison-ref-${id}.html`,reference:true,imported:true,single:true}));
 
-const drawing=name=>`<span class="reference-drawing reference-drawing--${name}" aria-hidden="true"></span>`;
+const drawing=name=>{
+  const id={profile:'05-service-profile',calendar:'19-guarantee-calendar',plane:'25-footer-contact',family:'02-hero-care'}[name];
+  const asset=illustratedAssets.find(item=>item.id===id);
+  return `<svg class="reference-drawing reference-drawing--${name}" viewBox="${asset.box}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><image href="studio/media/chalk-kit/${id}.webp" width="${asset.width}" height="${asset.height}"/></svg>`;
+};
 const storyMarkup=()=>`<div class="reference-stories" data-reference-stories aria-label="Знакомство с Анастасией">
   ${aboutSlides.map(([name,,copy],index)=>`<article data-reference-story="${index}"><h3>${name}</h3><p>${copy}</p></article>`).join('')}
   <div class="reference-story-controls" role="group" aria-label="Выбрать слайд" hidden>${aboutSlides.map(([name],index)=>`<button type="button" data-reference-story-button="${index}" aria-label="${name}">${index+1}</button>`).join('')}</div>
@@ -35,7 +40,7 @@ export function referencePage(design,navigation){
     .replace(/<div class="about-copy">[\s\S]*?<\/div>/,`<div class="about-copy">${storyMarkup()}</div>`)
     .replace('<div class="guarantee">',`<div class="guarantee">${drawing('calendar')}`)
     .replace('<div class="apply-copy">',`<div class="apply-copy">${drawing('family')}`)
-    .replace(/<div class="interview">/,`<div class="interview">${drawing('profile')}`);
+    .replace(/<div class="interview-copy">/,`<div class="interview-copy">${drawing('profile')}`);
   // The original page's script depends on its own header; the shared header has its own handler.
   html=html.replace(/<script defer src="[^\"]*page.js"><\/script>/,'')
     .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=__VERSION__">

@@ -25,6 +25,7 @@
 #chalk-hero-designs .cafe-crop {display:block;width:100%;height:100%}
 .illustrated-site .chalk-tail {overflow:visible}
 .illustrated-site .chalk-tail-block {position:relative;padding-block:56px;padding-inline:var(--chalk-inset)}
+.illustrated-site .chalk-tail .s-block {padding-inline:var(--chalk-inset)}
 .illustrated-site .chalk-motif {display:block;pointer-events:none;overflow:visible}
 .illustrated-site .chalk-review-title {display:flex;align-items:center;gap:24px}
 .illustrated-site .chalk-reviews-picture {width:102px;height:70px;flex-shrink:0}
@@ -75,10 +76,17 @@
  #chalk-process-designs .flow .step-copy {font-size:14px;max-width:55ch}
  #chalk-process-designs .flow h3 {font-size:17px}
 }
+@container(max-width:1080px){
+ #chalk-process-designs .journal {grid-template-columns:1fr;gap:30px}
+ #chalk-process-designs .journal .process-heading {padding-top:0}
+ #chalk-process-designs .journal .heading-illustration {display:none}
+}
 @container(max-width:560px){
- #chalk-service-designs :is(.study p,.service-row p,.service-example p) {font-size:14px;line-height:1.65}
- #chalk-pricing-designs .guarantee-copy,#chalk-pricing-designs .faq details p {font-size:14px}
- #chalk-pricing-designs .faq summary {font-size:14px;min-height:48px}
+ #chalk-service-designs :is(.study p,.service-row p,.service-example p) {font-size:15px;line-height:1.65}
+ #chalk-about-designs .about-copy p:not(.about-eyebrow),#chalk-about-designs .snapshot p {font-size:15px;line-height:1.7}
+ #chalk-process-designs :is(.step-copy,.flow .step-copy,.note .step-copy,.journal .step-copy) {font-size:15px;line-height:1.65}
+ #chalk-pricing-designs .guarantee-copy,#chalk-pricing-designs .faq details p {font-size:15px;line-height:1.65}
+ #chalk-pricing-designs .faq summary {font-size:15px;line-height:1.5;min-height:48px}
  .illustrated-site .chalk-tail .s-apply-intro > p {font-size:15px}
 }
 @media(prefers-reduced-motion:reduce){.illustrated-site .chalk-reveal,.illustrated-site .chalk-reveal.chalk-visible,.illustrated-site .chalk-illustration.chalk-visible {clip-path:none;animation:none}}

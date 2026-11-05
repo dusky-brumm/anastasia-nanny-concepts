@@ -149,6 +149,12 @@
 .comparison-design[data-refinement=route] .s-hero--6 .s-square-portrait {max-width:500px}
 .comparison-design[data-refinement=reference] {--heading:'Tinos',Georgia,serif;--design-radius:6px}
 .comparison-design[data-refinement=reference] .s-hero--1 .s-main-portrait {width:min(100%,500px)}
+@container(min-width:761px){
+ .comparison-design:not(.early-design) .s-hero--6 {padding-block:40px 64px}
+ .comparison-design:not(.early-design) .s-square-portrait {width:min(100%,480px);padding:18px}
+ .comparison-design[data-refinement=reference] .s-hero--1 {padding-block:48px 56px}
+ .comparison-design[data-refinement=reference] .s-hero--1 .s-main-portrait {width:min(100%,420px)}
+}
 .comparison-design[data-refinement=reference] .comparison-price-sheet {border-radius:0;border-inline:0}
 .comparison-design[data-refinement]:is([data-refinement=letter],[data-refinement=journal],[data-refinement=album],[data-refinement=air],[data-refinement=reference]) .s-block :is(h1,h2) {font-weight:400;letter-spacing:-.025em}
 @container (min-width:820px) {

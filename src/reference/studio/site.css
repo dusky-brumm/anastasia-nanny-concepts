@@ -252,9 +252,11 @@
 .s-about-slides ol {display:flex;gap:20px;list-style:none;margin:0;padding:0;touch-action:pan-y pinch-zoom}
 .s-about-slides li {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);align-items:center;gap:clamp(16px,4cqw,48px);flex:0 0 100%;min-width:0;scroll-snap-align:start;padding:clamp(16px,3cqw,32px);border-radius:16px;background:var(--wash)}
 .s-about-slides img {display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
-.s-about-slides h3 {margin-block:8px}
+.s-about-slides .s-photo {width:min(100%,360px);justify-self:center}
+.s-about-slides h3 {margin:0 0 18px;font:var(--heading-weight) clamp(25px,2.6cqw,32px)/1.2 var(--heading);letter-spacing:-.03em;text-wrap:pretty}
+.s-about-slides li p {max-width:49ch;line-height:1.7}
 .s-about-dots {display:flex;justify-content:center}
-.s-about-dots button {display:grid;place-items:center;width:32px;height:40px;padding:0;border:0;border-radius:8px;background:transparent;cursor:pointer}
+.s-about-dots button {display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:8px;background:transparent;cursor:pointer}
 .s-about-dots button::before {content:'';width:6px;height:6px;border-radius:50%;background:color-mix(in srgb,var(--ink) 45%,var(--paper))}
 .s-about-dots button[aria-current=true]::before {width:8px;height:8px;background:var(--ink)}
 .s-about-status {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

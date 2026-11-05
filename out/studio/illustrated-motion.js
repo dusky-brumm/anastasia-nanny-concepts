@@ -18,7 +18,7 @@
       window.scrollTo({top:scrollY+target.getBoundingClientRect().top-offset,behavior:'instant'});
     }));
   }
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  if(new URL(location.href).searchParams.get('capture')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
   const groups=new Map();
   const observer=new IntersectionObserver(entries=>{
     for(const entry of entries){

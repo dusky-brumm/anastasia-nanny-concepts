@@ -1,23 +1,71 @@
 (() => {
   const url = new URL(location.href);
   const parts = [...document.querySelectorAll('[data-assembly-part]')];
+  const storageKey='nastya-block-selection-v1';
+  const keys=parts.length?parts.map(part=>part.dataset.assemblyPart):[...document.querySelectorAll('[data-gallery-block]')].map(link=>link.dataset.galleryBlock);
+  if(!keys.some(key=>url.searchParams.has(key))){
+    try{
+      const saved=JSON.parse(localStorage.getItem(storageKey)??'{}');
+      for(const key of keys)if(typeof saved?.[key]==='string')url.searchParams.set(key,saved[key]);
+    }catch{/* Shared URLs still work when browser storage is unavailable. */}
+  }
+  function saveChoices(){
+    try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(keys.filter(key=>url.searchParams.has(key)).map(key=>[key,url.searchParams.get(key)]))));}catch{}
+  }
   if (!parts.length) {
-    const keys = [...document.querySelectorAll('[data-gallery-block]')].map(link => link.dataset.galleryBlock);
-    for (const link of document.querySelectorAll('[data-try-assembly], [data-keep-assembly]')) {
-      const target = new URL(link.href);
-      for (const key of keys) {
-        if (url.searchParams.has(key) && !target.searchParams.has(key)) {
-          target.searchParams.set(key, url.searchParams.get(key));
+    const gallery=document.querySelector('[data-gallery-list]');
+    if(!gallery)return;
+    const options=JSON.parse(decodeURIComponent(gallery.dataset.galleryOptions));
+    const aliases=JSON.parse(decodeURIComponent(gallery.dataset.galleryAliases));
+    const current=gallery.dataset.galleryCurrent;
+    const status=document.querySelector('[data-gallery-status]');
+    const toolbar=document.querySelector('.block-gallery-selection');
+    if('ResizeObserver' in window)new ResizeObserver(()=>document.documentElement.style.setProperty('--gallery-toolbar-height',toolbar.offsetHeight+'px')).observe(toolbar);
+    for(const key of keys){
+      const requested=url.searchParams.get(key);
+      const canonical=aliases[key]?.[requested]??requested;
+      if(options[key].includes(canonical))url.searchParams.set(key,canonical);
+      else url.searchParams.delete(key);
+    }
+    url.searchParams.delete('compare');
+    url.searchParams.delete('arrange');
+    function updateGallery(){
+      for(const link of document.querySelectorAll('[data-try-assembly], [data-keep-assembly], [data-gallery-block]')){
+        const target=new URL(link.href);
+        const forcedKey=link.dataset.tryAssembly;
+        const forcedChoice=forcedKey?link.closest('[data-gallery-choice]').dataset.galleryChoice:null;
+        for(const key of keys){
+          target.searchParams.delete(key);
+          if(url.searchParams.has(key))target.searchParams.set(key,url.searchParams.get(key));
         }
+        if(forcedKey)target.searchParams.set(forcedKey,forcedChoice);
+        link.href=target.href;
       }
-      link.href = target.href;
+      for(const card of gallery.querySelectorAll('[data-gallery-choice]')){
+        const selected=card.dataset.galleryChoice===url.searchParams.get(current);
+        card.classList.toggle('is-selected',selected);
+        const button=card.querySelector('[data-pick-gallery]');
+        button.setAttribute('aria-pressed',String(selected));
+        button.textContent=selected?'Выбрано ✓':'Выбрать блок';
+      }
+      const count=keys.filter(key=>url.searchParams.has(key)).length;
+      status.textContent=`Выбрано ${count} из ${keys.length}`;
+      document.querySelector('[data-clear-gallery]').disabled=count===0;
+      history.replaceState(history.state,'',url);
+      saveChoices();
     }
-    // Old pair links now open the complete gallery without hiding any choices.
-    if (url.searchParams.has('compare') || url.searchParams.has('arrange')) {
-      url.searchParams.delete('compare');
-      url.searchParams.delete('arrange');
-      history.replaceState(history.state, '', url);
-    }
+    for(const button of gallery.querySelectorAll('[data-pick-gallery]'))button.addEventListener('click',()=>{
+      url.searchParams.set(current,button.dataset.pickGallery);
+      updateGallery();
+    });
+    document.querySelector('[data-gallery-category]').addEventListener('change',event=>{
+      location.assign(document.querySelector(`[data-gallery-block="${event.target.value}"]`).href);
+    });
+    document.querySelector('[data-clear-gallery]').addEventListener('click',()=>{
+      for(const key of keys)url.searchParams.delete(key);
+      updateGallery();
+    });
+    updateGallery();
     return;
   }
 
@@ -32,6 +80,7 @@
       const {assemblyPart} = part.dataset;
       url.searchParams.set(assemblyPart, part.querySelector('select').value);
     }
+    saveChoices();
     url.hash = location.hash;
     shareInput.value = url.href;
     try {

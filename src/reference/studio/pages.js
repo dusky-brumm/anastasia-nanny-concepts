@@ -39,7 +39,7 @@ const blockTransfers=[
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 const savedBlockChoices = {
   header: ['Меню сайта', [['quiet','Общее меню',1]]],
-  hero: ['Первый блок', [
+  hero: ['Первый экран', [
     ['quiet','Основной вариант',6],
   ]],
   pricing: ['Стоимость и гарантия', [
@@ -49,7 +49,7 @@ const savedBlockChoices = {
     ['quiet','Две открытые цитаты',1,'cards'], ['letter','Цитаты с тонкими линиями',1,'open'], ['album','Одна большая цитата',1,'ribbon'],
   ]],
   apply: ['Форма', [
-    ['letter','Тонкие линии',2], ['album','Два поля рядом · из варианта 4',1], ['air','Поля друг под другом · из варианта 6',2],
+    ['letter','Тонкие линии',2], ['album','Рисованная форма · два поля рядом',1], ['air','Рисованная форма · поля друг под другом',2],
   ]],
   service: ['Об услуге', [
     ['quiet','Личное интервью и фото',1], ['letter','Фото и открытые строки',2], ['panorama','Запрос и результат',5],
@@ -57,7 +57,7 @@ const savedBlockChoices = {
   about: ['Об Анастасии', [
     ['quiet','Знакомство в четырёх кадрах',1], ['reference','Портрет и текст',2], ['letter','Личное письмо',3], ['album','Семейный альбом',4],
   ]],
-  process: ['Маршрут', [
+  process: ['Как проходит подбор', [
     ['reference','Рисованные стрелки',1], ['air','Голубая волна',7], ['route','Изогнутая линия',7],
   ]],
   footer: ['Футер', [
@@ -83,33 +83,20 @@ const comparisonState={layout:'161272113',palette:'sky',font:'golos'};
 const comparisonBaseStyle = approvedThemeStyle;
 const fixedThemeAttributes = `data-comparison-theme="${comparisonBaseTheme}" style="${comparisonBaseStyle}"`;
 
-const assemblyPresets = [
-  ...earlyDesigns.map(design=>({
-    name:design.name,
-    description:design.tone==='classic'?'Ранний лаконичный макет с меловыми анкетами и рисунками этапов.':'Ранний журнальный макет с живыми фотографиями и меловыми заметками.',
-    choices:Object.fromEntries(Object.keys(comparisonBlockChoices).map(id=>[id,design.mode])),
-  })),
-  {
-    name:'Свет и воздух',
-    description:'Личное интервью, портрет, голубая волна и прозрачная форма.',
-    choices:{service:'quiet',about:'reference',process:'air',pricing:'quiet',reviews:'letter',apply:'letter',footer:'quiet'},
-  },
-  {
-    name:'Как личное письмо',
-    description:'Открытые строки, семейный альбом и отдельный акцент на гарантии.',
-    choices:{service:'letter',about:'album',process:'reference',pricing:'quiet',reviews:'album',apply:'album',footer:'quiet'},
-  },
-  {
-    name:'Чёткий маршрут',
-    description:'Услуга в двух панелях, условия в ряд и форма с тонкими подчёркиваниями.',
-    choices:{service:'panorama',about:'reference',process:'route',pricing:'quiet',reviews:'quiet',apply:'reference',footer:'quiet'},
-  },
-  ...illustratedDesigns.map((design,index)=>({
-    name:design.name,
-    description:['Портрет в дуге, светлый фотоальбом и пять шагов на меловой линии.','Личный рассказ, иллюстрированные заметки и открытка с заявкой.','Фотоколлаж, анкета с комментариями и маршрут с пояснениями.'][index],
-    choices:Object.fromEntries(Object.keys(comparisonBlockChoices).map(id=>[id,design.mode])),
-  })),
-];
+function choiceLabel(id,key){
+  const label=comparisonBlockChoices[id][1].find(choice=>choice[0]===key)[1];
+  const numbers=comparisonChoiceDetails[id][key].sources.map(source=>source.number).sort((a,b)=>Number(a)-Number(b));
+  if(/^Дизайн \d/.test(label)||!numbers.length)return label;
+  return `${numbers.join(', ')} · ${label}`;
+}
+
+export function assemblyPresetChoices(){
+  return comparisonDesigns.map(design=>({
+    name:/^Вариант \d+$/.test(design.name)?`Дизайн ${design.number}`:`${design.number} · ${design.name}`,
+    description:'Все блоки этого дизайна. Любой из них можно заменить.',
+    choices:{...designBlockCoverage[design.mode]},
+  }));
+}
 
 function comparisonBlockGallery(blockId) {
   const [title, choices] = comparisonBlockChoices[blockId];
@@ -121,7 +108,8 @@ function comparisonBlockGallery(blockId) {
     const state = {...defaults, layout:design?.layout ?? defaults.layout};
     const context = {state, comparison:true, blockStyle:style, wavyArrows:design?.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
     return `<article id="choice-${index + 1}" class="block-compare-choice" data-gallery-choice="${style}">
-      <header><div><h2>${label}</h2><p class="block-choice-sources">${details.sources.length?'В дизайнах: '+details.sources.map(source=>source.name).join(' · '):'Сохранённый вариант блока'}</p></div><div class="block-compare-actions">
+      <header><div><h2>${choiceLabel(blockId,style)}</h2><p class="block-choice-sources">${details.sources.length?'Из вариантов '+details.sources.map(source=>source.number).sort((a,b)=>Number(a)-Number(b)).join(', '):'Сохранённый вариант блока'}</p></div><div class="block-compare-actions">
+        <button type="button" data-pick-gallery="${style}" aria-pressed="false">Выбрать блок</button>
         <a href="${previewFile}#${blockId}">Макет в этом стиле ↗</a>
         <a data-try-assembly="${blockId}" href="compare-assembly.html?v=__VERSION__&amp;${blockId}=${style}#${blockId}">Примерить в сборке</a>
       </div></header>
@@ -133,13 +121,14 @@ function comparisonBlockGallery(blockId) {
   return `<header class="block-compare-heading">
     <div class="block-compare-actions"><a href="comparison-current-refined.html?v=__VERSION__#${blockId}">← К целым макетам</a><a data-keep-assembly href="compare-assembly.html?v=__VERSION__">Собрать свой вариант ↗</a></div>
     <h1>${title}</h1>
-    <p class="block-gallery-intro">Все разные оформления этого блока — друг под другом. Сохранённые варианты и блоки из актуальных дизайнов, без повторов.</p>
+    <p class="block-gallery-intro">${choices.length} уникальных вариантов. Выберите понравившийся блок, переходите к следующему разделу и собирайте свой дизайн.</p>
     <nav aria-label="Блоки для сравнения">${Object.entries(comparisonBlockChoices).map(([key,[label]]) =>
       `<a data-keep-assembly data-gallery-block="${key}" href="compare-block-${key}.html?v=__VERSION__"${key === blockId ? ' aria-current="page"' : ''}>${label}</a>`
     ).join('')}</nav>
-    <nav aria-label="Варианты блока" data-gallery-jumps>${choices.map(([,label], index) => `<a href="#choice-${index + 1}">${label}</a>`).join('')}</nav>
+    <nav aria-label="Варианты блока" data-gallery-jumps>${choices.map(([style], index) => `<a href="#choice-${index + 1}">${choiceLabel(blockId,style)}</a>`).join('')}</nav>
   </header>
-  <main class="block-compare-list" data-gallery-list>${previews.join('')}</main>`;
+  <aside class="block-gallery-selection" aria-label="Ваша сборка"><label>Блок<select data-gallery-category>${Object.entries(comparisonBlockChoices).map(([key,[label]])=>`<option value="${key}"${key===blockId?' selected':''}>${label}</option>`).join('')}</select></label><span role="status" data-gallery-status>Выбрано 0 из 9</span><button type="button" data-clear-gallery>Сбросить</button><a data-keep-assembly href="compare-assembly.html?v=__VERSION__">Моя сборка ↗</a></aside>
+  <main class="block-compare-list" data-gallery-list data-gallery-current="${blockId}" data-gallery-options="${encodeURIComponent(JSON.stringify(Object.fromEntries(Object.entries(comparisonBlockChoices).map(([id,[,options]])=>[id,options.map(choice=>choice[0])]))))}" data-gallery-aliases="${encodeURIComponent(JSON.stringify(comparisonChoiceAliases))}">${previews.join('')}</main>`;
 }
 
 function comparisonAssembly() {
@@ -160,7 +149,7 @@ function comparisonAssembly() {
     return `<div class="assembly-part" data-assembly-part="${id}" data-choice-aliases="${encodeURIComponent(JSON.stringify(comparisonChoiceAliases[id]??{}))}">
       <div class="assembly-control">
         <label>${label}<select data-assembly-choice${previews.length===1?' disabled':''}>${previews.map(({style,name}) =>
-          `<option value="${style}"${style===selected?' selected':''}>${name}</option>`).join('')}</select></label>
+          `<option value="${style}"${style===selected?' selected':''}>${choiceLabel(id,style)}</option>`).join('')}</select></label>
         <a data-assembly-gallery href="compare-block-${id}.html?v=__VERSION__">${previews.length===1?'Посмотреть блок':'Сравнить варианты'} ↗</a>
       </div>
       <div class="comparison-design" data-assembly-preview data-block-style="${current.style}" data-refinement="${current.style}" data-review-layout="${current.reviews}">${current.markup}</div>
@@ -173,8 +162,8 @@ ${previews.filter(preview => preview.style !== selected).map(({style,reviews,mar
     <h1>Собрать свой вариант</h1>
     <p>Выбирайте оформление над каждым блоком. В ссылке сохраняется вся комбинация.</p>
     <section class="assembly-presets" aria-labelledby="assembly-presets-heading">
-      <h2 id="assembly-presets-heading">Готовые сочетания</h2>
-      <div class="assembly-preset-list">${assemblyPresets.map(({name,description,choices}, index) => {
+      <h2 id="assembly-presets-heading">Начать с готового дизайна</h2>
+      <div class="assembly-preset-list">${assemblyPresetChoices().map(({name,description,choices}, index) => {
         const query = new URLSearchParams({v:'__VERSION__', ...choices});
         return `<a class="assembly-preset" href="compare-assembly.html?${query.toString().replaceAll('&','&amp;')}">
           <span class="assembly-preset-number" aria-hidden="true">0${index+1}</span>
@@ -326,6 +315,7 @@ const blockSourceDesigns=[...comparisonDesigns.filter(design=>!design.parentMode
 for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
   const identities=new Map();
   comparisonChoiceDetails[id]={};
+  comparisonChoiceAliases[id]??={};
   for(const [style,,variant] of choices){
     const markup=renderBlock(id,variant,{state:defaults,comparison:true,blockStyle:style,wavyArrows:style==='reference'});
     const identity=blockIdentity(id,markup,style);
@@ -336,21 +326,28 @@ for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
     const file=preferredDesignFile(design);
     const html=studioPage(design.mode,'hero',file);
     const {markup}=extractDesignBlock(html,id);
+    const transfer=transferredBlockPages.find(item=>item.destination===design.mode&&item.block===id);
+    const actualMarkup=transfer?extractDesignBlock(transfer.html,id).markup:markup;
     const shared=design.imported&&!design.reference&&!['hero','service'].includes(id);
     const selectedService=design.imported&&!design.reference&&id==='service'&&markup.includes('s-service-personal');
-    const family=design.illustrated||design.early?'illustrated':design.reference?'reference':design.contour?'contour':shared||selectedService?'imported-shared':design.imported?design.mode:'native';
-    const style=design.reference?design.mode:family==='imported-shared'?({reviews:'letter',apply:'letter',process:design.chalk==='route'?'route':'reference'}[id]??'quiet'):design.refinement??'quiet';
-    const identity=blockIdentity(id,markup,style,family);
+    const family=transfer&&id==='process'?'imported-shared':design.illustrated||design.early?'illustrated':design.reference?'reference':design.contour?'contour':shared||selectedService?'imported-shared':design.imported?design.mode:'native';
+    const style=transfer&&transfer.source==='chalk-route'?'route':design.reference?design.mode:family==='imported-shared'?({reviews:'letter',apply:'letter',process:design.chalk==='route'?'route':'reference'}[id]??'quiet'):design.refinement??'quiet';
+    const identity=blockIdentity(id,actualMarkup,style,family);
     let key=identities.get(identity);
     if(!key){
       key=design.mode;
       identities.set(identity,key);
-      choices.push([key,design.illustrated?`Мелок · ${illustratedBlockLabel(design,id)}`:design.name,null]);
-      const preview=design.reference?referenceBlockFile(design,id):designBlockFile(design,id);
-      comparisonChoiceDetails[id][key]={identity,sources:[],file:preview};
-      if(!design.reference)isolatedDesignBlocks.push({file:preview,html:designBlockPage(design,id,html),design:design.mode,block:id});
+      choices.push([key,design.illustrated?`Мелок · ${illustratedBlockLabel(design,id)}`:/^Вариант \d+$/.test(design.name)?`Дизайн ${design.number}`:design.name,null]);
+      comparisonChoiceDetails[id][key]={identity,sources:[]};
     }
-    comparisonChoiceDetails[id][key].sources.push({mode:design.mode,name:design.name,file});
+    const details=comparisonChoiceDetails[id][key];
+    if(!details.file){
+      const preview=transfer?.file??(design.reference?referenceBlockFile(design,id):designBlockFile(design,id));
+      details.file=preview;
+      if(!design.reference&&!transfer)isolatedDesignBlocks.push({file:preview,html:designBlockPage(design,id,html),design:design.mode,block:id});
+    }
+    details.sources.push({mode:design.mode,name:design.name,number:design.number,file});
+    if(key!==design.mode)comparisonChoiceAliases[id][design.mode]=key;
     (designBlockCoverage[design.mode]??={})[id]=key;
   }
 }

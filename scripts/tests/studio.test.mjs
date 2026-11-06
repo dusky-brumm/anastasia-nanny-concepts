@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,approvedTheme} from '../../src/reference/studio/model.js';
-import {studioPage,comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,comparisonChoiceDetails,designBlockCoverage,isolatedDesignBlocks,comparisonChoiceAliases,transferredBlockPages} from '../../src/reference/studio/pages.js';
+import {studioPage,comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,comparisonChoiceDetails,designBlockCoverage,isolatedDesignBlocks,comparisonChoiceAliases,transferredBlockPages,assemblyPresetChoices} from '../../src/reference/studio/pages.js';
 import {extractDesignBlock} from '../../src/reference/studio/design-blocks.js';
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../../src/reference/studio/reference-designs.js';
@@ -143,12 +143,14 @@ test('retained formerly separate designs share navigation and retain the selecte
 
 test('block galleries and assembly preserve the current hero and local request workflow',()=>{
   const assembly=studioPage('comparison-assembly','hero','compare-assembly.html');
-  assert.match(assembly,/s-hero--6/);
-  assert.match(assembly,/data-about-dot="3"/);
-  assert.match(assembly,/option value="quiet" selected>Знакомство в четырёх кадрах/);
+  const heroPreview=comparisonChoiceDetails.hero.quiet.file;
+  assert.ok(assembly.includes(`src="${heroPreview}?v=`));
+  assert.match(isolatedDesignBlocks.find(block=>block.file===heroPreview).html,/s-hero--6/);
+  assert.match(isolatedDesignBlocks.find(block=>block.file===comparisonChoiceDetails.about.quiet.file).html,/data-about-dot="3"/);
+  assert.match(assembly,/option value="quiet" selected>[^<]*Знакомство в четырёх кадрах/);
   assert.match(assembly,/studio\/comparison-assembly.js/);
   assert.match(assembly,/studio\/comparison-request.js/);
-  assert.match(assembly,/option value="letter" selected>Тонкие линии/);
+  assert.match(assembly,/option value="letter" selected>[^<]*Тонкие линии/);
   assert.doesNotMatch(assembly,/Вы получите текст сообщения|s-form-note/);
   assert.doesNotMatch(assembly,/data-live-request/);
   for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
@@ -164,10 +166,11 @@ test('block galleries and assembly preserve the current hero and local request w
 test('withdrawn full designs preserve the two selected form layouts without dead links',()=>{
   assert.ok(!comparisonDesigns.some(({mode})=>['pencil-panorama','pencil-album','comparison-gradients'].includes(mode)));
   const gallery=studioPage('comparison-library','apply','compare-block-apply.html');
-  for(const [style,variant] of [['album',1],['air',2]]){
+  for(const style of ['album','air']){
     const article=gallery.match(new RegExp(`data-gallery-choice="${style}"[\\s\\S]*?</article>`))[0];
-    assert.ok(article.includes(`s-apply--${variant}`));
-    assert.ok(article.includes('s-form-pencil'));
+    const preview=comparisonChoiceDetails.apply[style].file;
+    assert.ok(article.includes(`src="${preview}?v=`));
+    assert.ok(isolatedDesignBlocks.find(block=>block.file===preview).html.includes('s-form-pencil'));
     assert.ok(article.includes(`compare-assembly.html?v=__VERSION__&amp;apply=${style}#apply`));
   }
   for(const id of Object.keys(comparisonBlockChoices)){
@@ -325,8 +328,29 @@ test('every retained design is covered in every gallery without duplicate block 
     const html=studioPage('comparison-library',id,'compare-block-'+id+'.html');
     assert.doesNotMatch(html,/data-block-pair|data-pair-choice|Сравнить два варианта/);
   }
-  assert.deepEqual(comparisonChoiceAliases.apply,{quiet:'album',route:'air',reference:'album'});
+  for(const [key,value] of Object.entries({quiet:'album',route:'air',reference:'album'}))assert.equal(comparisonChoiceAliases.apply[key],value);
   assert.equal(comparisonBlockChoices.hero[1].length,new Set(comparisonDesigns.map(design=>designBlockCoverage[design.mode].hero)).size);
+});
+
+test('all design presets can be mixed through canonical choices and transferred heroes need only one frame',()=>{
+  const presets=assemblyPresetChoices();
+  assert.equal(presets.length,comparisonDesigns.length);
+  for(const [index,preset] of presets.entries()){
+    assert.deepEqual(preset.choices,designBlockCoverage[comparisonDesigns[index].mode]);
+    assert.equal(Object.keys(preset.choices).length,9);
+    for(const [id,key] of Object.entries(preset.choices))assert.ok(comparisonBlockChoices[id][1].some(choice=>choice[0]===key));
+  }
+  assert.equal(comparisonChoiceDetails.hero['early-personal'].file,'retained-editorial-hero-for-personal.html');
+  assert.equal(comparisonChoiceDetails.hero.fotoalbum.file,'retained-elliot-hero-for-fotoalbum.html');
+  assert.equal(designBlockCoverage.fotoalbum.process,designBlockCoverage['comparison-route'].process);
+  for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
+    const html=studioPage('comparison-library',id);
+    assert.equal([...html.matchAll(/data-pick-gallery=/g)].length,choices.length);
+    for(const [key] of choices){
+      const details=comparisonChoiceDetails[id][key];
+      if(details.sources.length)assert.ok(details.file,`${id}/${key}: exact source preview`);
+    }
+  }
 });
 
 test('isolated design blocks preserve complete nested markup and all local anchor targets',()=>{

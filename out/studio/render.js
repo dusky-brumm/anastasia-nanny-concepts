@@ -1,6 +1,6 @@
-import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=8469bb1435';
-import {renderJourney} from '../journeys.js?v=8469bb1435';
-import {contacts,selectionFaq} from './content.js?v=8469bb1435';
+import {blocks,normalizeState,designUrl,variantNumber} from './model.js?v=e38e2f887d';
+import {renderJourney} from '../journeys.js?v=e38e2f887d';
+import {contacts,selectionFaq} from './content.js?v=e38e2f887d';
 
 const telegram=contacts.telegram;
 const media='studio/media/';

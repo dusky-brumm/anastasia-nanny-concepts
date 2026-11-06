@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {normalizeState,readState,selectVariant,designUrl,palettes,approvedTheme} from '../../src/reference/studio/model.js';
-import {studioPage,comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,comparisonChoiceDetails,designBlockCoverage,isolatedDesignBlocks,comparisonChoiceAliases} from '../../src/reference/studio/pages.js';
+import {studioPage,comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,comparisonChoiceDetails,designBlockCoverage,isolatedDesignBlocks,comparisonChoiceAliases,transferredBlockPages} from '../../src/reference/studio/pages.js';
 import {extractDesignBlock} from '../../src/reference/studio/design-blocks.js';
 import {additionalDesigns} from '../../src/reference/studio/additional-designs.js';
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../../src/reference/studio/reference-designs.js';
@@ -30,7 +30,7 @@ test('two early compositions retain their layouts, stories and local request for
       assert.equal([...extractDesignBlock(html,'about').markup.matchAll(/data-about-dot=/g)].length,4);
     }else{
       assert.match(html,/s-service-personal/);
-      assert.match(html,/pencil-hero/);
+      assert.match(html,/retained-editorial-hero-for-personal\.html/);
       assert.match(extractDesignBlock(html,'about').markup,/s-letter/);
     }
   }
@@ -39,7 +39,7 @@ test('two early compositions retain their layouts, stories and local request for
 test('design 5.5 keeps the classic page and combines its process illustrations with the original arrows',()=>{
   const classic=studioPage('early-classic');
   const combined=studioPage('early-classic-arrows');
-  assert.deepEqual(comparisonDesigns.map(design=>design.number),['1','2','3','4','5','5.5','6','7','8','9','10','11','12','13','14','15','16']);
+  assert.deepEqual(comparisonDesigns.map(design=>design.number),['1','2','3','4','5','5.5','6','7','8','9','11']);
   for(const id of Object.keys(comparisonBlockChoices)){
     if(id!=='process')assert.equal(extractDesignBlock(combined,id).markup,extractDesignBlock(classic,id).markup,id);
   }
@@ -102,35 +102,29 @@ test('chalk designs preserve all artwork, complete sections and reusable isolate
       assert.ok(details.file,`${design.mode}/${id} needs an isolated preview`);
     }
   }
-  assert.equal(used.size,illustratedAssets.length);
+  for(const id of ['13-step-application','14-step-nanny-profile','15-step-search-interview','16-step-first-meeting','17-step-support'])assert.ok(used.has(id),id);
 });
 
-test('retained reference compositions keep their layouts and the latest shared decisions',()=>{
-  assert.deepEqual(referenceDesigns.map(({id})=>id),['02-elliot','05-yoga']);
-  for(const design of referenceDesigns){
-    const html=studioPage(design.mode,'hero',design.file);
-    for(const id of ['header','hero','service','about','process','pricing','reviews','apply','footer']){
-      assert.equal(html.split(`data-block="${id}"`).length-1,1,`${design.id}: ${id}`);
-    }
-    assert.match(html,new RegExp(`look-${design.id}`));
-    assert.match(html,/Анастасия Доронина · Индивидуальный подбор нянь/);
-    assert.match(html,/aria-label="Telegram"/);
-    assert.match(html,/aria-label="Instagram"/);
-    assert.match(html,/Собеседую/);
-    assert.equal([...html.matchAll(/data-reference-story="/g)].length,4);
-    assert.doesNotMatch(html,/id="about-title"|История семьи|Форму на сайте можно использовать/);
-    const hero=html.match(/<section id="hero"[\s\S]*?<\/section>/)[0];
-    assert.doesNotMatch(hero,/Индивидуальный подбор нян/);
-    assert.match(html,/id="review-cards"/);
-    assert.match(html,/reference-drawing--plane/);
-    assert.match(html,/reference-drawing--calendar/);
-    assert.match(html,/studio\/comparison-request.js/);
-    assert.match(html,/data-comparison-site/);
+test('retired designs leave only their three requested blocks inside designs 7 and 11',()=>{
+  assert.equal(referenceDesigns.length,0);
+  assert.deepEqual(transferredBlockPages.map(({source,destination,block})=>[source,destination,block]),[
+    ['editorial-new','early-personal','hero'],['reference-02-elliot','fotoalbum','hero'],['chalk-route','fotoalbum','process'],
+  ]);
+  for(const {file,html,destination,block} of transferredBlockPages){
+    assert.match(studioPage(destination),new RegExp(`src="${file.replaceAll('.','\\.')}\\?v=`));
+    assert.match(html,new RegExp(`id="${block}"`));
+    assert.match(html,/data-reference-block-root/);
+    if(block==='hero')assert.match(html,/data-reference-target="(?:apply|process)"/);
+    assert.doesNotMatch(html,/href="(?:comparison-editorial|comparison-chalk-route|comparison-ref-02-elliot)\.html/);
   }
+  assert.match(transferredBlockPages[0].html,/class="arch-photo"/);
+  assert.match(transferredBlockPages[1].html,/class="[^"]*\blead-photo\b/);
+  assert.match(transferredBlockPages[2].html,/class="s-pencil-route"/);
+  for(const file of ['comparison-chalk-story.html','comparison-editorial.html','comparison-chalk-album.html','comparison-chalk-route.html','comparison-ref-02-elliot.html','comparison-ref-05-yoga.html'])assert.ok(retiredDesignFiles.includes(file),file);
 });
 
 test('retained formerly separate designs share navigation and retain the selected blocks',()=>{
-  assert.equal(additionalDesigns.length,4);
+  assert.equal(additionalDesigns.length,1);
   for(const design of additionalDesigns){
     const html=studioPage(design.mode,'hero',design.file);
     assert.match(html,/data-design-navigation/);
@@ -164,7 +158,7 @@ test('block galleries and assembly preserve the current hero and local request w
     for(const [style] of choices) assert.ok(gallery.includes(`&amp;${id}=${style}#${id}`));
     assert.doesNotMatch(gallery,/data-live-request/);
   }
-  assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet',...earlyDesigns.map(design=>design.mode),'chalk-light','chalk-letter','chalk-story',...referenceDesigns.map(design=>design.mode)]);
+  assert.deepEqual(comparisonBlockChoices.pricing[1].map(([style])=>style),['quiet',...earlyDesigns.map(design=>design.mode),...illustratedDesigns.map(design=>design.mode),...referenceDesigns.map(design=>design.mode)]);
 });
 
 test('withdrawn full designs preserve the two selected form layouts without dead links',()=>{

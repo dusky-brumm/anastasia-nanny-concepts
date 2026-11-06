@@ -3,12 +3,13 @@ import {renderBlock} from './render.js?v=__VERSION__';
 import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=__VERSION__';
 import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=__VERSION__';
 
-export const additionalDesigns=[
-  {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css'},
+export const additionalDesignSources=[
+  {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css',number:'11'},
   {mode:'editorial-new',file:'comparison-editorial.html',name:'Тихая редакция',css:'editorial.css'},
   {mode:'chalk-album',file:'comparison-chalk-album.html',name:'Семейный альбом',chalk:'album'},
   {mode:'chalk-route',file:'comparison-chalk-route.html',name:'Маршрут семьи',chalk:'route'},
 ].map(design=>({...design,single:true,imported:true}));
+export const additionalDesigns=additionalDesignSources.filter(design=>design.mode==='fotoalbum');
 
 export function additionalStyles(design){
   const directory=design.chalk?'chalk':design.mode;

@@ -41,7 +41,7 @@
           const link=event.target.closest('[data-reference-target]');
           if(!link||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
           const target=document.getElementById(link.dataset.referenceTarget);
-          if(!target||!frame.closest('[data-assembly-part]'))return;
+          if(!target||!frame.closest('[data-assembly-part],[data-transplanted-block]'))return;
           event.preventDefault();
           event.stopImmediatePropagation();
           // Close the frame's menu before measuring the parent's destination.

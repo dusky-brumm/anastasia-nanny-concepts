@@ -1,4 +1,7 @@
 /* Shared controls live outside each imported page's visual language. */
+html[data-reference-embedded=true] {overflow:hidden;scrollbar-gutter:auto}
+.transplanted-block[id] {width:100%;max-width:none;margin:0;padding:0!important}
+.transplanted-block>iframe {display:block;width:100%;border:0}
 :is(.pencil-comparison,.design-panel) {display:flex;justify-content:center;min-width:0;max-width:100%;width:100%;margin:0;padding:4px 10px;border:0;border-bottom:1px solid #64767930;border-radius:0;background:#f7f7f4;box-shadow:none;font:500 13px/1.4 Arial,sans-serif}
 :is(.pencil-comparison,.design-panel) .comparison-pairs {display:flex;flex-wrap:nowrap;gap:6px;width:max-content;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:none;padding:3px}
 :is(.pencil-comparison,.design-panel) .comparison-pairs::-webkit-scrollbar {display:none}

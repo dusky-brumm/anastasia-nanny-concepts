@@ -2,7 +2,7 @@ import {cp,mkdir,readFile,writeFile,readdir,rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {renderJourney,renderJourneyOptions} from '../src/reference/journeys.js';
-import {comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,studioPage,isolatedDesignBlocks} from '../src/reference/studio/pages.js';
+import {comparisonBlockChoices,comparisonDesigns,retiredDesignFiles,studioPage,isolatedDesignBlocks,transferredBlockPages} from '../src/reference/studio/pages.js';
 import {referenceDesigns,referenceBlockFile,referenceBlockPage} from '../src/reference/studio/reference-designs.js';
 import {blocks} from '../src/reference/studio/model.js';
 import {formatRequest} from '../src/reference/request.js';
@@ -41,6 +41,7 @@ for(const file of await readdir(output)){
   if(file.startsWith('compare-design-')&&file.endsWith('.html')&&!activeBlockFiles.has(file))await rm(path.join(output,file),{force:true});
 }
 for(const {file,html} of isolatedDesignBlocks)await writeFile(path.join(output,file),html.replaceAll('__VERSION__',version).replace(/[ \t]+$/gm,''));
+for(const {file,html} of transferredBlockPages)await writeFile(path.join(output,file),html.replaceAll('__VERSION__',version).replace(/[ \t]+$/gm,''));
 await rm(path.join(output,'comparison-quotes.html'),{force:true});
 await rm(path.join(output,'pencil-journal.html'),{force:true});
 await rm(path.join(output,'pencil-journal-refined.html'),{force:true});

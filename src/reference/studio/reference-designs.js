@@ -5,10 +5,12 @@ import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=
 import {utilityIndexingTags} from './seo.js?v=__VERSION__';
 import {illustratedAssets} from './illustrated-assets.js';
 
-export const referenceDesigns=[
+export const referenceDesignSources=[
   ['02-elliot','Бумажные карточки · Elliot'],
   ['05-yoga','Плавный контур · Yoga'],
 ].map(([id,name])=>({id,name,mode:`reference-${id}`,file:`comparison-ref-${id}.html`,reference:true,imported:true,single:true}));
+// The Elliot hero is retained inside design 11; the complete reference designs are retired.
+export const referenceDesigns=[];
 
 const drawing=name=>{
   const id={profile:'05-service-profile',calendar:'19-guarantee-calendar',plane:'25-footer-contact',family:'02-hero-care'}[name];

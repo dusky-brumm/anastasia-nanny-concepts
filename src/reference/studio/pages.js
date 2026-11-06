@@ -1,8 +1,8 @@
 import {blocks,fontSets,defaults,presets,approvedTheme,approvedThemeStyle,designUrl,selectVariant} from './model.js?v=__VERSION__';
 import {renderSite,renderBlock,renderEditorial,renderPencilPreview} from './render.js?v=__VERSION__';
-import {seoHead} from './seo.js?v=__VERSION__';
-import {additionalDesigns,additionalStyles,renderAdditionalDesign} from './additional-designs.js?v=__VERSION__';
-import {referenceDesigns,referencePage,referenceBlockFile} from './reference-designs.js?v=__VERSION__';
+import {seoHead,utilityIndexingTags} from './seo.js?v=__VERSION__';
+import {additionalDesigns,additionalDesignSources,additionalStyles,renderAdditionalDesign} from './additional-designs.js?v=__VERSION__';
+import {referenceDesigns,referenceDesignSources,referencePage,referenceBlockFile,referenceBlockPage} from './reference-designs.js?v=__VERSION__';
 import {extractDesignBlock,designBlockFile,designBlockPage,blockIdentity} from './design-blocks.js?v=__VERSION__';
 import {illustratedDesigns,illustratedBlockLabel,renderIllustratedDesign,illustratedStyles} from './illustrated-designs.js?v=__VERSION__';
 import {earlyDesigns,decorateEarlyDesign,earlyStyles} from './early-designs.js?v=__VERSION__';
@@ -17,7 +17,7 @@ export const comparisonDesigns=[
   ...illustratedDesigns,
   ...additionalDesigns,
   ...referenceDesigns,
-].map((design,index)=>({...design,number:String(index+1)}));
+].map((design,index)=>({...design,number:design.number??String(index+1)}));
 // Keep the existing design numbers stable when inserting the combined variant.
 comparisonDesigns.splice(5,0,{
   ...earlyDesigns[0],mode:'early-classic-arrows',file:'comparison-early-classic-arrows.html',
@@ -26,8 +26,15 @@ comparisonDesigns.splice(5,0,{
 export const retiredDesignFiles = [
   'pencil-panorama','pencil-album','comparison-gradients',
   'comparison-contour','comparison-journal','comparison-chalk-arc',
+  'comparison-chalk-story','comparison-editorial','comparison-chalk-album','comparison-chalk-route',
+  'comparison-ref-02-elliot','comparison-ref-05-yoga',
 ].flatMap(name=>[`${name}.html`,`${name}-refined.html`]);
 const preferredDesignFile=design=>design.single?design.file:design.file.replace('.html','-refined.html');
+const blockTransfers=[
+  {source:'editorial-new',destination:'early-personal',block:'hero',file:'retained-editorial-hero-for-personal.html',title:'Первый экран'},
+  {source:'reference-02-elliot',destination:'fotoalbum',block:'hero',file:'retained-elliot-hero-for-fotoalbum.html',title:'Первый экран'},
+  {source:'chalk-route',destination:'fotoalbum',block:'process',file:'retained-route-process-for-fotoalbum.html',title:'Как проходит подбор'},
+];
 
 const compositionCount=blocks.reduce((total,block)=>total+block.variants.length,0);
 const savedBlockChoices = {
@@ -223,13 +230,14 @@ function library(id) {
 ${isHero?'<div class="hero-gallery-controls" hidden><button class="tool-button" type="button" data-hero-step="-1" aria-label="Предыдущий вариант">←</button><span data-hero-position aria-live="polite"></span><button class="tool-button" type="button" data-hero-step="1" aria-label="Следующий вариант">→</button></div>':''}
 ${block.variants.map((name,i)=>`<section class="library-option" id="variant-${i+1}" data-option="${i+1}"><header><div><p class="tool-kicker">ВАРИАНТ ${String(i+1).padStart(2,'0')}</p><h2>${name}</h2>${isHero?`<p class="hero-direction">${heroDirections[i]}</p>`:''}</div><div class="library-actions"><a class="tool-link" data-open-option="${i+1}" href="${designUrl('preview.html',selectVariant(defaults,block.id,i+1),block.id)}" target="_blank" rel="noopener">На странице ↗</a><a class="tool-button" data-pick-block="${block.id}" data-pick-value="${i+1}" href="${designUrl('studio.html',selectVariant(defaults,block.id,i+1),block.id)}">Выбрать этот вариант</a></div></header><div class="site-preview" data-font="${defaults.font}" data-palette="${defaults.palette}" ${fixedThemeAttributes}>${renderBlock(block.id,i+1,{library:true,state:defaults})}</div></section>`).join('')}</main>`;
 }
-export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') {
+export function studioPage(mode='studio',blockId='hero',pageFile='studio.html',sourceDesign) {
   const blockCompare=mode==='comparison-library';
   const assembling=mode==='comparison-assembly';
   const title=assembling?'Собрать свой вариант — Настя':blockCompare?`${comparisonBlockChoices[blockId][0]} — сравнение вариантов`:mode==='studio'?`Конструктор сайта — ${compositionCount} вариантов блоков`:mode==='library'?'Варианты блока — Настя':'Настя — индивидуальный подбор няни';
   const content=mode==='studio'?`<header class="tool-top"><div><a class="tool-brand" data-back-builder href="./">НАСТЯ · ДИЗАЙН САЙТА</a><h1>Конструктор дизайна</h1><p>${compositionCount} композиций для 9 блоков · 4 набора шрифтов</p></div><a class="tool-button tool-button--dark" data-open-preview href="${designUrl('preview.html',defaults)}" target="_blank" rel="noopener">Открыть выбранный сайт ↗</a></header><main class="studio-workspace"><button class="mobile-settings-toggle tool-button" type="button" data-mobile-settings aria-expanded="false" aria-controls="studio-settings">Настроить блоки и шрифты</button>${controls()}<section class="studio-canvas" aria-label="Предпросмотр сайта"><div class="canvas-toolbar"><span data-current-design>Почти белый · Manrope + Golos Text</span><div><button type="button" data-view="desktop" aria-pressed="true">Компьютер</button><button type="button" data-view="mobile" aria-pressed="false">Телефон</button></div></div><div class="site-preview" data-site-root data-font="${defaults.font}" data-palette="${defaults.palette}" ${fixedThemeAttributes}>${renderSite(defaults)}</div></section></main>`:mode==='library'?library(blockId):`<main class="site-preview" data-site-root data-font="${defaults.font}" data-palette="${defaults.palette}" ${fixedThemeAttributes}>${renderSite(defaults)}</main>`;
   const editorial=mode==='editorial';
-  const design=comparisonDesigns.find(item=>item.mode===mode.replace(/-refined$/,''));
+  const design=sourceDesign??comparisonDesigns.find(item=>item.mode===mode.replace(/-refined$/,''));
+  const transfers=blockTransfers.filter(transfer=>transfer.destination===design?.mode);
   // Retired base URLs also render the retained, improved design.
   const refined=Boolean(design&&(!design.single||design.early));
   const comparing=Boolean(design);
@@ -270,6 +278,10 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   }
   if(design?.imported)pageContent=renderAdditionalDesign(design);
   if(design?.illustrated)pageContent=renderIllustratedDesign(design);
+  for(const transfer of transfers){
+    const original=extractDesignBlock(pageContent,transfer.block).markup;
+    pageContent=pageContent.replace(original,`<section class="transplanted-block" id="${transfer.block}" data-block="${transfer.block}" data-transplanted-block><iframe data-reference-frame src="${transfer.file}?v=__VERSION__" title="${transfer.title}" loading="eager" height="${transfer.block==='hero'?620:500}"></iframe></section>`);
+  }
   return `<!doctype html>
 <html lang="ru"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -291,9 +303,21 @@ ${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=__V
 <script defer src="studio/review-carousel.js?v=__VERSION__"></script>
 ${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=__VERSION__"></script>':''}
 ${comparing||blockCompare||assembling?'<script defer src="studio/comparison-palettes.js?v=__VERSION__"></script><script defer src="studio/comparison-request.js?v=__VERSION__"></script>':''}
-${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=__VERSION__"></script><script defer src="studio/reference-frames.js?v=__VERSION__"></script>':''}
+${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=__VERSION__"></script>':''}
+${assembling||blockCompare||transfers.length?'<script defer src="studio/reference-frames.js?v=__VERSION__"></script>':''}
 </head><body data-fixed-theme="${comparisonBaseTheme}" class="design-tool ${mode==='preview'||(comparing&&!pencil)?'preview-only':''}" data-mode="${design?.mode??mode}" data-library-block="${blockId}"${pageFile==='index.html'?' data-live-request':''}>${mode==='preview'?designPanel:pencilSwitcher}${pageContent}${privacy}<noscript><p class="tool-noscript">${mode==='preview'||editorial||comparing?'Для подготовки заявки включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }
+
+// Publish only the three requested source blocks, with links pointing into their new pages.
+export const transferredBlockPages=blockTransfers.map(transfer=>{
+  const source=[...additionalDesignSources,...referenceDesignSources].find(design=>design.mode===transfer.source);
+  const destination=comparisonDesigns.find(design=>design.mode===transfer.destination);
+  let html=source.reference?referenceBlockPage(source,transfer.block)
+    :designBlockPage(source,transfer.block,studioPage(source.mode,'hero',source.file,source));
+  html=html.replaceAll(source.file,preferredDesignFile(destination))
+    .replace(/<link rel="canonical"[^>]+>/,utilityIndexingTags(transfer.file).match(/<link[^>]+>/)[0]);
+  return {...transfer,html};
+});
 
 // Start with the user's saved block choices, then cover every retained full design.
 // A source map documents shared blocks instead of adding a copy for each design.

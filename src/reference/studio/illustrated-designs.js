@@ -7,7 +7,7 @@ export const illustratedDesigns=[
   {mode:'chalk-light',name:'Мелок · Светлая дуга'},
   {mode:'chalk-letter',name:'Мелок · Личное письмо'},
   {mode:'chalk-story',name:'Мелок · Фотоистория'},
-].map((design,index)=>({...design,index,file:`comparison-${design.mode}.html`,single:true,illustrated:true}));
+].map((design,index)=>({...design,index,file:`comparison-${design.mode}.html`,single:true,illustrated:true})).filter(design=>design.mode!=='chalk-story');
 
 const tailLabels={reviews:['Меловые цитаты','Альбом отзывов','Заметки семей'],apply:['Письмо о вашей семье','Открытка с заявкой','Запрос и линия'],footer:['Самолёт на линии','Арка и контакты','Короткий росчерк']};
 export const illustratedBlockLabel=(design,id)=>(illustratedLabels[id]??tailLabels[id])[design.index];

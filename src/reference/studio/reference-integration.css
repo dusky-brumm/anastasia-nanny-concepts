@@ -32,10 +32,15 @@ body.reference-block-page{display:flow-root;min-height:0}
 .reference-design #footer{background:var(--soft);color:var(--ink)}
 .reference-design .photo-window,.reference-design .family-print,.reference-design .snapshot{border-color:#fff}
 .reference-design .family-print{background:#fff}
+.reference-design.look-05-yoga .family-print{background:transparent}
 .reference-design .reference-stories h3{margin:0 0 20px;font:400 clamp(25px,3vw,38px)/1.2 var(--display);letter-spacing:-.035em}
 .reference-design .reference-stories p{margin:0;font-size:clamp(15px,1.4vw,18px);line-height:1.7}
 .reference-design .reference-stories article{min-height:220px}
+.reference-stories{display:grid}
+.reference-stories > article{grid-area:1/1;align-self:start}
+.reference-design .reference-stories > [hidden]{display:block!important;visibility:hidden;pointer-events:none}
 .reference-story-controls{display:flex;gap:9px;margin-top:22px}
+.reference-stories > .reference-story-controls{grid-column:1;grid-row:2}
 .reference-story-controls button{width:44px;height:44px;border:1px solid var(--leaf);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
 .reference-story-controls button[aria-pressed=true]{background:var(--button);border-color:var(--button);color:#fff}
 .reference-design .s-consult-form{padding:0;border:0;box-shadow:none;background:transparent;border-radius:0}

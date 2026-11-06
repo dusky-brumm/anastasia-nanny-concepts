@@ -36,6 +36,26 @@ test('two early compositions retain their layouts, stories and local request for
   }
 });
 
+test('design 5.5 keeps the classic page and combines its process illustrations with the original arrows',()=>{
+  const classic=studioPage('early-classic');
+  const combined=studioPage('early-classic-arrows');
+  assert.deepEqual(comparisonDesigns.map(design=>design.number),['1','2','3','4','5','5.5','6','7','8','9','10','11','12','13','14','15','16']);
+  for(const id of Object.keys(comparisonBlockChoices)){
+    if(id!=='process')assert.equal(extractDesignBlock(combined,id).markup,extractDesignBlock(classic,id).markup,id);
+  }
+  const process=extractDesignBlock(combined,'process').markup;
+  assert.match(process,/<h2>Как проходит подбор<\/h2>/);
+  assert.doesNotMatch(process,/Маршрут подбора|От заявки до сопровождения|Лично веду подбор/);
+  for(const asset of ['13-step-application','14-step-nanny-profile','15-step-search-interview','16-step-first-meeting','17-step-support']){
+    assert.match(process,new RegExp(`${asset}\\.webp`));
+  }
+  assert.equal([...process.matchAll(/class="classic-arrow-mobile"/g)].length,4);
+  assert.match(process,/M234 216C242 172 284 139 314 164C343 189 303 194 301 156C295 105 312 83 348 68/);
+  assert.match(process,/feTurbulence/);
+  assert.equal(designBlockCoverage['early-classic-arrows'].hero,'early-classic');
+  assert.equal(designBlockCoverage['early-classic-arrows'].process,'early-classic-arrows');
+});
+
 test('completed design comparisons retain all sections and exclude cancelled options',()=>{
   const modes=comparisonDesigns.filter(design=>!design.reference).flatMap(({mode,single})=>single?[mode]:[mode,mode+'-refined']);
   const order=['header','hero','service','about','process','pricing','reviews','apply','footer'];
@@ -214,8 +234,8 @@ test('the final theme is fixed and the top navigation offers only designs and bl
     assert.ok(nav,mode);
     assert.match(nav,/data-design-navigation/);
     assert.match(nav,/href="compare-block-hero.html/);
-    const links=[...nav.matchAll(/<a [^>]*aria-label="Дизайн (\d+):[^>]*>(\d+)<\/a>/g)];
-    assert.deepEqual(links.map(link=>link[2]),comparisonDesigns.map((_,index)=>String(index+1)));
+    const links=[...nav.matchAll(/<a [^>]*aria-label="Дизайн (\d+(?:\.\d+)?):[^>]*>(\d+(?:\.\d+)?)<\/a>/g)];
+    assert.deepEqual(links.map(link=>link[2]),comparisonDesigns.map(design=>design.number));
     assert.ok(links.every(link=>link[1]===link[2]));
     assert.doesNotMatch(nav,/<select|<details/);
     assert.equal((nav.match(/aria-current="page"/g)??[]).length,mode==='preview'?0:1);
@@ -312,7 +332,7 @@ test('every retained design is covered in every gallery without duplicate block 
     assert.doesNotMatch(html,/data-block-pair|data-pair-choice|Сравнить два варианта/);
   }
   assert.deepEqual(comparisonChoiceAliases.apply,{quiet:'album',route:'air',reference:'album'});
-  assert.equal(comparisonBlockChoices.hero[1].length,comparisonDesigns.length);
+  assert.equal(comparisonBlockChoices.hero[1].length,new Set(comparisonDesigns.map(design=>designBlockCoverage[design.mode].hero)).size);
 });
 
 test('isolated design blocks preserve complete nested markup and all local anchor targets',()=>{

@@ -1,5 +1,6 @@
 import {illustratedAssets} from './illustrated-assets.js';
-import {extractDesignBlock} from './design-blocks.js?v=ad29606a0e';
+import {extractDesignBlock} from './design-blocks.js?v=8469bb1435';
+import {renderChalkJourneyArrows} from '../journeys.js?v=8469bb1435';
 
 export const earlyDesigns=[
   {mode:'early-classic',file:'comparison-early-classic.html',name:'Классика и мелок',baseMode:'comparison-current',reviews:'cards',form:3,formStyle:'pencil',footer:3,refinement:'quiet',tone:'classic'},
@@ -59,7 +60,15 @@ function decorateBlock(id,markup,design){
     if(personal)return markup.replace('</h2></div>',`</h2>${chalk('17-step-support','early-process-emblem')}</div>`);
     const steps=['13-step-application','14-step-nanny-profile','15-step-search-interview','16-step-first-meeting','17-step-support'];
     let index=0;
-    return markup.replace(/<div class="s-study-copy">/g,()=>`<div class="s-study-copy">${chalk(steps[index++],'early-step-picture')}`);
+    markup=markup.replace(/<div class="s-study-copy">/g,()=>`<div class="s-study-copy">${chalk(steps[index++],'early-step-picture')}`);
+    if(design.processArrows){
+      markup=markup.replace(/<h2>[\s\S]*?<\/h2>/,'<h2>Как проходит подбор</h2>')
+        .replace('class="s-route-study"','class="s-route-study classic-arrow-route"')
+        .replace(/<svg class="s-study-line"[\s\S]*?<\/svg>/,renderChalkJourneyArrows());
+      let connector=0;
+      markup=markup.replace(/<\/li>/g,()=>`${connector<4?renderChalkJourneyArrows(connector++):''}</li>`);
+    }
+    return markup;
   }
   if(id==='pricing'){
     let index=0;
@@ -88,5 +97,5 @@ export function decorateEarlyDesign(markup,design){
 }
 
 export function earlyStyles(){
-  return '<link rel="stylesheet" href="studio/variants/early-chalk/early.css?v=ad29606a0e"><script defer src="studio/early-motion.js?v=ad29606a0e"></script>';
+  return '<link rel="stylesheet" href="studio/variants/early-chalk/early.css?v=8469bb1435"><script defer src="studio/early-motion.js?v=8469bb1435"></script>';
 }

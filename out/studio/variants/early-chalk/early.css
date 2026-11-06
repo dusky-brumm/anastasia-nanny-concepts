@@ -84,6 +84,36 @@
 .site-preview.early-classic .s-button::before {mask-image:url('../../pencil-button.svg')}
 .early-classic .s-form-pencil>label {gap:10px}
 .early-classic .s-form-pencil input {min-height:52px}
+/* Variant 5.5 combines the classic artwork with the curved arrows from design 5. */
+.early-classic .classic-arrow-route {margin:0}
+.early-classic .classic-arrow-route .s-study-steps li {grid-template-rows:94px 128px auto 1fr;position:relative;padding:0 10px}
+.early-classic .classic-arrow-route .s-study-copy {display:contents}
+.early-classic .classic-arrow-route .early-step-picture {grid-column:1;grid-row:1;width:100%;height:94px;margin:0}
+.early-classic .classic-arrow-route li:nth-child(n) .s-study-number {grid-column:1;grid-row:2;transform:none}
+.early-classic .classic-arrow-route h3 {grid-column:1;grid-row:3;margin:0 0 10px;padding-top:18px}
+.early-classic .classic-arrow-route p {grid-column:1;grid-row:4}
+.early-classic .classic-arrow-lines {position:absolute;inset:94px 0 auto;width:100%;height:128px;pointer-events:none;overflow:visible}
+.early-classic :is(.classic-arrow-lines,.classic-arrow-mobile) path {fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.early-classic .classic-arrow-mobile {display:none;pointer-events:none}
+@container(max-width:760px){
+ .early-classic .classic-arrow-route .classic-arrow-lines {display:none}
+ .early-classic .classic-arrow-route .s-study-steps li {grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto;gap:14px;padding:0 0 32px}
+ .early-classic .classic-arrow-route .s-study-steps li:last-child {padding-bottom:0}
+ .early-classic .classic-arrow-route .s-study-steps li::before {display:none}
+ .early-classic .classic-arrow-route .s-study-copy {display:block;grid-column:2;grid-row:1;padding:0}
+ .early-classic .classic-arrow-route li:nth-child(n) .s-study-number {grid-column:1;grid-row:1;align-self:start}
+ .early-classic .classic-arrow-route .early-step-picture {float:right;width:80px;height:66px;margin:0 0 10px 14px}
+ .early-classic .classic-arrow-route h3 {padding-top:4px;margin:0 0 10px}
+ .early-classic .classic-arrow-route .classic-arrow-mobile {display:block;position:absolute;left:-7px;top:40px;width:46px;height:calc(100% - 44px);overflow:visible}
+}
+@container(max-width:480px){
+ .early-classic .classic-arrow-route .s-study-copy {display:grid;grid-template-columns:minmax(0,1fr) 72px;grid-template-areas:'title picture' 'copy copy';gap:10px 12px}
+ .early-classic .classic-arrow-route .early-step-picture {grid-area:picture;float:none;width:72px;height:64px;margin:0}
+ .early-classic .classic-arrow-route h3 {grid-area:title;align-self:center;padding:0;margin:0}
+ .early-classic .classic-arrow-route p {grid-area:copy}
+ .early-classic .classic-arrow-route li:nth-child(n) .s-study-number {margin-top:16px}
+ .early-classic .classic-arrow-route .classic-arrow-mobile {top:58px;height:calc(100% - 62px)}
+}
 @container(max-width:760px){
  .early-classic .classic-service-heading {grid-template-columns:1fr;gap:22px}
  .early-classic .classic-service-heading>p {font-size:16px}

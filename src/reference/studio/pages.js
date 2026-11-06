@@ -17,7 +17,12 @@ export const comparisonDesigns=[
   ...illustratedDesigns,
   ...additionalDesigns,
   ...referenceDesigns,
-];
+].map((design,index)=>({...design,number:String(index+1)}));
+// Keep the existing design numbers stable when inserting the combined variant.
+comparisonDesigns.splice(5,0,{
+  ...earlyDesigns[0],mode:'early-classic-arrows',file:'comparison-early-classic-arrows.html',
+  name:'Классика и мелок · рисованные стрелки',number:'5.5',skin:'early-classic',parentMode:'early-classic',processArrows:true,
+});
 export const retiredDesignFiles = [
   'pencil-panorama','pencil-album','comparison-gradients',
   'comparison-contour','comparison-journal','comparison-chalk-arc',
@@ -186,7 +191,7 @@ ${previews.filter(preview => preview.style !== selected).map(({style,reviews,mar
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
 function designButtons(activeMode) {
-  return `<div class="comparison-pairs" data-design-navigation>${comparisonDesigns.map((item,index)=>`<a href="${preferredDesignFile(item)}?v=__VERSION__" aria-label="Дизайн ${index+1}: ${item.name}" title="${item.name}"${activeMode===item.mode?' aria-current="page"':''}>${index+1}</a>`).join('')}
+  return `<div class="comparison-pairs" data-design-navigation>${comparisonDesigns.map(item=>`<a href="${preferredDesignFile(item)}?v=__VERSION__" aria-label="Дизайн ${item.number}: ${item.name}" title="${item.name}"${activeMode===item.mode?' aria-current="page"':''}>${item.number}</a>`).join('')}
     <a class="block-compare-link" href="compare-block-hero.html?v=__VERSION__">Сравнение блоков ↗</a>
   </div>`;
 }
@@ -261,7 +266,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
     const context={comparison:true,blockStyle,contourDirection,formStyle:design.formStyle??(design.refinement==='quiet'||contourDirection?'letter':undefined),wavyArrows:design.wavyArrows||contourDirection==='letter'};
     const originalMarkup=pencil?renderPencilPreview(state,design.baseMode??design.mode,context):renderSite(state,context);
     const markup=design.early?decorateEarlyDesign(originalMarkup,design):originalMarkup;
-    pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview'+(design.early?'':' '+design.mode):''}${design.early?' early-design '+design.mode:''}" ${fixedThemeAttributes} data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;
+    pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview'+(design.early?'':' '+design.mode):''}${design.early?' early-design '+design.mode+(design.skin?' '+design.skin:''):''}" ${fixedThemeAttributes} data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;
   }
   if(design?.imported)pageContent=renderAdditionalDesign(design);
   if(design?.illustrated)pageContent=renderIllustratedDesign(design);
@@ -292,6 +297,8 @@ ${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=_
 
 // Start with the user's saved block choices, then cover every retained full design.
 // A source map documents shared blocks instead of adding a copy for each design.
+// Register originals before inserted variations so existing block links keep their IDs.
+const blockSourceDesigns=[...comparisonDesigns.filter(design=>!design.parentMode),...comparisonDesigns.filter(design=>design.parentMode)];
 for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
   const identities=new Map();
   comparisonChoiceDetails[id]={};
@@ -301,7 +308,7 @@ for(const [id,[,choices]] of Object.entries(comparisonBlockChoices)){
     identities.set(identity,style);
     comparisonChoiceDetails[id][style]={identity,sources:[]};
   }
-  for(const design of comparisonDesigns){
+  for(const design of blockSourceDesigns){
     const file=preferredDesignFile(design);
     const html=studioPage(design.mode,'hero',file);
     const {markup}=extractDesignBlock(html,id);

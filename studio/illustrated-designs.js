@@ -1,7 +1,7 @@
 import {illustratedTemplates,illustratedLabels} from './illustrated-templates.js';
 import {illustratedAssets} from './illustrated-assets.js';
-import {renderBlock} from './render.js?v=0da2c899b1';
-import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=0da2c899b1';
+import {renderBlock} from './render.js?v=c6535752ac';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=c6535752ac';
 
 export const illustratedDesigns=[
   {mode:'chalk-light',name:'Мелок · Светлая дуга'},
@@ -57,15 +57,17 @@ export function renderIllustratedDesign(design){
     .replace(/<div class="(portrait-picture|album-main)"><\/div>/g,`<div class="$1">${portrait}</div>`)
     .replace(/<div class="flow-path">[\s\S]*?<\/div>/,`<div class="flow-path">${routeDrawing()}</div>`)
     .replace('Анастасия Доронина · индивидуальный подбор','Личный подбор для вашей семьи')
-    .replace('Найду няню, с которой','Найду няню, с&nbsp;которой');
+    .replace('Найду няню, с которой','Найду няню, с&nbsp;которой')
+    .replace('вам и хорошо ребёнку</h1>','вам и&nbsp;хорошо ребёнку</h1>');
   if(design.index===1){
     blocks=blocks.replace(/<div class="letter-photo">[\s\S]*?<\/div>/,'<div class="letter-photo"><img src="studio/media/child.webp" width="960" height="960" loading="lazy" alt=""></div>')
       .replace('Портрет Анастасии со свободным меловым контуром','Анастасия с малышом, снимок из опыта работы с детьми');
   }
-  const header=design.index===1?illustratedTemplates.header[1].replace('viewBox="279 129 1605 488"','viewBox="1440 115 460 520"').replace('preserveAspectRatio="none"','preserveAspectRatio="xMidYMid meet"'):illustratedTemplates.header[design.index];
+  let header=design.index===1?illustratedTemplates.header[1].replace('viewBox="279 129 1605 488"','viewBox="1440 115 460 520"').replace('preserveAspectRatio="none"','preserveAspectRatio="xMidYMid meet"'):illustratedTemplates.header[design.index];
+  if(design.index===2)header=header.replace(/<svg class="chalk-mark header-line"[\s\S]*?<\/svg>/,art('26-section-divider','chalk-mark header-line').replace('preserveAspectRatio="xMidYMid meet"','preserveAspectRatio="none"'));
   return `<div class="illustrated-site imported-design illustrated-${design.mode}" data-font="lora" data-chalk-variant="${design.index+1}" data-comparison-theme="${approvedTheme.id}" style="${approvedThemeStyle}">${header}<main>${blocks}${tailBlock('reviews',design)}${tailBlock('apply',design)}</main>${tailBlock('footer',design)}</div>`;
 }
 
 export function illustratedStyles(){
-  return `${['header','hero','service','about','process','pricing','site'].map(name=>`<link rel="stylesheet" href="studio/variants/illustrated/${name}.css?v=0da2c899b1">`).join('')}<script defer src="studio/illustrated-motion.js?v=0da2c899b1"></script>`;
+  return `${['header','hero','service','about','process','pricing','site'].map(name=>`<link rel="stylesheet" href="studio/variants/illustrated/${name}.css?v=c6535752ac">`).join('')}<script defer src="studio/illustrated-motion.js?v=c6535752ac"></script>`;
 }

@@ -1,7 +1,7 @@
 
     #chalk-site-directions {
       --milk:#fafaf6; --sky:#d8e4eb; --ink:#203e34; --slate:#466576; --sage:#697d62; --cream:#fff0cd;
-      --portrait:url("image-1.webp");
+      --portrait:url("../../media/about-portrait.webp");
       --family:url("image-2.webp");
       --child:url("image-3.webp");
       --chalk-sheet:url("image-4.jpg");
@@ -25,11 +25,11 @@
     #chalk-site-directions .marked svg { position:absolute; left:-3%; top:92%; width:106%; height:.24em; }
     #chalk-site-directions .action { display:inline-block; margin-top:17px; padding:9px 15px; background:var(--ink); color:var(--milk); text-decoration:none; border-radius:7px; font-size:13px; }
     #chalk-site-directions .photo-wrap { position:relative; width:min(100%,405px); aspect-ratio:1.12; margin:0 auto; }
-    #chalk-site-directions .portrait { position:absolute; inset:9% 9% 7%; background:var(--portrait) 50% 67%/cover no-repeat; border-radius:48% 48% 10px 10px / 37% 37% 10px 10px; }
+    #chalk-site-directions .portrait { position:absolute; inset:9% 9% 7%; background:var(--portrait) 50% 54%/cover no-repeat; border-radius:48% 48% 10px 10px / 37% 37% 10px 10px; }
     #chalk-site-directions .chalk-art { position:absolute; width:100%; height:100%; inset:0; overflow:visible; pointer-events:none; }
     #chalk-site-directions .photo-collage { position:relative; width:min(100%,370px); aspect-ratio:1.25; margin:0 auto; }
     #chalk-site-directions .snapshot { position:absolute; border:5px solid var(--milk); background-size:cover; box-shadow:0 5px 13px #203e3426; border-radius:6px; }
-    #chalk-site-directions .snapshot:first-child { inset:7% 39% 13% 5%; transform:rotate(-6deg); background-image:var(--portrait); background-position:50% 72%; }
+    #chalk-site-directions .snapshot:first-child { inset:7% 39% 13% 5%; transform:rotate(-6deg); background-image:var(--portrait); background-position:50% 58%; }
     #chalk-site-directions .snapshot:nth-child(2) { inset:28% 4% 5% 47%; transform:rotate(7deg); background-image:var(--family); background-position:center 43%; }
     #chalk-site-directions .chalk-picture {
       width:min(100%,224px); aspect-ratio:1.5; background-image:var(--chalk-sheet); background-size:300% 300%;
@@ -67,6 +67,9 @@
     #chalk-site-directions .route-page .step-number { display:inline-block; margin:0 7px 0 0; }
     #chalk-site-directions .route-page .route-line { display:none; }
     #chalk-site-directions .route-page .process .chalk-picture { margin:10px 0 0; }
+    @container (min-width:901px) {
+      #chalk-site-directions .album-page .lead .photo-collage { width:min(100%,430px); }
+    }
     @container (max-width:560px) {
       #chalk-site-directions .pair, #chalk-site-directions .album-page .lead, #chalk-site-directions .album-page .reviews,
       #chalk-site-directions .route-page .process { grid-template-columns:1fr; }

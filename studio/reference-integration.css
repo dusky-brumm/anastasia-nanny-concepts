@@ -7,10 +7,23 @@ body.reference-block-page{display:flow-root;min-height:0}
 .reference-design .sheet{width:100%;max-width:none;margin:0;border-radius:0;box-shadow:none}
 .reference-design{--content-width:1120px}
 .reference-design .wrap{width:min(var(--content-width),calc(100% - 2 * var(--gutter)));margin-inline:auto}
-.reference-design .design-site-header{padding-inline:max(clamp(22px,4vw,60px),calc((100% - var(--content-width))/2))}
+.reference-design .design-site-header{padding-inline:max(var(--gutter),calc((100% - var(--content-width))/2))}
 .reference-design.look-05-yoga .cover-grid{position:relative}
+@media(min-width:1001px){
+ .reference-design.look-05-yoga .cover-grid{min-height:clamp(520px,47vw,680px);padding-block:clamp(36px,4vw,56px)}
+}
+/* Reserve the tallest step so the controls stay in place when its text changes. */
+.reference-design.look-05-yoga .screening-tabs > li{grid-area:1/1}
+.reference-design.look-05-yoga .screening-tabs > [hidden]{display:grid!important;visibility:hidden;pointer-events:none}
+.reference-design.look-05-yoga .screening-navigation{grid-template-columns:44px auto 44px}
+.reference-design.look-05-yoga .step-arrow{width:44px;height:44px}
+.reference-design.look-05-yoga .step-buttons button{min-height:44px}
 @media(max-width:650px){
  .reference-design.look-05-yoga .lead-photo{width:100%;margin-inline:0}
+ .reference-design.look-05-yoga .screening-navigation{grid-template-columns:minmax(0,1fr);gap:8px}
+ .reference-design.look-05-yoga .screening-navigation .step-arrow{display:none}
+ .reference-design.look-05-yoga .step-buttons{justify-content:center;gap:6px}
+ .reference-design.look-05-yoga .step-buttons button{padding:8px 12px;font-size:13px}
 }
 .reference-design #hero{background:var(--blue-glow)}
 .reference-design #hero h1>span{background:none}
@@ -19,11 +32,16 @@ body.reference-block-page{display:flow-root;min-height:0}
 .reference-design #footer{background:var(--soft);color:var(--ink)}
 .reference-design .photo-window,.reference-design .family-print,.reference-design .snapshot{border-color:#fff}
 .reference-design .family-print{background:#fff}
+.reference-design.look-05-yoga .family-print{background:transparent}
 .reference-design .reference-stories h3{margin:0 0 20px;font:400 clamp(25px,3vw,38px)/1.2 var(--display);letter-spacing:-.035em}
 .reference-design .reference-stories p{margin:0;font-size:clamp(15px,1.4vw,18px);line-height:1.7}
 .reference-design .reference-stories article{min-height:220px}
+.reference-stories{display:grid}
+.reference-stories > article{grid-area:1/1;align-self:start}
+.reference-design .reference-stories > [hidden]{display:block!important;visibility:hidden;pointer-events:none}
 .reference-story-controls{display:flex;gap:9px;margin-top:22px}
-.reference-story-controls button{width:36px;height:36px;border:1px solid var(--leaf);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
+.reference-stories > .reference-story-controls{grid-column:1;grid-row:2}
+.reference-story-controls button{width:44px;height:44px;border:1px solid var(--leaf);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
 .reference-story-controls button[aria-pressed=true]{background:var(--button);border-color:var(--button);color:#fff}
 .reference-design .s-consult-form{padding:0;border:0;box-shadow:none;background:transparent;border-radius:0}
 .reference-design .s-consult-form label{font-family:var(--display)}
@@ -31,12 +49,16 @@ body.reference-block-page{display:flow-root;min-height:0}
 .reference-design .button{position:relative;border-radius:1px}
 .reference-design .button::after{content:'';position:absolute;inset:-3px;border:1px solid currentColor;border-radius:49% 48% 46% 45%/14% 11% 13% 10%;transform:rotate(-.6deg);opacity:.45;pointer-events:none}
 .reference-design .interview{position:relative}
-.reference-drawing{display:block;flex-shrink:0;width:120px;height:120px;background-size:300% 200%;background-repeat:no-repeat;pointer-events:none}
-.reference-drawing--profile{position:absolute;right:22px;top:12px;width:75px;height:75px;background-image:url('media/chalk-almost-white/paper-chalk.png');background-position:50% 0;opacity:.8}
+.reference-design .interview-copy{position:relative}
+.reference-drawing{display:block;flex-shrink:0;width:120px;height:120px;overflow:visible;pointer-events:none}
+.reference-drawing--profile{position:absolute;right:22px;top:12px;width:75px;height:75px;opacity:.85}
+.reference-design.look-05-yoga .reference-drawing--profile{position:static;grid-column:1;grid-row:3;align-self:start;width:82px;height:76px;margin-top:16px}
+.reference-design.look-02-elliot .interview-copy > .kicker{padding-right:76px}
+.reference-design.look-02-elliot .interview-copy > h3{padding-right:64px}
 .reference-design .interview-note{padding-top:85px}
-.reference-drawing--calendar{width:78px;height:78px;background-image:url('media/chalk-almost-white/soft-chalk.png');background-position:50% 0}
-.reference-drawing--plane{width:140px;height:95px;background-image:url('media/chalk-almost-white/soft-chalk.png');background-position:50% 100%}
-.reference-drawing--family{width:130px;height:130px;margin-bottom:16px;background-image:url('media/chalk-almost-white/wash-chalk.png');background-position:50% 0}
+.reference-drawing--calendar{width:78px;height:78px}
+.reference-drawing--plane{width:180px;height:62px}
+.reference-drawing--family{width:76px;height:108px;margin-bottom:22px}
 .reference-design .footer-grid{display:grid;grid-template-columns:1fr auto 1fr;padding-block:22px;gap:20px}
 .reference-design .footer-grid>div:last-child{justify-self:end}
 .reference-design .apply{background:var(--paper);color:var(--ink)}
@@ -48,9 +70,23 @@ body.reference-block-page{display:flow-root;min-height:0}
 .reference-design.look-06-maren .cover{background:var(--ink)}
 .reference-design.look-06-maren .cover-image::after{background:radial-gradient(ellipse at 55% 45%,#e7f1f618,transparent 65%),linear-gradient(90deg,#28353ce8,#28353c4d 68%,#28353c25)}
 @media(max-width:650px){
+ .reference-design .faq :is(summary,details p),.reference-design .examples dd,.reference-design .interview-result{font-size:15px;line-height:1.65}
+ .reference-design .review-controls button{width:44px;height:44px}
+ .reference-design.look-02-elliot .screening{gap:26px}
+ .reference-design.look-02-elliot .screening li{display:grid;grid-template-columns:clamp(86px,28vw,112px) minmax(0,1fr);gap:16px;align-items:start;width:100%;text-align:left}
+ .reference-design.look-02-elliot .screening-photo{aspect-ratio:.8;border-width:5px}
+ .reference-design.look-02-elliot .screening li:first-child .screening-photo img{object-position:75% 46%}
+ .reference-design.look-02-elliot .screening-copy{padding:0}
+ .reference-design.look-02-elliot .screening-label{justify-content:start;margin:0 0 7px}
+ .reference-design.look-02-elliot .screening-label .hand{padding:0;background:transparent;font-size:23px}
+ .reference-design.look-02-elliot .screening-copy h3{font-size:21px;line-height:1.2}
+ .reference-design.look-02-elliot .screening-copy > p{font-size:14px;line-height:1.6}
+ .reference-design.look-05-yoga .reference-drawing--profile{position:absolute;top:-10px;right:0;left:auto;width:66px;height:60px;margin:0}
+ .reference-design.look-05-yoga .interview-copy > h3{padding-right:74px;font-size:30px;line-height:1.2}
+ .reference-design.look-05-yoga .interview-copy > .kicker{padding-right:76px}
  .reference-design .footer-grid{grid-template-columns:1fr auto;gap:8px}
  .reference-design .footer-grid>div:last-child{grid-column:1/-1;justify-self:start}
- .reference-drawing--plane{width:100px;height:75px}
+ .reference-drawing--plane{width:120px;height:42px}
  .reference-design .reference-stories article{min-height:260px}
  .reference-design .reference-stories p{font-size:15px}
 }

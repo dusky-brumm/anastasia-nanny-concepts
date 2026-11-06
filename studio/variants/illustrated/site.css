@@ -1,15 +1,22 @@
 /* The original studies share the site's approved paper, blue and sage palette. */
-.illustrated-site {width:100%;max-width:none;margin:0;--content-width:1024px;--heading:'Lora',Georgia,serif;--heading-weight:400;--heading-tracking:-.025em;--body:'Golos Text',Arial,sans-serif}
+.illustrated-site {width:100%;max-width:none;margin:0;--content-width:1120px;--chalk-inset:max(clamp(24px,4vw,64px),calc((100% - var(--content-width))/2));--heading:'Lora',Georgia,serif;--heading-weight:400;--heading-tracking:-.025em;--body:'Golos Text',Arial,sans-serif}
 .illustrated-site :where(h1,h2,h3,p,figure,blockquote,ul,ol) {margin:0}
 .illustrated-site a {color:inherit}
 .illustrated-site p {text-wrap:pretty}
 .illustrated-site > main {display:block}
 .illustrated-site :is(section,header,footer)[id] {scroll-margin-top:var(--comparison-offset,24px)}
-.illustrated-site :is(.hero-scene,.service-scene,.about-scene,.process-scene,.price-scene) {max-width:1120px;margin-inline:auto}
+/* Section backgrounds reach the edges; padding keeps their content on one grid. */
+.illustrated-site :is(.hero-scene,.service-scene,.about-scene,.process-scene,.price-scene) {max-width:none;margin-inline:0}
+#chalk-hero-designs .hero-scene,#chalk-service-designs .service-scene,#chalk-about-designs .about-scene,#chalk-process-designs .process-scene,#chalk-pricing-designs .price-scene {padding-inline:var(--chalk-inset);background:transparent}
+#chalk-service-designs .service-design {background:var(--wash)}
+#chalk-about-designs .about-design {background:var(--paper)}
+#chalk-process-designs .process-design {background:var(--soft)}
+#chalk-service-designs :is(.study-picture,.dossier-sheet) {background:transparent}
 #chalk-header-designs .header-stage {padding:0;min-height:0}
 #chalk-header-designs .header-site {border-radius:0;overflow:visible}
-#chalk-header-designs .design-header {max-width:1120px;margin-inline:auto;padding-inline:48px}
-#chalk-header-designs .version-door .design-header {padding-inline:48px}
+#chalk-header-designs .design-header {max-width:none;margin-inline:0;padding-inline:var(--chalk-inset)}
+#chalk-header-designs .version-door .design-header {padding-inline:var(--chalk-inset)}
+#chalk-header-designs .header-line {left:var(--chalk-inset);right:var(--chalk-inset);width:calc(100% - var(--chalk-inset) - var(--chalk-inset))}
 #chalk-header-designs .mobile-menu .header-nav {z-index:5;box-shadow:0 8px 24px #28353c14}
 #chalk-header-designs .header-row > .header-nav {gap:12px}
 #chalk-hero-designs .hero-scene,#chalk-service-designs .service-scene,#chalk-about-designs .about-scene,#chalk-process-designs .process-scene,#chalk-pricing-designs .price-scene {min-height:0;padding-block:64px}
@@ -17,7 +24,8 @@
 #chalk-hero-designs .portrait-picture,#chalk-hero-designs .album-main {background:none;overflow:hidden}
 #chalk-hero-designs .cafe-crop {display:block;width:100%;height:100%}
 .illustrated-site .chalk-tail {overflow:visible}
-.illustrated-site .chalk-tail-block {position:relative;padding-block:56px}
+.illustrated-site .chalk-tail-block {position:relative;padding-block:56px;padding-inline:var(--chalk-inset)}
+.illustrated-site .chalk-tail .s-block {padding-inline:var(--chalk-inset)}
 .illustrated-site .chalk-motif {display:block;pointer-events:none;overflow:visible}
 .illustrated-site .chalk-review-title {display:flex;align-items:center;gap:24px}
 .illustrated-site .chalk-reviews-picture {width:102px;height:70px;flex-shrink:0}
@@ -54,7 +62,6 @@
  #chalk-hero-designs .hero-scene,#chalk-service-designs .service-scene,#chalk-about-designs .about-scene,#chalk-process-designs .process-scene,#chalk-pricing-designs .price-scene {padding-block:38px}
  .illustrated-site .chalk-tail-block {padding-block:38px}
  .illustrated-site .chalk-footer-picture {width:160px;height:50px}
- #chalk-header-designs .design-header,#chalk-header-designs .version-door .design-header {padding-inline:24px}
  .illustrated-site .chalk-tail .s-review blockquote {font-size:20px;line-height:1.5}
  .illustrated-site .chalk-review-title {gap:16px}
  .illustrated-site .chalk-reviews-picture {width:74px;height:55px}
@@ -69,10 +76,22 @@
  #chalk-process-designs .flow .step-copy {font-size:14px;max-width:55ch}
  #chalk-process-designs .flow h3 {font-size:17px}
 }
+@container(max-width:1080px){
+ #chalk-process-designs .journal {grid-template-columns:1fr;gap:30px}
+ #chalk-process-designs .journal .process-heading {padding-top:0}
+ #chalk-process-designs .journal .heading-illustration {display:none}
+}
 @container(max-width:560px){
- #chalk-service-designs :is(.study p,.service-row p,.service-example p) {font-size:14px;line-height:1.65}
- #chalk-pricing-designs .guarantee-copy,#chalk-pricing-designs .faq details p {font-size:14px}
- #chalk-pricing-designs .faq summary {font-size:14px;min-height:48px}
+ #chalk-service-designs :is(.study p,.service-row p,.service-example p) {font-size:15px;line-height:1.65}
+ #chalk-about-designs .about-copy p:not(.about-eyebrow),#chalk-about-designs .snapshot p {font-size:15px;line-height:1.7}
+ #chalk-process-designs :is(.step-copy,.flow .step-copy,.note .step-copy,.journal .step-copy) {font-size:15px;line-height:1.65}
+ #chalk-pricing-designs .guarantee-copy,#chalk-pricing-designs .faq details p {font-size:15px;line-height:1.65}
+ #chalk-pricing-designs .faq summary {font-size:15px;line-height:1.5;min-height:48px}
  .illustrated-site .chalk-tail .s-apply-intro > p {font-size:15px}
+ .illustrated-site .chalk-tail .s-apply-intro {display:grid;grid-template-columns:minmax(0,1fr) clamp(84px,22cqw,108px);column-gap:12px;align-items:start}
+ .illustrated-site .chalk-tail .s-apply-intro > .s-section-heading {grid-column:1/-1;grid-row:1;margin-bottom:20px}
+ .illustrated-site .chalk-tail .s-apply-intro > p {grid-column:1;grid-row:2}
+ .illustrated-site .chalk-tail .comparison-form-contact {grid-column:1;grid-row:3;margin-top:16px}
+ .illustrated-site .chalk-apply-picture {grid-column:2;grid-row:2/span 2;align-self:center;width:100%;height:88px;margin:0}
 }
 @media(prefers-reduced-motion:reduce){.illustrated-site .chalk-reveal,.illustrated-site .chalk-reveal.chalk-visible,.illustrated-site .chalk-illustration.chalk-visible {clip-path:none;animation:none}}

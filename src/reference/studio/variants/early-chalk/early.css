@@ -79,7 +79,9 @@
 .early-classic .classic-quote-arrow {display:block;width:54px;height:44px;background:url('../../media/classic-chalk-ui/arrow-right.webp') center/100% 100% no-repeat}
 .early-classic [data-quote-step='-1'] .classic-quote-arrow {transform:scaleX(-1)}
 .site-preview.early-classic .s-apply .s-form-pencil {grid-template-columns:minmax(0,1fr);gap:20px;padding:28px 30px;background:var(--paper);border-radius:4px;box-shadow:none}
-.early-classic .s-form-pencil::before {opacity:.65}
+.early-classic .s-form-pencil::before {mask-image:url('../../pencil-frame-neat.svg');opacity:.75}
+.site-preview.early-classic .s-apply .s-form-pencil :is(input,textarea) {background-image:url('../../pencil-frame-neat.svg')}
+.site-preview.early-classic .s-button::before {mask-image:url('../../pencil-button.svg')}
 .early-classic .s-form-pencil>label {gap:10px}
 .early-classic .s-form-pencil input {min-height:52px}
 @container(max-width:760px){

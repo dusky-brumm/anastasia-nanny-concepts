@@ -254,11 +254,11 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
       state=selectVariant(state,'about',3);
       state=selectVariant(state,'process',1);
     }
-    state=selectVariant(state,'apply',refined&&!contourDirection?({1:2,2:1,3:1})[design.form]:design.form);
+    state=selectVariant(state,'apply',design.formStyle?design.form:refined&&!contourDirection?({1:2,2:1,3:1})[design.form]:design.form);
     state=selectVariant(state,'footer',refined&&!contourDirection?({1:3,2:5,3:2,5:1})[design.footer]:design.footer);
     const reviewLayout=refined?({cards:'ribbon',feature:'open',open:'cards'})[design.reviews]:design.reviews;
     const blockStyle=contourDirection==='wave'?'reference':contourDirection==='letter'?'letter':design.refinement??'quiet';
-    const context={comparison:true,blockStyle,contourDirection,formStyle:design.refinement==='quiet'||contourDirection?'letter':undefined,wavyArrows:design.wavyArrows||contourDirection==='letter'};
+    const context={comparison:true,blockStyle,contourDirection,formStyle:design.formStyle??(design.refinement==='quiet'||contourDirection?'letter':undefined),wavyArrows:design.wavyArrows||contourDirection==='letter'};
     const originalMarkup=pencil?renderPencilPreview(state,design.baseMode??design.mode,context):renderSite(state,context);
     const markup=design.early?decorateEarlyDesign(originalMarkup,design):originalMarkup;
     pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview'+(design.early?'':' '+design.mode):''}${design.early?' early-design '+design.mode:''}" ${fixedThemeAttributes} data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;

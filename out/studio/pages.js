@@ -1,11 +1,11 @@
-import {blocks,fontSets,defaults,presets,approvedTheme,approvedThemeStyle,designUrl,selectVariant} from './model.js?v=3d24099e11';
-import {renderSite,renderBlock,renderEditorial,renderPencilPreview} from './render.js?v=3d24099e11';
-import {seoHead} from './seo.js?v=3d24099e11';
-import {additionalDesigns,additionalStyles,renderAdditionalDesign} from './additional-designs.js?v=3d24099e11';
-import {referenceDesigns,referencePage,referenceBlockFile} from './reference-designs.js?v=3d24099e11';
-import {extractDesignBlock,designBlockFile,designBlockPage,blockIdentity} from './design-blocks.js?v=3d24099e11';
-import {illustratedDesigns,illustratedBlockLabel,renderIllustratedDesign,illustratedStyles} from './illustrated-designs.js?v=3d24099e11';
-import {earlyDesigns,decorateEarlyDesign,earlyStyles} from './early-designs.js?v=3d24099e11';
+import {blocks,fontSets,defaults,presets,approvedTheme,approvedThemeStyle,designUrl,selectVariant} from './model.js?v=c69f62e576';
+import {renderSite,renderBlock,renderEditorial,renderPencilPreview} from './render.js?v=c69f62e576';
+import {seoHead} from './seo.js?v=c69f62e576';
+import {additionalDesigns,additionalStyles,renderAdditionalDesign} from './additional-designs.js?v=c69f62e576';
+import {referenceDesigns,referencePage,referenceBlockFile} from './reference-designs.js?v=c69f62e576';
+import {extractDesignBlock,designBlockFile,designBlockPage,blockIdentity} from './design-blocks.js?v=c69f62e576';
+import {illustratedDesigns,illustratedBlockLabel,renderIllustratedDesign,illustratedStyles} from './illustrated-designs.js?v=c69f62e576';
+import {earlyDesigns,decorateEarlyDesign,earlyStyles} from './early-designs.js?v=c69f62e576';
 
 export const comparisonDesigns=[
   {mode:'comparison-current',file:'comparison-current.html',name:'Текущий',reviews:'cards',form:1,footer:3,refinement:'quiet'},
@@ -60,10 +60,10 @@ export const comparisonChoiceAliases = {apply:{quiet:'album',route:'air',referen
 
 function comparisonBlockMarkup(id,style,variant,context) {
   const isolated=comparisonChoiceDetails[id]?.[style]?.file;
-  if(isolated)return `<div class="reference-block-preview" id="${context.blockId ?? id}"><iframe data-reference-frame src="${isolated}?v=3d24099e11" title="${comparisonBlockChoices[id][0]} — ${comparisonBlockChoices[id][1].find(choice=>choice[0]===style)[1]}" loading="lazy" height="320"></iframe></div>`;
+  if(isolated)return `<div class="reference-block-preview" id="${context.blockId ?? id}"><iframe data-reference-frame src="${isolated}?v=c69f62e576" title="${comparisonBlockChoices[id][0]} — ${comparisonBlockChoices[id][1].find(choice=>choice[0]===style)[1]}" loading="lazy" height="320"></iframe></div>`;
   const design = referenceDesigns.find(item => item.mode === style);
   if (!design) return renderBlock(id,variant,context);
-  return `<div class="reference-block-preview" id="${context.blockId ?? id}"><iframe data-reference-frame src="${referenceBlockFile(design,id)}?v=3d24099e11" title="${comparisonBlockChoices[id][0]} — ${design.name}" loading="lazy" height="320"></iframe></div>`;
+  return `<div class="reference-block-preview" id="${context.blockId ?? id}"><iframe data-reference-frame src="${referenceBlockFile(design,id)}?v=c69f62e576" title="${comparisonBlockChoices[id][0]} — ${design.name}" loading="lazy" height="320"></iframe></div>`;
 }
 
 const comparisonBaseTheme = approvedTheme.id;
@@ -104,14 +104,14 @@ function comparisonBlockGallery(blockId) {
   const previews = choices.map(([style,label,variant,reviews='cards'], index) => {
     const design = comparisonDesigns.find(item => item.refinement === style || item.mode === style);
     const details=comparisonChoiceDetails[blockId][style];
-    const previewFile = details.sources[0]?.file ? details.sources[0].file + '?v=3d24099e11' : design ? preferredDesignFile(design) + '?v=3d24099e11'
-      : `compare-assembly.html?v=3d24099e11&amp;${blockId}=${style}`;
+    const previewFile = details.sources[0]?.file ? details.sources[0].file + '?v=c69f62e576' : design ? preferredDesignFile(design) + '?v=c69f62e576'
+      : `compare-assembly.html?v=c69f62e576&amp;${blockId}=${style}`;
     const state = {...defaults, layout:design?.layout ?? defaults.layout};
     const context = {state, comparison:true, blockStyle:style, wavyArrows:design?.wavyArrows, previewFile, previewId:`quotes-choice-${index + 1}`};
     return `<article id="choice-${index + 1}" class="block-compare-choice" data-gallery-choice="${style}">
       <header><div><h2>${label}</h2><p class="block-choice-sources">${details.sources.length?'В дизайнах: '+details.sources.map(source=>source.name).join(' · '):'Сохранённый вариант блока'}</p></div><div class="block-compare-actions">
         <a href="${previewFile}#${blockId}">Макет в этом стиле ↗</a>
-        <a data-try-assembly="${blockId}" href="compare-assembly.html?v=3d24099e11&amp;${blockId}=${style}#${blockId}">Примерить в сборке</a>
+        <a data-try-assembly="${blockId}" href="compare-assembly.html?v=c69f62e576&amp;${blockId}=${style}#${blockId}">Примерить в сборке</a>
       </div></header>
       <div class="site-preview comparison-design" data-block-style="${style}" data-review-layout="${reviews}" data-refinement="${style}" data-comparison-theme="${comparisonBaseTheme}" style="${comparisonBaseStyle}">
         ${comparisonBlockMarkup(blockId,style,variant,{...context,blockId:`${blockId}-choice-${index+1}`})}
@@ -119,11 +119,11 @@ function comparisonBlockGallery(blockId) {
     </article>`;
   });
   return `<header class="block-compare-heading">
-    <div class="block-compare-actions"><a href="comparison-current-refined.html?v=3d24099e11#${blockId}">← К целым макетам</a><a data-keep-assembly href="compare-assembly.html?v=3d24099e11">Собрать свой вариант ↗</a></div>
+    <div class="block-compare-actions"><a href="comparison-current-refined.html?v=c69f62e576#${blockId}">← К целым макетам</a><a data-keep-assembly href="compare-assembly.html?v=c69f62e576">Собрать свой вариант ↗</a></div>
     <h1>${title}</h1>
     <p class="block-gallery-intro">Все разные оформления этого блока — друг под другом. Сохранённые варианты и блоки из актуальных дизайнов, без повторов.</p>
     <nav aria-label="Блоки для сравнения">${Object.entries(comparisonBlockChoices).map(([key,[label]]) =>
-      `<a data-keep-assembly data-gallery-block="${key}" href="compare-block-${key}.html?v=3d24099e11"${key === blockId ? ' aria-current="page"' : ''}>${label}</a>`
+      `<a data-keep-assembly data-gallery-block="${key}" href="compare-block-${key}.html?v=c69f62e576"${key === blockId ? ' aria-current="page"' : ''}>${label}</a>`
     ).join('')}</nav>
     <nav aria-label="Варианты блока" data-gallery-jumps>${choices.map(([,label], index) => `<a href="#choice-${index + 1}">${label}</a>`).join('')}</nav>
   </header>
@@ -149,7 +149,7 @@ function comparisonAssembly() {
       <div class="assembly-control">
         <label>${label}<select data-assembly-choice${previews.length===1?' disabled':''}>${previews.map(({style,name}) =>
           `<option value="${style}"${style===selected?' selected':''}>${name}</option>`).join('')}</select></label>
-        <a data-assembly-gallery href="compare-block-${id}.html?v=3d24099e11">${previews.length===1?'Посмотреть блок':'Сравнить варианты'} ↗</a>
+        <a data-assembly-gallery href="compare-block-${id}.html?v=c69f62e576">${previews.length===1?'Посмотреть блок':'Сравнить варианты'} ↗</a>
       </div>
       <div class="comparison-design" data-assembly-preview data-block-style="${current.style}" data-refinement="${current.style}" data-review-layout="${current.reviews}">${current.markup}</div>
 ${previews.filter(preview => preview.style !== selected).map(({style,reviews,markup}) =>
@@ -157,13 +157,13 @@ ${previews.filter(preview => preview.style !== selected).map(({style,reviews,mar
     </div>`;
   }).join('');
   return `<header class="block-compare-heading assembly-heading">
-    <a href="comparison-current-refined.html?v=3d24099e11">← К целым макетам</a>
+    <a href="comparison-current-refined.html?v=c69f62e576">← К целым макетам</a>
     <h1>Собрать свой вариант</h1>
     <p>Выбирайте оформление над каждым блоком. В ссылке сохраняется вся комбинация.</p>
     <section class="assembly-presets" aria-labelledby="assembly-presets-heading">
       <h2 id="assembly-presets-heading">Готовые сочетания</h2>
       <div class="assembly-preset-list">${assemblyPresets.map(({name,description,choices}, index) => {
-        const query = new URLSearchParams({v:'3d24099e11', ...choices});
+        const query = new URLSearchParams({v:'c69f62e576', ...choices});
         return `<a class="assembly-preset" href="compare-assembly.html?${query.toString().replaceAll('&','&amp;')}">
           <span class="assembly-preset-number" aria-hidden="true">0${index+1}</span>
           <strong>${name}</strong><span>${description}</span>
@@ -186,8 +186,8 @@ ${previews.filter(preview => preview.style !== selected).map(({style,reviews,mar
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
 function designButtons(activeMode) {
-  return `<div class="comparison-pairs" data-design-navigation>${comparisonDesigns.map((item,index)=>`<a href="${preferredDesignFile(item)}?v=3d24099e11" aria-label="Дизайн ${index+1}: ${item.name}" title="${item.name}"${activeMode===item.mode?' aria-current="page"':''}>${index+1}</a>`).join('')}
-    <a class="block-compare-link" href="compare-block-hero.html?v=3d24099e11">Сравнение блоков ↗</a>
+  return `<div class="comparison-pairs" data-design-navigation>${comparisonDesigns.map((item,index)=>`<a href="${preferredDesignFile(item)}?v=c69f62e576" aria-label="Дизайн ${index+1}: ${item.name}" title="${item.name}"${activeMode===item.mode?' aria-current="page"':''}>${index+1}</a>`).join('')}
+    <a class="block-compare-link" href="compare-block-hero.html?v=c69f62e576">Сравнение блоков ↗</a>
   </div>`;
 }
 const designPanel=`<nav class="design-panel" aria-label="Просмотр вариантов">${designButtons()}</nav>`;
@@ -254,11 +254,11 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
       state=selectVariant(state,'about',3);
       state=selectVariant(state,'process',1);
     }
-    state=selectVariant(state,'apply',refined&&!contourDirection?({1:2,2:1,3:1})[design.form]:design.form);
+    state=selectVariant(state,'apply',design.formStyle?design.form:refined&&!contourDirection?({1:2,2:1,3:1})[design.form]:design.form);
     state=selectVariant(state,'footer',refined&&!contourDirection?({1:3,2:5,3:2,5:1})[design.footer]:design.footer);
     const reviewLayout=refined?({cards:'ribbon',feature:'open',open:'cards'})[design.reviews]:design.reviews;
     const blockStyle=contourDirection==='wave'?'reference':contourDirection==='letter'?'letter':design.refinement??'quiet';
-    const context={comparison:true,blockStyle,contourDirection,formStyle:design.refinement==='quiet'||contourDirection?'letter':undefined,wavyArrows:design.wavyArrows||contourDirection==='letter'};
+    const context={comparison:true,blockStyle,contourDirection,formStyle:design.formStyle??(design.refinement==='quiet'||contourDirection?'letter':undefined),wavyArrows:design.wavyArrows||contourDirection==='letter'};
     const originalMarkup=pencil?renderPencilPreview(state,design.baseMode??design.mode,context):renderSite(state,context);
     const markup=design.early?decorateEarlyDesign(originalMarkup,design):originalMarkup;
     pageContent=`<main class="site-preview comparison-design${pencil?' pencil-preview'+(design.early?'':' '+design.mode):''}${design.early?' early-design '+design.mode:''}" ${fixedThemeAttributes} data-palette="${pencil?'':state.palette}" data-review-layout="${reviewLayout}" data-block-style="${blockStyle}"${refined?` data-refinement="${blockStyle}"`:''}${contourDirection?` data-contour-direction="${contourDirection}"`:''}>${markup}</main>`;
@@ -272,21 +272,21 @@ ${seoHead(pageFile,{title,description})}<meta name="theme-color" content="#faf6e
 ${design?.imported?additionalStyles(design):''}
 <link rel="preload" href="fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="studio/fonts/q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=3d24099e11"><link rel="stylesheet" href="studio/fonts.css?v=3d24099e11">
-<link rel="stylesheet" href="journeys.css?v=3d24099e11"><link rel="stylesheet" href="studio/site.css?v=3d24099e11"><link rel="stylesheet" href="studio/ui.css?v=3d24099e11">
-${editorial?'<link rel="stylesheet" href="studio/editorial.css?v=3d24099e11">':''}
-${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/pencil-preview.css?v=3d24099e11"><link rel="stylesheet" href="studio/comparison-design.css?v=3d24099e11"><link rel="stylesheet" href="studio/comparison-sections.css?v=3d24099e11">':''}
-<link rel="stylesheet" href="studio/clear-sections.css?v=3d24099e11">
-<link rel="stylesheet" href="studio/unified-designs.css?v=3d24099e11"><script defer src="studio/unified-designs.js?v=3d24099e11"></script>
-<link rel="stylesheet" href="studio/design-chrome.css?v=3d24099e11">
+<link rel="stylesheet" href="fonts.css?v=c69f62e576"><link rel="stylesheet" href="studio/fonts.css?v=c69f62e576">
+<link rel="stylesheet" href="journeys.css?v=c69f62e576"><link rel="stylesheet" href="studio/site.css?v=c69f62e576"><link rel="stylesheet" href="studio/ui.css?v=c69f62e576">
+${editorial?'<link rel="stylesheet" href="studio/editorial.css?v=c69f62e576">':''}
+${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/pencil-preview.css?v=c69f62e576"><link rel="stylesheet" href="studio/comparison-design.css?v=c69f62e576"><link rel="stylesheet" href="studio/comparison-sections.css?v=c69f62e576">':''}
+<link rel="stylesheet" href="studio/clear-sections.css?v=c69f62e576">
+<link rel="stylesheet" href="studio/unified-designs.css?v=c69f62e576"><script defer src="studio/unified-designs.js?v=c69f62e576"></script>
+<link rel="stylesheet" href="studio/design-chrome.css?v=c69f62e576">
 ${design?.illustrated?illustratedStyles():''}
 ${design?.early?earlyStyles():''}
-${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=3d24099e11"><script defer src="studio/contour-motion.js?v=3d24099e11"></script>':''}
-<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=3d24099e11"></script>
-<script defer src="studio/review-carousel.js?v=3d24099e11"></script>
-${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=3d24099e11"></script>':''}
-${comparing||blockCompare||assembling?'<script defer src="studio/comparison-palettes.js?v=3d24099e11"></script><script defer src="studio/comparison-request.js?v=3d24099e11"></script>':''}
-${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=3d24099e11"></script><script defer src="studio/reference-frames.js?v=3d24099e11"></script>':''}
+${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=c69f62e576"><script defer src="studio/contour-motion.js?v=c69f62e576"></script>':''}
+<link rel="icon" href="favicon.svg"><script type="module" src="studio/app.js?v=c69f62e576"></script>
+<script defer src="studio/review-carousel.js?v=c69f62e576"></script>
+${mode==='library'&&blockId==='hero'?'<script defer src="studio/hero-gallery.js?v=c69f62e576"></script>':''}
+${comparing||blockCompare||assembling?'<script defer src="studio/comparison-palettes.js?v=c69f62e576"></script><script defer src="studio/comparison-request.js?v=c69f62e576"></script>':''}
+${assembling||blockCompare?'<script defer src="studio/comparison-assembly.js?v=c69f62e576"></script><script defer src="studio/reference-frames.js?v=c69f62e576"></script>':''}
 </head><body data-fixed-theme="${comparisonBaseTheme}" class="design-tool ${mode==='preview'||(comparing&&!pencil)?'preview-only':''}" data-mode="${design?.mode??mode}" data-library-block="${blockId}"${pageFile==='index.html'?' data-live-request':''}>${mode==='preview'?designPanel:pencilSwitcher}${pageContent}${privacy}<noscript><p class="tool-noscript">${mode==='preview'||editorial||comparing?'Для подготовки заявки включите JavaScript или напишите Анастасии в Telegram.':'Для переключения дизайна и подготовки заявки включите JavaScript. Базовая страница доступна для просмотра.'}</p></noscript></body></html>`;
 }
 

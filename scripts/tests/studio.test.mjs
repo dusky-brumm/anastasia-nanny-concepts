@@ -14,7 +14,6 @@ test('two early compositions retain their layouts, stories and local request for
   for(const design of earlyDesigns){
     const html=studioPage(design.mode,'hero',design.file);
     assert.match(html,/data-early-art/);
-    assert.match(html,/s-service-personal/);
     assert.match(html,/s-pricing-summary/);
     assert.equal([...html.matchAll(/<form\b/g)].length,1);
     for(const id of Object.keys(comparisonBlockChoices)){
@@ -23,8 +22,14 @@ test('two early compositions retain their layouts, stories and local request for
     }
     if(design.tone==='classic'){
       assert.match(html,/s-hero--6/);
+      const service=extractDesignBlock(html,'service').markup;
+      assert.match(service,/Подбор няни под задачи вашей семьи/);
+      assert.doesNotMatch(service,/Собеседую под вашу семью|Например, спрошу/);
+      assert.match(extractDesignBlock(html,'apply').markup,/s-consult-form s-form-pencil/);
+      assert.match(extractDesignBlock(html,'apply').markup,/s-apply--3/);
       assert.equal([...extractDesignBlock(html,'about').markup.matchAll(/data-about-dot=/g)].length,4);
     }else{
+      assert.match(html,/s-service-personal/);
       assert.match(html,/pencil-hero/);
       assert.match(extractDesignBlock(html,'about').markup,/s-letter/);
     }

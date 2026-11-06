@@ -1,14 +1,16 @@
 import {referenceTemplates} from './reference-templates.js';
-import {aboutSlides} from './render.js?v=c6535752ac';
-import {approvedThemeStyle} from './model.js?v=c6535752ac';
-import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=c6535752ac';
-import {utilityIndexingTags} from './seo.js?v=c6535752ac';
+import {aboutSlides} from './render.js?v=ca4b7df020';
+import {approvedThemeStyle} from './model.js?v=ca4b7df020';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=ca4b7df020';
+import {utilityIndexingTags} from './seo.js?v=ca4b7df020';
 import {illustratedAssets} from './illustrated-assets.js';
 
-export const referenceDesigns=[
+export const referenceDesignSources=[
   ['02-elliot','Бумажные карточки · Elliot'],
   ['05-yoga','Плавный контур · Yoga'],
 ].map(([id,name])=>({id,name,mode:`reference-${id}`,file:`comparison-ref-${id}.html`,reference:true,imported:true,single:true}));
+// The Elliot hero is retained inside design 11; the complete reference designs are retired.
+export const referenceDesigns=[];
 
 const drawing=name=>{
   const id={profile:'05-service-profile',calendar:'19-guarantee-calendar',plane:'25-footer-contact',family:'02-hero-care'}[name];
@@ -43,16 +45,16 @@ export function referencePage(design,navigation){
     .replace(/<div class="interview-copy">/,`<div class="interview-copy">${drawing('profile')}`);
   // The original page's script depends on its own header; the shared header has its own handler.
   html=html.replace(/<script defer src="[^\"]*page.js"><\/script>/,'')
-    .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=c6535752ac">
-<link rel="stylesheet" href="studio/comparison-design.css?v=c6535752ac">
-<link rel="stylesheet" href="studio/unified-designs.css?v=c6535752ac">
-<link rel="stylesheet" href="studio/design-chrome.css?v=c6535752ac">
-<link rel="stylesheet" href="studio/reference-integration.css?v=c6535752ac">
-<script defer src="studio/comparison-request.js?v=c6535752ac"></script>
-<script defer src="studio/variants/eight-references/gallery-ui.js?v=c6535752ac"></script>
-<script defer src="studio/reference-interactions.js?v=c6535752ac"></script>
-<script defer src="studio/comparison-palettes.js?v=c6535752ac"></script>
-<script defer src="studio/unified-designs.js?v=c6535752ac"></script></head>`)
+    .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=ca4b7df020">
+<link rel="stylesheet" href="studio/comparison-design.css?v=ca4b7df020">
+<link rel="stylesheet" href="studio/unified-designs.css?v=ca4b7df020">
+<link rel="stylesheet" href="studio/design-chrome.css?v=ca4b7df020">
+<link rel="stylesheet" href="studio/reference-integration.css?v=ca4b7df020">
+<script defer src="studio/comparison-request.js?v=ca4b7df020"></script>
+<script defer src="studio/variants/eight-references/gallery-ui.js?v=ca4b7df020"></script>
+<script defer src="studio/reference-interactions.js?v=ca4b7df020"></script>
+<script defer src="studio/comparison-palettes.js?v=ca4b7df020"></script>
+<script defer src="studio/unified-designs.js?v=ca4b7df020"></script></head>`)
     .replace(/<body class="([^"]+)">/,`<body class="$1 reference-design" data-fixed-theme="almost-white" style="${approvedThemeStyle}">${navigation}<div data-comparison-site>`)
     .replace('</body>','</div></body>');
   return html;
@@ -81,7 +83,7 @@ export function referenceBlockPage(design,id){
   let block=html.slice(start,end);
   const ids=new Set([...block.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
   block=block.replace(/href="#([^"]+)"/g,(attribute,target)=>ids.has(target)?attribute:
-    `href="${design.file}?v=c6535752ac#${target}" target="_top" data-reference-target="${target}"`);
+    `href="${design.file}?v=ca4b7df020#${target}" target="_top" data-reference-target="${target}"`);
   const dialog=html.match(/<dialog\b[\s\S]*?<\/dialog>/)?.[0]??'';
   return html
     .replace(/<body([^>]*)>[\s\S]*<\/body>/,`<body$1><div class="sheet" data-reference-block-root><main>${block}</main></div>${dialog}</body>`)

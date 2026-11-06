@@ -395,6 +395,24 @@
 }
 
 .block-gallery-intro {max-width:68ch;margin:0 0 20px;line-height:1.6;color:#526c73}
+html:has([data-gallery-list]) {scroll-padding-top:calc(var(--gallery-toolbar-height,84px) + 16px)}
+.block-gallery-selection {position:sticky;top:0;z-index:12;display:flex;align-items:center;gap:16px;padding:10px clamp(16px,4vw,48px);border-block:1px solid #bacac3;background:#f7f7f4;color:#344741;font:400 13px/1.4 Arial,sans-serif}
+.block-gallery-selection label {display:flex;align-items:center;gap:10px;min-width:0}
+.block-gallery-selection select {width:min(260px,100%);min-width:0;min-height:44px;padding:8px 12px;border:1px solid #bacac3;border-radius:8px;background:#fff;color:inherit;font:inherit}
+.block-gallery-selection [role=status] {margin-left:auto;white-space:nowrap}
+.block-gallery-selection button {min-height:44px;padding:8px;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer}
+.block-gallery-selection button:disabled {opacity:.4;cursor:default}
+.block-gallery-selection>a {display:flex;align-items:center;min-height:44px;padding:10px 14px;border-radius:8px;background:#526c73;color:#fff;font-weight:500;text-decoration:none;white-space:nowrap}
+.block-compare-choice .block-compare-actions button {min-height:44px;padding:8px 14px;border:1px solid #526c73;border-radius:8px;background:#fff;color:#344741;font:500 13px/1.4 Arial,sans-serif;cursor:pointer}
+.block-compare-choice .block-compare-actions button[aria-pressed=true] {background:#526c73;color:#fff}
+.block-compare-choice.is-selected>header {border-top:2px solid #526c73}
+@media(max-width:600px){
+ .block-gallery-selection {display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;padding:8px 12px;font-size:12px}
+ .block-gallery-selection label {grid-column:1/-1}
+ .block-gallery-selection select {width:100%}
+ .block-gallery-selection [role=status] {margin:0}
+ .block-gallery-selection>a {padding-inline:10px}
+}
 .block-choice-sources {max-width:90ch;font-size:12px;line-height:1.6;margin-top:6px;color:#526c73}
 html:has(body[data-isolated-block]) {scrollbar-gutter:auto}
 html[data-reference-embedded] {overflow:hidden}

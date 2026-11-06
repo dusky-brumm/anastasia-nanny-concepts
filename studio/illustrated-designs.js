@@ -1,13 +1,13 @@
 import {illustratedTemplates,illustratedLabels} from './illustrated-templates.js';
 import {illustratedAssets} from './illustrated-assets.js';
-import {renderBlock} from './render.js?v=c6535752ac';
-import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=c6535752ac';
+import {renderBlock} from './render.js?v=ca4b7df020';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=ca4b7df020';
 
 export const illustratedDesigns=[
   {mode:'chalk-light',name:'Мелок · Светлая дуга'},
   {mode:'chalk-letter',name:'Мелок · Личное письмо'},
   {mode:'chalk-story',name:'Мелок · Фотоистория'},
-].map((design,index)=>({...design,index,file:`comparison-${design.mode}.html`,single:true,illustrated:true}));
+].map((design,index)=>({...design,index,file:`comparison-${design.mode}.html`,single:true,illustrated:true})).filter(design=>design.mode!=='chalk-story');
 
 const tailLabels={reviews:['Меловые цитаты','Альбом отзывов','Заметки семей'],apply:['Письмо о вашей семье','Открытка с заявкой','Запрос и линия'],footer:['Самолёт на линии','Арка и контакты','Короткий росчерк']};
 export const illustratedBlockLabel=(design,id)=>(illustratedLabels[id]??tailLabels[id])[design.index];
@@ -69,5 +69,5 @@ export function renderIllustratedDesign(design){
 }
 
 export function illustratedStyles(){
-  return `${['header','hero','service','about','process','pricing','site'].map(name=>`<link rel="stylesheet" href="studio/variants/illustrated/${name}.css?v=c6535752ac">`).join('')}<script defer src="studio/illustrated-motion.js?v=c6535752ac"></script>`;
+  return `${['header','hero','service','about','process','pricing','site'].map(name=>`<link rel="stylesheet" href="studio/variants/illustrated/${name}.css?v=ca4b7df020">`).join('')}<script defer src="studio/illustrated-motion.js?v=ca4b7df020"></script>`;
 }

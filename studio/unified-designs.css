@@ -1,18 +1,17 @@
 /* Shared controls live outside each imported page's visual language. */
-.design-version-label {display:flex;align-items:center;gap:10px;font:500 12px/1.4 system-ui,sans-serif}
-.design-version-label select {max-width:230px;width:100%;min-height:40px;border:1px solid #bdc9c1;border-radius:6px;background:#fffefa;color:#29473c;padding:6px 26px 6px 10px;font:400 13px/1.4 system-ui,sans-serif}
-.pencil-comparison .design-version-label {justify-content:center;margin:4px 0}
-.pencil-comparison {min-width:0;max-width:100%;width:100%}
-.pencil-comparison .comparison-disclosure {display:block;width:100%;min-width:0}
-.pencil-comparison .comparison-content {display:grid;grid-template-columns:minmax(0,1fr);width:100%;min-width:0;gap:4px}
-.pencil-comparison :is(.comparison-pairs,.block-compare-actions,.design-version-label) {min-width:0;max-width:100%;width:100%}
-.pencil-comparison .comparison-pairs {scrollbar-width:none}
-@media(min-width:761px){
- .pencil-comparison .comparison-content {grid-template-columns:minmax(0,1fr) auto;grid-template-areas:'picker blocks' 'designs designs';align-items:center;gap:4px 20px}
- .pencil-comparison .design-version-label {grid-area:picker;justify-content:flex-start;margin:0}
- .pencil-comparison .block-compare-actions {grid-area:blocks;justify-content:flex-end}
- .pencil-comparison .comparison-pairs {grid-area:designs}
- .pencil-comparison .comparison-content > :is(.design-version-label,.block-compare-actions) {width:auto}
+html[data-reference-embedded=true] {overflow:hidden;scrollbar-gutter:auto}
+.transplanted-block[id] {width:100%;max-width:none;margin:0;padding:0!important}
+.transplanted-block>iframe {display:block;width:100%;border:0}
+:is(.pencil-comparison,.design-panel) {display:flex;justify-content:center;min-width:0;max-width:100%;width:100%;margin:0;padding:4px 10px;border:0;border-bottom:1px solid #64767930;border-radius:0;background:#f7f7f4;box-shadow:none;font:500 13px/1.4 Arial,sans-serif}
+:is(.pencil-comparison,.design-panel) .comparison-pairs {display:flex;flex-wrap:nowrap;gap:6px;width:max-content;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:none;padding:3px}
+:is(.pencil-comparison,.design-panel) .comparison-pairs::-webkit-scrollbar {display:none}
+:is(.pencil-comparison,.design-panel) .comparison-pairs a {display:grid;place-items:center;flex:0 0 auto;min-width:44px;min-height:40px;padding:6px 10px;border:1px solid #64767935;border-radius:8px;color:#344741;font:inherit;text-decoration:none;white-space:nowrap}
+:is(.pencil-comparison,.design-panel) .comparison-pairs a:hover {background:#e6ece8}
+:is(.pencil-comparison,.design-panel) .comparison-pairs a[aria-current] {background:#526c73;border-color:#526c73;color:#fff}
+:is(.pencil-comparison,.design-panel) .comparison-pairs a:focus-visible {outline:2px solid #344741;outline-offset:1px}
+:is(.pencil-comparison,.design-panel) .comparison-pairs .block-compare-link {margin-left:8px;border-color:transparent;font-size:12px}
+@media(max-width:760px){
+ :is(.pencil-comparison,.design-panel) .comparison-pairs a {min-height:44px}
 }
 .imported-design {--paper:#fcfcfa;--wash:#e7f1f6;--soft:#e8efe4;--ink:#28382d;--accent:#385a6b;--button:#385a6b;--blue:var(--wash);--milk:var(--paper);--sage:var(--soft);--white:var(--paper);--muted:var(--ink);--rule:color-mix(in srgb,var(--accent) 30%,transparent);--display:'Lora',Georgia,serif;--body:'Golos Text',Arial,sans-serif;--wine:var(--accent);--content-width:1120px;width:100%;max-width:none;margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--body);isolation:isolate}
 .imported-design * {min-width:0}
@@ -59,9 +58,6 @@ body[data-fixed-theme=almost-white] :is(.site-preview,.imported-design) #pricing
 body[data-fixed-theme=almost-white] :is(.site-preview,.imported-design) #footer {background:var(--soft)}
 body[data-fixed-theme=almost-white] :is(.site-preview,.imported-design) #apply {background:var(--paper)}
 @media (max-width:760px) {
- .design-panel {flex-wrap:wrap;gap:8px}
- .design-version-label {max-width:100%;flex:1 1 180px}
- .design-version-label select {max-width:100%}
  .imported-design .header-inner {flex-wrap:wrap}
  .imported-design #chalk-site-directions .lead {padding-block:36px}
  .imported-journal {padding:0}

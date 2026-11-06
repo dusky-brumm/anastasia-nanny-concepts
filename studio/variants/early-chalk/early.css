@@ -48,6 +48,86 @@
 .early-design .s-review blockquote {font-size:22px;line-height:1.55}
 .early-design .early-apply-picture {width:155px;height:108px;margin:22px 0 6px}
 .early-design .early-footer-picture {width:220px;height:58px;justify-self:center}
+/* The chosen classic composition: open service notes, chalk controls and white highlights. */
+.early-classic .classic-service {grid-column:1/-1}
+.early-classic .classic-service-heading {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:end;gap:36px}
+.early-classic .classic-service-kicker {margin-bottom:18px;color:var(--early-blue);font:500 12px/1.5 var(--body);letter-spacing:.1em;text-transform:uppercase}
+.early-classic .classic-service h2 {max-width:19ch;margin:0;text-wrap:balance}
+.early-classic .classic-service-heading>p {max-width:39ch;margin:0 0 4px;font-size:17px;line-height:1.65}
+.early-classic .classic-service-details {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(26px,4cqw,52px);margin-top:40px}
+.early-classic .classic-service-details article {min-width:0}
+.early-classic .classic-service-picture {width:112px;height:94px;margin-bottom:22px}
+.early-classic .classic-service h3 {margin:0 0 12px;font:500 clamp(21px,2.3cqw,25px)/1.3 var(--heading);letter-spacing:-.025em}
+.early-classic .classic-service-details p {max-width:34ch;font-size:15px;line-height:1.7}
+.early-classic .classic-service-note {position:relative;display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:34px;padding-top:24px}
+.early-classic .classic-service-note::before {content:'';position:absolute;inset:0 0 auto;height:9px;background:var(--accent);mask:url('../../pencil-rule.svg') center/100% 100% no-repeat;opacity:.55;pointer-events:none}
+.early-classic .classic-service-note p {max-width:48ch;font-size:15px;line-height:1.6}
+.early-classic .classic-service-note a {flex-shrink:0;font-size:14px}
+.early-classic .s-about-dots button::before {width:16px;height:16px;border-radius:0;background:transparent url('../../media/classic-chalk-ui/dot.webp') center/150% 150% no-repeat;opacity:.35;transition:opacity .2s,transform .2s}
+.early-classic .s-about-dots button[aria-current=true]::before {width:20px;height:20px;background-color:transparent;opacity:1;transform:rotate(-9deg)}
+.early-classic .s-about-dots button:nth-child(2)::before {transform:rotate(55deg)}
+.early-classic .s-about-dots button:nth-child(3)::before {transform:rotate(110deg)}
+.early-classic .s-about-dots button:nth-child(4)::before {transform:rotate(175deg)}
+.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review {padding:8px 0 0}
+.early-classic .s-review blockquote {position:relative;isolation:isolate;padding:26px 30px}
+.early-classic .s-review blockquote::before {content:'';position:absolute;z-index:-1;inset:0;background:url('../../media/classic-chalk-ui/quote-highlight.webp') center/100% 100% no-repeat;pointer-events:none}
+.early-classic .s-review:nth-child(2) blockquote::before {transform:scaleX(-1)}
+.early-classic .early-quote {margin:0 0 10px 25px}
+.site-preview.early-classic .s-reviews [data-open-quotes] .s-review footer {padding:20px 26px 0}
+.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button {width:54px;height:44px;border:0;border-radius:0;background:transparent;padding:0}
+.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button:hover:not(:disabled) {background:transparent;transform:rotate(-4deg)}
+.early-classic .classic-quote-arrow {display:block;width:54px;height:44px;background:url('../../media/classic-chalk-ui/arrow-right.webp') center/100% 100% no-repeat}
+.early-classic [data-quote-step='-1'] .classic-quote-arrow {transform:scaleX(-1)}
+.site-preview.early-classic .s-apply .s-form-pencil {grid-template-columns:minmax(0,1fr);gap:20px;padding:28px 30px;background:var(--paper);border-radius:4px;box-shadow:none}
+.early-classic .s-form-pencil::before {mask-image:url('../../pencil-frame-neat.svg');opacity:.75}
+.site-preview.early-classic .s-apply .s-form-pencil :is(input,textarea) {background-image:url('../../pencil-frame-neat.svg')}
+.site-preview.early-classic .s-button::before {mask-image:url('../../pencil-button.svg')}
+.early-classic .s-form-pencil>label {gap:10px}
+.early-classic .s-form-pencil input {min-height:52px}
+/* Variant 5.5 combines the classic artwork with the curved arrows from design 5. */
+.early-classic .classic-arrow-route {margin:0}
+.early-classic .classic-arrow-route .s-study-steps li {grid-template-rows:94px 128px auto 1fr;position:relative;padding:0 10px}
+.early-classic .classic-arrow-route .s-study-copy {display:contents}
+.early-classic .classic-arrow-route .early-step-picture {grid-column:1;grid-row:1;width:100%;height:94px;margin:0}
+.early-classic .classic-arrow-route li:nth-child(n) .s-study-number {grid-column:1;grid-row:2;transform:none}
+.early-classic .classic-arrow-route h3 {grid-column:1;grid-row:3;margin:0 0 10px;padding-top:18px}
+.early-classic .classic-arrow-route p {grid-column:1;grid-row:4}
+.early-classic .classic-arrow-lines {position:absolute;inset:94px 0 auto;width:100%;height:128px;pointer-events:none;overflow:visible}
+.early-classic :is(.classic-arrow-lines,.classic-arrow-mobile) path {fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.early-classic .classic-arrow-mobile {display:none;pointer-events:none}
+@container(max-width:760px){
+ .early-classic .classic-arrow-route .classic-arrow-lines {display:none}
+ .early-classic .classic-arrow-route .s-study-steps li {grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto;gap:14px;padding:0 0 32px}
+ .early-classic .classic-arrow-route .s-study-steps li:last-child {padding-bottom:0}
+ .early-classic .classic-arrow-route .s-study-steps li::before {display:none}
+ .early-classic .classic-arrow-route .s-study-copy {display:block;grid-column:2;grid-row:1;padding:0}
+ .early-classic .classic-arrow-route li:nth-child(n) .s-study-number {grid-column:1;grid-row:1;align-self:start}
+ .early-classic .classic-arrow-route .early-step-picture {float:right;width:80px;height:66px;margin:0 0 10px 14px}
+ .early-classic .classic-arrow-route h3 {padding-top:4px;margin:0 0 10px}
+ .early-classic .classic-arrow-route .classic-arrow-mobile {display:block;position:absolute;left:-7px;top:40px;width:46px;height:calc(100% - 44px);overflow:visible}
+}
+@container(max-width:480px){
+ .early-classic .classic-arrow-route .s-study-copy {display:grid;grid-template-columns:minmax(0,1fr) 72px;grid-template-areas:'title picture' 'copy copy';gap:10px 12px}
+ .early-classic .classic-arrow-route .early-step-picture {grid-area:picture;float:none;width:72px;height:64px;margin:0}
+ .early-classic .classic-arrow-route h3 {grid-area:title;align-self:center;padding:0;margin:0}
+ .early-classic .classic-arrow-route p {grid-area:copy}
+ .early-classic .classic-arrow-route li:nth-child(n) .s-study-number {margin-top:16px}
+ .early-classic .classic-arrow-route .classic-arrow-mobile {top:58px;height:calc(100% - 62px)}
+}
+@container(max-width:760px){
+ .early-classic .classic-service-heading {grid-template-columns:1fr;gap:22px}
+ .early-classic .classic-service-heading>p {font-size:16px}
+ .early-classic .classic-service-details {grid-template-columns:1fr;gap:26px;margin-top:32px}
+ .early-classic .classic-service-details article {display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px 20px}
+ .early-classic .classic-service-picture {grid-row:1;width:72px;height:64px;margin:0}
+ .early-classic .classic-service h3 {align-self:center;font-size:21px;margin:0}
+ .early-classic .classic-service-details p {grid-column:1/-1;max-width:none;font-size:15px}
+ .early-classic .classic-service-note {display:block;margin-top:28px}
+ .early-classic .classic-service-note a {margin-top:15px}
+ .early-classic .s-review blockquote {padding:26px 24px}
+ .site-preview.early-classic .s-reviews [data-open-quotes] .s-review footer {padding:18px 20px 0}
+ .site-preview.early-classic .s-apply .s-form-pencil {padding:24px 22px}
+}
 .early-design .early-reveal {clip-path:inset(-8% 108% -8% -8%)}
 .early-design .early-reveal.is-visible {animation:early-chalk-line .85s cubic-bezier(.22,.7,.35,1) both}
 .early-design .early-chalk:not(.early-reveal).is-visible {animation:early-chalk-settle .35s ease-out both}

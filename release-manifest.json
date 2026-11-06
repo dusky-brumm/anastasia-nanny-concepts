@@ -1,6 +1,6 @@
 {
-  "build": "0da2c899b1",
-  "base_commit": "41757549ccf1f3465e65adb04e2dc02d71fce8ff",
+  "build": "08b62ba700",
+  "base_commit": "1128da4d382d309c1b7af4895fff03032095dc51",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,11 +23,9 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Three completed illustrated designs: Chalk Light, Chalk Letter and Chalk Story, with all 28 chalk illustrations",
-    "All 27 distinct illustrated blocks available across the nine galleries and mixed assembly",
-    "Completed typography, spacing, portrait, route and mobile refinements from the Accents chat",
-    "Keep backgrounds full width while preserving centered content containers",
-    "Consolidate prior full-width release metadata and latest chat checkpoints"
+    "Focused unslop polish of design 11 hero and service; existing sections, copy, photos, palette and transferred blocks retained.",
+    "Readable hero typography and actions, consistent service spacing and caption sizes, pencil-rule interview sample; same improvements in galleries and mixed assemblies.",
+    "Consolidated metadata from ca4b7df020 overlay; all previous design retirement and selection decisions retained."
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -39,7 +37,7 @@
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4",
-    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1ad1c-c7b7-7800-9bf6-9279d9c43095",
+    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1b01d-8382-7cd1-ac88-d85451d5f532",
     "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
     "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
     "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1ac05-116f-7370-9629-445830e5052d"
@@ -243,6 +241,84 @@
       "artwork_count": 28,
       "completed_source_commit": "41757549ccf1f3465e65adb04e2dc02d71fce8ff",
       "chat_checkpoint": "01a1ad1c-c7b7-7800-9bf6-9279d9c43095"
+    },
+    "accents-design-refinement-20261106": {
+      "path": "C:/Users/Нат/Documents/ChatGPT/Anastasia/sites/nastya-chalk-release-20261105",
+      "commit": "de18ad706d182881c22df1e32b844df17e0680ba",
+      "source_chat": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "source_turn": "01a1adb8-d08d-76d2-8bef-403db166d12b",
+      "completed_turns": [
+        "01a1ad91-0b7f-7892-a799-729a91cad082",
+        "01a1adb1-16fc-76d3-9c92-09b02879ce22",
+        "01a1adb8-d08d-76d2-8bef-403db166d12b"
+      ],
+      "sha256_binary": {
+        "scripts/build-reference.mjs": "ef78d13fa7f2975117e5214f5de713bcefa1304ff59d0bb6254ee8cf48120dc3",
+        "scripts/check-reference.mjs": "c48447fc6a02ccaca929be7046c307996ac0eb4b74748676d23b11f67bb5a642",
+        "scripts/tests/studio.test.mjs": "b2144fe060344a6e16c11aef95a8cbe11efbd7fa62ebf61f51e2e801cf0b85f0",
+        "src/reference/studio/additional-designs.js": "c6d90e0e313338f2633fbdac42bfe156e569fd3d2df4450e4b5ce300a57c081e",
+        "src/reference/studio/clear-sections.css": "bf2029885c218269b41727210b4ef958116ad182d837bca4bc26935e58debb98",
+        "src/reference/studio/comparison-design.css": "a6c6fb861a2b4d574807365ead0ffa21a218cb692ab0854fadc15128e02d7a1a",
+        "src/reference/studio/comparison-palettes.js": "b54f7b942ca0834556f12c2889ee233afd2452366b749afe75d4b085d0935246",
+        "src/reference/studio/comparison-sections.css": "82210f66360184625824a0b56c05a01bcba624724e09172911b3f09a41a5a367",
+        "src/reference/studio/contour-design.css": "6f059873a1bdf8c2d069b09dadfe2ece8b02e595a1d9480658f438606929e17b",
+        "src/reference/studio/design-chrome.css": "4c3bd5bdaf9a3d786b7924387449a3ff4298de178958cf826d7b048800b614d1",
+        "src/reference/studio/early-designs.js": "a8a5c4a83161da9c3ca6912784a7a060e96f989dc74836364689981b8354254c",
+        "src/reference/studio/early-motion.js": "dde19cdadedf163cb39694e6267387e2d42b9d7bbf6189abd0dd00a24c517707",
+        "src/reference/studio/illustrated-designs.js": "c71043d1e696f1313e804dfb9b4d2f5c89ae12cb029daea2af7b9b7d6ff24d80",
+        "src/reference/studio/illustrated-motion.js": "123cf414a4fa0465fbc5f0d21cd467fb2a65f9d9df2e14f5bc6f03f07de4b533",
+        "src/reference/studio/pages.js": "14a5b9d2c44f33b25ac46b9b8b9b25fbc5d51295498725faea39a2d14f2468f5",
+        "src/reference/studio/pencil-preview.css": "100ace616734f921d0239359e8831d2f5b42887ef5b8a349a7dc724bcabcaba1",
+        "src/reference/studio/reference-designs.js": "494ee2b7093d32ce9b10e258fbcb126cd58b7479015bdf6bd3b2c4143ef96f4c",
+        "src/reference/studio/reference-frames.js": "bdacfb7f72d486d2a9668dfbc373fc2461ec2bc6054a159bfea4c991b5168f6e",
+        "src/reference/studio/reference-integration.css": "de78f86e8ff8c355e08d5fcd590cd40325b050dc528b7122bd5ab071c77aee13",
+        "src/reference/studio/request-ui.js": "77804e5aa23c9fc2199d63ad4e8a4767d10b47db465c5864846693baeac4efd7",
+        "src/reference/studio/site.css": "96a7bc9c802ec4c013be51818e454d01ccb54d631888fbf3aaa76553c9b1887b",
+        "src/reference/studio/unified-designs.css": "ed1e7f8b3ce061bb391630a1d46b7602be36f4a60b87ce136ad1ef9a89526a3f",
+        "src/reference/studio/variants/chalk/chalk.css": "2efaaf178285c8923c7736551266989849a917621e13e9614c7602b1553d4348",
+        "src/reference/studio/variants/early-chalk/early.css": "e8e8951ad2697a40e54eaf78448190792feb4e749365c17d7387fe08a71bc652",
+        "src/reference/studio/variants/editorial-new/editorial.css": "f443b79a6888ec7743736a1e3c4ed2c02b0ee7f92e436f7c0673e898d71a920d",
+        "src/reference/studio/variants/fotoalbum/album.css": "ea261e36126f794f273ba1f68eb89aa86861bcff633a02a1a296c1345a8e7682",
+        "src/reference/studio/variants/illustrated/header.css": "077fe0e3ae02820f4ac2158b8fe69dbb002f9f3c3d16d5ad5b595d2dda1d7e4b",
+        "src/reference/studio/variants/illustrated/site.css": "78b2c51dd86e7359999b45dc1e47e9dfb0dbdd28f6ac53c59b73665c968b4941"
+      }
+    },
+    "accents-block-selection-20261106": {
+      "path": "C:/Users/Нат/Documents/ChatGPT/Anastasia/sites/nastya-chalk-release-20261105",
+      "commit": "1128da4d382d309c1b7af4895fff03032095dc51",
+      "source_chat": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "source_turn": "01a1b01d-8382-7cd1-ac88-d85451d5f532",
+      "completed_turns": [
+        "01a1afd1-3bce-71f0-bffe-78b2a9a168ea",
+        "01a1afdd-a845-74c0-b64b-f7d497953c22",
+        "01a1aff4-8dd3-79c1-b489-5ab293ec2038",
+        "01a1affa-f2a1-7973-8758-e131bfe874f9",
+        "01a1b00b-3d6f-7d92-9287-ff0d5d0a8897",
+        "01a1b01d-8382-7cd1-ac88-d85451d5f532"
+      ],
+      "sha256_binary": {
+        "scripts/build-reference.mjs": "7253442297c3cad18b5ab4850707f32bc65720db55f6ecce4eef0a825cfc43c0",
+        "scripts/tests/studio.test.mjs": "d4160ea93292095e5a8d1641dcb2c9d5360f8f05a868af4d0af0dd19d9a7ef9c",
+        "src/reference/journeys.js": "8eeca36c430c49cc668181c68c12dc4062ca01c8a41a2ee354379a8146da65ff",
+        "src/reference/studio/additional-designs.js": "3d81b180cfec19c54ae0233accb878dd0e2d7c874475a3bd8f56070bb7a4504d",
+        "src/reference/studio/comparison-assembly.js": "6b723fe0b711062f4f92e07f24ba5fc55f3dfad41dcc23f12adb29de5fd268f2",
+        "src/reference/studio/comparison-design.css": "c4e964e06a5149aea242dd0057dffdc1c299f3f4afe9a2290c3f09451fda3209",
+        "src/reference/studio/comparison-palettes.js": "531943ddc85ed74c844458fbe8d35f33c3096d967eb77ab155f91ff2d31474a1",
+        "src/reference/studio/comparison-sections.css": "27766651737119edb7307354cf24ab69c82f0819457e8acb467bb4f895b6736b",
+        "src/reference/studio/early-designs.js": "0ce27afb2fe6736a8b04a3a2b0205d2bbcabc68d94c1ffb38e96933f4410cdd3",
+        "src/reference/studio/illustrated-designs.js": "d66ac8e4c667221e69e86cf6e5887b5a5020c66deb19017e1edf6dbd66552855",
+        "src/reference/studio/media/classic-chalk-ui/arrow-right.webp": "8cb5ae1dd62ea58f01f80b160d320ffabbf344d6aac353d98801d2ae058a2226",
+        "src/reference/studio/media/classic-chalk-ui/dot.webp": "4daab1b6305378b97eca0f94e807791f036d1d59bdde7d747041bf950418bcf9",
+        "src/reference/studio/media/classic-chalk-ui/quote-highlight.webp": "454c294471498dc9838fa02807c6bb82f2e17fd527b1db82be25df1232f39995",
+        "src/reference/studio/pages.js": "fa04b0f86c1551944601e35f5cf7702b6197e6338b47be0cf3cdf474c1114e4e",
+        "src/reference/studio/pencil-button.svg": "ec92c57c1bf9eb5350137d9dc5e39bd840be4fc7b03da65e4eef74e59c3e9004",
+        "src/reference/studio/pencil-frame-neat.svg": "cb14ae755feec13a78cee51a407fe023b4809f9d633dfc8dcfbe7dc7632c01ee",
+        "src/reference/studio/reference-designs.js": "ea39b3866d5d981d76165f7e0c1e3e46653705c8220e1fdc51696757d711bbb9",
+        "src/reference/studio/reference-frames.js": "2bd62f91de61b82ecf73c03a744cd7cce768a7e734fe8751cbb8c566b969ce7d",
+        "src/reference/studio/unified-designs.css": "b58e4c3031d3283ec6c6c99bfe823ba9189ab84ad5e556bdfaa531578cfcca25",
+        "src/reference/studio/unified-designs.js": "f19fff1b424b94bfff29e4001d592487451082b463c107640a560a1c761167d9",
+        "src/reference/studio/variants/early-chalk/early.css": "e0b2930612c65226fb724cf1097b7c3adde96d2cc710d6779d4fa16ae0b66317"
+      }
     }
   },
   "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched.",
@@ -278,27 +354,30 @@
       "reference-04-leyla",
       "reference-06-maren",
       "reference-07-marina",
-      "reference-08-elena"
-    ],
-    "retained_reference_modes": [
+      "reference-08-elena",
+      "chalk-story",
+      "editorial-new",
+      "chalk-album",
+      "chalk-route",
       "reference-02-elliot",
       "reference-05-yoga"
     ],
-    "retirement_policy": "Do not restore explicitly retired designs or their reference block previews from other sources. Preserve the separately approved forms from designs 4 and 6.",
+    "retained_reference_modes": [],
+    "retirement_policy": "Retire full designs 10 and 12–16 under the November 6 numbering. Do not restore their cancelled blocks, except the three explicit block transfers into designs 7 and 11. Preserve the separately approved drawn forms from older designs 4 and 6.",
     "block_comparison": {
       "mode": "all-stacked",
       "pair_controls": false,
       "entry": "hero",
       "counts": {
-        "header": 4,
-        "hero": 14,
-        "service": 12,
-        "about": 10,
+        "header": 5,
+        "hero": 10,
+        "service": 9,
+        "about": 9,
         "process": 9,
-        "pricing": 6,
-        "reviews": 9,
-        "apply": 9,
-        "footer": 7
+        "pricing": 5,
+        "reviews": 8,
+        "apply": 8,
+        "footer": 6
       },
       "design_coverage": {
         "comparison-current": {
@@ -356,6 +435,28 @@
           "apply": "comparison-thread",
           "footer": "comparison-thread"
         },
+        "early-classic": {
+          "header": "early-classic",
+          "hero": "early-classic",
+          "service": "early-classic",
+          "about": "early-classic",
+          "process": "early-classic",
+          "pricing": "early-classic",
+          "reviews": "early-classic",
+          "apply": "early-classic",
+          "footer": "early-classic"
+        },
+        "early-personal": {
+          "header": "early-personal",
+          "hero": "early-personal",
+          "service": "early-personal",
+          "about": "early-personal",
+          "process": "early-personal",
+          "pricing": "early-personal",
+          "reviews": "early-personal",
+          "apply": "early-personal",
+          "footer": "early-personal"
+        },
         "chalk-light": {
           "header": "chalk-light",
           "hero": "chalk-light",
@@ -378,82 +479,27 @@
           "apply": "chalk-letter",
           "footer": "chalk-letter"
         },
-        "chalk-story": {
-          "header": "chalk-story",
-          "hero": "chalk-story",
-          "service": "chalk-story",
-          "about": "chalk-story",
-          "process": "chalk-story",
-          "pricing": "chalk-story",
-          "reviews": "chalk-story",
-          "apply": "chalk-story",
-          "footer": "chalk-story"
-        },
         "fotoalbum": {
           "header": "quiet",
           "hero": "fotoalbum",
           "service": "fotoalbum",
           "about": "quiet",
-          "process": "reference",
-          "pricing": "quiet",
-          "reviews": "letter",
-          "apply": "letter",
-          "footer": "quiet"
-        },
-        "editorial-new": {
-          "header": "quiet",
-          "hero": "editorial-new",
-          "service": "editorial-new",
-          "about": "quiet",
-          "process": "reference",
-          "pricing": "quiet",
-          "reviews": "letter",
-          "apply": "letter",
-          "footer": "quiet"
-        },
-        "chalk-album": {
-          "header": "quiet",
-          "hero": "chalk-album",
-          "service": "chalk-album",
-          "about": "quiet",
-          "process": "reference",
-          "pricing": "quiet",
-          "reviews": "letter",
-          "apply": "letter",
-          "footer": "comparison-thread"
-        },
-        "chalk-route": {
-          "header": "quiet",
-          "hero": "chalk-route",
-          "service": "chalk-album",
-          "about": "quiet",
           "process": "route",
           "pricing": "quiet",
           "reviews": "letter",
           "apply": "letter",
-          "footer": "comparison-thread"
+          "footer": "quiet"
         },
-        "reference-02-elliot": {
-          "header": "quiet",
-          "hero": "reference-02-elliot",
-          "service": "reference-02-elliot",
-          "about": "reference-02-elliot",
-          "process": "reference-02-elliot",
-          "pricing": "reference-02-elliot",
-          "reviews": "reference-02-elliot",
-          "apply": "reference-02-elliot",
-          "footer": "reference-02-elliot"
-        },
-        "reference-05-yoga": {
-          "header": "quiet",
-          "hero": "reference-05-yoga",
-          "service": "reference-05-yoga",
-          "about": "reference-05-yoga",
-          "process": "reference-05-yoga",
-          "pricing": "reference-05-yoga",
-          "reviews": "reference-05-yoga",
-          "apply": "reference-05-yoga",
-          "footer": "reference-05-yoga"
+        "early-classic-arrows": {
+          "header": "early-classic",
+          "hero": "early-classic",
+          "service": "early-classic",
+          "about": "early-classic",
+          "process": "early-classic-arrows",
+          "pricing": "early-classic",
+          "reviews": "early-classic",
+          "apply": "early-classic",
+          "footer": "early-classic"
         }
       },
       "old_form_aliases": {
@@ -461,14 +507,183 @@
         "route": "air",
         "reference": "album"
       },
-      "design_count": 14,
-      "total_choices": 80
+      "design_count": 11,
+      "total_choices": 69,
+      "choice_aliases": {
+        "apply": {
+          "quiet": "album",
+          "route": "air",
+          "reference": "album",
+          "comparison-current": "letter",
+          "pencil": "letter",
+          "comparison-route": "air",
+          "comparison-reference": "album",
+          "fotoalbum": "letter",
+          "early-classic-arrows": "early-classic"
+        },
+        "header": {
+          "comparison-current": "quiet",
+          "pencil": "quiet",
+          "comparison-route": "quiet",
+          "comparison-reference": "quiet",
+          "comparison-thread": "quiet",
+          "fotoalbum": "quiet",
+          "early-classic-arrows": "early-classic"
+        },
+        "hero": {
+          "comparison-current": "quiet",
+          "early-classic-arrows": "early-classic"
+        },
+        "service": {
+          "comparison-current": "quiet",
+          "pencil": "letter",
+          "comparison-route": "quiet",
+          "comparison-reference": "letter",
+          "early-classic-arrows": "early-classic"
+        },
+        "about": {
+          "comparison-current": "quiet",
+          "pencil": "letter",
+          "comparison-route": "reference",
+          "comparison-reference": "quiet",
+          "fotoalbum": "quiet",
+          "early-classic-arrows": "early-classic"
+        },
+        "process": {
+          "comparison-current": "air",
+          "pencil": "air",
+          "comparison-route": "route",
+          "comparison-reference": "reference",
+          "fotoalbum": "route"
+        },
+        "pricing": {
+          "comparison-current": "quiet",
+          "pencil": "quiet",
+          "comparison-route": "quiet",
+          "comparison-reference": "quiet",
+          "comparison-thread": "quiet",
+          "fotoalbum": "quiet",
+          "early-classic-arrows": "early-classic"
+        },
+        "reviews": {
+          "comparison-current": "quiet",
+          "pencil": "letter",
+          "comparison-route": "quiet",
+          "comparison-reference": "quiet",
+          "fotoalbum": "letter",
+          "early-classic-arrows": "early-classic"
+        },
+        "footer": {
+          "comparison-current": "quiet",
+          "pencil": "quiet",
+          "comparison-route": "quiet",
+          "comparison-reference": "quiet",
+          "fotoalbum": "quiet",
+          "early-classic-arrows": "early-classic"
+        }
+      },
+      "persistent_selection": "Choose block in each gallery; keep choices across sections and sessions; My assembly and shared links."
     },
     "full_width_layout": {
       "background": "viewport width",
       "content_max_width_px": 1120,
       "yoga_portrait": "inside content container",
-      "illustrated": "Full viewport backgrounds; scene width up to 1120px, inset content 1024px"
+      "illustrated": "Full viewport section backgrounds; centered content up to 1120px; approved blue service/reviews and green process/footer sections."
+    },
+    "numbered_switcher": {
+      "mode": "always-open horizontal numbered buttons",
+      "numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "5.5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "11"
+      ],
+      "map": {
+        "1": "comparison-current",
+        "2": "pencil",
+        "3": "comparison-route",
+        "4": "comparison-reference",
+        "5": "comparison-thread",
+        "6": "early-classic",
+        "7": "early-personal",
+        "8": "chalk-light",
+        "9": "chalk-letter",
+        "11": "fotoalbum",
+        "5.5": "early-classic-arrows"
+      },
+      "retired_numbers": [
+        "10",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "preserve_section": true,
+      "source_turn": "01a1afd1-3bce-71f0-bffe-78b2a9a168ea"
+    },
+    "block_transfers": [
+      {
+        "source": "editorial-new",
+        "destination": "early-personal",
+        "block": "hero",
+        "file": "retained-editorial-hero-for-personal.html"
+      },
+      {
+        "source": "reference-02-elliot",
+        "destination": "fotoalbum",
+        "block": "hero",
+        "file": "retained-elliot-hero-for-fotoalbum.html"
+      },
+      {
+        "source": "chalk-route",
+        "destination": "fotoalbum",
+        "block": "process",
+        "file": "retained-route-process-for-fotoalbum.html"
+      }
+    ],
+    "classic_changes": {
+      "mode": "early-classic",
+      "number": "6",
+      "service": "Replace the family-interview block with three illustrated service points per the later explicit user request.",
+      "form": "Drawn form 3 with neater pencil borders and the same neat outline as the hero button.",
+      "reviews": "Chalk dots and arrows, white quote highlight on blue background."
+    },
+    "inserted_design": {
+      "number": "5.5",
+      "mode": "early-classic-arrows",
+      "base": "early-classic",
+      "process": "How selection works: images and colors from 6, textured arrows from 5, no extra intro text."
+    },
+    "unslop_fotoalbum": {
+      "date": "2026-11-07",
+      "request": "Try https://github.com/heydamir/unslop",
+      "scope": [
+        "fotoalbum.hero",
+        "fotoalbum.service"
+      ],
+      "mode": "polish",
+      "preserved": [
+        "approved-theme",
+        "all-section-order",
+        "selected-transfers",
+        "photos",
+        "drawings",
+        "block-identifiers",
+        "pricing",
+        "reviews",
+        "form"
+      ],
+      "methodology": "unslop by Damir Sokolovsky, CC BY 4.0; https://github.com/heydamir/unslop",
+      "note": "User-requested blue and green gradients, serif type and hand-drawn signature override generic removal rules.",
+      "build": "08b62ba700"
     }
   },
   "reviewed_decisions": {
@@ -477,52 +692,47 @@
     "header": "Anastasia Doronina · Individual nanny selection, uniform uppercase lettering; Telegram and Instagram before service menu; collapse on mobile",
     "content": "Remove repeated hero labels; preserve current section when switching designs; underline only спокойно; white photo frames",
     "current_chat_overrides": "Four-frame About without heading; reviews without family stories; textured thin form lines and pencil button; only improved designs where paired",
-    "reference_compositions": "The later eight-reference request retains each full native composition and section order; shared controls/content adapted without replacing designs with one template",
+    "reference_compositions": "Complete reference layouts are retired; keep only the Elliot hero inside design 11.",
     "full_width_reference_backgrounds": "Explicit user request, 5 November: new design backgrounds extend across the full viewport like the first designs",
     "reference_block_comparison": "Explicit user request: add blocks from the new versions to comparison; include the first screen and retain existing choices",
     "legacy_pricing": "User explicitly rejected the six old price layouts through the two-panel option; replace them with one compact explanation and three equal conditions, preserving the eight new designs",
     "retired_designs": "Explicit user request: completely withdraw full designs 3, 4 and 6; keep form block layouts from improved designs 4 and 6 with drawn outlines",
-    "retired_named_designs": "User named Плавный контур, Семейный журнал, Кремовая дуга, Jenny, Josephine, Leyla, Maren, Марина, Елена for removal. Exact-title match removes comparison-contour; optional question about similarly named Yoga remains unanswered, so Yoga is retained pending explicit clarification.",
-    "complete_block_catalog": "Latest explicit request: show saved historical blocks and each distinct block from every currently retained full design, without duplicates or pair mode. Include hero and header. Keep prior removals."
+    "retired_named_designs": "November 6 explicitly removed numbered designs 10 and 12-16, including Yoga 16 and Elliot 15; this overrides the earlier optional Yoga clarification. Three explicitly transferred blocks survive inside designs 7 and 11.",
+    "complete_block_catalog": "Latest request on November 6: 69 unique options covering all nine sections, current complete designs and retained historical choices; select across galleries, persist in browser storage and share mixed assembly. No pair mode.",
+    "latest_classic_service": "The later explicit request rejects the family-interview block in design 6; use its completed illustrated service replacement.",
+    "latest_switcher": "Stable numbered horizontal strip; 5.5 between 5 and 6; preserve remaining numbers and current section."
   },
   "validation": {
     "build": "passed",
-    "static": "passed",
-    "tests": "27/27",
-    "browser": {
-      "source_refinement_report": "artifacts/chalk-refinement-20261106/review.html",
-      "viewports": [
-        1920,
-        390
-      ],
-      "all_three_backgrounds_fill_viewport": true,
-      "content_scene_max_width": 1120,
-      "green_footers": true,
-      "horizontal_overflow": false,
-      "console_errors": 0,
-      "new_hero_choices_visible": true,
-      "proof": "artifacts/chalk-release-0da2c899b1/desktop.png"
-    }
+    "static_checks": "passed",
+    "seo": "passed",
+    "tests": {
+      "passed": 30,
+      "failed": 0
+    },
+    "responsive_widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "horizontal_overflow": false,
+    "gallery_and_assembly": "passed; selection persists, 9 sections, updated isolated hero and service",
+    "browser_errors": 0,
+    "designs": 11,
+    "unique_block_choices": 69,
+    "browser": "separate headless Chromium; in-app browser plugin unavailable"
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "71b1cdab93",
-  "pending_changes": [
-    {
-      "thread_id": "01a1ac09-bafe-7330-b307-286bdd0fd74a",
-      "turn_id": "01a1ac0a-87c4-7d50-9ef7-12697370a9b1",
-      "status": "unfinished",
-      "reason": "Model capacity error interrupted portrait and mobile QA; no completed final answer",
-      "checkout": "sites/nastya-unified-20261105",
-      "files": [
-        "src/reference/studio/paper-chalk.js",
-        "src/reference/studio/paper-chalk.css",
-        "src/reference/studio/pages.js",
-        "src/reference/studio/design-blocks.js",
-        "scripts/tests/studio.test.mjs"
-      ]
-    }
-  ]
+  "previous_confirmed_build": "ca4b7df020",
+  "pending_changes": [],
+  "source_commit": null,
+  "deployment": {
+    "status": "prepared",
+    "previous_sites_version": 81,
+    "release_record": "artifacts/release-08b62ba700.json"
+  }
 }

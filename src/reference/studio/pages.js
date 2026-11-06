@@ -285,6 +285,7 @@ ${comparing||blockCompare||assembling?'<link rel="stylesheet" href="studio/penci
 <link rel="stylesheet" href="studio/clear-sections.css?v=__VERSION__">
 <link rel="stylesheet" href="studio/unified-designs.css?v=__VERSION__"><script defer src="studio/unified-designs.js?v=__VERSION__"></script>
 <link rel="stylesheet" href="studio/design-chrome.css?v=__VERSION__">
+${design?.mode==='fotoalbum'?'<link rel="stylesheet" href="studio/fotoalbum-polish.css?v=__VERSION__">':''}
 ${design?.illustrated?illustratedStyles():''}
 ${design?.early?earlyStyles():''}
 ${contourDirection?'<link rel="stylesheet" href="studio/contour-design.css?v=__VERSION__"><script defer src="studio/contour-motion.js?v=__VERSION__"></script>':''}
@@ -305,6 +306,10 @@ export const transferredBlockPages=blockTransfers.map(transfer=>{
     :designBlockPage(source,transfer.block,studioPage(source.mode,'hero',source.file,source));
   html=html.replaceAll(source.file,preferredDesignFile(destination))
     .replace(/<link rel="canonical"[^>]+>/,utilityIndexingTags(transfer.file).match(/<link[^>]+>/)[0]);
+  if(transfer.destination==='fotoalbum'&&transfer.block==='hero'){
+    html=html.replace('хорошо&nbsp;ребёнку','хорошо ребёнку');
+    html=html.replace('</head>','<link rel="stylesheet" href="studio/fotoalbum-polish.css?v=__VERSION__"></head>');
+  }
   return {...transfer,html};
 });
 

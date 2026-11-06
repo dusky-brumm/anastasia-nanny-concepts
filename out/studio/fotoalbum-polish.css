@@ -1,0 +1,139 @@
+/* Focused polish of design 11 using unslop by Damir Sokolovsky.
+   https://github.com/heydamir/unslop — CC BY 4.0.
+   Approved photos, blue/green palette and transferred blocks are retained.
+   This sheet also travels with the two unique blocks into galleries/assemblies. */
+
+/* The retained Elliot hero is used only by the photoalbum. */
+.reference-design.look-02-elliot .cover-grid {
+  gap: 48px;
+  padding-block: 64px;
+}
+.reference-design.look-02-elliot .cover h1 {
+  margin-top: 0;
+  max-width: 18ch;
+  font-size: clamp(36px, 4vw, 52px);
+  line-height: 1.14;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+.reference-design.look-02-elliot .cover h1 > span {display: inline}
+.reference-design.look-02-elliot .hero-lead {
+  max-width: 40ch;
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 1.65;
+}
+.reference-design.look-02-elliot .hero-actions {gap: 16px 24px;margin-top: 32px}
+.reference-design.look-02-elliot .hero-actions .button {
+  min-height: 48px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.reference-design.look-02-elliot .hero-actions .text-link {
+  min-height: 44px;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 400;
+}
+.reference-design.look-02-elliot .lead-photo {margin-top: 0;padding: 12px}
+.reference-design.look-02-elliot .cover-grid::after {inset-block: 24px}
+.reference-design.look-02-elliot .hero-actions .button::after {
+  inset: -4px;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+  background: var(--button);
+  mask: url('pencil-button.svg') center / 100% 100% no-repeat;
+  opacity: .8;
+}
+
+/* Keep the photo triptych; give its headings and captions a consistent rhythm. */
+.imported-fotoalbum .service {padding-block: 96px;background: var(--paper)}
+.imported-fotoalbum .service .section-intro {max-width: 640px}
+.imported-fotoalbum .service .eyebrow {
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.imported-fotoalbum .service h2 {
+  font-size: clamp(32px, 3.4vw, 48px);
+  line-height: 1.18;
+  letter-spacing: -.025em;
+}
+.imported-fotoalbum .service .section-intro > p:last-child {margin-top: 24px;font-size: 17px;line-height: 1.65}
+.imported-fotoalbum .service .round-arrow {
+  width: 44px;
+  height: 44px;
+  margin-top: 24px;
+  border: 0;
+  background: transparent;
+}
+.imported-fotoalbum .service .round-arrow:hover {background: var(--wash)}
+.imported-fotoalbum .service-prints {gap: 40px;margin-top: 32px;max-width: 1040px}
+.imported-fotoalbum .service-print {padding: 8px}
+.imported-fotoalbum .print-index {
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.imported-fotoalbum .service-prints .handwritten {margin: 16px 0 8px;font-size: 28px}
+.imported-fotoalbum .service h3 {font-size: 24px;line-height: 1.3;letter-spacing: 0}
+.imported-fotoalbum .service-prints h3 + p {margin-top: 12px;font-size: 16px;line-height: 1.65}
+
+/* The interview sample belongs to the page, with the same pencil rule as pricing. */
+.imported-fotoalbum .interview-note {
+  max-width: 880px;
+  margin-top: 48px;
+  padding: 32px 0;
+  border: 0;
+  background: transparent;
+}
+.imported-fotoalbum .interview-note::before,
+.imported-fotoalbum .interview-note::after {
+  content: '';
+  position: absolute;
+  inset: -4px 0 auto;
+  width: 100%;
+  height: 8px;
+  background: var(--accent);
+  mask: url('pencil-rule.svg') center / 100% 100% no-repeat;
+  clip-path: none;
+  transform: none;
+  opacity: .65;
+  pointer-events: none;
+}
+.imported-fotoalbum .interview-note::after {inset: auto 0 -4px;transform: scaleX(-1)}
+.imported-fotoalbum .interview-note dl {gap: 24px 40px;margin: 24px 0}
+.imported-fotoalbum .interview-note dt {font-size: 14px;font-weight: 500;line-height: 1.5}
+.imported-fotoalbum .interview-note dd {margin-top: 8px;font-size: 16px;line-height: 1.65}
+.imported-fotoalbum .interview-note .text-link {font-size: 15px;min-height: 44px;display: inline-flex;align-items: center}
+
+@media (max-width: 850px) {
+  .reference-design.look-02-elliot .cover-grid {gap: 32px;padding-block: 48px}
+  .reference-design.look-02-elliot .cover h1 {font-size: 40px}
+  .reference-design.look-02-elliot .hero-lead {font-size: 16px}
+  .imported-fotoalbum .service {padding-block: 64px}
+  .imported-fotoalbum .service-prints {gap: 24px}
+}
+@media (max-width: 650px) {
+  .reference-design.look-02-elliot .cover-grid {padding-block: 40px;gap: 40px}
+  .reference-design.look-02-elliot .cover h1 {font-size: clamp(32px, 9.2vw, 40px)}
+  .reference-design.look-02-elliot .hero-actions {margin-top: 24px;gap: 12px 20px}
+  .reference-design.look-02-elliot .cover-grid::after {inset-block: 55% 16px}
+  .imported-fotoalbum .service .section-intro > p:last-child {font-size: 16px}
+}
+@media (max-width: 560px) {
+  .imported-fotoalbum .service-prints {gap: 32px;margin-top: 24px}
+  .imported-fotoalbum .service-print {padding: 4px}
+  .imported-fotoalbum .service-prints .handwritten {margin: 0 0 8px;font-size: 24px}
+  .imported-fotoalbum .service h3 {font-size: 22px}
+  .imported-fotoalbum .service-prints h3 + p {margin-top: 8px;font-size: 15px;line-height: 1.6}
+  .imported-fotoalbum .interview-note {margin-top: 40px;padding-block: 24px}
+  .imported-fotoalbum .interview-note dl {gap: 24px;margin-block: 20px}
+}

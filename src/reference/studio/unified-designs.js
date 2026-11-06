@@ -9,14 +9,17 @@
       if(error.name!=='SecurityError')throw error;
     }
   }
-  for(const select of document.querySelectorAll('[data-design-navigation]')) {
-    select.addEventListener('change',()=>{
-      const destination=new URL(select.value,location.href);
-      const activeLink=[...document.querySelectorAll('.comparison-pairs a')].find(link=>new URL(link.href).pathname===destination.pathname);
-      if(activeLink){activeLink.click();return;}
-      destination.hash=location.hash;
-      location.assign(destination.href);
-    });
+  for(const track of document.querySelectorAll('[data-design-navigation]')) {
+    const active=track.querySelector('a[aria-current]');
+    if(!active)continue;
+    function revealCurrentDesign(){
+      const offset=active.getBoundingClientRect().left-track.getBoundingClientRect().left;
+      if(offset<0||offset+active.offsetWidth>track.clientWidth){
+        track.scrollLeft+=offset-(track.clientWidth-active.offsetWidth)/2;
+      }
+    }
+    revealCurrentDesign();
+    if('ResizeObserver' in window)new ResizeObserver(revealCurrentDesign).observe(track);
   }
   for(const menu of document.querySelectorAll('.imported-design .mobile-menu,.design-site-menu')){
     menu.addEventListener('click',event=>{if(event.target.closest('a'))menu.open=false;});

@@ -59,7 +59,7 @@ test('completed design comparisons retain all sections and exclude cancelled opt
   const reference=studioPage('comparison-reference');
   assert.equal([...reference.matchAll(/data-about-dot="/g)].length,4);
   assert.match(reference,/M389 85C395 158/);
-  assert.match(studioPage('preview','hero','index.html'),/value="comparison-current-refined.html/);
+  assert.match(studioPage('preview','hero','index.html'),/href="comparison-current-refined.html/);
 });
 
 test('chalk designs preserve all artwork, complete sections and reusable isolated compositions',()=>{
@@ -209,10 +209,14 @@ test('the final theme is fixed and the top navigation offers only designs and bl
     assert.ok(nav,mode);
     assert.match(nav,/data-design-navigation/);
     assert.match(nav,/href="compare-block-hero.html/);
+    const links=[...nav.matchAll(/<a [^>]*aria-label="Дизайн (\d+):[^>]*>(\d+)<\/a>/g)];
+    assert.deepEqual(links.map(link=>link[2]),comparisonDesigns.map((_,index)=>String(index+1)));
+    assert.ok(links.every(link=>link[1]===link[2]));
+    assert.doesNotMatch(nav,/<select|<details/);
+    assert.equal((nav.match(/aria-current="page"/g)??[]).length,mode==='preview'?0:1);
     for(const design of comparisonDesigns){
       const file=design.single?design.file:design.file.replace('.html','-refined.html');
-      assert.equal(nav.split(`value="${file}?v=`).length-1,1);
-      if(mode!=='preview')assert.equal(nav.split(`href="${file}?v=`).length-1,1);
+      assert.equal(nav.split(`href="${file}?v=`).length-1,1);
       if(!design.single){
         assert.ok(!nav.includes(`"${design.file}?v=`));
         assert.match(studioPage(design.mode,'hero',design.file),/data-refinement=/);

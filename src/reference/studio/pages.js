@@ -185,10 +185,12 @@ ${previews.filter(preview => preview.style !== selected).map(({style,reviews,mar
 }
 const options=(items,selected)=>items.map(p=>`<option value="${p.id}"${selected===p.id?' selected':''}>${p.name}</option>`).join('');
 const privacy='<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" class="tool-close" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>';
-const designPanel=`<nav class="design-panel" aria-label="Просмотр вариантов">
-  <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта">${comparisonDesigns.map(item=>`<option value="${preferredDesignFile(item)}?v=__VERSION__">${item.name}</option>`).join('')}</select></label>
-  <a class="design-panel-caption" href="compare-block-hero.html?v=__VERSION__">Сравнение блоков ↗</a>
-</nav>`;
+function designButtons(activeMode) {
+  return `<div class="comparison-pairs" data-design-navigation>${comparisonDesigns.map((item,index)=>`<a href="${preferredDesignFile(item)}?v=__VERSION__" aria-label="Дизайн ${index+1}: ${item.name}" title="${item.name}"${activeMode===item.mode?' aria-current="page"':''}>${index+1}</a>`).join('')}
+    <a class="block-compare-link" href="compare-block-hero.html?v=__VERSION__">Сравнение блоков ↗</a>
+  </div>`;
+}
+const designPanel=`<nav class="design-panel" aria-label="Просмотр вариантов">${designButtons()}</nav>`;
 function controls() {
   return `<aside class="studio-controls" id="studio-settings" aria-label="Настройки дизайна"><section><h2>Готовые сборки</h2><p class="tool-hint">Сборка 1 — рекомендованная. Любой блок можно заменить.</p><div class="preset-buttons">${presets.map(p=>`<button type="button" data-preset="${p.id}" aria-label="Сборка ${p.id}: ${p.name}" title="${p.name}" aria-pressed="${p.id==='1'}">${p.id}</button>`).join('')}</div></section>
   <section><label class="tool-label">Набор шрифтов<select data-font-select>${options(fontSets,defaults.font)}</select></label><p class="tool-hint" data-font-note>Современный основной набор</p></section>
@@ -228,20 +230,7 @@ export function studioPage(mode='studio',blockId='hero',pageFile='studio.html') 
   const comparing=Boolean(design);
   const pencil=design?.baseMode==='pencil'||design?.mode.startsWith('pencil');
   const contourDirection=design?.contour==='wave'&&!refined ? '' : design?.contour;
-  const pencilSwitcher=comparing?`<nav class="pencil-comparison" aria-label="Сравнить варианты">
-    <details class="comparison-disclosure" open>
-      <summary>Варианты дизайна <span>${design.name}${refined&&!design.single?' · улучшенный':''}</span></summary>
-      <div class="comparison-content">
-    <label class="design-version-label">Дизайн<select data-design-navigation aria-label="Выбрать дизайн сайта">${comparisonDesigns.map(item=>`<option value="${preferredDesignFile(item)}?v=__VERSION__"${design.mode===item.mode?' selected':''}>${item.name}</option>`).join('')}</select></label>
-    <div class="comparison-pairs">${comparisonDesigns.map(item=>`<div class="comparison-pair">
-      <a href="${preferredDesignFile(item)}?v=__VERSION__"${design.mode===item.mode?' aria-current="page"':''}>${item.name}</a>
-    </div>`).join('')}</div>
-    <div class="block-compare-actions">
-      <a class="block-compare-link" href="compare-block-hero.html?v=__VERSION__">Сравнение блоков ↗</a>
-    </div>
-      </div>
-    </details>
-  </nav>`:'';
+  const pencilSwitcher=comparing?`<nav class="pencil-comparison" aria-label="Сравнить варианты">${designButtons(design.mode)}</nav>`:'';
   if(design?.reference)return referencePage(design,pencilSwitcher);
   const description=mode==='preview'||editorial||comparing?'Личный подбор няни под задачи вашей семьи. Поиск, интервью и сопровождение. Анастасия Доронина.':`${compositionCount} композиций блоков сайта, пастельные палитры и согласованные наборы шрифтов.`;
   let pageContent=assembling?comparisonAssembly():blockCompare?comparisonBlockGallery(blockId):content;

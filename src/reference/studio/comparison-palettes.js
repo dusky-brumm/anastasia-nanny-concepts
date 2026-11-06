@@ -2,18 +2,11 @@
   const nav = document.querySelector('.pencil-comparison');
   if (!nav) return;
   const site = nav.nextElementSibling;
-  const disclosure = nav.querySelector('.comparison-disclosure');
-  const compact = window.matchMedia('(max-width:760px)');
-  function updateDisclosure() {
-    disclosure.open = !compact.matches;
-  }
-  updateDisclosure();
-  compact.addEventListener('change', updateDisclosure);
   if ('ResizeObserver' in window) {
     new ResizeObserver(() => document.documentElement.style.setProperty('--comparison-offset', nav.offsetHeight + 12 + 'px')).observe(nav);
   }
   const params = new URLSearchParams(location.search);
-  const links = nav.querySelectorAll('.comparison-pairs a');
+  const links = nav.querySelectorAll('.comparison-pairs a:not(.block-compare-link)');
   // Native and reference compositions also need stable anchors after fonts load.
   const initialHash = location.hash;
   if (initialHash && !params.has('compare-scroll') && !site.matches('.early-design,.illustrated-site')) {
@@ -69,18 +62,4 @@
     }));
   }
 
-  function revealCurrentChoices() {
-    if (!disclosure.open) return;
-    for (const selector of ['.comparison-pairs a[aria-current]']) {
-      const active = nav.querySelector(selector);
-      const track = active?.closest('.comparison-pairs');
-      if (!track) continue;
-      const offset = active.getBoundingClientRect().left - track.getBoundingClientRect().left;
-      if (offset < 0 || offset + active.offsetWidth > track.clientWidth) {
-        track.scrollLeft += offset - (track.clientWidth - active.offsetWidth) / 2;
-      }
-    }
-  }
-  revealCurrentChoices();
-  disclosure.addEventListener('toggle', revealCurrentChoices);
 })();

@@ -1,7 +1,7 @@
 {
-  "build": "eeebdf1ad0",
+  "build": "4e8461104c",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
-  "draft_base_commit": "1127317fd241b555249745c40f390342b3dd735d",
+  "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
     "src/reference/journeys.css": "a90111f8ec8f75b9374c82b3ed205b734490978d47baaadd02abbceff876c7af",
@@ -24,7 +24,8 @@
   },
   "included": [
     "Apply explicit clarification: dry chalk texture is only a library sample; restore previous grain on hero, About and review backgrounds",
-    "Remove headings from all four About slides in all three layouts, preserving photos and large body copy"
+    "Remove headings from all four About slides in all three layouts, preserving photos and large body copy",
+    "Remove questionnaire/magnifier decoration from selected service block; retain its library original"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -36,7 +37,7 @@
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4",
-    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1b756-25f3-7920-8802-cd7832c21387",
+    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1b75e-4762-7dc2-89f4-eecd6b4258c6",
     "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
     "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
     "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1ac05-116f-7370-9629-445830e5052d"
@@ -737,6 +738,15 @@
       "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
       "turn": "01a1b756-25f3-7920-8802-cd7832c21387",
       "status": "included"
+    },
+    "service-cleanup-20261107": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "source_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
+      "build": "9d9045e945",
+      "sites_version": 94,
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1b75e-4762-7dc2-89f4-eecd6b4258c6",
+      "status": "included"
     }
   },
   "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched.",
@@ -1054,6 +1064,10 @@
         "artwork/lines/pencil-button-double.svg"
       ],
       "scope": "Library samples only. Never substitute these for the current dry-chalk background or single neat button contour."
+    },
+    "service_decoration_20261107": {
+      "source_turn": "01a1b75e-4762-7dc2-89f4-eecd6b4258c6",
+      "rule": "Questionnaire and magnifier illustration removed from the selected service heading; original retained in artwork library."
     }
   },
   "reviewed_decisions": {
@@ -1073,16 +1087,17 @@
     "latest_switcher": "Current chosen pair Lora headings + Manrope body, preset 5. Historical font controls retained; Caveat is only a possible accent. No design or palette controls."
   },
   "validation": {
-    "status": "pending",
+    "status": "passed",
     "source_browser": "Source chat checked no headings in all three About layouts on desktop/mobile; only background textures changed in integration.",
-    "build": "passed",
-    "static_checks": "700 local links/assets, 111 artwork hashes; retired exclusions preserved",
+    "build": "passed after merge",
+    "static_checks": "699 local links/assets and 111 artwork hashes; nine retired files absent",
     "tests": {
       "passed": 36,
       "failed": 0
     },
     "scope": "New library texture and neat button byte-identical; four live background rules use former grain; no headings within About slides",
-    "diff_check": "passed"
+    "diff_check": "passed",
+    "integration": "Service HTML exactly matches completed source; About without headings retained; new texture limited to library"
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
@@ -1095,12 +1110,6 @@
       "status": "unfinished",
       "path": "sites/nastya-unified-20261105",
       "note": "Do not publish paper-chalk draft or recreate retired options."
-    },
-    {
-      "chat": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
-      "turn": "01a1b75e-4762-7dc2-89f4-eecd6b4258c6",
-      "status": "in_progress",
-      "description": "Remove extra questionnaire/magnifier drawing from selected service block; preserve ongoing authoring work."
     }
   ],
   "source_commit": null,

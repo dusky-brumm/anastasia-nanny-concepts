@@ -5,6 +5,6 @@
   "scripts": {
     "build": "node scripts/build-selected-site.mjs",
     "check": "node scripts/check-selected-site.mjs",
-    "test": "node --test scripts/tests/reference.test.mjs scripts/tests/studio.test.mjs scripts/tests/seo.test.mjs scripts/tests/selected-site.test.mjs"
+    "test": "node --test scripts/tests/reference.test.mjs scripts/tests/studio.test.mjs scripts/tests/seo.test.mjs scripts/tests/selected-site.test.mjs scripts/tests/about-story.test.mjs"
   }
 }

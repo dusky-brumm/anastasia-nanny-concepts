@@ -33,7 +33,7 @@ export function designBlockPage(design,id,html) {
   const ids=new Set([...markup.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
   const file=design.single?design.file:design.file.replace('.html','-refined.html');
   const block=markup.replace(/href="#([^"]+)"/g,(attribute,target)=>ids.has(target)?attribute:
-    `href="${file}?v=59a1b4e034#${target}" target="_top" data-reference-target="${target}"`);
+    `href="${file}?v=08901a9aa0#${target}" target="_top" data-reference-target="${target}"`);
   const open=ancestors.map(node=>node.open.replace(/ data-site-root\b/,'')).join('');
   const close=ancestors.toReversed().map(node=>`</${node.tag}>`).join('');
   const dialog=html.match(/<dialog\b[\s\S]*?<\/dialog>/)?.[0]??'';

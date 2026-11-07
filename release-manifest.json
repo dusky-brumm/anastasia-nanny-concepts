@@ -1,6 +1,6 @@
 {
-  "build": "59a1b4e034",
-  "base_commit": "e26839188ee6dfcd5d9ebe2c52907529ed8759ec",
+  "build": "08901a9aa0",
+  "base_commit": "3e92e8b34eb140704e21a870e0064078c62cf957",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -25,7 +25,8 @@
   "included": [
     "Removed the nine rejected items in the artwork-library group Рисунки для блоков and from the downloadable library",
     "Used the existing hand-drawn slider dot as the background of all five process numbers",
-    "Shortened the hero paragraph ending to выбрать человека."
+    "Shortened the hero paragraph ending to выбрать человека.",
+    "Preserved and synchronized completed About-block variants from Sites 88: textured photo backings, 6.5-second autoplay, desktop scroll story and two new illustrations"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -37,7 +38,7 @@
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4",
-    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1b66a-b8f9-7651-8897-581efb408871",
+    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1b680-8ef8-72e1-a962-7888fcd17439",
     "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
     "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
     "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1ac05-116f-7370-9629-445830e5052d"
@@ -821,7 +822,7 @@
       "only_site": true,
       "artwork_library_count": 114,
       "supersedes": "All previous requirements to retain design switcher and block comparisons.",
-      "artwork_count": 106
+      "artwork_count": 108
     },
     "typography_and_materials_20261107": {
       "source_turn": "01a1b4b5-03e5-7290-81c1-4d6488d9f2f0",
@@ -957,6 +958,21 @@
       "old": "выбрать человека, с которым спокойно.",
       "new": "выбрать человека.",
       "status": "included"
+    },
+    "about_stories_20261107": {
+      "scope": "Only the About block has three local layouts; no complete-design selector or block comparison restored",
+      "variants": [
+        "Фотоальбом",
+        "Личное письмо",
+        "Линия истории"
+      ],
+      "autoplay_ms": 6500,
+      "source_commit": "3e92e8b34eb140704e21a870e0064078c62cf957",
+      "documentation": "docs/about-stories-20261107.md",
+      "preserved_illustrations": [
+        "about-notebook-20261107.png",
+        "about-branch-20261107.png"
+      ]
     }
   },
   "reviewed_decisions": {
@@ -976,10 +992,13 @@
     "latest_switcher": "Current chosen pair Lora headings + Manrope body, preset 5. Historical font controls retained; Caveat is only a possible accent. No design or palette controls."
   },
   "validation": {
-    "build": "passed: node scripts/build-selected-site.mjs",
-    "static": "passed: 674 local links/assets, 106 artwork hashes and downloadable library archive",
-    "tests": "passed: 34 tests, 0 failures",
-    "browser": "passed: desktop 1280px and mobile 320px; five textured dot backgrounds, white legible numerals, no horizontal overflow; library displays 106 items without rejected group",
+    "build": "passed: npm run build",
+    "static_checks": "passed: 691 local links/assets, 108 artwork hashes, downloadable archive",
+    "tests": {
+      "passed": 36,
+      "failed": 0
+    },
+    "browser": "Process dots checked at 1280 and 320 px; five white numerals on textured original dot, no overflow. About source chat checked three layouts, scrolling and autoplay before Sites 88. Merged source preserves both independent changes.",
     "diff_check": "passed"
   },
   "completed_css_sha256": {
@@ -996,13 +1015,19 @@
     },
     {
       "chat": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
-      "turn": "01a1b680-8ef8-72e1-a962-7888fcd17439",
+      "turn": "01a1b698-132f-7f32-9f74-74697d60062f",
       "status": "in_progress",
-      "note": "About slider texture, timing, possible scroll pinning and block variants requested; do not publish unfinished work."
+      "description": "Further About text/layout variants requested after completed Sites 88; do not import until complete."
     }
   ],
   "source_commit": null,
   "deployment": {
     "status": "pending"
+  },
+  "integrated_about_source": {
+    "commit": "3e92e8b34eb140704e21a870e0064078c62cf957",
+    "build": "55e852a94c",
+    "sites_version": 88,
+    "turn": "01a1b680-8ef8-72e1-a962-7888fcd17439"
   }
 }

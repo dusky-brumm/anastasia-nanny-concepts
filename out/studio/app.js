@@ -1,7 +1,7 @@
-import {blocks,palettes,approvedTheme,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=59a1b4e034';
-import {renderSite,renderBlock} from './render.js?v=59a1b4e034';
-import {formatRequest} from '../request.js?v=59a1b4e034';
-import {requestEndpoint} from './request-endpoint.js?v=59a1b4e034';
+import {blocks,palettes,approvedTheme,fontSets,defaults,presets,readState,normalizeState,selectVariant,designUrl} from './model.js?v=08901a9aa0';
+import {renderSite,renderBlock} from './render.js?v=08901a9aa0';
+import {formatRequest} from '../request.js?v=08901a9aa0';
+import {requestEndpoint} from './request-endpoint.js?v=08901a9aa0';
 import EmblaCarousel from './vendor/embla-carousel-8.6.0.js';
 
 const mode=document.body.dataset.mode;
@@ -76,7 +76,7 @@ function playAboutCarousel(section,carousel,motion){
 }
 
 function mountAboutCarousels(){
-  aboutCarousels=[...document.querySelectorAll('[data-about-carousel]')].map(section=>{
+  aboutCarousels=[...document.querySelectorAll('[data-about-carousel]:not([data-about-custom])')].map(section=>{
     const events=new AbortController();
     const eventOptions={signal:events.signal};
     const viewport=section.querySelector('.s-about-viewport');

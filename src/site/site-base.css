@@ -16,5 +16,14 @@ html{scrollbar-gutter:stable;background:#fcfdfb}body{margin:0}main,[data-selecte
 .font-pair-caption{align-self:center}
 .font-artwork-link{font-size:12px;text-decoration:none;white-space:nowrap;color:inherit}
 html.font-changing{overflow-anchor:none}
+.about-pin{background:#e7f1f6}
+.about-variant-switcher{display:flex;align-items:center;gap:8px;min-height:54px;box-sizing:border-box;padding:8px max(24px,calc((100% - 1120px)/2));background:#fcfcfa;color:#526c73;font:12px/1.4 "Golos Text",sans-serif}
+.about-variant-switcher>span:first-child{margin-right:8px}
+.about-variant-switcher button{width:32px;height:32px;border:1px solid #bdcbd0;border-radius:3px;background:transparent;color:inherit;font:inherit;cursor:pointer}
+.about-variant-switcher button[aria-pressed=true]{background:#385a6b;border-color:#385a6b;color:white}
+.about-variant-switcher [data-about-design-name]{margin-left:10px;font-size:11px}
+.about-scroll-story{position:relative;background:#e7f1f6;overflow-anchor:none}
+.about-scroll-story>.about-pin{position:sticky;top:var(--font-switcher-height,112px)}
+@media(max-width:650px){.about-variant-switcher{flex-wrap:wrap;gap:6px;padding:9px 24px}.about-variant-switcher>span:first-child{font-size:11px;margin-right:auto}.about-variant-switcher [data-about-design-name]{display:none}}
 [data-selected-block]{scroll-margin-top:calc(var(--font-switcher-height,68px) + 8px)}
 @media(max-width:900px){.font-switcher-inner{padding:8px 16px;gap:8px}.font-switcher-top{grid-template-columns:1fr auto;gap:6px}.font-switcher nav{grid-template-columns:repeat(10,minmax(0,1fr));grid-column:1/-1;grid-row:2}.font-switcher button{height:30px}.font-role-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.font-pair-caption{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.font-artwork-link{grid-column:2;grid-row:1}}

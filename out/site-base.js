@@ -1,4 +1,5 @@
-import {applyFontPair,readFontChoice,resolveFontPair,findFontPair,fontStorageKey} from './font-pairs.js?v=59a1b4e034';
+import {applyFontPair,readFontChoice,resolveFontPair,findFontPair,fontStorageKey} from './font-pairs.js?v=08901a9aa0';
+import {mountAboutSection} from './about-section.js?v=08901a9aa0';
 
 const frames=[...document.querySelectorAll('iframe[data-reference-frame]')];
 const switcher=document.querySelector('.font-switcher');
@@ -47,6 +48,7 @@ for(const select of [headingChoice,bodyChoice])select.addEventListener('change',
 for(const frame of frames)frame.addEventListener('load',()=>styleFrame(frame,activePair));
 new ResizeObserver(()=>document.documentElement.style.setProperty('--font-switcher-height',switcher.getBoundingClientRect().height+'px')).observe(switcher);
 chooseFont(activePair,{preservePosition:false});
+mountAboutSection();
 window.addEventListener('popstate',()=>{
   const pair=readFontChoice(location.search,storage);
   if(pair.id!==activePair.id)chooseFont(pair);

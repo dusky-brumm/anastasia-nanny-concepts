@@ -975,5 +975,12 @@
     "group": "Линии и фактуры из оформления",
     "source": "src/reference/styles.css",
     "sha256": "433106a70b34a781b73f433823a9c959dc7b8068873b7920fd32f363a1a9e6f8"
+  },
+  {
+    "id": "process-wide-arrows",
+    "file": "artwork/vectors/process-wide-arrows.svg",
+    "title": "Широкие стрелки этапов подбора",
+    "group": "Линии, стрелки и значки",
+    "sha256": "6b920284415318dee3013d592b10a7b1475731184f520b5de406b9c42f119f05"
   }
 ]

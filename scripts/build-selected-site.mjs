@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {sitePage,artworkPage,assemblyRedirect} from '../src/site/pages.mjs';
+import {defaultFontPair} from '../src/site/font-pairs.js';
 import {formatRequest} from '../src/reference/request.js';
 import {bindRequestUi} from '../src/reference/studio/request-ui.js';
 import {sitemapXml,robotsTxt} from '../src/reference/studio/seo.js';
@@ -34,7 +35,7 @@ await cp('src/site',output,{recursive:true,filter:file=>!file.endsWith('.mjs')&&
 for(const {file} of selection.blocks){
   const target=path.join(output,file);
   let html=await readFile(target,'utf8');
-  html=html.replace('<html lang="ru"','<html lang="ru" data-font-pair="1"');
+  html=html.replace('<html lang="ru"',`<html lang="ru" data-font-pair="${defaultFontPair.id}"`);
   const styles=['fonts.css','studio/fonts.css','site-typography.css','site-refinements.css']
     .filter(file=>!html.includes(`href="../${file}`))
     .map(file=>`<link rel="stylesheet" href="../${file}?v=__VERSION__">`).join('');

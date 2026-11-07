@@ -34,7 +34,8 @@ test('an explicit shared font choice wins over saved state and unknown IDs use t
   const storage={getItem:()=> '9'};
   assert.equal(readFontChoice('?fonts=2',storage).id,'2');
   assert.equal(readFontChoice('',storage).id,'9');
-  assert.equal(readFontChoice('?fonts=unknown',storage).id,'1');
-  assert.equal(readFontChoice('?fonts=url(evil)',storage).id,'1');
-  assert.equal(readFontChoice('',{getItem(){throw new Error('storage blocked');}}).id,'1');
+  assert.equal(readFontChoice('?fonts=unknown',storage).id,'5');
+  assert.equal(readFontChoice('?fonts=url(evil)',storage).id,'5');
+  assert.equal(readFontChoice('',{getItem(){throw new Error('storage blocked');}}).id,'5');
+  assert.equal(readFontChoice('',{getItem:key=>key==='nastya-historical-font-pair-v1'?'9':null}).id,'5');
 });

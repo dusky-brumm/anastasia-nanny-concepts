@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 502" role="img" aria-label="Анастасия Доронина за столиком в кафе" style="color:#718591;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+          <defs>
+            <path id="preview-portrait-edge" pathLength="100" d="M33 50Q33 34 50 33C198 25 346 30 475 38Q492 39 492 56V448Q492 464 475 465C337 473 193 455 50 469Q33 471 33 454Z"/>
+            <clipPath id="preview-portrait-crop"><use href="#preview-portrait-edge"/></clipPath>
+<filter id="preview-pencil">
+    <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
+    <feColorMatrix type="luminanceToAlpha"/>
+    <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
+    <feComposite in="SourceGraphic" operator="in"/>
+  </filter>
+          </defs>
+          
+          <use class="comparison-photo-frame" href="#preview-portrait-edge" aria-hidden="true"/>
+          <use class="pencil-portrait-stroke" href="#preview-portrait-edge" transform="translate(260 251) scale(1.045) translate(-260 -251)" filter="url(#preview-pencil)"/>
+        </svg>

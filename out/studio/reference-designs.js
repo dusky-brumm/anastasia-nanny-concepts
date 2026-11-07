@@ -1,8 +1,8 @@
 import {referenceTemplates} from './reference-templates.js';
-import {aboutSlides} from './render.js?v=08b62ba700';
-import {approvedThemeStyle} from './model.js?v=08b62ba700';
-import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=08b62ba700';
-import {utilityIndexingTags} from './seo.js?v=08b62ba700';
+import {aboutSlides} from './render.js?v=561000ccde';
+import {approvedThemeStyle} from './model.js?v=561000ccde';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=561000ccde';
+import {utilityIndexingTags} from './seo.js?v=561000ccde';
 import {illustratedAssets} from './illustrated-assets.js';
 
 export const referenceDesignSources=[
@@ -45,16 +45,16 @@ export function referencePage(design,navigation){
     .replace(/<div class="interview-copy">/,`<div class="interview-copy">${drawing('profile')}`);
   // The original page's script depends on its own header; the shared header has its own handler.
   html=html.replace(/<script defer src="[^\"]*page.js"><\/script>/,'')
-    .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=08b62ba700">
-<link rel="stylesheet" href="studio/comparison-design.css?v=08b62ba700">
-<link rel="stylesheet" href="studio/unified-designs.css?v=08b62ba700">
-<link rel="stylesheet" href="studio/design-chrome.css?v=08b62ba700">
-<link rel="stylesheet" href="studio/reference-integration.css?v=08b62ba700">
-<script defer src="studio/comparison-request.js?v=08b62ba700"></script>
-<script defer src="studio/variants/eight-references/gallery-ui.js?v=08b62ba700"></script>
-<script defer src="studio/reference-interactions.js?v=08b62ba700"></script>
-<script defer src="studio/comparison-palettes.js?v=08b62ba700"></script>
-<script defer src="studio/unified-designs.js?v=08b62ba700"></script></head>`)
+    .replace('</head>',`<link rel="stylesheet" href="studio/pencil-preview.css?v=561000ccde">
+<link rel="stylesheet" href="studio/comparison-design.css?v=561000ccde">
+<link rel="stylesheet" href="studio/unified-designs.css?v=561000ccde">
+<link rel="stylesheet" href="studio/design-chrome.css?v=561000ccde">
+<link rel="stylesheet" href="studio/reference-integration.css?v=561000ccde">
+<script defer src="studio/comparison-request.js?v=561000ccde"></script>
+<script defer src="studio/variants/eight-references/gallery-ui.js?v=561000ccde"></script>
+<script defer src="studio/reference-interactions.js?v=561000ccde"></script>
+<script defer src="studio/comparison-palettes.js?v=561000ccde"></script>
+<script defer src="studio/unified-designs.js?v=561000ccde"></script></head>`)
     .replace(/<body class="([^"]+)">/,`<body class="$1 reference-design" data-fixed-theme="almost-white" style="${approvedThemeStyle}">${navigation}<div data-comparison-site>`)
     .replace('</body>','</div></body>');
   return html;
@@ -83,7 +83,7 @@ export function referenceBlockPage(design,id){
   let block=html.slice(start,end);
   const ids=new Set([...block.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
   block=block.replace(/href="#([^"]+)"/g,(attribute,target)=>ids.has(target)?attribute:
-    `href="${design.file}?v=08b62ba700#${target}" target="_top" data-reference-target="${target}"`);
+    `href="${design.file}?v=561000ccde#${target}" target="_top" data-reference-target="${target}"`);
   const dialog=html.match(/<dialog\b[\s\S]*?<\/dialog>/)?.[0]??'';
   return html
     .replace(/<body([^>]*)>[\s\S]*<\/body>/,`<body$1><div class="sheet" data-reference-block-root><main>${block}</main></div>${dialog}</body>`)

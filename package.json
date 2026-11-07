@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-reference.mjs",
-    "check": "node scripts/check-reference.mjs && node scripts/check-seo.mjs",
-    "test": "node --test scripts/tests/reference.test.mjs scripts/tests/studio.test.mjs scripts/tests/seo.test.mjs"
+    "build": "node scripts/build-selected-site.mjs",
+    "check": "node scripts/check-selected-site.mjs",
+    "test": "node --test scripts/tests/reference.test.mjs scripts/tests/studio.test.mjs scripts/tests/seo.test.mjs scripts/tests/selected-site.test.mjs"
   }
 }

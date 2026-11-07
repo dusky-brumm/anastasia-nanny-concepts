@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="s-hero-stroke" viewBox="0 0 1120 155" preserveAspectRatio="none" aria-hidden="true" style="color:#718591;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+    <defs><filter id="hero-stroke-2">
+    <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
+    <feColorMatrix type="luminanceToAlpha"/>
+    <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
+    <feComposite in="SourceGraphic" operator="in"/>
+  </filter></defs><path d="M-10 93C151 128 234 23 385 48S627 132 787 87S1025 57 1130 81" filter="url(#hero-stroke-2)"/>
+  </svg>

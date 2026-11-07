@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 526 592" role="img" aria-label="Анастасия Доронина за столиком в кафе" style="color:#718591;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+      <defs>
+        <path id="hero-wave-edge" d="M34 293C71 275 55 155 116 85C172 19 247 21 306 25C383 25 446 53 494 57L494 535C447 548 414 529 365 534C314 540 286 572 230 562C165 551 115 505 34 520Z"/>
+        <clipPath id="hero-wave-crop"><use href="#hero-wave-edge"/></clipPath>
+        <filter id="hero-wave-pencil">
+    <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
+    <feColorMatrix type="luminanceToAlpha"/>
+    <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
+    <feComposite in="SourceGraphic" operator="in"/>
+  </filter>
+      </defs>
+      
+      <use class="s-wave-frame" href="#hero-wave-edge"/>
+      <g transform="translate(263 296) scale(1.045) translate(-263 -296)" filter="url(#hero-wave-pencil)">
+        <path class="s-wave-contour" pathLength="1" d="M34 293C71 275 55 155 116 85C172 19 247 21 306 25C383 25 446 53 494 57"/>
+        <path class="s-wave-contour" pathLength="1" d="M494 535C447 548 414 529 365 534C314 540 286 572 230 562C165 551 115 505 34 520"/>
+      </g>
+    </svg>

@@ -1,0 +1,4 @@
+# Preserve the original bytes and SHA-256 of archived artwork on every platform.
+src/site/artwork/** -text
+out/artwork/** -text
+out/artwork-library.zip -text

@@ -1,0 +1,54 @@
+import {cp,mkdir,readFile,writeFile,readdir,rm,realpath,lstat} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+import {sitePage,artworkPage,assemblyRedirect} from '../src/site/pages.mjs';
+import {formatRequest} from '../src/reference/request.js';
+import {bindRequestUi} from '../src/reference/studio/request-ui.js';
+import {sitemapXml,robotsTxt} from '../src/reference/studio/seo.js';
+
+const repo=path.resolve('.'),output=path.resolve('out');
+// Only this checkout's generated output may be removed. Refuse symlink targets.
+if(output!==path.join(repo,'out')||path.dirname(output)!==repo)throw new Error('Unsafe output path');
+try{
+  if((await lstat(output)).isSymbolicLink()||await realpath(output)!==output)throw new Error('Refusing redirected output path');
+}catch(error){if(error.code!=='ENOENT')throw error;}
+const hash=createHash('sha256');
+async function fingerprint(directory){
+  for(const entry of (await readdir(directory,{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))){
+    const file=path.join(directory,entry.name);
+    if(entry.isDirectory())await fingerprint(file);else hash.update(file).update(await readFile(file));
+  }
+}
+await fingerprint('src/reference');await fingerprint('src/site');
+const version=hash.digest('hex').slice(0,10);
+const selection=JSON.parse(await readFile('src/site/selection.json','utf8'));
+const catalog=JSON.parse(await readFile('src/site/artwork-catalog.json','utf8'));
+await rm(output,{recursive:true,force:true});
+await mkdir(output,{recursive:true});
+// Shared styles/scripts/fonts/photos only. Retired HTML pages are source archives.
+await cp('src/reference',output,{recursive:true,filter:file=>!file.endsWith('.html')});
+await cp('src/site',output,{recursive:true,filter:file=>!file.endsWith('.mjs')});
+async function replaceTokens(directory){
+  for(const entry of await readdir(directory,{withFileTypes:true})){
+    const file=path.join(directory,entry.name);
+    if(entry.isDirectory())await replaceTokens(file);
+    else if(/\.(?:html|js|css)$/.test(file))await writeFile(file,(await readFile(file,'utf8')).replaceAll('__VERSION__',version));
+  }
+}
+await writeFile(path.join(output,'index.html'),sitePage(selection));
+await writeFile(path.join(output,'artwork.html'),artworkPage(catalog));
+await writeFile(path.join(output,'compare-assembly.html'),assemblyRedirect);
+await writeFile(path.join(output,'studio','comparison-request.js'),`(${bindRequestUi.toString()})(${formatRequest.toString()});\n`);
+await writeFile(path.join(output,'sitemap.xml'),sitemapXml());
+await writeFile(path.join(output,'robots.txt'),robotsTxt());
+await replaceTokens(output);
+// The ZIP contains original artwork bytes plus a manifest; no recompression/editing.
+execFileSync('python',['-c',`import json,pathlib,zipfile
+root=pathlib.Path('out')
+items=json.loads((root/'artwork-catalog.json').read_text(encoding='utf-8'))
+with zipfile.ZipFile(root/'artwork-library.zip','w',zipfile.ZIP_DEFLATED) as archive:
+ for item in items: archive.write(root/item['file'],item['file'])
+ archive.write(root/'artwork-catalog.json','artwork-catalog.json')
+`],{stdio:'inherit'});
+console.log(JSON.stringify({output:'out',version,blocks:selection.blocks.length,artworks:catalog.length}));

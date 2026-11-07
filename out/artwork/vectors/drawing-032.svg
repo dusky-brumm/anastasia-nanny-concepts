@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="process-art chalk-route-line" viewBox="0 0 1000 94" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" style="color:#718591;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
+    <defs><filter id="chalk-route-grain" x="-5%" y="-30%" width="110%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" seed="8"/>
+      <feColorMatrix type="luminanceToAlpha"/>
+      <feComponentTransfer><feFuncA type="linear" slope="2.2" intercept="-.2"/></feComponentTransfer>
+      <feComposite in="SourceGraphic" operator="in"/>
+    </filter></defs>
+    <path d="M20 58C100 23 178 8 260 20S412 83 500 72S653 21 740 34S907 63 980 55" fill="none" stroke="#577484" stroke-width="3.4" stroke-linecap="round" filter="url(#chalk-route-grain)"/>
+    <svg x="9" y="47" width="22" height="22" viewBox="260 353 76 76" preserveAspectRatio="xMidYMid meet"></svg><svg x="249" y="9" width="22" height="22" viewBox="632 212 76 76" preserveAspectRatio="xMidYMid meet"></svg><svg x="489" y="61" width="22" height="22" viewBox="1048 392 76 76" preserveAspectRatio="xMidYMid meet"></svg><svg x="729" y="23" width="22" height="22" viewBox="1436 276 76 76" preserveAspectRatio="xMidYMid meet"></svg><svg x="969" y="44" width="22" height="22" viewBox="1836 345 76 76" preserveAspectRatio="xMidYMid meet"></svg></svg>

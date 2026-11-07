@@ -25,11 +25,13 @@ function bindComparisonQuotes(strip) {
     const first = Math.round(track.scrollLeft / stepSize()) + 1;
     const count = Math.max(1, Math.round((track.clientWidth + (parseFloat(getComputedStyle(track).columnGap) || 0)) / stepSize()));
     const last = Math.min(cards.length, first + count - 1);
+    const progress=String(last/cards.length);
+    if(strip.style.getPropertyValue('--review-progress')!==progress)strip.style.setProperty('--review-progress',progress);
     const label = `${first === last ? first : `${first}–${last}`} из ${cards.length}`;
     if (position.textContent !== label) position.textContent = label;
   }
   function move(left) {
-    track.scrollTo({left, behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+    track.scrollTo({left, behavior:matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.dataset.drawingMotion==='off' ? 'instant' : 'smooth'});
   }
   for (const button of [previous, next]) {
     button.addEventListener('click', () => move(track.scrollLeft + stepSize() * Number(button.dataset.quoteStep)), {signal:controller.signal});

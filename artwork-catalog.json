@@ -956,5 +956,61 @@
     "title": "Двойной карандашный контур",
     "group": "Линии и рамки",
     "sha256": "ec92c57c1bf9eb5350137d9dc5e39bd840be4fc7b03da65e4eef74e59c3e9004"
+  },
+  {
+    "id": "review-opening-quote",
+    "file": "artwork/vectors/review-opening-quote.svg",
+    "title": "Меловые кавычки для отзывов",
+    "group": "Линии, стрелки и значки",
+    "sha256": "2de5f9496ce7f7767220782207404d610d255cfc8037806125e4181e601642b8"
+  },
+  {
+    "id": "consultation-chairs-20261108",
+    "file": "artwork/illustrations/consultation-chairs-20261108.png",
+    "title": "Приглашение к разговору — кресла и чашки",
+    "group": "Иллюстрации",
+    "sha256": "dd542dd9e9e3f4062a6ba6ea283ac9fa18f82478994985273a480a32fa054c7d"
+  },
+  {
+    "id": "footer-thread",
+    "file": "artwork/vectors/footer-thread.svg",
+    "title": "Завершающая карандашная линия",
+    "group": "Линии, стрелки и значки",
+    "sha256": "449bf3ca80ad5a5dac01c761dbb5f5ce65a8ac4c627ce37a1358ab02695b2288"
+  },
+  {
+    "id": "navigation-arrow-chalk",
+    "file": "artwork/vectors/navigation-arrow-chalk.svg",
+    "title": "Стрелка переключения — простой меловой контур",
+    "group": "Линии, стрелки и значки",
+    "sha256": "d17b5d0f4ae0e0c3f2f4a69f9580237e27864750be2f580c458d4d1b3747c5a0"
+  },
+  {
+    "id": "consultation-chairs-chalk-20261108",
+    "file": "artwork/illustrations/consultation-chairs-chalk-20261108.png",
+    "title": "Приглашение к разговору — меловая фактура",
+    "group": "Иллюстрации",
+    "sha256": "76c5226c00eee92ba006da09b618d4cb3fcccb466b1192e207b2e6144acbe12c"
+  },
+  {
+    "id": "chalk-word-underline",
+    "file": "artwork/vectors/chalk-word-underline.svg",
+    "title": "Меловое подчёркивание для главного слова",
+    "group": "Линии, стрелки и значки",
+    "sha256": "c92b28f7bf7244980f057aa4a4e66496ad0f999b19a46aff1b30fff5d9894064"
+  },
+  {
+    "id": "service-connecting-line",
+    "file": "artwork/vectors/service-connecting-line.svg",
+    "title": "Меловая связующая линия услуги",
+    "group": "Линии, стрелки и значки",
+    "sha256": "e08893e529f257dca6b675001c49f577312bf7dbf999f06cbbc39b590a4d8eba"
+  },
+  {
+    "id": "field-focus-line",
+    "file": "artwork/vectors/field-focus-line.svg",
+    "title": "Карандашный отклик поля формы",
+    "group": "Линии, стрелки и значки",
+    "sha256": "2775650db78ea5094800d384116d9627f3e7970d1cfa07d6ebd96782be014725"
   }
 ]

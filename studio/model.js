@@ -81,7 +81,7 @@ export function readState(search='') {
 }
 export function designUrl(page,state,hash='') {
   const clean=normalizeState(state);
-  return `${page}?${new URLSearchParams({...clean,v:'4e8461104c'})}${hash?'#'+hash:''}`;
+  return `${page}?${new URLSearchParams({...clean,v:'8cd89996c9'})}${hash?'#'+hash:''}`;
 }
 export function variantNumber(block,value) {
   const token=String(value);

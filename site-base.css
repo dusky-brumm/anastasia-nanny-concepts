@@ -15,7 +15,13 @@ html{scrollbar-gutter:stable;background:#fcfdfb}body{margin:0}main,[data-selecte
 .font-role-controls select{width:100%;min-width:0;height:32px;padding:4px 28px 4px 10px;border:1px solid #c8d2c9;border-radius:4px;background:#fff;color:inherit;font:400 13px/1.2 "Golos Text",sans-serif}
 .font-pair-caption{align-self:center}
 .font-artwork-link{font-size:12px;text-decoration:none;white-space:nowrap;color:inherit}
-html.font-changing{overflow-anchor:none}
+.font-tools{display:flex;align-items:center;gap:16px}
+.font-switcher .font-details-toggle{display:inline-flex;align-items:center;gap:8px;width:auto;height:36px;padding:0 4px;border:0;background:transparent;white-space:nowrap;font-size:12px!important}
+.font-details-toggle span{display:inline-block;transition:transform 160ms ease}
+.font-details-toggle[aria-expanded=true] span{transform:rotate(180deg)}
+.font-switcher [hidden]{display:none!important}
+.font-switcher .motion-toggle{grid-column:1/-1;justify-self:start;width:auto;height:32px;padding:0;border:0;border-bottom:1px solid #bdcbd0;border-radius:0;background:transparent;font-size:12px!important}
+html.font-changing,html.layout-changing{overflow-anchor:none}
 .about-pin{background:#fcfcfa}
 .about-variant-switcher{display:flex;align-items:center;gap:8px;min-height:54px;box-sizing:border-box;padding:8px max(24px,calc((100% - 1120px)/2));background:#fcfcfa;color:#526c73;font:12px/1.4 "Golos Text",sans-serif}
 .about-variant-switcher>span:first-child{margin-right:8px}
@@ -27,3 +33,5 @@ html.font-changing{overflow-anchor:none}
 @media(max-width:650px){.about-variant-switcher{flex-wrap:wrap;gap:6px;padding:9px 24px}.about-variant-switcher>span:first-child{font-size:11px;margin-right:auto}.about-variant-switcher [data-about-design-name]{display:none}}
 [data-selected-block]{scroll-margin-top:calc(var(--font-switcher-height,68px) + 8px)}
 @media(max-width:900px){.font-switcher-inner{padding:8px 16px;gap:8px}.font-switcher-top{grid-template-columns:1fr auto;gap:6px}.font-switcher nav{grid-template-columns:repeat(10,minmax(0,1fr));grid-column:1/-1;grid-row:2}.font-switcher button{height:30px}.font-role-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.font-pair-caption{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.font-artwork-link{grid-column:2;grid-row:1}}
+@media(max-width:900px){.font-tools{grid-column:2;grid-row:1;gap:16px}.font-switcher .font-details-toggle{height:28px}.font-switcher-label{align-self:center}}
+@media(prefers-reduced-motion:reduce){.font-details-toggle span{transition:none}}

@@ -1,4 +1,4 @@
-import {readAboutVariant,storyIndex} from './about-model.js?v=4e8461104c';
+import {readAboutVariant,storyIndex} from './about-model.js?v=8cd89996c9';
 
 export function mountAboutSection(){
   const wrapper=document.querySelector('[data-selected-block=about]');
@@ -23,7 +23,7 @@ export function mountAboutSection(){
     queued=false;
     if(!root)return;
     const available=innerHeight-toolbar.getBoundingClientRect().height;
-    const scroll=variant.id==='3'&&innerWidth>=1000&&available>=740&&!motion.matches;
+    const scroll=variant.id==='3'&&innerWidth>=1000&&available>=740&&!motion.matches&&document.documentElement.dataset.drawingMotion!=='off';
     root.style.setProperty('--about-stage-height',Math.max(540,available-pin.querySelector('nav').offsetHeight)+'px');
     const configuration=variant.id+':'+scroll;
     if(configuration!==lastConfiguration){
@@ -71,5 +71,7 @@ export function mountAboutSection(){
   window.addEventListener('scroll',()=>{if(distance)requestAnimationFrame(updateScroll);},{passive:true});
   window.addEventListener('popstate',()=>choose(readAboutVariant(location.search)));
   motion.addEventListener('change',scheduleLayout);
+  document.addEventListener('drawing:motion',scheduleLayout);
+  document.addEventListener('site:layout',scheduleLayout);
   choose(variant);
 }

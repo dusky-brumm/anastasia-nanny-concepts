@@ -956,5 +956,12 @@
     "title": "Двойной карандашный контур",
     "group": "Линии и рамки",
     "sha256": "ec92c57c1bf9eb5350137d9dc5e39bd840be4fc7b03da65e4eef74e59c3e9004"
+  },
+  {
+    "id": "review-opening-quote",
+    "file": "artwork/vectors/review-opening-quote.svg",
+    "title": "Меловые кавычки для отзывов",
+    "group": "Линии, стрелки и значки",
+    "sha256": "2de5f9496ce7f7767220782207404d610d255cfc8037806125e4181e601642b8"
   }
 ]

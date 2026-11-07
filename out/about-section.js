@@ -1,4 +1,4 @@
-import {readAboutVariant,storyIndex} from './about-model.js?v=4e8461104c';
+import {readAboutVariant,storyIndex} from './about-model.js?v=4bed4dea2d';
 
 export function mountAboutSection(){
   const wrapper=document.querySelector('[data-selected-block=about]');

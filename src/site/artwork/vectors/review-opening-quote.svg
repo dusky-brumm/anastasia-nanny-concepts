@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="48" viewBox="0 0 64 48">
+  <defs>
+    <filter id="dry-chalk" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="17" result="grain"/>
+      <feColorMatrix in="grain" type="luminanceToAlpha" result="powder"/>
+      <feComponentTransfer in="powder" result="dry"><feFuncA type="linear" slope="2.8" intercept="-.45"/></feComponentTransfer>
+      <feComposite in="SourceGraphic" in2="dry" operator="in"/>
+    </filter>
+  </defs>
+  <g fill="#526c73" filter="url(#dry-chalk)">
+    <path d="M28 5C15 8 6 18 6 31c0 8 4 13 11 13 6 0 10-4 10-10s-4-10-10-10h-2c2-6 7-11 14-14Z"/>
+    <path d="M58 5C45 8 36 18 36 31c0 8 4 13 11 13 6 0 10-4 10-10s-4-10-10-10h-2c2-6 7-11 14-14Z"/>
+  </g>
+</svg>

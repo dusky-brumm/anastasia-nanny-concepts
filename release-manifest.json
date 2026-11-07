@@ -1,5 +1,5 @@
 {
-  "build": "4e8461104c",
+  "build": "4bed4dea2d",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Refine review quotation marks with a readable dry-chalk SVG; keep mobile author spacing compact and three desktop cards",
     "Apply explicit clarification: dry chalk texture is only a library sample; restore previous grain on hero, About and review backgrounds",
     "Remove headings from all four About slides in all three layouts, preserving photos and large body copy",
     "Remove questionnaire/magnifier decoration from selected service block; retain its library original"
@@ -1068,6 +1069,17 @@
     "service_decoration_20261107": {
       "source_turn": "01a1b75e-4762-7dc2-89f4-eecd6b4258c6",
       "rule": "Questionnaire and magnifier illustration removed from the selected service heading; original retained in artwork library."
+    },
+    "review_quote_20261108": {
+      "asset": "artwork/vectors/review-opening-quote.svg",
+      "size_px": [
+        44,
+        33
+      ],
+      "rule": "Static decorative opening quotes with dry-chalk grain, shared by all three reviews. Text and selected fonts unchanged.",
+      "mobile": "Natural card height; footer follows review with 24px padding instead of stretching to the longest review.",
+      "desktop": "Three equal-width, equal-height cards with aligned author footers.",
+      "preserve": "Original quote artwork stays in the library; original SVG background grain unchanged."
     }
   },
   "reviewed_decisions": {
@@ -1088,22 +1100,21 @@
   },
   "validation": {
     "status": "passed",
-    "source_browser": "Source chat checked no headings in all three About layouts on desktop/mobile; only background textures changed in integration.",
-    "build": "passed after merge",
-    "static_checks": "699 local links/assets and 111 artwork hashes; nine retired files absent",
+    "build": "passed",
+    "static_checks": "702 local links/assets and 112 artwork hashes; nine retired files absent",
     "tests": {
       "passed": 36,
       "failed": 0
     },
-    "scope": "New library texture and neat button byte-identical; four live background rules use former grain; no headings within About slides",
-    "diff_check": "passed",
-    "integration": "Service HTML exactly matches completed source; About without headings retained; new texture limited to library"
+    "source_browser": "Desktop: three cards visible. Mobile 390px: natural-height cards and review navigation checked. Lora/Manrope and Lora/Tinos retain selected body fonts.",
+    "scope": "Reviews markup, quotation asset/catalog, and scoped quote spacing only; existing background texture preserved.",
+    "diff_check": "passed"
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "dc638001c0",
+  "previous_confirmed_build": "4e8461104c",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

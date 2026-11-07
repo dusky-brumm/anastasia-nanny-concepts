@@ -1,6 +1,6 @@
 {
-  "build": "b1ca650ad4",
-  "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
+  "build": "9d9045e945",
+  "base_commit": "1127317fd241b555249745c40f390342b3dd735d",
   "draft_base_commit": "270c5006d214c17e446ce236027ddb8f53aff47e",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -25,7 +25,8 @@
   "included": [
     "Completed three About layouts: Open spread, Blue study, Personal album; one heading and larger text",
     "Preserved the explicit nine-artwork retirement during source integration; new loop and two archival material samples remain in the library",
-    "Removed all four About slide headings and their underline styles in all three layouts; prominent story text and photos retained"
+    "Removed all four About slide headings and their underline styles in all three layouts; prominent story text and photos retained",
+    "Removed the profile-and-magnifier drawing beside the service heading; three study illustrations and the reusable library asset retained"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -1042,7 +1043,8 @@
         "artwork/lines/pencil-button-double.svg"
       ],
       "scope": "Library samples only. Never substitute these for the current dry-chalk background or single neat button contour."
-    }
+    },
+    "service_heading_drawing_20261107": "No decorative profile-and-magnifier beside the service title, as explicitly requested by the user. Keep the original artwork available in the library."
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
@@ -1064,20 +1066,21 @@
     "status": "pending",
     "source_browser": "Completed source turn verified About at 2545/1440/768/390/320px, all ten heading families at 320px; integration preserves UI sources byte-for-byte.",
     "build": "passed: npm run build",
-    "static_checks": "passed: 700 local links/assets, 111 artwork hashes, downloadable archive; retired-artwork policy preserved",
+    "static_checks": "passed: local resources, 111 artwork hashes, downloadable archive; retired-artwork policy preserved",
     "tests": {
       "passed": 36,
       "failed": 0
     },
     "diff_check": "passed",
     "integration": "eight critical assets/options byte-compatible with confirmed c7cb75a080; completed About UI preserved from 270c500; original removed drawings verified in local backup ZIP",
-    "browser": "No slide headings in layouts 1, 2, 3; four photos and eight paragraphs retained; desktop and 390px text layout checked; slide controls work."
+    "browser": "No slide headings in layouts 1, 2, 3; four photos and eight paragraphs retained; desktop and 390px text layout checked; slide controls work.",
+    "service_drawing": "Heading-art container and profile image reference absent from selected service markup; all three study articles and original library file present."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "dc638001c0",
+  "previous_confirmed_build": "b1ca650ad4",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

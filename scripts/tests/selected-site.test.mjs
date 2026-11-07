@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {sitePage,artworkPage} from '../../src/site/pages.mjs';
-import {fontPairs,readFontChoice} from '../../src/site/font-pairs.js';
+import {fontPairs,fontCatalog,quickFontPairs,findFontPair,readFontChoice} from '../../src/site/font-pairs.js';
 
 test('the approved selection is fixed and independent of query parameters or old saved choices',async()=>{
   const selection=JSON.parse(await readFile('src/site/selection.json','utf8'));
@@ -21,9 +21,16 @@ test('artwork library exposes every original file with a download and escapes ti
   assert.match(html,/artwork-library\.zip/);
 });
 
-test('the font picker offers ten distinct pairs and an explicit shared choice wins over saved state',()=>{
-  assert.equal(fontPairs.length,10);
-  assert.equal(new Set(fontPairs.map(pair=>pair.heading+'+'+pair.body)).size,10);
+test('all historical fonts can be combined in either role, including the four original presets',()=>{
+  assert.deepEqual(fontCatalog.map(font=>font.family),['Manrope','Golos Text','Lora','Prata','Tinos','Caveat','Georgia','Arial','Segoe UI','Times New Roman']);
+  assert.equal(fontPairs.length,100);
+  assert.equal(new Set(fontPairs.map(pair=>pair.heading+'+'+pair.body)).size,100);
+  assert.equal(quickFontPairs.length,20);
+  assert.deepEqual(quickFontPairs.slice(0,4).map(pair=>pair.heading+' + '+pair.body),['Manrope + Golos Text','Lora + Golos Text','Prata + Manrope','Tinos + Manrope']);
+  for(const heading of fontCatalog)for(const body of fontCatalog){const pair=findFontPair(heading.id,body.id);assert.equal(pair.headingId,heading.id);assert.equal(pair.bodyId,body.id);}
+});
+
+test('an explicit shared font choice wins over saved state and unknown IDs use the default',()=>{
   const storage={getItem:()=> '9'};
   assert.equal(readFontChoice('?fonts=2',storage).id,'2');
   assert.equal(readFontChoice('',storage).id,'9');

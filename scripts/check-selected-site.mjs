@@ -9,7 +9,8 @@ assert.deepEqual(selection.blocks.map(({id})=>id),['header','hero','service','ab
 assert.equal((home.match(/data-selected-block=/g)||[]).length,9);
 assert.equal((home.match(/<iframe\b/g)||[]).length,9);
 assert.doesNotMatch(home,/data-design-navigation|data-assembly-choice|data-assembly-gallery|data-site-root/);
-assert.deepEqual([...home.matchAll(/data-font-choice="([^"]+)"/g)].map(match=>match[1]),['1','2','3','4','5','6','7','8','9','10']);
+assert.deepEqual([...home.matchAll(/data-font-choice="([^"]+)"/g)].map(match=>match[1]),Array.from({length:20},(_,index)=>String(index+1)));
+assert.match(home,/data-heading-choice/);assert.match(home,/data-body-choice/);
 assert.match(home,/id="service-schema"/);
 assert.match(home,/<link rel="canonical" href="https:\/\/dusky-brumm.github.io\/anastasia-nanny-concepts\/">/);
 const rootPages=(await readdir('out')).filter(name=>name.endsWith('.html')).sort();

@@ -1,8 +1,10 @@
-import {applyFontPair,readFontChoice,resolveFontPair} from './font-pairs.js';
+import {applyFontPair,readFontChoice,resolveFontPair,findFontPair,fontStorageKey} from './font-pairs.js?v=a0d5839180';
 
 const frames=[...document.querySelectorAll('iframe[data-reference-frame]')];
 const switcher=document.querySelector('.font-switcher');
 const buttons=[...document.querySelectorAll('[data-font-choice]')];
+const headingChoice=document.querySelector('[data-heading-choice]');
+const bodyChoice=document.querySelector('[data-body-choice]');
 let storage;
 try{storage=localStorage;}catch{/* The URL works when storage is blocked. */}
 let activePair=readFontChoice(location.search,storage);
@@ -27,9 +29,11 @@ async function chooseFont(pair,{updateUrl=false,preservePosition=true}={}){
   const offset=anchor?.getBoundingClientRect().top;
   document.documentElement.classList.add('font-changing');
   activePair=pair;
+  headingChoice.value=pair.headingId;
+  bodyChoice.value=pair.bodyId;
   for(const button of buttons)button.setAttribute('aria-pressed',String(button.dataset.fontChoice===pair.id));
   document.querySelector('[data-font-status] strong').textContent=`${pair.heading} + ${pair.body}`;
-  try{storage?.setItem('nastya-font-pair-v1',pair.id);}catch{/* Saving the choice is optional. */}
+  try{storage?.setItem(fontStorageKey,pair.id);}catch{/* Saving the choice is optional. */}
   if(updateUrl){const url=new URL(location.href);url.searchParams.set('fonts',pair.id);history.replaceState(null,'',url);}
   await Promise.allSettled([applyFontPair(document,pair),...frames.map(frame=>styleFrame(frame,pair))]);
   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
@@ -39,6 +43,7 @@ async function chooseFont(pair,{updateUrl=false,preservePosition=true}={}){
   document.documentElement.classList.remove('font-changing');
 }
 for(const button of buttons)button.addEventListener('click',()=>chooseFont(resolveFontPair(button.dataset.fontChoice),{updateUrl:true}));
+for(const select of [headingChoice,bodyChoice])select.addEventListener('change',()=>chooseFont(findFontPair(headingChoice.value,bodyChoice.value),{updateUrl:true}));
 for(const frame of frames)frame.addEventListener('load',()=>styleFrame(frame,activePair));
 new ResizeObserver(()=>document.documentElement.style.setProperty('--font-switcher-height',switcher.getBoundingClientRect().height+'px')).observe(switcher);
 chooseFont(activePair,{preservePosition:false});

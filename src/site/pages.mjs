@@ -1,18 +1,19 @@
 import {seoHead,utilityIndexingTags} from '../reference/studio/seo.js';
-import {fontPairs} from './font-pairs.js';
+import {fontPairs,fontCatalog,quickFontPairs} from './font-pairs.js';
 
 export const blockLabels={header:'Хедер',hero:'Главный блок',service:'Об услуге',about:'Знакомство с Анастасией',process:'Как проходит подбор',pricing:'Стоимость и гарантия',reviews:'Отзывы и история семьи',apply:'Заявка',footer:'Футер'};
 export const escapeHtml=value=>String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 
 export function sitePage(selection){
+  const fontOptions=selected=>[false,true].map(system=>`<optgroup label="${system?'Системные из прежних макетов':'Основные шрифты прежних вариантов'}">${fontCatalog.filter(font=>Boolean(font.system)===system).map(font=>`<option value="${font.id}"${font.id===selected?' selected':''}>${escapeHtml(font.family)}</option>`).join('')}</optgroup>`).join('');
   return `<!doctype html><html lang="ru" data-font-pair="1"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 ${seoHead('index.html')}
 <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="site-base.css?v=__VERSION__">
-<link rel="stylesheet" href="fonts.css?v=__VERSION__"><link rel="stylesheet" href="studio/fonts.css?v=__VERSION__"><link rel="stylesheet" href="typefaces/fonts.css?v=__VERSION__"><link rel="stylesheet" href="site-typography.css?v=__VERSION__">
+<link rel="stylesheet" href="fonts.css?v=__VERSION__"><link rel="stylesheet" href="studio/fonts.css?v=__VERSION__"><link rel="stylesheet" href="site-typography.css?v=__VERSION__">
 <script defer src="studio/reference-frames.js?v=__VERSION__"></script><script type="module" src="site-base.js?v=__VERSION__"></script>
 </head><body>
-<aside class="font-switcher" aria-label="Выбор сочетания шрифтов"><div class="font-switcher-inner"><span class="font-switcher-label">Шрифты</span><nav aria-label="Сочетания шрифтов">${fontPairs.map(pair=>`<button type="button" data-font-choice="${pair.id}" aria-label="${pair.id}: ${pair.heading} + ${pair.body}" aria-pressed="${pair.id==='1'}" title="${pair.heading} + ${pair.body}">${pair.id}</button>`).join('')}</nav><p class="font-pair-caption" data-font-status role="status" aria-live="polite"><strong>${fontPairs[0].heading} + ${fontPairs[0].body}</strong><span>Заголовки + основной текст</span></p><a class="font-artwork-link" href="artwork">Рисунки ↗</a></div></aside>
+<aside class="font-switcher" aria-label="Выбор сочетания шрифтов"><div class="font-switcher-inner"><div class="font-switcher-top"><span class="font-switcher-label">Шрифты</span><nav aria-label="Готовые сочетания шрифтов">${quickFontPairs.map(pair=>`<button type="button" data-font-choice="${pair.id}" aria-label="${pair.id}: ${pair.heading} + ${pair.body}" aria-pressed="${pair.id==='1'}" title="${pair.heading} + ${pair.body}">${pair.id}</button>`).join('')}</nav><a class="font-artwork-link" href="artwork">Рисунки ↗</a></div><div class="font-role-controls"><div class="font-role-field"><label for="font-heading">Заголовки</label><select id="font-heading" data-heading-choice>${fontOptions(fontPairs[0].headingId)}</select></div><div class="font-role-field"><label for="font-body">Основной текст</label><select id="font-body" data-body-choice>${fontOptions(fontPairs[0].bodyId)}</select></div><p class="font-pair-caption" data-font-status role="status" aria-live="polite"><strong>${fontPairs[0].heading} + ${fontPairs[0].body}</strong><span>Все прежние шрифты · ${fontPairs.length} сочетаний</span></p></div></div></aside>
 <main aria-label="Индивидуальный подбор няни">${selection.blocks.map(({id,file})=>`
 <div id="${id}" data-selected-block="${id}"><iframe data-reference-frame title="${blockLabels[id]}" src="${file}?v=__VERSION__" loading="eager" height="${id==='header'?96:id==='footer'?220:650}"></iframe></div>`).join('')}
 </main>

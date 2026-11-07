@@ -1,7 +1,7 @@
 import {additionalTemplates} from './additional-templates.js';
-import {renderBlock} from './render.js?v=bfa1b9b481';
-import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=bfa1b9b481';
-import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=bfa1b9b481';
+import {renderBlock} from './render.js?v=e828dd1bcf';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=e828dd1bcf';
+import {sharedDesignHeader,withoutRepeatedHeroLabel} from './design-chrome.js?v=e828dd1bcf';
 
 export const additionalDesignSources=[
   {mode:'fotoalbum',file:'comparison-fotoalbum.html',name:'Семейный фотоальбом',css:'album.css',number:'11'},
@@ -13,7 +13,7 @@ export const additionalDesigns=additionalDesignSources.filter(design=>design.mod
 
 export function additionalStyles(design){
   const directory=design.chalk?'chalk':design.mode;
-  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=bfa1b9b481">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=bfa1b9b481">`;
+  return `${!design.chalk&&design.mode!=='fotoalbum'?`<link rel="stylesheet" href="studio/variants/${directory}/fonts.css?v=e828dd1bcf">`:''}<link rel="stylesheet" href="studio/variants/${directory}/${design.css??'chalk.css'}?v=e828dd1bcf">`;
 }
 
 export function selectedBlock(id,style='quiet',variant=1,drawings=false){

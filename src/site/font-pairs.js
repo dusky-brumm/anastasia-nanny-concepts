@@ -12,7 +12,8 @@ export const fontCatalog=[
   {id:'segoe',family:'Segoe UI',fallback:'sans-serif',weight:400,scale:.98,tracking:'-.03em',system:true},
   {id:'times',family:'Times New Roman',fallback:'serif',weight:400,scale:1.04,tracking:'-.025em',system:true},
 ];
-export const fontStorageKey='nastya-historical-font-pair-v1';
+// A new storage key starts everyone on the user's chosen pair, not an earlier trial.
+export const fontStorageKey='nastya-selected-lora-manrope-v1';
 const quickChoices=[
   ['manrope','golos'],['lora','golos'],['prata','manrope'],['tinos','manrope'],
   ['lora','manrope'],['prata','golos'],['tinos','golos'],['golos','manrope'],
@@ -29,12 +30,13 @@ export const fontPairs=choices.map(([headingId,bodyId],index)=>{
   return {id:String(index+1),headingId,bodyId,heading:heading.family,body:body.family,headingFallback:heading.fallback,bodyFallback:body.fallback,weight:heading.weight,scale:heading.scale,tracking:heading.tracking};
 });
 export const quickFontPairs=fontPairs.slice(0,quickChoices.length);
-export const findFontPair=(headingId,bodyId)=>fontPairs.find(pair=>pair.headingId===headingId&&pair.bodyId===bodyId)??fontPairs[0];
-export const resolveFontPair=id=>fontPairs.find(pair=>pair.id===id)??fontPairs[0];
+export const defaultFontPair=fontPairs.find(pair=>pair.headingId==='lora'&&pair.bodyId==='manrope');
+export const findFontPair=(headingId,bodyId)=>fontPairs.find(pair=>pair.headingId===headingId&&pair.bodyId===bodyId)??defaultFontPair;
+export const resolveFontPair=id=>fontPairs.find(pair=>pair.id===id)??defaultFontPair;
 export function readFontChoice(search,storage){
   const query=new URLSearchParams(search).get('fonts');
   if(query!==null)return resolveFontPair(query);
-  try{return resolveFontPair(storage?.getItem(fontStorageKey));}catch{return fontPairs[0];}
+  try{return resolveFontPair(storage?.getItem(fontStorageKey));}catch{return defaultFontPair;}
 }
 export async function applyFontPair(doc,pair){
   const root=doc.documentElement;

@@ -982,5 +982,21 @@
     "title": "Широкие стрелки этапов подбора",
     "group": "Линии, стрелки и значки",
     "sha256": "6b920284415318dee3013d592b10a7b1475731184f520b5de406b9c42f119f05"
+  },
+  {
+    "id": "about-notebook-20261107",
+    "file": "artwork/illustrations/about-notebook-20261107.png",
+    "title": "Блокнот, карандаш и линия",
+    "group": "Иллюстрации",
+    "sha256": "8825c27370f1624a52cfbe90f3446f5bd821f5de2a1f48d1bd27246e761b1d00",
+    "block": "Знакомство с Анастасией"
+  },
+  {
+    "id": "about-branch-20261107",
+    "file": "artwork/illustrations/about-branch-20261107.png",
+    "title": "Веточка с меловой петлёй",
+    "group": "Иллюстрации",
+    "sha256": "42ed4370cbf5043cb54309ca33786a27824768d49d191396c65a1e34c13bd6d1",
+    "block": "Знакомство с Анастасией"
   }
 ]

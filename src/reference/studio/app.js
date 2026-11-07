@@ -76,7 +76,7 @@ function playAboutCarousel(section,carousel,motion){
 }
 
 function mountAboutCarousels(){
-  aboutCarousels=[...document.querySelectorAll('[data-about-carousel]')].map(section=>{
+  aboutCarousels=[...document.querySelectorAll('[data-about-carousel]:not([data-about-custom])')].map(section=>{
     const events=new AbortController();
     const eventOptions={signal:events.signal};
     const viewport=section.querySelector('.s-about-viewport');

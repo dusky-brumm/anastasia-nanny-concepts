@@ -977,5 +977,19 @@
     "title": "Завершающая карандашная линия",
     "group": "Линии, стрелки и значки",
     "sha256": "449bf3ca80ad5a5dac01c761dbb5f5ce65a8ac4c627ce37a1358ab02695b2288"
+  },
+  {
+    "id": "navigation-arrow-chalk",
+    "file": "artwork/vectors/navigation-arrow-chalk.svg",
+    "title": "Стрелка переключения — простой меловой контур",
+    "group": "Линии, стрелки и значки",
+    "sha256": "d17b5d0f4ae0e0c3f2f4a69f9580237e27864750be2f580c458d4d1b3747c5a0"
+  },
+  {
+    "id": "consultation-chairs-chalk-20261108",
+    "file": "artwork/illustrations/consultation-chairs-chalk-20261108.png",
+    "title": "Приглашение к разговору — меловая фактура",
+    "group": "Иллюстрации",
+    "sha256": "76c5226c00eee92ba006da09b618d4cb3fcccb466b1192e207b2e6144acbe12c"
   }
 ]

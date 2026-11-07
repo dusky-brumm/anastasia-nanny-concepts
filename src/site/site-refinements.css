@@ -9,6 +9,8 @@ body[data-fixed-theme=almost-white] .site-preview #pricing{background:#fcfcfa!im
 html[data-body-font=caveat] .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote{font-size:20px!important;line-height:1.5!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review footer{padding:24px 0 0!important}
 .site-preview.early-classic .s-reviews .early-quote{display:block;flex:0 0 auto;width:44px;height:33px;object-fit:contain;margin:0 0 14px!important}
+.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button{width:44px;height:44px}
+.site-preview.early-classic .s-reviews .classic-quote-arrow{width:44px;height:44px;background-image:url('artwork/vectors/navigation-arrow-chalk.svg')}
 .site-preview.early-classic .early-apply-picture{width:148px;height:136px;margin:20px 0 6px}
 @media(max-width:820px){.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid{grid-auto-columns:100%!important;align-items:start}.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px!important}.site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote{flex:none}.site-preview.early-classic .s-reviews [data-open-quotes] .s-review footer{margin-top:0}}
 @media(max-width:620px){.site-preview.early-classic .early-apply-picture{width:76px;height:72px;margin:0;justify-self:end}}

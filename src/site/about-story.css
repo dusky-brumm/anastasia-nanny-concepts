@@ -21,7 +21,7 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
 .about-story .s-about-slides li strong{font-weight:600;color:#385a6b}
 .about-story .about-controls{position:relative;z-index:3;display:flex;align-items:center;gap:20px;margin:28px 0 0 calc((100% - 88px) * .425 + 88px);min-height:48px}
 .about-story .about-transport{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.about-story .about-arrow{width:44px;height:44px;padding:0;border:0;background:transparent url('artwork/classic-chalk-ui/arrow-right.webp') center/44px 36px no-repeat;cursor:pointer}
+.about-story .about-arrow{width:44px;height:44px;padding:0;border:0;background:transparent url('artwork/vectors/navigation-arrow-chalk.svg') center/44px 44px no-repeat;cursor:pointer}
 .about-story .about-arrow[data-about-step='-1']{transform:scaleX(-1)}
 .about-story .about-position{font-size:11px;line-height:1.4;letter-spacing:.08em;white-space:nowrap;font-variant-numeric:tabular-nums;color:#526c73}
 .about-story .s-about-dots{display:flex;gap:0;margin:0}
@@ -103,7 +103,7 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
  .about-story .s-about-slides li p.about-lead{font-size:20px;line-height:1.5;margin-bottom:14px}
  .about-story .about-controls,.about-story[data-about-design='2'] .about-controls,.about-story[data-about-design='3'] .about-controls{position:relative;margin:24px 0 0;gap:8px;flex-wrap:wrap}
  .about-story .about-transport{gap:6px}
- .about-story .about-arrow{width:36px;background-size:36px 30px}
+ .about-story .about-arrow{width:36px;background-size:36px 36px}
  .about-story .s-about-dots{margin-left:auto}
  .about-story .s-about-dots button{width:30px}
  .about-story .about-pause{margin-left:auto}

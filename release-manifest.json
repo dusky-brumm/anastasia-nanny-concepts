@@ -1,5 +1,5 @@
 {
-  "build": "f3a0fc1e2b",
+  "build": "3307846e3a",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Refine first filled-crayon consultation illustration and use ordinary circular navigation arrows with dry-pencil texture in About and reviews",
     "Replace consultation envelope with an airy dry-crayon conversation vignette; redesign footer as a full-width blue signed ending with navigation and pencil thread",
     "Refine review quotation marks with a readable dry-chalk SVG; keep mobile author spacing compact and three desktop cards",
     "Apply explicit clarification: dry chalk texture is only a library sample; restore previous grain on hero, About and review backgrounds",
@@ -1083,12 +1084,20 @@
       "preserve": "Original quote artwork stays in the library; original SVG background grain unchanged."
     },
     "contact_footer_20261108": {
-      "illustration": "artwork/illustrations/consultation-chairs-20261108.png",
+      "illustration": "artwork/illustrations/consultation-chairs-chalk-20261108.png",
       "medium": "Built-in ImageGen, transparent dry-crayon line sketch; original alpha PNG preserved",
       "footer": "Full-width #e7f1f6 field, constrained content, name, small site navigation, Telegram, privacy button and return-to-top link",
       "line": "artwork/vectors/footer-thread.svg",
       "preserve": "Form fields, request logic, chosen fonts and all previous artwork stay unchanged; envelope and arch remain in the library",
       "documentation": "docs/contact-footer-20261108.md"
+    },
+    "first_chalk_and_arrows_20261108": {
+      "illustration": "artwork/illustrations/consultation-chairs-chalk-20261108.png",
+      "direction": "First filled dry-crayon chairs; no backrest holes and simplified interior details",
+      "arrows": "artwork/vectors/navigation-arrow-chalk.svg",
+      "scope": "About and review carousel controls; circle, straight shaft and simple arrowhead with subtle dry-pencil grain",
+      "preserve": "Previous outline illustration and raster arrows remain in the library. Footer, form logic and process route unchanged.",
+      "documentation": "docs/normal-chalk-arrows-20261108.md"
     }
   },
   "reviewed_decisions": {
@@ -1110,20 +1119,20 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "All local links/assets and 114 artwork hashes checked; nine retired files remain absent",
+    "static_checks": "719 local links/assets; 116 artwork hashes; nine retired files absent",
     "tests": {
       "passed": 36,
       "failed": 0
     },
-    "source_browser": "390px mobile and 1440px desktop: no footer overflow, small consultation vignette, privacy dialog and section navigation verified.",
-    "scope": "Selected consultation illustration, footer markup and scoped visual styles; existing form logic unchanged.",
+    "source_browser": "Desktop first About layout: correct circular arrow assets; About next control works. 390px: review next control works and refined filled illustration fits the form intro.",
+    "scope": "Illustration and UI arrows only; selected composition and all text unchanged.",
     "diff_check": "passed"
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "4bed4dea2d",
+  "previous_confirmed_build": "f3a0fc1e2b",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

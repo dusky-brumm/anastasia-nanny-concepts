@@ -16,8 +16,6 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
 .about-story .s-photo::before{inset:-18px -24px 17% 25%;background-color:#d5e3e9;transform:rotate(4deg)}
 .about-story .s-photo::after{inset:48% 26% -14px -18px;background-color:#e0e8db;transform:rotate(-4deg)}
 .about-story .about-story-copy{position:relative;z-index:2;min-width:0;padding:0}
-.about-story .s-about-slides h3{position:relative;max-width:none;margin:0 0 28px;text-align:left;text-wrap:balance}
-.about-story .s-about-slides h3::after{content:'';display:block;width:132px;height:6px;margin-top:22px;background:#658392;mask:url('artwork/lines/pencil-rule.svg') center/100% 100% no-repeat;opacity:.5;transform:rotate(-1deg)}
 .about-story .s-about-slides li p{max-width:46ch;margin:0;font-size:20px;line-height:1.7;color:#28353c;letter-spacing:-.015em;text-wrap:pretty}
 .about-story .s-about-slides li p.about-lead{font-size:23px;line-height:1.5;font-weight:500;margin-bottom:16px}
 .about-story .s-about-slides li strong{font-weight:600;color:#385a6b}
@@ -101,8 +99,6 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
  .about-story .s-photo::before{inset:-12px -18px 20% 25%}
  .about-story .s-photo::after{inset:45% 25% -8px -15px}
  .about-story .about-story-copy,.about-story[data-about-design='2'] .about-story-copy{grid-column:1;grid-row:2;padding:0}
- .about-story .s-about-slides h3{max-width:100%;margin-bottom:22px}
- .about-story .s-about-slides h3::after{width:98px;margin-top:16px}
  .about-story .s-about-slides li p{font-size:17px;line-height:1.7;max-width:100%}
  .about-story .s-about-slides li p.about-lead{font-size:20px;line-height:1.5;margin-bottom:14px}
  .about-story .about-controls,.about-story[data-about-design='2'] .about-controls,.about-story[data-about-design='3'] .about-controls{position:relative;margin:24px 0 0;gap:8px;flex-wrap:wrap}

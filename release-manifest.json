@@ -1,7 +1,7 @@
 {
-  "build": "1bdd30e5ad",
+  "build": "dc638001c0",
   "base_commit": "edd67134d4e5534fb881857218a93fff43ebf8ef",
-  "draft_base_commit": "6817c21",
+  "draft_base_commit": "270c5006d214c17e446ce236027ddb8f53aff47e",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
     "src/reference/journeys.css": "a90111f8ec8f75b9374c82b3ed205b734490978d47baaadd02abbceff876c7af",
@@ -23,13 +23,8 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Approved Lora headings and Manrope body text as the default across all nine blocks; obsolete stored font trials no longer override it",
-    "Three hand-drawn pricing cards, smaller envelope and wider illustrated selection route from the completed source chat",
-    "Preserved all selected blocks and artwork library, including the newly drawn process arrows",
-    "Three completed About designs, textured photo backings, 6.5-second autoplay, desktop scroll story, and two new preserved chalk illustrations",
-    "Three new About compositions integrated with the milk/blue/green page, a single introduction heading, and larger 20px body / 23px lead text; original photographs and stories preserved",
-    "Merged chalk process dots while retaining every saved artwork file and catalog entry, as explicitly requested in the source design chat",
-    "Matched current dry-chalk texture and neater button outline; prior texture and outline preserved as separate downloadable assets"
+    "Completed three About layouts: Open spread, Blue study, Personal album; one heading and larger text",
+    "Preserved the explicit nine-artwork retirement during source integration; new loop and two archival material samples remain in the library"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -41,7 +36,7 @@
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4",
-    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1b66a-b8f9-7651-8897-581efb408871",
+    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1b698-132f-7f32-9f74-74697d60062f",
     "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
     "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
     "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1ac05-116f-7370-9629-445830e5052d"
@@ -693,6 +688,46 @@
         "src/site/artwork-catalog.json": "d58c94d2eb27b4ccca40615f04811a115afbefcfd69a86157e9e0f20bd74ed40",
         "src/site/artwork/vectors/process-wide-arrows.svg": "6b920284415318dee3013d592b10a7b1475731184f520b5de406b9c42f119f05"
       }
+    },
+    "about-stories-20261107": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "source_commit": "3e92e8b34eb140704e21a870e0064078c62cf957",
+      "build": "55e852a94c",
+      "sites_version": 88,
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1b680-8ef8-72e1-a962-7888fcd17439",
+      "status": "included",
+      "documentation": "docs/about-stories-20261107.md",
+      "note": "Initial About story behavior retained; later composition iteration is recorded separately."
+    },
+    "about-redesign-20261107": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "source_commit": "270c5006d214c17e446ce236027ddb8f53aff47e",
+      "build": "1bdd30e5ad",
+      "sites_version": 91,
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1b698-132f-7f32-9f74-74697d60062f",
+      "status": "included",
+      "documentation": "docs/about-redesign-20261107.md",
+      "exclusions": [
+        "artwork/illustrations/route-heart.webp",
+        "artwork/line-drawings/02-hero.png",
+        "artwork/line-drawings/03-service.png",
+        "artwork/line-drawings/04-about.png",
+        "artwork/line-drawings/05-process.png",
+        "artwork/line-drawings/06-guarantee.png",
+        "artwork/line-drawings/07-reviews.png",
+        "artwork/line-drawings/08-apply.png",
+        "artwork/line-drawings/09-footer.png"
+      ],
+      "sha256_binary": {
+        "src/site/about-model.js": "f1b394ab9f3b980cc14456c65e9a2a9fbe628c32aede49457f207131c070a9f2",
+        "src/site/about-story.css": "e2d8bb4b468c7bfe6b5d5fcda1d30f7d07c5aa9300ed8156c95554daf783465a",
+        "src/site/blocks/about.html": "345353ad755f905f1285cde5a643119a0c19a11e809a7ceaf6ec76dab6b00db3",
+        "src/site/pages.mjs": "6a34ab5a5f6097da983624c25c0300a2a6a2dca2ced56ccf17b240fd3803b466",
+        "src/site/site-base.css": "a724e0caa2452565e55c33479e0982456d83ca412c72a46ba66eae00bbdf18f9",
+        "src/site/artwork/vectors/about-loop-line.svg": "fe7400f39fba2f12271a37e52683fa7c34c9374951195fdb0b28be9e8295becb"
+      }
     }
   },
   "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched.",
@@ -705,7 +740,7 @@
       "block_comparison"
     ],
     "hero_background": "soft blue radial gradient",
-    "pricing_background": "soft green radial gradient",
+    "pricing_background": "#fcfcfa solid milk",
     "footer_background": "green #e8efe4",
     "source_chat": "Первый блок",
     "source_thread": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
@@ -823,8 +858,9 @@
         "footer": "chalk-letter"
       },
       "only_site": true,
-      "artwork_library_count": 114,
-      "supersedes": "All previous requirements to retain design switcher and block comparisons."
+      "artwork_library_count": 111,
+      "supersedes": "All previous requirements to retain design switcher and block comparisons.",
+      "artwork_count": 111
     },
     "typography_and_materials_20261107": {
       "source_turn": "01a1b4b5-03e5-7290-81c1-4d6488d9f2f0",
@@ -878,6 +914,133 @@
       "pricing": "three hand-drawn outlined cards",
       "apply": "envelope reduced approximately one third",
       "process": "wider spacing and redrawn wide arrows; responsive labels"
+    },
+    "retired_artwork_20261107": {
+      "source_chat": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
+      "group": "Рисунки для блоков",
+      "items": [
+        {
+          "id": "line-drawings-02-hero-png",
+          "file": "artwork/line-drawings/02-hero.png",
+          "title": "02-hero",
+          "group": "Рисунки для блоков",
+          "sha256": "2a626fb8d87153a7dfce4efd38cebd704d8f35cab87a1262c79899a8c1c6c8b0"
+        },
+        {
+          "id": "line-drawings-03-service-png",
+          "file": "artwork/line-drawings/03-service.png",
+          "title": "03-service",
+          "group": "Рисунки для блоков",
+          "sha256": "3bcd6e3666a4f53be4985ae85ab0b5800811e04740d8c4d08e3ea9c71eabb116"
+        },
+        {
+          "id": "line-drawings-04-about-png",
+          "file": "artwork/line-drawings/04-about.png",
+          "title": "04-about",
+          "group": "Рисунки для блоков",
+          "sha256": "7a3b57edb3215c2298f15668e885efeafcbda5f74d547610abe7a64d8fdf49fa"
+        },
+        {
+          "id": "line-drawings-05-process-png",
+          "file": "artwork/line-drawings/05-process.png",
+          "title": "05-process",
+          "group": "Рисунки для блоков",
+          "sha256": "81a5f1dd176deb0bb3ccd5a207cd14c2ceb42f7357c35611f8c3f972c8e42d91"
+        },
+        {
+          "id": "line-drawings-06-guarantee-png",
+          "file": "artwork/line-drawings/06-guarantee.png",
+          "title": "06-guarantee",
+          "group": "Рисунки для блоков",
+          "sha256": "6c2599240bff476408019ffe76338857fdc1b2729f2e1a4fc92ff0f6cbe89147"
+        },
+        {
+          "id": "line-drawings-07-reviews-png",
+          "file": "artwork/line-drawings/07-reviews.png",
+          "title": "07-reviews",
+          "group": "Рисунки для блоков",
+          "sha256": "0634c46f608ddbf30e4044f7d5715e3eba9aa3e22f8a0f01046e2475037a08da"
+        },
+        {
+          "id": "line-drawings-08-apply-png",
+          "file": "artwork/line-drawings/08-apply.png",
+          "title": "08-apply",
+          "group": "Рисунки для блоков",
+          "sha256": "1ab7761c4ef4227a326367b0f2c98f870ad3380a5973dd21c50569cc615cf76a"
+        },
+        {
+          "id": "line-drawings-09-footer-png",
+          "file": "artwork/line-drawings/09-footer.png",
+          "title": "09-footer",
+          "group": "Рисунки для блоков",
+          "sha256": "19c14ea113d6aa7b5300589a58ea79b23adcbc13e62f5786ba0f5aa33854bcaa"
+        },
+        {
+          "id": "illustrations-route-heart-webp",
+          "file": "artwork/illustrations/route-heart.webp",
+          "title": "Сердце на линии маршрута",
+          "group": "Рисунки для блоков",
+          "sha256": "fa94aa5cfbe2200213834e42ab08ab6a1314a737ac7f18407c75649e7ae07554"
+        }
+      ],
+      "count": 9,
+      "policy": "The explicit November 7 removal overrides earlier general artwork-preservation requests. Never restore these nine files to current source artwork, catalog or downloadable ZIP. Preserve originals only in local archive and historical releases.",
+      "archive": "artifacts/retired-block-drawings-20261107/retired-block-drawings.zip"
+    },
+    "process_number_background": {
+      "asset": "artwork/classic-chalk-ui/dot.webp",
+      "scope": "numbers 1–5 in the selected process block on desktop and mobile",
+      "numbers": "kept white and readable; hand-drawn dot replaces flat circles"
+    },
+    "hero_copy_20261107": {
+      "old": "выбрать человека, с которым спокойно.",
+      "new": "выбрать человека.",
+      "status": "included"
+    },
+    "about_stories_20261107": {
+      "scope": "Only the About block has three local layouts; no complete-design selector or block comparison restored",
+      "variants": [
+        "Открытый разворот",
+        "Голубой этюд",
+        "Личный альбом"
+      ],
+      "autoplay_ms": 6500,
+      "source_commit": "270c5006d214c17e446ce236027ddb8f53aff47e",
+      "documentation": "docs/about-redesign-20261107.md",
+      "preserved_illustrations": [
+        "about-notebook-20261107.png",
+        "about-branch-20261107.png"
+      ],
+      "source_turn": "01a1b698-132f-7f32-9f74-74697d60062f",
+      "heading": "Познакомимся ближе",
+      "body_px": {
+        "desktop": 20,
+        "mobile": 17
+      },
+      "lead_px": {
+        "desktop": 23,
+        "mobile": 20
+      }
+    },
+    "chalk_texture_20261107": {
+      "button": "One fine outline with gently rounded corners; no doubled sketch line",
+      "texture": "Dry white chalk passes with visible powdery grain, generated by built-in ImageGen with alpha",
+      "library_asset": "artwork/chalk-almost-white/soft-chalk.png",
+      "scope": [
+        "hero photo backings",
+        "About photo backings and existing textured surfaces",
+        "review cards",
+        "artwork library"
+      ],
+      "documentation": "docs/chalk-texture-20261107.md",
+      "preserve": "Lora + Manrope, selected blocks, milk pricing and retired artwork exclusions"
+    },
+    "archival_material_samples": {
+      "files": [
+        "artwork/chalk-almost-white/soft-chalk-v1.png",
+        "artwork/lines/pencil-button-double.svg"
+      ],
+      "scope": "Library samples only. Never substitute these for the current dry-chalk background or single neat button contour."
     }
   },
   "reviewed_decisions": {
@@ -897,20 +1060,22 @@
     "latest_switcher": "Current chosen pair Lora headings + Manrope body, preset 5. Historical font controls retained; Caveat is only a possible accent. No design or palette controls."
   },
   "validation": {
-    "build": "passed",
-    "static_checks": "passed: 728 local links/assets, 120 artwork hashes, downloadable archive",
+    "status": "pending",
+    "source_browser": "Completed source turn verified About at 2545/1440/768/390/320px, all ten heading families at 320px; integration preserves UI sources byte-for-byte.",
+    "build": "passed: npm run build",
+    "static_checks": "passed: 701 local links/assets, 111 artwork hashes, nine retired files absent from catalog/source/output/ZIP",
     "tests": {
       "passed": 36,
       "failed": 0
     },
-    "default_typography": "Lora + Manrope confirmed in initial HTML/CSS and all nine blocks; old storage ignored, explicit choices preserved",
-    "browser": "New About variants checked at 2545/1440/768/390/320px, with all ten heading fonts at 320px; no text or controls overflow; desktop chapters and skip link preserved."
+    "diff_check": "passed",
+    "integration": "eight critical assets/options byte-compatible with confirmed c7cb75a080; completed About UI preserved from 270c500; original removed drawings verified in local backup ZIP"
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "55e852a94c",
+  "previous_confirmed_build": "c7cb75a080",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",
@@ -923,6 +1088,11 @@
   "deployment": {
     "status": "pending"
   },
-  "completed_about": "docs/about-redesign-20261107.md; previous iteration remains in history and artwork library",
-  "artwork_preservation": "120 files: all prior artwork retained, former inline loop added, prior soft texture and double-line button outline preserved as sibling files before applying the updated versions."
+  "integrated_about_source": {
+    "commit": "270c5006d214c17e446ce236027ddb8f53aff47e",
+    "build": "1bdd30e5ad",
+    "sites_version": 91,
+    "turn": "01a1b698-132f-7f32-9f74-74697d60062f",
+    "integration_note": "Completed About imported; nine restored retired drawings excluded according to explicit later user decision."
+  }
 }

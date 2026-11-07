@@ -1,6 +1,6 @@
 import {illustratedAssets} from './illustrated-assets.js';
-import {extractDesignBlock} from './design-blocks.js?v=1bdd30e5ad';
-import {renderChalkJourneyArrows} from '../journeys.js?v=1bdd30e5ad';
+import {extractDesignBlock} from './design-blocks.js?v=dc638001c0';
+import {renderChalkJourneyArrows} from '../journeys.js?v=dc638001c0';
 
 export const earlyDesigns=[
   {mode:'early-classic',file:'comparison-early-classic.html',name:'Классика и мелок',baseMode:'comparison-current',reviews:'cards',form:3,formStyle:'pencil',footer:3,refinement:'quiet',tone:'classic'},
@@ -97,5 +97,5 @@ export function decorateEarlyDesign(markup,design){
 }
 
 export function earlyStyles(){
-  return '<link rel="stylesheet" href="studio/variants/early-chalk/early.css?v=1bdd30e5ad"><script defer src="studio/early-motion.js?v=1bdd30e5ad"></script>';
+  return '<link rel="stylesheet" href="studio/variants/early-chalk/early.css?v=dc638001c0"><script defer src="studio/early-motion.js?v=dc638001c0"></script>';
 }

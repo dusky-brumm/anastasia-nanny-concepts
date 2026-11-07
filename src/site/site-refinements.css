@@ -31,6 +31,7 @@ html[data-body-font=caveat] .site-preview.early-classic .s-reviews [data-open-qu
 }
 
 /* Wider stage centres leave the original illustrations at their natural size. */
+.site-preview.early-classic #process .s-study-steps li:nth-child(n) .s-study-number{border-radius:0;background:transparent url('artwork/classic-chalk-ui/dot.webp') 48% 47%/190% 190% no-repeat;color:#fff}
 .site-preview.early-classic #process{padding-inline:max(clamp(24px,3vw,56px),calc((100% - 1280px)/2))}
 .site-preview.early-classic #process>.s-section-heading{padding-inline:0}
 @media(min-width:901px){

@@ -308,62 +308,6 @@
     "height": 1219
   },
   {
-    "id": "line-drawings-02-hero-png",
-    "file": "artwork/line-drawings/02-hero.png",
-    "title": "02-hero",
-    "group": "Рисунки для блоков",
-    "sha256": "2a626fb8d87153a7dfce4efd38cebd704d8f35cab87a1262c79899a8c1c6c8b0"
-  },
-  {
-    "id": "line-drawings-03-service-png",
-    "file": "artwork/line-drawings/03-service.png",
-    "title": "03-service",
-    "group": "Рисунки для блоков",
-    "sha256": "3bcd6e3666a4f53be4985ae85ab0b5800811e04740d8c4d08e3ea9c71eabb116"
-  },
-  {
-    "id": "line-drawings-04-about-png",
-    "file": "artwork/line-drawings/04-about.png",
-    "title": "04-about",
-    "group": "Рисунки для блоков",
-    "sha256": "7a3b57edb3215c2298f15668e885efeafcbda5f74d547610abe7a64d8fdf49fa"
-  },
-  {
-    "id": "line-drawings-05-process-png",
-    "file": "artwork/line-drawings/05-process.png",
-    "title": "05-process",
-    "group": "Рисунки для блоков",
-    "sha256": "81a5f1dd176deb0bb3ccd5a207cd14c2ceb42f7357c35611f8c3f972c8e42d91"
-  },
-  {
-    "id": "line-drawings-06-guarantee-png",
-    "file": "artwork/line-drawings/06-guarantee.png",
-    "title": "06-guarantee",
-    "group": "Рисунки для блоков",
-    "sha256": "6c2599240bff476408019ffe76338857fdc1b2729f2e1a4fc92ff0f6cbe89147"
-  },
-  {
-    "id": "line-drawings-07-reviews-png",
-    "file": "artwork/line-drawings/07-reviews.png",
-    "title": "07-reviews",
-    "group": "Рисунки для блоков",
-    "sha256": "0634c46f608ddbf30e4044f7d5715e3eba9aa3e22f8a0f01046e2475037a08da"
-  },
-  {
-    "id": "line-drawings-08-apply-png",
-    "file": "artwork/line-drawings/08-apply.png",
-    "title": "08-apply",
-    "group": "Рисунки для блоков",
-    "sha256": "1ab7761c4ef4227a326367b0f2c98f870ad3380a5973dd21c50569cc615cf76a"
-  },
-  {
-    "id": "line-drawings-09-footer-png",
-    "file": "artwork/line-drawings/09-footer.png",
-    "title": "09-footer",
-    "group": "Рисунки для блоков",
-    "sha256": "19c14ea113d6aa7b5300589a58ea79b23adcbc13e62f5786ba0f5aa33854bcaa"
-  },
-  {
     "id": "classic-chalk-ui-arrow-right-webp",
     "file": "artwork/classic-chalk-ui/arrow-right.webp",
     "title": "Стрелка переключения",
@@ -432,13 +376,6 @@
     "title": "Линия мелком",
     "group": "Линии и рамки",
     "sha256": "555a2d8f069863825e859d38d7c62d258dd1f572141af82e89fd092d8f2e80f4"
-  },
-  {
-    "id": "illustrations-route-heart-webp",
-    "file": "artwork/illustrations/route-heart.webp",
-    "title": "Сердце на линии маршрута",
-    "group": "Рисунки для блоков",
-    "sha256": "fa94aa5cfbe2200213834e42ab08ab6a1314a737ac7f18407c75649e7ae07554"
   },
   {
     "id": "vector-1",

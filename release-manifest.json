@@ -1,6 +1,6 @@
 {
-  "build": "e828dd1bcf",
-  "base_commit": "b8761d909b59fef31a8b1d2cbd200db422bc0b99",
+  "build": "59a1b4e034",
+  "base_commit": "e26839188ee6dfcd5d9ebe2c52907529ed8759ec",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,9 +23,9 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Approved Lora headings and Manrope body text as the default across all nine blocks; obsolete stored font trials no longer override it",
-    "Three hand-drawn pricing cards, smaller envelope and wider illustrated selection route from the completed source chat",
-    "Preserved all selected blocks and artwork library, including the newly drawn process arrows"
+    "Removed the nine rejected items in the artwork-library group Рисунки для блоков and from the downloadable library",
+    "Used the existing hand-drawn slider dot as the background of all five process numbers",
+    "Shortened the hero paragraph ending to выбрать человека."
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -820,7 +820,8 @@
       },
       "only_site": true,
       "artwork_library_count": 114,
-      "supersedes": "All previous requirements to retain design switcher and block comparisons."
+      "supersedes": "All previous requirements to retain design switcher and block comparisons.",
+      "artwork_count": 106
     },
     "typography_and_materials_20261107": {
       "source_turn": "01a1b4b5-03e5-7290-81c1-4d6488d9f2f0",
@@ -874,6 +875,88 @@
       "pricing": "three hand-drawn outlined cards",
       "apply": "envelope reduced approximately one third",
       "process": "wider spacing and redrawn wide arrows; responsive labels"
+    },
+    "retired_artwork_20261107": {
+      "source_chat": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
+      "group": "Рисунки для блоков",
+      "items": [
+        {
+          "id": "line-drawings-02-hero-png",
+          "file": "artwork/line-drawings/02-hero.png",
+          "title": "02-hero",
+          "group": "Рисунки для блоков",
+          "sha256": "2a626fb8d87153a7dfce4efd38cebd704d8f35cab87a1262c79899a8c1c6c8b0"
+        },
+        {
+          "id": "line-drawings-03-service-png",
+          "file": "artwork/line-drawings/03-service.png",
+          "title": "03-service",
+          "group": "Рисунки для блоков",
+          "sha256": "3bcd6e3666a4f53be4985ae85ab0b5800811e04740d8c4d08e3ea9c71eabb116"
+        },
+        {
+          "id": "line-drawings-04-about-png",
+          "file": "artwork/line-drawings/04-about.png",
+          "title": "04-about",
+          "group": "Рисунки для блоков",
+          "sha256": "7a3b57edb3215c2298f15668e885efeafcbda5f74d547610abe7a64d8fdf49fa"
+        },
+        {
+          "id": "line-drawings-05-process-png",
+          "file": "artwork/line-drawings/05-process.png",
+          "title": "05-process",
+          "group": "Рисунки для блоков",
+          "sha256": "81a5f1dd176deb0bb3ccd5a207cd14c2ceb42f7357c35611f8c3f972c8e42d91"
+        },
+        {
+          "id": "line-drawings-06-guarantee-png",
+          "file": "artwork/line-drawings/06-guarantee.png",
+          "title": "06-guarantee",
+          "group": "Рисунки для блоков",
+          "sha256": "6c2599240bff476408019ffe76338857fdc1b2729f2e1a4fc92ff0f6cbe89147"
+        },
+        {
+          "id": "line-drawings-07-reviews-png",
+          "file": "artwork/line-drawings/07-reviews.png",
+          "title": "07-reviews",
+          "group": "Рисунки для блоков",
+          "sha256": "0634c46f608ddbf30e4044f7d5715e3eba9aa3e22f8a0f01046e2475037a08da"
+        },
+        {
+          "id": "line-drawings-08-apply-png",
+          "file": "artwork/line-drawings/08-apply.png",
+          "title": "08-apply",
+          "group": "Рисунки для блоков",
+          "sha256": "1ab7761c4ef4227a326367b0f2c98f870ad3380a5973dd21c50569cc615cf76a"
+        },
+        {
+          "id": "line-drawings-09-footer-png",
+          "file": "artwork/line-drawings/09-footer.png",
+          "title": "09-footer",
+          "group": "Рисунки для блоков",
+          "sha256": "19c14ea113d6aa7b5300589a58ea79b23adcbc13e62f5786ba0f5aa33854bcaa"
+        },
+        {
+          "id": "illustrations-route-heart-webp",
+          "file": "artwork/illustrations/route-heart.webp",
+          "title": "Сердце на линии маршрута",
+          "group": "Рисунки для блоков",
+          "sha256": "fa94aa5cfbe2200213834e42ab08ab6a1314a737ac7f18407c75649e7ae07554"
+        }
+      ],
+      "count": 9,
+      "policy": "Do not restore these nine catalog items during imports; originals retained only in local archive and Git history. Other illustration groups stay.",
+      "archive": "artifacts/retired-block-drawings-20261107/retired-block-drawings.zip"
+    },
+    "process_number_background": {
+      "asset": "artwork/classic-chalk-ui/dot.webp",
+      "scope": "numbers 1–5 in the selected process block on desktop and mobile",
+      "numbers": "kept white and readable; hand-drawn dot replaces flat circles"
+    },
+    "hero_copy_20261107": {
+      "old": "выбрать человека, с которым спокойно.",
+      "new": "выбрать человека.",
+      "status": "included"
     }
   },
   "reviewed_decisions": {
@@ -893,20 +976,17 @@
     "latest_switcher": "Current chosen pair Lora headings + Manrope body, preset 5. Historical font controls retained; Caveat is only a possible accent. No design or palette controls."
   },
   "validation": {
-    "build": "passed",
-    "static_checks": "passed: 700 local links/assets, 115 artwork hashes, downloadable archive",
-    "tests": {
-      "passed": 34,
-      "failed": 0
-    },
-    "default_typography": "Lora + Manrope confirmed in initial HTML/CSS and all nine blocks; old storage ignored, explicit choices preserved",
-    "browser": "Completed source chat checked cards and spacing on desktop/mobile and every historical family at 320 px; this change selects the already available Lora + Manrope preset."
+    "build": "passed: node scripts/build-selected-site.mjs",
+    "static": "passed: 674 local links/assets, 106 artwork hashes and downloadable library archive",
+    "tests": "passed: 34 tests, 0 failures",
+    "browser": "passed: desktop 1280px and mobile 320px; five textured dot backgrounds, white legible numerals, no horizontal overflow; library displays 106 items without rejected group",
+    "diff_check": "passed"
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "a0d5839180",
+  "previous_confirmed_build": "e828dd1bcf",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

@@ -1,7 +1,7 @@
 import {illustratedTemplates,illustratedLabels} from './illustrated-templates.js';
 import {illustratedAssets} from './illustrated-assets.js';
-import {renderBlock} from './render.js?v=e828dd1bcf';
-import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=e828dd1bcf';
+import {renderBlock} from './render.js?v=59a1b4e034';
+import {defaults,approvedTheme,approvedThemeStyle} from './model.js?v=59a1b4e034';
 
 export const illustratedDesigns=[
   {mode:'chalk-light',name:'Мелок · Светлая дуга'},
@@ -69,5 +69,5 @@ export function renderIllustratedDesign(design){
 }
 
 export function illustratedStyles(){
-  return `${['header','hero','service','about','process','pricing','site'].map(name=>`<link rel="stylesheet" href="studio/variants/illustrated/${name}.css?v=e828dd1bcf">`).join('')}<script defer src="studio/illustrated-motion.js?v=e828dd1bcf"></script>`;
+  return `${['header','hero','service','about','process','pricing','site'].map(name=>`<link rel="stylesheet" href="studio/variants/illustrated/${name}.css?v=59a1b4e034">`).join('')}<script defer src="studio/illustrated-motion.js?v=59a1b4e034"></script>`;
 }

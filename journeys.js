@@ -88,7 +88,7 @@ export function renderJourney(value, {wavyArrows=false}={}) {
 
 export function renderJourneyOptions() {
   return journeyVariants.map(variant => `<section class="route-option" id="route-${variant.id}" aria-labelledby="option-${variant.id}">
-    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=561000ccde#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
+    <header class="option-header"><div><p class="option-number">ВАРИАНТ 0${variant.id}</p><h2 id="option-${variant.id}">${variant.title}</h2><p class="option-description">${variant.description}</p></div><a class="try-route" href="./?route=${variant.id}&amp;v=bf2f2e0f98#process">Посмотреть на сайте <span aria-hidden="true">↗</span></a></header>
     <div class="option-preview option-preview--${variant.id}"><p class="preview-heading">Маршрут <span>подбора</span></p>${renderJourney(variant.id)}</div>
   </section>`).join('\n');
 }

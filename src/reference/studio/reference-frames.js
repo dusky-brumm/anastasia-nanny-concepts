@@ -4,12 +4,12 @@
     for(const frame of document.querySelectorAll('iframe[data-reference-frame]')){
       if(bound.has(frame))continue;
       bound.add(frame);
-      let observer;
+      let observer,boundDocument;
       function loaded(){
-        observer?.disconnect();
         const doc=frame.contentDocument;
         const root=doc?.querySelector('[data-reference-block-root]');
-        if(!root)return;
+        if(!root||doc===boundDocument)return;
+        observer?.disconnect();boundDocument=doc;
         // The parent fits the full block; an inner scrollbar would change its width.
         doc.documentElement.dataset.referenceEmbedded='true';
         let resizeQueued=false;
@@ -30,6 +30,20 @@
         doc.addEventListener('animationend',queueResize,true);
         doc.fonts.ready.then(resize);
         doc.fonts.addEventListener('loadingdone',queueResize);
+        doc.addEventListener('request:draft',event=>{
+          event.preventDefault();
+          resize();
+          requestAnimationFrame(()=>{
+            resize();
+            const draft=doc.querySelector('.s-draft:not([hidden])');
+            if(!draft)return;
+            const top=frame.getBoundingClientRect().top+draft.getBoundingClientRect().top;
+            const toolbar=document.querySelector('.font-switcher')?.getBoundingClientRect().height??0;
+            const bottom=top+draft.getBoundingClientRect().height;
+            if(top<toolbar+24||bottom>innerHeight-24)window.scrollTo({top:Math.max(0,scrollY+top-toolbar-24),behavior:'instant'});
+            draft.querySelector('textarea')?.focus({preventScroll:true});
+          });
+        });
         resize();
         doc.addEventListener('click',event=>{
           if(event.target.closest('.s-privacy')){

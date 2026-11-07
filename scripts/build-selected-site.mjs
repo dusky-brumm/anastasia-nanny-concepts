@@ -35,11 +35,25 @@ await cp('src/site',output,{recursive:true,filter:file=>!file.endsWith('.mjs')&&
 for(const {file} of selection.blocks){
   const target=path.join(output,file);
   let html=await readFile(target,'utf8');
+  // Inline only explicitly marked local decorative SVGs so their strokes can draw.
+  let inlineDrawing=0;
+  for(const [tag] of html.matchAll(/<img\b[^>]*\bdata-ink-source\b[^>]*>/g)){
+    const src=tag.match(/\bsrc="([^"]+)"/)?.[1],classes=tag.match(/\bclass="([^"]+)"/)?.[1]??'';
+    const svgFile=path.resolve(path.dirname(target),src??'');
+    if(!src||!svgFile.startsWith(output+path.sep)||!svgFile.endsWith('.svg'))throw new Error('Invalid drawing source');
+    const mode=tag.includes('data-ink-mode="focus"')?'data-ink-focus':'data-ink-line="enter"';
+    const prefix=`inline-${++inlineDrawing}-`;
+    const svg=(await readFile(svgFile,'utf8'))
+      .replace(/\bid="([^"]+)"/g,(_,id)=>`id="${prefix}${id}"`)
+      .replace(/url\(#([^)]+)\)/g,(_,id)=>`url(#${prefix}${id})`)
+      .replace('<svg ',`<svg class="${classes}" ${mode} aria-hidden="true" focusable="false" `);
+    html=html.replace(tag,svg);
+  }
   html=html.replace('<html lang="ru"',`<html lang="ru" data-font-pair="${defaultFontPair.id}"`);
-  const styles=['fonts.css','studio/fonts.css','site-typography.css','site-refinements.css']
+  const styles=['fonts.css','studio/fonts.css','site-typography.css','site-refinements.css','site-polish.css']
     .filter(file=>!html.includes(`href="../${file}`))
     .map(file=>`<link rel="stylesheet" href="../${file}?v=__VERSION__">`).join('');
-  html=html.replace('</head>',styles+'<script type="module" src="../block-typography.js?v=__VERSION__"></script></head>');
+  html=html.replace('</head>',styles+'<script type="module" src="../block-typography.js?v=__VERSION__"></script><script type="module" src="../drawing-motion.js?v=__VERSION__"></script></head>');
   await writeFile(target,html);
 }
 async function replaceTokens(directory){

@@ -1,0 +1,70 @@
+/* Five refinement passes; existing chosen palette, typefaces and artwork remain.
+   Craft review follows unslop by Damir Sokolovsky, CC BY 4.0:
+   https://github.com/heydamir/unslop */
+:root{--drawing-ease:cubic-bezier(.22,1,.36,1);--feedback-time:160ms}
+
+/* 1. Intentional phrasing and readable secondary copy. */
+.reference-design.look-02-elliot .cover h1>span{display:block;background:none}
+.reference-design.look-02-elliot .cover h1{max-width:none}
+@media(min-width:851px){.reference-design.look-02-elliot .cover-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}}
+.reference-design.look-02-elliot .hero-actions .button{border-radius:8px}
+.reference-design.look-02-elliot .hero-lead{letter-spacing:0}
+#chalk-service-designs .service-eyebrow{font-size:13px;line-height:1.5;letter-spacing:.01em;text-transform:none;margin-bottom:16px;color:#526c73}
+#chalk-service-designs .study p,#chalk-service-designs .service-example p{font-size:16px;line-height:1.65;letter-spacing:0}
+#chalk-service-designs .service-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;line-height:1.5;letter-spacing:0}
+body[data-isolated-block=about] .about-story .s-about-slides li p{letter-spacing:0}
+.site-preview .s-text-link{min-height:44px;letter-spacing:0}
+.site-preview .s-reviews .s-review-more{display:inline-flex;align-items:center;min-height:44px;font-size:14px;line-height:1.5;letter-spacing:0}
+
+/* 2. The line is the motion: ordinary scrolling guides the route, never the page. */
+.reference-design #hero h1 em{position:relative}
+.reference-design #hero h1 em::after{content:none!important}
+.reference-design #hero .hero-underline{position:absolute;left:-1%;bottom:-.14em;display:block;width:102%;height:10px;overflow:visible;transform:rotate(-1deg);pointer-events:none}
+svg[data-ink-line],svg[data-chalk-picture]{animation:none!important;clip-path:none!important}
+svg[data-chalk-picture]{transform:none!important}
+svg[data-ink-line=scroll] g>path{transition:stroke-dashoffset 100ms linear}
+html[data-drawing-motion=off] *,html[data-drawing-motion=off] *::before,html[data-drawing-motion=off] *::after{animation:none!important;transition:none!important}
+html[data-drawing-motion=off] svg[data-ink-line] path{stroke-dashoffset:0!important}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ svg[data-ink-line] path{stroke-dashoffset:0!important}
+}
+
+/* 3. The active chalk dot shows time, not a decorative pulse. */
+.about-story .about-dot-timer{position:absolute;left:50%;top:50%;width:28px;height:28px;transform:translate(-50%,-50%);opacity:0;pointer-events:none;overflow:visible}
+.about-story[data-about-running=true] [data-about-dot][aria-current=true] .about-dot-timer{opacity:.85}
+.about-story[data-about-design='3'] .about-dot-timer{left:8.5px}
+.about-story .about-arrow{border-radius:50%;transition:background-color var(--feedback-time) var(--drawing-ease)}
+.about-story .about-arrow:hover{background-color:#e7f1f6}
+.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button{border-radius:50%;transition:background-color var(--feedback-time) var(--drawing-ease)}
+.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button:hover:not(:disabled){transform:none;background-color:#dce9ee}
+.comparison-quote-position{position:relative;font-variant-numeric:tabular-nums}
+.comparison-quote-position::after{content:'';position:absolute;left:0;bottom:-8px;width:64px;height:4px;background:#526c73;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;transform:scaleX(var(--review-progress,.3333));transform-origin:left;transition:transform 200ms var(--drawing-ease);pointer-events:none}
+@media(max-width:760px){.about-story[data-about-design='3'] .about-dot-timer{left:7.5px}}
+
+/* 4. A focused field gets one pencil stroke; the neat boxes stay still. */
+.s-form-pencil .field-shell{position:relative;display:block;width:100%}
+.s-form-pencil .field-shell :is(input,textarea){border-radius:4px}
+.s-form-pencil .field-ink{position:absolute;left:4px;bottom:1px;width:calc(100% - 8px);height:6px;opacity:0;pointer-events:none;overflow:visible;transition:opacity var(--feedback-time) var(--drawing-ease)}
+.s-form-pencil .field-shell:focus-within .field-ink{opacity:1}
+.s-form-pencil .field-shell:focus-within .field-ink path{animation:field-pencil 500ms var(--drawing-ease) both}
+.s-form-pencil .field-shell :is(input,textarea):focus:not(:focus-visible){outline:0}
+.s-form-pencil .field-shell :is(input,textarea):focus-visible{outline:1px solid #526c73;outline-offset:2px}
+.s-form-pencil .field-shell:focus-within :is(input,textarea){background-color:#fff}
+.s-form-pencil :is(input,textarea)::placeholder{color:#657b82;opacity:1;letter-spacing:0}
+.s-form-pencil .form-submit{display:grid;justify-items:start;gap:8px}
+.site-preview .s-form-pencil .s-form-hint{max-width:45ch;margin:0;padding:0;font-size:14px;line-height:1.5;letter-spacing:0;color:#526c73}
+.site-preview.early-classic #apply .s-apply-intro{align-self:start;padding-top:32px}
+.site-preview .s-faq summary{min-height:56px;padding-block:16px;font-size:16px;line-height:1.5;letter-spacing:0;text-wrap:pretty}
+.site-preview .s-faq summary::before,.site-preview .s-faq summary::after{content:'';position:absolute;right:2px;top:50%;width:16px;height:3px;background:#526c73;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;transform:translateY(-50%);transition:transform 200ms var(--drawing-ease)}
+.site-preview .s-faq summary::after{transform:translateY(-50%) rotate(90deg)}
+.site-preview .s-faq details[open] summary::after{content:'';transform:translateY(-50%) rotate(90deg) scaleX(0)}
+.s-site-footer .footer-nav a:not(.footer-telegram),.s-site-footer .footer-top{position:relative}
+.s-site-footer .footer-nav a:not(.footer-telegram)::after,.s-site-footer .footer-top::after{content:'';position:absolute;left:0;right:0;bottom:1px;height:4px;background:currentColor;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;clip-path:inset(0 100% 0 0);transition:clip-path 240ms var(--drawing-ease)}
+.s-site-footer .footer-nav a:hover,.s-site-footer .footer-top:hover{text-decoration:none}
+.s-site-footer .footer-nav a:hover::after,.s-site-footer .footer-nav a:focus-visible::after,.s-site-footer .footer-top:hover::after,.s-site-footer .footer-top:focus-visible::after{clip-path:inset(0)}
+@keyframes field-pencil{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@media(max-width:760px){.s-form-pencil .form-submit{justify-items:stretch}.s-form-pencil .form-submit .s-button{width:100%}.site-preview.early-classic #apply .s-apply-intro{padding-top:0}}
+
+/* 5. Keep the same phrasing readable on the smallest supported phones. */
+@media(max-width:360px){html[data-font-pair] h1{font-size:calc(28px * var(--pair-scale))!important}}

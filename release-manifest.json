@@ -1,5 +1,5 @@
 {
-  "build": "6fa7598400",
+  "build": "8cd89996c9",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Five screenshot-led refinement passes: compact font tools, readable copy, scroll-drawn route, chalk reveals, timed story dots, field feedback and stable draft expansion",
     "Refine chosen About variant 1: place controls 24px below copy, keep stable photo/text composition and ordinary dry-pencil arrows; restore previous form illustration after clarification",
     "Replace consultation envelope with an airy dry-crayon conversation vignette; redesign footer as a full-width blue signed ending with navigation and pencil thread",
     "Refine review quotation marks with a readable dry-chalk SVG; keep mobile author spacing compact and three desktop cards",
@@ -1108,6 +1109,14 @@
       "arrows": "Ordinary circular arrows with straight shaft, simple head and dry-pencil grain; common to About and reviews.",
       "form_illustration": "Restored consultation-chairs-20261108.png; filled experiment stays library-only.",
       "documentation": "docs/about-open-spread-20261108.md"
+    },
+    "five_passes_20261108": {
+      "direction": "Preserve chosen About 1, Lora + Manrope, Almost White palette and all retained artwork",
+      "motion": "One-time chalk gestures and a scroll-drawn route; passive scroll sampling through a single queued animation frame; no scroll interception",
+      "controls": "User motion switch, system reduced-motion override, synchronized 6.5s story-dot clock, static complete fallback",
+      "form": "Neat field outlines, focus stroke, explicit next-step hint, parent-managed draft reveal without inner iframe scrolling",
+      "artwork": "119 retained/new items; three native SVG strokes added; all nine explicitly retired files remain absent",
+      "documentation": "docs/five-passes-20261108.md"
     }
   },
   "reviewed_decisions": {
@@ -1129,13 +1138,13 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "719 local links/assets; 116 artwork hashes; nine retired files absent",
+    "static_checks": "119 artwork hashes; nine retired files absent; local link checks passed",
     "tests": {
-      "passed": 36,
+      "passed": 40,
       "failed": 0
     },
-    "source_browser": "All four first-layout stories: no headings, 432px desktop stage and 24px copy/control gap. Checked desktop, 900px tablet, 768px and 390px viewports; no overflow. About/review navigation works.",
-    "scope": "Chosen first About composition and ordinary chalk UI arrows; original consultation illustration restored.",
+    "source_browser": "320/390/768/900/1440px responsive checks and native 2560px scrolling. No frame overflow at measured widths. Prata and Caveat stress pairs checked. FAQ, mobile menu/Escape, privacy dialog, form validation, draft invalidation and motion switch verified. Three desktop review cards are 358px wide and 329px tall. Natural scrolling completes the partial final route arrow.",
+    "scope": "Five refinement passes, preserving the chosen first About composition, palette, fonts, ordinary chalk arrows and outline consultation illustration.",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

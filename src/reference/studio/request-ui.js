@@ -22,7 +22,8 @@ export function bindRequestUi(formatRequest) {
     if(!form.reportValidity())return;
     form.elements.namedItem('draft').value=formatRequest({name:name.value,contact:contact.value,message:message.value});
     const draft=form.querySelector('.s-draft');draft.hidden=false;fitDraft(form.elements.namedItem('draft'));form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
-    draft.scrollIntoView({block:'nearest',behavior:'instant'});
+    const prepared=new CustomEvent('request:draft',{bubbles:true,cancelable:true});
+    if(form.dispatchEvent(prepared))draft.scrollIntoView({block:'nearest',behavior:'instant'});
   });
   document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;form.querySelector('.s-draft').hidden=true;form.querySelector('[role=status]').textContent='';form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
 }

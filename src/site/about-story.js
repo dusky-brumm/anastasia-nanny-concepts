@@ -8,12 +8,26 @@ if(section){
   const position=section.querySelector('[data-about-position]');
   const pause=section.querySelector('[data-about-pause]');
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  let index=0,visible=false,paused=false,mode='auto',timer;
+  let index=0,visible=false,paused=false,hovered=false,mode='auto',timer,clockAnimation;
+  let drawingOn=document.documentElement.dataset.drawingMotion!=='off';
+  const clocks=dots.map((dot,i)=>{
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('class','about-dot-timer');svg.setAttribute('viewBox','0 0 28 28');
+    svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
+    svg.innerHTML=`<defs><filter id="clock-grain-${i}"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feColorMatrix type="luminanceToAlpha"/><feComponentTransfer><feFuncA type="linear" slope="2" intercept="-.2"/></feComponentTransfer><feComposite in="SourceGraphic" operator="in"/></filter></defs><circle cx="14" cy="14" r="11" fill="none" stroke="#526c73" stroke-width="1.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(-90 14 14)" filter="url(#clock-grain-${i})"/>`;
+    dot.append(svg);return svg.querySelector('circle');
+  });
+
+  function syncPause(){pause.hidden=mode==='scroll'||motion.matches||!drawingOn;}
 
   function schedule(){
     clearTimeout(timer);
-    const focused=section.querySelector(':focus-visible')&&document.activeElement!==pause;
-    if(!visible||paused||document.hidden||motion.matches||mode==='scroll'||focused)return;
+    clockAnimation?.cancel();clockAnimation=null;
+    section.dataset.aboutRunning='false';
+    const focused=document.hasFocus()&&section.querySelector(':focus-visible')&&document.activeElement!==pause;
+    if(!visible||paused||hovered||document.hidden||motion.matches||!drawingOn||mode==='scroll'||focused)return;
+    section.dataset.aboutRunning='true';
+    clockAnimation=clocks[index].animate?.([{strokeDashoffset:'1'},{strokeDashoffset:'0'}],{duration:6500,easing:'linear',fill:'forwards'});
     timer=setTimeout(()=>show((index+1)%slides.length,'auto'),6500);
   }
   function show(next,source='manual'){
@@ -33,7 +47,7 @@ if(section){
     section.dataset.aboutDesign=variant;
     mode=scroll?'scroll':'auto';
     section.dataset.aboutMode=mode;
-    pause.hidden=scroll||motion.matches;
+    syncPause();
     section.querySelector('[data-about-scroll-hint]').hidden=!scroll;
     if(changed)show(0,'design');else schedule();
   }
@@ -67,8 +81,12 @@ if(section){
   },{passive:true});
   section.addEventListener('focusin',schedule);
   section.addEventListener('focusout',()=>queueMicrotask(schedule));
+  const readingArea=section.querySelector('.s-about-viewport');
+  readingArea.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'){hovered=true;schedule();}});
+  readingArea.addEventListener('pointerleave',event=>{if(event.pointerType==='mouse'){hovered=false;schedule();}});
   document.addEventListener('visibilitychange',schedule);
-  motion.addEventListener('change',()=>{pause.hidden=mode==='scroll'||motion.matches;schedule();});
+  document.addEventListener('drawing:motion',event=>{drawingOn=event.detail.enabled;syncPause();schedule();});
+  motion.addEventListener('change',()=>{syncPause();schedule();});
   section.dataset.ready='';
   show(0,'initial');
 }

@@ -991,5 +991,26 @@
     "title": "Приглашение к разговору — меловая фактура",
     "group": "Иллюстрации",
     "sha256": "76c5226c00eee92ba006da09b618d4cb3fcccb466b1192e207b2e6144acbe12c"
+  },
+  {
+    "id": "chalk-word-underline",
+    "file": "artwork/vectors/chalk-word-underline.svg",
+    "title": "Меловое подчёркивание для главного слова",
+    "group": "Линии, стрелки и значки",
+    "sha256": "c92b28f7bf7244980f057aa4a4e66496ad0f999b19a46aff1b30fff5d9894064"
+  },
+  {
+    "id": "service-connecting-line",
+    "file": "artwork/vectors/service-connecting-line.svg",
+    "title": "Меловая связующая линия услуги",
+    "group": "Линии, стрелки и значки",
+    "sha256": "e08893e529f257dca6b675001c49f577312bf7dbf999f06cbbc39b590a4d8eba"
+  },
+  {
+    "id": "field-focus-line",
+    "file": "artwork/vectors/field-focus-line.svg",
+    "title": "Карандашный отклик поля формы",
+    "group": "Линии, стрелки и значки",
+    "sha256": "2775650db78ea5094800d384116d9627f3e7970d1cfa07d6ebd96782be014725"
   }
 ]

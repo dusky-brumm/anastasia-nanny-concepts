@@ -55,6 +55,7 @@ assert.match(form,/s-form-pencil/);assert.doesNotMatch(form,/data-live-request/)
 assert.match(form,/13-step-application\.webp/);
 const catalog=JSON.parse(await readFile('out/artwork-catalog.json','utf8'));
 assert.ok(catalog.length>=108);
+assert.deepEqual(catalog,JSON.parse(await readFile('src/site/artwork-catalog.json','utf8')));
 assert.equal(new Set(catalog.map(item=>item.file)).size,catalog.length);
 for(const item of catalog){
   const bytes=await readFile('out/'+item.file);

@@ -1,4 +1,4 @@
-import {applyFontPair,readFontChoice} from './font-pairs.js?v=55e852a94c';
+import {applyFontPair,readFontChoice} from './font-pairs.js?v=a949488c59';
 // Standalone block previews use the same pair as the parent site.
 let search=location.search;
 try{if(parent!==window)search=parent.location.search;}catch{/* An external embed uses its own query. */}

@@ -998,5 +998,12 @@
     "group": "Иллюстрации",
     "sha256": "42ed4370cbf5043cb54309ca33786a27824768d49d191396c65a1e34c13bd6d1",
     "block": "Знакомство с Анастасией"
+  },
+  {
+    "id": "about-loop-line",
+    "file": "artwork/vectors/about-loop-line.svg",
+    "title": "Меловая петля для истории",
+    "group": "Линии, стрелки и значки",
+    "sha256": "fe7400f39fba2f12271a37e52683fa7c34c9374951195fdb0b28be9e8295becb"
   }
 ]

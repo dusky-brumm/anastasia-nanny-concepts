@@ -1,6 +1,6 @@
 {
-  "build": "55e852a94c",
-  "base_commit": "e26839188ee6dfcd5d9ebe2c52907529ed8759ec",
+  "build": "a949488c59",
+  "base_commit": "3e92e8b34eb140704e21a870e0064078c62cf957",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -26,7 +26,8 @@
     "Approved Lora headings and Manrope body text as the default across all nine blocks; obsolete stored font trials no longer override it",
     "Three hand-drawn pricing cards, smaller envelope and wider illustrated selection route from the completed source chat",
     "Preserved all selected blocks and artwork library, including the newly drawn process arrows",
-    "Three completed About designs, textured photo backings, 6.5-second autoplay, desktop scroll story, and two new preserved chalk illustrations"
+    "Three completed About designs, textured photo backings, 6.5-second autoplay, desktop scroll story, and two new preserved chalk illustrations",
+    "Three new About compositions integrated with the milk/blue/green page, a single introduction heading, and larger 20px body / 23px lead text; original photographs and stories preserved"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -895,19 +896,19 @@
   },
   "validation": {
     "build": "passed",
-    "static_checks": "passed: 717 local links/assets, 117 artwork hashes, downloadable archive",
+    "static_checks": "passed: 721 local links/assets, 118 artwork hashes, downloadable archive",
     "tests": {
       "passed": 36,
       "failed": 0
     },
     "default_typography": "Lora + Manrope confirmed in initial HTML/CSS and all nine blocks; old storage ignored, explicit choices preserved",
-    "browser": "Three About designs checked on desktop; scroll chapters forward/backward, release and skip link; autoplay and pause; mobile layouts at 390/320 px and all ten historical heading families at 320 px without overflow."
+    "browser": "New About variants checked at 2545/1440/768/390/320px, with all ten heading fonts at 320px; no text or controls overflow; desktop chapters and skip link preserved."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "e828dd1bcf",
+  "previous_confirmed_build": "55e852a94c",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",
@@ -920,5 +921,5 @@
   "deployment": {
     "status": "pending"
   },
-  "completed_about": "docs/about-stories-20261107.md; preserved concurrent Lora + Manrope approval and shortened hero copy"
+  "completed_about": "docs/about-redesign-20261107.md; previous iteration remains in history and artwork library"
 }

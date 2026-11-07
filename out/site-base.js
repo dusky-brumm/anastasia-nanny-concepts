@@ -1,5 +1,5 @@
-import {applyFontPair,readFontChoice,resolveFontPair,findFontPair,fontStorageKey} from './font-pairs.js?v=55e852a94c';
-import {mountAboutSection} from './about-section.js?v=55e852a94c';
+import {applyFontPair,readFontChoice,resolveFontPair,findFontPair,fontStorageKey} from './font-pairs.js?v=a949488c59';
+import {mountAboutSection} from './about-section.js?v=a949488c59';
 
 const frames=[...document.querySelectorAll('iframe[data-reference-frame]')];
 const switcher=document.querySelector('.font-switcher');

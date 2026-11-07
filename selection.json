@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-07",
+  "sourceCommit": "f73c83dccf0235d499635b3433c32774e477f623",
+  "url": "https://nastya-nanny-concepts-oct23.dusky-brumm.chatgpt.site/compare-assembly?v=08b62ba700&header=quiet&hero=fotoalbum&service=chalk-light&about=quiet&process=early-classic-arrows&pricing=early-classic&reviews=early-classic&apply=early-classic&footer=chalk-letter",
+  "blocks": [
+    {
+      "id": "header",
+      "choice": "quiet",
+      "sourceFile": "compare-design-comparison-current-header.html",
+      "sourceSha256": "c99c66a262e7732d18f6c8432acfbd8a51995240a5dbcd6645b165d15554aaa4",
+      "file": "blocks/header.html"
+    },
+    {
+      "id": "hero",
+      "choice": "fotoalbum",
+      "sourceFile": "retained-elliot-hero-for-fotoalbum.html",
+      "sourceSha256": "7ac2299b217893fb00bd4c4536ba02bdceca5fe04e8e11df5be00e31e2fe6c35",
+      "file": "blocks/hero.html"
+    },
+    {
+      "id": "service",
+      "choice": "chalk-light",
+      "sourceFile": "compare-design-chalk-light-service.html",
+      "sourceSha256": "7688a5845a3d762eb6417567e547a6eff74c4662366e9678cc57da0cba6c9d9c",
+      "file": "blocks/service.html"
+    },
+    {
+      "id": "about",
+      "choice": "quiet",
+      "sourceFile": "compare-design-comparison-current-about.html",
+      "sourceSha256": "cc437fdd9660605ffe5212f2f64bdef148e6fe4cb980fffec2a62e08825d2908",
+      "file": "blocks/about.html"
+    },
+    {
+      "id": "process",
+      "choice": "early-classic-arrows",
+      "sourceFile": "compare-design-early-classic-arrows-process.html",
+      "sourceSha256": "48691e8c8a5472368ad6be948af5bd24dfb92b97295bd5ff106899961028075d",
+      "file": "blocks/process.html"
+    },
+    {
+      "id": "pricing",
+      "choice": "early-classic",
+      "sourceFile": "compare-design-early-classic-pricing.html",
+      "sourceSha256": "1e33833ca522bed18044348e61d324d9ab0d4c2c473d1a1baa62b1a9c5b374d3",
+      "file": "blocks/pricing.html"
+    },
+    {
+      "id": "reviews",
+      "choice": "early-classic",
+      "sourceFile": "compare-design-early-classic-reviews.html",
+      "sourceSha256": "4fcf1e7fc488e5ceed2e358f081ca8e5e0b619dfd9ca2f72ca419a0562f07928",
+      "file": "blocks/reviews.html"
+    },
+    {
+      "id": "apply",
+      "choice": "early-classic",
+      "sourceFile": "compare-design-early-classic-apply.html",
+      "sourceSha256": "52b983f1aa9359ac4f7ee10c0bf28d224af14ab385da08f15835c7e2eda8f943",
+      "file": "blocks/apply.html"
+    },
+    {
+      "id": "footer",
+      "choice": "chalk-letter",
+      "sourceFile": "compare-design-chalk-letter-footer.html",
+      "sourceSha256": "27e3f0b86a45b3812a9ae7a896531d75f70ebe2d3eabd5c0b3c9263cecf828fb",
+      "file": "blocks/footer.html"
+    }
+  ]
+}

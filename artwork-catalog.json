@@ -1,0 +1,979 @@
+[
+  {
+    "id": "illustrations-01-header-welcome-webp",
+    "file": "artwork/illustrations/01-header-welcome.webp",
+    "title": "Арка у имени",
+    "group": "Иллюстрации",
+    "sha256": "176a12e78ac1ccdd22671f543accb56ac8548d94ff402711a0ae88450c8e70e3",
+    "block": "Хедер",
+    "box": "279 129 1605 488",
+    "width": 2172,
+    "height": 724
+  },
+  {
+    "id": "illustrations-02-hero-care-webp",
+    "file": "artwork/illustrations/02-hero-care.webp",
+    "title": "Няня и ребёнок",
+    "group": "Иллюстрации",
+    "sha256": "d9caa7bfecd2a806d2760ca8b2b42f540bfc83d61f657eebe3a16ae55371e1f3",
+    "block": "Главный блок",
+    "box": "444 55 647 916",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-03-hero-photo-arch-webp",
+    "file": "artwork/illustrations/03-hero-photo-arch.webp",
+    "title": "Дуга над фотографией",
+    "group": "Иллюстрации",
+    "sha256": "bfa53e07f9d3a9d79f0dac4ba8f555560bc86a42e0b47b24a5456c265b9839ce",
+    "block": "Главный блок",
+    "box": "120 112 1517 620",
+    "width": 1774,
+    "height": 887
+  },
+  {
+    "id": "illustrations-04-text-underline-webp",
+    "file": "artwork/illustrations/04-text-underline.webp",
+    "title": "Меловое подчёркивание",
+    "group": "Иллюстрации",
+    "sha256": "7871ac877053bbe731f17927dc3dd7d852087985d0f39d2d6430e375d450b369",
+    "block": "Главный блок",
+    "box": "259 298 1668 177",
+    "width": 2172,
+    "height": 724
+  },
+  {
+    "id": "illustrations-05-service-profile-webp",
+    "file": "artwork/illustrations/05-service-profile.webp",
+    "title": "Анкета и лупа",
+    "group": "Иллюстрации",
+    "sha256": "ee94ef3fcb0546cd2b49b69ae78fbd1d6846c6eabe73bec106549e75c4e6765f",
+    "block": "Об услуге",
+    "box": "308 146 867 749",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-06-service-family-request-webp",
+    "file": "artwork/illustrations/06-service-family-request.webp",
+    "title": "Запрос семьи",
+    "group": "Иллюстрации",
+    "sha256": "ca29231c30640faeb0d27340dd4c5c460d56977b2cb7b4916f563b55c0cdc729",
+    "block": "Об услуге",
+    "box": "290 219 988 585",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-07-service-interview-webp",
+    "file": "artwork/illustrations/07-service-interview.webp",
+    "title": "Личное интервью",
+    "group": "Иллюстрации",
+    "sha256": "92ff4c6e6154fe453f57c50c2743e9c7086b8db2643805cb151e046c59153343",
+    "block": "Об услуге",
+    "box": "170 150 1196 785",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-08-service-recommendation-webp",
+    "file": "artwork/illustrations/08-service-recommendation.webp",
+    "title": "Рекомендации",
+    "group": "Иллюстрации",
+    "sha256": "c72fe28984d584773b38242005b9b869782353f6a19ff333f6550a179cd54ec3",
+    "block": "Об услуге",
+    "box": "403 128 640 763",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-09-about-personal-work-webp",
+    "file": "artwork/illustrations/09-about-personal-work.webp",
+    "title": "Личные заметки",
+    "group": "Иллюстрации",
+    "sha256": "3809b3bb77b770b0616bc5c7d2a916b8443d094b1cf5d7ef2aef286ca981f0fa",
+    "block": "Знакомство с Анастасией",
+    "box": "226 222 1077 630",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-10-about-photo-corners-webp",
+    "file": "artwork/illustrations/10-about-photo-corners.webp",
+    "title": "Уголки для фотографии",
+    "group": "Иллюстрации",
+    "sha256": "310c0cbc70e64fb953b6c17215c542c2fb92b7085466c6088bca5ad96fb95b4d",
+    "block": "Знакомство с Анастасией",
+    "box": "305 122 924 777",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-11-about-photo-link-webp",
+    "file": "artwork/illustrations/11-about-photo-link.webp",
+    "title": "Линия под фотоколлажем",
+    "group": "Иллюстрации",
+    "sha256": "c7f714db751d11d7c6a50f56a48a81bc8df0e787f74c5cdafd0c8027808342ef",
+    "block": "Знакомство с Анастасией",
+    "box": "89 232 1992 243",
+    "width": 2172,
+    "height": 724
+  },
+  {
+    "id": "illustrations-12-process-route-webp",
+    "file": "artwork/illustrations/12-process-route.webp",
+    "title": "Маршрут из пяти шагов",
+    "group": "Иллюстрации",
+    "sha256": "9a89bb440c2ad8d5c343338cd41be62a099149180f1dafa98c398cb5386ebf40",
+    "block": "Как проходит подбор",
+    "box": "252 206 1668 270",
+    "width": 2172,
+    "height": 724
+  },
+  {
+    "id": "illustrations-13-step-application-webp",
+    "file": "artwork/illustrations/13-step-application.webp",
+    "title": "Заявка",
+    "group": "Иллюстрации",
+    "sha256": "795a1dac077d4cfd3496fc7ee186e51bebff5210797d537a66be7c48de0d7f3c",
+    "block": "Как проходит подбор",
+    "box": "424 193 666 620",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-14-step-nanny-profile-webp",
+    "file": "artwork/illustrations/14-step-nanny-profile.webp",
+    "title": "Портрет няни",
+    "group": "Иллюстрации",
+    "sha256": "48debce37007f5bb17b76d0e80e7a601a77afaa7804cd1ca45790c39bcab743f",
+    "block": "Как проходит подбор",
+    "box": "340 169 841 654",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-15-step-search-interview-webp",
+    "file": "artwork/illustrations/15-step-search-interview.webp",
+    "title": "Поиск и интервью",
+    "group": "Иллюстрации",
+    "sha256": "9c0693fdd5183423aa4fe913cdd7159866b2e3cbfd8d4098afae0ffd3cf51ba2",
+    "block": "Как проходит подбор",
+    "box": "145 180 1246 692",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-16-step-first-meeting-webp",
+    "file": "artwork/illustrations/16-step-first-meeting.webp",
+    "title": "Первое знакомство",
+    "group": "Иллюстрации",
+    "sha256": "dac6314561a011fb40831b757075b4dfa9bec629a03d59e7ea145bb3bc2dbf60",
+    "block": "Как проходит подбор",
+    "box": "280 127 958 787",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-17-step-support-webp",
+    "file": "artwork/illustrations/17-step-support.webp",
+    "title": "Сопровождение",
+    "group": "Иллюстрации",
+    "sha256": "3d840d49380ca8b625a83247e232b7c647bb79e0a82e359557665ad32b4f4a4b",
+    "block": "Как проходит подбор",
+    "box": "232 183 1033 658",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-18-pricing-terms-webp",
+    "file": "artwork/illustrations/18-pricing-terms.webp",
+    "title": "Условия подбора",
+    "group": "Иллюстрации",
+    "sha256": "6f3c470a917918226e56363d8d97d29220b78f0c406797806ce9c7d40a04d10f",
+    "block": "Стоимость и гарантия",
+    "box": "381 187 737 630",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-19-guarantee-calendar-webp",
+    "file": "artwork/illustrations/19-guarantee-calendar.webp",
+    "title": "Шесть месяцев гарантии",
+    "group": "Иллюстрации",
+    "sha256": "ca4d25d3bef4fea18887827c9ce7c58ff773f0a6339a6fc2ed1d897f50f09e3f",
+    "block": "Стоимость и гарантия",
+    "box": "405 229 722 544",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-20-faq-book-webp",
+    "file": "artwork/illustrations/20-faq-book.webp",
+    "title": "Вопросы и ответы",
+    "group": "Иллюстрации",
+    "sha256": "52050186f6fcac39a7b0a7e766694acb28d5d596579279c15d1abfe48805ddb0",
+    "block": "Стоимость и гарантия",
+    "box": "310 221 900 610",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-21-reviews-quote-webp",
+    "file": "artwork/illustrations/21-reviews-quote.webp",
+    "title": "Кавычки для отзыва",
+    "group": "Иллюстрации",
+    "sha256": "8c96f17c0e95d089115124d5a1d0d38d18fb11920154148b4226d6da2b7165cc",
+    "block": "Отзывы и история семьи",
+    "box": "742 217 679 292",
+    "width": 2172,
+    "height": 724
+  },
+  {
+    "id": "illustrations-22-reviews-family-album-webp",
+    "file": "artwork/illustrations/22-reviews-family-album.webp",
+    "title": "История семьи",
+    "group": "Иллюстрации",
+    "sha256": "d66d2af1ecfbe8874078a3d94811a5dbd0709569363574999c254b1aa86f8133",
+    "block": "Отзывы и история семьи",
+    "box": "243 169 1070 672",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-23-apply-writing-webp",
+    "file": "artwork/illustrations/23-apply-writing.webp",
+    "title": "Заполнение заявки",
+    "group": "Иллюстрации",
+    "sha256": "21275eeab3a33b219d8fab559383da0f5c8e6b4ebea77b1d8ec21dfa3e38b9f4",
+    "block": "Заявка",
+    "box": "152 182 1271 672",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-24-apply-ready-message-webp",
+    "file": "artwork/illustrations/24-apply-ready-message.webp",
+    "title": "Готовое сообщение",
+    "group": "Иллюстрации",
+    "sha256": "a04249433938500cfbc5c6c8e4ef40909484762e7414557fc68e6cbe5cdaa3d6",
+    "block": "Заявка",
+    "box": "430 144 718 668",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-25-footer-contact-webp",
+    "file": "artwork/illustrations/25-footer-contact.webp",
+    "title": "Контакты",
+    "group": "Иллюстрации",
+    "sha256": "b5a47ea351f2cfbd46b8c93c892db2789560c73941d8896eb0a3688141818c3b",
+    "block": "Футер",
+    "box": "328 191 1559 358",
+    "width": 2172,
+    "height": 724
+  },
+  {
+    "id": "illustrations-26-section-divider-webp",
+    "file": "artwork/illustrations/26-section-divider.webp",
+    "title": "Разделитель блоков",
+    "group": "Иллюстрации",
+    "sha256": "478e9c53687192d4b2557659a4a635399d7b500500d304ccdd53e9503f1e4867",
+    "block": "Общие элементы",
+    "box": "166 315 1794 108",
+    "width": 2172,
+    "height": 724
+  },
+  {
+    "id": "illustrations-27-support-sprig-webp",
+    "file": "artwork/illustrations/27-support-sprig.webp",
+    "title": "Веточка сопровождения",
+    "group": "Иллюстрации",
+    "sha256": "8912d741ea00583d7de1c7f2311385cc9a2cc20745af5e512fda1f757f9caa98",
+    "block": "Общие элементы",
+    "box": "408 184 740 668",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "illustrations-28-photo-side-contour-webp",
+    "file": "artwork/illustrations/28-photo-side-contour.webp",
+    "title": "Контур края фотографии",
+    "group": "Иллюстрации",
+    "sha256": "087cc02bd52e3619ec157a853794e001591dd4e75dc7287e410c92eddabc571d",
+    "block": "Общие элементы",
+    "box": "276 101 607 1021",
+    "width": 1290,
+    "height": 1219
+  },
+  {
+    "id": "line-drawings-02-hero-png",
+    "file": "artwork/line-drawings/02-hero.png",
+    "title": "02-hero",
+    "group": "Рисунки для блоков",
+    "sha256": "2a626fb8d87153a7dfce4efd38cebd704d8f35cab87a1262c79899a8c1c6c8b0"
+  },
+  {
+    "id": "line-drawings-03-service-png",
+    "file": "artwork/line-drawings/03-service.png",
+    "title": "03-service",
+    "group": "Рисунки для блоков",
+    "sha256": "3bcd6e3666a4f53be4985ae85ab0b5800811e04740d8c4d08e3ea9c71eabb116"
+  },
+  {
+    "id": "line-drawings-04-about-png",
+    "file": "artwork/line-drawings/04-about.png",
+    "title": "04-about",
+    "group": "Рисунки для блоков",
+    "sha256": "7a3b57edb3215c2298f15668e885efeafcbda5f74d547610abe7a64d8fdf49fa"
+  },
+  {
+    "id": "line-drawings-05-process-png",
+    "file": "artwork/line-drawings/05-process.png",
+    "title": "05-process",
+    "group": "Рисунки для блоков",
+    "sha256": "81a5f1dd176deb0bb3ccd5a207cd14c2ceb42f7357c35611f8c3f972c8e42d91"
+  },
+  {
+    "id": "line-drawings-06-guarantee-png",
+    "file": "artwork/line-drawings/06-guarantee.png",
+    "title": "06-guarantee",
+    "group": "Рисунки для блоков",
+    "sha256": "6c2599240bff476408019ffe76338857fdc1b2729f2e1a4fc92ff0f6cbe89147"
+  },
+  {
+    "id": "line-drawings-07-reviews-png",
+    "file": "artwork/line-drawings/07-reviews.png",
+    "title": "07-reviews",
+    "group": "Рисунки для блоков",
+    "sha256": "0634c46f608ddbf30e4044f7d5715e3eba9aa3e22f8a0f01046e2475037a08da"
+  },
+  {
+    "id": "line-drawings-08-apply-png",
+    "file": "artwork/line-drawings/08-apply.png",
+    "title": "08-apply",
+    "group": "Рисунки для блоков",
+    "sha256": "1ab7761c4ef4227a326367b0f2c98f870ad3380a5973dd21c50569cc615cf76a"
+  },
+  {
+    "id": "line-drawings-09-footer-png",
+    "file": "artwork/line-drawings/09-footer.png",
+    "title": "09-footer",
+    "group": "Рисунки для блоков",
+    "sha256": "19c14ea113d6aa7b5300589a58ea79b23adcbc13e62f5786ba0f5aa33854bcaa"
+  },
+  {
+    "id": "classic-chalk-ui-arrow-right-webp",
+    "file": "artwork/classic-chalk-ui/arrow-right.webp",
+    "title": "Стрелка переключения",
+    "group": "Элементы интерфейса",
+    "sha256": "8cb5ae1dd62ea58f01f80b160d320ffabbf344d6aac353d98801d2ae058a2226"
+  },
+  {
+    "id": "classic-chalk-ui-dot-webp",
+    "file": "artwork/classic-chalk-ui/dot.webp",
+    "title": "Точка слайдера",
+    "group": "Элементы интерфейса",
+    "sha256": "4daab1b6305378b97eca0f94e807791f036d1d59bdde7d747041bf950418bcf9"
+  },
+  {
+    "id": "classic-chalk-ui-quote-highlight-webp",
+    "file": "artwork/classic-chalk-ui/quote-highlight.webp",
+    "title": "Белый штрих под цитатой",
+    "group": "Элементы интерфейса",
+    "sha256": "454c294471498dc9838fa02807c6bb82f2e17fd527b1db82be25df1232f39995"
+  },
+  {
+    "id": "chalk-almost-white-paper-chalk-png",
+    "file": "artwork/chalk-almost-white/paper-chalk.png",
+    "title": "paper-chalk",
+    "group": "Фоны и фактуры",
+    "sha256": "4677d0ea28cbaf2f91595f0f5e20fe8a1be999b61c20ab119094d5c95c5b8f22"
+  },
+  {
+    "id": "chalk-almost-white-soft-chalk-png",
+    "file": "artwork/chalk-almost-white/soft-chalk.png",
+    "title": "soft-chalk",
+    "group": "Фоны и фактуры",
+    "sha256": "ac909b3ac10d62e7978d7fa232804d997ab813921f79bc3f673a192846c6b648"
+  },
+  {
+    "id": "chalk-almost-white-wash-chalk-png",
+    "file": "artwork/chalk-almost-white/wash-chalk.png",
+    "title": "wash-chalk",
+    "group": "Фоны и фактуры",
+    "sha256": "dc3416ca2a58acaf0d04df894e42ad35ef89022bd5514a7824a7679162dd58f1"
+  },
+  {
+    "id": "lines-pencil-button-svg",
+    "file": "artwork/lines/pencil-button.svg",
+    "title": "Контур кнопки",
+    "group": "Линии и рамки",
+    "sha256": "ec92c57c1bf9eb5350137d9dc5e39bd840be4fc7b03da65e4eef74e59c3e9004"
+  },
+  {
+    "id": "lines-pencil-frame-svg",
+    "file": "artwork/lines/pencil-frame.svg",
+    "title": "Рисованная рамка",
+    "group": "Линии и рамки",
+    "sha256": "5726adb07e7518b0067ac8a478fe724d521ee6cf58e15b39612dbb46bf7ecb3a"
+  },
+  {
+    "id": "lines-pencil-frame-neat-svg",
+    "file": "artwork/lines/pencil-frame-neat.svg",
+    "title": "Аккуратная рисованная рамка",
+    "group": "Линии и рамки",
+    "sha256": "cb14ae755feec13a78cee51a407fe023b4809f9d633dfc8dcfbe7dc7632c01ee"
+  },
+  {
+    "id": "lines-pencil-rule-svg",
+    "file": "artwork/lines/pencil-rule.svg",
+    "title": "Линия мелком",
+    "group": "Линии и рамки",
+    "sha256": "555a2d8f069863825e859d38d7c62d258dd1f572141af82e89fd092d8f2e80f4"
+  },
+  {
+    "id": "illustrations-route-heart-webp",
+    "file": "artwork/illustrations/route-heart.webp",
+    "title": "Сердце на линии маршрута",
+    "group": "Рисунки для блоков",
+    "sha256": "fa94aa5cfbe2200213834e42ab08ab6a1314a737ac7f18407c75649e7ae07554"
+  },
+  {
+    "id": "vector-1",
+    "file": "artwork/vectors/drawing-001.svg",
+    "title": "Рисованный элемент 001",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-about.html",
+    "sha256": "42e47de311deb9a0dd3bcb2ea8442fdbd34a33328bb7471c40df874cbd100188"
+  },
+  {
+    "id": "vector-2",
+    "file": "artwork/vectors/drawing-002.svg",
+    "title": "Рисованный элемент 002",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-footer.html",
+    "sha256": "5156d1348305420c66945057584e22c0fb3ced80402885af16addda6624e6280"
+  },
+  {
+    "id": "vector-3",
+    "file": "artwork/vectors/drawing-003.svg",
+    "title": "Рисованный элемент 003",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-header.html",
+    "sha256": "b3a8c0f20b404fd6577e850a3f0c072f14bf896318e3f796a189835bff9a5f81"
+  },
+  {
+    "id": "vector-4",
+    "file": "artwork/vectors/drawing-004.svg",
+    "title": "Рисованный элемент 004",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-header.html",
+    "sha256": "048afd76c2a7b2f1c13fde00f551101c3844819240bebd39842baff2125acca9"
+  },
+  {
+    "id": "vector-5",
+    "file": "artwork/vectors/drawing-005.svg",
+    "title": "Рисованный элемент 005",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "1fb329353302f75aaffa392249cc597b2b6e98e6ba8aafbfbd695a328620fa1a"
+  },
+  {
+    "id": "vector-6",
+    "file": "artwork/vectors/drawing-006.svg",
+    "title": "Рисованный элемент 006",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "09c4b524ec1b7a077c8b9b697c0e873ae478a26de5ab649bfc13c8c56ec6da49"
+  },
+  {
+    "id": "vector-7",
+    "file": "artwork/vectors/drawing-007.svg",
+    "title": "Рисованный элемент 007",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "f7140ae98355b1e2ac1db293ac35c1c73e8b4db773c5d61c6f64f28de2e92878"
+  },
+  {
+    "id": "vector-8",
+    "file": "artwork/vectors/drawing-008.svg",
+    "title": "Рисованный элемент 008",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "a15148f38fe55895d236856bae6a6d217ae954c96442e020fba1bd24c96d7d0d"
+  },
+  {
+    "id": "vector-9",
+    "file": "artwork/vectors/drawing-009.svg",
+    "title": "Рисованный элемент 009",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "bb2f34379b9f8c945917867e75d4d70ac92813a42cc1b5ac74c7777ad5081489"
+  },
+  {
+    "id": "vector-10",
+    "file": "artwork/vectors/drawing-010.svg",
+    "title": "Рисованный элемент 010",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "0de5a4bda11cec37ffba036e2071acdd9b78e05bbfcd981d03f9f0368f8cf1d0"
+  },
+  {
+    "id": "vector-11",
+    "file": "artwork/vectors/drawing-011.svg",
+    "title": "Рисованный элемент 011",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "1458ffeeacea2e53995177f86b35b81819b85e85b9a29d7e44808a9c1a7acd19"
+  },
+  {
+    "id": "vector-12",
+    "file": "artwork/vectors/drawing-012.svg",
+    "title": "Рисованный элемент 012",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "ba6f94014177d40436fe058121589546b6c89520de99cb0bf19a657ea9f501f7"
+  },
+  {
+    "id": "vector-13",
+    "file": "artwork/vectors/drawing-013.svg",
+    "title": "Рисованный элемент 013",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "cf25f9808fb51939bfe044908a392f616fb74dfbc201aa532d4e2754b378ff8a"
+  },
+  {
+    "id": "vector-14",
+    "file": "artwork/vectors/drawing-014.svg",
+    "title": "Рисованный элемент 014",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "24665948847b423d10fbbad9cc08aaf241dfcda38468da6a42f82452e21f74e2"
+  },
+  {
+    "id": "vector-15",
+    "file": "artwork/vectors/drawing-015.svg",
+    "title": "Рисованный элемент 015",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "4771566907ed4b3dce80532e95b8394f7537cca4ee645069b962b2d8ea6dda62"
+  },
+  {
+    "id": "vector-16",
+    "file": "artwork/vectors/drawing-016.svg",
+    "title": "Рисованный элемент 016",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "f5d2ff97c66c64eb709d4ef9994ede448a16a2e042ebd1054b1f21735a81ba57"
+  },
+  {
+    "id": "vector-17",
+    "file": "artwork/vectors/drawing-017.svg",
+    "title": "Рисованный элемент 017",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-hero.html",
+    "sha256": "ca0b49bb708952c0c7d84a30c48a9ec3d600da91288131ad862fb0745f09005a"
+  },
+  {
+    "id": "vector-18",
+    "file": "artwork/vectors/drawing-018.svg",
+    "title": "Рисованный элемент 018",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "3d966820300cda5eb4a218b9212e7f52d18d44646f6aa75505f70458a70ae461"
+  },
+  {
+    "id": "vector-19",
+    "file": "artwork/vectors/drawing-019.svg",
+    "title": "Рисованный элемент 019",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "7284eb669cf00178cece5871b40684b67b33fb84c421e0354cfad60f9bd7810d"
+  },
+  {
+    "id": "vector-20",
+    "file": "artwork/vectors/drawing-020.svg",
+    "title": "Рисованный элемент 020",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "6a227c88429ad14ac1f5128d7463fe94a83be751697005a28a94c1dc1bf1a13e"
+  },
+  {
+    "id": "vector-21",
+    "file": "artwork/vectors/drawing-021.svg",
+    "title": "Рисованный элемент 021",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "24d5e86b191b12fb093bf1614bb6a92ea9889e50d31e3a5f5009cb480d0d9d37"
+  },
+  {
+    "id": "vector-22",
+    "file": "artwork/vectors/drawing-022.svg",
+    "title": "Рисованный элемент 022",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "1cf5f900c4a7b0f79a0ae0df5a44590d58327586c35c90d993bfc4561f858e62"
+  },
+  {
+    "id": "vector-23",
+    "file": "artwork/vectors/drawing-023.svg",
+    "title": "Рисованный элемент 023",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "5a0cfced2a0cbc3b34d09d6e0ba389bb579fe641b2e5c475af19ce075ac13911"
+  },
+  {
+    "id": "vector-24",
+    "file": "artwork/vectors/drawing-024.svg",
+    "title": "Рисованный элемент 024",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "54b66088b2133f3e943a0b5a7f6771a08c489c70de2babc22579bdf25fb6651f"
+  },
+  {
+    "id": "vector-25",
+    "file": "artwork/vectors/drawing-025.svg",
+    "title": "Рисованный элемент 025",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "3132f2e7225acba6c37932a7132f1efd82b8e650fefcbe08d1672b1ace48c70c"
+  },
+  {
+    "id": "vector-26",
+    "file": "artwork/vectors/drawing-026.svg",
+    "title": "Рисованный элемент 026",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "6f92a25b10a401460806b33b0e6e3c8bed03e0eeb56d1842a53ac69c862e48c7"
+  },
+  {
+    "id": "vector-27",
+    "file": "artwork/vectors/drawing-027.svg",
+    "title": "Рисованный элемент 027",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "1a743edc17355d20afbfad578e71113944b93a1a11fd7484dd6d178d2e0c9203"
+  },
+  {
+    "id": "vector-28",
+    "file": "artwork/vectors/drawing-028.svg",
+    "title": "Рисованный элемент 028",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-process.html",
+    "sha256": "21aea74ccbd1ce0496af004b4d9d86e8c6cf86d32cf84ef9bd991cd1103005cd"
+  },
+  {
+    "id": "vector-29",
+    "file": "artwork/vectors/drawing-029.svg",
+    "title": "Рисованный элемент 029",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-service.html",
+    "sha256": "237d138a57d457c9430046a0dac96eedf387c3304ef2c23909824a7d85073366"
+  },
+  {
+    "id": "vector-30",
+    "file": "artwork/vectors/drawing-030.svg",
+    "title": "Рисованный элемент 030",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-service.html",
+    "sha256": "47078aca9bfb02147825909e0b5f774057eb86c509a5c3187d8033ebc9a6d7bf"
+  },
+  {
+    "id": "vector-31",
+    "file": "artwork/vectors/drawing-031.svg",
+    "title": "Рисованный элемент 031",
+    "group": "Линии, стрелки и значки",
+    "source": "blocks-service.html",
+    "sha256": "8128e6e4f1d96f7d98fe9cad704a41b4a3a917a776d9564e6a31d4c19a1a0dab"
+  },
+  {
+    "id": "vector-32",
+    "file": "artwork/vectors/drawing-032.svg",
+    "title": "Рисованный элемент 032",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-chalk-light-process.html",
+    "sha256": "607358f9c5967c770901a10aa91e1a6e7d1d075a6fc70b6bc927920fa4e4a32d"
+  },
+  {
+    "id": "vector-33",
+    "file": "artwork/vectors/drawing-033.svg",
+    "title": "Рисованный элемент 033",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-comparison-reference-process.html",
+    "sha256": "210ee545e34c01abfb4569101c3f289c0b019c3e3a772064174a754979b2a36e"
+  },
+  {
+    "id": "vector-34",
+    "file": "artwork/vectors/drawing-034.svg",
+    "title": "Рисованный элемент 034",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-comparison-route-process.html",
+    "sha256": "ebe296edd8381241d1113e5080a55e48cdf2265f9c47e3d25743234642eb0373"
+  },
+  {
+    "id": "vector-35",
+    "file": "artwork/vectors/drawing-035.svg",
+    "title": "Рисованный элемент 035",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-comparison-route-process.html",
+    "sha256": "02497d21aeed976af155b3de851b5c631b8fb0f58c31830bef7d97b73d0dba0a"
+  },
+  {
+    "id": "vector-36",
+    "file": "artwork/vectors/drawing-036.svg",
+    "title": "Рисованный элемент 036",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-comparison-thread-about.html",
+    "sha256": "a0164a72e526ef4c63d9e66af2f0524af613ba306e13154644538d55c12fa1c1"
+  },
+  {
+    "id": "vector-37",
+    "file": "artwork/vectors/drawing-037.svg",
+    "title": "Рисованный элемент 037",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-comparison-thread-apply.html",
+    "sha256": "49ea8cd484e0827bb94956f630cf2cf07ac7407e15f636b06f2b64f701b87c9e"
+  },
+  {
+    "id": "vector-38",
+    "file": "artwork/vectors/drawing-038.svg",
+    "title": "Рисованный элемент 038",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-comparison-thread-hero.html",
+    "sha256": "1f1989a8ee842a7d1face3cfd35d96cd17699df7c3311ae6dd44d8d1f2c4b0dd"
+  },
+  {
+    "id": "vector-39",
+    "file": "artwork/vectors/drawing-039.svg",
+    "title": "Рисованный элемент 039",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-early-classic-arrows-process.html",
+    "sha256": "911d280a7a3300ffec43895df2ffda8e1ac2a0e76b22162b26b49471c66194cc"
+  },
+  {
+    "id": "vector-40",
+    "file": "artwork/vectors/drawing-040.svg",
+    "title": "Рисованный элемент 040",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-early-classic-arrows-process.html",
+    "sha256": "766c89d68416e603c8b7200e17a1ef6e0ac1e99055b893ebdb7ce2ff5ee9d8f6"
+  },
+  {
+    "id": "vector-41",
+    "file": "artwork/vectors/drawing-041.svg",
+    "title": "Рисованный элемент 041",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-early-classic-arrows-process.html",
+    "sha256": "9b3f2e9569387f8f4215bdf0e308d220f2caede555aca5e8653a5ec4dd348490"
+  },
+  {
+    "id": "vector-42",
+    "file": "artwork/vectors/drawing-042.svg",
+    "title": "Рисованный элемент 042",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-early-classic-arrows-process.html",
+    "sha256": "892e098b8e3bdf1273757fa27285a650956c1ef811f1e4e01f4a985f61d3848c"
+  },
+  {
+    "id": "vector-43",
+    "file": "artwork/vectors/drawing-043.svg",
+    "title": "Рисованный элемент 043",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-early-classic-arrows-process.html",
+    "sha256": "effc9b3d954c040fa4c34f65371857afdbb0836e277c7655bc072faed79473ba"
+  },
+  {
+    "id": "vector-44",
+    "file": "artwork/vectors/drawing-044.svg",
+    "title": "Рисованный элемент 044",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-fotoalbum-service.html",
+    "sha256": "7246d918e0ef2ec6363e523b4d48062079d837ddfe9408146bd6d0d1da3af26b"
+  },
+  {
+    "id": "vector-45",
+    "file": "artwork/vectors/drawing-045.svg",
+    "title": "Рисованный элемент 045",
+    "group": "Линии, стрелки и значки",
+    "source": "compare-design-pencil-hero.html",
+    "sha256": "97c76ca5c2e5d47ecbfff6c57e51f237ef2e3098b993338990198ea3c5c5b864"
+  },
+  {
+    "id": "vector-46",
+    "file": "artwork/vectors/drawing-046.svg",
+    "title": "Рисованный элемент 046",
+    "group": "Линии, стрелки и значки",
+    "source": "comparison-early-personal.html",
+    "sha256": "b2a7a35ccb8fb53ffcb9e8c72ba8e4ff570c505f6e5f634047c5e7ab0e68fb92"
+  },
+  {
+    "id": "vector-47",
+    "file": "artwork/vectors/drawing-047.svg",
+    "title": "Рисованный элемент 047",
+    "group": "Линии, стрелки и значки",
+    "source": "comparison-early-personal.html",
+    "sha256": "aa400552fa6e388f4b003778142399fb9816c885cd924d630f68e4754f599254"
+  },
+  {
+    "id": "vector-48",
+    "file": "artwork/vectors/drawing-048.svg",
+    "title": "Рисованный элемент 048",
+    "group": "Линии, стрелки и значки",
+    "source": "comparison-early-personal.html",
+    "sha256": "0a0419e01e8e91ed50fa04774c5916675a4fd69bda2d69140c61819c162b56cb"
+  },
+  {
+    "id": "vector-49",
+    "file": "artwork/vectors/drawing-049.svg",
+    "title": "Рисованный элемент 049",
+    "group": "Линии, стрелки и значки",
+    "source": "designs-v1.html",
+    "sha256": "fc46a3b1d724d99f3ce31e70fb2f827dccda9797cb7ae9edf7162e15b015fbb7"
+  },
+  {
+    "id": "vector-50",
+    "file": "artwork/vectors/drawing-050.svg",
+    "title": "Рисованный элемент 050",
+    "group": "Линии, стрелки и значки",
+    "source": "designs-v1.html",
+    "sha256": "f407fb0e88d359e59f2ee9b6c9e9c805a6f48fd3f7d2c7147ff6b560818d3d69"
+  },
+  {
+    "id": "vector-51",
+    "file": "artwork/vectors/drawing-051.svg",
+    "title": "Рисованный элемент 051",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "ace8b2640b32f7518fb42e51760ae8e967c6a7464e648bc30b87f757ae609a75"
+  },
+  {
+    "id": "vector-52",
+    "file": "artwork/vectors/drawing-052.svg",
+    "title": "Рисованный элемент 052",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "5bb8626250dca50dc3d667c623337ac1e2b385dcfe55a9cbaa4a4216b30995e5"
+  },
+  {
+    "id": "vector-53",
+    "file": "artwork/vectors/drawing-053.svg",
+    "title": "Рисованный элемент 053",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "64d17ca02bbc016f6e99c0f5b3716b8b6106754b725244da3b51e8e1f7b9b124"
+  },
+  {
+    "id": "vector-54",
+    "file": "artwork/vectors/drawing-054.svg",
+    "title": "Рисованный элемент 054",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "9594e78cfd23797bf64f74e78dfede56113ac58ec8c976c53eb65f7432fcbe6e"
+  },
+  {
+    "id": "vector-55",
+    "file": "artwork/vectors/drawing-055.svg",
+    "title": "Рисованный элемент 055",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "bde08d3cbeac1c20b1e935b7547afc3506b2537d117867dad48500661970bd30"
+  },
+  {
+    "id": "vector-56",
+    "file": "artwork/vectors/drawing-056.svg",
+    "title": "Рисованный элемент 056",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "869942722661035d739847d0c785417bd39f538b0e7a4ac4ad1eaf7208972354"
+  },
+  {
+    "id": "vector-57",
+    "file": "artwork/vectors/drawing-057.svg",
+    "title": "Рисованный элемент 057",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "83eb5d8a10c6d61f8584fc45937683b16905c2ec84d7ec09c1c85cbed58f413d"
+  },
+  {
+    "id": "vector-58",
+    "file": "artwork/vectors/drawing-058.svg",
+    "title": "Рисованный элемент 058",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "49b123e79f216cb051ffbd42bea11bec8861fb12ee582560d53a22ba48aa7b2f"
+  },
+  {
+    "id": "vector-59",
+    "file": "artwork/vectors/drawing-059.svg",
+    "title": "Рисованный элемент 059",
+    "group": "Линии, стрелки и значки",
+    "source": "reference.html",
+    "sha256": "14459d804b1012c3f578340691afb26b3206a3da74c65d7e5e1bb6004aa7119e"
+  },
+  {
+    "id": "vector-60",
+    "file": "artwork/vectors/drawing-060.svg",
+    "title": "Рисованный элемент 060",
+    "group": "Линии, стрелки и значки",
+    "source": "retained-editorial-hero-for-personal.html",
+    "sha256": "e08368586f8475d88f4b89856083f492435fa32ae64a67e8280cb47f02755752"
+  },
+  {
+    "id": "vector-61",
+    "file": "artwork/vectors/drawing-061.svg",
+    "title": "Рисованный элемент 061",
+    "group": "Линии, стрелки и значки",
+    "source": "retained-elliot-hero-for-fotoalbum.html",
+    "sha256": "4e0ebd13763b8c979049a5dbf129cdd6f527984ed43191b50c0e13bfd0e511fb"
+  },
+  {
+    "id": "css-1",
+    "file": "artwork/css-drawings/element-01.svg",
+    "title": "Меловая линия или фактура 1",
+    "group": "Линии и фактуры из оформления",
+    "source": "src/reference/journeys.css",
+    "sha256": "79dac6698d5149b0ca276d485fed3a1f4e447b7a9e0d2dceaf8d87c1907bdc50"
+  },
+  {
+    "id": "css-2",
+    "file": "artwork/css-drawings/element-02.svg",
+    "title": "Меловая линия или фактура 2",
+    "group": "Линии и фактуры из оформления",
+    "source": "src/reference/studio/clear-sections.css",
+    "sha256": "30275f929bb5fc4938ab0a906e822c27a02461818076abde1bb6c281ab98fd99"
+  },
+  {
+    "id": "css-3",
+    "file": "artwork/css-drawings/element-03.svg",
+    "title": "Меловая линия или фактура 3",
+    "group": "Линии и фактуры из оформления",
+    "source": "src/reference/studio/reference-integration.css",
+    "sha256": "3cb0330c563d2ac4a2a4b442f005980d886263df8dfc955eb2267413df67488d"
+  },
+  {
+    "id": "css-4",
+    "file": "artwork/css-drawings/element-04.svg",
+    "title": "Меловая линия или фактура 4",
+    "group": "Линии и фактуры из оформления",
+    "source": "src/reference/studio/reference-integration.css",
+    "sha256": "b3b41115736770eabf100897b4ee7122626b74e9d63f50609b86cde524de3aa5"
+  },
+  {
+    "id": "css-5",
+    "file": "artwork/css-drawings/element-05.svg",
+    "title": "Меловая линия или фактура 5",
+    "group": "Линии и фактуры из оформления",
+    "source": "src/reference/studio/ui.css",
+    "sha256": "683f1c167e4812bc4aad25aedfe167a394fc08b36d90e75b44361f5d3c17fcd0"
+  },
+  {
+    "id": "css-6",
+    "file": "artwork/css-drawings/element-06.svg",
+    "title": "Меловая линия или фактура 6",
+    "group": "Линии и фактуры из оформления",
+    "source": "src/reference/styles.css",
+    "sha256": "433106a70b34a781b73f433823a9c959dc7b8068873b7920fd32f363a1a9e6f8"
+  }
+]

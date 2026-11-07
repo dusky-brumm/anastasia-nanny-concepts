@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="s-hero-background-line" viewBox="0 0 1120 130" preserveAspectRatio="none" aria-hidden="true" style="color:#718591;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><defs>
+      <path id="hero-shape-7" pathLength="100" d="M35 217C35 105 89 37 173 28C255 19 345 47 361 133C371 187 370 268 352 322C332 381 278 413 204 413C133 413 64 405 43 347C27 305 35 257 35 217Z"/>
+      <clipPath id="hero-shape-7-crop"><use href="#hero-shape-7"/></clipPath>
+<filter id="hero-pencil-7">
+    <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
+    <feColorMatrix type="luminanceToAlpha"/>
+    <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
+    <feComposite in="SourceGraphic" operator="in"/>
+  </filter>
+    </defs><path d="M-10 91C130 135 237 100 356 77C500 49 584 109 715 101C853 92 967 21 1130 46" filter="url(#hero-pencil-7)"/></svg>

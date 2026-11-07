@@ -1,6 +1,6 @@
 {
-  "build": "e828dd1bcf",
-  "base_commit": "b8761d909b59fef31a8b1d2cbd200db422bc0b99",
+  "build": "55e852a94c",
+  "base_commit": "e26839188ee6dfcd5d9ebe2c52907529ed8759ec",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -25,7 +25,8 @@
   "included": [
     "Approved Lora headings and Manrope body text as the default across all nine blocks; obsolete stored font trials no longer override it",
     "Three hand-drawn pricing cards, smaller envelope and wider illustrated selection route from the completed source chat",
-    "Preserved all selected blocks and artwork library, including the newly drawn process arrows"
+    "Preserved all selected blocks and artwork library, including the newly drawn process arrows",
+    "Three completed About designs, textured photo backings, 6.5-second autoplay, desktop scroll story, and two new preserved chalk illustrations"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -894,35 +895,30 @@
   },
   "validation": {
     "build": "passed",
-    "static_checks": "passed: 700 local links/assets, 115 artwork hashes, downloadable archive",
+    "static_checks": "passed: 717 local links/assets, 117 artwork hashes, downloadable archive",
     "tests": {
-      "passed": 34,
+      "passed": 36,
       "failed": 0
     },
     "default_typography": "Lora + Manrope confirmed in initial HTML/CSS and all nine blocks; old storage ignored, explicit choices preserved",
-    "browser": "Completed source chat checked cards and spacing on desktop/mobile and every historical family at 320 px; this change selects the already available Lora + Manrope preset."
+    "browser": "Three About designs checked on desktop; scroll chapters forward/backward, release and skip link; autoplay and pause; mobile layouts at 390/320 px and all ten historical heading families at 320 px without overflow."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "a0d5839180",
+  "previous_confirmed_build": "e828dd1bcf",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",
       "status": "unfinished",
       "path": "sites/nastya-unified-20261105",
       "note": "Do not publish paper-chalk draft or recreate retired options."
-    },
-    {
-      "chat": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
-      "turn": "01a1b680-8ef8-72e1-a962-7888fcd17439",
-      "status": "in_progress",
-      "note": "About slider texture, timing, possible scroll pinning and block variants requested; do not publish unfinished work."
     }
   ],
   "source_commit": null,
   "deployment": {
     "status": "pending"
-  }
+  },
+  "completed_about": "docs/about-stories-20261107.md; preserved concurrent Lora + Manrope approval and shortened hero copy"
 }

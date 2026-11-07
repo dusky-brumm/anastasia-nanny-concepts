@@ -1,4 +1,4 @@
-import {readAboutVariant} from './about-model.js?v=4bed4dea2d';
+import {readAboutVariant} from './about-model.js?v=f3a0fc1e2b';
 
 const section=document.querySelector('[data-about-story]');
 if(section){

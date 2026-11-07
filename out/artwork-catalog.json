@@ -963,5 +963,19 @@
     "title": "Меловые кавычки для отзывов",
     "group": "Линии, стрелки и значки",
     "sha256": "2de5f9496ce7f7767220782207404d610d255cfc8037806125e4181e601642b8"
+  },
+  {
+    "id": "consultation-chairs-20261108",
+    "file": "artwork/illustrations/consultation-chairs-20261108.png",
+    "title": "Приглашение к разговору — кресла и чашки",
+    "group": "Иллюстрации",
+    "sha256": "dd542dd9e9e3f4062a6ba6ea283ac9fa18f82478994985273a480a32fa054c7d"
+  },
+  {
+    "id": "footer-thread",
+    "file": "artwork/vectors/footer-thread.svg",
+    "title": "Завершающая карандашная линия",
+    "group": "Линии, стрелки и значки",
+    "sha256": "449bf3ca80ad5a5dac01c761dbb5f5ce65a8ac4c627ce37a1358ab02695b2288"
   }
 ]

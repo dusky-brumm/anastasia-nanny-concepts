@@ -52,7 +52,7 @@ assert.match(hero,/fotoalbum-polish\.css/);
 assert.match(await readFile('out/blocks/process.html','utf8'),/Как проходит подбор/);
 const form=await readFile('out/blocks/apply.html','utf8');
 assert.match(form,/s-form-pencil/);assert.doesNotMatch(form,/data-live-request/);
-assert.match(form,/13-step-application\.webp/);
+assert.match(form,/consultation-chairs-20261108\.png/);
 const catalog=JSON.parse(await readFile('out/artwork-catalog.json','utf8'));
 assert.ok(catalog.length>0);
 assert.deepEqual(catalog,JSON.parse(await readFile('src/site/artwork-catalog.json','utf8')));

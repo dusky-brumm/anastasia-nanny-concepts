@@ -396,7 +396,7 @@
     "file": "artwork/chalk-almost-white/soft-chalk.png",
     "title": "soft-chalk",
     "group": "Фоны и фактуры",
-    "sha256": "ac909b3ac10d62e7978d7fa232804d997ab813921f79bc3f673a192846c6b648"
+    "sha256": "bc95ff6b6239cace49a1ae9b1e3b967a3f83c683f109458a597038dcf2902230"
   },
   {
     "id": "chalk-almost-white-wash-chalk-png",
@@ -410,7 +410,7 @@
     "file": "artwork/lines/pencil-button.svg",
     "title": "Контур кнопки",
     "group": "Линии и рамки",
-    "sha256": "ec92c57c1bf9eb5350137d9dc5e39bd840be4fc7b03da65e4eef74e59c3e9004"
+    "sha256": "1b19ffe1040ee530c96626a0c6a66464936f0b0aa395caf3716661e5d47623d3"
   },
   {
     "id": "lines-pencil-frame-svg",
@@ -1005,5 +1005,19 @@
     "title": "Меловая петля для истории",
     "group": "Линии, стрелки и значки",
     "sha256": "fe7400f39fba2f12271a37e52683fa7c34c9374951195fdb0b28be9e8295becb"
+  },
+  {
+    "id": "artwork-chalk-almost-white-soft-chalk-v1-png",
+    "file": "artwork/chalk-almost-white/soft-chalk-v1.png",
+    "title": "Мягкая фактура — предыдущая",
+    "group": "Фоны и фактуры",
+    "sha256": "ac909b3ac10d62e7978d7fa232804d997ab813921f79bc3f673a192846c6b648"
+  },
+  {
+    "id": "artwork-lines-pencil-button-double-svg",
+    "file": "artwork/lines/pencil-button-double.svg",
+    "title": "Двойной карандашный контур",
+    "group": "Линии и рамки",
+    "sha256": "ec92c57c1bf9eb5350137d9dc5e39bd840be4fc7b03da65e4eef74e59c3e9004"
   }
 ]

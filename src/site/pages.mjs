@@ -25,7 +25,7 @@ ${seoHead('index.html')}
 
 const knownTitles={
   '02-hero':'Главный блок','03-service':'Об услуге','04-about':'Знакомство с Анастасией','05-process':'Этапы подбора','06-guarantee':'Стоимость и гарантия','07-reviews':'Отзывы','08-apply':'Заявка','09-footer':'Контакты',
-  'paper-chalk':'Бумага с меловой фактурой','soft-chalk':'Мягкая меловая фактура','wash-chalk':'Меловая заливка',
+  'paper-chalk':'Бумага с меловой фактурой','soft-chalk':'Сухая меловая фактура','wash-chalk':'Меловая заливка',
 };
 export function artworkPage(catalog){
   const groups=[...new Set(catalog.map(item=>item.group))];

@@ -1,0 +1,9 @@
+# Контур кнопки и сухая меловая фактура · 7 ноября 2026
+
+По просьбе пользователя контур кнопки сделан одной тонкой замкнутой линией с мягкими углами и едва заметной ручной неровностью. Исходный SVG сохранён в Git; обновлены рабочий ресурс и копия в библиотеке.
+
+Сухая меловая фактура создана встроенным ImageGen, исходная прозрачность сохранена без обработки. Файл `src/site/artwork/chalk-almost-white/soft-chalk.png`; оригинал и прежний образец сохранены в `artifacts/chalk-texture-20261107/`. Новая фактура заменяет прежний образец в библиотеке и используется на уже существующих подложках первого экрана, блока знакомства и отзывов. Цвета и структура сайта сохранены.
+
+## Промпт
+
+Use case: stylized-concept. Asset: a genuine dry chalk texture for a restrained editorial website, reusable as a transparent overlay on pale blue, sage or milk backgrounds. Create ONE square, close-up flat texture made by gently rubbing the broad side of real WHITE classroom chalk across slightly toothy paper. Distinct soft overlapping horizontal and subtly diagonal passes; beautiful powdery granular pigment, tiny irregular transparent gaps where chalk misses the tooth, natural pressure variation, lightly broken edges of individual strokes. Very fine matte dust, restrained and airy, visible directional hand rubbing. Fill the full square with an evenly distributed subtle texture; all four edges must blend seamlessly when tiled. White pigment only, no black or colored pigment. TRUE alpha transparency in gaps; no background paper or colored plate. No objects, no illustrations, no drawings, no letters, no lines outlining shapes, no vignette, no shadows, no blurred halos, no gradients, no watercolor, no cloudy fog, no canvas weave, no artificial digital noise. The result must look like a high quality scan of actual chalk rubbed by hand, not an illustration of chalk.

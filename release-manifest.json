@@ -1,6 +1,6 @@
 {
-  "build": "425fbe8230",
-  "base_commit": "19d6df434b45d30ef46657f43aead962bfa00757",
+  "build": "1bdd30e5ad",
+  "base_commit": "edd67134d4e5534fb881857218a93fff43ebf8ef",
   "draft_base_commit": "6817c21",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -28,7 +28,8 @@
     "Preserved all selected blocks and artwork library, including the newly drawn process arrows",
     "Three completed About designs, textured photo backings, 6.5-second autoplay, desktop scroll story, and two new preserved chalk illustrations",
     "Three new About compositions integrated with the milk/blue/green page, a single introduction heading, and larger 20px body / 23px lead text; original photographs and stories preserved",
-    "Merged chalk process dots while retaining every saved artwork file and catalog entry, as explicitly requested in the source design chat"
+    "Merged chalk process dots while retaining every saved artwork file and catalog entry, as explicitly requested in the source design chat",
+    "Matched current dry-chalk texture and neater button outline; prior texture and outline preserved as separate downloadable assets"
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
@@ -897,7 +898,7 @@
   },
   "validation": {
     "build": "passed",
-    "static_checks": "passed: 722 local links/assets, 118 artwork hashes, downloadable archive",
+    "static_checks": "passed: 728 local links/assets, 120 artwork hashes, downloadable archive",
     "tests": {
       "passed": 36,
       "failed": 0
@@ -923,5 +924,5 @@
     "status": "pending"
   },
   "completed_about": "docs/about-redesign-20261107.md; previous iteration remains in history and artwork library",
-  "artwork_preservation": "All previously saved artwork retained; one former inline loop also saved as a standalone SVG. Parallel artwork deletions intentionally excluded."
+  "artwork_preservation": "120 files: all prior artwork retained, former inline loop added, prior soft texture and double-line button outline preserved as sibling files before applying the updated versions."
 }

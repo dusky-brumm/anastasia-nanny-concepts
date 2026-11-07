@@ -9,6 +9,7 @@ assert.deepEqual(selection.blocks.map(({id})=>id),['header','hero','service','ab
 assert.equal((home.match(/data-selected-block=/g)||[]).length,9);
 assert.equal((home.match(/<iframe\b/g)||[]).length,9);
 assert.doesNotMatch(home,/data-design-navigation|data-assembly-choice|data-assembly-gallery|data-site-root/);
+assert.deepEqual([...home.matchAll(/data-font-choice="([^"]+)"/g)].map(match=>match[1]),['1','2','3','4','5','6','7','8','9','10']);
 assert.match(home,/id="service-schema"/);
 assert.match(home,/<link rel="canonical" href="https:\/\/dusky-brumm.github.io\/anastasia-nanny-concepts\/">/);
 const rootPages=(await readdir('out')).filter(name=>name.endsWith('.html')).sort();
@@ -40,6 +41,7 @@ for(const {id,file} of selection.blocks){
   const html=await readFile('out/'+file,'utf8');
   assert.match(html,new RegExp(`data-block="${id}"`));
   assert.equal((html.match(/data-reference-block-root/g)||[]).length,1);
+  assert.match(html,/site-typography\.css/);assert.match(html,/site-refinements\.css/);
   assert.doesNotMatch(html,/href="\.\.\/(?:compare-|comparison-|pencil-)[^"]*\.html/);
   for(const [,target] of html.matchAll(/data-reference-target="([^"]+)"/g))assert.ok(ids.has(target),target);
 }
@@ -49,6 +51,7 @@ assert.match(hero,/fotoalbum-polish\.css/);
 assert.match(await readFile('out/blocks/process.html','utf8'),/Как проходит подбор/);
 const form=await readFile('out/blocks/apply.html','utf8');
 assert.match(form,/s-form-pencil/);assert.doesNotMatch(form,/data-live-request/);
+assert.match(form,/13-step-application\.webp/);
 const catalog=JSON.parse(await readFile('out/artwork-catalog.json','utf8'));
 assert.ok(catalog.length>=108);
 assert.equal(new Set(catalog.map(item=>item.file)).size,catalog.length);

@@ -1,15 +1,18 @@
 import {seoHead,utilityIndexingTags} from '../reference/studio/seo.js';
+import {fontPairs} from './font-pairs.js';
 
 export const blockLabels={header:'Хедер',hero:'Главный блок',service:'Об услуге',about:'Знакомство с Анастасией',process:'Как проходит подбор',pricing:'Стоимость и гарантия',reviews:'Отзывы и история семьи',apply:'Заявка',footer:'Футер'};
 export const escapeHtml=value=>String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 
 export function sitePage(selection){
-  return `<!doctype html><html lang="ru"><head>
+  return `<!doctype html><html lang="ru" data-font-pair="1"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 ${seoHead('index.html')}
 <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="site-base.css?v=__VERSION__">
-<script defer src="studio/reference-frames.js?v=__VERSION__"></script><script defer src="site-base.js?v=__VERSION__"></script>
+<link rel="stylesheet" href="fonts.css?v=__VERSION__"><link rel="stylesheet" href="studio/fonts.css?v=__VERSION__"><link rel="stylesheet" href="typefaces/fonts.css?v=__VERSION__"><link rel="stylesheet" href="site-typography.css?v=__VERSION__">
+<script defer src="studio/reference-frames.js?v=__VERSION__"></script><script type="module" src="site-base.js?v=__VERSION__"></script>
 </head><body>
+<aside class="font-switcher" aria-label="Выбор сочетания шрифтов"><div class="font-switcher-inner"><span class="font-switcher-label">Шрифты</span><nav aria-label="Сочетания шрифтов">${fontPairs.map(pair=>`<button type="button" data-font-choice="${pair.id}" aria-label="${pair.id}: ${pair.heading} + ${pair.body}" aria-pressed="${pair.id==='1'}" title="${pair.heading} + ${pair.body}">${pair.id}</button>`).join('')}</nav><p class="font-pair-caption" data-font-status role="status" aria-live="polite"><strong>${fontPairs[0].heading} + ${fontPairs[0].body}</strong><span>Заголовки + основной текст</span></p><a class="font-artwork-link" href="artwork">Рисунки ↗</a></div></aside>
 <main aria-label="Индивидуальный подбор няни">${selection.blocks.map(({id,file})=>`
 <div id="${id}" data-selected-block="${id}"><iframe data-reference-frame title="${blockLabels[id]}" src="${file}?v=__VERSION__" loading="eager" height="${id==='header'?96:id==='footer'?220:650}"></iframe></div>`).join('')}
 </main>

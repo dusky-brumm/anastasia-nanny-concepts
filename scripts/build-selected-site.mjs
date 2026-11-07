@@ -29,6 +29,17 @@ await mkdir(output,{recursive:true});
 // Shared styles/scripts/fonts/photos only. Retired HTML pages are source archives.
 await cp('src/reference',output,{recursive:true,filter:file=>!file.endsWith('.html')});
 await cp('src/site',output,{recursive:true,filter:file=>!file.endsWith('.mjs')});
+// One final type/material layer applies to all independently editable blocks.
+for(const {file} of selection.blocks){
+  const target=path.join(output,file);
+  let html=await readFile(target,'utf8');
+  html=html.replace('<html lang="ru"','<html lang="ru" data-font-pair="1"');
+  const styles=['fonts.css','studio/fonts.css','typefaces/fonts.css','site-typography.css','site-refinements.css']
+    .filter(file=>!html.includes(`href="../${file}`))
+    .map(file=>`<link rel="stylesheet" href="../${file}?v=__VERSION__">`).join('');
+  html=html.replace('</head>',styles+'<script type="module" src="../block-typography.js?v=__VERSION__"></script></head>');
+  await writeFile(target,html);
+}
 async function replaceTokens(directory){
   for(const entry of await readdir(directory,{withFileTypes:true})){
     const file=path.join(directory,entry.name);

@@ -1,9 +1,9 @@
 /* Only the selected site: soft paper grain, three review cards, milk pricing. */
 body[data-fixed-theme=almost-white] .site-preview #pricing{background:#fcfcfa!important;background-image:none!important}
-.reference-design.look-02-elliot .cover-grid::after,.reference-design.look-02-elliot .lead-photo::before{background-image:url('textures/chalk-grain.svg');background-size:160px 160px}
+.reference-design.look-02-elliot .cover-grid::after,.reference-design.look-02-elliot .lead-photo::before{background-image:url('artwork/chalk-almost-white/soft-chalk.png');background-size:680px 680px;background-blend-mode:soft-light}
 .site-preview.early-classic .s-reviews .comparison-quote-strip[data-open-quotes]{--quote-gap:22px}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid{grid-auto-columns:calc((100% - 2 * var(--quote-gap)) / 3)!important;gap:var(--quote-gap)!important;align-items:stretch;padding:8px 1px 16px}
-.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px!important;border:1px solid #e4e8e1!important;border-radius:8px!important;background:#fff url('textures/chalk-grain.svg') repeat!important;background-size:160px 160px!important;box-shadow:0 3px 12px #2d403409!important}
+.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px!important;border:1px solid #e4e8e1!important;border-radius:8px!important;background:#fff url('artwork/chalk-almost-white/soft-chalk.png') repeat!important;background-size:680px 680px!important;background-blend-mode:soft-light!important;box-shadow:0 3px 12px #2d403409!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote{padding:0!important;font-family:var(--pair-body)!important;font-size:17px!important;font-weight:400!important;line-height:1.65!important;letter-spacing:-.01em!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote::before{content:none!important;background:none!important}
 html[data-body-font=caveat] .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote{font-size:20px!important;line-height:1.5!important}

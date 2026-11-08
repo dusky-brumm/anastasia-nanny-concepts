@@ -10,8 +10,8 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
 .about-story .s-about-slides .s-photo{position:relative;isolation:isolate;width:min(100% - 40px,320px);aspect-ratio:auto;margin:0;padding:8px 8px 18px;border-radius:0;background:#fff;box-shadow:0 5px 18px #34485108;transform:rotate(-1deg);translate:none;transition:none;overflow:visible;justify-self:center}
 .about-story .s-photo-mask{position:relative;z-index:1;width:100%;height:358px;aspect-ratio:auto;overflow:hidden;border-radius:0}
 .about-story .s-about-slides .s-photo img{display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:50% 42%;border-radius:0}
-.about-story .s-about-slides img[src$='/rainbow.webp']{object-position:50% 20%}
-.about-story .s-about-slides img[src$='/family.webp']{object-position:50% 26%}
+.about-story .s-about-slides img[src*='/rainbow']{object-position:50% 20%}
+.about-story .s-about-slides img[src*='/family']{object-position:50% 26%}
 .about-story .s-photo::before,.about-story .s-photo::after{content:'';position:absolute;z-index:-1;background-image:url('textures/chalk-grain.svg');background-size:160px 160px;pointer-events:none}
 .about-story .s-photo::before{inset:-18px -24px 17% 25%;background-color:#d5e3e9;transform:rotate(4deg)}
 .about-story .s-photo::after{inset:48% 26% -14px -18px;background-color:#e0e8db;transform:rotate(-4deg)}
@@ -24,7 +24,7 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
 .about-story .about-arrow[data-about-step='-1']{transform:scaleX(-1)}
 .about-story .s-about-dots{display:flex;gap:0;margin:0}
 .about-story .s-about-dots button{position:relative;display:grid;place-items:center;width:36px;height:40px;border:0;background:transparent;padding:0;color:#526c73;cursor:pointer}
-.about-story .s-about-dots button::before{content:'';display:block;width:17px;height:17px;border-radius:0;background:transparent url('artwork/classic-chalk-ui/dot.webp') center/150% 150% no-repeat;opacity:.3;transition:opacity .2s,transform .2s}
+.about-story .s-about-dots button::before{content:'';display:block;width:17px;height:17px;border-radius:0;background:transparent url('media/chalk-dot.webp') center/150% 150% no-repeat;opacity:.3;transition:opacity .2s,transform .2s}
 .about-story .s-about-dots button[aria-current=true]::before{width:20px;height:20px;background-color:transparent;opacity:1;transform:rotate(-9deg)}
 .about-story .s-about-dots button:nth-child(2)::before{transform:rotate(65deg)}
 .about-story .s-about-dots button:nth-child(3)::before{transform:rotate(120deg)}

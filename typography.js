@@ -1,6 +1,6 @@
 // The final site always uses the approved Lora + Manrope pairing.
 export const siteTypography=Object.freeze({heading:'Lora',body:'Manrope'});
-export async function applyTypography(doc){
+export function applyTypography(doc){
   const root=doc.documentElement;
   root.dataset.fontPair='5';
   root.dataset.bodyFont='manrope';
@@ -9,10 +9,6 @@ export async function applyTypography(doc){
   root.style.setProperty('--pair-heading-weight','400');
   root.style.setProperty('--pair-scale','1');
   root.style.setProperty('--pair-tracking','-.025em');
-  await Promise.all([
-    doc.fonts.load('400 40px "Lora"','Няня — семья'),
-    doc.fonts.load('italic 400 40px "Lora"','Спокойно'),
-    doc.fonts.load('400 16px "Manrope"','Няня — семья'),
-  ]);
-  await doc.fonts.ready;
+  // CSS requests only the faces actually used in this block. Never hold layout
+  // or navigation for an unused italic face or a photograph further down.
 }

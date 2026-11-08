@@ -41,28 +41,25 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 /* Three dry-chalk circles: blue, sage, blue; the content stays on milk paper. */
 .site-preview.early-classic #pricing .s-pricing-summary h2{max-width:none}
 .site-preview.early-classic #pricing .s-pricing-terms{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-block:40px 28px}
-.site-preview.early-classic #pricing .early-price-term{--circle-chalk:#94afbe;position:relative;isolation:isolate;width:min(100%,340px);aspect-ratio:1;min-height:0;padding:32px;grid-template-columns:minmax(0,1fr);grid-template-rows:58px auto 80px;gap:8px;align-content:center;justify-items:center;justify-self:center;text-align:center;border:0;background:transparent}
-.site-preview.early-classic #pricing .early-price-term:nth-child(2){--circle-chalk:#9ead90}
-.site-preview.early-classic #pricing .early-price-term::before{content:'';position:absolute;inset:0;height:auto;background:var(--circle-chalk);mask:url('artwork/vectors/chalk-price-ring.svg') center/100% 100% no-repeat;opacity:1;z-index:-1;pointer-events:none}
-.site-preview.early-classic #pricing .early-price-term:nth-child(2)::before{transform:rotate(11deg)}
-.site-preview.early-classic #pricing .early-price-term:nth-child(3)::before{transform:rotate(-8deg)}
+.site-preview.early-classic #pricing .early-price-term{--circle-chalk:#94afbe;--circle-ring:url('artwork/vectors/chalk-price-ring.svg?v=__VERSION__');position:relative;isolation:isolate;width:min(calc(100% - 12px),320px);aspect-ratio:1;min-height:0;padding:32px;grid-template-columns:minmax(0,1fr);grid-template-rows:58px auto 80px;gap:8px;align-content:center;justify-items:center;justify-self:center;text-align:center;border:0;background:transparent}
+.site-preview.early-classic #pricing .early-price-term:nth-child(2){--circle-chalk:#9ead90;--circle-ring:url('artwork/vectors/chalk-price-ring-2.svg?v=__VERSION__')}
+.site-preview.early-classic #pricing .early-price-term:nth-child(3){--circle-ring:url('artwork/vectors/chalk-price-ring-3.svg?v=__VERSION__')}
+.site-preview.early-classic #pricing .early-price-term::before{content:'';position:absolute;inset:0;height:auto;background:var(--circle-chalk);mask:var(--circle-ring) center/100% 100% no-repeat;opacity:1;z-index:-1;pointer-events:none}
 .site-preview.early-classic #pricing .early-term-picture{grid-column:1;grid-row:1;width:64px;height:58px;margin:0}
 .site-preview.early-classic #pricing .early-price-term dt{grid-column:1;grid-row:2;margin:0;font-size:15px;line-height:1.5}
-html[data-font-pair] .site-preview.early-classic #pricing .early-price-term dd{grid-column:1;grid-row:3;align-self:center;max-width:100%;margin:0;font:400 40px/1.12 'Caveat',cursive!important;color:#526c73;letter-spacing:0;transform:rotate(-1deg)}
-html[data-font-pair] .site-preview.early-classic #pricing .early-price-term:nth-child(2) dd{font-size:32px!important;white-space:nowrap;transform:rotate(.6deg)}
+html[data-font-pair] .site-preview.early-classic #pricing .early-price-term dd{grid-column:1;grid-row:3;align-self:center;max-width:100%;margin:0;font:500 26px/1.35 var(--pair-body)!important;color:var(--ink);letter-spacing:-.02em;transform:none}
+html[data-font-pair] .site-preview.early-classic #pricing .early-price-term:nth-child(2) dd{font-size:22px!important;white-space:nowrap}
 .site-preview.early-classic #pricing .s-pricing-summary>.s-text-link{position:relative;border:0!important;text-decoration:none!important;padding-bottom:5px}
 .site-preview.early-classic #pricing .s-pricing-summary>.s-text-link::after{content:'';position:absolute;inset:auto 0 1px;height:3px;background:currentColor;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;opacity:.65;transition:opacity 180ms ease}
 .site-preview.early-classic #pricing .s-pricing-summary>.s-text-link:is(:hover,:focus-visible)::after{opacity:1}
 @media(min-width:901px) and (max-width:1100px){
  .site-preview.early-classic #pricing .s-pricing-terms{gap:20px}
  .site-preview.early-classic #pricing .early-price-term{padding:26px}
- html[data-font-pair] .site-preview.early-classic #pricing .early-price-term:nth-child(2) dd{font-size:30px!important}
 }
 @media(max-width:900px){
  .site-preview.early-classic #pricing .s-pricing-terms{grid-template-columns:minmax(0,1fr);gap:24px;margin-block:32px 24px}
- .site-preview.early-classic #pricing .early-price-term{width:min(100%,310px);padding:30px;grid-template-rows:54px auto 76px}
+ .site-preview.early-classic #pricing .early-price-term{width:min(calc(100% - 12px),292px);padding:28px;grid-template-rows:54px auto 76px}
  .site-preview.early-classic #pricing .early-term-picture{grid-column:1;grid-row:1;width:54px;height:50px}
- html[data-font-pair] .site-preview.early-classic #pricing .early-price-term:nth-child(2) dd{font-size:clamp(26px,7.8vw,32px)!important}
 }
 
 /* Wider stage centres leave the original illustrations at their natural size. */

@@ -1,5 +1,5 @@
 {
-  "build": "7324c539ee",
+  "build": "22fd595d46",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1280,6 +1280,12 @@
       "export": "960px alpha WebP, quality 88, 92008 bytes. The SVG viewBox retains the tight original composition without altering the generated source.",
       "layout": "Center the picture precisely under the heading using a shared intrinsic-width grid. Increase desktop dimensions from 220x100px to 253x115px (15%). Mobile width increases from 88px to 101.2px, with a 46px-high viewport to avoid empty padding. Contact link shares the same center.",
       "image_prompt": "artifacts/chairs-refinement-20261108/image-prompt.md"
+    },
+    "pricing_circles_20261109": {
+      "contours": "Three individually drawn, subtly asymmetric smooth chalk contours. Each has its own path, overdraw accents and grain seed. Blue/sage/blue palette retained.",
+      "size": "Desktop maximum diameter reduced from 340px to 320px (5.9%). Mobile maximum 292px; 12px inset also keeps narrower screens more compact.",
+      "typography": "Replace handwritten Caveat pricing values with the usual upright Manrope: 26px for amount/guarantee, 22px for the two-line payment timing.",
+      "cache": "Each mask URL includes the build fingerprint so a returning browser receives the revised contours immediately."
     }
   },
   "reviewed_decisions": {
@@ -1299,13 +1305,13 @@
     "latest_switcher": "No design, font or About-layout controls; final fixed Lora + Manrope and About 1 per November 8 request."
   },
   "validation": {
-    "build": "7324c539ee",
+    "build": "22fd595d46",
     "tests": {
       "passed": 37,
       "failed": 0
     },
-    "static_check": "PASS: one document, nine complete blocks, no resizing frames; 42 files, 1842005 bytes, 61 local assets, 9 canonical artwork hashes.",
-    "visual_check": "1440px desktop and 320px phone. Heading and illustration centers match to less than 0.01px. Artwork is 253px/101.2px wide. Transparent pencil rendering verified on milk background; no horizontal overflow. Hero CTA opens the form section; no browser console errors."
+    "static_check": "PASS: one document, nine complete blocks, no resizing frames; 44 files, 1843448 bytes, 63 local assets, 11 canonical artwork hashes.",
+    "visual_check": "1440px desktop: three 320px circular boxes with separate subtly irregular contours and upright Manrope. 320px phone: 245px circles, all values fit inside 189px of content width; middle value 168.2px, clear label spacing, no horizontal overflow. No console errors."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

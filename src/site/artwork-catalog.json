@@ -58,8 +58,22 @@
   {
     "id": "chalk-price-ring",
     "file": "artwork/vectors/chalk-price-ring.svg",
-    "title": "Круг сухим мелком для условий подбора",
+    "title": "Круг сухим мелком для предоплаты",
     "group": "Линии, стрелки и значки",
-    "sha256": "fee3f6f74558fb0efd3e7d4d6745ad7287f293c9b8150ee998e411d7c93c6d5b"
+    "sha256": "e17d7024510d41c983d465afbe5cd6d33c44a79a82071e0dc9cb8d77aae46ffe"
+  },
+  {
+    "id": "chalk-price-ring-2",
+    "file": "artwork/vectors/chalk-price-ring-2.svg",
+    "title": "Круг сухим мелком для остатка оплаты",
+    "group": "Линии, стрелки и значки",
+    "sha256": "f4fef4aede2fb949e944c1c6f12046ae09cfc279e0386c69951abd207c0a0fb2"
+  },
+  {
+    "id": "chalk-price-ring-3",
+    "file": "artwork/vectors/chalk-price-ring-3.svg",
+    "title": "Круг сухим мелком для гарантии",
+    "group": "Линии, стрелки и значки",
+    "sha256": "c741f8418ec596bfef3a595d4f8446fc3add889a17ad13be607163988d9ae4fb"
   }
 ]

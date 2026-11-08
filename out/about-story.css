@@ -113,3 +113,20 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
 }
 @media(max-width:760px){.about-story[data-about-design='1'] .s-about-slides li{gap:30px}}
 @media(prefers-reduced-motion:reduce){.about-story[data-about-design] .s-about-slides li{transition:none}}
+
+/* A larger white print and the selected dry-crayon backing are separate layers. */
+.about-story .about-photo-composition{position:relative;isolation:isolate;z-index:1;justify-self:center;transform:rotate(-1deg)}
+.about-story .about-photo-backing{position:absolute;z-index:0;inset:-32px -42px -55px -38px;background:url('artwork/vectors/hero-backing-dry-crayon.svg') center/100% 100% no-repeat;pointer-events:none}
+.about-story[data-about-design='1'] .about-photo-composition .s-photo{position:relative;z-index:1;top:auto;left:auto;width:100%;max-width:none;transform:none}
+.about-story .about-photo-composition .s-photo::before,.about-story .about-photo-composition .s-photo::after{content:none}
+@media(min-width:761px){
+ .about-story[data-about-design='1'] .s-about-slides{min-height:520px}
+ .about-story[data-about-design='1'] .about-photo-composition{position:absolute;top:50%;left:max(20px,calc((100% - 72px) * .2125 - 190px));width:min(380px,calc((100% - 72px) * .425 - 24px));transform:translateY(-50%) rotate(-1deg)}
+ .about-story[data-about-design='1'] .s-photo-mask{height:clamp(330px,32vw,432px)}
+}
+@media(max-width:760px){
+ .about-story .about-photo-composition{grid-column:1;grid-row:1;width:280px;max-width:calc(100% - 28px)}
+ .about-story .about-photo-backing{inset:-24px -28px -45px -28px}
+ .about-story .about-photo-composition .s-photo-mask{height:300px}
+ .about-story[data-about-design='1'] .s-about-slides li{gap:42px}
+}

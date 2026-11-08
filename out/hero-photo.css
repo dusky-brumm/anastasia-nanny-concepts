@@ -1,6 +1,6 @@
 /* The selected dry-crayon study stays behind the opaque printed photograph. */
 @font-face{font-family:'Caveat';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/caveat-400.woff2') format('woff2')}
-.reference-design.look-02-elliot #hero .hero-photo-composition{position:relative;isolation:isolate;z-index:1;justify-self:end;width:min(100%,414px)}
+.reference-design.look-02-elliot #hero .hero-photo-composition{position:relative;isolation:isolate;z-index:1;justify-self:center;width:min(100%,414px)}
 .reference-design.look-02-elliot #hero .cover-grid::after{content:none}
 .reference-design.look-02-elliot #hero .hero-photo-backing{position:absolute;z-index:0;inset:-45px -62px -75px -47px;background:url('artwork/vectors/hero-backing-dry-crayon.svg') center/100% 100% no-repeat;pointer-events:none}
 .reference-design.look-02-elliot #hero .lead-photo{position:relative;z-index:1;width:100%;margin:0;padding:12px 12px 0;border:0;background:#fff;box-shadow:0 5px 18px #34485108}

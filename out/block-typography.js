@@ -1,4 +1,4 @@
-import {applyTypography} from './typography.js?v=60fc59886e';
+import {applyTypography} from './typography.js?v=3a1df47991';
 applyTypography(document);
 try{
   if(parent!==window&&frameElement?.matches('iframe[data-reference-frame]')){

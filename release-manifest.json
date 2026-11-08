@@ -1,5 +1,5 @@
 {
-  "build": "5a7c9138eb",
+  "build": "453bd4a694",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Move Telegram and Instagram into the white photograph caption, immediately after the confirmed Анастасия Доронина signature; retain the Telegram destination and deferred Instagram link",
     "Apply the confirmed photo signature Анастасия Доронина and distinguish personal Telegram contact from the existing channel; defer Instagram as requested",
     "Turn the hero portrait into a white printed photograph with a larger signed lower margin, milk tape, separate green backing and social icons moved out of the header",
     "Unify subtle interaction feedback: transparent drawn arrows, stationary action buttons, thin link underlines and restrained keyboard/field focus",
@@ -1223,7 +1224,7 @@
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
     "theme": "Light milk #faf8f2 on neutral surfaces; existing blue #e7f1f6 and sage #e8efe4 retained. No palette controls.",
-    "header": "Anastasia Doronina · Individual nanny selection and five section links; social icons moved beside the hero photograph per November 8 request; collapse on mobile",
+    "header": "Header contains the name and section navigation. Hero social icons belong inside its white photograph caption, immediately after the signature.",
     "content": "Remove repeated hero labels; preserve current section when switching designs; underline only спокойно; white photo frames",
     "current_chat_overrides": "Four-frame About without heading; reviews without family stories; textured thin form lines and pencil button; only improved designs where paired",
     "reference_compositions": "Complete reference layouts are retired; keep only the Elliot hero inside design 11.",
@@ -1239,14 +1240,13 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "88 published files; 1740558 bytes; 263 local links/assets; eight canonical artwork hashes; two eager blocks",
+    "static_checks": "88 published files; 1740427 bytes; 263 local links/assets; eight canonical artwork hashes; two eager blocks",
     "tests": {
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "Eight viewport sizes from 320px through 1440px including landscape; no horizontal overflow. Menu and Escape, section links, four stories, three reviews and keyboard Home/End, request preparation and privacy dialog verified. No browser errors.",
-    "delayed_images": "30-second raster-image delay: site ready, portrait incomplete, CTA and form usable; application anchor top 8px after font settling",
-    "scope": "Mobile composition, loading and controls; retain the selected design",
+    "source_browser": "Caption checked at 320, 390 and 1440px. Name and both icons share one row within the white print; 44px targets and Telegram destination preserved; no horizontal overflow.",
+    "scope": "Focused hero photo-caption correction; existing mobile audit retained in docs/mobile-20261108.md",
     "diff_check": "passed"
   },
   "completed_css_sha256": {
@@ -1272,5 +1272,10 @@
     "sites_version": 91,
     "turn": "01a1b698-132f-7f32-9f74-74697d60062f",
     "integration_note": "Completed About imported; nine restored retired drawings excluded according to explicit later user decision."
+  },
+  "hero_caption_20261108": {
+    "placement": "Single caption row: Анастасия Доронина, Telegram, Instagram; on the lower white field of the printed photograph",
+    "responsive": "Remove the former social sidebar gutter; fit the caption at 320px and retain 44px Telegram target",
+    "links": "Telegram remains https://t.me/inyfid; Instagram stays an accessible non-interactive icon pending the user URL"
   }
 }

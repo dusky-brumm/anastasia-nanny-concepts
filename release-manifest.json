@@ -1,5 +1,5 @@
 {
-  "build": "2357feee3a",
+  "build": "5d548de0fb",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Simplify About navigation: remove pause, slide counter and process shortcut; place smaller 32px drawn arrows around the four chalk dots",
     "Center artwork and copy in all three pricing condition cards and remove the redundant prepayment timing caption",
     "Redraw review quotation marks as unequal chalk strokes with rounded ends and variable pressure, retaining the approved grain, color and 44x33px footprint",
     "Remove the About branch decoration and disable the photo hover lift while preserving slide changes and the static album composition",
@@ -1154,6 +1155,12 @@
       "alignment": "Illustration, label and value centered horizontally; content group centered inside each outlined card",
       "copy": "Prepayment retains 25 000 ₽; remove В начале подбора.",
       "mobile": "One centered vertical composition per card, 216px minimum height"
+    },
+    "about_controls_20261108": {
+      "layout": "Previous arrow, four chalk dots, next arrow in one compact row; centered on mobile",
+      "arrows": "Existing drawn artwork reduced from 44px to 32px inside 40px buttons",
+      "removed": "Pause button, numeric slide counter, process shortcut and their unused runtime/styles",
+      "preserve": "Four stories, autoplay, reading hover/focus pauses, reduced-motion support, keyboard and swipe navigation"
     }
   },
   "reviewed_decisions": {
@@ -1175,13 +1182,13 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "291 local links/assets; eight canonical artwork hashes; no gallery or editor runtime",
+    "static_checks": "290 local links/assets; eight canonical artwork hashes; no gallery or editor runtime",
     "tests": {
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "At 1440px and 390px, illustration/label/value centers match card centers within 0.01px. Mobile cards are 327x216px with zero horizontal overflow. Removed timing caption absent.",
-    "scope": "Center pricing card content and simplify prepayment copy",
+    "source_browser": "Desktop and 390px mobile: arrow/dots/arrow order verified, arrow artwork 32px inside 40px controls, no horizontal overflow. Dots and both arrows switch correctly; no browser errors. Removed controls absent; autoplay still running.",
+    "scope": "Simplify About carousel controls and reduce arrow size",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

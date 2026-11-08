@@ -1,5 +1,5 @@
 {
-  "build": "29c80f5720",
+  "build": "470cefbe02",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Remove the About branch decoration and disable the photo hover lift while preserving slide changes and the static album composition",
     "Restore separate neat pencil outlines around hero/form actions and unify light surfaces with the existing light-milk shade #faf8f2",
     "Final single site: fixed Lora + Manrope and About 1; no design/font controls or artwork gallery; remove unused illustrations and publish only active dependencies",
     "Five screenshot-led refinement passes: compact font tools, readable copy, scroll-drawn route, chalk reveals, timed story dots, field feedback and stable draft expansion",
@@ -1134,6 +1135,11 @@
       "buttons": "Hero and form use the existing pencil-button SVG with inset -7px; neat outline separate from fill",
       "preserve": "One selected site, typography, photographs, drawings and blue/sage surfaces",
       "documentation": "docs/contour-milk-20261108.md"
+    },
+    "about_static_photo_20261108": {
+      "decoration": "Branch markup, styles, asset and active catalog entry removed",
+      "hover": "Photo translate:none and transition:none override the shared -4px frame hover lift",
+      "preserve": "Static photo angle, textured backing sheets and story carousel"
     }
   },
   "reviewed_decisions": {
@@ -1155,13 +1161,13 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "292 local links/assets; nine canonical artwork hashes; no gallery or editor runtime",
+    "static_checks": "291 local links/assets; eight canonical artwork hashes; no gallery or editor runtime",
     "tests": {
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "Hero/form contour verified at 1440px, form at 390px without horizontal overflow. Both pseudo-elements use the pencil-button SVG at inset -7px; neutral backgrounds compute to rgb(250, 248, 242).",
-    "scope": "Restore visible button contours and unify light-milk surfaces",
+    "source_browser": "Branch count 0. With the pointer over the active About photo: hover=true, translate=none, position/transform/shadow identical to the state outside the photo.",
+    "scope": "Remove About branch and photo hover motion",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

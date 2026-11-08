@@ -7,14 +7,6 @@
     "sha256": "4daab1b6305378b97eca0f94e807791f036d1d59bdde7d747041bf950418bcf9"
   },
   {
-    "id": "about-branch-20261107",
-    "file": "artwork/illustrations/about-branch-20261107.png",
-    "title": "Веточка с меловой петлёй",
-    "group": "Иллюстрации",
-    "sha256": "42ed4370cbf5043cb54309ca33786a27824768d49d191396c65a1e34c13bd6d1",
-    "block": "Знакомство с Анастасией"
-  },
-  {
     "id": "review-opening-quote",
     "file": "artwork/vectors/review-opening-quote.svg",
     "title": "Меловые кавычки для отзывов",

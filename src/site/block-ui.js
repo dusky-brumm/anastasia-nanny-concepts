@@ -1,4 +1,7 @@
 // Small public-site interactions, without the former design editor runtime.
+for(const menu of document.querySelectorAll('.s-menu'))menu.addEventListener('toggle',()=>{
+  menu.querySelector('summary').setAttribute('aria-label',menu.open?'Закрыть меню':'Открыть меню');
+});
 document.addEventListener('click',event=>{
   for(const menu of document.querySelectorAll('.s-menu[open]')){
     if(!menu.contains(event.target)||event.target.closest('a'))menu.open=false;

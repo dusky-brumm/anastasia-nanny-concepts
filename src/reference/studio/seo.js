@@ -28,7 +28,7 @@ export function metadataFor(file='index.html',overrides={}) {
 export function serviceGraph() {
   const person=publicUrl('#anastasia'),service=publicUrl('#nanny-selection'),website=publicUrl('#website');
   return {'@context':'https://schema.org','@graph':[
-    {'@type':'Person','@id':person,name:contacts.name,jobTitle:'Специалист по подбору нянь',url:publicUrl('#about'),image:publicUrl('studio/media/cafe.webp'),sameAs:[contacts.telegram,contacts.channel]},
+    {'@type':'Person','@id':person,name:contacts.name,jobTitle:'Специалист по подбору нянь',url:publicUrl('#about'),image:publicUrl('media/portrait-720.webp'),sameAs:[contacts.telegram,contacts.channel]},
     {'@type':'Service','@id':service,name:'Индивидуальный подбор няни для семьи',serviceType:'Подбор няни',description:seoConfig.description,url:seoConfig.url,provider:{'@id':person},audience:{'@type':'Audience',audienceType:'Семьи с детьми'},...(seoConfig.areaServed?{areaServed:seoConfig.areaServed}:{})},
     {'@type':'WebSite','@id':website,name:seoConfig.name,url:seoConfig.url,inLanguage:'ru',publisher:{'@id':person}},
     {'@type':'WebPage','@id':publicUrl('#webpage'),url:seoConfig.url,name:seoConfig.title,description:seoConfig.description,inLanguage:'ru',isPartOf:{'@id':website},mainEntity:{'@id':service},primaryImageOfPage:{'@type':'ImageObject',url:publicUrl('assets/social-card.png'),width:1200,height:630}},

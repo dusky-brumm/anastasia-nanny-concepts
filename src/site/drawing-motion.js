@@ -130,3 +130,4 @@ if(parent===window){
 }
 setActive(viewport.enabled&&!reduced.matches);
 if(parent===window)render();
+else try{parent.document.dispatchEvent(new Event('site:layout'));}catch{/* Standalone cross-origin previews need no parent notification. */}

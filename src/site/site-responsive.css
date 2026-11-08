@@ -1,0 +1,100 @@
+/* Embedded blocks share the page's single scrollbar and its full content width. */
+html[data-reference-embedded]{min-height:100%;overflow:hidden;scrollbar-gutter:auto;scroll-behavior:auto}
+html[data-reference-embedded] body{overflow:visible!important}
+body[data-isolated-block=header] .site-preview{overflow:visible!important}
+@media(max-width:760px){
+  body{overflow-wrap:break-word}
+  .site-preview .s-header{position:relative;padding:12px 24px;gap:16px}
+  .site-preview .s-header-brand{max-width:none;line-height:1.45;letter-spacing:.05em;text-align:left;text-wrap:initial}
+  .s-header-brand .header-name{display:block;font-size:12px;font-weight:500}
+  .s-header-brand .header-service{display:block;margin-top:3px;font-size:10px;letter-spacing:0;text-transform:none}
+  .s-header-brand .header-separator{display:none}
+  .site-preview .s-menu summary{width:44px;height:44px}
+  .site-preview .s-menu{position:static}
+  .site-preview .s-menu-links{left:24px;right:24px;top:calc(100% - 4px);width:auto;padding:8px 18px;border-radius:8px}
+  .site-preview .s-menu-links>a{min-height:48px;font-size:15px}
+  .reference-design.look-02-elliot{--gutter:24px}
+  .reference-design.look-02-elliot .cover-grid{padding-block:28px 40px;gap:32px}
+  html[data-font-pair] .reference-design #hero h1{font-size:clamp(28px,8.2vw,36px)!important;line-height:1.13!important}
+  .reference-design.look-02-elliot .hero-lead{font-size:16px;line-height:1.65;margin-top:24px}
+  .reference-design.look-02-elliot .hero-actions{margin-top:26px}
+  .reference-design.look-02-elliot #hero .hero-photo-composition{max-width:350px;padding-right:48px}
+  .reference-design.look-02-elliot #hero .hero-photo-backing{right:calc(48px + 32%)}
+  .reference-design.look-02-elliot #hero .hero-photo-socials{gap:6px}
+  #chalk-service-designs .service-scene{padding-block:44px;min-height:0}
+  #chalk-service-designs .study-grid{grid-template-columns:minmax(0,1fr);gap:30px;margin-top:28px}
+  #chalk-service-designs .study{display:grid;grid-template-columns:minmax(0,1fr) 84px;grid-template-rows:auto auto;gap:12px 18px;align-items:start}
+  #chalk-service-designs .study>div{display:contents}
+  #chalk-service-designs .study-picture{grid-column:2;grid-row:1;align-self:center;width:84px;height:72px;margin:0;padding:0}
+  #chalk-service-designs .study h3{grid-column:1;grid-row:1;align-self:center;margin:0}
+  #chalk-service-designs .study p{grid-column:1/-1;grid-row:2}
+  #chalk-service-designs .study p,#chalk-service-designs .service-example p{font-size:16px;line-height:1.65}
+  #chalk-service-designs .studies-thread{margin-top:28px}
+  #chalk-service-designs .service-example{gap:18px}
+  #chalk-service-designs .service-link{white-space:normal!important;justify-self:start;line-height:1.5}
+  .site-preview .about-story{padding:44px 24px 36px!important}
+  .about-story .s-about-slides li p{line-height:1.6}
+  .about-story .about-controls{gap:0;margin-top:20px;min-height:44px}
+  .about-story .about-arrow{width:44px;height:44px;flex-basis:44px;background-size:30px 30px}
+  .about-story .s-about-dots button{width:44px;height:44px}
+  .site-preview.early-classic #process .s-study-copy p{font-size:16px;line-height:1.6}
+  .site-preview.early-classic #process .s-study-copy{gap:12px 16px}
+  .site-preview.early-classic #process .s-study-steps li{padding-bottom:36px}
+  .site-preview.early-classic #pricing .s-pricing-terms{gap:16px;margin-block:28px 24px}
+  .site-preview.early-classic #pricing .early-price-term{min-height:192px;padding:22px;grid-template-rows:48px auto auto;gap:8px}
+  .site-preview.early-classic #pricing .early-term-picture{width:52px;height:48px}
+  .site-preview.early-classic #pricing .early-price-term dd{font-size:22px;line-height:1.35}
+  .site-preview .s-faq{margin-top:36px;padding-top:28px;gap:20px}
+  .site-preview .s-faq summary{padding-right:30px;font-size:16px;line-height:1.5}
+  .site-preview.early-classic .s-reviews .s-review-heading{display:grid;gap:8px;margin-bottom:24px;align-items:start}
+  .site-preview.early-classic .s-reviews .s-review-more{min-height:44px;justify-self:start;font-size:13px}
+  .site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls:not([hidden]){margin-top:12px;min-height:44px}
+  .site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid{overflow-y:hidden}
+  .site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:26px 20px!important;column-gap:10px}
+  .site-preview.early-classic .s-reviews [data-open-quotes] .s-review:last-child footer{padding-right:0!important}
+  .site-preview.early-classic #apply{gap:28px}
+  .site-preview.early-classic .s-apply-intro:has(.consultation-picture){display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:16px}
+  .site-preview.early-classic .s-apply-intro>.s-section-heading{grid-column:1/-1;grid-row:1}
+  .site-preview.early-classic .s-apply-intro>p{grid-column:1;grid-row:2;margin:0;font-size:16px;line-height:1.6}
+  .site-preview.early-classic .s-apply-intro .consultation-picture{grid-column:2;grid-row:2;width:88px;height:68px;margin:0;align-self:center}
+  .site-preview.early-classic .s-apply-intro>.comparison-form-contact{grid-column:1/-1;grid-row:3;margin:0}
+  .site-preview.early-classic #apply .s-form-pencil{padding:24px 20px;gap:20px}
+  .s-form-pencil :is(input,textarea){font-size:16px!important;line-height:1.5!important;min-height:48px}
+  .s-form-pencil label{font-size:14px;line-height:1.5}
+  .s-form-pencil textarea{resize:vertical}
+  .s-form-pencil .s-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+  .s-form-pencil .s-actions>:is(a,button){min-height:44px}
+  .s-site-footer .footer-nav{gap:4px 22px;font-size:14px}
+  .s-site-footer .footer-nav a,.s-site-footer .footer-meta :is(a,button){min-height:44px}
+  .s-site-footer .footer-meta{align-items:start;flex-wrap:wrap;gap:4px 24px;margin-top:16px}
+  .s-site-footer .footer-thread{height:28px;margin-bottom:20px}
+}
+@media(max-width:360px){
+  .site-preview .s-header{padding-inline:20px;gap:12px}
+  .site-preview .s-menu-links{left:20px;right:20px}
+  .reference-design.look-02-elliot{--gutter:20px}
+  .reference-design #hero h1>span:last-child{text-wrap:initial}
+  #chalk-service-designs .service-scene{padding-inline:20px;min-height:0}
+  #chalk-service-designs .study{grid-template-columns:minmax(0,1fr) 72px;column-gap:16px}
+  #chalk-service-designs .study-picture{width:72px;height:66px}
+  #chalk-service-designs .study h3{font-size:21px!important}
+  .site-preview .about-story{padding-inline:20px!important}
+  .about-story .about-controls{gap:0}
+  .site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px 16px!important;grid-template-columns:26px minmax(0,1fr);column-gap:8px}
+  .site-preview.early-classic .s-reviews .early-quote{width:26px;height:24px}
+  .site-preview.early-classic #apply .s-form-pencil{padding:24px 16px}
+}
+@media(max-width:600px){
+  .site-preview.early-classic #process .s-study-copy{display:grid;grid-template-columns:minmax(0,1fr) 72px;grid-template-areas:'title picture' 'copy copy';gap:12px 16px}
+  .site-preview.early-classic #process .early-step-picture{grid-area:picture;width:72px;height:64px;margin:0;align-self:center}
+  .site-preview.early-classic #process .classic-arrow-route h3{grid-area:title;align-self:center;margin:0;padding:0}
+  .site-preview.early-classic #process .classic-arrow-route p{grid-area:copy;margin:0}
+  .site-preview.early-classic #process .classic-arrow-route li:nth-child(n) .s-study-number{margin-top:16px}
+  .site-preview.early-classic #process .classic-arrow-mobile{top:56px;height:calc(100% - 60px)}
+}
+@media(min-width:761px) and (max-width:1100px){
+  .about-story .about-controls{gap:0}
+  .about-story .about-arrow{width:44px;height:44px;flex-basis:44px}
+  .about-story .s-about-dots button{width:44px;height:44px}
+  .s-site-footer .s-privacy{min-height:44px}
+}

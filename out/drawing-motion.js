@@ -1,4 +1,4 @@
-import {drawingEnabled,entryProgress,segmentProgress} from './drawing-model.js?v=dd23ce6867';
+import {drawingEnabled,entryProgress,segmentProgress} from './drawing-model.js?v=facfffb01e';
 
 const svgNS='http://www.w3.org/2000/svg';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -130,3 +130,4 @@ if(parent===window){
 }
 setActive(viewport.enabled&&!reduced.matches);
 if(parent===window)render();
+else try{parent.document.dispatchEvent(new Event('site:layout'));}catch{/* Standalone cross-origin previews need no parent notification. */}

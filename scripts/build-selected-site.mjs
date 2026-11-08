@@ -20,6 +20,7 @@ async function fingerprint(directory){
   }
 }
 await fingerprint('src/reference');await fingerprint('src/site');
+hash.update(await readFile(new URL(import.meta.url)));
 const version=hash.digest('hex').slice(0,10);
 const selection=JSON.parse(await readFile('src/site/selection.json','utf8'));
 const catalog=JSON.parse(await readFile('src/site/artwork-catalog.json','utf8'));
@@ -48,7 +49,7 @@ for(const {file} of selection.blocks){
     html=html.replace(tag,svg);
   }
   html=html.replace('<html lang="ru"','<html lang="ru" data-font-pair="5" data-body-font="manrope"');
-  const styles=['fonts.css','studio/fonts.css','site-typography.css','site-refinements.css','site-polish.css']
+  const styles=['fonts.css','site-typography.css','site-refinements.css','site-polish.css','site-responsive.css']
     .filter(file=>!html.includes(`href="../${file}`))
     .map(file=>`<link rel="stylesheet" href="../${file}?v=__VERSION__">`).join('');
   html=html.replace('</head>',styles+'<script type="module" src="../block-typography.js?v=__VERSION__"></script><script type="module" src="../drawing-motion.js?v=__VERSION__"></script></head>');
@@ -58,7 +59,16 @@ async function replaceTokens(directory){
   for(const entry of await readdir(directory,{withFileTypes:true})){
     const file=path.join(directory,entry.name);
     if(entry.isDirectory())await replaceTokens(file);
-    else if(/\.(?:html|js|css)$/.test(file))await writeFile(file,(await readFile(file,'utf8')).replaceAll('__VERSION__',version));
+    else if(/\.(?:html|js|css)$/.test(file)){
+      let text=(await readFile(file,'utf8')).replaceAll('__VERSION__',version);
+      if(file.endsWith('.css')){
+        const relative=asset=>path.relative(path.dirname(file),path.join(output,asset)).split(path.sep).join('/');
+        text=text.replace(/url\(['"]?[^)'"\s]*\/dot\.webp['"]?\)/g,`url('${relative('media/chalk-dot.webp')}')`)
+          .replace(/url\(['"]?[^)'"\s]*\/arrow-right\.webp['"]?\)/g,`url('${relative('artwork/vectors/navigation-arrow-chalk.svg')}')`)
+          .replace(/background\s*:[^;{}]*quote-highlight\.webp[^;{}]*(;|(?=}))/g,'background:none;');
+      }
+      await writeFile(file,text);
+    }
   }
 }
 await writeFile(path.join(output,'index.html'),sitePage(selection));

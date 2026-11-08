@@ -70,4 +70,21 @@ for(const item of catalog){
 }
 assert.match(await readFile('out/blocks/about.html','utf8'),/data-about-design="1"/);
 assert.doesNotMatch(await readFile('out/site-base.js','utf8'),/localStorage|readFontChoice|mountAboutSection/);
+// Prevent the mobile loading regression: distant blocks and unused large files
+// must never return to the first-screen critical path or the public payload.
+assert.equal((home.match(/loading="eager"/g)||[]).length,2);
+assert.equal((home.match(/loading="lazy"/g)||[]).length,7);
+assert.match(hero,/srcset="[^\"]*portrait-480\.webp 480w/);
+assert.match(await readFile('out/hero-photo.css','utf8'),/caveat-400\.woff2/);
+let bytes=0,files=0;
+async function measure(directory){
+  for(const entry of await readdir(directory,{withFileTypes:true})){
+    const file=path.join(directory,entry.name);
+    if(entry.isDirectory())await measure(file);
+    else{bytes+=(await stat(file)).size;files++;assert.ok(!file.endsWith('.ttf'),'Uncompressed font returned: '+file);}
+  }
+}
+await measure('out');
+assert.ok(bytes<2_000_000,`Mobile payload budget exceeded: ${bytes} bytes`);
+console.log(`PASS: ${files} published files, ${bytes} bytes; compact fonts and responsive portrait; two eager blocks.`);
 console.log(`PASS: 9 fixed blocks, no editor controls or gallery, ${links} local links/assets, ${catalog.length} active artwork hashes.`);

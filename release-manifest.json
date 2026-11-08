@@ -1,5 +1,5 @@
 {
-  "build": "dd23ce6867",
+  "build": "facfffb01e",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1202,6 +1202,22 @@
       "animation": "One-time 1100ms ink-to-accent color reveal coupled with the existing 1000ms pencil underline. Reduced motion, capture and motion=off keep the complete static result.",
       "reviews": "Expand the constrained content to 1280px. Keep three white cards across desktop; give each a separate 36px left quote column and align its author with the review text. Keep mobile horizontal carousel.",
       "quotes": "Retain both hand-drawn comma shapes; add translucent #526c73 pencil fill, individual pressure strokes and sparse highlights. No grain filter or font glyph."
+    },
+    "mobile_20261108": {
+      "scope": "Separate mobile refinement; approved design and desktop compositions retained",
+      "runtime": "Two eager blocks, seven lazy blocks, DOM-ready frame layout, single page scrollbar and font-stable anchors without image waits",
+      "layout": "Readable full-width mobile descriptions with illustrations beside headings; 44px story controls, compact pricing, active review height, 16px fields and viewport-safe dialog",
+      "media": "Local WOFF2 fonts, responsive hero portrait, compact derivatives preserving the original SVG coordinate plane; source originals retained",
+      "before": {
+        "files": 111,
+        "bytes": 4972105
+      },
+      "after": {
+        "files": 90,
+        "bytes": 1736716
+      },
+      "reduction_percent": 65.1,
+      "documentation": "docs/mobile-20261108.md"
     }
   },
   "reviewed_decisions": {
@@ -1223,20 +1239,21 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "291 local links/assets; eight canonical artwork hashes",
+    "static_checks": "90 published files; 1736716 bytes; 263 local links/assets; eight canonical artwork hashes; two eager blocks",
     "tests": {
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "Desktop: three 411px white cards inside a 1280px content area, quotes beside the first text line. 390px: one 340px card and carousel controls, no document overflow. Hero uses upright Lora and the original underline, with one action and no overflow.",
-    "scope": "Hero shortcut, calm emphasis and animation; review card width and filled pencil quotes",
+    "source_browser": "Eight viewport sizes from 320px through 1440px including landscape; no horizontal overflow. Menu and Escape, section links, four stories, three reviews and keyboard Home/End, request preparation and privacy dialog verified. No browser errors.",
+    "delayed_images": "30-second raster-image delay: site ready, portrait incomplete, CTA and form usable; application anchor top 8px after font settling",
+    "scope": "Mobile composition, loading and controls; retain the selected design",
     "diff_check": "passed"
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "47ba03e44a",
+  "previous_confirmed_build": "dd23ce6867",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

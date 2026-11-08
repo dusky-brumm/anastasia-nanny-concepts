@@ -63,20 +63,20 @@
 .early-classic .classic-service-note::before {content:'';position:absolute;inset:0 0 auto;height:9px;background:var(--accent);mask:url('../../pencil-rule.svg') center/100% 100% no-repeat;opacity:.55;pointer-events:none}
 .early-classic .classic-service-note p {max-width:48ch;font-size:15px;line-height:1.6}
 .early-classic .classic-service-note a {flex-shrink:0;font-size:14px}
-.early-classic .s-about-dots button::before {width:16px;height:16px;border-radius:0;background:transparent url('../../media/classic-chalk-ui/dot.webp') center/150% 150% no-repeat;opacity:.35;transition:opacity .2s,transform .2s}
+.early-classic .s-about-dots button::before {width:16px;height:16px;border-radius:0;background:transparent url('../../../media/chalk-dot.webp') center/150% 150% no-repeat;opacity:.35;transition:opacity .2s,transform .2s}
 .early-classic .s-about-dots button[aria-current=true]::before {width:20px;height:20px;background-color:transparent;opacity:1;transform:rotate(-9deg)}
 .early-classic .s-about-dots button:nth-child(2)::before {transform:rotate(55deg)}
 .early-classic .s-about-dots button:nth-child(3)::before {transform:rotate(110deg)}
 .early-classic .s-about-dots button:nth-child(4)::before {transform:rotate(175deg)}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review {padding:8px 0 0}
 .early-classic .s-review blockquote {position:relative;isolation:isolate;padding:26px 30px}
-.early-classic .s-review blockquote::before {content:'';position:absolute;z-index:-1;inset:0;background:url('../../media/classic-chalk-ui/quote-highlight.webp') center/100% 100% no-repeat;pointer-events:none}
+.early-classic .s-review blockquote::before {content:'';position:absolute;z-index:-1;inset:0;background:none;pointer-events:none}
 .early-classic .s-review:nth-child(2) blockquote::before {transform:scaleX(-1)}
 .early-classic .early-quote {margin:0 0 10px 25px}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review footer {padding:20px 26px 0}
 .site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button {width:54px;height:44px;border:0;border-radius:0;background:transparent;padding:0}
 .site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button:hover:not(:disabled) {background:transparent;transform:rotate(-4deg)}
-.early-classic .classic-quote-arrow {display:block;width:54px;height:44px;background:url('../../media/classic-chalk-ui/arrow-right.webp') center/100% 100% no-repeat}
+.early-classic .classic-quote-arrow {display:block;width:54px;height:44px;background:url('../../../artwork/vectors/navigation-arrow-chalk.svg') center/100% 100% no-repeat}
 .early-classic [data-quote-step='-1'] .classic-quote-arrow {transform:scaleX(-1)}
 .site-preview.early-classic .s-apply .s-form-pencil {grid-template-columns:minmax(0,1fr);gap:20px;padding:28px 30px;background:var(--paper);border-radius:4px;box-shadow:none}
 .early-classic .s-form-pencil::before {mask-image:url('../../pencil-frame-neat.svg');opacity:.75}

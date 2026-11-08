@@ -7,9 +7,9 @@ dialog [data-close]{display:grid;place-items:center;min-width:44px;min-height:44
 [data-selected-block=service],[data-selected-block=reviews],[data-selected-block=footer]{background:#e7f1f6}
 [data-selected-block=process]{background:#e8efe4}
 [data-selected-block=header]>iframe:not([data-frame-fitted]){height:87px}
-[data-selected-block=hero]>iframe:not([data-frame-fitted]){height:650px}
+[data-selected-block=hero]>iframe:not([data-frame-fitted]){height:720px}
 @media(max-width:800px){[data-selected-block=header]>iframe:not([data-frame-fitted]){height:68px}}
-@media(max-width:650px){[data-selected-block=hero]>iframe:not([data-frame-fitted]){height:clamp(770px,calc(100vw + 390px),840px)}}
-@media(max-width:360px){[data-selected-block=hero]>iframe:not([data-frame-fitted]){height:770px}}
+@media(max-width:650px){[data-selected-block=hero]>iframe:not([data-frame-fitted]){height:clamp(850px,calc(100vw + 470px),930px)}}
+@media(max-width:360px){[data-selected-block=hero]>iframe:not([data-frame-fitted]){height:850px}}
 @media(max-width:760px){dialog{width:calc(100% - 40px);padding:32px 24px 24px}html{scrollbar-gutter:auto}}
 @media(prefers-reduced-motion:reduce){dialog [data-close]{transition:none}}

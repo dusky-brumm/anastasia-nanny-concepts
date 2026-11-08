@@ -1,7 +1,7 @@
 /* About shares the site's milk paper, Lora/Manrope type and restrained chalk lines. */
 body[data-isolated-block=about]{margin:0;padding:0}
 body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-radius:0;overflow:clip}
-.site-preview .about-story{position:relative;isolation:isolate;display:block;overflow:hidden;background:#fcfcfa!important;padding:80px max(32px,calc((100% - 1120px)/2)) 44px!important;color:#28353c}
+.site-preview .about-story{position:relative;isolation:isolate;display:block;overflow:hidden;background:var(--site-milk)!important;padding:80px max(32px,calc((100% - 1120px)/2)) 44px!important;color:#28353c}
 .about-story .s-about-slides{position:relative;isolation:isolate;min-width:0}
 .about-story .s-about-viewport{position:relative;z-index:1;overflow:visible;border-radius:0;outline-offset:10px}
 .about-story .s-about-slides ol{display:grid;gap:0;margin:0;padding:0;list-style:none;touch-action:pan-y pinch-zoom}

@@ -48,7 +48,7 @@ html[data-drawing-motion=off] svg[data-ink-line] path{stroke-dashoffset:0!import
 .s-form-pencil .field-shell:focus-within .field-ink path{animation:field-pencil 500ms var(--drawing-ease) both}
 .s-form-pencil .field-shell :is(input,textarea):focus:not(:focus-visible){outline:0}
 .s-form-pencil .field-shell :is(input,textarea):focus-visible{outline:1px solid #526c73;outline-offset:2px}
-.s-form-pencil .field-shell:focus-within :is(input,textarea){background-color:#fff}
+.s-form-pencil .field-shell:focus-within :is(input,textarea){background-color:var(--site-milk)}
 .s-form-pencil :is(input,textarea)::placeholder{color:#657b82;opacity:1;letter-spacing:0}
 .s-form-pencil .form-submit{display:grid;justify-items:start;gap:8px}
 .site-preview .s-form-pencil .s-form-hint{max-width:45ch;margin:0;padding:0;font-size:14px;line-height:1.5;letter-spacing:0;color:#526c73}
@@ -66,3 +66,7 @@ html[data-drawing-motion=off] svg[data-ink-line] path{stroke-dashoffset:0!import
 
 /* 5. Keep the same phrasing readable on the smallest supported phones. */
 @media(max-width:360px){html[data-font-pair] h1{font-size:calc(28px * var(--pair-scale))!important}}
+
+/* A separate, neat pencil contour stays visible outside the filled action. */
+.reference-design.look-02-elliot #hero .hero-actions .button,.site-preview .s-form-pencil .s-button{position:relative;overflow:visible;border-radius:8px}
+.reference-design.look-02-elliot #hero .hero-actions .button::after,.site-preview .s-form-pencil .s-button::before{content:'';position:absolute;display:block;inset:-7px;border:0;border-radius:0;transform:none;background:var(--button,#526c73);mask:url('studio/pencil-button.svg') center/100% 100% no-repeat;opacity:1;pointer-events:none}

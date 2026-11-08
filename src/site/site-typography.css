@@ -1,5 +1,5 @@
 /* Final type layer for the approved mixed composition. Exactly two roles. */
-:root{--pair-heading:"Lora",serif;--pair-body:"Manrope",sans-serif;--pair-heading-weight:400;--pair-scale:1;--pair-tracking:-.025em}
+:root{--site-milk:#faf8f2;--paper:var(--site-milk);--pair-heading:"Lora",serif;--pair-body:"Manrope",sans-serif;--pair-heading-weight:400;--pair-scale:1;--pair-tracking:-.025em}
 html[data-font-pair] body,html[data-font-pair] :is(.site-preview,.sheet,.reference-design,.service-design){--heading:var(--pair-heading)!important;--display:var(--pair-heading)!important;--body:var(--pair-body)!important;--heading-weight:var(--pair-heading-weight)!important;font-family:var(--pair-body)!important}
 html[data-font-pair] :is(p,dt,dd,label,button,input,textarea,nav,figcaption,blockquote,.s-signature,.hand,.s-footer-name){font-family:var(--pair-body)!important}
 html[data-font-pair] :is(h1,h2,h3){font-family:var(--pair-heading)!important;font-weight:var(--pair-heading-weight)!important;letter-spacing:var(--pair-tracking)!important}

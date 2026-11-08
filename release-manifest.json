@@ -1,5 +1,5 @@
 {
-  "build": "d498d1698a",
+  "build": "47ba03e44a",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Apply the confirmed photo signature Анастасия Доронина and distinguish personal Telegram contact from the existing channel; defer Instagram as requested",
     "Turn the hero portrait into a white printed photograph with a larger signed lower margin, milk tape, separate green backing and social icons moved out of the header",
     "Unify subtle interaction feedback: transparent drawn arrows, stationary action buttons, thin link underlines and restrained keyboard/field focus",
     "Use pure white review cards without grain; redraw quotation marks as fine pencil contours and reduce low-resolution avatar enlargement",
@@ -1171,7 +1172,7 @@
       "alignment": "Illustration, chalk number, heading and paragraph share each column center; desktop number spacing grows from 256px to 272px",
       "rhythm": "Route row 104px instead of 136px; heading top padding 14px instead of 24px; equal two-line heading space at 901-1200px",
       "preserve": "Same five stages, artwork, chalk arrows, scroll drawing, palette and mobile vertical route",
-      "proposals": "Three separate local mockups prepared outside the published site: horizontal route, two rows, vertical story"
+      "proposals": "Three revised local mockups, all horizontal: pictures above the route, route above pictures, and alternating picture/copy around the same route. Five numbers stay on one horizontal axis with all four connecting arrows. The earlier two-row and vertical proposals are superseded"
     },
     "white_reviews_pencil_quotes_20261108": {
       "cards": "Pure #ffffff background with no background image; existing blue section, three desktop cards and mobile carousel retained",
@@ -1190,9 +1191,10 @@
       "layers": "Green textured backing is a separate sibling at z-index 0; opaque white print is z-index 1. Original lead-photo pseudo-backing disabled",
       "print": "White 12px desktop frame, 76px caption area; responsive 8-10px edges and 66px caption on phones; branch markup removed",
       "tape": "Existing milk #faf8f2, .94 opacity, clean softly irregular edges",
-      "signature": "Анастасия Даровина, matching the user's latest wording; Caveat 400 restored only for this signature, with its local font and OFL license",
+      "signature": "Анастасия Доронина, explicitly confirmed by the user; Caveat 400 restored only for this signature, with its local font and OFL license",
       "socials": "Telegram and Instagram artwork moved beside the portrait. Photo and Telegram icon link to https://t.me/inyfid; external links use noopener noreferrer",
-      "instagram_input": "No Instagram profile URL exists in the former header or local sources. An asynchronous question is pending. Preserve the Instagram icon as an accessible, non-interactive image until the user provides the destination; never invent a profile",
+      "instagram_input": "User explicitly deferred Instagram. Preserve the icon as an accessible, non-interactive image until its profile URL is provided",
+      "telegram_confirmed": "User confirmed @inyfid for personal contact and t.me/anastasiadoroninaa as the channel. Photo and sidebar Telegram icon open personal contact; existing review/channel links remain unchanged",
       "header": "Remove social groups from both desktop and mobile header; retain the five section links and mobile menu"
     }
   },
@@ -1221,7 +1223,7 @@
       "failed": 0
     },
     "source_browser": "1440px: opaque white 414px print above separate green backing, 76px caption, milk tape and Caveat loaded. 390px and 320px: no horizontal overflow, signature fits inside caption, 44px social target stays within viewport. Header has no social groups and retains five mobile navigation links. No browser errors.",
-    "scope": "Printed hero photograph, handwritten caption and moved social icons; Instagram destination awaits user input",
+    "scope": "Apply the confirmed surname and personal Telegram label; Instagram explicitly deferred. Revise separate process proposals to keep all five numbers and connecting arrows horizontal",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

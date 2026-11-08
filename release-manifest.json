@@ -1,5 +1,5 @@
 {
-  "build": "5d548de0fb",
+  "build": "a5c199afa7",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Widen the process composition from 1280px to 1360px, center each title and paragraph beneath its number, and tighten the vertical route rhythm",
     "Simplify About navigation: remove pause, slide counter and process shortcut; place smaller 32px drawn arrows around the four chalk dots",
     "Center artwork and copy in all three pricing condition cards and remove the redundant prepayment timing caption",
     "Redraw review quotation marks as unequal chalk strokes with rounded ends and variable pressure, retaining the approved grain, color and 44x33px footprint",
@@ -1161,6 +1162,13 @@
       "arrows": "Existing drawn artwork reduced from 44px to 32px inside 40px buttons",
       "removed": "Pause button, numeric slide counter, process shortcut and their unused runtime/styles",
       "preserve": "Four stories, autoplay, reading hover/focus pauses, reduced-motion support, keyboard and swipe navigation"
+    },
+    "process_alignment_20261108": {
+      "width": "1360px maximum stage instead of 1280px; full-width sage background retained",
+      "alignment": "Illustration, chalk number, heading and paragraph share each column center; desktop number spacing grows from 256px to 272px",
+      "rhythm": "Route row 104px instead of 136px; heading top padding 14px instead of 24px; equal two-line heading space at 901-1200px",
+      "preserve": "Same five stages, artwork, chalk arrows, scroll drawing, palette and mobile vertical route",
+      "proposals": "Three separate local mockups prepared outside the published site: horizontal route, two rows, vertical story"
     }
   },
   "reviewed_decisions": {
@@ -1187,8 +1195,8 @@
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "Desktop and 390px mobile: arrow/dots/arrow order verified, arrow artwork 32px inside 40px controls, no horizontal overflow. Dots and both arrows switch correctly; no browser errors. Removed controls absent; autoplay still running.",
-    "scope": "Simplify About carousel controls and reduce arrow size",
+    "source_browser": "At 1440px all five number/title/paragraph centers match within 0.01px. At 1024px all paragraph tops align after heading wrapping. At 390px all five stages retain the vertical route with zero horizontal overflow. No browser errors. Three composition mockups visually reviewed.",
+    "scope": "Improve process spacing and alignment; prepare three separate layout proposals",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

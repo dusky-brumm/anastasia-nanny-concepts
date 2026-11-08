@@ -10,6 +10,4 @@ main[aria-label="Индивидуальный подбор няни"],[data-bloc
 [data-block-document=hero] .photo-signature{inline-size:7.5em;flex:0 0 7.5em}
 .photo-window img,.s-photo-mask img{transition:opacity 180ms ease}
 .photo-window img[data-image-pending],.s-photo-mask img[data-image-pending]{opacity:0}
-html[data-fonts-ready=ready][data-drawing-motion=on] [data-block-document=hero] .hero-underline{transform-origin:left center;animation:hero-pencil-first 1s cubic-bezier(.22,1,.36,1) both!important}
-@keyframes hero-pencil-first{from{transform:rotate(-1deg) scaleX(0)}to{transform:rotate(-1deg) scaleX(1)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo-window img,.s-photo-mask img{transition:none}}

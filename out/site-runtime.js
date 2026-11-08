@@ -158,6 +158,18 @@ function drawingEnabled({reduced=false,choice='on',capture=false}={}){
   return !reduced&&!capture&&choice!=='off';
 }
 
+// Overscan keeps every pencil pass beyond the artwork's transparent edges.
+function pencilGesture({x,y,width,height},passes=10){
+  if(![x,y,width,height].every(Number.isFinite)||width<=0||height<=0||!Number.isInteger(passes)||passes<2||passes>16)throw new RangeError('Invalid pencil gesture bounds');
+  const step=height/passes,left=x-width*.12,right=x+width*1.12;
+  let d='';
+  for(let row=0;row<=passes;row++){
+    const start=row%2?right:left,end=row%2?left:right,centre=y+step*row;
+    d+=`${row?'L':'M'}${start} ${centre-step*.18}L${end} ${centre+step*.18}`;
+  }
+  return {d,strokeWidth:step*1.5};
+}
+
 
 const svgNS='http://www.w3.org/2000/svg';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -166,7 +178,7 @@ try{if(parent!==window)search=parent.location.search;}catch{/* A standalone draw
 const params=new URLSearchParams(search);
 const initialChoice=params.get('motion');
 let viewport={enabled:drawingEnabled({choice:initialChoice,capture:params.get('capture')==='1'}),frameTop:0,viewportHeight:innerHeight,toolbarHeight:0,near:true};
-let active,serial=0,viewportReceived=parent===window;
+let active,serial=0,queued=false,viewportReceived=parent===window;
 const easing='cubic-bezier(.22,1,.36,1)';
 function svgElement(name,attributes){const node=document.createElementNS(svgNS,name);for(const [key,value] of Object.entries(attributes))node.setAttribute(key,String(value));return node;}
 
@@ -180,18 +192,16 @@ const lines=[...document.querySelectorAll('svg[data-ink-line]')].map(svg=>({
   }),
 }));
 
-// A single broad chalk gesture reveals each illustration; original pixels stay intact.
-const pictures=[...document.querySelectorAll('svg[data-chalk-picture]')].map((svg,index)=>{
+// The original pixels stay still while overlapping pencil passes reveal them.
+const pictureGroups=new Map();
+const pictures=[...document.querySelectorAll('svg[data-chalk-picture],#process svg[data-early-art],#apply svg[data-early-art]')].map(svg=>{
   const image=svg.querySelector('image'),box=svg.viewBox.baseVal;
   if(!image||!box.width||!box.height)return null;
-  const id=`chalk-gesture-${++serial}`,step=box.height/6;
-  const left=box.x-box.width*.08,right=box.x+box.width*1.08;
-  let d=`M${left} ${box.y+step/2}`;
-  for(let row=0;row<6;row++){
-    d+=`H${row%2?left:right}`;
-    if(row<5)d+=`V${box.y+step*(row+1.5)}`;
-  }
-  const path=svgElement('path',{d,fill:'none',stroke:'white','stroke-width':step*1.12,'stroke-linecap':'square','stroke-linejoin':'round',pathLength:1});
+  svg.dataset.chalkPicture='';
+  const group=svg.closest('section')??svg.parentElement,index=pictureGroups.get(group)??0;
+  pictureGroups.set(group,index+1);
+  const id=`chalk-gesture-${++serial}`,gesture=pencilGesture(box);
+  const path=svgElement('path',{d:gesture.d,fill:'none',stroke:'white','stroke-width':gesture.strokeWidth,'stroke-linecap':'round','stroke-linejoin':'round',pathLength:1});
   const mask=svgElement('mask',{id,maskUnits:'userSpaceOnUse',x:box.x,y:box.y,width:box.width,height:box.height});
   mask.append(path);
   let defs=svg.querySelector('defs');if(!defs){defs=svgElement('defs',{});svg.prepend(defs);}defs.append(mask);
@@ -216,7 +226,8 @@ function setActive(next){
     if(!active){finishLine(line,false);continue;}
     if(parent===window&&!line.started){
       const bounds=line.svg.getBoundingClientRect();
-      if(bounds.top<innerHeight&&bounds.bottom>0){finishLine(line);continue;}
+      const openingUnderline=line.svg.classList.contains('hero-underline')&&scrollY<80;
+      if(bounds.top<innerHeight&&bounds.bottom>0&&!openingUnderline){finishLine(line);continue;}
     }
     const pending=line.svg.dataset.inkLine==='scroll'?line.progress<1:!line.started;
     if(pending)for(const {path,marker} of line.paths){path.style.strokeDasharray='1';path.style.strokeDashoffset='1';if(marker)path.removeAttribute('marker-end');}
@@ -227,21 +238,19 @@ function setActive(next){
       const bounds=picture.svg.getBoundingClientRect();
       if(bounds.top<innerHeight&&bounds.bottom>0){finishPicture(picture);continue;}
     }
-    if(!picture.started){picture.path.style.strokeDasharray='1';picture.path.style.strokeDashoffset='1';picture.image.setAttribute('mask',`url(#${picture.id})`);}
+    if(!picture.started&&picture.path.animate){picture.path.style.strokeDasharray='1';picture.path.style.strokeDashoffset='1';picture.image.setAttribute('mask',`url(#${picture.id})`);}
   }
   document.dispatchEvent(new CustomEvent('drawing:motion',{detail:{enabled:active}}));
 }
 function revealLine(line){
   line.started=true;line.progress=1;
-  const word=line.svg.closest('.hero-calm');
-  if(word?.animate){
-    line.animations.push(word.animate([{opacity:.8},{opacity:1}],{duration:900,easing,fill:'backwards'}));
-  }
+  const circle=line.svg.classList.contains('early-price-ring');
+  const circleIndex=circle?[...line.svg.parentElement.parentElement.children].indexOf(line.svg.parentElement):0;
   line.paths.forEach(({path},index)=>{
     path.style.strokeDashoffset='0';
     if(!path.animate)return;
-    const animation=path.animate([{strokeDashoffset:'1'},{strokeDashoffset:'0'}],{duration:1000,delay:index*80,easing,fill:'backwards'});
-    animation.onfinish=()=>{path.style.strokeDasharray='none';};
+    const animation=path.animate([{strokeDashoffset:'1'},{strokeDashoffset:'0'}],{duration:circle?1500:1100,delay:circleIndex*130+index*100,easing,fill:'backwards'});
+    animation.onfinish=()=>{path.style.strokeDasharray='none';line.animations=line.animations.filter(item=>item!==animation);};
     line.animations.push(animation);
   });
 }
@@ -285,16 +294,19 @@ function render(){
     const bounds=picture.svg.getBoundingClientRect();
     if(viewport.frameTop+bounds.bottom<viewport.toolbarHeight||!picture.path.animate){finishPicture(picture);continue;}
     picture.started=true;picture.path.style.strokeDashoffset='0';
-    picture.animation=picture.path.animate([{strokeDashoffset:'1'},{strokeDashoffset:'0'}],{duration:1200,delay:picture.index*60,easing,fill:'backwards'});
+    const small=bounds.width<100;
+    picture.animation=picture.path.animate([{strokeDashoffset:'1'},{strokeDashoffset:'0'}],{duration:small?760:1120,delay:Math.min(picture.index*70,210),easing,fill:'backwards'});
     picture.animation.onfinish=()=>{picture.image.removeAttribute('mask');picture.animation=null;};
   }
 }
-document.addEventListener('drawing:viewport',event=>{viewportReceived=true;viewport=event.detail;render();});
-reduced.addEventListener('change',render);
-document.addEventListener('visibilitychange',render);
+function schedule(){if(!queued){queued=true;requestAnimationFrame(()=>{queued=false;render();});}}
+document.addEventListener('drawing:viewport',event=>{viewportReceived=true;viewport=event.detail;schedule();});
+reduced.addEventListener('change',schedule);
+document.addEventListener('visibilitychange',schedule);
 if(parent===window){
-  const standalone=()=>{viewport={...viewport,viewportHeight:innerHeight};render();};
+  const standalone=()=>{viewport={...viewport,viewportHeight:innerHeight};schedule();};
   addEventListener('scroll',standalone,{passive:true});addEventListener('resize',standalone);
+  addEventListener('pageshow',standalone);
 }
 // Until the parent controller is ready, leave complete static drawings visible.
 setActive(viewportReceived&&viewport.enabled&&!reduced.matches);

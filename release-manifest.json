@@ -1,6 +1,6 @@
 {
-  "build": "7ba84886d8",
-  "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
+  "build": "35f3485066",
+  "base_commit": "8c9bf2c233c6578f6f9aec317964c2f34a956db5",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Pencil motion: original chalk pricing circles trace on entry, nine illustrations reveal through overlapping pencil passes, the calm underline traces its real strokes, and scroll arrows update once per animation frame; preserve static content, mobile layouts and reduced-motion preferences",
     "Replace the nine resizing iframes with one complete HTML page; preserve component styles, stabilize fonts and review heights, and avoid redrawing artwork already visible at startup",
     "Bring the hero portrait closer to its larger heading, restore the ink-colored calm word with a closer stronger pencil underline, increase section breathing room and About photos, and sharpen the prepayment book",
     "Unify all nine desktop sections on the process section’s centered 1360px grid; simplify the application to three placeholder-led fields and one Telegram draft action",
@@ -1292,6 +1293,27 @@
       "desktop_measurement": "At 1440px, process section height increases from 626.234375px to 674.234375px. Padding becomes 123.75px above and below.",
       "mobile_measurement": "At 320px, padding is 72px above and below; no horizontal overflow.",
       "pricing_proposal": "A local review sketch lives in artifacts/process-air-20261109/pricing-proposal.png with larger values/illustrations, a payment-stage connector and a compact FAQ. It is not part of the published source or out/ payload."
+    },
+    "pencil_motion_20261109": {
+      "effects": [
+        "hero pencil underline",
+        "nine illustration pencil reveals",
+        "three existing chalk circle traces",
+        "scroll-driven process arrows",
+        "existing footer line reveal"
+      ],
+      "repeat": "once per page visit",
+      "motion_off": "complete static artwork",
+      "verification": {
+        "tests_passed": 38,
+        "desktop_width": 1440,
+        "mobile_widths": [
+          390,
+          320
+        ],
+        "console_errors": 0,
+        "overflow": false
+      }
     }
   },
   "reviewed_decisions": {

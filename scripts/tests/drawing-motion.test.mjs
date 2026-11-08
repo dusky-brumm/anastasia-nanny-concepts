@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {clamp01,entryProgress,segmentProgress,drawingEnabled} from '../../src/site/drawing-model.js';
+import {clamp01,entryProgress,segmentProgress,drawingEnabled,pencilGesture} from '../../src/site/drawing-model.js';
 
 test('drawings stay untouched below view and finish before their captions are read',()=>{
   assert.equal(entryProgress(1100,120,1000,56),0);
@@ -25,4 +25,18 @@ test('system reduced motion and an explicit off choice always override drawing',
   assert.equal(drawingEnabled({reduced:true,choice:'on'}),false);
   assert.equal(drawingEnabled({choice:'off'}),false);
   assert.equal(drawingEnabled({capture:true}),false);
+});
+
+test('pencil masks cover transparent artwork edges, including offset viewBoxes',()=>{
+  for(const box of [{x:424,y:193,width:666,height:620},{x:-12,y:-6,width:1,height:1}]){
+    const gesture=pencilGesture(box),coordinates=gesture.d.match(/-?(?:\d*\.)?\d+(?:e[+-]?\d+)?/g).map(Number);
+    const xs=coordinates.filter((_,i)=>i%2===0),ys=coordinates.filter((_,i)=>i%2===1);
+    assert.ok(coordinates.every(Number.isFinite));
+    assert.ok(Math.min(...xs)<box.x&&Math.max(...xs)>box.x+box.width);
+    assert.ok(Math.min(...ys)-gesture.strokeWidth/2<box.y);
+    assert.ok(Math.max(...ys)+gesture.strokeWidth/2>box.y+box.height);
+    assert.ok(gesture.strokeWidth>box.height/10,'Adjacent passes overlap');
+  }
+  assert.throws(()=>pencilGesture({x:0,y:0,width:0,height:12}),RangeError);
+  assert.throws(()=>pencilGesture({x:NaN,y:0,width:12,height:12}),RangeError);
 });

@@ -17,7 +17,7 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
 .about-story .s-photo::after{inset:48% 26% -14px -18px;background-color:#e0e8db;transform:rotate(-4deg)}
 .about-story .about-story-copy{position:relative;z-index:2;min-width:0;padding:0}
 .about-story .s-about-slides li p{max-width:46ch;margin:0;font-size:20px;line-height:1.7;color:#28353c;letter-spacing:-.015em;text-wrap:pretty}
-.about-story .s-about-slides li p.about-lead{font-size:23px;line-height:1.5;font-weight:500;margin-bottom:16px}
+.about-story .s-about-slides li p.about-lead{font-size:24px;line-height:1.5;font-family:var(--pair-heading)!important;font-weight:400;margin-bottom:16px}
 .about-story .s-about-slides li strong{font-weight:600;color:#385a6b}
 .about-story .about-controls{position:relative;z-index:3;display:flex;align-items:center;gap:8px;margin:28px 0 0 calc((100% - 88px) * .425 + 88px);min-height:40px}
 .about-story .about-arrow{flex:0 0 40px;width:40px;height:40px;padding:0;border:0;background:transparent url('artwork/vectors/navigation-arrow-chalk.svg') center/32px 32px no-repeat;cursor:pointer}
@@ -66,7 +66,7 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
 
  .about-story .s-photo-mask{height:320px}
  .about-story .s-about-slides li p{font-size:18px;line-height:1.65}
- .about-story .s-about-slides li p.about-lead{font-size:21px}
+ .about-story .s-about-slides li p.about-lead{font-size:22px}
 
 
 
@@ -87,7 +87,7 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
  .about-story .s-photo::after{inset:45% 25% -8px -15px}
  .about-story .about-story-copy{grid-column:1;grid-row:2;padding:0}
  .about-story .s-about-slides li p{font-size:17px;line-height:1.7;max-width:100%}
- .about-story .s-about-slides li p.about-lead{font-size:20px;line-height:1.5;margin-bottom:14px}
+ .about-story .s-about-slides li p.about-lead{font-size:21px;line-height:1.5;margin-bottom:14px}
  .about-story .about-controls{margin:24px 0 0;justify-content:center}
  .about-story .s-about-dots button{width:30px}
 

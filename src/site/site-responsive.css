@@ -38,10 +38,6 @@ body[data-isolated-block=header] .site-preview{overflow:visible!important}
   .site-preview.early-classic #process .s-study-copy p{font-size:16px;line-height:1.6}
   .site-preview.early-classic #process .s-study-copy{gap:12px 16px}
   .site-preview.early-classic #process .s-study-steps li{padding-bottom:36px}
-  .site-preview.early-classic #pricing .s-pricing-terms{gap:16px;margin-block:28px 24px}
-  .site-preview.early-classic #pricing .early-price-term{min-height:192px;padding:22px;grid-template-rows:48px auto auto;gap:8px}
-  .site-preview.early-classic #pricing .early-term-picture{width:52px;height:48px}
-  .site-preview.early-classic #pricing .early-price-term dd{font-size:22px;line-height:1.35}
   .site-preview .s-faq{margin-top:36px;padding-top:28px;gap:20px}
   .site-preview .s-faq summary{padding-right:30px;font-size:16px;line-height:1.5}
   .site-preview.early-classic .s-reviews .s-review-heading{display:grid;gap:8px;margin-bottom:24px;align-items:start}

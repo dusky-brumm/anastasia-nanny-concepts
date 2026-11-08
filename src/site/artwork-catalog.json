@@ -39,7 +39,7 @@
     "file": "artwork/vectors/chalk-word-underline.svg",
     "title": "Меловое подчёркивание для главного слова",
     "group": "Линии, стрелки и значки",
-    "sha256": "af0131f4d9bfd0afdddd0629a443ea9c3b531a57e28fec79d1aa38c023cb83cc"
+    "sha256": "38b170f66ad2f21dd2c65b5bcf5155c3ba943c7327183e8c886ec30290c2804b"
   },
   {
     "id": "service-connecting-line",
@@ -54,5 +54,12 @@
     "title": "Карандашный отклик поля формы",
     "group": "Линии, стрелки и значки",
     "sha256": "2775650db78ea5094800d384116d9627f3e7970d1cfa07d6ebd96782be014725"
+  },
+  {
+    "id": "chalk-price-ring",
+    "file": "artwork/vectors/chalk-price-ring.svg",
+    "title": "Круг сухим мелком для условий подбора",
+    "group": "Линии, стрелки и значки",
+    "sha256": "fee3f6f74558fb0efd3e7d4d6745ad7287f293c9b8150ee998e411d7c93c6d5b"
   }
 ]

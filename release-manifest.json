@@ -1,5 +1,5 @@
 {
-  "build": "173f63553b",
+  "build": "385c1af7cf",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1263,6 +1263,15 @@
         "bytes": 1816290
       },
       "loading_probe": "artifacts/stable-loading-20261108/final-loading-phone.json: no layout-shift events (CLS 0), one constant document height during the five-second cold-load sample with delayed raster images. Diagnostic Chrome test, not a field Core Web Vitals result."
+    },
+    "chalk_details_20261108": {
+      "pricing": "Replace three rectangular frames with dry-chalk circular contours: blue #94afbe, sage #9ead90, blue #94afbe. Center existing illustrations, labels and handwritten Caveat values. Keep the middle value on two lines, including at 320px.",
+      "terms_link": "Use the same fine drawn rule as the footer Telegram link; remove the straight bottom border.",
+      "about": "Use the approved heading face Lora for each introductory slide phrase, 1px larger at each existing breakpoint: 24/22/21px.",
+      "header": "Uppercase navigation with restrained tracking; preserve desktop and mobile menus.",
+      "service": "Remove the redundant Подробнее об услуге eyebrow.",
+      "actions": "Restore a more distinct separate rounded pencil contour around both filled primary buttons.",
+      "hero_word": "Widen the underline to 106% and use a subtly curved, 6.6px dry-pencil stroke; preserve existing reduced-motion behavior."
     }
   },
   "reviewed_decisions": {
@@ -1282,17 +1291,13 @@
     "latest_switcher": "No design, font or About-layout controls; final fixed Lora + Manrope and About 1 per November 8 request."
   },
   "validation": {
-    "status": "passed",
-    "build": "passed",
-    "static_checks": "41 published files; 1816290 bytes; 60 local asset links; eight canonical artwork hashes; one main landmark; nine complete sections; no public iframes or frame runtime",
+    "build": "385c1af7cf",
     "tests": {
       "passed": 37,
       "failed": 0
     },
-    "source_browser": "320, 390, 1024 and 1440px: no horizontal overflow. Menu and native section navigation, four About stories, fixed review height while advancing cards, three-field Telegram draft opening and privacy open/close verified. No browser console errors. No message sent during the form test.",
-    "loading": "Cold phone load: CLS 0 and constant document height; fonts decode before first content paint. Initially visible drawings do not rewind.",
-    "scope": "Stable loading of the approved design; all content and artwork retained",
-    "diff_check": "passed"
+    "static_check": "PASS: one document, nine complete blocks, no resizing frames; 42 files, 1819088 bytes, 61 local assets, 9 canonical artwork hashes.",
+    "visual_check": "Checked 1440px and 1024px desktop/tablet and 320px phone. Circular contours retain their aspect ratio; no horizontal overflow; the middle amount fits in two lines with clear separation from its label. About family lead is Lora 24px on desktop. Header/menu navigation and hero anchor work."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

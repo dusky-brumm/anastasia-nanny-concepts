@@ -56,7 +56,7 @@ for(const {file} of selection.blocks){
     html=html.replace(tag,svg);
   }
   html=html.replace('<html lang="ru"','<html lang="ru" data-font-pair="5" data-body-font="manrope"');
-  const styles=['fonts.css','site-typography.css','site-refinements.css','site-polish.css','site-responsive.css']
+  const styles=['fonts.css','site-typography.css','site-refinements.css','site-polish.css','site-responsive.css','site-layout.css']
     .filter(file=>!html.includes(`href="../${file}`))
     .map(file=>`<link rel="stylesheet" href="../${file}?v=__VERSION__">`).join('');
   html=html.replace('</head>',styles+'<script type="module" src="../block-typography.js?v=__VERSION__"></script><script type="module" src="../drawing-motion.js?v=__VERSION__"></script></head>');

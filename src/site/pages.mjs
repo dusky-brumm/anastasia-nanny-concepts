@@ -15,7 +15,7 @@ ${seoHead('index.html')}
 <main aria-label="Индивидуальный подбор няни">${selection.blocks.map(({id,file})=>`
 <div id="${id}" data-selected-block="${id}"><iframe data-reference-frame title="${blockLabels[id]}" src="${file}?v=__VERSION__" loading="${id==='header'||id==='hero'?'eager':'lazy'}" height="${id==='header'?96:id==='footer'?220:650}"></iframe></div>`).join('')}
 </main>
-<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>Заявка составляется в вашем браузере. Имя, контакт и текст не сохраняются и автоматически не передаются. Вы самостоятельно отправляете подготовленное сообщение Анастасии в Telegram.</p></dialog>
-<noscript><p class="no-script">Для подготовки заявки включите JavaScript или <a href="https://t.me/inyfid">напишите Анастасии в Telegram</a>.</p></noscript>
+<dialog id="studio-privacy" aria-labelledby="privacy-heading"><button type="button" data-close aria-label="Закрыть окно">×</button><h2 id="privacy-heading">О данных формы</h2><p>При нажатии «Оставить заявку» откроется Telegram с заполненным сообщением. Отправку подтверждаете вы. Поля не сохраняются на сайте.</p></dialog>
+<noscript><p class="no-script">Для отправки заявки включите JavaScript или <a href="https://t.me/inyfid">напишите Анастасии в Telegram</a>.</p></noscript>
 </body></html>`;
 }

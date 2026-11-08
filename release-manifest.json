@@ -1,5 +1,5 @@
 {
-  "build": "21666d9d09",
+  "build": "60fc59886e",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Unify all nine desktop sections on the process section’s centered 1360px grid; simplify the application to three placeholder-led fields and one Telegram draft action",
     "Apply the explicitly selected dry-crayon photo backing from the five design studies; preserve the white photograph, signature, social icons and existing layout",
     "Move Telegram and Instagram into the white photograph caption, immediately after the confirmed Анастасия Доронина signature; retain the Telegram destination and deferred Instagram link",
     "Apply the confirmed photo signature Анастасия Доронина and distinguish personal Telegram contact from the existing channel; defer Instagram as requested",
@@ -1227,6 +1228,13 @@
       "implementation": "Reuse the selected hand-drawn stroke geometry, grain and blue/sage colors as one responsive SVG behind the white photograph; retire the former solid backing rectangles",
       "layout": "Keep the existing 414px desktop print, responsive dimensions, caption and social links",
       "paper_alternative": "Бумажные этюды retained in the original concept carousel and artifacts/photo-backing-studies-20261108/paper.svg"
+    },
+    "shared_width_and_form_20261108": {
+      "grid": "All nine sections use the process width: maximum 1360px with clamp(24px,3vw,56px) gutters; existing mobile gutters and full-width block backgrounds retained",
+      "form": "Three fields only: Как к вам обращаться; Телефон или Telegram; Несколько слов о запросе. Например: возраст ребёнка, график, необходимая помощь. Accessible labels retained without visible duplication.",
+      "removed": "Duplicate field captions, @username example, preparation explanation, generated-draft textarea and copying controls, redundant introductory sentence",
+      "action": "Оставить заявку opens https://t.me/inyfid?text=... in a new tab with the formatted message. The user confirms sending in Telegram. No on-site persistence.",
+      "telegram_reference": "https://core.telegram.org/api/links#public-username-links"
     }
   },
   "reviewed_decisions": {
@@ -1248,13 +1256,13 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "89 published files; 1758541 bytes; 263 local links/assets; eight canonical artwork hashes; two eager blocks",
+    "static_checks": "90 published files; 1760284 bytes; 272 local links/assets; eight canonical artwork hashes; two eager blocks",
     "tests": {
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "First screen inspected at 1440px, 390px and 320px. Selected stroke composition visible behind opaque print; no document overflow; photo dimensions, caption and Telegram links retained.",
-    "scope": "Selected dry-crayon hero backing only",
+    "source_browser": "All nine desktop section edges coincide at 1440px and 1920px (1360px maximum). All nine blocks fit at 320px without horizontal overflow. Mobile form inspected at 390px; accessible labels verified. Test submission opened the correct Telegram account with the complete encoded draft; no message sent.",
+    "scope": "Shared content width and simplified application flow",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

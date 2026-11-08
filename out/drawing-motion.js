@@ -1,4 +1,4 @@
-import {drawingEnabled,entryProgress,segmentProgress} from './drawing-model.js?v=c991eba404';
+import {drawingEnabled,entryProgress,segmentProgress} from './drawing-model.js?v=2357feee3a';
 
 const svgNS='http://www.w3.org/2000/svg';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');

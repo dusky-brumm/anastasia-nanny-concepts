@@ -1,5 +1,5 @@
 {
-  "build": "c991eba404",
+  "build": "2357feee3a",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Center artwork and copy in all three pricing condition cards and remove the redundant prepayment timing caption",
     "Redraw review quotation marks as unequal chalk strokes with rounded ends and variable pressure, retaining the approved grain, color and 44x33px footprint",
     "Remove the About branch decoration and disable the photo hover lift while preserving slide changes and the static album composition",
     "Restore separate neat pencil outlines around hero/form actions and unify light surfaces with the existing light-milk shade #faf8f2",
@@ -1148,6 +1149,11 @@
       "material": "Existing #526c73 dry-chalk grain retained; subtle irregularity at stroke edges",
       "layout": "44x33px mark box and three desktop cards retained",
       "delivery": "SVG image URL includes the build version to refresh cached artwork"
+    },
+    "centered_pricing_20261108": {
+      "alignment": "Illustration, label and value centered horizontally; content group centered inside each outlined card",
+      "copy": "Prepayment retains 25 000 ₽; remove В начале подбора.",
+      "mobile": "One centered vertical composition per card, 216px minimum height"
     }
   },
   "reviewed_decisions": {
@@ -1174,8 +1180,8 @@
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "Checked the redraw in three desktop review cards at 1440px and a mobile card at 390px. SVG loads from the versioned URL at its unchanged 44x33px footprint.",
-    "scope": "More hand-drawn review quotation marks",
+    "source_browser": "At 1440px and 390px, illustration/label/value centers match card centers within 0.01px. Mobile cards are 327x216px with zero horizontal overflow. Removed timing caption absent.",
+    "scope": "Center pricing card content and simplify prepayment copy",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

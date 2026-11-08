@@ -1,0 +1,15 @@
+html{scroll-behavior:smooth}
+html[data-drawing-motion=off]{scroll-behavior:auto}
+/* Embedded fonts decode locally before the first content paint; no network wait. */
+html[data-fonts-ready=pending] body,html[data-fonts-ready=pending] body *{visibility:hidden!important}
+main[aria-label="Индивидуальный подбор няни"],[data-block-document]{container-type:inline-size}
+[data-block-document]{display:block;box-sizing:border-box;width:100%;margin:0;padding:0}
+[data-block-document] [data-block-body]{display:flow-root}
+.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid{align-items:stretch!important}
+/* Reserve the handwritten name's width before Caveat arrives, so icons never wrap. */
+[data-block-document=hero] .photo-signature{inline-size:7.5em;flex:0 0 7.5em}
+.photo-window img,.s-photo-mask img{transition:opacity 180ms ease}
+.photo-window img[data-image-pending],.s-photo-mask img[data-image-pending]{opacity:0}
+html[data-fonts-ready=ready][data-drawing-motion=on] [data-block-document=hero] .hero-underline{transform-origin:left center;animation:hero-pencil-first 1s cubic-bezier(.22,1,.36,1) both!important}
+@keyframes hero-pencil-first{from{transform:rotate(-1deg) scaleX(0)}to{transform:rotate(-1deg) scaleX(1)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo-window img,.s-photo-mask img{transition:none}}

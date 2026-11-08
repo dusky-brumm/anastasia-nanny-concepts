@@ -1,6 +1,7 @@
 # Keep full browser captures locally; publish lightweight gallery previews.
 project-notes/
 artifacts/
+node_modules/
 *.tar.gz
 
 server/.wrangler/

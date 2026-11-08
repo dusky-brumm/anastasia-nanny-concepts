@@ -1,5 +1,5 @@
 {
-  "build": "3a1df47991",
+  "build": "173f63553b",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Replace the nine resizing iframes with one complete HTML page; preserve component styles, stabilize fonts and review heights, and avoid redrawing artwork already visible at startup",
     "Bring the hero portrait closer to its larger heading, restore the ink-colored calm word with a closer stronger pencil underline, increase section breathing room and About photos, and sharpen the prepayment book",
     "Unify all nine desktop sections on the process section’s centered 1360px grid; simplify the application to three placeholder-led fields and one Telegram draft action",
     "Apply the explicitly selected dry-crayon photo backing from the five design studies; preserve the white photograph, signature, social icons and existing layout",
@@ -1243,6 +1244,25 @@
       "rhythm": "Common 88–112px desktop section space and 60px mobile space; hero uses 52px/64px on phones. Footer has a smaller 40px/44px rhythm. Keep the shared 1360px content grid.",
       "about": "Four original stories and images retained. Desktop print grows from 320px to 380px, phone print to 280px where space permits. Separate opaque white print and shared dry-crayon backing layers; keep stationary photos and existing carousel controls.",
       "prepayment": "Replace the small raster book with a simple crisp pencil SVG, keeping the book subject, palette and card dimensions. Original raster retained in source."
+    },
+    "stable_loading_20261108": {
+      "architecture": "One document, nine server-rendered selected sections, one deferred self-contained runtime. No frame loading, estimated frame heights or frame resizing.",
+      "styles": "Build-only PostCSS scopes each original document at zero added specificity. Component width queries preserve the original responsive geometry; SVG definition IDs and asset URLs are rebased.",
+      "fonts": "Approved local WOFF2 faces embedded once in the combined stylesheet; decode before the first content paint, with a bounded fail-open guard. Signature width reserved to prevent social icon wrapping.",
+      "motion": "Keep initially visible artwork complete; prepare only unseen drawings. Skip completed strokes on scroll. Native anchors, stable review rows and optional photo decode fades.",
+      "form": "The three-field Telegram action, menu, privacy dialog and four stories are preserved.",
+      "documentation": "docs/single-page-loading-20261108.md",
+      "before": {
+        "documents": 9,
+        "published_files": 90,
+        "bytes": 1717398
+      },
+      "after": {
+        "documents": 1,
+        "published_files": 41,
+        "bytes": 1816290
+      },
+      "loading_probe": "artifacts/stable-loading-20261108/final-loading-phone.json: no layout-shift events (CLS 0), one constant document height during the five-second cold-load sample with delayed raster images. Diagnostic Chrome test, not a field Core Web Vitals result."
     }
   },
   "reviewed_decisions": {
@@ -1264,13 +1284,14 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "90 published files; 1717398 bytes; 273 local links/assets; eight canonical artwork hashes; two eager blocks",
+    "static_checks": "41 published files; 1816290 bytes; 60 local asset links; eight canonical artwork hashes; one main landmark; nine complete sections; no public iframes or frame runtime",
     "tests": {
-      "passed": 35,
+      "passed": 37,
       "failed": 0
     },
-    "source_browser": "Screenshots inspected at 1440px and 390px: closer hero photo, 58px heading, raised pencil underline, larger About photos and sharp book. At 320px all nine blocks have no horizontal overflow; at 1024px hero and About text/photo columns fit without overlap. About navigation, mobile menu and section navigation verified.",
-    "scope": "Hero composition, section rhythm, About photo presentation and prepayment illustration; preserve the simple form and selected grid",
+    "source_browser": "320, 390, 1024 and 1440px: no horizontal overflow. Menu and native section navigation, four About stories, fixed review height while advancing cards, three-field Telegram draft opening and privacy open/close verified. No browser console errors. No message sent during the form test.",
+    "loading": "Cold phone load: CLS 0 and constant document height; fonts decode before first content paint. Initially visible drawings do not rewind.",
+    "scope": "Stable loading of the approved design; all content and artwork retained",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

@@ -1,10 +1,10 @@
 import {cp,mkdir,readFile,writeFile,readdir,rm,realpath,lstat,rmdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
-import {sitePage} from '../src/site/pages.mjs';
 import {formatRequest} from '../src/reference/request.js';
 import {bindRequestUi} from '../src/reference/studio/request-ui.js';
 import {sitemapXml,robotsTxt} from '../src/reference/studio/seo.js';
+import {assembleSelectedPage} from './assemble-selected-page.mjs';
 
 const repo=path.resolve('.'),output=path.resolve('out');
 // Only this checkout's generated output may be removed. Refuse symlink targets.
@@ -21,6 +21,8 @@ async function fingerprint(directory){
 }
 await fingerprint('src/reference');await fingerprint('src/site');
 hash.update(await readFile(new URL(import.meta.url)));
+hash.update(await readFile(new URL('./assemble-selected-page.mjs',import.meta.url)));
+hash.update(await readFile('package-lock.json'));
 const version=hash.digest('hex').slice(0,10);
 const selection=JSON.parse(await readFile('src/site/selection.json','utf8'));
 const catalog=JSON.parse(await readFile('src/site/artwork-catalog.json','utf8'));
@@ -30,13 +32,6 @@ await mkdir(output,{recursive:true});
 await cp('src/reference',output,{recursive:true,filter:file=>!file.endsWith('.html')});
 const newerTypefaces=path.resolve('src/site/typefaces');
 await cp('src/site',output,{recursive:true,filter:file=>!file.endsWith('.mjs')&&!path.resolve(file).startsWith(newerTypefaces)});
-// The first-screen layout must not wait for a chain of module requests.
-const parentModules=['typography.js','drawing-model.js','drawing-parent.js','frame-layout.js','site-base.js'];
-const parentBundle=[];
-for(const file of parentModules){
-  parentBundle.push((await readFile('src/site/'+file,'utf8')).replace(/^import\s+[^\n]+;\r?\n/gm,'').replace(/^export\s+(?=(?:const|function|async\s+function)\b)/gm,''));
-}
-await writeFile(path.join(output,'site-base.js'),parentBundle.join('\n'));
 // One final type/material layer applies to all independently editable blocks.
 for(const {file} of selection.blocks){
   const target=path.join(output,file);
@@ -81,7 +76,6 @@ async function replaceTokens(directory){
     }
   }
 }
-await writeFile(path.join(output,'index.html'),sitePage(selection));
 await writeFile(path.join(output,'studio','comparison-request.js'),`(${bindRequestUi.toString()})(${formatRequest.toString()});\n`);
 await writeFile(path.join(output,'sitemap.xml'),sitemapXml());
 await writeFile(path.join(output,'robots.txt'),robotsTxt());
@@ -92,6 +86,15 @@ for(const fontCss of ['fonts.css','studio/fonts.css']){
   await writeFile(file,faces.filter(face=>/font-family:\s*['"]?(?:Lora|Manrope)\b/.test(face)).join('\n')+'\n');
 }
 await replaceTokens(output);
+await assembleSelectedPage(output,selection,version);
+const runtimeFiles=['block-ui.js','about-story.js','review-carousel.js','drawing-motion.js','single-page.js'];
+const runtime=[];
+for(const file of runtimeFiles){
+  const source=(await readFile('src/site/'+file,'utf8')).replace(/^import\s+[^\n]+;\r?\n/gm,'').replace(/^export\s+(?=(?:const|function|async\s+function)\b)/gm,'');
+  runtime.push(`(()=>{${file==='drawing-motion.js'?(await readFile('src/site/drawing-model.js','utf8')).replace(/^export\s+/gm,''):'\n'}\n${source}\n})();`);
+}
+runtime.push(`(${bindRequestUi.toString()})(${formatRequest.toString()},false);`);
+await writeFile(path.join(output,'site-runtime.js'),runtime.join('\n'));
 // Publish only dependencies of the nine selected blocks, never archived galleries.
 const retained=new Set();
 async function retain(file){

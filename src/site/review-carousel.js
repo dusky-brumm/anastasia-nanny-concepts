@@ -20,11 +20,6 @@ if(strip){
     const label=`${last===first+1?first+1:`${first+1}–${last}`} из ${cards.length}`;
     if(position.textContent!==label)position.textContent=label;
     strip.style.setProperty('--review-progress',String(last/cards.length));
-    if(count===1){
-      const style=getComputedStyle(track);
-      const height=`${Math.ceil(cards[first].getBoundingClientRect().height+parseFloat(style.paddingTop)+parseFloat(style.paddingBottom))}px`;
-      if(track.style.height!==height)track.style.height=height;
-    }else if(track.style.height)track.style.removeProperty('height');
   }
   function schedule(){if(!queued){queued=true;requestAnimationFrame(update);}}
   function move(left){

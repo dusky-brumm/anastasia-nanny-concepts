@@ -55,11 +55,19 @@ function setActive(next){
   document.documentElement.dataset.drawingMotion=active?'on':'off';
   for(const line of lines){
     if(!active){finishLine(line,false);continue;}
+    if(parent===window&&!line.started){
+      const bounds=line.svg.getBoundingClientRect();
+      if(bounds.top<innerHeight&&bounds.bottom>0){finishLine(line);continue;}
+    }
     const pending=line.svg.dataset.inkLine==='scroll'?line.progress<1:!line.started;
     if(pending)for(const {path,marker} of line.paths){path.style.strokeDasharray='1';path.style.strokeDashoffset='1';if(marker)path.removeAttribute('marker-end');}
   }
   for(const picture of pictures){
     if(!active){finishPicture(picture,false);continue;}
+    if(parent===window&&!picture.started){
+      const bounds=picture.svg.getBoundingClientRect();
+      if(bounds.top<innerHeight&&bounds.bottom>0){finishPicture(picture);continue;}
+    }
     if(!picture.started){picture.path.style.strokeDasharray='1';picture.path.style.strokeDashoffset='1';picture.image.setAttribute('mask',`url(#${picture.id})`);}
   }
   document.dispatchEvent(new CustomEvent('drawing:motion',{detail:{enabled:active}}));
@@ -86,6 +94,7 @@ function render(){
     return bounds.width&&bounds.height?entryProgress(viewport.frameTop+bounds.top,bounds.height,viewport.viewportHeight,viewport.toolbarHeight):0;
   };
   for(const line of lines){
+    if(line.started&&line.progress>=1)continue;
     const progress=progressFor(line.svg);
     if(line.svg.dataset.inkLine!=='scroll'){
       if(progress>0&&!line.started)revealLine(line);

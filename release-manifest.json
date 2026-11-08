@@ -1,5 +1,5 @@
 {
-  "build": "facfffb01e",
+  "build": "5a7c9138eb",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1213,10 +1213,10 @@
         "bytes": 4972105
       },
       "after": {
-        "files": 90,
-        "bytes": 1736716
+        "files": 88,
+        "bytes": 1740558
       },
-      "reduction_percent": 65.1,
+      "reduction_percent": 65,
       "documentation": "docs/mobile-20261108.md"
     }
   },
@@ -1239,7 +1239,7 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "90 published files; 1736716 bytes; 263 local links/assets; eight canonical artwork hashes; two eager blocks",
+    "static_checks": "88 published files; 1740558 bytes; 263 local links/assets; eight canonical artwork hashes; two eager blocks",
     "tests": {
       "passed": 35,
       "failed": 0
@@ -1253,7 +1253,7 @@
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "dd23ce6867",
+  "previous_confirmed_build": "facfffb01e",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

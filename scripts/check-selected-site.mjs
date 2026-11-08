@@ -74,6 +74,7 @@ assert.doesNotMatch(await readFile('out/site-base.js','utf8'),/localStorage|read
 // must never return to the first-screen critical path or the public payload.
 assert.equal((home.match(/loading="eager"/g)||[]).length,2);
 assert.equal((home.match(/loading="lazy"/g)||[]).length,7);
+assert.doesNotMatch(await readFile('out/site-base.js','utf8'),/^import\s/m,'First-screen layout must not wait for a parent module graph');
 assert.match(hero,/srcset="[^\"]*portrait-480\.webp 480w/);
 assert.match(await readFile('out/hero-photo.css','utf8'),/caveat-400\.woff2/);
 let bytes=0,files=0;

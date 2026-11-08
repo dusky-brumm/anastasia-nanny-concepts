@@ -30,6 +30,13 @@ await mkdir(output,{recursive:true});
 await cp('src/reference',output,{recursive:true,filter:file=>!file.endsWith('.html')});
 const newerTypefaces=path.resolve('src/site/typefaces');
 await cp('src/site',output,{recursive:true,filter:file=>!file.endsWith('.mjs')&&!path.resolve(file).startsWith(newerTypefaces)});
+// The first-screen layout must not wait for a chain of module requests.
+const parentModules=['typography.js','drawing-model.js','drawing-parent.js','frame-layout.js','site-base.js'];
+const parentBundle=[];
+for(const file of parentModules){
+  parentBundle.push((await readFile('src/site/'+file,'utf8')).replace(/^import\s+[^\n]+;\r?\n/gm,'').replace(/^export\s+(?=(?:const|function|async\s+function)\b)/gm,''));
+}
+await writeFile(path.join(output,'site-base.js'),parentBundle.join('\n'));
 // One final type/material layer applies to all independently editable blocks.
 for(const {file} of selection.blocks){
   const target=path.join(output,file);
@@ -53,6 +60,9 @@ for(const {file} of selection.blocks){
     .filter(file=>!html.includes(`href="../${file}`))
     .map(file=>`<link rel="stylesheet" href="../${file}?v=__VERSION__">`).join('');
   html=html.replace('</head>',styles+'<script type="module" src="../block-typography.js?v=__VERSION__"></script><script type="module" src="../drawing-motion.js?v=__VERSION__"></script></head>');
+  // A classic script after styles and markup can signal layout before images
+  // or the decorative module graph finish. Standalone previews stay unchanged.
+  html=html.replace('</body>','<script>document.documentElement.dataset.blockLayoutReady="true";try{if(parent!==window)parent.dispatchEvent(new CustomEvent("site:block-ready",{detail:{frame:frameElement}}));}catch{}</script></body>');
   await writeFile(target,html);
 }
 async function replaceTokens(directory){

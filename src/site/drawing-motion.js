@@ -7,7 +7,7 @@ try{if(parent!==window)search=parent.location.search;}catch{/* A standalone draw
 const params=new URLSearchParams(search);
 const initialChoice=params.get('motion');
 let viewport={enabled:drawingEnabled({choice:initialChoice,capture:params.get('capture')==='1'}),frameTop:0,viewportHeight:innerHeight,toolbarHeight:0,near:true};
-let active,serial=0;
+let active,serial=0,viewportReceived=parent===window;
 const easing='cubic-bezier(.22,1,.36,1)';
 function svgElement(name,attributes){const node=document.createElementNS(svgNS,name);for(const [key,value] of Object.entries(attributes))node.setAttribute(key,String(value));return node;}
 
@@ -79,7 +79,7 @@ function revealLine(line){
   });
 }
 function render(){
-  setActive(viewport.enabled&&!reduced.matches);
+  setActive(viewportReceived&&viewport.enabled&&!reduced.matches);
   if(!active||!viewport.near||document.hidden)return;
   const progressFor=element=>{
     const bounds=element.getBoundingClientRect();
@@ -121,13 +121,14 @@ function render(){
     picture.animation.onfinish=()=>{picture.image.removeAttribute('mask');picture.animation=null;};
   }
 }
-document.addEventListener('drawing:viewport',event=>{viewport=event.detail;render();});
+document.addEventListener('drawing:viewport',event=>{viewportReceived=true;viewport=event.detail;render();});
 reduced.addEventListener('change',render);
 document.addEventListener('visibilitychange',render);
 if(parent===window){
   const standalone=()=>{viewport={...viewport,viewportHeight:innerHeight};render();};
   addEventListener('scroll',standalone,{passive:true});addEventListener('resize',standalone);
 }
-setActive(viewport.enabled&&!reduced.matches);
+// Until the parent controller is ready, leave complete static drawings visible.
+setActive(viewportReceived&&viewport.enabled&&!reduced.matches);
 if(parent===window)render();
 else try{parent.document.dispatchEvent(new Event('site:layout'));}catch{/* Standalone cross-origin previews need no parent notification. */}

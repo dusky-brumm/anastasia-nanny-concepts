@@ -15,6 +15,7 @@ export function mountBlockFrames(frames,{onReady,onNavigate}){
       const menus=[...doc.querySelectorAll('details[open] nav')];
       const height=Math.ceil(Math.max(root.getBoundingClientRect().height,root.scrollHeight,...menus.map(menu=>menu.getBoundingClientRect().bottom)));
       if(height>0&&frame.height!==String(height))frame.height=String(height);
+      if(height>0)frame.dataset.frameFitted='true';
     };
     const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(fit);}};
     fits.set(frame,fit);
@@ -62,7 +63,7 @@ export function mountBlockFrames(frames,{onReady,onNavigate}){
   }
   for(const frame of frames){
     frame.addEventListener('load',()=>bind(frame));
-    if(frame.contentDocument?.readyState!=='loading')bind(frame);
+    if(frame.contentDocument?.documentElement.dataset.blockLayoutReady==='true'||frame.contentDocument?.readyState==='complete')bind(frame);
   }
   addEventListener('site:block-ready',event=>{if(frames.includes(event.detail?.frame))bind(event.detail.frame);});
   document.addEventListener('pointerdown',()=>closeMenus(),true);

@@ -1,5 +1,5 @@
-import {applyTypography} from './typography.js?v=23e7aa9018';
-import {mountDrawingExperience} from './drawing-parent.js?v=23e7aa9018';
+import {applyTypography} from './typography.js?v=d498d1698a';
+import {mountDrawingExperience} from './drawing-parent.js?v=d498d1698a';
 
 const frames=[...document.querySelectorAll('iframe[data-reference-frame]')];
 function fitFrame(frame){

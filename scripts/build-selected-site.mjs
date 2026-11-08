@@ -96,7 +96,7 @@ async function retain(file){
     await retain(path.resolve(path.dirname(file),local));
   }
 }
-for(const seed of ['index.html','sitemap.xml','robots.txt','assets/social-card.png','studio/fonts/Lora-OFL.txt','fonts/manrope-OFL.txt'])await retain(path.join(output,seed));
+for(const seed of ['index.html','sitemap.xml','robots.txt','assets/social-card.png','studio/fonts/Lora-OFL.txt','fonts/manrope-OFL.txt','fonts/caveat-OFL.txt'])await retain(path.join(output,seed));
 let removed=0;
 async function prune(directory){
   for(const entry of await readdir(directory,{withFileTypes:true})){

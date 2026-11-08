@@ -1,5 +1,5 @@
 {
-  "build": "23e7aa9018",
+  "build": "d498d1698a",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Turn the hero portrait into a white printed photograph with a larger signed lower margin, milk tape, separate green backing and social icons moved out of the header",
     "Unify subtle interaction feedback: transparent drawn arrows, stationary action buttons, thin link underlines and restrained keyboard/field focus",
     "Use pure white review cards without grain; redraw quotation marks as fine pencil contours and reduce low-resolution avatar enlargement",
     "Widen the process composition from 1280px to 1360px, center each title and paragraph beneath its number, and tighten the vertical route rhythm",
@@ -1184,12 +1185,21 @@
       "links": "Thin 1px text underlines or stronger existing underline borders; footer pencil rules reduced to 3px; no duplicate Telegram underline",
       "focus": "Consistent thin #385a6b keyboard outline, compact icon offsets, visible primary-action ring and 1px field outline. Field pencil stroke reduced from 6px to 3px",
       "preserve": "Current artwork, static About photograph, compact carousel controls, white review cards, selected colors, existing layout, reduced-motion handling and all functionality"
+    },
+    "hero_print_20261108": {
+      "layers": "Green textured backing is a separate sibling at z-index 0; opaque white print is z-index 1. Original lead-photo pseudo-backing disabled",
+      "print": "White 12px desktop frame, 76px caption area; responsive 8-10px edges and 66px caption on phones; branch markup removed",
+      "tape": "Existing milk #faf8f2, .94 opacity, clean softly irregular edges",
+      "signature": "Анастасия Даровина, matching the user's latest wording; Caveat 400 restored only for this signature, with its local font and OFL license",
+      "socials": "Telegram and Instagram artwork moved beside the portrait. Photo and Telegram icon link to https://t.me/inyfid; external links use noopener noreferrer",
+      "instagram_input": "No Instagram profile URL exists in the former header or local sources. An asynchronous question is pending. Preserve the Instagram icon as an accessible, non-interactive image until the user provides the destination; never invent a profile",
+      "header": "Remove social groups from both desktop and mobile header; retain the five section links and mobile menu"
     }
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
     "theme": "Light milk #faf8f2 on neutral surfaces; existing blue #e7f1f6 and sage #e8efe4 retained. No palette controls.",
-    "header": "Anastasia Doronina · Individual nanny selection, uniform uppercase lettering; Telegram and Instagram before service menu; collapse on mobile",
+    "header": "Anastasia Doronina · Individual nanny selection and five section links; social icons moved beside the hero photograph per November 8 request; collapse on mobile",
     "content": "Remove repeated hero labels; preserve current section when switching designs; underline only спокойно; white photo frames",
     "current_chat_overrides": "Four-frame About without heading; reviews without family stories; textured thin form lines and pencil button; only improved designs where paired",
     "reference_compositions": "Complete reference layouts are retired; keep only the Elliot hero inside design 11.",
@@ -1205,13 +1215,13 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "289 local links/assets; eight canonical artwork hashes; no gallery or editor runtime",
+    "static_checks": "292 local links/assets; eight canonical artwork hashes; no gallery or editor runtime",
     "tests": {
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "About arrow: real pointer hover true, transparent background, opacity 1, no outline on mouse hover; keyboard focus visibly outlined. Hero action hover preserves exact x/y, transform:none and translate:none; fill and separate -7px pencil contour both rgb(69,95,103). Form keyboard focus has 1px outline/2px offset and 3px pencil stroke. At 390px review controls remain transparent, stationary and 44px wide; next switches to 2 of 3; no document overflow or browser errors.",
-    "scope": "Refine hover and focus feedback across the selected site's controls",
+    "source_browser": "1440px: opaque white 414px print above separate green backing, 76px caption, milk tape and Caveat loaded. 390px and 320px: no horizontal overflow, signature fits inside caption, 44px social target stays within viewport. Header has no social groups and retains five mobile navigation links. No browser errors.",
+    "scope": "Printed hero photograph, handwritten caption and moved social icons; Instagram destination awaits user input",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

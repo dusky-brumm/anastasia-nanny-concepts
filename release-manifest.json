@@ -1,5 +1,5 @@
 {
-  "build": "22fd595d46",
+  "build": "7ba84886d8",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1286,6 +1286,12 @@
       "size": "Desktop maximum diameter reduced from 340px to 320px (5.9%). Mobile maximum 292px; 12px inset also keeps narrower screens more compact.",
       "typography": "Replace handwritten Caveat pricing values with the usual upright Manrope: 26px for amount/guarantee, 22px for the two-line payment timing.",
       "cache": "Each mask URL includes the build fingerprint so a returning browser receives the revised contours immediately."
+    },
+    "process_air_20261109": {
+      "spacing": "Add 24px above and below the process content on desktop, 12px above and below on phones. Preserve the chosen illustrations, horizontal route, numbers, typography and internal content spacing.",
+      "desktop_measurement": "At 1440px, process section height increases from 626.234375px to 674.234375px. Padding becomes 123.75px above and below.",
+      "mobile_measurement": "At 320px, padding is 72px above and below; no horizontal overflow.",
+      "pricing_proposal": "A local review sketch lives in artifacts/process-air-20261109/pricing-proposal.png with larger values/illustrations, a payment-stage connector and a compact FAQ. It is not part of the published source or out/ payload."
     }
   },
   "reviewed_decisions": {
@@ -1305,13 +1311,13 @@
     "latest_switcher": "No design, font or About-layout controls; final fixed Lora + Manrope and About 1 per November 8 request."
   },
   "validation": {
-    "build": "22fd595d46",
+    "build": "7ba84886d8",
     "tests": {
       "passed": 37,
       "failed": 0
     },
-    "static_check": "PASS: one document, nine complete blocks, no resizing frames; 44 files, 1843448 bytes, 63 local assets, 11 canonical artwork hashes.",
-    "visual_check": "1440px desktop: three 320px circular boxes with separate subtly irregular contours and upright Manrope. 320px phone: 245px circles, all values fit inside 189px of content width; middle value 168.2px, clear label spacing, no horizontal overflow. No console errors."
+    "static_check": "PASS: one document, nine complete blocks, no resizing frames; 44 files, 1843769 bytes, 63 local assets, 11 canonical artwork hashes.",
+    "visual_check": "Verified the extra 48px desktop height at 1440px and 72px padding at 320px. No horizontal overflow or browser console errors. Pricing sketch verified separately as a local proposal."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

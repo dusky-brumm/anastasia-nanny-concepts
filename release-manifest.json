@@ -1,5 +1,5 @@
 {
-  "build": "47ba03e44a",
+  "build": "dd23ce6867",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1196,6 +1196,12 @@
       "instagram_input": "User explicitly deferred Instagram. Preserve the icon as an accessible, non-interactive image until its profile URL is provided",
       "telegram_confirmed": "User confirmed @inyfid for personal contact and t.me/anastasiadoroninaa as the channel. Photo and sidebar Telegram icon open personal contact; existing review/channel links remain unchanged",
       "header": "Remove social groups from both desktop and mobile header; retain the five section links and mobile menu"
+    },
+    "calm_and_reviews_20261108": {
+      "hero": "Remove the secondary process shortcut; keep the main application action. Calm uses the same upright Lora as the heading and existing #526c73 accent.",
+      "animation": "One-time 1100ms ink-to-accent color reveal coupled with the existing 1000ms pencil underline. Reduced motion, capture and motion=off keep the complete static result.",
+      "reviews": "Expand the constrained content to 1280px. Keep three white cards across desktop; give each a separate 36px left quote column and align its author with the review text. Keep mobile horizontal carousel.",
+      "quotes": "Retain both hand-drawn comma shapes; add translucent #526c73 pencil fill, individual pressure strokes and sparse highlights. No grain filter or font glyph."
     }
   },
   "reviewed_decisions": {
@@ -1217,20 +1223,20 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "292 local links/assets; eight canonical artwork hashes; no gallery or editor runtime",
+    "static_checks": "291 local links/assets; eight canonical artwork hashes",
     "tests": {
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "1440px: opaque white 414px print above separate green backing, 76px caption, milk tape and Caveat loaded. 390px and 320px: no horizontal overflow, signature fits inside caption, 44px social target stays within viewport. Header has no social groups and retains five mobile navigation links. No browser errors.",
-    "scope": "Apply the confirmed surname and personal Telegram label; Instagram explicitly deferred. Revise separate process proposals to keep all five numbers and connecting arrows horizontal",
+    "source_browser": "Desktop: three 411px white cards inside a 1280px content area, quotes beside the first text line. 390px: one 340px card and carousel controls, no document overflow. Hero uses upright Lora and the original underline, with one action and no overflow.",
+    "scope": "Hero shortcut, calm emphasis and animation; review card width and filled pencil quotes",
     "diff_check": "passed"
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "3307846e3a",
+  "previous_confirmed_build": "47ba03e44a",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

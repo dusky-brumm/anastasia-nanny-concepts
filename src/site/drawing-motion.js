@@ -66,6 +66,10 @@ function setActive(next){
 }
 function revealLine(line){
   line.started=true;line.progress=1;
+  const word=line.svg.closest('.hero-calm');
+  if(word?.animate){
+    line.animations.push(word.animate([{color:'#28353c'},{color:'#526c73'}],{duration:1100,easing,fill:'backwards'}));
+  }
   line.paths.forEach(({path},index)=>{
     path.style.strokeDashoffset='0';
     if(!path.animate)return;

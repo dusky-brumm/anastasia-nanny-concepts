@@ -1,5 +1,5 @@
 {
-  "build": "a5c199afa7",
+  "build": "3c1daf5186",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Use pure white review cards without grain; redraw quotation marks as fine pencil contours and reduce low-resolution avatar enlargement",
     "Widen the process composition from 1280px to 1360px, center each title and paragraph beneath its number, and tighten the vertical route rhythm",
     "Simplify About navigation: remove pause, slide counter and process shortcut; place smaller 32px drawn arrows around the four chalk dots",
     "Center artwork and copy in all three pricing condition cards and remove the redundant prepayment timing caption",
@@ -1169,6 +1170,12 @@
       "rhythm": "Route row 104px instead of 136px; heading top padding 14px instead of 24px; equal two-line heading space at 901-1200px",
       "preserve": "Same five stages, artwork, chalk arrows, scroll drawing, palette and mobile vertical route",
       "proposals": "Three separate local mockups prepared outside the published site: horizontal route, two rows, vertical story"
+    },
+    "white_reviews_pencil_quotes_20261108": {
+      "cards": "Pure #ffffff background with no background image; existing blue section, three desktop cards and mobile carousel retained",
+      "quotes": "Two separately drawn closed comma contours in #526c73; 2.2px and 2.05px strokes in a 64x48 viewBox; no fill, filter, grain or noise",
+      "avatars": "Render existing portraits at 32x32px instead of 40x40px to reduce enlargement; original faces unchanged",
+      "avatar_limit": "All local copies share the same three source files, only 25x26px and 26x26px. Original photographs are required for truly sharp larger avatars."
     }
   },
   "reviewed_decisions": {
@@ -1190,13 +1197,13 @@
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "290 local links/assets; eight canonical artwork hashes; no gallery or editor runtime",
+    "static_checks": "289 local links/assets; eight canonical artwork hashes; no gallery or editor runtime",
     "tests": {
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "At 1440px all five number/title/paragraph centers match within 0.01px. At 1024px all paragraph tops align after heading wrapping. At 390px all five stages retain the vertical route with zero horizontal overflow. No browser errors. Three composition mockups visually reviewed.",
-    "scope": "Improve process spacing and alignment; prepare three separate layout proposals",
+    "source_browser": "Desktop: all three cards use rgb(255,255,255) with background-image:none; all avatar boxes are 32px and quote marks 44px wide. At 390px the card is 325px wide, white with no grain; mobile controls visible and no document overflow. No browser errors.",
+    "scope": "White review cards, restrained pencil quotation marks and compact existing avatars",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

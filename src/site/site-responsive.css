@@ -19,7 +19,6 @@ body[data-isolated-block=header] .site-preview{overflow:visible!important}
   .reference-design.look-02-elliot .hero-lead{font-size:16px;line-height:1.65;margin-top:24px}
   .reference-design.look-02-elliot .hero-actions{margin-top:26px}
   .reference-design.look-02-elliot #hero .hero-photo-composition{max-width:350px}
-  .reference-design.look-02-elliot #hero .hero-photo-backing{right:32%}
   #chalk-service-designs .service-scene{padding-block:44px;min-height:0}
   #chalk-service-designs .study-grid{grid-template-columns:minmax(0,1fr);gap:30px;margin-top:28px}
   #chalk-service-designs .study{display:grid;grid-template-columns:minmax(0,1fr) 84px;grid-template-rows:auto auto;gap:12px 18px;align-items:start}

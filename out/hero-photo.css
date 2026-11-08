@@ -1,7 +1,8 @@
-/* A printed portrait, with the colored paper kept behind its opaque white card. */
+/* The selected dry-crayon study stays behind the opaque printed photograph. */
 @font-face{font-family:'Caveat';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/caveat-400.woff2') format('woff2')}
 .reference-design.look-02-elliot #hero .hero-photo-composition{position:relative;isolation:isolate;z-index:1;justify-self:end;width:min(100%,414px)}
-.reference-design.look-02-elliot #hero .hero-photo-backing{position:absolute;z-index:0;inset:18% 36% -18px -34px;background:#e8efe4 url('textures/chalk-grain.svg') repeat;background-size:160px 160px;pointer-events:none}
+.reference-design.look-02-elliot #hero .cover-grid::after{content:none}
+.reference-design.look-02-elliot #hero .hero-photo-backing{position:absolute;z-index:0;inset:-45px -62px -75px -47px;background:url('artwork/vectors/hero-backing-dry-crayon.svg') center/100% 100% no-repeat;pointer-events:none}
 .reference-design.look-02-elliot #hero .lead-photo{position:relative;z-index:1;width:100%;margin:0;padding:12px 12px 0;border:0;background:#fff;box-shadow:0 5px 18px #34485108}
 .reference-design.look-02-elliot #hero .lead-photo::before{content:none}
 .reference-design.look-02-elliot #hero .hero-photo-link{display:block;color:inherit;text-decoration:none;outline-offset:4px}
@@ -19,13 +20,12 @@
 }
 @media(max-width:850px){
  .reference-design.look-02-elliot #hero .hero-photo-composition{width:min(100%,358px);justify-self:center}
- .reference-design.look-02-elliot #hero .hero-photo-backing{inset:18% 32% -14px -20px}
+ .reference-design.look-02-elliot #hero .hero-photo-backing{inset:-32px -30px -55px -30px}
  .reference-design.look-02-elliot #hero .lead-photo{padding:10px 10px 0}
  .reference-design.look-02-elliot #hero .hero-photo-caption{min-height:66px;padding:10px 0 14px;column-gap:6px}
  .reference-design.look-02-elliot #hero .photo-signature{font-size:clamp(20px,6vw,24px)}
 }
 @media(max-width:360px){
- .reference-design.look-02-elliot #hero .hero-photo-backing{left:-16px}
  .reference-design.look-02-elliot #hero .lead-photo{padding:8px 8px 0}
 }
 @media(prefers-reduced-motion:reduce){.reference-design.look-02-elliot #hero .hero-photo-socials a{transition:none}}

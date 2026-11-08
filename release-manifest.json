@@ -1,5 +1,5 @@
 {
-  "build": "470cefbe02",
+  "build": "c991eba404",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Redraw review quotation marks as unequal chalk strokes with rounded ends and variable pressure, retaining the approved grain, color and 44x33px footprint",
     "Remove the About branch decoration and disable the photo hover lift while preserving slide changes and the static album composition",
     "Restore separate neat pencil outlines around hero/form actions and unify light surfaces with the existing light-milk shade #faf8f2",
     "Final single site: fixed Lora + Manrope and About 1; no design/font controls or artwork gallery; remove unused illustrations and publish only active dependencies",
@@ -1140,6 +1141,13 @@
       "decoration": "Branch markup, styles, asset and active catalog entry removed",
       "hover": "Photo translate:none and transition:none override the shared -4px frame hover lift",
       "preserve": "Static photo angle, textured backing sheets and story carousel"
+    },
+    "handdrawn_quotes_20261108": {
+      "asset": "artwork/vectors/review-opening-quote.svg",
+      "shape": "Three open stroke gestures: two distinct curls and an additional lower pressure pass; no filled glyph silhouettes",
+      "material": "Existing #526c73 dry-chalk grain retained; subtle irregularity at stroke edges",
+      "layout": "44x33px mark box and three desktop cards retained",
+      "delivery": "SVG image URL includes the build version to refresh cached artwork"
     }
   },
   "reviewed_decisions": {
@@ -1166,8 +1174,8 @@
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "Branch count 0. With the pointer over the active About photo: hover=true, translate=none, position/transform/shadow identical to the state outside the photo.",
-    "scope": "Remove About branch and photo hover motion",
+    "source_browser": "Checked the redraw in three desktop review cards at 1440px and a mobile card at 390px. SVG loads from the versioned URL at its unchanged 44x33px footprint.",
+    "scope": "More hand-drawn review quotation marks",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

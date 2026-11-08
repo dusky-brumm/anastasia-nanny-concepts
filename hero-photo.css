@@ -1,0 +1,31 @@
+/* A printed portrait, with the colored paper kept behind its opaque white card. */
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SII.ttf') format('truetype')}
+.reference-design.look-02-elliot #hero .hero-photo-composition{position:relative;isolation:isolate;z-index:1;justify-self:end;width:min(100%,470px);padding-right:56px}
+.reference-design.look-02-elliot #hero .hero-photo-backing{position:absolute;z-index:0;inset:18% calc(56px + 36%) -18px -34px;background:#e8efe4 url('textures/chalk-grain.svg') repeat;background-size:160px 160px;pointer-events:none}
+.reference-design.look-02-elliot #hero .lead-photo{position:relative;z-index:1;width:100%;margin:0;padding:12px 12px 0;border:0;background:#fff;box-shadow:0 5px 18px #34485108}
+.reference-design.look-02-elliot #hero .lead-photo::before{content:none}
+.reference-design.look-02-elliot #hero .hero-photo-link{display:block;color:inherit;text-decoration:none;outline-offset:4px}
+.reference-design.look-02-elliot #hero .photo-window{display:block;aspect-ratio:.95;overflow:hidden}
+.reference-design.look-02-elliot #hero .photo-window img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.reference-design.look-02-elliot #hero .hero-photo-caption{display:grid;place-items:center;justify-content:center;min-height:76px;padding:12px 4px 18px;background:#fff}
+.reference-design.look-02-elliot #hero .photo-signature{display:block;max-width:100%;font:400 clamp(24px,2.5vw,32px)/1.2 'Caveat',cursive;letter-spacing:0;text-align:center;color:#526c73;transform:rotate(-1.5deg)}
+.reference-design.look-02-elliot #hero .tape{z-index:3;inset:-11px auto auto 34%;width:30%;height:26px;background:var(--site-milk,#faf8f2);opacity:.94;clip-path:polygon(1% 5%,98% 0,100% 95%,0 100%);pointer-events:none}
+.reference-design.look-02-elliot #hero .hero-photo-socials{position:absolute;z-index:2;right:0;top:50%;display:grid;gap:8px;width:44px;transform:translateY(-50%)}
+.reference-design.look-02-elliot #hero .hero-photo-socials>:is(a,span){display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#526c73;opacity:.9;text-decoration:none;transition:color 180ms ease,opacity 180ms ease}
+.reference-design.look-02-elliot #hero .hero-photo-socials svg{display:block;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.reference-design.look-02-elliot #hero .hero-photo-socials a:focus-visible{outline:1.5px solid #385a6b;outline-offset:1px;opacity:1}
+@media(hover:hover) and (pointer:fine){
+ .reference-design.look-02-elliot #hero .hero-photo-socials a:hover{color:#385a6b;opacity:1}
+}
+@media(max-width:850px){
+ .reference-design.look-02-elliot #hero .hero-photo-composition{width:min(100%,410px);padding-right:52px;justify-self:center}
+ .reference-design.look-02-elliot #hero .hero-photo-backing{inset:18% calc(52px + 32%) -14px -20px}
+ .reference-design.look-02-elliot #hero .lead-photo{padding:10px 10px 0}
+ .reference-design.look-02-elliot #hero .hero-photo-caption{min-height:66px;padding-block:10px 16px}
+}
+@media(max-width:360px){
+ .reference-design.look-02-elliot #hero .hero-photo-composition{padding-right:48px}
+ .reference-design.look-02-elliot #hero .hero-photo-backing{right:calc(48px + 32%);left:-16px}
+ .reference-design.look-02-elliot #hero .lead-photo{padding:8px 8px 0}
+}
+@media(prefers-reduced-motion:reduce){.reference-design.look-02-elliot #hero .hero-photo-socials a{transition:none}}

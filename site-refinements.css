@@ -1,13 +1,14 @@
-/* Only the selected site: soft paper grain, three review cards, milk pricing. */
+/* Only the selected site: white review cards, soft photo paper and milk pricing. */
 body[data-fixed-theme=almost-white] .site-preview #pricing{background:var(--site-milk)!important;background-image:none!important}
 .reference-design.look-02-elliot .cover-grid::after,.reference-design.look-02-elliot .lead-photo::before{background-image:url('textures/chalk-grain.svg');background-size:160px 160px}
 .site-preview.early-classic .s-reviews .comparison-quote-strip[data-open-quotes]{--quote-gap:22px}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid{grid-auto-columns:calc((100% - 2 * var(--quote-gap)) / 3)!important;gap:var(--quote-gap)!important;align-items:stretch;padding:8px 1px 16px}
-.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px!important;border:1px solid #e4e8e1!important;border-radius:8px!important;background:var(--site-milk) url('textures/chalk-grain.svg') repeat!important;background-size:160px 160px!important;box-shadow:0 3px 12px #2d403409!important}
+.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px!important;border:1px solid #e4e8e1!important;border-radius:8px!important;background:#fff!important;box-shadow:0 3px 12px #2d403409!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote{margin:0!important;padding:0!important;font-family:var(--pair-body)!important;font-size:17px!important;font-weight:400!important;line-height:1.65!important;letter-spacing:-.01em!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote::before{content:none!important;background:none!important}
 html[data-body-font=caveat] .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote{font-size:20px!important;line-height:1.5!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review footer{padding:24px 0 0!important}
+.site-preview.early-classic .s-reviews [data-open-quotes] .s-review footer img{flex:0 0 32px;width:32px;height:32px;object-fit:cover}
 .site-preview.early-classic .s-reviews .early-quote{display:block;flex:0 0 auto;width:44px;height:33px;object-fit:contain;margin:0 0 14px!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button{width:44px;height:44px}
 .site-preview.early-classic .s-reviews .classic-quote-arrow{width:44px;height:44px;background-image:url('artwork/vectors/navigation-arrow-chalk.svg')}
@@ -52,14 +53,19 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 
 /* Wider stage centres leave the original illustrations at their natural size. */
 .site-preview.early-classic #process .s-study-steps li:nth-child(n) .s-study-number{border-radius:0;background:transparent url('artwork/classic-chalk-ui/dot.webp') 48% 47%/190% 190% no-repeat;color:#fff}
-.site-preview.early-classic #process{padding-inline:max(clamp(24px,3vw,56px),calc((100% - 1280px)/2))}
+.site-preview.early-classic #process{padding-inline:max(clamp(24px,3vw,56px),calc((100% - 1360px)/2))}
 .site-preview.early-classic #process>.s-section-heading{padding-inline:0}
 @media(min-width:901px){
  .site-preview.early-classic #process .s-study-steps{column-gap:0}
- .site-preview.early-classic #process .s-study-steps li{grid-template-rows:112px 136px auto 1fr;padding-inline:18px}
+ .site-preview.early-classic #process .s-study-steps li{grid-template-rows:112px 104px auto 1fr;padding-inline:22px;text-align:center;justify-items:center}
  .site-preview.early-classic #process .early-step-picture{width:100%;max-width:150px;height:94px;justify-self:center}
- .site-preview.early-classic #process .classic-arrow-lines{top:112px;height:136px}
- .site-preview.early-classic #process .classic-arrow-route h3{padding-top:24px;margin-bottom:14px}
+ .site-preview.early-classic #process .classic-arrow-lines{top:112px;height:104px}
+ .site-preview.early-classic #process .classic-arrow-route h3{padding-top:14px;margin-bottom:12px;max-width:100%}
+ .site-preview.early-classic #process .classic-arrow-route p{max-width:24ch;margin:0;justify-self:center}
+}
+@media(min-width:901px) and (max-width:1200px){
+ .site-preview.early-classic #process .s-study-steps li{padding-inline:14px}
+ .site-preview.early-classic #process .classic-arrow-route h3{min-height:calc(2.6em + 14px)}
 }
 @media(max-width:900px){
  .site-preview.early-classic #process .classic-arrow-lines{display:none}

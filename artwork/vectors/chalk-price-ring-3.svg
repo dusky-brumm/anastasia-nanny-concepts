@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" fill="none">
+  <defs>
+    <filter id="dry-ring" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".7 .95" numOctaves="2" seed="31"/>
+      <feColorMatrix type="luminanceToAlpha"/>
+      <feComponentTransfer><feFuncA type="linear" slope="2.4" intercept="-.55"/></feComponentTransfer>
+      <feComposite in="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <g stroke="black" stroke-linecap="round" stroke-linejoin="round" filter="url(#dry-ring)">
+    <path d="M175 18C263 14 338 87 340 176C345 265 277 342 188 341C99 346 22 277 19 187C14 96 86 19 175 18C185 17 196 18 207 20" stroke-width="5.6"/>
+    <path d="M178 22C263 19 334 88 336 176M303 283C275 319 236 337 193 337" stroke-width="1.6" opacity=".38"/>
+    <path d="M317 99C328 120 334 140 335 159M82 305C98 317 119 327 139 332" stroke-width="1.2" opacity=".3"/>
+  </g>
+</svg>

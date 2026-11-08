@@ -8,8 +8,8 @@
     </filter>
   </defs>
   <g stroke="black" stroke-linecap="round" stroke-linejoin="round" filter="url(#dry-ring)">
-    <path d="M187 14C274 10 345 83 347 173C352 265 282 344 190 346C99 351 18 283 14 190C9 105 70 24 156 16C168 15 182 15 194 18" stroke-width="6.2"/>
-    <path d="M151 19C68 32 10 110 19 193C26 281 99 345 186 342C272 340 342 273 343 186C347 101 281 24 202 19" stroke-width="2" opacity=".42"/>
-    <path d="M34 102C25 121 18 145 19 163M312 76C324 92 336 116 339 139M280 317C261 330 238 339 214 341" stroke-width="1.4" opacity=".38"/>
+    <path d="M181 18C269 15 339 88 340 177C343 266 272 341 183 340C94 343 19 275 18 185C15 95 90 21 181 18C189 18 198 18 206 20" stroke-width="5.6"/>
+    <path d="M22 176C19 93 93 25 174 22M184 336C268 337 336 265 336 181" stroke-width="1.6" opacity=".38"/>
+    <path d="M317 96C329 119 337 144 336 164M36 261C44 276 55 288 68 298" stroke-width="1.2" opacity=".3"/>
   </g>
 </svg>

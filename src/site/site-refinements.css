@@ -13,14 +13,16 @@ html[data-body-font=caveat] .site-preview.early-classic .s-reviews [data-open-qu
 .site-preview.early-classic .s-reviews .early-quote{grid-column:1;grid-row:1;align-self:start;display:block;width:36px;height:27px;object-fit:contain;margin:0!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button{width:44px;height:44px}
 .site-preview.early-classic .s-reviews .classic-quote-arrow{width:44px;height:44px;background-image:url('artwork/vectors/navigation-arrow-chalk.svg')}
-.site-preview.early-classic .early-apply-picture{width:148px;height:136px;margin:20px 0 6px}
 @media(max-width:1000px){.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px 18px!important;grid-template-columns:28px minmax(0,1fr);column-gap:10px}.site-preview.early-classic .s-reviews .early-quote{width:28px;height:24px}}
 @media(max-width:820px){.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid{grid-auto-columns:100%!important;align-items:start}.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:26px 22px!important;grid-template-columns:30px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px}.site-preview.early-classic .s-reviews .early-quote{width:30px;height:25px}}
 @media(max-width:360px){.site-preview.early-classic .s-reviews{padding-inline:18px}.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px 16px!important;column-gap:8px}}
-@media(max-width:620px){.site-preview.early-classic .early-apply-picture{width:76px;height:72px;margin:0;justify-self:end}}
 
 /* A light conversation vignette and a quiet, signed ending to the page. */
-.site-preview.early-classic .early-apply-picture.consultation-picture{width:220px;height:100px;margin:24px 0 10px}
+.site-preview.early-classic #apply .s-apply-intro{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-content:start;width:fit-content;max-width:100%}
+.site-preview.early-classic #apply .s-apply-intro>.s-section-heading{grid-column:1;grid-row:1;width:100%;margin-bottom:0;text-align:center}
+.site-preview.early-classic #apply .s-apply-intro h2{margin-inline:auto}
+.site-preview.early-classic #apply .consultation-picture{grid-column:1;grid-row:2;justify-self:center;width:253px;max-width:100%;height:115px;margin:24px 0 10px}
+.site-preview.early-classic #apply .s-apply-intro>.comparison-form-contact{grid-column:1;grid-row:3;justify-self:center;margin-top:0}
 body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padding-block:24px 28px;background:#e7f1f6!important;text-align:left;color:var(--ink)}
 .s-site-footer .footer-inner{max-width:1120px;margin-inline:auto}
 .s-site-footer .footer-thread{display:block;width:100%;height:38px;margin:0 0 26px;pointer-events:none}
@@ -35,7 +37,6 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 .s-site-footer .s-privacy{border:0;border-radius:0;padding:0;min-height:40px;background:transparent;color:inherit;font-size:12px;cursor:pointer}
 .s-site-footer :is(a,button):hover{text-decoration:underline;text-underline-offset:5px}
 @media(max-width:760px){.s-site-footer .footer-main{align-items:start;flex-direction:column;gap:20px}.s-site-footer .footer-thread{margin-bottom:20px}.s-site-footer .footer-nav{gap:8px 24px}.s-site-footer .footer-meta{margin-top:16px}}
-@media(max-width:620px){.site-preview.early-classic .s-apply-intro:has(.consultation-picture){grid-template-columns:minmax(0,1fr) 112px}.site-preview.early-classic .early-apply-picture.consultation-picture{width:112px;height:70px;margin:0;align-self:center}}
 
 /* Three dry-chalk circles: blue, sage, blue; the content stays on milk paper. */
 .site-preview.early-classic #pricing .s-pricing-summary h2{max-width:none}

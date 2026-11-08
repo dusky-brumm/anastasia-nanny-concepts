@@ -20,8 +20,4 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{padding-block:40px
  html[data-font-pair] .reference-design #hero h1{font-size:clamp(30px,8.5vw,38px)!important}
  .reference-design #hero .hero-underline{height:14px}
  body[data-isolated-block=footer] .site-preview .s-site-footer{padding-block:36px 40px}
- .site-preview.early-classic .s-apply-intro:has(.consultation-picture){align-items:center}
- .site-preview.early-classic .s-apply-intro>.s-section-heading{grid-column:1;grid-row:1}
- .site-preview.early-classic .s-apply-intro .consultation-picture{grid-column:2;grid-row:1}
- .site-preview.early-classic .s-apply-intro>.comparison-form-contact{grid-column:1/-1;grid-row:2}
 }

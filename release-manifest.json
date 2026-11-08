@@ -1,5 +1,5 @@
 {
-  "build": "8cd89996c9",
+  "build": "149532802e",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Final single site: fixed Lora + Manrope and About 1; no design/font controls or artwork gallery; remove unused illustrations and publish only active dependencies",
     "Five screenshot-led refinement passes: compact font tools, readable copy, scroll-drawn route, chalk reveals, timed story dots, field feedback and stable draft expansion",
     "Refine chosen About variant 1: place controls 24px below copy, keep stable photo/text composition and ordinary dry-pencil arrows; restore previous form illustration after clarification",
     "Replace consultation envelope with an airy dry-crayon conversation vignette; redesign footer as a full-width blue signed ending with navigation and pencil thread",
@@ -1117,6 +1118,14 @@
       "form": "Neat field outlines, focus stroke, explicit next-step hint, parent-managed draft reveal without inner iframe scrolling",
       "artwork": "119 retained/new items; three native SVG strokes added; all nine explicitly retired files remain absent",
       "documentation": "docs/five-passes-20261108.md"
+    },
+    "final_site_20261108": {
+      "scope": "Explicit request to keep only the chosen final site",
+      "fonts": "Lora + Manrope, fixed regardless of old URL/local storage choices",
+      "about": "Chosen open spread 1; other layouts and their switcher removed",
+      "artwork": "110 unused canonical items removed; nine active originals retained; no public gallery, catalog or ZIP",
+      "runtime": "Only the nine blocks and their dependencies; editor and variant generators excluded",
+      "documentation": "docs/final-site-20261108.md"
     }
   },
   "reviewed_decisions": {
@@ -1133,18 +1142,18 @@
     "retired_named_designs": "November 6 explicitly removed numbered designs 10 and 12-16, including Yoga 16 and Elliot 15; this overrides the earlier optional Yoga clarification. Three explicitly transferred blocks survive inside designs 7 and 11.",
     "complete_block_catalog": "Retired by explicit single-selected-site request on November 7. Preserve selected nine blocks only; all old assembly links redirect to home.",
     "latest_classic_service": "The later explicit request rejects the family-interview block in design 6; use its completed illustrated service replacement.",
-    "latest_switcher": "Current chosen pair Lora headings + Manrope body, preset 5. Historical font controls retained; Caveat is only a possible accent. No design or palette controls."
+    "latest_switcher": "No design, font or About-layout controls; final fixed Lora + Manrope and About 1 per November 8 request."
   },
   "validation": {
     "status": "passed",
     "build": "passed",
-    "static_checks": "119 artwork hashes; nine retired files absent; local link checks passed",
+    "static_checks": "One root HTML page, nine blocks, active dependency closure only, nine canonical artwork hashes, no gallery/editor runtime",
     "tests": {
-      "passed": 40,
+      "passed": 35,
       "failed": 0
     },
-    "source_browser": "320/390/768/900/1440px responsive checks and native 2560px scrolling. No frame overflow at measured widths. Prata and Caveat stress pairs checked. FAQ, mobile menu/Escape, privacy dialog, form validation, draft invalidation and motion switch verified. Three desktop review cards are 358px wide and 329px tall. Natural scrolling completes the partial final route arrow.",
-    "scope": "Five refinement passes, preserving the chosen first About composition, palette, fonts, ordinary chalk arrows and outline consultation illustration.",
+    "source_browser": "Old fonts=20/about=3 remain fixed at font 5/About 1. Desktop and 390px mobile verified; all nine mobile frames have zero overflow. Slider, mobile menu/Escape, privacy and local draft generation work.",
+    "scope": "Final single site and removal of unused artwork",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

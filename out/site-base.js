@@ -1,77 +1,22 @@
-import {applyFontPair,readFontChoice,resolveFontPair,findFontPair,fontStorageKey} from './font-pairs.js?v=8cd89996c9';
-import {mountAboutSection} from './about-section.js?v=8cd89996c9';
-import {mountDrawingExperience} from './drawing-parent.js?v=8cd89996c9';
+import {applyTypography} from './typography.js?v=149532802e';
+import {mountDrawingExperience} from './drawing-parent.js?v=149532802e';
 
 const frames=[...document.querySelectorAll('iframe[data-reference-frame]')];
-const switcher=document.querySelector('.font-switcher');
-const buttons=[...document.querySelectorAll('[data-font-choice]')];
-const headingChoice=document.querySelector('[data-heading-choice]');
-const bodyChoice=document.querySelector('[data-body-choice]');
-const fontDetails=document.querySelector('#font-details');
-const fontDetailsToggle=document.querySelector('[data-font-details-toggle]');
-fontDetailsToggle.addEventListener('click',()=>{
-  const height=switcher.getBoundingClientRect().height;
-  const anchor=[...document.querySelectorAll('[data-selected-block]')].find(block=>block.getBoundingClientRect().bottom>height+8);
-  const offset=anchor?anchor.getBoundingClientRect().top-height:0;
-  document.documentElement.classList.add('layout-changing');
-  fontDetails.hidden=!fontDetails.hidden;
-  fontDetailsToggle.setAttribute('aria-expanded',String(!fontDetails.hidden));
-  requestAnimationFrame(()=>{
-    const nextHeight=switcher.getBoundingClientRect().height;
-    if(anchor)window.scrollBy({top:anchor.getBoundingClientRect().top-nextHeight-offset,behavior:'instant'});
-    document.documentElement.classList.remove('layout-changing');
-    document.dispatchEvent(new CustomEvent('site:layout'));
-  });
-});
-let storage;
-try{storage=localStorage;}catch{/* The URL works when storage is blocked. */}
-let activePair=readFontChoice(location.search,storage);
-let revision=0;
-
 function fitFrame(frame){
   const root=frame.contentDocument?.querySelector('[data-reference-block-root]');
   if(!root)return;
   const height=Math.ceil(Math.max(root.getBoundingClientRect().height,root.scrollHeight));
   if(height>0)frame.height=String(height);
 }
-async function styleFrame(frame,pair){
+async function styleFrame(frame){
   const doc=frame.contentDocument;
   if(!doc?.body)return;
-  await applyFontPair(doc,pair);
+  await applyTypography(doc);
   fitFrame(frame);
 }
-async function chooseFont(pair,{updateUrl=false,preservePosition=true}={}){
-  const currentRevision=++revision;
-  const visibleEdge=switcher.getBoundingClientRect().height+8;
-  const anchor=preservePosition?[...document.querySelectorAll('[data-selected-block]')].find(block=>block.getBoundingClientRect().bottom>visibleEdge):null;
-  const offset=anchor?.getBoundingClientRect().top;
-  document.documentElement.classList.add('font-changing');
-  activePair=pair;
-  headingChoice.value=pair.headingId;
-  bodyChoice.value=pair.bodyId;
-  for(const button of buttons)button.setAttribute('aria-pressed',String(button.dataset.fontChoice===pair.id));
-  document.querySelector('[data-font-status] strong').textContent=`${pair.heading} + ${pair.body}`;
-  try{storage?.setItem(fontStorageKey,pair.id);}catch{/* Saving the choice is optional. */}
-  if(updateUrl){const url=new URL(location.href);url.searchParams.set('fonts',pair.id);history.replaceState(null,'',url);}
-  await Promise.allSettled([applyFontPair(document,pair),...frames.map(frame=>styleFrame(frame,pair))]);
-  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-  if(currentRevision!==revision)return;
-  frames.forEach(fitFrame);
-  if(anchor)window.scrollBy({top:anchor.getBoundingClientRect().top-offset,behavior:'instant'});
-  document.documentElement.classList.remove('font-changing');
-  document.dispatchEvent(new CustomEvent('site:layout'));
-}
-for(const button of buttons)button.addEventListener('click',()=>chooseFont(resolveFontPair(button.dataset.fontChoice),{updateUrl:true}));
-for(const select of [headingChoice,bodyChoice])select.addEventListener('change',()=>chooseFont(findFontPair(headingChoice.value,bodyChoice.value),{updateUrl:true}));
-for(const frame of frames)frame.addEventListener('load',()=>styleFrame(frame,activePair));
-new ResizeObserver(()=>document.documentElement.style.setProperty('--font-switcher-height',switcher.getBoundingClientRect().height+'px')).observe(switcher);
-chooseFont(activePair,{preservePosition:false});
-mountAboutSection();
-mountDrawingExperience(frames,switcher);
-window.addEventListener('popstate',()=>{
-  const pair=readFontChoice(location.search,storage);
-  if(pair.id!==activePair.id)chooseFont(pair);
-});
+for(const frame of frames)frame.addEventListener('load',()=>styleFrame(frame));
+applyTypography(document);
+mountDrawingExperience(frames);
 
 document.addEventListener('click',event=>{
   const dialog=document.getElementById('studio-privacy');
@@ -83,7 +28,7 @@ document.addEventListener('click',event=>{
 });
 // Frame heights settle after fonts and images load; restore direct section links.
 window.addEventListener('load',async()=>{
-  await Promise.allSettled(frames.map(frame=>styleFrame(frame,activePair)));
+  await Promise.allSettled(frames.map(styleFrame));
   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
   frames.forEach(fitFrame);
   const target=document.getElementById(location.hash.slice(1));

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="s-square-pencil" viewBox="0 0 400 400" aria-hidden="true" style="color:#718591;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
-      <defs><filter id="hero-pencil-6">
-    <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
-    <feColorMatrix type="luminanceToAlpha"/>
-    <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
-    <feComposite in="SourceGraphic" operator="in"/>
-  </filter></defs>
-      <path d="M12 133V30Q12 12 30 12H150M389 273V370Q389 389 370 389H235" filter="url(#hero-pencil-6)"/>
-    </svg>

@@ -1,9 +1,7 @@
-import {cp,mkdir,readFile,writeFile,readdir,rm,realpath,lstat} from 'node:fs/promises';
+import {cp,mkdir,readFile,writeFile,readdir,rm,realpath,lstat,rmdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {execFileSync} from 'node:child_process';
 import path from 'node:path';
-import {sitePage,artworkPage,assemblyRedirect} from '../src/site/pages.mjs';
-import {defaultFontPair} from '../src/site/font-pairs.js';
+import {sitePage} from '../src/site/pages.mjs';
 import {formatRequest} from '../src/reference/request.js';
 import {bindRequestUi} from '../src/reference/studio/request-ui.js';
 import {sitemapXml,robotsTxt} from '../src/reference/studio/seo.js';
@@ -49,7 +47,7 @@ for(const {file} of selection.blocks){
       .replace('<svg ',`<svg class="${classes}" ${mode} aria-hidden="true" focusable="false" `);
     html=html.replace(tag,svg);
   }
-  html=html.replace('<html lang="ru"',`<html lang="ru" data-font-pair="${defaultFontPair.id}"`);
+  html=html.replace('<html lang="ru"','<html lang="ru" data-font-pair="5" data-body-font="manrope"');
   const styles=['fonts.css','studio/fonts.css','site-typography.css','site-refinements.css','site-polish.css']
     .filter(file=>!html.includes(`href="../${file}`))
     .map(file=>`<link rel="stylesheet" href="../${file}?v=__VERSION__">`).join('');
@@ -64,18 +62,51 @@ async function replaceTokens(directory){
   }
 }
 await writeFile(path.join(output,'index.html'),sitePage(selection));
-await writeFile(path.join(output,'artwork.html'),artworkPage(catalog));
-await writeFile(path.join(output,'compare-assembly.html'),assemblyRedirect);
 await writeFile(path.join(output,'studio','comparison-request.js'),`(${bindRequestUi.toString()})(${formatRequest.toString()});\n`);
 await writeFile(path.join(output,'sitemap.xml'),sitemapXml());
 await writeFile(path.join(output,'robots.txt'),robotsTxt());
+// Keep the approved pair; type specimens are no longer part of this site.
+for(const fontCss of ['fonts.css','studio/fonts.css']){
+  const file=path.join(output,fontCss),text=await readFile(file,'utf8');
+  const faces=[...text.matchAll(/@font-face\s*\{[^}]+\}/g)].map(match=>match[0]);
+  await writeFile(file,faces.filter(face=>/font-family:\s*['"]?(?:Lora|Manrope)\b/.test(face)).join('\n')+'\n');
+}
 await replaceTokens(output);
-// The ZIP contains original artwork bytes plus a manifest; no recompression/editing.
-execFileSync('python',['-c',`import json,pathlib,zipfile
-root=pathlib.Path('out')
-items=json.loads((root/'artwork-catalog.json').read_text(encoding='utf-8'))
-with zipfile.ZipFile(root/'artwork-library.zip','w',zipfile.ZIP_DEFLATED) as archive:
- for item in items: archive.write(root/item['file'],item['file'])
- archive.write(root/'artwork-catalog.json','artwork-catalog.json')
-`],{stdio:'inherit'});
-console.log(JSON.stringify({output:'out',version,blocks:selection.blocks.length,artworks:catalog.length}));
+// Publish only dependencies of the nine selected blocks, never archived galleries.
+const retained=new Set();
+async function retain(file){
+  file=path.resolve(file);
+  if(!file.startsWith(output+path.sep))throw new Error('Asset escapes output: '+file);
+  if(retained.has(file))return;
+  const info=await lstat(file);
+  if(!info.isFile()||info.isSymbolicLink())throw new Error('Invalid published asset: '+file);
+  retained.add(file);
+  if(!/\.(?:html|css|js)$/.test(file))return;
+  const text=await readFile(file,'utf8'),urls=[];
+  if(file.endsWith('.html'))urls.push(...[...text.matchAll(/\b(?:src|href)="([^"\s]+)"/g)].map(match=>match[1]));
+  if(file.endsWith('.css')){
+    urls.push(...[...text.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)].map(match=>match[1]));
+    urls.push(...[...text.matchAll(/@import\s+['"]([^'"]+)['"]/g)].map(match=>match[1]));
+  }
+  if(file.endsWith('.js'))urls.push(...[...text.matchAll(/\b(?:import|export)\s+(?:[^'";]+?\s+from\s*)?['"]([^'"]+)['"]/g)].map(match=>match[1]));
+  for(const url of urls){
+    if(/^(?:[a-z][a-z\d+.-]*:|\/\/|#|%23)/i.test(url))continue;
+    const local=url.split(/[?#]/)[0];
+    if(!local||local.endsWith('/'))continue;
+    await retain(path.resolve(path.dirname(file),local));
+  }
+}
+for(const seed of ['index.html','sitemap.xml','robots.txt','assets/social-card.png','studio/fonts/Lora-OFL.txt','fonts/manrope-OFL.txt'])await retain(path.join(output,seed));
+let removed=0;
+async function prune(directory){
+  for(const entry of await readdir(directory,{withFileTypes:true})){
+    const file=path.join(directory,entry.name);
+    if(!file.startsWith(output+path.sep))throw new Error('Unsafe prune path');
+    if(entry.isDirectory()){
+      await prune(file);
+      if(!(await readdir(file)).length)await rmdir(file);
+    }else if(!retained.has(file)){await rm(file);removed++;}
+  }
+}
+await prune(output);
+console.log(JSON.stringify({output:'out',version,blocks:selection.blocks.length,assets:retained.size,removed,artworks:catalog.filter(item=>retained.has(path.join(output,item.file))).length}));

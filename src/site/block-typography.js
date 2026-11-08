@@ -1,7 +1,2 @@
-import {applyFontPair,readFontChoice} from './font-pairs.js?v=__VERSION__';
-// Standalone block previews use the same pair as the parent site.
-let search=location.search;
-try{if(parent!==window)search=parent.location.search;}catch{/* An external embed uses its own query. */}
-let storage;
-try{storage=localStorage;}catch{/* A blocked storage context uses the default. */}
-applyFontPair(document,readFontChoice(search,storage));
+import {applyTypography} from './typography.js?v=__VERSION__';
+applyTypography(document);

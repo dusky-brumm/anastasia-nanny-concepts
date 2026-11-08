@@ -1,5 +1,3 @@
-import {readAboutVariant} from './about-model.js?v=8cd89996c9';
-
 const section=document.querySelector('[data-about-story]');
 if(section){
   const slides=[...section.querySelectorAll('.s-about-slides li')];
@@ -8,7 +6,7 @@ if(section){
   const position=section.querySelector('[data-about-position]');
   const pause=section.querySelector('[data-about-pause]');
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  let index=0,visible=false,paused=false,hovered=false,mode='auto',timer,clockAnimation;
+  let index=0,visible=false,paused=false,hovered=false,timer,clockAnimation;
   let drawingOn=document.documentElement.dataset.drawingMotion!=='off';
   const clocks=dots.map((dot,i)=>{
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
@@ -18,14 +16,14 @@ if(section){
     dot.append(svg);return svg.querySelector('circle');
   });
 
-  function syncPause(){pause.hidden=mode==='scroll'||motion.matches||!drawingOn;}
+  function syncPause(){pause.hidden=motion.matches||!drawingOn;}
 
   function schedule(){
     clearTimeout(timer);
     clockAnimation?.cancel();clockAnimation=null;
     section.dataset.aboutRunning='false';
     const focused=document.hasFocus()&&section.querySelector(':focus-visible')&&document.activeElement!==pause;
-    if(!visible||paused||hovered||document.hidden||motion.matches||!drawingOn||mode==='scroll'||focused)return;
+    if(!visible||paused||hovered||document.hidden||motion.matches||!drawingOn||focused)return;
     section.dataset.aboutRunning='true';
     clockAnimation=clocks[index].animate?.([{strokeDashoffset:'1'},{strokeDashoffset:'0'}],{duration:6500,easing:'linear',fill:'forwards'});
     timer=setTimeout(()=>show((index+1)%slides.length,'auto'),6500);
@@ -39,23 +37,10 @@ if(section){
     dots.forEach((dot,i)=>dot.setAttribute('aria-current',String(i===index)));
     position.textContent=`0${index+1} / 0${slides.length}`;
     if(source==='manual')status.textContent=dots[index].getAttribute('aria-label');
-    section.dispatchEvent(new CustomEvent('about:selection',{detail:{index,source}}));
     schedule();
   }
-  function configure({variant,scroll=false}){
-    const changed=section.dataset.aboutDesign!==variant;
-    section.dataset.aboutDesign=variant;
-    mode=scroll?'scroll':'auto';
-    section.dataset.aboutMode=mode;
-    syncPause();
-    section.querySelector('[data-about-scroll-hint]').hidden=!scroll;
-    if(changed)show(0,'design');else schedule();
-  }
-  let search=location.search;
-  try{if(parent!==window)search=parent.location.search;}catch{/* Standalone previews use their own URL. */}
-  configure({variant:readAboutVariant(search).id});
-  section.addEventListener('about:configure',event=>configure(event.detail));
-  section.addEventListener('about:scroll',event=>show(event.detail.index,'scroll'));
+  section.dataset.aboutDesign='1';
+  syncPause();
   new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;schedule();},{threshold:.3}).observe(section);
   dots.forEach((dot,i)=>dot.addEventListener('click',()=>show(i)));
   section.querySelectorAll('[data-about-step]').forEach(button=>button.addEventListener('click',()=>show((index+Number(button.dataset.aboutStep)+slides.length)%slides.length)));

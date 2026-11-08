@@ -8,14 +8,13 @@ const selection=JSON.parse(await readFile('src/site/selection.json','utf8'));
 assert.deepEqual(selection.blocks.map(({id})=>id),['header','hero','service','about','process','pricing','reviews','apply','footer']);
 assert.equal((home.match(/data-selected-block=/g)||[]).length,9);
 assert.equal((home.match(/<iframe\b/g)||[]).length,9);
-assert.doesNotMatch(home,/data-design-navigation|data-assembly-choice|data-assembly-gallery|data-site-root/);
-assert.deepEqual([...home.matchAll(/data-font-choice="([^"]+)"/g)].map(match=>match[1]),Array.from({length:20},(_,index)=>String(index+1)));
-assert.match(home,/data-heading-choice/);assert.match(home,/data-body-choice/);
+assert.doesNotMatch(home,/data-design-navigation|data-assembly-choice|data-assembly-gallery|data-site-root|data-font-choice|data-heading-choice|data-body-choice|data-about-choice|font-switcher|artwork/);
+assert.match(home,/data-font-pair="5" data-body-font="manrope"/);
 assert.match(home,/id="service-schema"/);
 assert.match(home,/<link rel="canonical" href="https:\/\/dusky-brumm.github.io\/anastasia-nanny-concepts\/">/);
 const rootPages=(await readdir('out')).filter(name=>name.endsWith('.html')).sort();
-assert.deepEqual(rootPages,['artwork.html','compare-assembly.html','index.html']);
-assert.match(await readFile('out/compare-assembly.html','utf8'),/location.replace\('\.\/'\+location.hash\)/);
+assert.deepEqual(rootPages,['index.html']);
+for(const file of ['artwork-library.zip','artwork-catalog.json','artwork.js','artwork.css','font-pairs.js','about-model.js','about-section.js','studio/app.js'])await assert.rejects(stat('out/'+file),{code:'ENOENT'});
 const ids=new Set(selection.blocks.map(item=>item.id));
 let links=0;
 async function checkLinks(directory){
@@ -53,9 +52,8 @@ assert.match(await readFile('out/blocks/process.html','utf8'),/Как прохо
 const form=await readFile('out/blocks/apply.html','utf8');
 assert.match(form,/s-form-pencil/);assert.doesNotMatch(form,/data-live-request/);
 assert.match(form,/\bconsultation-picture\b/);
-const catalog=JSON.parse(await readFile('out/artwork-catalog.json','utf8'));
+const catalog=JSON.parse(await readFile('src/site/artwork-catalog.json','utf8'));
 assert.ok(catalog.length>0);
-assert.deepEqual(catalog,JSON.parse(await readFile('src/site/artwork-catalog.json','utf8')));
 assert.equal(new Set(catalog.map(item=>item.file)).size,catalog.length);
 const manifest=JSON.parse(await readFile('release-manifest.json','utf8'));
 const retired=manifest.design_decisions.retired_artwork_20261107.items;
@@ -66,8 +64,10 @@ for(const {file} of retired){
   await assert.rejects(stat('out/'+file),{code:'ENOENT'});
 }
 for(const item of catalog){
-  const bytes=await readFile('out/'+item.file);
+  // Four canonical stroke SVGs are inlined into blocks, so their originals stay in source.
+  const bytes=await readFile('src/site/'+item.file);
   assert.equal(createHash('sha256').update(bytes).digest('hex'),item.sha256,item.file);
 }
-assert.ok((await stat('out/artwork-library.zip')).size>100000);
-console.log(`PASS: 9 fixed blocks, no alternative pages, ${links} local links/assets, ${catalog.length} artwork hashes, downloadable archive.`);
+assert.match(await readFile('out/blocks/about.html','utf8'),/data-about-design="1"/);
+assert.doesNotMatch(await readFile('out/site-base.js','utf8'),/localStorage|readFontChoice|mountAboutSection/);
+console.log(`PASS: 9 fixed blocks, no editor controls or gallery, ${links} local links/assets, ${catalog.length} active artwork hashes.`);

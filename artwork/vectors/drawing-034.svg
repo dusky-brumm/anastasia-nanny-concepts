@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="s-pencil-route-line" viewBox="0 0 1120 200" preserveAspectRatio="none" aria-hidden="true" focusable="false" style="color:#718591;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><defs><filter id="route-pencil-main">
-    <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="2" seed="8"/>
-    <feColorMatrix type="luminanceToAlpha"/>
-    <feComponentTransfer><feFuncA type="linear" slope="1.45" intercept="-.08"/></feComponentTransfer>
-    <feComposite in="SourceGraphic" operator="in"/>
-  </filter></defs><path d="M0 92C40 120 74 112 112 90S250 10 336 54C390 83 486 152 463 168C438 184 407 116 439 96C475 72 513 114 560 134C646 169 705 44 784 54S943 126 1008 94Q1070 62 1120 74" filter="url(#route-pencil-main)"/></svg>

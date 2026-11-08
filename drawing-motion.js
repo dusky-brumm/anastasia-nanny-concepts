@@ -1,12 +1,11 @@
-import {drawingEnabled,entryProgress,segmentProgress} from './drawing-model.js?v=8cd89996c9';
+import {drawingEnabled,entryProgress,segmentProgress} from './drawing-model.js?v=5d548de0fb';
 
 const svgNS='http://www.w3.org/2000/svg';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 let search=location.search;
 try{if(parent!==window)search=parent.location.search;}catch{/* A standalone drawing uses its own preference. */}
 const params=new URLSearchParams(search);
-let initialChoice=params.get('motion');
-try{initialChoice??=localStorage.getItem('nastya-drawing-motion-v1');}catch{/* The URL and system preference still work. */}
+const initialChoice=params.get('motion');
 let viewport={enabled:drawingEnabled({choice:initialChoice,capture:params.get('capture')==='1'}),frameTop:0,viewportHeight:innerHeight,toolbarHeight:0,near:true};
 let active,serial=0;
 const easing='cubic-bezier(.22,1,.36,1)';

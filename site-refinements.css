@@ -1,9 +1,9 @@
 /* Only the selected site: soft paper grain, three review cards, milk pricing. */
-body[data-fixed-theme=almost-white] .site-preview #pricing{background:#fcfcfa!important;background-image:none!important}
+body[data-fixed-theme=almost-white] .site-preview #pricing{background:var(--site-milk)!important;background-image:none!important}
 .reference-design.look-02-elliot .cover-grid::after,.reference-design.look-02-elliot .lead-photo::before{background-image:url('textures/chalk-grain.svg');background-size:160px 160px}
 .site-preview.early-classic .s-reviews .comparison-quote-strip[data-open-quotes]{--quote-gap:22px}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid{grid-auto-columns:calc((100% - 2 * var(--quote-gap)) / 3)!important;gap:var(--quote-gap)!important;align-items:stretch;padding:8px 1px 16px}
-.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px!important;border:1px solid #e4e8e1!important;border-radius:8px!important;background:#fff url('textures/chalk-grain.svg') repeat!important;background-size:160px 160px!important;box-shadow:0 3px 12px #2d403409!important}
+.site-preview.early-classic .s-reviews [data-open-quotes] .s-review-grid .s-review{padding:24px!important;border:1px solid #e4e8e1!important;border-radius:8px!important;background:var(--site-milk) url('textures/chalk-grain.svg') repeat!important;background-size:160px 160px!important;box-shadow:0 3px 12px #2d403409!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote{margin:0!important;padding:0!important;font-family:var(--pair-body)!important;font-size:17px!important;font-weight:400!important;line-height:1.65!important;letter-spacing:-.01em!important}
 .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote::before{content:none!important;background:none!important}
 html[data-body-font=caveat] .site-preview.early-classic .s-reviews [data-open-quotes] .s-review blockquote{font-size:20px!important;line-height:1.5!important}
@@ -36,7 +36,7 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 /* The same neat pencil outline as the form encloses each payment condition. */
 .site-preview.early-classic #pricing .s-pricing-summary h2{max-width:none}
 .site-preview.early-classic #pricing .s-pricing-terms{gap:24px;margin-block:36px 24px}
-.site-preview.early-classic #pricing .early-price-term{position:relative;isolation:isolate;min-height:236px;padding:28px;grid-template-columns:minmax(0,1fr);grid-template-rows:64px auto 1fr;gap:12px;align-content:start}
+.site-preview.early-classic #pricing .early-price-term{position:relative;isolation:isolate;min-height:236px;padding:28px;grid-template-columns:minmax(0,1fr);grid-template-rows:64px auto auto;gap:12px;align-content:center;justify-items:center;text-align:center}
 .site-preview.early-classic #pricing .early-price-term::before{inset:0;height:auto;background:var(--accent);mask:url('studio/pencil-frame-neat.svg') center/100% 100% no-repeat;opacity:.72;z-index:-1}
 .site-preview.early-classic #pricing .early-term-picture{grid-column:1;grid-row:1;width:64px;height:58px;margin:0}
 .site-preview.early-classic #pricing .early-price-term dt{grid-column:1;grid-row:2;margin:0}
@@ -44,10 +44,10 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 .site-preview.early-classic #pricing .early-price-term dd span{font-size:14px;line-height:1.6}
 @media(max-width:760px){
  .site-preview.early-classic #pricing .s-pricing-terms{gap:18px}
- .site-preview.early-classic #pricing .early-price-term{min-height:156px;padding:24px;grid-template-columns:54px minmax(0,1fr);grid-template-rows:auto 1fr;gap:8px 16px}
- .site-preview.early-classic #pricing .early-term-picture{grid-column:1;grid-row:1/span 2;width:54px;height:50px}
- .site-preview.early-classic #pricing .early-price-term dt{grid-column:2;grid-row:1}
- .site-preview.early-classic #pricing .early-price-term dd{grid-column:2;grid-row:2;font-size:22px}
+ .site-preview.early-classic #pricing .early-price-term{min-height:216px;padding:24px;grid-template-columns:minmax(0,1fr);grid-template-rows:54px auto auto;gap:10px}
+ .site-preview.early-classic #pricing .early-term-picture{grid-column:1;grid-row:1;width:54px;height:50px}
+ .site-preview.early-classic #pricing .early-price-term dt{grid-column:1;grid-row:2}
+ .site-preview.early-classic #pricing .early-price-term dd{grid-column:1;grid-row:3;font-size:22px}
 }
 
 /* Wider stage centres leave the original illustrations at their natural size. */

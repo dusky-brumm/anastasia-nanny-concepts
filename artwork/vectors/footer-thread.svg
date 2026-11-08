@@ -1,4 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 38" fill="none">
-  <defs><filter id="pencil-grain" x="-1%" y="-20%" width="102%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="2" seed="9" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="1.1"/></filter></defs>
-  <path d="M3 24C190 20 338 28 508 22S759 15 862 20C898 23 923 20 916 10C907-1 890 3 899 15C916 38 1004 24 1117 22" stroke="#658392" stroke-width="1.7" stroke-linecap="round" filter="url(#pencil-grain)"/>
-</svg>

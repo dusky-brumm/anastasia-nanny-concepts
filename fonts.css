@@ -1,18 +1,4 @@
 @font-face {
-  font-family: 'Caveat';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SII.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Caveat';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjcB9SII.ttf) format('truetype');
-}
-@font-face {
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 400;
@@ -40,18 +26,3 @@
   font-display: swap;
   src: url(fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4aE-_F.ttf) format('truetype');
 }
-@font-face {
-  font-family: 'Prata';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/6xKhdSpbNNCT-vWI.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Tinos';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/buE4poGnedXvwgX8.ttf) format('truetype');
-}
-

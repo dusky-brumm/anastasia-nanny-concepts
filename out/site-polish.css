@@ -1,7 +1,7 @@
 /* Five refinement passes; existing chosen palette, typefaces and artwork remain.
    Craft review follows unslop by Damir Sokolovsky, CC BY 4.0:
    https://github.com/heydamir/unslop */
-:root{--drawing-ease:cubic-bezier(.22,1,.36,1);--feedback-time:160ms}
+:root{--drawing-ease:cubic-bezier(.22,1,.36,1);--feedback-time:180ms;--interaction-ink:#385a6b;--interaction-button:#455f67}
 
 /* 1. Intentional phrasing and readable secondary copy. */
 .reference-design.look-02-elliot .cover h1>span{display:block;background:none}
@@ -33,18 +33,20 @@ html[data-drawing-motion=off] svg[data-ink-line] path{stroke-dashoffset:0!import
 /* 3. The active chalk dot shows time, not a decorative pulse. */
 .about-story .about-dot-timer{position:absolute;left:50%;top:50%;width:28px;height:28px;transform:translate(-50%,-50%);opacity:0;pointer-events:none;overflow:visible}
 .about-story[data-about-running=true] [data-about-dot][aria-current=true] .about-dot-timer{opacity:.85}
-.about-story .about-arrow{border-radius:50%;transition:background-color var(--feedback-time) var(--drawing-ease)}
-.about-story .about-arrow:hover{background-color:#e7f1f6}
-.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button{border-radius:50%;transition:background-color var(--feedback-time) var(--drawing-ease)}
-.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button:hover:not(:disabled){transform:none;background-color:#dce9ee}
+.about-story .about-arrow{border-radius:50%;background-color:transparent;opacity:.78;transition:opacity var(--feedback-time) ease}
+.about-story .about-arrow:hover{background-color:transparent}
+.about-story .s-about-dots button{border-radius:50%}
+.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button{border-radius:50%;background:transparent;transition:opacity var(--feedback-time) ease}
+.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button:not(:disabled){opacity:.78}
+.site-preview.early-classic .s-reviews [data-open-quotes] .comparison-quote-controls button:hover:not(:disabled){transform:none;background:transparent}
 .comparison-quote-position{position:relative;font-variant-numeric:tabular-nums}
 .comparison-quote-position::after{content:'';position:absolute;left:0;bottom:-8px;width:64px;height:4px;background:#526c73;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;transform:scaleX(var(--review-progress,.3333));transform-origin:left;transition:transform 200ms var(--drawing-ease);pointer-events:none}
 
 /* 4. A focused field gets one pencil stroke; the neat boxes stay still. */
 .s-form-pencil .field-shell{position:relative;display:block;width:100%}
 .s-form-pencil .field-shell :is(input,textarea){border-radius:4px}
-.s-form-pencil .field-ink{position:absolute;left:4px;bottom:1px;width:calc(100% - 8px);height:6px;opacity:0;pointer-events:none;overflow:visible;transition:opacity var(--feedback-time) var(--drawing-ease)}
-.s-form-pencil .field-shell:focus-within .field-ink{opacity:1}
+.s-form-pencil .field-ink{position:absolute;left:4px;bottom:1px;width:calc(100% - 8px);height:3px;opacity:0;pointer-events:none;overflow:visible;transition:opacity var(--feedback-time) var(--drawing-ease)}
+.s-form-pencil .field-shell:focus-within .field-ink{opacity:.6}
 .s-form-pencil .field-shell:focus-within .field-ink path{animation:field-pencil 500ms var(--drawing-ease) both}
 .s-form-pencil .field-shell :is(input,textarea):focus:not(:focus-visible){outline:0}
 .s-form-pencil .field-shell :is(input,textarea):focus-visible{outline:1px solid #526c73;outline-offset:2px}
@@ -58,7 +60,7 @@ html[data-drawing-motion=off] svg[data-ink-line] path{stroke-dashoffset:0!import
 .site-preview .s-faq summary::after{transform:translateY(-50%) rotate(90deg)}
 .site-preview .s-faq details[open] summary::after{content:'';transform:translateY(-50%) rotate(90deg) scaleX(0)}
 .s-site-footer .footer-nav a:not(.footer-telegram),.s-site-footer .footer-top{position:relative}
-.s-site-footer .footer-nav a:not(.footer-telegram)::after,.s-site-footer .footer-top::after{content:'';position:absolute;left:0;right:0;bottom:1px;height:4px;background:currentColor;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;clip-path:inset(0 100% 0 0);transition:clip-path 240ms var(--drawing-ease)}
+.s-site-footer .footer-nav a:not(.footer-telegram)::after,.s-site-footer .footer-top::after{content:'';position:absolute;left:0;right:0;bottom:1px;height:3px;background:currentColor;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;clip-path:inset(0 100% 0 0);transition:clip-path 180ms var(--drawing-ease)}
 .s-site-footer .footer-nav a:hover,.s-site-footer .footer-top:hover{text-decoration:none}
 .s-site-footer .footer-nav a:hover::after,.s-site-footer .footer-nav a:focus-visible::after,.s-site-footer .footer-top:hover::after,.s-site-footer .footer-top:focus-visible::after{clip-path:inset(0)}
 @keyframes field-pencil{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
@@ -70,3 +72,33 @@ html[data-drawing-motion=off] svg[data-ink-line] path{stroke-dashoffset:0!import
 /* A separate, neat pencil contour stays visible outside the filled action. */
 .reference-design.look-02-elliot #hero .hero-actions .button,.site-preview .s-form-pencil .s-button{position:relative;overflow:visible;border-radius:8px}
 .reference-design.look-02-elliot #hero .hero-actions .button::after,.site-preview .s-form-pencil .s-button::before{content:'';position:absolute;display:block;inset:-7px;border:0;border-radius:0;transform:none;background:var(--button,#526c73);mask:url('studio/pencil-button.svg') center/100% 100% no-repeat;opacity:1;pointer-events:none}
+
+/* Quiet feedback: strengthen the existing ink, keep every control in place. */
+body:is(.design-tool,.reference-design) :is(a,button,summary,input,textarea,[tabindex]):focus-visible{outline:1.5px solid var(--interaction-ink);outline-offset:4px}
+#chalk-service-designs .service-link:focus-visible{outline:1.5px solid var(--interaction-ink);outline-offset:4px}
+.about-story .about-arrow:focus-visible,.about-story .s-about-dots button:focus-visible,.site-preview.early-classic .s-reviews .comparison-quote-controls button:focus-visible{outline-offset:1px;opacity:1}
+.about-story .about-arrow:active,.site-preview.early-classic .s-reviews .comparison-quote-controls button:active:not(:disabled){opacity:1}
+.reference-design.look-02-elliot #hero .hero-actions .button,.site-preview .s-form-pencil .s-button{transform:none;translate:none;box-shadow:none;transition:background-color var(--feedback-time) ease,border-color var(--feedback-time) ease}
+.reference-design.look-02-elliot #hero .hero-actions .button::after,.site-preview .s-form-pencil .s-button::before{transition:background-color var(--feedback-time) ease}
+.reference-design.look-02-elliot #hero .hero-actions .button:focus-visible,.site-preview .s-form-pencil .s-button:focus-visible{outline-offset:10px}
+.site-preview .s-form-pencil .s-button:hover{transform:none}
+.s-form-pencil .field-shell :is(input,textarea):focus-visible{outline-width:1px;outline-offset:2px}
+.design-site-header nav>a{transition:color var(--feedback-time) ease,text-decoration-color var(--feedback-time) ease;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:5px}
+.design-site-header nav>a:focus-visible{text-decoration-color:currentColor}
+.design-site-brand,#chalk-service-designs .service-link,.site-preview .s-text-link,.reference-design .text-link,.site-preview .s-review-more,.site-preview .s-faq summary,.s-site-footer :is(a,button),dialog [data-close]{transition:color var(--feedback-time) ease,border-color var(--feedback-time) ease;text-decoration-thickness:1px;text-underline-offset:5px}
+.s-site-footer .footer-telegram::after{height:3px;transition:opacity var(--feedback-time) ease}
+.s-site-footer .footer-telegram:hover{text-decoration:none}
+.s-site-footer .footer-telegram:is(:hover,:focus-visible)::after{opacity:1}
+.site-preview .s-review-more:focus-visible,.s-site-footer :is(.footer-name,.s-privacy):focus-visible{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+@media(hover:hover) and (pointer:fine){
+ .about-story .about-arrow:hover,.site-preview.early-classic .s-reviews .comparison-quote-controls button:hover:not(:disabled){opacity:1}
+ .about-story .s-about-dots button:not([aria-current=true]):hover::before{opacity:.65}
+ .reference-design.look-02-elliot #hero .hero-actions .button:hover,.site-preview .s-form-pencil .s-button:hover:not(:disabled){background-color:var(--interaction-button);border-color:var(--interaction-button)}
+ .reference-design.look-02-elliot #hero .hero-actions .button:hover::after,.site-preview .s-form-pencil .s-button:hover:not(:disabled)::before{background-color:var(--interaction-button)}
+ .design-site-header nav>a:hover{color:var(--interaction-ink);text-decoration-color:currentColor}
+ .design-site-brand:hover,#chalk-service-designs .service-link:hover,.site-preview .s-text-link:hover,.reference-design .text-link:hover,.site-preview .s-faq summary:hover,.s-site-footer :is(a,button):hover,dialog [data-close]:hover{color:var(--interaction-ink)}
+ #chalk-service-designs .service-link:hover,.site-preview .s-text-link:hover{border-bottom-color:currentColor}
+ .site-preview .s-review-more:hover{color:var(--interaction-ink);background:transparent;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+ .site-preview .s-copy:hover{border-color:var(--interaction-ink);color:var(--interaction-ink)}
+ .design-site-menu summary:hover{color:var(--interaction-ink);border-color:var(--interaction-ink)}
+}

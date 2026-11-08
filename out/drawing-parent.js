@@ -1,4 +1,4 @@
-import {drawingEnabled} from './drawing-model.js?v=3c1daf5186';
+import {drawingEnabled} from './drawing-model.js?v=23e7aa9018';
 
 export function mountDrawingExperience(frames){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');

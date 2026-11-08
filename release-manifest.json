@@ -1,5 +1,5 @@
 {
-  "build": "3c1daf5186",
+  "build": "23e7aa9018",
   "base_commit": "ec45bba935058240634a6ad2c4afb4ced491af4f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Unify subtle interaction feedback: transparent drawn arrows, stationary action buttons, thin link underlines and restrained keyboard/field focus",
     "Use pure white review cards without grain; redraw quotation marks as fine pencil contours and reduce low-resolution avatar enlargement",
     "Widen the process composition from 1280px to 1360px, center each title and paragraph beneath its number, and tighten the vertical route rhythm",
     "Simplify About navigation: remove pause, slide counter and process shortcut; place smaller 32px drawn arrows around the four chalk dots",
@@ -1176,6 +1177,13 @@
       "quotes": "Two separately drawn closed comma contours in #526c73; 2.2px and 2.05px strokes in a 64x48 viewBox; no fill, filter, grain or noise",
       "avatars": "Render existing portraits at 32x32px instead of 40x40px to reduce enlargement; original faces unchanged",
       "avatar_limit": "All local copies share the same three source files, only 25x26px and 26x26px. Original photographs are required for truly sharp larger avatars."
+    },
+    "quiet_interactions_20261108": {
+      "arrows": "About and review arrows retain transparent backgrounds in all states; hover strengthens existing ink opacity from .78 to 1 instead of adding a filled halo",
+      "buttons": "Hero and form actions remain stationary. Fill, border and existing separate pencil outline darken together to #455f67 over 180ms",
+      "links": "Thin 1px text underlines or stronger existing underline borders; footer pencil rules reduced to 3px; no duplicate Telegram underline",
+      "focus": "Consistent thin #385a6b keyboard outline, compact icon offsets, visible primary-action ring and 1px field outline. Field pencil stroke reduced from 6px to 3px",
+      "preserve": "Current artwork, static About photograph, compact carousel controls, white review cards, selected colors, existing layout, reduced-motion handling and all functionality"
     }
   },
   "reviewed_decisions": {
@@ -1202,8 +1210,8 @@
       "passed": 35,
       "failed": 0
     },
-    "source_browser": "Desktop: all three cards use rgb(255,255,255) with background-image:none; all avatar boxes are 32px and quote marks 44px wide. At 390px the card is 325px wide, white with no grain; mobile controls visible and no document overflow. No browser errors.",
-    "scope": "White review cards, restrained pencil quotation marks and compact existing avatars",
+    "source_browser": "About arrow: real pointer hover true, transparent background, opacity 1, no outline on mouse hover; keyboard focus visibly outlined. Hero action hover preserves exact x/y, transform:none and translate:none; fill and separate -7px pencil contour both rgb(69,95,103). Form keyboard focus has 1px outline/2px offset and 3px pencil stroke. At 390px review controls remain transparent, stationary and 44px wide; next switches to 2 of 3; no document overflow or browser errors.",
+    "scope": "Refine hover and focus feedback across the selected site's controls",
     "diff_check": "passed"
   },
   "completed_css_sha256": {

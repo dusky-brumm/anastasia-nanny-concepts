@@ -1,2 +1,2 @@
-import {applyTypography} from './typography.js?v=3c1daf5186';
+import {applyTypography} from './typography.js?v=23e7aa9018';
 applyTypography(document);

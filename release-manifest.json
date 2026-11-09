@@ -1,6 +1,6 @@
 {
-  "build": "6ffbdf3997",
-  "base_commit": "d9e045a4761d75b09da723502c74bf234fefd686",
+  "build": "b33cbef5b5",
+  "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Swap About photos one and three; enlarge the printed photos by about 20 percent and their crayon backings by about 15 percent; add restrained reading and pencil margin drawings, with a sharper responsive family photo and complete srcset asset retention",
     "Slightly freshen the shared pastel blue from #e7f1f6 to #e1eff7 and make a minimal sage adjustment from #e8efe4 to #e7efe2; apply consistently to block backgrounds, footer and hero glow",
     "Make the family-service section more compact; reduce vertical gaps, move the three stage texts slightly right and their pictures slightly left with smaller mobile offsets",
     "Restore the earlier irregular double-pencil button contour from 7be353c for hero and form actions, with versioned mask URLs",
@@ -1351,6 +1352,30 @@
         "process",
         "hero glow"
       ]
+    },
+    "about_photo_20261109": {
+      "photo_order": [
+        "family",
+        "rainbow",
+        "portrait",
+        "child"
+      ],
+      "desktop_frame_width": 456,
+      "desktop_backing_width": 529,
+      "desktop_photo_height": 518.4,
+      "mobile_photo_height": 360,
+      "motifs": [
+        "reading together",
+        "pencils"
+      ],
+      "responsive_photo": "family-900.webp",
+      "qa_widths": [
+        1440,
+        900,
+        390,
+        320
+      ],
+      "overflow": false
     }
   },
   "reviewed_decisions": {

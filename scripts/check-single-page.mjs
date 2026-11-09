@@ -41,6 +41,9 @@ async function check(directory){
   if(!/\.(?:html|css)$/.test(file))continue;
   const text=await readFile(file,'utf8');assert.ok(!text.includes('__VERSION__'),file);
   const urls=file.endsWith('.html')?[...text.matchAll(/\b(?:src|href)="([^"\s]+)"/g)].map(m=>m[1]):[...text.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)].map(m=>m[1]);
+  if(file.endsWith('.html'))for(const [,value] of text.matchAll(/\b(?:srcset|imagesrcset)="([^"]+)"/g)){
+   if(!value.startsWith('data:'))urls.push(...value.split(',').map(item=>item.trim().split(/\s+/)[0]).filter(Boolean));
+  }
   for(const url of urls){
    if(/^(?:[a-z]+:|\/\/|#|%23)/i.test(url))continue;
    const local=url.split(/[?#]/)[0];if(!local)continue;

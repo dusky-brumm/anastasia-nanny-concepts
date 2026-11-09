@@ -75,5 +75,19 @@
     "title": "Круг сухим мелком для гарантии",
     "group": "Линии, стрелки и значки",
     "sha256": "c741f8418ec596bfef3a595d4f8446fc3add889a17ad13be607163988d9ae4fb"
+  },
+  {
+    "id": "about-reading-together",
+    "file": "media/about-reading.webp",
+    "title": "Чтение вместе — рисунок на полях знакомства",
+    "group": "Иллюстрации",
+    "sha256": "4b955883b06542ff4020a8ad0281dda99e50b6a7e86c5bd5e12865bb9bf7116e"
+  },
+  {
+    "id": "about-pencil-note",
+    "file": "media/about-pencils.webp",
+    "title": "Карандаши — рисунок на полях знакомства",
+    "group": "Иллюстрации",
+    "sha256": "8bfc218db68aed30b9e5b58bc59949ab4643b8eea87f4ec0d5984d01b8d4354b"
   }
 ]

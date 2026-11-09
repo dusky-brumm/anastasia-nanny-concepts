@@ -106,7 +106,13 @@ async function retain(file){
   retained.add(file);
   if(!/\.(?:html|css|js)$/.test(file))return;
   const text=await readFile(file,'utf8'),urls=[];
-  if(file.endsWith('.html'))urls.push(...[...text.matchAll(/\b(?:src|href)="([^"\s]+)"/g)].map(match=>match[1]));
+  if(file.endsWith('.html')){
+    urls.push(...[...text.matchAll(/\b(?:src|href)="([^"\s]+)"/g)].map(match=>match[1]));
+    for(const [,value] of text.matchAll(/\b(?:srcset|imagesrcset)="([^"]+)"/g)){
+      if(value.startsWith('data:'))continue;
+      urls.push(...value.split(',').map(item=>item.trim().split(/\s+/)[0]).filter(Boolean));
+    }
+  }
   if(file.endsWith('.css')){
     urls.push(...[...text.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)].map(match=>match[1]));
     urls.push(...[...text.matchAll(/@import\s+['"]([^'"]+)['"]/g)].map(match=>match[1]));

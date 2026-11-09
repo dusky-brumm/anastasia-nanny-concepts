@@ -62,7 +62,7 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 .site-preview.early-classic #process .s-study-steps li:nth-child(n) .s-study-number{border-radius:0;background:transparent url('media/chalk-dot.webp') 48% 47%/190% 190% no-repeat;color:#fff}
 .site-preview.early-classic #process{padding-inline:max(clamp(24px,3vw,56px),calc((100% - 1360px)/2))}
 .site-preview.early-classic #process>.s-section-heading{padding-inline:0}
-@media(min-width:901px){
+@media(min-width:1101px){
  .site-preview.early-classic #process .s-study-steps{column-gap:0}
  .site-preview.early-classic #process .s-study-steps li{grid-template-rows:112px 104px auto 1fr;padding-inline:22px;text-align:center;justify-items:center}
  .site-preview.early-classic #process .early-step-picture{width:100%;max-width:150px;height:94px;justify-self:center}
@@ -70,24 +70,26 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
  .site-preview.early-classic #process .classic-arrow-route h3{padding-top:14px;margin-bottom:12px;max-width:100%}
  .site-preview.early-classic #process .classic-arrow-route p{max-width:24ch;margin:0;justify-self:center}
 }
-@media(min-width:901px) and (max-width:1200px){
+@media(min-width:1101px) and (max-width:1200px){
  .site-preview.early-classic #process .s-study-steps li{padding-inline:14px}
  .site-preview.early-classic #process .classic-arrow-route h3{min-height:calc(2.6em + 14px)}
 }
-@media(max-width:900px){
+@media(max-width:1100px){
  .site-preview.early-classic #process .classic-arrow-lines{display:none}
  .site-preview.early-classic #process .s-study-steps li{padding-bottom:44px}
  .site-preview.early-classic #process .s-study-steps li:last-child{padding-bottom:0}
 }
-@media(min-width:761px) and (max-width:900px){
- .site-preview.early-classic #process .s-study-steps{grid-template-columns:1fr}
- .site-preview.early-classic #process .s-study-steps li{grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto;gap:18px;padding-inline:0}
+/* Two roomy columns avoid narrow five-column captions on wide phones. */
+@media(min-width:761px) and (max-width:1100px){
+ .site-preview.early-classic #process .s-study-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px;align-items:start}
+ .site-preview.early-classic #process .s-study-steps li{grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto;gap:18px;padding:0;text-align:left;justify-items:stretch}
  .site-preview.early-classic #process .s-study-steps li::before{display:none}
  .site-preview.early-classic #process .s-study-copy{display:flow-root;grid-column:2;grid-row:1;padding:0}
  .site-preview.early-classic #process .s-study-number{grid-column:1;grid-row:1;align-self:start}
  .site-preview.early-classic #process .early-step-picture{float:right;width:88px;height:76px;margin:0 0 12px 24px}
  .site-preview.early-classic #process .classic-arrow-route h3{padding-top:4px;margin-bottom:14px}
- .site-preview.early-classic #process .classic-arrow-mobile{display:block;position:absolute;left:-7px;top:40px;width:46px;height:calc(100% - 44px)}
+ .site-preview.early-classic #process .classic-arrow-route p{max-width:62ch;font-size:16px;line-height:1.6}
+ .site-preview.early-classic #process .classic-arrow-mobile{display:none}
 }
 @media(max-width:480px){
  .site-preview.early-classic #process .s-study-copy{grid-template-columns:minmax(0,1fr) 64px;grid-template-areas:'title title' 'copy picture';gap:14px 16px}

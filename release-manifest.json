@@ -1,5 +1,5 @@
 {
-  "build": "73c69c7863",
+  "build": "54e1cc33f4",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Review seven additional phone sizes and landscape layouts; use two readable stage columns from761–1100px,16px descriptions and shorter stage-section padding on low landscape screens.",
     "Refine phone adaptivity after independent screenshot critique: compact selected price swatches and cup-form introduction, strengthen FAQ plus/minus strokes, add application link to the mobile menu, keep stage names complete at320px and improve hero wrapping through390px.",
     "Finalize all selected sections, remove design comparisons and inactive runtime/controllers/artwork from publication; keep one cup drawing and the selected application layout, adding only blue/sage form washes with white fields and preserved input values.",
     "Animate all final pencil illustrations in contour, hatched background and detail phases, at one third of the former drawing duration; add three shareable stroke variants and replay while preserving the 500 ms service stagger.",
@@ -1803,6 +1804,89 @@
       "stage_narrow_max_px": 380,
       "hero_small_max_px": 390,
       "documentation": "docs/mobile-adaptivity-20261110.md"
+    },
+    "phone_matrix_20261110": {
+      "base_commit": "662eaed462c3ca0ef5b1531b887ab16373e38eb5",
+      "portrait_viewports": [
+        [
+          360,
+          800
+        ],
+        [
+          384,
+          854
+        ],
+        [
+          412,
+          915
+        ],
+        [
+          414,
+          896
+        ],
+        [
+          430,
+          932
+        ],
+        [
+          448,
+          998
+        ],
+        [
+          480,
+          960
+        ]
+      ],
+      "extra_viewports": [
+        [
+          320,
+          568
+        ],
+        [
+          640,
+          360
+        ],
+        [
+          740,
+          360
+        ],
+        [
+          760,
+          500
+        ],
+        [
+          761,
+          500
+        ],
+        [
+          915,
+          412
+        ],
+        [
+          1024,
+          600
+        ],
+        [
+          1100,
+          640
+        ],
+        [
+          1101,
+          640
+        ],
+        [
+          1280,
+          800
+        ]
+      ],
+      "stage_two_columns": [
+        761,
+        1100
+      ],
+      "short_landscape_padding": 60,
+      "description_px": 16,
+      "independent_review": "Portrait spacing, landscape layout, fifth stage and minimum two-column width reviewed",
+      "documentation": "docs/phone-matrix-20261110.md"
     }
   },
   "reviewed_decisions": {
@@ -1826,16 +1910,16 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "73c69c7863",
-    "visual_check": "Full before/after phone screen pass and independent critique/re-review. Final selected pricing and blue/green forms checked at393/320px; one form preserves name/message and white16px fields,44px color controls remain on one row.320px stage names,375/390px hero, menu/FAQ, landscape/desktop and ordinary drawing checked. No horizontal overflow. Browser viewport emulation; no physical Safari run.",
-    "static_check": "PASS: one document, nine blocks;51 files,2681114 bytes including579244 optional About drawings;85 local assets;52 artwork hashes.",
-    "preserved": "Original artwork/photos, selected animation1 and static About4 continuations, selected chalk-swatch pricing, review guestbook, family footer and final blue/green single form from the other chat."
+    "build": "54e1cc33f4",
+    "visual_check": "Complete screenshot passes at seven portrait phone sizes; independent spacing critique. Portrait heading geometry preserved. Two-column stages and 760/761,1100/1101 boundaries checked; no overflow. Reviews keep section height at360/480px; four About stories keep controls stable at360px; form values and white16px fields preserved. Short landscape menus remain scrollable/reachable. Browser viewport emulation; no physical phone/Safari run.",
+    "static_check": "PASS: one document, nine blocks;51 files,2681509 bytes including579244 optional About drawings;85 local assets;52 artwork hashes.",
+    "preserved": "Selected content, photographs, artwork, blue/green form, original portrait layouts and full desktop layout at1280px."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "d9e8075743",
+  "previous_confirmed_build": "73c69c7863",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

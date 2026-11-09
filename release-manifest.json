@@ -1,5 +1,5 @@
 {
-  "build": "90bc1c3a6b",
+  "build": "1c5086596e",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1751,6 +1751,24 @@
       "comparison_controls": "Removed for footer only",
       "query_behavior": "Old footer variant parameters do not override the chosen footer",
       "preserved": "Family pencil artwork, blue background, all navigation, contact links, privacy and back-to-top"
+    },
+    "pricing_chalk_patches_final_20261110": {
+      "choice": "Меловые пятна",
+      "pricing_design": "3",
+      "fixed": true,
+      "colors": [
+        "blue",
+        "sage",
+        "blue"
+      ],
+      "comparison_controls": "Removed for pricing only",
+      "alternative_panels": "Removed from final page; source artwork retained",
+      "conditions": [
+        "Предоплата: 25 000 ₽",
+        "Остальная сумма: после 1–2 пробных недель",
+        "Бесплатная замена: 6 месяцев"
+      ],
+      "preserved": "Heading, terms link, three illustrations, FAQ and other sections"
     }
   },
   "reviewed_decisions": {
@@ -1774,16 +1792,16 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "90bc1c3a6b",
-    "visual_check": "Confirmed Home and Family footer (ending design 3) as the fixed choice; removed footer comparison controls and obsolete tab-panel semantics. Fixed footer is excluded from query-based comparison restoration; contact/navigation links and family pencil artwork preserved.",
-    "static_check": "PASS: one document, nine blocks; 61 files, 3484848 bytes including 856950 optional About drawings; 110 local assets; 52 artwork hashes.",
+    "build": "1c5086596e",
+    "visual_check": "Selected pricing study 3 (Меловые пятна), matching the user screenshot: blue/sage/blue filled dry-chalk patches. Removed comparison controls, five alternative panels and obsolete tab-panel semantics; kept the three payment/guarantee conditions, terms link and FAQ. Fixed choice ignores old pricing query parameters.",
+    "static_check": "PASS: one document, nine blocks; 61 files, 3457251 bytes including 856950 optional About drawings; 100 local assets; 52 artwork hashes.",
     "preserved": "Completed accents/illustration changes from source 339eb191e89208f58f133ce68e198c9c9308cac4; hero/photo layout, original photographs and all illustration files unchanged."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "fa95994547",
+  "previous_confirmed_build": "90bc1c3a6b",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

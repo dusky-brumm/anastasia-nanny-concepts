@@ -605,7 +605,7 @@ if(stickyHeader){
 })();
 (()=>{
 // A small, shareable comparison of this section only; other blocks stay fixed.
-const pricingStudy=document.querySelector('[data-pricing-studies]');
+const pricingStudy=document.querySelector('[data-pricing-studies]:not([data-pricing-fixed])');
 if(pricingStudy){
   const tabs=[...pricingStudy.querySelectorAll('[data-pricing-choice]')];
   const panels=[...pricingStudy.querySelectorAll('[data-pricing-panel]')];

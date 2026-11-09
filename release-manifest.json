@@ -1,5 +1,5 @@
 {
-  "build": "1c5086596e",
+  "build": "500494ad4d",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Finalize all selected sections, remove design comparisons and inactive runtime/controllers/artwork from publication; keep one cup drawing and the selected application layout, adding only blue/sage form washes with white fields and preserved input values.",
     "Animate all final pencil illustrations in contour, hatched background and detail phases, at one third of the former drawing duration; add three shareable stroke variants and replay while preserving the 500 ms service stagger.",
     "Swap About photos one and three; enlarge the printed photos by about 20 percent and their crayon backings by about 15 percent; add restrained reading and pencil margin drawings, with a sharper responsive family photo and complete srcset asset retention",
     "Slightly freshen the shared pastel blue from #e7f1f6 to #e1eff7 and make a minimal sage adjustment from #e8efe4 to #e7efe2; apply consistently to block backgrounds, footer and hero glow",
@@ -60,7 +61,8 @@
     "Old family-story review content and stale form/footer/service markup",
     "Superseded palette menus and custom color controls",
     "Main site navigation entry",
-    "Ordinary versions of retained paired designs"
+    "Ordinary versions of retained paired designs",
+    "Unchosen application compositions and second cup drawing, About background comparisons, alternative pencil animations, inactive pricing/review/footer controllers and their published dependencies"
   ],
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
@@ -1769,6 +1771,15 @@
         "Бесплатная замена: 6 месяцев"
       ],
       "preserved": "Heading, terms link, three illustrations, FAQ and other sections"
+    },
+    "final_selected_designs_20261110": {
+      "service": "Fixed long-stroke pencil animation 1, 20ms activation spacing and parallel soft fade; no comparison/replay controls",
+      "about": "Fixed photo continuation 4 with registered, immediately visible static environment/figure layers; keep four stories and stable navigation",
+      "pricing": "Fixed selected blue/sage/blue chalk patches",
+      "reviews": "Current three white chalk cards with shared book below",
+      "apply": "Selected cups drawing 1 and former layout 4; default blue wash #e1eff7 and additional sage wash #e7efe2, pure-white fields. Only two color buttons; switching reuses the same form and keeps its values. Share with form=blue or form=green.",
+      "footer": "Fixed selected home and family composition 3",
+      "removed": "All other live design switches, old query-driven alternatives, inactive controllers, unused pencil passes and contour data; unpublished dependencies are pruned by the build"
     }
   },
   "reviewed_decisions": {
@@ -1792,16 +1803,16 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "1c5086596e",
-    "visual_check": "Selected pricing study 3 (Меловые пятна), matching the user screenshot: blue/sage/blue filled dry-chalk patches. Removed comparison controls, five alternative panels and obsolete tab-panel semantics; kept the three payment/guarantee conditions, terms link and FAQ. Fixed choice ignores old pricing query parameters.",
-    "static_check": "PASS: one document, nine blocks; 61 files, 3457251 bytes including 856950 optional About drawings; 100 local assets; 52 artwork hashes.",
-    "preserved": "Completed accents/illustration changes from source 339eb191e89208f58f133ce68e198c9c9308cac4; hero/photo layout, original photographs and all illustration files unchanged."
+    "build": "500494ad4d",
+    "static_check": "PASS: one document, nine blocks; 51 files, 2677754 bytes including 579244 About drawings; 85 local assets; 52 artwork hashes.",
+    "visual_check": "Desktop 1440px and mobile 390px: same selected cups/blue form and added sage form; white fields; color changes preserve entered name; no horizontal overflow. No retired selectors/tablists. Static registered About drawings retain their alignment and fixed carousel navigation; service drawings finish in 659/689/719ms with 0/20/40ms starts. Legacy design query parameters no longer restore retired variants.",
+    "preserved": "Selected text, original photographs, contour buttons, application behavior, pricing conditions/FAQ, reviews and home/family footer retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "90bc1c3a6b",
+  "previous_confirmed_build": "1c5086596e",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

@@ -3,22 +3,19 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
-import {drawingTreatments,drawingTiming,pencilDuration,servicePictureDelay,nextServiceDelay,pencilPasses} from '../../src/site/hatching-model.js';
+import {drawingTiming,pencilDuration,servicePictureDelay,nextServiceDelay,pencilPasses} from '../../src/site/hatching-model.js';
 import {pencilArtwork} from '../../src/site/pencil-artwork-data.js';
 
-test('the selected long strokes are faster while other treatments keep their duration and service starts are 20ms apart',()=>{
+test('the selected long strokes are faster and service starts are 20ms apart',()=>{
   for(const [kind,previous] of Object.entries({profile:3040,book:3180,interview:3320})){
-    assert.equal(pencilDuration(kind,'1'),previous/3*.65);
-    for(const treatment of ['2','3'])assert.equal(pencilDuration(kind,treatment),previous/3);
+    assert.equal(pencilDuration(kind),previous/3*.65);
   }
-  assert.equal(pencilDuration(undefined,'1'),3180/3,'Other site illustrations retain their duration');
+  assert.equal(pencilDuration(),3180/3,'Other site illustrations retain their duration');
   assert.deepEqual([0,1,2].map(servicePictureDelay),[0,20,40]);
   assert.equal(drawingTiming.contour+drawingTiming.background+drawingTiming.details,1);
 });
-test('three distinct pencil treatments expose visible strokes and finish with overlapping coverage',()=>{
-  assert.equal(drawingTreatments.length,3);
-  const passes=drawingTreatments.map(treatment=>pencilPasses(treatment.id));
-  assert.equal(new Set(passes.map(value=>JSON.stringify(value))).size,3);
+test('the selected pencil strokes cover the illustration with overlapping finishing passes',()=>{
+  const passes=[pencilPasses(),pencilPasses(true)];
   for(const treatment of passes){
     assert.ok(treatment.length>1);
     assert.equal(treatment[0].start,0);assert.equal(treatment.at(-1).end,1);
@@ -39,7 +36,7 @@ test('cards entering on separate frames keep a 20ms activation gap without delay
 });
 test('every final raster illustration has contours from its actual unchanged image file',async()=>{
   const assets=JSON.parse(await readFile(new URL('../../docs/pencil-artwork-assets.json',import.meta.url)));
-  assert.equal(assets.length,22);assert.equal(Object.keys(pencilArtwork).length,assets.length);
+  assert.equal(assets.length,12);assert.equal(Object.keys(pencilArtwork).length,assets.length);
   for(const file of assets){
     const data=pencilArtwork[path.basename(file)];assert.ok(data?.contours.length,file);
     assert.ok(data.size.length===2&&data.size.every(value=>value>0),file);

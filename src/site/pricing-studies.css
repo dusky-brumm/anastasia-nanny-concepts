@@ -3,13 +3,6 @@
 .site-preview.early-classic #pricing .pricing-intro .s-pricing-includes{margin:0;max-width:760px}
 .site-preview.early-classic #pricing .pricing-terms-link{display:inline-flex;align-items:center;min-height:44px;position:relative;padding-bottom:3px;border:0!important;text-decoration:none!important;white-space:nowrap;font-size:14px}
 .site-preview.early-classic #pricing .pricing-terms-link::after{content:'';position:absolute;inset:auto 0 6px;height:2px;background:currentColor;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;opacity:.55}
-.site-preview.early-classic #pricing .pricing-study-switch{display:flex;align-items:center;gap:16px;margin-block:24px 10px;font:400 13px/1.5 var(--pair-body);color:#526c73}
-.site-preview.early-classic #pricing .pricing-study-tabs{display:flex;gap:4px;align-items:center}
-.site-preview.early-classic #pricing .pricing-study-tab{display:grid;place-items:center;width:44px;min-height:44px;padding:0;background:transparent;border:1px solid transparent;border-radius:50%;color:inherit;font:500 14px/1 var(--pair-body);cursor:pointer;position:relative}
-.site-preview.early-classic #pricing .pricing-study-tab[aria-selected=true]{background:#e1eff7;color:#28353c;border-color:#94afbe}
-.site-preview.early-classic #pricing .pricing-study-tab:hover{background:#e7efe2}
-.site-preview.early-classic #pricing .pricing-study-tab:focus-visible{outline:2px solid #526c73;outline-offset:3px}
-.site-preview.early-classic #pricing .pricing-study-name{margin:0;font:400 13px/1.5 var(--pair-body);color:#526c73}
 .site-preview.early-classic #pricing .pricing-panel[hidden]{display:none!important}
 .site-preview.early-classic #pricing .pricing-panel{position:relative;margin-block:20px 0;min-width:0}
 .site-preview.early-classic #pricing .pricing-panel :is(dl,dt,dd){margin:0}
@@ -27,8 +20,6 @@
 .site-preview.early-classic #pricing .comparison-faq-questions summary::before,.site-preview.early-classic #pricing .comparison-faq-questions summary::after{top:50%}
 @media(max-width:760px){
  .site-preview.early-classic #pricing .pricing-intro{gap:2px;margin-top:14px}
- .site-preview.early-classic #pricing .pricing-study-switch{gap:8px;flex-wrap:wrap;margin-top:20px;margin-bottom:6px}
- .site-preview.early-classic #pricing .pricing-study-switch>span{width:100%}
  .site-preview.early-classic #pricing .pricing-panel{margin-top:16px}
  .site-preview.early-classic #pricing .s-faq{margin-top:56px;padding-top:38px;row-gap:28px}
  .site-preview.early-classic #pricing .faq-heading{align-items:center;gap:14px}
@@ -36,36 +27,7 @@
  .site-preview.early-classic #pricing .faq-question{width:44px;height:58px}
 }
 /* Individual studies. */
-.site-preview.early-classic #pricing .pv-original .s-pricing-terms{margin-block:30px 18px}
 /* Three independent, lightly washed chalk circles. */
-.site-preview.early-classic #pricing .pv1{position:relative;isolation:isolate;padding:30px 0 18px;min-height:380px}
-.site-preview.early-classic #pricing .pv1-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,4vw,60px);align-items:center;margin:0;padding:0}
-.site-preview.early-classic #pricing .pv1-term{--pv1-line:#94afbe;position:relative;isolation:isolate;display:grid;grid-template-rows:82px 32px 76px;align-content:center;justify-items:center;justify-self:center;gap:8px;box-sizing:border-box;width:min(100%,320px);aspect-ratio:1;padding:30px 20px;background:#faf8f2;border-radius:50%;text-align:center}
-.site-preview.early-classic #pricing .pv1-term:nth-child(2){--pv1-line:#9ead90;transform:translateY(-15px)}
-.site-preview.early-classic #pricing .pv1-ring{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;pointer-events:none}
-.site-preview.early-classic #pricing .pv1-ring g{stroke:var(--pv1-line)}
-.site-preview.early-classic #pricing .pv1-wash{position:absolute;inset:6%;z-index:-2;width:88%;height:88%;pointer-events:none}
-.site-preview.early-classic #pricing .pv1-picture{display:block;grid-row:1;width:92px;height:82px;margin:0;object-fit:contain}
-html[data-font-pair] .site-preview.early-classic #pricing .pv1 dt{grid-row:2;align-self:end;margin:0;color:#28353c;font:400 15px/1.5 var(--pair-body,Manrope,sans-serif)}
-html[data-font-pair] .site-preview.early-classic #pricing .pv1 dd{grid-row:3;align-self:center;margin:0;color:#28353c;font:500 clamp(28px,2.8vw,36px)/1.25 var(--pair-body,Manrope,sans-serif);letter-spacing:-.035em}
-html[data-font-pair] .site-preview.early-classic #pricing .pv1-term:nth-child(2) dd{font-size:clamp(19px,1.9vw,25px);line-height:1.35;letter-spacing:-.02em}
-@media(max-width:1050px) and (min-width:761px){
- .site-preview.early-classic #pricing .pv1{min-height:310px;padding-top:26px}
- .site-preview.early-classic #pricing .pv1-term{padding:22px 13px;grid-template-rows:64px 30px 64px;gap:4px}
- .site-preview.early-classic #pricing .pv1-picture{width:74px;height:64px}
- html[data-font-pair] .site-preview.early-classic #pricing .pv1 dt{font-size:13px}
- html[data-font-pair] .site-preview.early-classic #pricing .pv1 dd{font-size:27px}
- html[data-font-pair] .site-preview.early-classic #pricing .pv1-term:nth-child(2) dd{font-size:18px}
-}
-@media(max-width:760px){
- .site-preview.early-classic #pricing .pv1{padding:8px 0 0;min-height:0}
- .site-preview.early-classic #pricing .pv1-terms{grid-template-columns:minmax(0,1fr);gap:18px}
- .site-preview.early-classic #pricing .pv1-term{width:min(100%,294px);grid-template-rows:76px 28px 70px;gap:6px;padding:25px 19px}
- .site-preview.early-classic #pricing .pv1-term:nth-child(2){transform:none}
- .site-preview.early-classic #pricing .pv1-picture{width:84px;height:76px}
- html[data-font-pair] .site-preview.early-classic #pricing .pv1 dd{font-size:33px}
- html[data-font-pair] .site-preview.early-classic #pricing .pv1-term:nth-child(2) dd{font-size:23px}
-}
 
 /* Four fresh studies; the two approved circle compositions above are intact. */
 .site-preview.early-classic #pricing .pricing-new{isolation:isolate;margin-top:28px;color:#28353c}
@@ -76,80 +38,20 @@ html[data-font-pair] .site-preview.early-classic #pricing .pv1-term:nth-child(2)
 html[data-font-pair] .site-preview.early-classic #pricing .pricing-new dt{margin:0;font:400 16px/1.5 var(--pair-body);color:#28353c;letter-spacing:0}
 html[data-font-pair] .site-preview.early-classic #pricing .pricing-new dd{margin:16px 0 0;font:500 clamp(29px,2.7vw,36px)/1.28 var(--pair-body);color:#28353c;letter-spacing:-.03em}
 html[data-font-pair] .site-preview.early-classic #pricing .pn-term-2 dd{font-size:clamp(21px,2vw,26px);line-height:1.4;letter-spacing:-.02em}
-.site-preview.early-classic #pricing .pn-contour{position:absolute;z-index:-1;inset:0;display:block;width:100%;height:100%;pointer-events:none}
-.site-preview.early-classic #pricing .pn-contour g{stroke:var(--pn-line)}
 /* 3. Soft dry-chalk swatches hold the copy without a card frame. */
 .site-preview.early-classic #pricing .pn-3 .pn-term::before{content:'';position:absolute;z-index:-1;inset:0;background:var(--pn-wash);mask:url('artwork/vectors/pricing-chalk-patch-20261109.svg') center/100% 100% no-repeat;pointer-events:none}
 .site-preview.early-classic #pricing .pn-3 .pn-term:nth-child(2)::before{transform:rotate(2deg) scaleX(-1)}
 .site-preview.early-classic #pricing .pn-3 .pn-term:nth-child(3)::before{transform:rotate(-1deg) scaleY(-1)}
 /* 4. Tall arches echo the calm portrait frame, drawn with a dry pencil. */
-.site-preview.early-classic #pricing .pn-4 .pn-terms{gap:36px}
-.site-preview.early-classic #pricing .pn-4 .pn-term{min-height:390px;padding:72px 30px 42px}
-.site-preview.early-classic #pricing .pn-4 .pn-term:nth-child(2){transform:translateY(12px)}
-.site-preview.early-classic #pricing .pn-4 .pn-picture{width:96px;height:84px;margin-bottom:22px}
 /* 5. One open notebook joins the three conditions without separate boxes. */
-.site-preview.early-classic #pricing .pn-5{padding:28px 30px;min-height:390px}
-.site-preview.early-classic #pricing .pn-spread-paper{position:absolute;z-index:-1;inset:0;width:100%;height:100%;pointer-events:none}
-.site-preview.early-classic #pricing .pn-5 .pn-terms{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr 1fr;gap:0 72px;min-height:334px}
-.site-preview.early-classic #pricing .pn-5 .pn-term{min-height:0;padding:20px 36px}
-.site-preview.early-classic #pricing .pn-5 .pn-term-1{grid-column:1;grid-row:1/3}
-.site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1){grid-column:2;display:grid;grid-template-columns:72px minmax(0,1fr);grid-template-rows:auto auto;gap:6px 22px;align-content:center;justify-items:start;text-align:left}
-.site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1) .pn-picture{grid-column:1;grid-row:1/3;width:72px;height:70px;margin:0}
-.site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1) dt{grid-column:2;align-self:end}
-html[data-font-pair] .site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1) dd{grid-column:2;align-self:start;margin:0;font-size:25px}
 /* 6. Low oval medallions keep the three conditions in one horizontal row. */
-.site-preview.early-classic #pricing .pn-6 .pn-terms{gap:22px}
-.site-preview.early-classic #pricing .pn-6 .pn-term{min-height:280px;padding:48px;display:grid;grid-template-columns:72px minmax(0,1fr);grid-template-rows:auto auto;gap:10px 16px;align-content:center;justify-items:start;text-align:left}
-.site-preview.early-classic #pricing .pn-6 .pn-picture{grid-column:1;grid-row:1/3;width:72px;height:72px;margin:0}
-.site-preview.early-classic #pricing .pn-6 dt{grid-column:2;align-self:end}
-html[data-font-pair] .site-preview.early-classic #pricing .pn-6 dd{grid-column:2;align-self:start;margin:0;font-size:28px}
-html[data-font-pair] .site-preview.early-classic #pricing .pn-6 .pn-term-2 dd{font-size:20px}
 @media(min-width:761px) and (max-width:1100px){
  .site-preview.early-classic #pricing .pn-terms{gap:14px}
  .site-preview.early-classic #pricing .pn-term{padding-inline:18px;min-height:290px}
  html[data-font-pair] .site-preview.early-classic #pricing .pricing-new dt{font-size:14px}
- .site-preview.early-classic #pricing .pn-4 .pn-terms{gap:18px}
- .site-preview.early-classic #pricing .pn-4 .pn-term{padding-inline:20px;min-height:340px}
- .site-preview.early-classic #pricing .pn-5{padding-inline:20px}
- .site-preview.early-classic #pricing .pn-5 .pn-terms{column-gap:40px}
- .site-preview.early-classic #pricing .pn-5 .pn-term{padding-inline:18px}
- .site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1){grid-template-columns:54px minmax(0,1fr);column-gap:14px}
- .site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1) .pn-picture{width:54px;height:60px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1) dd{font-size:21px}
- .site-preview.early-classic #pricing .pn-6 .pn-term{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;justify-items:center;text-align:center;padding:30px 20px;gap:8px;min-height:290px}
- .site-preview.early-classic #pricing .pn-6 .pn-picture{grid-column:1;grid-row:1;width:62px;height:56px}
- .site-preview.early-classic #pricing .pn-6 dt{grid-column:1;grid-row:2}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-6 dd{grid-column:1;grid-row:3;font-size:25px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-6 .pn-term-2 dd{font-size:18px}
 }
 @media(max-width:760px){
  .site-preview.early-classic #pricing .pricing-new{margin-top:18px}
  .site-preview.early-classic #pricing .pn-terms{grid-template-columns:minmax(0,1fr);gap:18px;justify-items:center}
  .site-preview.early-classic #pricing .pn-term{width:min(100%,390px);min-height:280px;padding:32px 28px}
- .site-preview.early-classic #pricing .pn-4 .pn-terms{gap:20px}
- .site-preview.early-classic #pricing .pn-4 .pn-term{width:min(100%,330px);min-height:350px;padding:64px 30px 40px}
- .site-preview.early-classic #pricing .pn-4 .pn-term:nth-child(2){transform:none}
- .site-preview.early-classic #pricing .pn-5{padding:28px 18px;min-height:0}
- .site-preview.early-classic #pricing .pn-5 .pn-spread-paper{display:none}
- .site-preview.early-classic #pricing .pn-5::before{content:'';position:absolute;z-index:-1;inset:0;background:#fff;mask:url('media/review-chalk-white-block-20261109.webp') center/100% 100% no-repeat;pointer-events:none}
- .site-preview.early-classic #pricing .pn-5 .pn-terms{grid-template-columns:minmax(0,1fr);grid-template-rows:none;min-height:0;gap:0}
- .site-preview.early-classic #pricing .pn-5 .pn-term,.site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1){grid-column:1;grid-row:auto;display:grid;grid-template-columns:60px minmax(0,1fr);grid-template-rows:auto auto;gap:8px 18px;min-height:160px;padding:24px 12px;align-content:center;justify-items:start;text-align:left}
- .site-preview.early-classic #pricing .pn-5 .pn-term:not(:last-child)::after{content:'';position:absolute;left:12px;right:12px;bottom:0;height:4px;background:#94afbe;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;opacity:.55}
- .site-preview.early-classic #pricing .pn-5 .pn-term .pn-picture,.site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1) .pn-picture{grid-column:1;grid-row:1/3;width:60px;height:66px;margin:0}
- .site-preview.early-classic #pricing .pn-5 .pn-term dt{grid-column:2;align-self:end;font-size:14px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-5 .pn-term dd{grid-column:2;margin:0;align-self:start;font-size:26px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1) dd{font-size:26px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-5 .pn-term-2:not(.pn-term-1) dd{font-size:20px}
- .site-preview.early-classic #pricing .pn-6 .pn-term{min-height:250px;padding:42px 40px;grid-template-columns:64px minmax(0,1fr);column-gap:16px}
- .site-preview.early-classic #pricing .pn-6 .pn-picture{width:64px;height:68px}
-}
-@media(max-width:360px){
- .site-preview.early-classic #pricing .pn-5 .pn-term,.site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1){grid-template-columns:48px minmax(0,1fr);column-gap:12px;padding-inline:10px}
- .site-preview.early-classic #pricing .pn-5 .pn-term .pn-picture,.site-preview.early-classic #pricing .pn-5 .pn-term:not(.pn-term-1) .pn-picture{width:48px;height:58px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-5 .pn-term-2:not(.pn-term-1) dd{font-size:18px}
- .site-preview.early-classic #pricing .pn-6 .pn-term{grid-template-columns:52px minmax(0,1fr);column-gap:12px;padding-inline:36px;min-height:230px}
- .site-preview.early-classic #pricing .pn-6 .pn-picture{width:52px;height:58px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-6 dt{font-size:14px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-6 dd{font-size:25px}
- html[data-font-pair] .site-preview.early-classic #pricing .pn-6 .pn-term-2 dd{font-size:18px}
 }

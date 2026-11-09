@@ -104,12 +104,12 @@ export function createPencilDrawing(svg,artwork,{paper=false}={}){
     for(const animation of animations){animation.onfinish=null;animation.cancel();}
     animations=[];
   }
-  function prepare(treatment='1'){
+  function prepare(){
     finish();strokes=[];
     paperHatches?.replaceChildren();
     for(const {kind,layer} of layers){
       layer.replaceChildren();
-      for(const pass of pencilPasses(treatment,kind==='details')){
+      for(const pass of pencilPasses(kind==='details')){
         const path=pencilElement('path',{d:pass.d,fill:'none',stroke:'white','stroke-width':pass.width,'stroke-linecap':'round','stroke-linejoin':'round',transform:`rotate(${pass.angle} 500 500)`});
         layer.append(path);strokes.push({path,kind,start:pass.start,end:pass.end});
         if(kind==='background'&&paperHatches){
@@ -118,7 +118,7 @@ export function createPencilDrawing(svg,artwork,{paper=false}={}){
       }
     }
     grain.replaceChildren();
-    const finalPass=pencilPasses('1').at(-1);
+    const finalPass=pencilPasses().at(-1);
     const finalStroke=pencilElement('path',{d:finalPass.d,fill:'none',stroke:'white','stroke-width':finalPass.width,'stroke-linecap':'round',transform:`rotate(${finalPass.angle} 500 500)`});
     grain.append(finalStroke);strokes.push({path:finalStroke,kind:'grain',start:0,end:1});
     for(const path of [...outlines,...strokes.map(stroke=>stroke.path)]){

@@ -1,5 +1,5 @@
 import {drawingEnabled,entryProgress,segmentProgress} from './drawing-model.js?v=__VERSION__';
-import {drawingTreatments,pencilDuration,nextServiceDelay} from './hatching-model.js?v=__VERSION__';
+import {pencilDuration,nextServiceDelay} from './hatching-model.js?v=__VERSION__';
 import {pencilArtwork} from './pencil-artwork-data.js?v=__VERSION__';
 import {createPencilDrawing} from './pencil-renderer.js?v=__VERSION__';
 
@@ -9,7 +9,6 @@ try{if(parent!==window)search=parent.location.search;}catch{/* Standalone previe
 const params=new URLSearchParams(search);
 let viewport={enabled:drawingEnabled({choice:params.get('motion'),capture:params.get('capture')==='1'}),frameTop:0,viewportHeight:innerHeight,toolbarHeight:0,near:true};
 let active,queued=false,viewportReceived=parent===window;
-let treatment=drawingTreatments.some(item=>item.id===params.get('drawing'))?params.get('drawing'):'1';
 const easing='cubic-bezier(.22,1,.36,1)';
 const serviceStarts=new Map();
 
@@ -50,7 +49,7 @@ function finishPicture(picture,remember=true){
 }
 function preparePicture(picture){
   if(picture.started)return;
-  picture.prepare(treatment);
+  picture.prepare();
   if(picture.caption)picture.caption.style.opacity='0';
   picture.svg.dataset.pencilState='waiting';
 }
@@ -75,7 +74,6 @@ function setActive(next){
     if(pending)for(const {path,marker} of line.paths){path.style.strokeDasharray='1';path.style.strokeDashoffset='1';if(marker)path.removeAttribute('marker-end');}
   }
   for(const picture of pictures){if(active)preparePicture(picture);else finishPicture(picture,false);}
-  const replay=document.querySelector('[data-drawing-replay]');if(replay)replay.disabled=!active;
   document.dispatchEvent(new CustomEvent('drawing:motion',{detail:{enabled:active}}));
 }
 function revealLine(line){
@@ -90,8 +88,8 @@ function revealLine(line){
 }
 function startPicture(picture,delay){
   picture.started=true;picture.svg.dataset.pencilState='drawing';
-  const duration=pencilDuration(picture.kind,treatment),startedAt=performance.now();
-  const softService=picture.service&&treatment==='1';
+  const duration=pencilDuration(picture.kind),startedAt=performance.now();
+  const softService=picture.service;
   picture.svg.dataset.pencilDelay=String(delay);picture.svg.dataset.pencilDuration=String(duration);
   if(softService){
     const opacity=Number(getComputedStyle(picture.svg).opacity);
@@ -142,39 +140,15 @@ function render(){
 }
 function schedule(){if(!queued){queued=true;requestAnimationFrame(()=>{queued=false;render();});}}
 
-const switcher=document.querySelector('.drawing-style-switch');
-const choices=[...document.querySelectorAll('[data-drawing-choice]')];
-function selectTreatment(value,{focus=false,share=false,replay=true}={}){
-  const selected=drawingTreatments.find(item=>item.id===String(value))??drawingTreatments[0];treatment=selected.id;
-  for(const choice of choices){const current=choice.dataset.drawingChoice===treatment;choice.setAttribute('aria-selected',String(current));choice.tabIndex=current?0:-1;if(current&&focus)choice.focus({preventScroll:true});}
-  const name=document.querySelector('[data-drawing-name]');if(name)name.textContent=selected.name;
-  document.querySelector('#pencil-preview')?.setAttribute('aria-labelledby',`drawing-style-${treatment}`);
-  if(replay)serviceStarts.clear();
-  if(replay)for(const picture of pictures){
-    const bounds=picture.svg.getBoundingClientRect(),inView=isDisplayed(picture,bounds)&&viewport.frameTop+bounds.top<viewport.viewportHeight&&viewport.frameTop+bounds.bottom>viewport.toolbarHeight;
-    const pending=!picture.started;finishPicture(picture,false);
-    if(active&&(pending||inView)){picture.started=false;preparePicture(picture);}
-  }
-  if(share){const url=new URL(location.href);url.searchParams.set('drawing',treatment);history.replaceState(null,'',url);}
-  schedule();
-}
-switcher?.addEventListener('click',event=>{const choice=event.target.closest('[data-drawing-choice]');if(choice)selectTreatment(choice.dataset.drawingChoice,{share:true});else if(event.target.closest('[data-drawing-replay]'))selectTreatment(treatment);});
-switcher?.addEventListener('keydown',event=>{
-  const choice=event.target.closest('[data-drawing-choice]');if(!choice)return;
-  const index=choices.indexOf(choice),next=event.key==='Home'?0:event.key==='End'?choices.length-1:event.key==='ArrowRight'?(index+1)%choices.length:event.key==='ArrowLeft'?(index+choices.length-1)%choices.length:undefined;
-  if(next===undefined)return;event.preventDefault();selectTreatment(choices[next].dataset.drawingChoice,{share:true,focus:true});
-});
-addEventListener('popstate',()=>selectTreatment(new URLSearchParams(location.search).get('drawing')));
 document.addEventListener('drawing:viewport',event=>{viewportReceived=true;viewport=event.detail;schedule();});
 document.addEventListener('visibilitychange',schedule);reduced.addEventListener('change',schedule);
 document.addEventListener('scroll',schedule,{passive:true,capture:true});
-new MutationObserver(schedule).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['class','hidden','aria-hidden','data-about-scene','data-ending-design','data-consultation-art','data-fonts-ready']});
+new MutationObserver(schedule).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['class','hidden','aria-hidden','data-fonts-ready']});
 document.fonts?.ready.then(schedule);
 if(parent===window){
   const standalone=()=>{viewport={...viewport,viewportHeight:innerHeight};schedule();};
   addEventListener('scroll',standalone,{passive:true});addEventListener('resize',standalone);addEventListener('pageshow',standalone);
 }
-selectTreatment(treatment,{replay:false});
 setActive(viewportReceived&&viewport.enabled&&!reduced.matches);
 if(parent===window)render();
 else try{parent.document.dispatchEvent(new Event('site:layout'));}catch{/* Cross-origin previews do not notify a parent. */}

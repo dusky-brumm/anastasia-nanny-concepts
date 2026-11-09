@@ -9,7 +9,7 @@ const selection=JSON.parse(await readFile('src/site/selection.json','utf8'));
 assert.deepEqual(selection.blocks.map(({id})=>id),['header','hero','service','about','process','pricing','reviews','apply','footer']);
 assert.equal((home.match(/data-selected-block=/g)||[]).length,9);
 assert.equal((home.match(/data-block-document=/g)||[]).length,9);
-assert.doesNotMatch(home,/<iframe\b|data-design-navigation|data-assembly-choice|data-font-choice|data-heading-choice|data-body-choice|data-about-choice|font-switcher|artwork-library/);
+assert.doesNotMatch(home,/<iframe\b|data-design-navigation|data-assembly-choice|data-font-choice|data-heading-choice|data-body-choice|data-about-choice|font-switcher|artwork-library|data-(?:ending|scene|drawing|consultation|pricing|review)-choice/);
 assert.equal((home.match(/<main\b/g)||[]).length,1);
 assert.equal((home.match(/<h1\b/g)||[]).length,1);
 assert.match(home,/data-font-pair="5" data-body-font="manrope"/);
@@ -23,7 +23,7 @@ for(const {id} of selection.blocks){
 const ids=[...home.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]);
 assert.equal(new Set(ids).size,ids.length,'Merged drawings and fields must keep unique IDs');
 assert.match(home,/Как проходит подбор/);assert.match(home,/data-about-design="1"/);
-assert.match(home,/s-form-pencil/);assert.match(home,/consultation-picture/);
+assert.match(home,/s-form-pencil/);assert.match(home,/ending-picture--cups/);
 assert.match(home,/data-request-flow="telegram"/);assert.doesNotMatch(home,/class="s-draft"/);
 assert.equal((home.match(/<(?:input|textarea)\b/g)||[]).length,3);
 assert.match(home,/srcset="[^\"]*portrait-480\.webp 480w/);
@@ -60,7 +60,7 @@ assert.equal(retired.length,9);
 for(const {file} of retired){assert.ok(!catalog.some(item=>item.file===file));await assert.rejects(stat('src/site/'+file),{code:'ENOENT'});await assert.rejects(stat('out/'+file),{code:'ENOENT'});}
 // Optional About backdrops and figure layers belong to the selected drawing
 // mode/current story and keep their own cap within the full site budget.
-const optionalAboutFiles=['about-scene-panorama','about-photo-scene-family-registered-20261109','about-photo-scene-rainbow-registered-20261109','about-photo-scene-cafe-registered-20261109','about-photo-scene-park-registered-20261109','about-figure-family-20261110','about-figure-cafe-20261110','about-figure-park-20261110'];
+const optionalAboutFiles=['about-photo-scene-family-registered-20261109','about-photo-scene-rainbow-registered-20261109','about-photo-scene-cafe-registered-20261109','about-photo-scene-park-registered-20261109','about-figure-family-20261110','about-figure-cafe-20261110','about-figure-park-20261110'];
 let optionalAboutBytes=0;
 for(const name of optionalAboutFiles){
  try{optionalAboutBytes+=(await stat('out/media/'+name+'.webp')).size;}
@@ -68,5 +68,5 @@ for(const name of optionalAboutFiles){
 }
 assert.ok(bytes-optionalAboutBytes<2_800_000,`Base payload budget exceeded: ${bytes-optionalAboutBytes}`);
 assert.ok(optionalAboutBytes<1_000_000,`Optional drawing budget exceeded: ${optionalAboutBytes}`);
-assert.ok(bytes<3_800_000,`Full comparison payload budget exceeded: ${bytes}`);
+assert.ok(bytes<3_800_000,`Full site payload budget exceeded: ${bytes}`);
 console.log(`PASS: one document, nine complete blocks, no frame resizing; ${files} files, ${bytes} bytes (${optionalAboutBytes} optional About drawings), ${links} local assets; ${catalog.length} artwork hashes.`);

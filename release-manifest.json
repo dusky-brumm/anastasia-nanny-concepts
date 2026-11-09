@@ -1,5 +1,5 @@
 {
-  "build": "9a051f5127",
+  "build": "87462cb3b7",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1657,6 +1657,12 @@
       "style": "Match adjacent profile and interview illustrations: flatter milk pages, broken colored-pencil outline, sparse diagonal hatching, no smooth 3D shading.",
       "animation": "Existing normalized geometry and timing retained",
       "retained_original": "media/service-book-light-pages-20261109.webp"
+    },
+    "hero_photo_closer_20261109": {
+      "photo_width_before": 390,
+      "photo_width_after": 429,
+      "desktop_shift_px": 24,
+      "layout": "Single existing hero; preserve text alignment, printed border, caption, backing and mobile centering"
     }
   },
   "reviewed_decisions": {
@@ -1680,9 +1686,9 @@
       "passed": 41,
       "failed": 0
     },
-    "build": "9a051f5127",
-    "visual_check": "Removed only the example-profile link from the service introduction; adjacent service illustrations and drawing animation retained.",
-    "static_check": "PASS: 60 files, 3178229 bytes including 745564 optional About drawings; 111 local assets; 45 artwork hashes.",
+    "build": "87462cb3b7",
+    "visual_check": "Hero photo 390 to 429px (+10%), print frame 414 to 453px; whole photo assembly shifted 24px toward the text on wide desktops. Verified 1440px, 1024px, 866px and 390px viewports; text alignment and mobile centering retained.",
+    "static_check": "PASS: 60 files, 3178364 bytes including 745564 optional About drawings; 111 local assets; 45 artwork hashes.",
     "preserved": "All earlier site edits, original source photographs, stories, pricing, reviews, application and footer retained."
   },
   "completed_css_sha256": {

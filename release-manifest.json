@@ -1,5 +1,5 @@
 {
-  "build": "f598ac74cc",
+  "build": "9a051f5127",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1680,9 +1680,9 @@
       "passed": 41,
       "failed": 0
     },
-    "build": "f598ac74cc",
-    "visual_check": "Service book restyled to match adjacent pencil illustrations. Chrome 1440 and 390 px: transparent artwork on blue, unchanged composition and dimensions, complete drawing animation with image mask removed and captions at full opacity. No overflow or browser errors.",
-    "static_check": "PASS: 60 files, 3178399 bytes including 745564 optional About drawings; 111 local assets; 45 artwork hashes. Existing payload caps retained.",
+    "build": "9a051f5127",
+    "visual_check": "Removed only the example-profile link from the service introduction; adjacent service illustrations and drawing animation retained.",
+    "static_check": "PASS: 60 files, 3178229 bytes including 745564 optional About drawings; 111 local assets; 45 artwork hashes.",
     "preserved": "All earlier site edits, original source photographs, stories, pricing, reviews, application and footer retained."
   },
   "completed_css_sha256": {

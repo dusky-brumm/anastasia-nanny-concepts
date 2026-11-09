@@ -1,5 +1,5 @@
 {
-  "build": "ea677514f8",
+  "build": "f598ac74cc",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1651,6 +1651,12 @@
         1,
         3
       ]
+    },
+    "service_book_hand_20261109": {
+      "file": "media/service-book-hand-pencil-20261109.webp",
+      "style": "Match adjacent profile and interview illustrations: flatter milk pages, broken colored-pencil outline, sparse diagonal hatching, no smooth 3D shading.",
+      "animation": "Existing normalized geometry and timing retained",
+      "retained_original": "media/service-book-light-pages-20261109.webp"
     }
   },
   "reviewed_decisions": {
@@ -1674,9 +1680,9 @@
       "passed": 41,
       "failed": 0
     },
-    "build": "ea677514f8",
-    "visual_check": "About treatments 2 and 4 enlarged. Four registered photo environments checked at 1440 px; all four photo anchors verified at 320 px and cafe at 390 px. Tablet 900 px stacks artwork above copy. Original photo markup, text, order and scenes 1/3 preserved. No horizontal overflow. Decoration separated from copy and controls.",
-    "static_check": "PASS: 60 files, 3157975 bytes including 745564 optional About drawings; 111 local assets; 44 artwork hashes. Original payload caps retained.",
+    "build": "f598ac74cc",
+    "visual_check": "Service book restyled to match adjacent pencil illustrations. Chrome 1440 and 390 px: transparent artwork on blue, unchanged composition and dimensions, complete drawing animation with image mask removed and captions at full opacity. No overflow or browser errors.",
+    "static_check": "PASS: 60 files, 3178399 bytes including 745564 optional About drawings; 111 local assets; 45 artwork hashes. Existing payload caps retained.",
     "preserved": "All earlier site edits, original source photographs, stories, pricing, reviews, application and footer retained."
   },
   "completed_css_sha256": {

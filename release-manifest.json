@@ -1,5 +1,5 @@
 {
-  "build": "b33cbef5b5",
+  "build": "16dc1b0d0b",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1531,6 +1531,19 @@
       ],
       "fields": "Same single form, same three fields and Telegram draft flow",
       "illustration": "media/consultation-tea-pencil-20261109.webp"
+    },
+    "service_drawing_20261109": {
+      "sequence": [
+        "profile: paper then contents",
+        "book: pages then notes and pencil",
+        "interview: table and chairs then women"
+      ],
+      "image_stagger_ms": 500,
+      "caption_offset_ms": 500,
+      "replay": "once per page visit",
+      "mobile": "schedule only visible cards",
+      "reduced_motion": "complete original artwork and text",
+      "documentation": "docs/service-drawing-20261109.md"
     }
   },
   "reviewed_decisions": {
@@ -1551,12 +1564,12 @@
   },
   "validation": {
     "tests": {
-      "passed": 38,
+      "passed": 41,
       "failed": 0
     },
-    "build": "82fd66feec",
-    "visual_check": "Chrome viewports 1440x1000, 390x1000, 320x1000 and 640x320. Header remains at viewport top 0, with stable height 76px desktop/68px mobile. Native anchors place sections at 88px desktop/80px mobile. Active labels match the section at the measured scroll position, independently of the URL hash. Pencil underline inspected on desktop and open mobile menu. Link selection closes the menu, Escape closes and returns focus, landscape menu is limited to 236px with its own overflow. Normal smooth navigation reaches the correct active section. No horizontal overflow or browser console errors.",
-    "static_check": "PASS: 64 files, 3552044 bytes, 814508 optional About drawings, 108 local references and 35 artwork hashes. Existing package caps retained.",
+    "build": "16dc1b0d0b",
+    "visual_check": "Browser scrubber at 1200, 2400, 3400 and 4800 ms: paper before portrait and writing; table and chairs before women. Mobile 390/320 px: no horizontal overflow; third card waits below viewport and starts on entry. Motion-off restores all original pictures and captions. Browser error log empty.",
+    "static_check": "PASS: one document, nine blocks, 62 files; 3332741 bytes including 814508 optional About drawings; 107 local assets; 36 artwork hashes. Existing payload caps retained.",
     "preserved": "All chosen content, pictures, footer 3, review cards and comparison choices remain."
   },
   "completed_css_sha256": {

@@ -195,6 +195,7 @@ const lines=[...document.querySelectorAll('svg[data-ink-line]')].map(svg=>({
 // The original pixels stay still while overlapping pencil passes reveal them.
 const pictureGroups=new Map();
 const pictures=[...document.querySelectorAll('svg[data-chalk-picture],#process svg[data-early-art],#apply svg[data-early-art]')].map(svg=>{
+  if(svg.hasAttribute('data-service-drawing'))return null;
   const image=svg.querySelector('image'),box=svg.viewBox.baseVal;
   if(!image||!box.width||!box.height)return null;
   svg.dataset.chalkPicture='';
@@ -312,6 +313,147 @@ if(parent===window){
 setActive(viewportReceived&&viewport.enabled&&!reduced.matches);
 if(parent===window)render();
 else try{parent.document.dispatchEvent(new Event('site:layout'));}catch{/* Standalone cross-origin previews need no parent notification. */}
+
+})();
+(()=>{// Coordinates follow the existing artwork, normalized to a 1000 × 1000 square.
+// Each part traces its contour before short pencil passes reveal its texture.
+const part=(name,at,duration,outline,region,width=16,blank=null)=>({name,at,duration,outline,region,width,blank});
+const serviceDrawingPlans={
+  profile:[
+    part('back-paper',0,620,'M230 745L970 380L800 980L170 925L230 745','M230 745L780 365L985 390L810 1000L155 945Z',20),
+    part('paper',240,1000,'M30 740L120 105L800 20L690 745L30 740','M0 770L110 80L820 0L710 770Z M210 115L650 115L650 495L210 495Z M130 510H590V655H130Z',18,'M210 115H650V495H210Z M130 510H590V655H130Z'),
+    part('portrait',1090,1050,'M230 460Q270 400 350 400L390 335Q330 310 330 240Q310 170 385 145Q450 90 520 150Q575 165 570 230L590 270L560 290Q565 345 510 345L490 395L590 460 M335 270Q265 310 285 235Q245 200 305 190 M345 230Q420 245 510 160','M205 100H665V505H205Z',16),
+    part('profile-lines',2070,480,'M155 565Q265 520 355 555T545 550 M155 630Q270 595 365 620T535 615','M125 505H600V665H125Z',22),
+    part('check',2440,350,'M825 260L865 305L970 175','M790 160H1000V340H790Z',30),
+  ],
+  book:[
+    part('book-binding',0,650,'M25 330L90 940Q280 820 470 840Q640 760 885 700L785 50 M45 285L115 900Q310 790 475 815Q650 735 870 670','M0 270L85 970L470 865L915 715L805 10L765 15L850 650L470 785L120 865L65 260Z',17),
+    part('blank-pages',280,1150,'M60 260Q250 70 400 205L475 785Q300 670 140 865L60 260 M400 205Q545 100 760 30L850 640Q620 670 475 785 M405 225L468 750','M45 250Q250 70 405 190Q560 90 785 0L885 670Q610 710 475 835Q295 740 110 920Z M455 285L750 190L815 570L525 680Z',14,'M455 285L750 190L815 570L525 680Z'),
+    part('book-notes',1400,700,'M475 350Q565 275 640 280L720 235 M490 465Q575 395 650 400L730 360','M450 250L770 160L795 455L490 570Z',22),
+    part('book-check',2030,340,'M707 520L737 555L775 445','M675 430H805V600H675Z',25),
+    part('pencil',2280,650,'M590 985L958 665Q995 620 975 665L625 975L590 985 M620 950L938 680 M650 960L962 700','M565 1000L610 900L925 630Q985 590 1000 665L1000 740L655 1000Z',16),
+  ],
+  interview:[
+    part('table',0,820,'M278 540Q490 515 704 545L698 590Q500 640 280 595 M482 625L475 825Q465 920 405 955L580 955Q522 920 512 825L514 625','M265 520L710 520L720 610L550 640L552 825L610 975L390 995L390 940L455 815L460 640L265 615Z',15),
+    part('left-chair',210,900,'M111 490Q20 425 10 520Q5 590 75 820L250 850 M35 535L110 815 M100 870L80 980 M270 860L298 985','M0 455H110L130 625L115 675L155 805L285 810L315 1000H270L250 900L110 895L95 1000H55L75 865L0 585Z',20),
+    part('right-chair',440,880,'M910 490Q1020 420 990 565L904 860L705 875 M961 560L880 820 M890 890L930 980 M705 890L680 980','M905 455H1000V610L930 850L905 890L955 1000H905L875 915H725L705 1000H650L680 865L820 795L870 640L905 610Z',20),
+    part('interviewer',1250,1300,'M165 260Q130 210 145 130Q155 20 235 20Q325 15 335 120L335 215L295 265L275 310 M170 155Q230 185 310 80 M160 295Q110 345 110 545L155 640L275 620L298 500L370 480L410 450L445 475 M155 640L120 790L300 860L410 980L455 930L385 690L280 620 M150 700L340 755 M145 750L360 800','M115 0H350V285L305 300L320 405L380 420L435 390L475 460L465 535L370 580L310 590L285 625L400 645L485 940L420 1000H300L270 875L110 835L95 625L105 545L95 430L135 280L110 230Z',14),
+    part('nanny',1700,1300,'M655 265Q615 215 640 130Q630 20 730 20Q815 15 845 105Q890 155 850 240L815 270 M665 80Q740 205 820 145 M750 295Q850 280 890 510L895 610L795 635L660 610L605 570L610 480L650 325L680 285 M795 635L855 690L800 865L680 880L645 970L550 960L545 900L610 680L680 625 M625 735L575 920 M780 710L690 830','M625 0H855L900 145L875 255L835 285L915 445L920 635L860 660L895 700L830 890L690 905L665 1000H530L515 915L550 795L600 660L645 630L575 595L565 490L605 365L635 290L600 230L600 130Z',14),
+    part('interview-notes',2770,300,'M350 530L425 450L460 465L430 535Z M350 405L385 480','M330 380H475V550H330Z',13),
+  ],
+};
+
+function serviceDrawingDelay(index){return 500+Math.max(0,index)*500;}
+
+// A continuous, close-set zigzag keeps the original dry-pencil pixels intact.
+function serviceHatching(spacing=24){
+  let d='';
+  for(let row=0;row<=Math.ceil(1080/spacing);row++){
+    const y=-40+row*spacing,left=row%2?1040:-40,right=row%2?-40:1040;
+    d+=`${row?'L':'M'}${left} ${y-5}L${right} ${y+5}`;
+  }
+  return d;
+}
+
+
+// One drawing per visit. The ordinary artwork and text are the no-JS fallback.
+const namespace='http://www.w3.org/2000/svg';
+const preference=matchMedia('(prefers-reduced-motion: reduce)');
+const node=(name,attributes)=>{const element=document.createElementNS(namespace,name);for(const [key,value] of Object.entries(attributes))element.setAttribute(key,String(value));return element;};
+let sequence=0,enabled=false,queued=false;
+let frame={frameTop:0,viewportHeight:innerHeight,toolbarHeight:0,near:true};
+const drawings=[...document.querySelectorAll('#service [data-service-drawing]')].map(svg=>{
+  const plan=serviceDrawingPlans[svg.dataset.serviceDrawing],image=svg.querySelector('image');
+  const card=svg.closest('.study'),caption=card?.querySelector('.study-caption'),box=svg.viewBox.baseVal;
+  if(!plan||!image||!caption||!image.animate)return null;
+  const id=`service-pencil-${++sequence}`,defs=node('defs',{});
+  const mask=node('mask',{id,maskUnits:'userSpaceOnUse',x:box.x,y:box.y,width:box.width,height:box.height,style:'mask-type:alpha'});
+  const group=node('g',{transform:`translate(${box.x} ${box.y}) scale(${box.width/1000} ${box.height/1000})`});
+  const strokes=[],paper=[];
+  for(const [index,part] of plan.entries()){
+    const clipId=`${id}-part-${index}`,clip=node('clipPath',{id:clipId,clipPathUnits:'userSpaceOnUse'});
+    clip.append(node('path',{d:part.region,'clip-rule':'evenodd'}));defs.append(clip);
+    const layer=node('g',{'clip-path':`url(#${clipId})`});
+    for(const [hatch,d,width,at,duration] of [
+      [false,part.outline,part.width,part.at,part.duration*.62],
+      [true,serviceHatching(),32,part.at+part.duration*.36,part.duration*.64],
+    ]){
+      const path=node('path',{d,fill:'none',stroke:'white','stroke-width':width,'stroke-linecap':'round','stroke-linejoin':'round',pathLength:1});
+      layer.append(path);strokes.push({path,at,duration,hatch});
+    }
+    group.append(layer);
+    if(part.blank){
+      const sheet=node('path',{d:part.blank,fill:'#faf8f2',opacity:0,transform:group.getAttribute('transform')});
+      svg.insertBefore(sheet,image);paper.push({sheet,at:part.at+200});
+    }
+  }
+  // A final fine pass catches edge grain between the hand-traced parts.
+  const last=Math.max(...plan.map(part=>part.at+part.duration));
+  const grain=node('path',{d:serviceHatching(18),fill:'none',stroke:'white','stroke-width':26,'stroke-linecap':'round',pathLength:1});
+  group.append(grain);strokes.push({path:grain,at:last-100,duration:350,hatch:true});
+  mask.append(group);defs.append(mask);svg.prepend(defs);
+  return {svg,image,card,caption,id,strokes,paper,animations:[],started:false};
+}).filter(Boolean);
+
+function finish(drawing){
+  drawing.started=true;
+  drawing.image.removeAttribute('mask');
+  drawing.caption.style.opacity='';drawing.caption.style.transform='';
+  drawing.card.dataset.serviceDrawingState='complete';
+  for(const animation of drawing.animations){animation.onfinish=null;animation.cancel();}
+  drawing.animations=[];
+}
+function prepare(drawing){
+  if(drawing.started)return;
+  for(const {path} of drawing.strokes){path.style.strokeDasharray='1';path.style.strokeDashoffset='1';}
+  drawing.image.setAttribute('mask',`url(#${drawing.id})`);
+  drawing.caption.style.opacity='0';
+  drawing.card.dataset.serviceDrawingState='waiting';
+}
+function start(drawing,delay){
+  drawing.started=true;drawing.card.dataset.serviceDrawingState='drawing';
+  for(const {path,at,duration,hatch} of drawing.strokes){
+    drawing.animations.push(path.animate([{strokeDashoffset:'1'},{strokeDashoffset:'0'}],{
+      delay:delay+at,duration,easing:hatch?'linear':'cubic-bezier(.4,0,.3,1)',fill:'forwards',
+    }));
+  }
+  const finalStroke=drawing.animations.at(-1);
+  for(const {sheet,at} of drawing.paper)drawing.animations.push(sheet.animate([{opacity:0},{opacity:1}],{delay:delay+at,duration:320,fill:'forwards'}));
+  drawing.animations.push(drawing.caption.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{
+    delay:delay+500,duration:650,easing:'cubic-bezier(.22,1,.36,1)',fill:'both',
+  }));
+  // The final stroke owns cleanup; scrolling never restarts a completed picture.
+  finalStroke.onfinish=()=>finish(drawing);
+}
+function render(){
+  queued=false;if(!enabled||document.hidden||!frame.near)return;
+  const visible=[];
+  for(const drawing of drawings){
+    if(drawing.started)continue;
+    const bounds=drawing.svg.getBoundingClientRect(),top=frame.frameTop+bounds.top,bottom=frame.frameTop+bounds.bottom;
+    if(!bounds.width||!bounds.height)continue;
+    if(bottom<=frame.toolbarHeight){finish(drawing);continue;}
+    if(top<frame.viewportHeight*.88&&bottom>frame.toolbarHeight)visible.push(drawing);
+  }
+  // Desktop cards share one stagger; narrow layouts wait for each actual entry.
+  visible.forEach((drawing,index)=>start(drawing,serviceDrawingDelay(index)));
+}
+function schedule(){if(!queued){queued=true;requestAnimationFrame(render);}}
+function setEnabled(next){
+  enabled=next&&!preference.matches;
+  for(const drawing of drawings){if(enabled)prepare(drawing);else finish(drawing);}
+  schedule();
+}
+document.addEventListener('drawing:motion',event=>setEnabled(event.detail.enabled));
+document.addEventListener('drawing:viewport',event=>{frame=event.detail;schedule();});
+document.addEventListener('visibilitychange',schedule);
+preference.addEventListener('change',()=>setEnabled(document.documentElement.dataset.drawingMotion==='on'));
+if(parent===window){
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',()=>{frame.viewportHeight=innerHeight;schedule();});
+  addEventListener('pageshow',schedule);
+}
+setEnabled(document.documentElement.dataset.drawingMotion==='on');
 
 })();
 (()=>{

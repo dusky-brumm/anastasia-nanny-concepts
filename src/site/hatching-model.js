@@ -5,9 +5,13 @@ export const drawingTreatments=[
   {id:'3',name:'Перекрёстная штриховка'},
 ];
 export const drawingTiming={contour:.25,background:.43,details:.32};
-export function pencilDuration(kind){return ({profile:3040,book:3180,interview:3320}[kind]??3180)/3;}
-export const servicePictureDelay=index=>500+Math.max(0,index)*500;
-export const nextServiceDelay=(now,lastStart=-Infinity)=>Math.max(500,lastStart+500-now);
+export function pencilDuration(kind,treatment='1'){
+  const serviceDuration={profile:3040,book:3180,interview:3320}[kind];
+  const duration=(serviceDuration??3180)/3;
+  return serviceDuration&&treatment==='1'?duration*.65:duration;
+}
+export const servicePictureDelay=index=>Math.max(0,index)*20;
+export const nextServiceDelay=(now,lastStart=-Infinity)=>Math.max(0,lastStart+20-now);
 const point=(x,y)=>`${Math.round(x)} ${Math.round(y)}`;
 
 function rows(spacing,short=false){

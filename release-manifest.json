@@ -1,5 +1,5 @@
 {
-  "build": "c0abe4f706",
+  "build": "2f11107dc7",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1720,6 +1720,21 @@
       "style": "Light colored-pencil sleeve, hand, clothing and leg continuations; opacity 0.82 and fading outer edge",
       "registration": "Opaque photo rectangle coordinates project each generated foreground layer from the real image viewport; generated photo center removed",
       "preserved": "Original source photo hashes, existing background artwork, story copy, geometry, static rendering and other drawing animations"
+    },
+    "faster_service_long_strokes_20261110": {
+      "treatment": "1: Длинные штрихи",
+      "duration_multiplier": 0.65,
+      "durations_ms": [
+        658.6666666666667,
+        689,
+        719.3333333333334
+      ],
+      "activation_gap_ms": 20,
+      "first_activation_delay_ms": 0,
+      "fade": "35% of baseline opacity to baseline, running alongside the first 65% of the pencil drawing",
+      "captions": "Enter during drawing; finish before the faster drawing ends",
+      "cleanup": "Cancel fade on completion, replay and motion-off; restore underlying artwork opacity",
+      "preserved": "Other treatment durations, stroke geometry, artwork files, About static continuations and layout"
     }
   },
   "reviewed_decisions": {
@@ -1743,16 +1758,16 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "c0abe4f706",
-    "visual_check": "Added three independently registered, static transparent pencil continuations for cropped figures in family/cafe/park About photographs. Desktop screenshots of each and 390px phone verified; original photo hashes unchanged; other About modes hide the new layers; no horizontal overflow.",
-    "static_check": "PASS: one document, nine blocks; 61 files, 3485399 bytes including 856950 optional About drawings; 110 local assets; 52 artwork hashes.",
+    "build": "2f11107dc7",
+    "visual_check": "Selected service long strokes run 35% faster (659/689/719ms), with parallel opacity fade and 0/20/40ms activation offsets. DOM observations confirmed drawing masks and opacity 0.336 during entry, then unmasked images at baseline opacity 0.96 and fully visible captions; replay, motion-off and 390px layout verified.",
+    "static_check": "PASS: one document, nine blocks; 61 files, 3485940 bytes including 856950 optional About drawings; 110 local assets; 52 artwork hashes.",
     "preserved": "Completed accents/illustration changes from source 339eb191e89208f58f133ce68e198c9c9308cac4; hero/photo layout, original photographs and all illustration files unchanged."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "d4c8915977",
+  "previous_confirmed_build": "c0abe4f706",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

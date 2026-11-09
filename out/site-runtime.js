@@ -174,9 +174,13 @@ const drawingTreatments=[
   {id:'3',name:'Перекрёстная штриховка'},
 ];
 const drawingTiming={contour:.25,background:.43,details:.32};
-function pencilDuration(kind){return ({profile:3040,book:3180,interview:3320}[kind]??3180)/3;}
-const servicePictureDelay=index=>500+Math.max(0,index)*500;
-const nextServiceDelay=(now,lastStart=-Infinity)=>Math.max(500,lastStart+500-now);
+function pencilDuration(kind,treatment='1'){
+  const serviceDuration={profile:3040,book:3180,interview:3320}[kind];
+  const duration=(serviceDuration??3180)/3;
+  return serviceDuration&&treatment==='1'?duration*.65:duration;
+}
+const servicePictureDelay=index=>Math.max(0,index)*20;
+const nextServiceDelay=(now,lastStart=-Infinity)=>Math.max(0,lastStart+20-now);
 const point=(x,y)=>`${Math.round(x)} ${Math.round(y)}`;
 
 function rows(spacing,short=false){
@@ -393,7 +397,7 @@ const pictures=[...document.querySelectorAll('svg[data-pencil-art]')].map(svg=>{
   const service=svg.hasAttribute('data-service-drawing');
   return {...drawing,key,service,kind:svg.dataset.serviceDrawing,group:svg.closest('[data-block]')??svg.parentElement,
     caption:service?svg.closest('.study')?.querySelector('.study-caption'):null,
-    ready:!image?.hasAttribute('data-pencil-src'),mediaRequested:false,started:false,captionAnimation:null,
+    ready:!image?.hasAttribute('data-pencil-src'),mediaRequested:false,started:false,captionAnimation:null,fadeAnimation:null,
   };
 }).filter(Boolean);
 
@@ -404,6 +408,7 @@ function finishLine(line,remember=true){
 }
 function finishPicture(picture,remember=true){
   picture.finish();picture.captionAnimation?.cancel();picture.captionAnimation=null;
+  picture.fadeAnimation?.cancel();picture.fadeAnimation=null;
   if(picture.caption){picture.caption.style.opacity='';picture.caption.style.transform='';}
   picture.svg.dataset.pencilState='complete';
   if(remember)picture.started=true;
@@ -450,9 +455,14 @@ function revealLine(line){
 }
 function startPicture(picture,delay){
   picture.started=true;picture.svg.dataset.pencilState='drawing';
-  const duration=pencilDuration(picture.kind),startedAt=performance.now();
+  const duration=pencilDuration(picture.kind,treatment),startedAt=performance.now();
+  const softService=picture.service&&treatment==='1';
   picture.svg.dataset.pencilDelay=String(delay);picture.svg.dataset.pencilDuration=String(duration);
-  if(picture.caption)picture.captionAnimation=picture.caption.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{delay:delay+500,duration:650/3,easing,fill:'both'});
+  if(softService){
+    const opacity=Number(getComputedStyle(picture.svg).opacity);
+    picture.fadeAnimation=picture.svg.animate([{opacity:opacity*.35},{opacity}],{delay,duration:duration*.65,easing:'ease-out',fill:'backwards'});
+  }
+  if(picture.caption)picture.captionAnimation=picture.caption.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{delay:delay+(softService?duration*.35:500),duration:650/3,easing,fill:'both'});
   picture.start({delay,duration,onFinish:()=>{picture.svg.dataset.pencilElapsed=String(Math.round(performance.now()-startedAt));finishPicture(picture);}});
 }
 function isDisplayed(picture,bounds){

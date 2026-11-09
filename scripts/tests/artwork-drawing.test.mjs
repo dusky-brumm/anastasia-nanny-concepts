@@ -6,9 +6,13 @@ import path from 'node:path';
 import {drawingTreatments,drawingTiming,pencilDuration,servicePictureDelay,nextServiceDelay,pencilPasses} from '../../src/site/hatching-model.js';
 import {pencilArtwork} from '../../src/site/pencil-artwork-data.js';
 
-test('the three service drawings run exactly three times faster and keep their half-second entry stagger',()=>{
-  for(const [kind,previous] of Object.entries({profile:3040,book:3180,interview:3320}))assert.equal(pencilDuration(kind)*3,previous);
-  assert.deepEqual([0,1,2].map(servicePictureDelay),[500,1000,1500]);
+test('the selected long strokes are faster while other treatments keep their duration and service starts are 20ms apart',()=>{
+  for(const [kind,previous] of Object.entries({profile:3040,book:3180,interview:3320})){
+    assert.equal(pencilDuration(kind,'1'),previous/3*.65);
+    for(const treatment of ['2','3'])assert.equal(pencilDuration(kind,treatment),previous/3);
+  }
+  assert.equal(pencilDuration(undefined,'1'),3180/3,'Other site illustrations retain their duration');
+  assert.deepEqual([0,1,2].map(servicePictureDelay),[0,20,40]);
   assert.equal(drawingTiming.contour+drawingTiming.background+drawingTiming.details,1);
 });
 test('three distinct pencil treatments expose visible strokes and finish with overlapping coverage',()=>{
@@ -26,10 +30,12 @@ test('three distinct pencil treatments expose visible strokes and finish with ov
     assert.ok(treatment.at(-1).width>treatment[0].width,'The finishing pass closes the initial pencil gaps');
   }
 });
-test('cards entering on separate frames keep their stagger without reserving time for offscreen cards',()=>{
-  assert.equal(nextServiceDelay(100),500);
-  assert.equal(nextServiceDelay(120,600),980);
-  assert.equal(nextServiceDelay(3000,1100),500);
+test('cards entering on separate frames keep a 20ms activation gap without delaying already separated entries',()=>{
+  assert.equal(nextServiceDelay(100),0);
+  assert.equal(nextServiceDelay(100,100),20);
+  assert.equal(nextServiceDelay(100,120),40);
+  assert.equal(nextServiceDelay(120,100),0);
+  assert.equal(nextServiceDelay(3000,1100),0);
 });
 test('every final raster illustration has contours from its actual unchanged image file',async()=>{
   const assets=JSON.parse(await readFile(new URL('../../docs/pencil-artwork-assets.json',import.meta.url)));

@@ -208,5 +208,12 @@
     "title": "Карандашное продолжение фотографии: park",
     "group": "Иллюстрации",
     "sha256": "2e0467c796778f2c19812143167105761e2702f09b5b6e81ee3d46c8dceb68de"
+  },
+  {
+    "id": "faq-question-pencil",
+    "file": "artwork/vectors/faq-question-pencil.svg",
+    "title": "Вопросительный знак карандашом",
+    "group": "Линии и знаки",
+    "sha256": "e68dd5abd87745a084a5d2ed70215936886b599f0b218333dda5e633b2e49894"
   }
 ]

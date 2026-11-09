@@ -1469,6 +1469,12 @@
         "overflow": false,
         "optional_drawing_bytes": 814508
       }
+    },
+    "pricing_faq_20261109": {
+      "pricing": "Keep the first chalk-circle design and remove only its connecting pencil thread. Other comparison choices remain available.",
+      "question_mark": "Native custom pencil shape using the same ink, filled contours and pressure strokes as the approved review commas; no font glyph or bitmap.",
+      "separation": "80px before the FAQ separator and 56px after it on desktop; 56px/38px on mobile. Pencil-rule mask replaces the straight separator and accordion row borders.",
+      "copy": "Original heading, three questions, answers and price terms unchanged."
     }
   },
   "reviewed_decisions": {
@@ -1492,16 +1498,16 @@
       "passed": 38,
       "failed": 0
     },
-    "build": "dbc9582a9d",
-    "visual_check": "Three About drawing treatments checked in Chrome at 1440, 900, 390 and 320px. All four photo-specific backdrops inspected. No horizontal overflow or console errors. Home/End and URL restoration checked. Original photos, copy and white frames retained. Mobile variant one no longer draws a line through carousel controls.",
-    "static_check": "PASS: one document, nine sections, 62 files, 3578588 bytes, 814508 optional About drawings, 107 local assets, 30 artwork hashes.",
-    "button_contour": "Shared historical -4px inset retained unchanged."
+    "build": "d7b5a9e475",
+    "visual_check": "Pricing circles and FAQ checked in Chrome at 1440, 390 and 320px. Connecting thread removed from markup. New custom pencil question mark matches review commas. Pencil main divider and row rules inspected. FAQ toggles by click and Enter; no overflow or console errors.",
+    "static_check": "PASS: one document, nine blocks, 63 files, 3581242 bytes, 814508 optional About drawings, 109 local assets, 31 artwork hashes.",
+    "button_contour": "Shared -4px contour retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "389820ce96",
+  "previous_confirmed_build": "dbc9582a9d",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

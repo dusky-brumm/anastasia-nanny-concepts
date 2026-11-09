@@ -5,7 +5,7 @@ for(const study of document.querySelectorAll('[data-ending-study]')){
  const title=study.querySelector('[data-ending-title]');
  const panel=study.querySelector(`#${kind}-study-panel`);
  function chooseEnding(value,{focus=false,share=false}={}){
-  const selected=tabs.find(tab=>tab.dataset.endingChoice===String(value))??tabs[0];
+  const selected=tabs.find(tab=>tab.dataset.endingChoice===String(value))??tabs.find(tab=>tab.dataset.endingChoice===study.dataset.endingDefault)??tabs[0];
   for(const tab of tabs){const active=tab===selected;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;}
   study.dataset.endingDesign=selected.dataset.endingChoice;
   title.textContent=selected.dataset.endingName;

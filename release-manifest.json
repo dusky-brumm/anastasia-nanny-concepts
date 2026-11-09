@@ -1493,6 +1493,13 @@
       "reviews": "Neutral white near-rectangular chalk card replaces the gray/yellow cloud texture in the first review design; shared-field design also uses the same white asset.",
       "scope_assumption": "Clarification was requested asynchronously; without a reply, rejected options 2/3 were interpreted as the two generated photo treatments, and the gray/yellow texture as the review swatch. This interpretation was stated in commentary before applying it.",
       "asset_generation": "Built-in imagegen; exact prompts and originals retained in artifacts/restore-selected-20261109. Rejected photo bitmaps retained in source, omitted from live payload."
+    },
+    "family_footer_20261109": {
+      "selection": "Footer design 3, Дом и семья, is now the default in HTML and runtime. Explicit footer query choices still work; application default is unchanged.",
+      "illustration": "Replace the doorway with a native ImageGen illustration of an adult and child walking hand in hand, using the approved process drawings as references. Transparent 277x480 WebP, 22366 bytes; original PNG and exact prompts saved in artifacts.",
+      "background": "Remove the dry-crayon backing from the identity area of design 3. Preserve the clean full-width blue #e1eff7.",
+      "divider": "Move the existing animated pencil loop from above the main links to immediately before the metadata row, replacing its straight top border. Preserve the original path and animation.",
+      "information": "Keep six section links, personal Telegram, channel, copyright, data dialog and back-to-top link."
     }
   },
   "reviewed_decisions": {
@@ -1516,16 +1523,16 @@
       "passed": 38,
       "failed": 0
     },
-    "build": "1c2d68d090",
-    "visual_check": "Chrome viewport 1440, 390 and 320px (content 1425, 375, 305px). Original About design restored with new routes hidden; generated photo options removed. Original pricing circles restored as 1, new studies 2–6; all six controls fit and Home/End tested. Chairs are 297x135 desktop, 118.8x68.4 on phones and 82.8x57.6 on the narrowest breakpoint. Three white review cards on desktop and one per slide on phones. No horizontal overflow or console errors.",
-    "static_check": "PASS: 59 files, 2794021 bytes, 106 local assets, 33 artwork hashes; rejected optional photo drawings absent from the live package. No empty compiled CSS selectors.",
+    "build": "d503f4dd43",
+    "visual_check": "Chrome viewports 1440, 900, 390 and 320px, with content widths 1425, 885, 375 and 305px. Default footer 3, clean identity background and new family drawing verified. Existing divider follows the main content and precedes metadata; old border is 0px. Six navigation links and both Telegram links preserved; privacy dialog opens/closes and keyboard focus reaches bottom links. No horizontal overflow or console errors.",
+    "static_check": "PASS: 59 files, 2797459 bytes, 105 local assets, 34 artwork hashes. Existing 2.8MB base package cap retained.",
     "button_contour": "Original -4px contour retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "d7b5a9e475",
+  "previous_confirmed_build": "1c2d68d090",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

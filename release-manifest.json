@@ -1,5 +1,5 @@
 {
-  "build": "500494ad4d",
+  "build": "d9e8075743",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1803,9 +1803,9 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "500494ad4d",
-    "static_check": "PASS: one document, nine blocks; 51 files, 2677754 bytes including 579244 About drawings; 85 local assets; 52 artwork hashes.",
-    "visual_check": "Desktop 1440px and mobile 390px: same selected cups/blue form and added sage form; white fields; color changes preserve entered name; no horizontal overflow. No retired selectors/tablists. Static registered About drawings retain their alignment and fixed carousel navigation; service drawings finish in 659/689/719ms with 0/20/40ms starts. Legacy design query parameters no longer restore retired variants.",
+    "build": "d9e8075743",
+    "static_check": "PASS: one document, nine blocks; 51 files, 2677854 bytes including 579244 About drawings; 85 local assets; 52 artwork hashes.",
+    "visual_check": "Desktop 1440px and mobile 390px: same selected cups/blue form and added sage form; white fields; color changes preserve entered name; no horizontal overflow. No retired selectors/tablists. Static registered About drawings retain their alignment and fixed carousel navigation; service drawings finish in 659/689/719ms with 0/20/40ms starts. Legacy design query parameters no longer restore retired variants. At 320px, compact color buttons stay on the same row with no horizontal overflow.",
     "preserved": "Selected text, original photographs, contour buttons, application behavior, pricing conditions/FAQ, reviews and home/family footer retained."
   },
   "completed_css_sha256": {

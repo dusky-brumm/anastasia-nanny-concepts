@@ -26,6 +26,7 @@
 }
 @media(max-width:760px){
  .site-preview.early-classic #apply .form-color-switch{margin-bottom:24px;gap:6px}
+ .site-preview.early-classic #apply .form-color-switch button{padding-inline:10px}
  .site-preview.early-classic #apply .contact-study-content{grid-template-columns:minmax(0,1fr);gap:30px}
  .site-preview.early-classic #apply .s-apply-intro{padding:0;align-content:start}
  .site-preview.early-classic #apply .s-apply-intro h2{max-width:none}

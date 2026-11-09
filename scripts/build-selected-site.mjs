@@ -87,7 +87,7 @@ for(const fontCss of ['fonts.css','studio/fonts.css']){
 }
 await replaceTokens(output);
 await assembleSelectedPage(output,selection,version);
-const runtimeFiles=['block-ui.js','about-story.js','review-carousel.js','drawing-motion.js','single-page.js','pricing-studies.js','review-studies.js'];
+const runtimeFiles=['block-ui.js','about-story.js','review-carousel.js','drawing-motion.js','single-page.js','pricing-studies.js','review-studies.js','ending-studies.js'];
 const runtime=[];
 for(const file of runtimeFiles){
   const source=(await readFile('src/site/'+file,'utf8')).replace(/^import\s+[^\n]+;\r?\n/gm,'').replace(/^export\s+(?=(?:const|function|async\s+function)\b)/gm,'');

@@ -1406,6 +1406,30 @@
       ],
       "copy": "The original three reviews and authors are preserved",
       "selection": "Three local numbered tabs and reviews=1..3 shareable URL; pricing studies remain available"
+    },
+    "ending_studies_20261109": {
+      "apply": [
+        "Личная беседа",
+        "Письмо",
+        "За чашкой чая"
+      ],
+      "footer": [
+        "Путеводитель",
+        "Открытка",
+        "Дом и семья"
+      ],
+      "form": "One unchanged form, three fields, original pencil button contour and Telegram handoff. Switching layouts preserves entered values.",
+      "footer_information": [
+        "name and service",
+        "six section links",
+        "personal Telegram",
+        "Telegram channel",
+        "form-data dialog",
+        "back to top",
+        "copyright"
+      ],
+      "artwork": "Reuse existing colored-pencil illustrations, chalk patches and native pencil strokes; no new typefaces",
+      "selection": "Independent apply=1..3 and footer=1..3 shareable query parameters"
     }
   },
   "reviewed_decisions": {
@@ -1422,22 +1446,22 @@
     "retired_named_designs": "November 6 explicitly removed numbered designs 10 and 12-16, including Yoga 16 and Elliot 15; this overrides the earlier optional Yoga clarification. Three explicitly transferred blocks survive inside designs 7 and 11.",
     "complete_block_catalog": "Retired by explicit single-selected-site request on November 7. Preserve selected nine blocks only; all old assembly links redirect to home.",
     "latest_classic_service": "The later explicit request rejects the family-interview block in design 6; use its completed illustrated service replacement.",
-    "latest_switcher": "Fixed site, fonts and About; five pricing variants and three review variants explicitly requested November 9."
+    "latest_switcher": "Fixed main site, fonts and About; explicitly requested local comparisons for pricing, reviews, application and footer."
   },
   "validation": {
     "tests": {
-      "failed": 0,
-      "passed": 38
+      "passed": 38,
+      "failed": 0
     },
-    "build": "84b3855952",
-    "static_check": "PASS: one document, nine sections, 54 files, 2630871 bytes, 92 local assets, 20 artwork hashes.",
-    "visual_check": "Three review treatments checked at 1440, 900, 390 and 320px. No horizontal overflow or browser errors. Three reviews across desktop, mobile next/previous and last disabled state verified; URL restoration and keyboard Home/End passed."
+    "build": "3d16bde209",
+    "visual_check": "Three apply and three footer layouts checked at 1440, 900, 390 and 320px. No horizontal overflow or browser errors. Keyboard Home/End and query restoration passed. Single three-field form retains entered values across variants; privacy dialog verified. Every footer has six section links and both confirmed Telegram destinations.",
+    "static_check": "PASS: one document, nine sections, 57 files, 2751696 bytes, 101 local assets, 25 artwork hashes; remains under existing 2.8 MB budget."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "fb1dcf7af7",
+  "previous_confirmed_build": "84b3855952",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

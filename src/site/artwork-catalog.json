@@ -138,5 +138,40 @@
     "title": "Домашнее спокойствие",
     "group": "Иллюстрации",
     "sha256": "cfac0a473decd78b0f82b800d57c39e868f85126af0c86289cc5ff38c69a5977"
+  },
+  {
+    "id": "ending-letter",
+    "file": "media/ending-letter.webp",
+    "title": "Письмо от семьи",
+    "group": "Иллюстрации",
+    "sha256": "2fb9a0ad15333ce38116007438dc03b93c2305e3c9164fcfae5b4f0af9b7d62c"
+  },
+  {
+    "id": "ending-cups",
+    "file": "media/ending-cups.webp",
+    "title": "Чай и разговор",
+    "group": "Иллюстрации",
+    "sha256": "3e135bcdfd36d5d05b10a30ae029b68b6f116960253c3ac597cd9c73e89a2baa"
+  },
+  {
+    "id": "ending-door",
+    "file": "media/ending-door.webp",
+    "title": "Дверь — лёгкий штрих",
+    "group": "Иллюстрации",
+    "sha256": "dd821dc1e10c93d6d4ede8862c98f01354ebe236f08fb6bd2f4a2ca35798f741"
+  },
+  {
+    "id": "ending-conversation-line",
+    "file": "artwork/vectors/ending-conversation-line.svg",
+    "title": "Карандашная линия беседы",
+    "group": "Линии, стрелки и значки",
+    "sha256": "cd0b74ff1d73cc8e36c6b6de66399527b51b794f4afa307ade66cd784a73f9b6"
+  },
+  {
+    "id": "ending-margin-bracket",
+    "file": "artwork/vectors/ending-margin-bracket.svg",
+    "title": "Карандашная пометка на полях",
+    "group": "Линии, стрелки и значки",
+    "sha256": "678e03a3d9ef365b9980e9b88b9fe11be0c464ae0e0f04b779e5be2e3dfb9f4d"
   }
 ]

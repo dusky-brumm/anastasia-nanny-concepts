@@ -1520,6 +1520,17 @@
       "anchors": "ResizeObserver measures the real header height for scroll-padding; section scroll margins provide another 12px.",
       "mobile": "Preserve the existing details menu, outside click, Escape and link-close behavior; constrain long menus to viewport height.",
       "motion": "Passive scroll listener schedules one update per animation frame; reduced motion disables the small visual transitions."
+    },
+    "apply_tea_20261109": {
+      "default": 3,
+      "options": [
+        "1 — прежние кресла",
+        "2 — письмо слева, классическая голубая форма справа",
+        "3 — чашечки слева, прежняя молочная форма справа",
+        "4 — чашечки слева, голубая меловая форма и белые поля справа"
+      ],
+      "fields": "Same single form, same three fields and Telegram draft flow",
+      "illustration": "media/consultation-tea-pencil-20261109.webp"
     }
   },
   "reviewed_decisions": {

@@ -77,6 +77,9 @@
 .site-preview #about[data-about-scene="4"] .about-photo-backing{inset:auto;left:calc(8px - (100% - 16px)*var(--scene-left,.5));top:calc(8px - (100% - 26px)*var(--scene-top,.25));width:calc((100% - 16px)*var(--scene-width,2));height:calc((100% - 26px)*var(--scene-height,1.5));background:none}
 .site-preview #about[data-about-scene="4"] li.is-current .about-photo-backing::before{content:'';position:absolute;inset:0;background:var(--about-photo-scene) center/100% 100% no-repeat;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 8%,#000 92%,transparent);mask-composite:intersect;pointer-events:none}
 .site-preview #about[data-about-scene="4"] .about-photo-backing::after{content:none}
+/* The print and its registered continuation share one fixed coordinate space. */
+.site-preview #about[data-about-scene="4"] .about-photo-composition{animation:none;transition:none}
+.site-preview #about[data-about-scene="4"] :is(.about-photo-backing,.about-continuation-drawing){animation:none;transition:none;transform:none;translate:none}
 @media(min-width:761px) and (max-width:1000px){
  .site-preview #about:is([data-about-scene="2"],[data-about-scene="4"]) .s-about-slides{display:block;min-height:0}
  .site-preview #about:is([data-about-scene="2"],[data-about-scene="4"]) .s-about-slides li{display:grid;grid-template-columns:minmax(0,1fr);gap:32px}

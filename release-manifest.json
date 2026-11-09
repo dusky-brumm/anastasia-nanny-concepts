@@ -1479,19 +1479,18 @@
     "restored_first_options_20261109": {
       "about": [
         "Original dry-crayon backing and margin sketches",
-        "Connected pencil line"
-      ],
-      "removed_about_options": [
+        "Connected pencil line",
         "Generated panorama",
         "Photo-environment extensions"
       ],
+      "removed_about_options": [],
       "pricing": [
         "Original circles from before the five studies",
         "Five new studies, numbered 2 through 6"
       ],
       "chairs": "Natively redrawn using the process interview image as reference: lighter hatching, simpler flat contours. Every existing size breakpoint reduced by 10%.",
       "reviews": "Neutral white near-rectangular chalk card replaces the gray/yellow cloud texture in the first review design; shared-field design also uses the same white asset.",
-      "scope_assumption": "Clarification was requested asynchronously; without a reply, rejected options 2/3 were interpreted as the two generated photo treatments, and the gray/yellow texture as the review swatch. This interpretation was stated in commentary before applying it.",
+      "scope_assumption": "Superseded by explicit user clarification: rejected variants and texture refer to reviews.",
       "asset_generation": "Built-in imagegen; exact prompts and originals retained in artifacts/restore-selected-20261109. Rejected photo bitmaps retained in source, omitted from live payload."
     },
     "family_footer_20261109": {
@@ -1500,6 +1499,12 @@
       "background": "Remove the dry-crayon backing from the identity area of design 3. Preserve the clean full-width blue #e1eff7.",
       "divider": "Move the existing animated pencil loop from above the main links to immediately before the metadata row, replacing its straight top border. Preserve the original path and animation.",
       "information": "Keep six section links, personal Telegram, channel, copyright, data dialog and back-to-top link."
+    },
+    "scope_clarification_20261109": {
+      "user_answer": "Варианты и текстура — к отзывам",
+      "reviews": "Remove review studies 2 and 3 and their switcher. Keep the chosen white near-rectangular chalk cards, all three reviews, their artwork and the existing mobile carousel.",
+      "about": "Restore all three photo studies after the original: original=1, connected line=2, panorama=3, photo continuation=4.",
+      "preserved": "Six pricing choices and the completed family footer with its new default, illustration, clean blue background and bottom pencil divider."
     }
   },
   "reviewed_decisions": {
@@ -1523,16 +1528,16 @@
       "passed": 38,
       "failed": 0
     },
-    "build": "d503f4dd43",
-    "visual_check": "Chrome viewports 1440, 900, 390 and 320px, with content widths 1425, 885, 375 and 305px. Default footer 3, clean identity background and new family drawing verified. Existing divider follows the main content and precedes metadata; old border is 0px. Six navigation links and both Telegram links preserved; privacy dialog opens/closes and keyboard focus reaches bottom links. No horizontal overflow or console errors.",
-    "static_check": "PASS: 59 files, 2797459 bytes, 105 local assets, 34 artwork hashes. Existing 2.8MB base package cap retained.",
+    "build": "a8ba7397f1",
+    "visual_check": "Footer 3 verified at 1440, 900, 390 and 320px: clean blue, transparent family drawing, pencil loop before metadata, no old border, six page links, both Telegram destinations, working privacy dialog and keyboard focus. Following explicit clarification, review choices 2/3 and the picker are removed; three white cards remain and the mobile carousel advances from 1 to 2. All four About drawing choices restored; End selects 4, Home restores original 1. No horizontal overflow or console errors.",
+    "static_check": "PASS: 64 files, 3608590 bytes total, 814508 optional About drawings, base 2794082 bytes; 107 local references and 34 artwork hashes. Existing package caps retained.",
     "button_contour": "Original -4px contour retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "1c2d68d090",
+  "previous_confirmed_build": "d503f4dd43",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

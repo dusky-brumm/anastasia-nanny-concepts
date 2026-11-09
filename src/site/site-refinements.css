@@ -39,13 +39,20 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 @media(max-width:760px){.s-site-footer .footer-main{align-items:start;flex-direction:column;gap:20px}.s-site-footer .footer-thread{margin-bottom:20px}.s-site-footer .footer-nav{gap:8px 24px}.s-site-footer .footer-meta{margin-top:16px}}
 
 /* The personal interview examples introduce the three illustrated work stages. */
-#chalk-service-designs .studies .service-example--intro{margin-top:24px;align-items:end;gap:28px}
+#chalk-service-designs .studies .service-example--intro{margin-top:20px;align-items:end;gap:28px}
 #chalk-service-designs .studies .service-example--intro p{max-width:76ch;font-size:18px;line-height:1.7}
-#chalk-service-designs .studies .studies-thread{margin-top:28px}
-#chalk-service-designs .studies .study-grid{margin-top:24px}
+#chalk-service-designs .studies .studies-thread{margin-top:16px}
+#chalk-service-designs .studies .study-grid{margin-top:18px}
+@media(min-width:761px){
+ #chalk-service-designs .studies .study>div{padding-inline-start:12px}
+ #chalk-service-designs .studies .study-picture{position:relative;left:-20px;height:128px;margin-bottom:12px}
+}
 @media(max-width:760px){
- #chalk-service-designs .studies .service-example--intro{grid-template-columns:minmax(0,1fr);gap:14px;margin-top:20px}
+ #chalk-service-designs .studies .service-example--intro{grid-template-columns:minmax(0,1fr);gap:10px;margin-top:16px}
  #chalk-service-designs .studies .service-example--intro p{font-size:17px;line-height:1.65}
+ #chalk-service-designs .studies .study-grid{gap:24px}
+ #chalk-service-designs .studies .study-picture{position:relative;left:-6px}
+ #chalk-service-designs .studies .study :is(h3,p){position:relative;left:4px}
 }
 
 /* Three dry-chalk circles: blue, sage, blue; the content stays on milk paper. */

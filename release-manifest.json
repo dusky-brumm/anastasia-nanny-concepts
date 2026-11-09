@@ -1,6 +1,6 @@
 {
-  "build": "db7f445ca3",
-  "base_commit": "f5639b8188eb4df335c484ccb642e6b364a652de",
+  "build": "dfdc5dbf2c",
+  "base_commit": "2c3cec105e8a2820c29761804d11db6f80fc28e3",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Make the family-service section more compact; reduce vertical gaps, move the three stage texts slightly right and their pictures slightly left with smaller mobile offsets",
     "Restore the earlier irregular double-pencil button contour from 7be353c for hero and form actions, with versioned mask URLs",
     "Clarify the hero promise: choose a nanny from suitable candidates instead of choose a person",
     "Lead the service block with Я подбираю няню под вашу семью and the preschool/school interview examples, then place the same three illustrated work stages below; retain the profile example link and existing pencil animations",
@@ -1327,6 +1328,15 @@
         "three illustrated stages"
       ],
       "mobile_width_checked": 320
+    },
+    "compact_service_20261109": {
+      "desktop_section_height": 704,
+      "desktop_copy_inset": 12,
+      "desktop_picture_offset": -20,
+      "mobile_copy_offset": 4,
+      "mobile_picture_offset": -6,
+      "mobile_width_checked": 320,
+      "mobile_overflow": false
     }
   },
   "reviewed_decisions": {

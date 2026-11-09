@@ -1505,6 +1505,13 @@
       "reviews": "Remove review studies 2 and 3 and their switcher. Keep the chosen white near-rectangular chalk cards, all three reviews, their artwork and the existing mobile carousel.",
       "about": "Restore all three photo studies after the original: original=1, connected line=2, panorama=3, photo continuation=4.",
       "preserved": "Six pricing choices and the completed family footer with its new default, illustration, clean blue background and bottom pencil divider."
+    },
+    "service_book_pages_20261109": {
+      "scope": "Only the notebook beside Созваниваюсь на 10–15 минут in the family-service section.",
+      "diagnosis": "Four sampled page-interior pixels of the original image have alpha 0–1/255, letting the blue block show through.",
+      "correction": "Native ImageGen edit gives the page interiors an almost opaque neutral milk fill (sampled alpha 252/255), retaining pencil contours, fold, writing marks, cover, pencil and the outer transparent background.",
+      "layout": "Same SVG viewport, image coordinates and rendered dimensions; only the image href changes.",
+      "asset": "media/service-book-light-pages-20261109.webp; 640x379px; 38378 bytes. Original source image retained."
     }
   },
   "reviewed_decisions": {
@@ -1528,16 +1535,16 @@
       "passed": 38,
       "failed": 0
     },
-    "build": "a8ba7397f1",
-    "visual_check": "Footer 3 verified at 1440, 900, 390 and 320px: clean blue, transparent family drawing, pencil loop before metadata, no old border, six page links, both Telegram destinations, working privacy dialog and keyboard focus. Following explicit clarification, review choices 2/3 and the picker are removed; three white cards remain and the mobile carousel advances from 1 to 2. All four About drawing choices restored; End selects 4, Home restores original 1. No horizontal overflow or console errors.",
-    "static_check": "PASS: 64 files, 3608590 bytes total, 814508 optional About drawings, base 2794082 bytes; 107 local references and 34 artwork hashes. Existing package caps retained.",
-    "button_contour": "Original -4px contour retained."
+    "build": "fe7d4867bc",
+    "visual_check": "Service section checked in Chrome at viewport 1440 and 390px (content 1425 and 375px). Whiter pages verified against the actual pale blue block, original picture placement and section layout retained. No horizontal overflow or browser errors.",
+    "static_check": "PASS: 64 files, 3547986 bytes, 814508 optional About drawings, 107 local assets and 35 artwork hashes. Existing package caps retained.",
+    "preserved": "Selected footer 3, fixed white reviews, all four photo styles, six pricing options and button contours."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "d503f4dd43",
+  "previous_confirmed_build": "a8ba7397f1",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

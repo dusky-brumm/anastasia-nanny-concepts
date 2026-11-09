@@ -1430,6 +1430,13 @@
       ],
       "artwork": "Reuse existing colored-pencil illustrations, chalk patches and native pencil strokes; no new typefaces",
       "selection": "Independent apply=1..3 and footer=1..3 shareable query parameters"
+    },
+    "button_contour_inset_20261109": {
+      "scope": "Hero and all application layouts",
+      "preserved": "Original irregular double-pencil mask and unchanged button box",
+      "before_px": 9,
+      "reference": "src/reference/studio/fotoalbum-polish.css",
+      "after_px": 4
     }
   },
   "reviewed_decisions": {
@@ -1453,15 +1460,16 @@
       "passed": 38,
       "failed": 0
     },
-    "build": "3d16bde209",
+    "build": "389820ce96",
     "visual_check": "Three apply and three footer layouts checked at 1440, 900, 390 and 320px. No horizontal overflow or browser errors. Keyboard Home/End and query restoration passed. Single three-field form retains entered values across variants; privacy dialog verified. Every footer has six section links and both confirmed Telegram destinations.",
-    "static_check": "PASS: one document, nine sections, 57 files, 2751696 bytes, 101 local assets, 25 artwork hashes; remains under existing 2.8 MB budget."
+    "static_check": "PASS: one document, nine sections, 57 files, 2751696 bytes, 101 local assets, 25 artwork hashes.",
+    "button_contour": "Shared inset restored from -9px to historical -4px. Original mask and button dimensions retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "84b3855952",
+  "previous_confirmed_build": "3d16bde209",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

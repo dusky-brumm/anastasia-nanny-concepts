@@ -30,7 +30,8 @@ assert.match(home,/srcset="[^\"]*portrait-480\.webp 480w/);
 const runtime=await readFile('out/site-runtime.js','utf8');
 assert.doesNotMatch(runtime,/^import\s/m);
 assert.doesNotMatch(runtime,/mountBlockFrames|frame\.height|contentDocument|data-frame-fitted|localStorage|readFontChoice/);
-const css=await readFile('out/site-sections.css','utf8');postcss.parse(css);
+const css=await readFile('out/site-sections.css','utf8');
+postcss.parse(css).walkRules(rule=>assert.ok(rule.selector.trim(),'Every compiled CSS rule needs a selector'));
 assert.match(css,/font-family:'Caveat'/);assert.match(css,/data:font\/woff2;base64,/);
 for(const file of ['site-base.js','frame-layout.js','block-typography.js','drawing-parent.js','studio/app.js','artwork-catalog.json','artwork-library.zip'])await assert.rejects(stat('out/'+file),{code:'ENOENT'});
 let links=0,bytes=0,files=0;
@@ -61,7 +62,10 @@ for(const {file} of retired){assert.ok(!catalog.some(item=>item.file===file));aw
 // only used by the selected drawing mode/current story, and have a separate cap.
 const optionalAboutFiles=['about-scene-panorama','about-photo-scene-family','about-photo-scene-rainbow','about-photo-scene-cafe','about-photo-scene-park'];
 let optionalAboutBytes=0;
-for(const name of optionalAboutFiles)optionalAboutBytes+=(await stat('out/media/'+name+'.webp')).size;
+for(const name of optionalAboutFiles){
+ try{optionalAboutBytes+=(await stat('out/media/'+name+'.webp')).size;}
+ catch(error){if(error.code!=='ENOENT')throw error;}
+}
 assert.ok(bytes-optionalAboutBytes<2_800_000,`Base payload budget exceeded: ${bytes-optionalAboutBytes}`);
 assert.ok(optionalAboutBytes<1_000_000,`Optional drawing budget exceeded: ${optionalAboutBytes}`);
 assert.ok(bytes<3_800_000,`Full comparison payload budget exceeded: ${bytes}`);

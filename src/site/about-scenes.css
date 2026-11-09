@@ -9,27 +9,13 @@
 .site-preview #about .about-visual-stage{position:relative;isolation:isolate}
 .site-preview #about .about-story-art{inset:-44px -10px -32px -24px;overflow:visible}
 .site-preview #about .about-unified-routes{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible}
-.site-preview #about .about-mobile-route,.site-preview #about .about-panorama{display:none}
+.site-preview #about .about-mobile-route{display:none}
 .site-preview #about .about-note--pencils{left:44%;right:auto;top:15px;width:184px;height:50px;opacity:.85}
 .site-preview #about .about-note--reading{right:12px;bottom:0;width:176px;height:140px;opacity:.82}
 @media(min-width:761px){.site-preview #about[data-about-scenes] .s-about-slides{min-height:560px}}
-/* 2. The hatching, pencils, reading sketch and ground line are a single image. */
-.site-preview #about[data-about-scene="2"] .about-photo-backing{background:none}
-.site-preview #about[data-about-scene="2"] .about-unified-routes,.site-preview #about[data-about-scene="2"] .about-note{display:none}
-.site-preview #about[data-about-scene="2"] .about-panorama{display:block;position:absolute;inset:0 0 -48px 12px;background:url('media/about-scene-panorama.webp?v=__VERSION__') center/100% auto no-repeat;pointer-events:none}
-/* 3. Each photo gets its own environment; the outer edge loses detail into air. */
-.site-preview #about[data-about-scene="3"] .about-story-art{display:none}
-.site-preview #about .s-about-slides li:nth-child(1){--about-photo-scene:url('media/about-photo-scene-family.webp?v=__VERSION__')}
-.site-preview #about .s-about-slides li:nth-child(2){--about-photo-scene:url('media/about-photo-scene-rainbow.webp?v=__VERSION__')}
-.site-preview #about .s-about-slides li:nth-child(3){--about-photo-scene:url('media/about-photo-scene-cafe.webp?v=__VERSION__')}
-.site-preview #about .s-about-slides li:nth-child(4){--about-photo-scene:url('media/about-photo-scene-park.webp?v=__VERSION__')}
-.site-preview #about[data-about-scene="3"] .about-photo-backing{inset:-128px -108px -118px -98px;background:none}
-.site-preview #about[data-about-scene="3"] li.is-current .about-photo-backing::before{content:'';position:absolute;inset:0;background:var(--about-photo-scene) center/100% 100% no-repeat;mask-image:radial-gradient(ellipse closest-side at 50% 50%,#000 66%,#000d 79%,#0005 91%,transparent 100%);pointer-events:none}
-.site-preview #about[data-about-scene="3"] .about-photo-backing::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 660 800' fill='none'%3E%3Cg stroke='%2394afbe' stroke-width='1.2' stroke-linecap='round' opacity='.28'%3E%3Cpath d='M65 173q-20-31-7-56M92 83q30-14 51-6M560 126q26 11 34 42M579 232q20 12 26 4M49 281q-9 16-1 36'/%3E%3C/g%3E%3Cg stroke='%239ead90' stroke-width='1.2' stroke-linecap='round' opacity='.3'%3E%3Cpath d='M48 564q-8 26 5 43M76 666q10 15 39 18M548 680q27-11 33-31M587 571q12-19 6-31M145 719q16 4 28-3'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none}
 @media(min-width:761px) and (max-width:1100px){
  .site-preview #about .about-note--pencils{left:43%;width:144px;height:42px;top:18px}
  .site-preview #about .about-note--reading{width:146px;height:116px;bottom:0}
- .site-preview #about[data-about-scene="3"] .about-photo-backing{inset:-102px -76px -92px -70px}
 }
 @media(max-width:760px){
  .site-preview #about .about-scene-switch{flex-wrap:wrap;gap:8px;margin-bottom:40px}
@@ -38,19 +24,29 @@
  .site-preview #about .about-story-art{inset:0 -8px 0 -8px}
  .site-preview #about .about-unified-routes{display:none}
  .site-preview #about .about-mobile-route{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:visible}
- .site-preview #about[data-about-scene="1"] .about-mobile-trail{display:none}
  .site-preview #about .about-note--pencils{left:auto;right:0;top:-34px;width:112px;height:34px;opacity:.8}
  .site-preview #about .about-note--reading{display:none}
- .site-preview #about[data-about-scene="2"] .about-visual-stage{padding-bottom:90px}
- .site-preview #about[data-about-scene="2"] .about-panorama{display:none}
- .site-preview #about[data-about-scene="2"] .about-photo-backing{background:url('artwork/vectors/hero-backing-dry-crayon.svg') center/100% 100% no-repeat}
- .site-preview #about[data-about-scene="2"] .about-mobile-route{display:block}
- .site-preview #about[data-about-scene="2"] .about-note--pencils{display:block}
- .site-preview #about[data-about-scene="2"] .about-note--reading{display:block;right:6px;bottom:0;width:112px;height:86px}
- .site-preview #about[data-about-scene="3"] .about-photo-backing{inset:-90px -40px -44px -40px}
- .site-preview #about[data-about-scene="3"] .about-photo-backing::after{opacity:.55}
 }
 @media(max-width:360px){
- .site-preview #about[data-about-scene="3"] .about-photo-backing{inset:-80px -30px -38px -30px}
  .site-preview #about .about-note--pencils{width:96px;height:30px}
+}
+@media(max-width:760px){
+ .site-preview #about[data-about-scene="2"] .about-visual-stage{padding-bottom:90px}
+ .site-preview #about[data-about-scene="2"] .about-mobile-trail{display:block}
+ .site-preview #about[data-about-scene="2"] .about-note--reading{display:block;right:6px;bottom:0;width:112px;height:86px}
+}
+/* The original photograph treatment is always the first comparison. */
+.site-preview #about[data-about-scene="1"] .about-visual-stage{position:static}
+.site-preview #about[data-about-scene="1"] .about-story-art{inset:0;overflow:hidden}
+.site-preview #about[data-about-scene="1"] :is(.about-unified-routes,.about-mobile-route){display:none}
+.site-preview #about[data-about-scene="1"] .about-note--pencils{left:auto;right:var(--site-content-inset,32px);top:20px;bottom:auto;width:160px;height:72px;opacity:.72}
+.site-preview #about[data-about-scene="1"] .about-note--reading{right:var(--site-content-inset,32px);bottom:12px;width:168px;height:120px;opacity:.72}
+@media(min-width:761px){.site-preview #about[data-about-scene="1"] .s-about-slides{min-height:520px}}
+@media(min-width:761px) and (max-width:1100px){
+ .site-preview #about[data-about-scene="1"] .about-note--pencils{width:130px;height:58px}
+ .site-preview #about[data-about-scene="1"] .about-note--reading{width:144px;height:104px}
+}
+@media(max-width:760px){
+ .site-preview #about[data-about-scene="1"] .about-note--reading{display:none}
+ .site-preview #about[data-about-scene="1"] .about-note--pencils{top:auto;right:24px;bottom:4px;width:110px;height:40px;opacity:.5}
 }

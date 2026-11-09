@@ -215,5 +215,19 @@
     "title": "Вопросительный знак карандашом",
     "group": "Линии и знаки",
     "sha256": "e68dd5abd87745a084a5d2ed70215936886b599f0b218333dda5e633b2e49894"
+  },
+  {
+    "id": "consultation-chairs-light-pencil-20261109",
+    "file": "media/consultation-chairs-light-pencil-20261109.webp",
+    "title": "Беседа: кресла лёгким карандашом",
+    "group": "Иллюстрации",
+    "sha256": "3d4e330cb9761e89b1b9d437bfd61ede4b08c3858f17b9350d782f40f0148ca4"
+  },
+  {
+    "id": "review-chalk-white-block-20261109",
+    "file": "media/review-chalk-white-block-20261109.webp",
+    "title": "Белая ровная меловая подложка",
+    "group": "Текстуры",
+    "sha256": "c6419bf19d759fd425af4ff39cf60f457289ff40eec3aa74214548ebeb9b5623"
   }
 ]

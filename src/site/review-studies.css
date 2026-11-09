@@ -11,7 +11,7 @@
 .site-preview.early-classic #reviews .comparison-quote-strip{position:relative;isolation:isolate}
 .site-preview.early-classic #reviews [data-open-quotes] .s-review-grid{gap:18px!important;padding:8px 0 18px;grid-auto-columns:calc((100% - 36px)/3)!important}
 .site-preview.early-classic #reviews [data-open-quotes] .s-review-grid .s-review{position:relative;isolation:isolate;grid-template-columns:30px minmax(0,1fr);grid-template-rows:1fr auto;gap:24px 10px;padding:42px 30px 44px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible}
-.site-preview.early-classic #reviews [data-open-quotes] .s-review-grid .s-review::before{content:'';position:absolute;inset:0;z-index:-1;display:block;background:url('media/review-cloud-ivory.webp') center/100% 100% no-repeat;pointer-events:none}
+.site-preview.early-classic #reviews [data-open-quotes] .s-review-grid .s-review::before{content:'';position:absolute;inset:0;z-index:-1;display:block;background:url('media/review-chalk-white-block-20261109.webp?v=__VERSION__') center/100% 100% no-repeat;pointer-events:none}
 .site-preview.early-classic #reviews [data-open-quotes] .s-review:nth-child(2)::before{transform:scaleX(-1)}
 .site-preview.early-classic #reviews [data-open-quotes] .s-review:nth-child(3)::before{transform:scaleY(-1)}
 .site-preview.early-classic #reviews [data-open-quotes] .s-review blockquote{font-size:16px!important;line-height:1.7!important;color:#28353c}
@@ -27,7 +27,7 @@
 .site-preview.early-classic #reviews[data-review-design="2"] [data-open-quotes] .s-review blockquote{grid-column:1;grid-row:2}
 .site-preview.early-classic #reviews[data-review-design="2"] [data-open-quotes] .s-review footer{grid-column:1;grid-row:3}
 /* 3. One broad rubbed chalk field, three open columns, a drawing in the margin. */
-.site-preview.early-classic #reviews[data-review-design="3"] .review-studies-panel::before{content:'';position:absolute;inset:0 0 0;z-index:-1;background:url('media/review-cloud-ivory.webp') center/100% 100% no-repeat;pointer-events:none}
+.site-preview.early-classic #reviews[data-review-design="3"] .review-studies-panel::before{content:'';position:absolute;inset:0 0 0;z-index:-1;background:url('media/review-chalk-white-block-20261109.webp?v=__VERSION__') center/100% 100% no-repeat;pointer-events:none}
 .site-preview.early-classic #reviews[data-review-design="3"] [data-open-quotes] .s-review-grid{padding:20px 20px 88px;gap:30px!important;grid-auto-columns:calc((100% - 60px)/3)!important}
 .site-preview.early-classic #reviews[data-review-design="3"] [data-open-quotes] .s-review-grid .s-review{grid-template-columns:minmax(0,1fr);grid-template-rows:28px 1fr auto;gap:20px;padding:28px 26px!important}
 .site-preview.early-classic #reviews[data-review-design="3"] [data-open-quotes] .s-review::before{display:none}

@@ -1475,6 +1475,24 @@
       "question_mark": "Native custom pencil shape using the same ink, filled contours and pressure strokes as the approved review commas; no font glyph or bitmap.",
       "separation": "80px before the FAQ separator and 56px after it on desktop; 56px/38px on mobile. Pencil-rule mask replaces the straight separator and accordion row borders.",
       "copy": "Original heading, three questions, answers and price terms unchanged."
+    },
+    "restored_first_options_20261109": {
+      "about": [
+        "Original dry-crayon backing and margin sketches",
+        "Connected pencil line"
+      ],
+      "removed_about_options": [
+        "Generated panorama",
+        "Photo-environment extensions"
+      ],
+      "pricing": [
+        "Original circles from before the five studies",
+        "Five new studies, numbered 2 through 6"
+      ],
+      "chairs": "Natively redrawn using the process interview image as reference: lighter hatching, simpler flat contours. Every existing size breakpoint reduced by 10%.",
+      "reviews": "Neutral white near-rectangular chalk card replaces the gray/yellow cloud texture in the first review design; shared-field design also uses the same white asset.",
+      "scope_assumption": "Clarification was requested asynchronously; without a reply, rejected options 2/3 were interpreted as the two generated photo treatments, and the gray/yellow texture as the review swatch. This interpretation was stated in commentary before applying it.",
+      "asset_generation": "Built-in imagegen; exact prompts and originals retained in artifacts/restore-selected-20261109. Rejected photo bitmaps retained in source, omitted from live payload."
     }
   },
   "reviewed_decisions": {
@@ -1498,16 +1516,16 @@
       "passed": 38,
       "failed": 0
     },
-    "build": "d7b5a9e475",
-    "visual_check": "Pricing circles and FAQ checked in Chrome at 1440, 390 and 320px. Connecting thread removed from markup. New custom pencil question mark matches review commas. Pencil main divider and row rules inspected. FAQ toggles by click and Enter; no overflow or console errors.",
-    "static_check": "PASS: one document, nine blocks, 63 files, 3581242 bytes, 814508 optional About drawings, 109 local assets, 31 artwork hashes.",
-    "button_contour": "Shared -4px contour retained."
+    "build": "1c2d68d090",
+    "visual_check": "Chrome viewport 1440, 390 and 320px (content 1425, 375, 305px). Original About design restored with new routes hidden; generated photo options removed. Original pricing circles restored as 1, new studies 2–6; all six controls fit and Home/End tested. Chairs are 297x135 desktop, 118.8x68.4 on phones and 82.8x57.6 on the narrowest breakpoint. Three white review cards on desktop and one per slide on phones. No horizontal overflow or console errors.",
+    "static_check": "PASS: 59 files, 2794021 bytes, 106 local assets, 33 artwork hashes; rejected optional photo drawings absent from the live package. No empty compiled CSS selectors.",
+    "button_contour": "Original -4px contour retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "dbc9582a9d",
+  "previous_confirmed_build": "d7b5a9e475",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

@@ -36,6 +36,7 @@
  .site-preview.early-classic #pricing .faq-question{width:44px;height:58px}
 }
 /* Individual studies. */
+.site-preview.early-classic #pricing .pv-original .s-pricing-terms{margin-block:30px 18px}
 /* Three independent, lightly washed chalk circles. */
 .site-preview.early-classic #pricing .pv1{position:relative;isolation:isolate;padding:30px 0 18px;min-height:380px}
 .site-preview.early-classic #pricing .pv1-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,4vw,60px);align-items:center;margin:0;padding:0}

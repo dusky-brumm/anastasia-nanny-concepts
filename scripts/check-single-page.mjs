@@ -60,7 +60,7 @@ assert.equal(retired.length,9);
 for(const {file} of retired){assert.ok(!catalog.some(item=>item.file===file));await assert.rejects(stat('src/site/'+file),{code:'ENOENT'});await assert.rejects(stat('out/'+file),{code:'ENOENT'});}
 // Keep the ordinary site within its budget. Five optional About backdrops are
 // only used by the selected drawing mode/current story, and have a separate cap.
-const optionalAboutFiles=['about-scene-panorama','about-photo-scene-family','about-photo-scene-rainbow','about-photo-scene-cafe','about-photo-scene-park'];
+const optionalAboutFiles=['about-scene-panorama','about-photo-scene-family-registered-20261109','about-photo-scene-rainbow-registered-20261109','about-photo-scene-cafe-registered-20261109','about-photo-scene-park-registered-20261109'];
 let optionalAboutBytes=0;
 for(const name of optionalAboutFiles){
  try{optionalAboutBytes+=(await stat('out/media/'+name+'.webp')).size;}

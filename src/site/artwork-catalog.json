@@ -278,5 +278,33 @@
     "file": "artwork/vectors/pricing-chalk-patch-20261109.svg",
     "group": "Линии и знаки",
     "sha256": "9786bea293482bf7b65dd33dd3b12dcaccefce6491e31a7fb998303c0363974d"
+  },
+  {
+    "id": "about-photo-scene-family-registered-20261109",
+    "file": "media/about-photo-scene-family-registered-20261109.webp",
+    "title": "Совмещённое карандашное продолжение: family",
+    "group": "Иллюстрации",
+    "sha256": "77ceb942c05c927a521a122e80023dbd9526ce445a7c43577e0585514e1883db"
+  },
+  {
+    "id": "about-photo-scene-rainbow-registered-20261109",
+    "file": "media/about-photo-scene-rainbow-registered-20261109.webp",
+    "title": "Совмещённое карандашное продолжение: rainbow",
+    "group": "Иллюстрации",
+    "sha256": "cf028d2cca8d119446bf044465a7389579d606e785004a39a8edb9b3402a64b0"
+  },
+  {
+    "id": "about-photo-scene-cafe-registered-20261109",
+    "file": "media/about-photo-scene-cafe-registered-20261109.webp",
+    "title": "Совмещённое карандашное продолжение: cafe",
+    "group": "Иллюстрации",
+    "sha256": "222feded1fb78babcc227a0f151eb736634fb464eb27a667a94f6010c6dad64a"
+  },
+  {
+    "id": "about-photo-scene-park-registered-20261109",
+    "file": "media/about-photo-scene-park-registered-20261109.webp",
+    "title": "Совмещённое карандашное продолжение: park",
+    "group": "Иллюстрации",
+    "sha256": "b46ea6f577401f7d16053c250d1a6cd9995360f66af928f8c54eefafdd112620"
   }
 ]

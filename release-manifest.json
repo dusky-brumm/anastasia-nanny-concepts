@@ -1,5 +1,5 @@
 {
-  "build": "d9d5d90a81",
+  "build": "ea677514f8",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1561,6 +1561,96 @@
       "mobile": "schedule only visible cards",
       "reduced_motion": "complete original artwork and text",
       "documentation": "docs/service-drawing-20261109.md"
+    },
+    "about_registered_continuation_20261109": {
+      "scenes": [
+        2,
+        4
+      ],
+      "photo_window": "3:4 in the edited treatments only; originals and text preserved",
+      "registration": "Matched each generated scene to the source photo crop by normalized cross correlation; CSS projects the scene from the image viewport, not the frame bounds.",
+      "images": {
+        "family": {
+          "file": "media/about-photo-scene-family-registered-20261109.webp",
+          "width": 880,
+          "height": 880,
+          "bytes": 115778,
+          "sha256": "77ceb942c05c927a521a122e80023dbd9526ce445a7c43577e0585514e1883db",
+          "registration": {
+            "x": 128,
+            "y": 85.5,
+            "w": 255.75,
+            "score": 0.9609692401238021
+          },
+          "factors": {
+            "left": 0.5004887585532747,
+            "top": 0.250733137829912,
+            "width": 2.0019550342130987,
+            "height": 1.501466275659824
+          }
+        },
+        "rainbow": {
+          "file": "media/about-photo-scene-rainbow-registered-20261109.webp",
+          "width": 880,
+          "height": 880,
+          "bytes": 82868,
+          "sha256": "cf028d2cca8d119446bf044465a7389579d606e785004a39a8edb9b3402a64b0",
+          "registration": {
+            "x": 127.75,
+            "y": 84.75,
+            "w": 255.75,
+            "score": 0.9677637790997071
+          },
+          "factors": {
+            "left": 0.4995112414467253,
+            "top": 0.24853372434017595,
+            "width": 2.0019550342130987,
+            "height": 1.501466275659824
+          }
+        },
+        "cafe": {
+          "file": "media/about-photo-scene-cafe-registered-20261109.webp",
+          "width": 880,
+          "height": 880,
+          "bytes": 146108,
+          "sha256": "222feded1fb78babcc227a0f151eb736634fb464eb27a667a94f6010c6dad64a",
+          "registration": {
+            "x": 127.75,
+            "y": 84.75,
+            "w": 256.25,
+            "score": 0.8744754149610919
+          },
+          "factors": {
+            "left": 0.49853658536585366,
+            "top": 0.24804878048780488,
+            "width": 1.9980487804878049,
+            "height": 1.4985365853658537
+          }
+        },
+        "park": {
+          "file": "media/about-photo-scene-park-registered-20261109.webp",
+          "width": 880,
+          "height": 880,
+          "bytes": 123104,
+          "sha256": "b46ea6f577401f7d16053c250d1a6cd9995360f66af928f8c54eefafdd112620",
+          "registration": {
+            "x": 127.25,
+            "y": 84.75,
+            "w": 256.5,
+            "score": 0.9735308509200068
+          },
+          "factors": {
+            "left": 0.49610136452241715,
+            "top": 0.24780701754385964,
+            "width": 1.996101364522417,
+            "height": 1.4970760233918128
+          }
+        }
+      },
+      "original_scenes_preserved": [
+        1,
+        3
+      ]
     }
   },
   "reviewed_decisions": {
@@ -1584,10 +1674,10 @@
       "passed": 41,
       "failed": 0
     },
-    "build": "d9d5d90a81",
-    "visual_check": "Retained service drawing animation. Reviews: three cards on desktop, one-card carousel on phones, no card illustrations, one shared guestbook outside track with existing Telegram link. Pricing: approved variants 1 and 2 byte-preserved; four new layouts verified at 1440, 900, 390 and 320 px. Keyboard selection and carousel controls work. No horizontal overflow or browser errors.",
-    "static_check": "PASS: 60 files, 3222543 bytes including 814508 optional About drawings; 111 local assets; 40 artwork hashes. Existing payload caps retained.",
-    "preserved": "Both service drawing animation and the refreshed reviews/pricing are retained. Pricing variants 1 and 2 are unchanged."
+    "build": "ea677514f8",
+    "visual_check": "About treatments 2 and 4 enlarged. Four registered photo environments checked at 1440 px; all four photo anchors verified at 320 px and cafe at 390 px. Tablet 900 px stacks artwork above copy. Original photo markup, text, order and scenes 1/3 preserved. No horizontal overflow. Decoration separated from copy and controls.",
+    "static_check": "PASS: 60 files, 3157975 bytes including 745564 optional About drawings; 111 local assets; 44 artwork hashes. Original payload caps retained.",
+    "preserved": "All earlier site edits, original source photographs, stories, pricing, reviews, application and footer retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

@@ -683,7 +683,7 @@ if(reviewStudy){
 })();
 (()=>{
 // Independent visual choices share the same form fields and footer links.
-for(const study of document.querySelectorAll('[data-ending-study]')){
+for(const study of document.querySelectorAll('[data-ending-study]:not([data-ending-fixed])')){
  const kind=study.dataset.endingStudy;
  const tabs=[...study.querySelectorAll('[data-ending-choice]')];
  const title=study.querySelector('[data-ending-title]');

@@ -96,5 +96,47 @@
     "title": "Семейный ежедневник для варианта стоимости",
     "group": "Иллюстрации",
     "sha256": "31dd215f5c03e56f6dce0387032a28ce92ee35de2f12957fb6a5607acc78cf2b"
+  },
+  {
+    "id": "review-cloud-ivory",
+    "file": "media/review-cloud-ivory.webp",
+    "title": "Плотное меловое облачко — ivory",
+    "group": "Фактуры",
+    "sha256": "06aad9a5aedd1bd95fceb75a5cb9bda9d64658cf19d3550d51fce1acfa38b4ff"
+  },
+  {
+    "id": "review-cloud-blue",
+    "file": "media/review-cloud-blue.webp",
+    "title": "Плотное меловое облачко — blue",
+    "group": "Фактуры",
+    "sha256": "40e7d46819dceec589314c3c85594fe3d047c418acb04ad509304ce7e42cf36f"
+  },
+  {
+    "id": "review-cloud-sage",
+    "file": "media/review-cloud-sage.webp",
+    "title": "Плотное меловое облачко — sage",
+    "group": "Фактуры",
+    "sha256": "838005e377b58f53198a0e9117d7ca92820babbefba0da21ed602cbd724b7093"
+  },
+  {
+    "id": "review-letter",
+    "file": "media/review-letter.webp",
+    "title": "Письмо от семьи",
+    "group": "Иллюстрации",
+    "sha256": "1ddf81443211bf0001d882cd53a4707951aded94a3f7bf00246427097fce452c"
+  },
+  {
+    "id": "review-cups",
+    "file": "media/review-cups.webp",
+    "title": "Чай и разговор",
+    "group": "Иллюстрации",
+    "sha256": "d4e1dbd4bf2e682ebfe5f3654f187fd70437f54c624f9d645fc1851f02ddf9f1"
+  },
+  {
+    "id": "review-book",
+    "file": "media/review-book.webp",
+    "title": "Домашнее спокойствие",
+    "group": "Иллюстрации",
+    "sha256": "cfac0a473decd78b0f82b800d57c39e868f85126af0c86289cc5ff38c69a5977"
   }
 ]

@@ -57,6 +57,6 @@ for(const item of catalog)assert.equal(createHash('sha256').update(await readFil
 const retired=JSON.parse(await readFile('release-manifest.json','utf8')).design_decisions.retired_artwork_20261107.items;
 assert.equal(retired.length,9);
 for(const {file} of retired){assert.ok(!catalog.some(item=>item.file===file));await assert.rejects(stat('src/site/'+file),{code:'ENOENT'});await assert.rejects(stat('out/'+file),{code:'ENOENT'});}
-// The five requested pricing studies share one document and reuse its artwork.
-assert.ok(bytes<2_250_000,`Payload budget exceeded: ${bytes}`);
+// The requested pricing and review studies share one document and reuse artwork.
+assert.ok(bytes<2_800_000,`Payload budget exceeded: ${bytes}`);
 console.log(`PASS: one document, nine complete blocks, no frame resizing; ${files} files, ${bytes} bytes, ${links} local assets; ${catalog.length} artwork hashes.`);

@@ -1390,6 +1390,22 @@
       "selection": "Numbered accessible tabs; shareable pricing=1..5 URL; no storage",
       "artwork": "Reuse the three existing subjects and family schedule from the saved pencil library",
       "temporary_payload_budget": 2250000
+    },
+    "review_clouds_20261109": {
+      "variants": [
+        "Молочные облачка",
+        "Цветной мелок",
+        "Общее меловое поле"
+      ],
+      "textures": "Three natively generated dense transparent chalk patches; 960px WebP derivatives with original PNGs retained in artifacts",
+      "motifs": [
+        "family letter",
+        "two cups",
+        "book and blanket",
+        "reading together"
+      ],
+      "copy": "The original three reviews and authors are preserved",
+      "selection": "Three local numbered tabs and reviews=1..3 shareable URL; pricing studies remain available"
     }
   },
   "reviewed_decisions": {
@@ -1406,22 +1422,22 @@
     "retired_named_designs": "November 6 explicitly removed numbered designs 10 and 12-16, including Yoga 16 and Elliot 15; this overrides the earlier optional Yoga clarification. Three explicitly transferred blocks survive inside designs 7 and 11.",
     "complete_block_catalog": "Retired by explicit single-selected-site request on November 7. Preserve selected nine blocks only; all old assembly links redirect to home.",
     "latest_classic_service": "The later explicit request rejects the family-interview block in design 6; use its completed illustrated service replacement.",
-    "latest_switcher": "Fixed selected site, fonts and About; five explicitly requested pricing-only comparisons added November 9."
+    "latest_switcher": "Fixed site, fonts and About; five pricing variants and three review variants explicitly requested November 9."
   },
   "validation": {
     "tests": {
       "failed": 0,
       "passed": 38
     },
-    "visual_check": "Five pricing variants verified at 1440, 900, 390 and 320px; no horizontal overflow, keyboard Home/End and URL restoration pass, stable scroll while switching. Browser console has no errors.",
-    "build": "fb1dcf7af7",
-    "static_check": "PASS: 48 files, 2121458 bytes, 84 local assets, 14 artwork hashes; one document, nine sections."
+    "build": "84b3855952",
+    "static_check": "PASS: one document, nine sections, 54 files, 2630871 bytes, 92 local assets, 20 artwork hashes.",
+    "visual_check": "Three review treatments checked at 1440, 900, 390 and 320px. No horizontal overflow or browser errors. Three reviews across desktop, mobile next/previous and last disabled state verified; URL restoration and keyboard Home/End passed."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "facfffb01e",
+  "previous_confirmed_build": "fb1dcf7af7",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

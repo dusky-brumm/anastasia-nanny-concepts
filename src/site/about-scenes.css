@@ -80,6 +80,9 @@
 /* The print and its registered continuation share one fixed coordinate space. */
 .site-preview #about[data-about-scene="4"] .about-photo-composition{animation:none;transition:none}
 .site-preview #about[data-about-scene="4"] :is(.about-photo-backing,.about-continuation-drawing){animation:none;transition:none;transform:none;translate:none}
+/* Only the cropped figure continues here; the approved environment stays below. */
+.site-preview #about .about-figure-continuation{display:none;opacity:.82}
+.site-preview #about[data-about-scene="4"] li.is-current .about-figure-continuation{display:block}
 @media(min-width:761px) and (max-width:1000px){
  .site-preview #about:is([data-about-scene="2"],[data-about-scene="4"]) .s-about-slides{display:block;min-height:0}
  .site-preview #about:is([data-about-scene="2"],[data-about-scene="4"]) .s-about-slides li{display:grid;grid-template-columns:minmax(0,1fr);gap:32px}

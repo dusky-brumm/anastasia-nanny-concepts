@@ -341,5 +341,26 @@
     "title": "Чашки — свободная композиция",
     "group": "Иллюстрации",
     "sha256": "4dc72d180ec3cc075689409bb21137081a30ad4999dc084351efd62790354495"
+  },
+  {
+    "id": "about-figure-family-20261110",
+    "file": "media/about-figure-family-20261110.webp",
+    "title": "Карандашное продолжение фигуры: family",
+    "group": "Иллюстрации",
+    "sha256": "5e2c68700e7771074fdf55f8d61534598a33dd04a8c84756556fd0f30f0987da"
+  },
+  {
+    "id": "about-figure-cafe-20261110",
+    "file": "media/about-figure-cafe-20261110.webp",
+    "title": "Карандашное продолжение фигуры: cafe",
+    "group": "Иллюстрации",
+    "sha256": "d1de40982080b4c66fa7354f83b7b317ca6bcc41e56dbe8dea7f89fdceae19d3"
+  },
+  {
+    "id": "about-figure-park-20261110",
+    "file": "media/about-figure-park-20261110.webp",
+    "title": "Карандашное продолжение фигуры: park",
+    "group": "Иллюстрации",
+    "sha256": "83ab0cd12d75d73b281379ab0b75ec62cac18f7ae4c8b35ffa948293c84ad8b9"
   }
 ]

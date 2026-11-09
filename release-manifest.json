@@ -1,5 +1,5 @@
 {
-  "build": "d4c8915977",
+  "build": "c0abe4f706",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1709,6 +1709,17 @@
       "visibility": "Eager href images, outside data-pencil-art renderer; no waiting, stroke reveal or replay",
       "alignment": "Same photograph composition parent and registered coordinates; backdrop transforms/transitions/animations disabled",
       "preserved": "Original photo crops, artwork pixels, carousel and other drawing animations retained"
+    },
+    "about_figure_continuation_20261110": {
+      "files": [
+        "media/about-figure-family-20261110.webp",
+        "media/about-figure-cafe-20261110.webp",
+        "media/about-figure-park-20261110.webp"
+      ],
+      "scope": "Only About continuation mode 4, stories 1/3/4",
+      "style": "Light colored-pencil sleeve, hand, clothing and leg continuations; opacity 0.82 and fading outer edge",
+      "registration": "Opaque photo rectangle coordinates project each generated foreground layer from the real image viewport; generated photo center removed",
+      "preserved": "Original source photo hashes, existing background artwork, story copy, geometry, static rendering and other drawing animations"
     }
   },
   "reviewed_decisions": {
@@ -1732,16 +1743,16 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "d4c8915977",
-    "visual_check": "All four registered About photo continuations render directly from image href without pencil masks or deferred drawing. Relative backing/frame coordinates remain constant across scroll (under 0.001px variance); desktop and 390px phone verified with motion enabled; no horizontal overflow.",
-    "static_check": "PASS: one document, nine blocks; 58 files, 3372501 bytes including 745564 optional About drawings; 107 local assets; 49 artwork hashes.",
+    "build": "c0abe4f706",
+    "visual_check": "Added three independently registered, static transparent pencil continuations for cropped figures in family/cafe/park About photographs. Desktop screenshots of each and 390px phone verified; original photo hashes unchanged; other About modes hide the new layers; no horizontal overflow.",
+    "static_check": "PASS: one document, nine blocks; 61 files, 3485399 bytes including 856950 optional About drawings; 110 local assets; 52 artwork hashes.",
     "preserved": "Completed accents/illustration changes from source 339eb191e89208f58f133ce68e198c9c9308cac4; hero/photo layout, original photographs and all illustration files unchanged."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "774539b493",
+  "previous_confirmed_build": "d4c8915977",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

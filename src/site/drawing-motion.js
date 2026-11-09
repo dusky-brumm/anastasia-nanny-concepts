@@ -24,6 +24,7 @@ const lines=[...document.querySelectorAll('svg[data-ink-line]')].map(svg=>({
 // The original pixels stay still while overlapping pencil passes reveal them.
 const pictureGroups=new Map();
 const pictures=[...document.querySelectorAll('svg[data-chalk-picture],#process svg[data-early-art],#apply svg[data-early-art]')].map(svg=>{
+  if(svg.hasAttribute('data-service-drawing'))return null;
   const image=svg.querySelector('image'),box=svg.viewBox.baseVal;
   if(!image||!box.width||!box.height)return null;
   svg.dataset.chalkPicture='';

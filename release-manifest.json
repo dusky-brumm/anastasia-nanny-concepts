@@ -1,5 +1,5 @@
 {
-  "build": "b33cbef5b5",
+  "build": "d9d5d90a81",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1548,6 +1548,19 @@
         "preserved_markup_sha256": "65c1d786bba6ec0f235184869797119b6fac02b1fb43c2ae3ebe886be51489c7",
         "preserved_css_sha256": "3b993efd42b9847dd6eb90d4e31b1c94359061ae1e7ff2abfd74dd4368784dae"
       }
+    },
+    "service_drawing_20261109": {
+      "sequence": [
+        "profile: paper then contents",
+        "book: pages then notes and pencil",
+        "interview: table and chairs then women"
+      ],
+      "image_stagger_ms": 500,
+      "caption_offset_ms": 500,
+      "replay": "once per page visit",
+      "mobile": "schedule only visible cards",
+      "reduced_motion": "complete original artwork and text",
+      "documentation": "docs/service-drawing-20261109.md"
     }
   },
   "reviewed_decisions": {
@@ -1568,13 +1581,13 @@
   },
   "validation": {
     "tests": {
-      "passed": 38,
+      "passed": 41,
       "failed": 0
     },
-    "build": "82fd66feec",
-    "visual_check": "Chrome viewports 1440x1000, 390x1000, 320x1000 and 640x320. Header remains at viewport top 0, with stable height 76px desktop/68px mobile. Native anchors place sections at 88px desktop/80px mobile. Active labels match the section at the measured scroll position, independently of the URL hash. Pencil underline inspected on desktop and open mobile menu. Link selection closes the menu, Escape closes and returns focus, landscape menu is limited to 236px with its own overflow. Normal smooth navigation reaches the correct active section. No horizontal overflow or browser console errors.",
-    "static_check": "PASS: 64 files, 3552044 bytes, 814508 optional About drawings, 108 local references and 35 artwork hashes. Existing package caps retained.",
-    "preserved": "All chosen content, pictures, footer 3, review cards and comparison choices remain."
+    "build": "d9d5d90a81",
+    "visual_check": "Retained service drawing animation. Reviews: three cards on desktop, one-card carousel on phones, no card illustrations, one shared guestbook outside track with existing Telegram link. Pricing: approved variants 1 and 2 byte-preserved; four new layouts verified at 1440, 900, 390 and 320 px. Keyboard selection and carousel controls work. No horizontal overflow or browser errors.",
+    "static_check": "PASS: 60 files, 3222543 bytes including 814508 optional About drawings; 111 local assets; 40 artwork hashes. Existing payload caps retained.",
+    "preserved": "Both service drawing animation and the refreshed reviews/pricing are retained. Pricing variants 1 and 2 are unchanged."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

@@ -1,6 +1,6 @@
 {
-  "build": "35f3485066",
-  "base_commit": "8c9bf2c233c6578f6f9aec317964c2f34a956db5",
+  "build": "2eb97903ac",
+  "base_commit": "881add897d64c8682556b3bbd9bf25be69451f36",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Lead the service block with Я подбираю няню под вашу семью and the preschool/school interview examples, then place the same three illustrated work stages below; retain the profile example link and existing pencil animations",
     "Pencil motion: original chalk pricing circles trace on entry, nine illustrations reveal through overlapping pencil passes, the calm underline traces its real strokes, and scroll arrows update once per animation frame; preserve static content, mobile layouts and reduced-motion preferences",
     "Replace the nine resizing iframes with one complete HTML page; preserve component styles, stabilize fonts and review heights, and avoid redrawing artwork already visible at startup",
     "Bring the hero portrait closer to its larger heading, restore the ink-colored calm word with a closer stronger pencil underline, increase section breathing room and About photos, and sharpen the prepayment book",
@@ -1314,6 +1315,16 @@
         "console_errors": 0,
         "overflow": false
       }
+    },
+    "family_service_order_20261109": {
+      "heading": "Я подбираю няню под вашу семью",
+      "order": [
+        "heading",
+        "interview examples and profile link",
+        "pencil separator",
+        "three illustrated stages"
+      ],
+      "mobile_width_checked": 320
     }
   },
   "reviewed_decisions": {

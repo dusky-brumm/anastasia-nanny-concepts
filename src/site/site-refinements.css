@@ -38,6 +38,16 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 .s-site-footer :is(a,button):hover{text-decoration:underline;text-underline-offset:5px}
 @media(max-width:760px){.s-site-footer .footer-main{align-items:start;flex-direction:column;gap:20px}.s-site-footer .footer-thread{margin-bottom:20px}.s-site-footer .footer-nav{gap:8px 24px}.s-site-footer .footer-meta{margin-top:16px}}
 
+/* The personal interview examples introduce the three illustrated work stages. */
+#chalk-service-designs .studies .service-example--intro{margin-top:24px;align-items:end;gap:28px}
+#chalk-service-designs .studies .service-example--intro p{max-width:76ch;font-size:18px;line-height:1.7}
+#chalk-service-designs .studies .studies-thread{margin-top:28px}
+#chalk-service-designs .studies .study-grid{margin-top:24px}
+@media(max-width:760px){
+ #chalk-service-designs .studies .service-example--intro{grid-template-columns:minmax(0,1fr);gap:14px;margin-top:20px}
+ #chalk-service-designs .studies .service-example--intro p{font-size:17px;line-height:1.65}
+}
+
 /* Three dry-chalk circles: blue, sage, blue; the content stays on milk paper. */
 .site-preview.early-classic #pricing .s-pricing-summary h2{max-width:none}
 .site-preview.early-classic #pricing .s-pricing-terms{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-block:40px 28px}

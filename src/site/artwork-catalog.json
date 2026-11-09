@@ -250,5 +250,33 @@
     "title": "Две чашки и блокнот лёгким карандашом",
     "group": "Иллюстрации",
     "sha256": "853886849257fcc40ec215aa352855d539a6ee6993e09b4b739543080810261e"
+  },
+  {
+    "id": "reviews-open-guestbook-20261109",
+    "title": "Раскрытая книга отзывов, вид сбоку",
+    "file": "media/reviews-open-guestbook-20261109.webp",
+    "group": "Иллюстрации",
+    "sha256": "6553ef8684bc5a971c73f11fbfb4a461dd1ce80288fb07570cec375ca0ae8c56"
+  },
+  {
+    "id": "pricing-pencil-arch-20261109",
+    "title": "Карандашная арка для условий",
+    "file": "artwork/vectors/pricing-pencil-arch-20261109.svg",
+    "group": "Линии и знаки",
+    "sha256": "6ae52ea6606c047a13f149d8e38aca5ca69fbdb68143e03c4dbd8c2dbad3b572"
+  },
+  {
+    "id": "pricing-pencil-oval-20261109",
+    "title": "Овальная карандашная обводка для условий",
+    "file": "artwork/vectors/pricing-pencil-oval-20261109.svg",
+    "group": "Линии и знаки",
+    "sha256": "44922b56334bf45a33790fcd59eb92d5d0ac15778a1f2f3cd546ddf8a0eb02d1"
+  },
+  {
+    "id": "pricing-chalk-patch-20261109",
+    "title": "Мягкое пятно сухого мелка для условий",
+    "file": "artwork/vectors/pricing-chalk-patch-20261109.svg",
+    "group": "Линии и знаки",
+    "sha256": "9786bea293482bf7b65dd33dd3b12dcaccefce6491e31a7fb998303c0363974d"
   }
 ]

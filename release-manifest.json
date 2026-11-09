@@ -1531,6 +1531,23 @@
       ],
       "fields": "Same single form, same three fields and Telegram draft flow",
       "illustration": "media/consultation-tea-pencil-20261109.webp"
+    },
+    "reviews_pricing_refresh_20261109": {
+      "reviews": "No card illustrations; one large open guestbook and the existing Telegram link below all reviews.",
+      "pricing": {
+        "preserved": [
+          1,
+          2
+        ],
+        "replaced": {
+          "3": "Меловые пятна",
+          "4": "Карандашные арки",
+          "5": "Разворот блокнота",
+          "6": "Овальные обводки"
+        },
+        "preserved_markup_sha256": "65c1d786bba6ec0f235184869797119b6fac02b1fb43c2ae3ebe886be51489c7",
+        "preserved_css_sha256": "3b993efd42b9847dd6eb90d4e31b1c94359061ae1e7ff2abfd74dd4368784dae"
+      }
     }
   },
   "reviewed_decisions": {

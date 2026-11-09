@@ -1,5 +1,5 @@
 {
-  "build": "54e1cc33f4",
+  "build": "3b740bbedb",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Make the drawn human continuations around About photographs barely visible with opacity0.10; preserve the existing environment drawing and original photo strength.",
     "Review seven additional phone sizes and landscape layouts; use two readable stage columns from761–1100px,16px descriptions and shorter stage-section padding on low landscape screens.",
     "Refine phone adaptivity after independent screenshot critique: compact selected price swatches and cup-form introduction, strengthen FAQ plus/minus strokes, add application link to the mobile menu, keep stage names complete at320px and improve hero wrapping through390px.",
     "Finalize all selected sections, remove design comparisons and inactive runtime/controllers/artwork from publication; keep one cup drawing and the selected application layout, adding only blue/sage form washes with white fields and preserved input values.",
@@ -1887,6 +1888,19 @@
       "description_px": 16,
       "independent_review": "Portrait spacing, landscape layout, fifth stage and minimum two-column width reviewed",
       "documentation": "docs/phone-matrix-20261110.md"
+    },
+    "faint_people_20261110": {
+      "base_commit": "55fa4b90863998efb5cde28f5211b44f90420c67",
+      "selector": ".about-figure-continuation",
+      "opacity_before": 0.82,
+      "opacity_after": 0.1,
+      "scope": [
+        "family",
+        "cafe",
+        "park"
+      ],
+      "environment_and_photo_opacity": 1,
+      "source_images": "Unchanged"
     }
   },
   "reviewed_decisions": {
@@ -1910,16 +1924,16 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "54e1cc33f4",
-    "visual_check": "Complete screenshot passes at seven portrait phone sizes; independent spacing critique. Portrait heading geometry preserved. Two-column stages and 760/761,1100/1101 boundaries checked; no overflow. Reviews keep section height at360/480px; four About stories keep controls stable at360px; form values and white16px fields preserved. Short landscape menus remain scrollable/reachable. Browser viewport emulation; no physical phone/Safari run.",
-    "static_check": "PASS: one document, nine blocks;51 files,2681509 bytes including579244 optional About drawings;85 local assets;52 artwork hashes.",
-    "preserved": "Selected content, photographs, artwork, blue/green form, original portrait layouts and full desktop layout at1280px."
+    "build": "3b740bbedb",
+    "visual_check": "All four About stories checked; three figure overlays have0.10 opacity, environment/photo remain1. Rainbow has no human continuation. Desktop and393px phone inspected; no overflow. Original image files unchanged.",
+    "static_check": "PASS: one document, nine blocks;51 files,2681508 bytes including579244 optional About drawings;85 local assets;52 artwork hashes.",
+    "preserved": "Background environments, photographs, registration coordinates, responsive layout and existing animations."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "73c69c7863",
+  "previous_confirmed_build": "54e1cc33f4",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

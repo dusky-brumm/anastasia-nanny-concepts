@@ -57,6 +57,12 @@ for(const item of catalog)assert.equal(createHash('sha256').update(await readFil
 const retired=JSON.parse(await readFile('release-manifest.json','utf8')).design_decisions.retired_artwork_20261107.items;
 assert.equal(retired.length,9);
 for(const {file} of retired){assert.ok(!catalog.some(item=>item.file===file));await assert.rejects(stat('src/site/'+file),{code:'ENOENT'});await assert.rejects(stat('out/'+file),{code:'ENOENT'});}
-// The requested section studies share one document, form and illustration assets.
-assert.ok(bytes<2_800_000,`Payload budget exceeded: ${bytes}`);
-console.log(`PASS: one document, nine complete blocks, no frame resizing; ${files} files, ${bytes} bytes, ${links} local assets; ${catalog.length} artwork hashes.`);
+// Keep the ordinary site within its budget. Five optional About backdrops are
+// only used by the selected drawing mode/current story, and have a separate cap.
+const optionalAboutFiles=['about-scene-panorama','about-photo-scene-family','about-photo-scene-rainbow','about-photo-scene-cafe','about-photo-scene-park'];
+let optionalAboutBytes=0;
+for(const name of optionalAboutFiles)optionalAboutBytes+=(await stat('out/media/'+name+'.webp')).size;
+assert.ok(bytes-optionalAboutBytes<2_800_000,`Base payload budget exceeded: ${bytes-optionalAboutBytes}`);
+assert.ok(optionalAboutBytes<1_000_000,`Optional drawing budget exceeded: ${optionalAboutBytes}`);
+assert.ok(bytes<3_800_000,`Full comparison payload budget exceeded: ${bytes}`);
+console.log(`PASS: one document, nine complete blocks, no frame resizing; ${files} files, ${bytes} bytes (${optionalAboutBytes} optional About drawings), ${links} local assets; ${catalog.length} artwork hashes.`);

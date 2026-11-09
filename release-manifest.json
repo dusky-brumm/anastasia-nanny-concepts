@@ -1437,6 +1437,38 @@
       "before_px": 9,
       "reference": "src/reference/studio/fotoalbum-polish.css",
       "after_px": 4
+    },
+    "about_scenes_20261109": {
+      "variants": [
+        "Связанная линия",
+        "Единый рисунок",
+        "Продолжение фотографии"
+      ],
+      "photo_order": [
+        "family",
+        "rainbow",
+        "portrait",
+        "child"
+      ],
+      "source_photos": "Unchanged; original hashes recorded in artifacts",
+      "composition": "Shared four-story carousel and white photo frame. One native linked-stroke composition, one generated continuous panorama, four photo-specific pencil environment backdrops with fading outer strokes.",
+      "generated_images": 5,
+      "rejected_trials": 3,
+      "selection": "about=1..3; independent of the existing pricing/reviews/apply/footer choices",
+      "loading": "Backdrop files are CSS dependencies and are requested only when their design/current slide uses them.",
+      "verification": {
+        "widths": [
+          1440,
+          900,
+          390,
+          320
+        ],
+        "original_photos_unchanged": true,
+        "tests": 38,
+        "console_errors": 0,
+        "overflow": false,
+        "optional_drawing_bytes": 814508
+      }
     }
   },
   "reviewed_decisions": {
@@ -1453,23 +1485,23 @@
     "retired_named_designs": "November 6 explicitly removed numbered designs 10 and 12-16, including Yoga 16 and Elliot 15; this overrides the earlier optional Yoga clarification. Three explicitly transferred blocks survive inside designs 7 and 11.",
     "complete_block_catalog": "Retired by explicit single-selected-site request on November 7. Preserve selected nine blocks only; all old assembly links redirect to home.",
     "latest_classic_service": "The later explicit request rejects the family-interview block in design 6; use its completed illustrated service replacement.",
-    "latest_switcher": "Fixed main site, fonts and About; explicitly requested local comparisons for pricing, reviews, application and footer."
+    "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
     "tests": {
       "passed": 38,
       "failed": 0
     },
-    "build": "389820ce96",
-    "visual_check": "Three apply and three footer layouts checked at 1440, 900, 390 and 320px. No horizontal overflow or browser errors. Keyboard Home/End and query restoration passed. Single three-field form retains entered values across variants; privacy dialog verified. Every footer has six section links and both confirmed Telegram destinations.",
-    "static_check": "PASS: one document, nine sections, 57 files, 2751696 bytes, 101 local assets, 25 artwork hashes.",
-    "button_contour": "Shared inset restored from -9px to historical -4px. Original mask and button dimensions retained."
+    "build": "dbc9582a9d",
+    "visual_check": "Three About drawing treatments checked in Chrome at 1440, 900, 390 and 320px. All four photo-specific backdrops inspected. No horizontal overflow or console errors. Home/End and URL restoration checked. Original photos, copy and white frames retained. Mobile variant one no longer draws a line through carousel controls.",
+    "static_check": "PASS: one document, nine sections, 62 files, 3578588 bytes, 814508 optional About drawings, 107 local assets, 30 artwork hashes.",
+    "button_contour": "Shared historical -4px inset retained unchanged."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "3d16bde209",
+  "previous_confirmed_build": "389820ce96",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

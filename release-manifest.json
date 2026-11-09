@@ -1,6 +1,6 @@
 {
-  "build": "d2222bd598",
-  "base_commit": "d621d7fd573bccad6731d260d0ecbf4d16a9984f",
+  "build": "db7f445ca3",
+  "base_commit": "f5639b8188eb4df335c484ccb642e6b364a652de",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Restore the earlier irregular double-pencil button contour from 7be353c for hero and form actions, with versioned mask URLs",
     "Clarify the hero promise: choose a nanny from suitable candidates instead of choose a person",
     "Lead the service block with Я подбираю няню под вашу семью and the preschool/school interview examples, then place the same three illustrated work stages below; retain the profile example link and existing pencil animations",
     "Pencil motion: original chalk pricing circles trace on entry, nine illustrations reveal through overlapping pencil passes, the calm underline traces its real strokes, and scroll arrows update once per animation frame; preserve static content, mobile layouts and reduced-motion preferences",

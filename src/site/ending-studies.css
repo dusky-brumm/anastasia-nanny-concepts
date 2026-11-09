@@ -27,17 +27,17 @@
 @media(max-width:760px){
  .site-preview.early-classic #apply .form-color-switch{margin-bottom:24px;gap:6px}
  .site-preview.early-classic #apply .form-color-switch button{padding-inline:10px}
- .site-preview.early-classic #apply .contact-study-content{grid-template-columns:minmax(0,1fr);gap:30px}
+ .site-preview.early-classic #apply .contact-study-content{grid-template-columns:minmax(0,1fr);gap:20px}
  .site-preview.early-classic #apply .s-apply-intro{padding:0;align-content:start}
  .site-preview.early-classic #apply .s-apply-intro h2{max-width:none}
- .site-preview.early-classic #apply .ending-picture--cups{width:min(100%,280px);height:140px;margin:22px 0 6px}
- .site-preview.early-classic #apply .ending-conversation-line{width:min(85%,300px);height:26px;margin-bottom:6px}
+ .site-preview.early-classic #apply .ending-picture--cups{width:min(100%,250px);height:115px;margin:12px 0 0}
+ .site-preview.early-classic #apply .ending-conversation-line{width:min(85%,300px);height:18px;margin-bottom:0}
  .site-preview.early-classic #apply .s-apply-intro>.comparison-form-contact a{font-size:13px}
  .site-preview.early-classic #apply .s-form-pencil{gap:20px;padding:26px 22px!important}
 }
 @media(max-width:360px){
  .site-preview.early-classic #apply .s-form-pencil{padding:24px 18px!important}
- .site-preview.early-classic #apply .ending-picture--cups{width:240px;height:120px}
+ .site-preview.early-classic #apply .ending-picture--cups{width:min(100%,230px);height:110px}
 }
 
 /* The selected home and family footer. */

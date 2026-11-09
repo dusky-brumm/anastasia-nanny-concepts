@@ -25,3 +25,6 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{padding-block:40px
  .reference-design #hero .hero-underline{height:14px}
  body[data-isolated-block=footer] .site-preview .s-site-footer{padding-block:36px 40px}
 }
+@media(max-width:390px){
+ html[data-font-pair] .reference-design #hero h1{font-size:clamp(28px,8.15vw,31px)!important}
+}

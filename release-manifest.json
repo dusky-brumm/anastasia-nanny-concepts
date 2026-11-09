@@ -1,5 +1,5 @@
 {
-  "build": "d9e8075743",
+  "build": "73c69c7863",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Refine phone adaptivity after independent screenshot critique: compact selected price swatches and cup-form introduction, strengthen FAQ plus/minus strokes, add application link to the mobile menu, keep stage names complete at320px and improve hero wrapping through390px.",
     "Finalize all selected sections, remove design comparisons and inactive runtime/controllers/artwork from publication; keep one cup drawing and the selected application layout, adding only blue/sage form washes with white fields and preserved input values.",
     "Animate all final pencil illustrations in contour, hatched background and detail phases, at one third of the former drawing duration; add three shareable stroke variants and replay while preserving the 500 ms service stagger.",
     "Swap About photos one and three; enlarge the printed photos by about 20 percent and their crayon backings by about 15 percent; add restrained reading and pencil margin drawings, with a sharper responsive family photo and complete srcset asset retention",
@@ -1780,6 +1781,28 @@
       "apply": "Selected cups drawing 1 and former layout 4; default blue wash #e1eff7 and additional sage wash #e7efe2, pure-white fields. Only two color buttons; switching reuses the same form and keeps its values. Share with form=blue or form=green.",
       "footer": "Fixed selected home and family composition 3",
       "removed": "All other live design switches, old query-driven alternatives, inactive controllers, unused pencil passes and contour data; unpublished dependencies are pruned by the build"
+    },
+    "mobile_adaptivity_20261110": {
+      "review_base": "84846aeaa666b6e85273e9ae42966e12e5f1a482",
+      "integrated_base": "882b0e672b4a36dde309e231088324216701b08e",
+      "review": "Independent before/after 13-screen critique and focused re-review including final blue/green form at393/320px",
+      "primary_viewport": [
+        393,
+        852
+      ],
+      "additional_widths": [
+        320,
+        375,
+        390,
+        852,
+        1280
+      ],
+      "selected_price_card_mobile_px": 230,
+      "condition_group_height_px": 726,
+      "final_application_height_px": 833,
+      "stage_narrow_max_px": 380,
+      "hero_small_max_px": 390,
+      "documentation": "docs/mobile-adaptivity-20261110.md"
     }
   },
   "reviewed_decisions": {
@@ -1803,16 +1826,16 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "d9e8075743",
-    "static_check": "PASS: one document, nine blocks; 51 files, 2677854 bytes including 579244 About drawings; 85 local assets; 52 artwork hashes.",
-    "visual_check": "Desktop 1440px and mobile 390px: same selected cups/blue form and added sage form; white fields; color changes preserve entered name; no horizontal overflow. No retired selectors/tablists. Static registered About drawings retain their alignment and fixed carousel navigation; service drawings finish in 659/689/719ms with 0/20/40ms starts. Legacy design query parameters no longer restore retired variants. At 320px, compact color buttons stay on the same row with no horizontal overflow.",
-    "preserved": "Selected text, original photographs, contour buttons, application behavior, pricing conditions/FAQ, reviews and home/family footer retained."
+    "build": "73c69c7863",
+    "visual_check": "Full before/after phone screen pass and independent critique/re-review. Final selected pricing and blue/green forms checked at393/320px; one form preserves name/message and white16px fields,44px color controls remain on one row.320px stage names,375/390px hero, menu/FAQ, landscape/desktop and ordinary drawing checked. No horizontal overflow. Browser viewport emulation; no physical Safari run.",
+    "static_check": "PASS: one document, nine blocks;51 files,2681114 bytes including579244 optional About drawings;85 local assets;52 artwork hashes.",
+    "preserved": "Original artwork/photos, selected animation1 and static About4 continuations, selected chalk-swatch pricing, review guestbook, family footer and final blue/green single form from the other chat."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "1c5086596e",
+  "previous_confirmed_build": "d9e8075743",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

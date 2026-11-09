@@ -54,4 +54,7 @@ html[data-font-pair] .site-preview.early-classic #pricing .pn-term-2 dd{font-siz
  .site-preview.early-classic #pricing .pricing-new{margin-top:18px}
  .site-preview.early-classic #pricing .pn-terms{grid-template-columns:minmax(0,1fr);gap:18px;justify-items:center}
  .site-preview.early-classic #pricing .pn-term{width:min(100%,390px);min-height:280px;padding:32px 28px}
+ .site-preview.early-classic #pricing .pn-3 .pn-term{min-height:230px;padding:24px}
+ .site-preview.early-classic #pricing .pn-3 .pn-picture{width:72px;height:64px;margin-bottom:12px}
+ html[data-font-pair] .site-preview.early-classic #pricing .pn-3 dd{margin-top:12px}
 }

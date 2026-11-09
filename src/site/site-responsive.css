@@ -87,3 +87,22 @@ body[data-isolated-block=header] .site-preview{overflow:visible!important}
   .about-story .s-about-dots button{width:44px;height:44px}
   .s-site-footer .s-privacy{min-height:44px}
 }
+
+/* Phone review: keep short terms compact and the form within easy reach. */
+@media(max-width:760px){
+  .site-preview #header .s-header-brand{display:flex;flex-direction:column;justify-content:center;min-height:44px}
+  .site-preview #header .s-menu-links>.mobile-request-link{color:#385a6b}
+  .site-preview .s-faq summary::before,.site-preview .s-faq summary::after{width:20px;height:3px;mask:none;clip-path:polygon(0 20%,28% 8%,62% 20%,97% 0,100% 72%,64% 94%,26% 82%,0 100%)}
+  .site-preview.early-classic #apply :is(input,textarea){scroll-margin-block:calc(var(--site-header-height,68px) + 16px) 24px}
+}
+/* Keep the full stage name beside its number on the narrowest phones. */
+@media(max-width:380px){
+  .reference-design #hero h1>span:last-child{text-wrap:balance}
+  .site-preview.early-classic #process .s-study-steps li{grid-template-columns:52px minmax(0,1fr);gap:12px}
+  .site-preview.early-classic #process .s-study-copy{display:contents}
+  .site-preview.early-classic #process .classic-arrow-route li:nth-child(n) .s-study-number{grid-column:1;grid-row:1;justify-self:center;margin-top:0}
+  .site-preview.early-classic #process .classic-arrow-route h3{grid-area:auto;grid-column:2;grid-row:1;align-self:center}
+  .site-preview.early-classic #process .classic-arrow-route p{grid-area:auto;grid-column:2;grid-row:2}
+  .site-preview.early-classic #process .early-step-picture{grid-area:auto;grid-column:1;grid-row:2;width:52px;height:56px;align-self:start;justify-self:center}
+  .site-preview.early-classic #process .classic-arrow-mobile{display:none}
+}

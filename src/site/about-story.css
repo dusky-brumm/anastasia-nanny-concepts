@@ -104,12 +104,12 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
 /* In the chosen opening spread, the copy and its controls form one column. */
 @media(min-width:761px){
  .about-story[data-about-design='1'] .s-about-slides{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);column-gap:72px;align-content:center;min-height:432px}
- .about-story[data-about-design='1'] .s-about-viewport{grid-column:2;grid-row:1;position:static}
- .about-story[data-about-design='1'] .s-about-slides ol{display:block}
- .about-story[data-about-design='1'] .s-about-slides li{display:block;position:absolute;inset:0;padding:0;transition:opacity .3s}
- .about-story[data-about-design='1'] .s-about-slides li.is-current{position:static}
+ .about-story[data-about-design='1'] .s-about-viewport{grid-column:2;grid-row:1;position:static;margin-inline-start:calc(-1 * var(--about-copy-shift,40px))}
+ /* Hidden stories still size the shared grid, keeping the navigation fixed. */
+ .about-story[data-about-design='1'] .s-about-slides ol{display:grid}
+ .about-story[data-about-design='1'] .s-about-slides li{display:block;position:static;inset:auto;align-self:start;padding:0;transition:opacity .3s}
  .about-story[data-about-design='1'] .s-about-slides .s-photo{position:absolute;top:50%;left:max(20px,calc((100% - 72px) * .2125 - 160px));width:min(320px,calc((100% - 72px) * .425 - 24px));transform:translateY(-50%) rotate(-1deg)}
- .about-story[data-about-design='1'] .about-controls{grid-column:2;grid-row:2;margin:24px 0 0;max-width:none}
+ .about-story[data-about-design='1'] .about-controls{grid-column:2;grid-row:2;margin:24px 0 0;max-width:none;margin-inline-start:calc(-1 * var(--about-copy-shift,40px))}
 }
 @media(max-width:760px){.about-story[data-about-design='1'] .s-about-slides li{gap:30px}}
 @media(prefers-reduced-motion:reduce){.about-story[data-about-design] .s-about-slides li{transition:none}}
@@ -128,7 +128,7 @@ body[data-isolated-block=about] .site-preview{width:100%;max-width:none;border-r
  .about-story .about-photo-composition{grid-column:1;grid-row:1;width:336px;max-width:calc(100% - 12px)}
  .about-story .about-photo-backing{inset:-22px -26px -43px -26px}
  .about-story .about-photo-composition .s-photo-mask{height:360px}
- .about-story[data-about-design='1'] .s-about-slides li{gap:42px}
+ .about-story[data-about-design='1'] .s-about-slides li{gap:32px}
 }
 
 /* Small pencil sketches sit in the margins, behind the biography and controls. */

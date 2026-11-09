@@ -1,5 +1,5 @@
 {
-  "build": "2f11107dc7",
+  "build": "fa95994547",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1735,6 +1735,14 @@
       "captions": "Enter during drawing; finish before the faster drawing ends",
       "cleanup": "Cancel fade on completion, replay and motion-off; restore underlying artwork opacity",
       "preserved": "Other treatment durations, stroke geometry, artwork files, About static continuations and layout"
+    },
+    "about_slider_alignment_20261110": {
+      "navigation": "All stories participate in one overlapping grid; the longest copy reserves height, including invisible slides",
+      "desktop_copy_shift_px": 40,
+      "illustrated_desktop_copy_shift_px": 56,
+      "positioning": "Negative inline margins on static viewport and navigation preserve the photo containing block and registered backgrounds",
+      "stacked_spacing": "Shorter photo-to-copy gaps on phone and tablet",
+      "preserved": "Carousel behavior, original photographs, registered pencil continuations, drawing timing and artwork files"
     }
   },
   "reviewed_decisions": {
@@ -1758,16 +1766,16 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "2f11107dc7",
-    "visual_check": "Selected service long strokes run 35% faster (659/689/719ms), with parallel opacity fade and 0/20/40ms activation offsets. DOM observations confirmed drawing masks and opacity 0.336 during entry, then unmasked images at baseline opacity 0.96 and fully visible captions; replay, motion-off and 390px layout verified.",
-    "static_check": "PASS: one document, nine blocks; 61 files, 3485940 bytes including 856950 optional About drawings; 110 local assets; 52 artwork hashes.",
+    "build": "fa95994547",
+    "visual_check": "About navigation previously varied by 28px between stories; shared stacked-grid sizing now reserves the longest story and produces identical control coordinates on all four slides. Verified 1500px/900px/390px/320px viewports and original/continued-photo treatments. Copy and controls move 56px toward the photo in illustrated desktop spreads (40px in original); original photo right edge unchanged. No overflow.",
+    "static_check": "PASS: one document, nine blocks; 61 files, 3485904 bytes including 856950 optional About drawings; 110 local assets; 52 artwork hashes.",
     "preserved": "Completed accents/illustration changes from source 339eb191e89208f58f133ce68e198c9c9308cac4; hero/photo layout, original photographs and all illustration files unchanged."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "c0abe4f706",
+  "previous_confirmed_build": "2f11107dc7",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

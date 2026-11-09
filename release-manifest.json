@@ -1512,6 +1512,14 @@
       "correction": "Native ImageGen edit gives the page interiors an almost opaque neutral milk fill (sampled alpha 252/255), retaining pencil contours, fold, writing marks, cover, pencil and the outer transparent background.",
       "layout": "Same SVG viewport, image coordinates and rendered dimensions; only the image href changes.",
       "asset": "media/service-book-light-pages-20261109.webp; 640x379px; 38378 bytes. Original source image retained."
+    },
+    "sticky_header_20261109": {
+      "position": "The outer header document is sticky at top 0, keeping its reserved height and original page flow.",
+      "appearance": "Quiet milk surface; a subtle shadow/rule after 8px of scrolling. No shrink, slide or hide effect.",
+      "navigation": "Current section is reflected with aria-current=location in both menus; the same thin native pencil-rule mask draws beneath the label.",
+      "anchors": "ResizeObserver measures the real header height for scroll-padding; section scroll margins provide another 12px.",
+      "mobile": "Preserve the existing details menu, outside click, Escape and link-close behavior; constrain long menus to viewport height.",
+      "motion": "Passive scroll listener schedules one update per animation frame; reduced motion disables the small visual transitions."
     }
   },
   "reviewed_decisions": {
@@ -1535,16 +1543,16 @@
       "passed": 38,
       "failed": 0
     },
-    "build": "fe7d4867bc",
-    "visual_check": "Service section checked in Chrome at viewport 1440 and 390px (content 1425 and 375px). Whiter pages verified against the actual pale blue block, original picture placement and section layout retained. No horizontal overflow or browser errors.",
-    "static_check": "PASS: 64 files, 3547986 bytes, 814508 optional About drawings, 107 local assets and 35 artwork hashes. Existing package caps retained.",
-    "preserved": "Selected footer 3, fixed white reviews, all four photo styles, six pricing options and button contours."
+    "build": "82fd66feec",
+    "visual_check": "Chrome viewports 1440x1000, 390x1000, 320x1000 and 640x320. Header remains at viewport top 0, with stable height 76px desktop/68px mobile. Native anchors place sections at 88px desktop/80px mobile. Active labels match the section at the measured scroll position, independently of the URL hash. Pencil underline inspected on desktop and open mobile menu. Link selection closes the menu, Escape closes and returns focus, landscape menu is limited to 236px with its own overflow. Normal smooth navigation reaches the correct active section. No horizontal overflow or browser console errors.",
+    "static_check": "PASS: 64 files, 3552044 bytes, 814508 optional About drawings, 108 local references and 35 artwork hashes. Existing package caps retained.",
+    "preserved": "All chosen content, pictures, footer 3, review cards and comparison choices remain."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "a8ba7397f1",
+  "previous_confirmed_build": "fe7d4867bc",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

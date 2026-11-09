@@ -4,7 +4,7 @@ dialog [data-close]{transition:color 180ms ease}dialog [data-close]:hover{color:
 html:has(dialog[open]){overflow:hidden}
 dialog{box-sizing:border-box;max-height:calc(100dvh - 48px);overflow:auto}
 dialog [data-close]{display:grid;place-items:center;min-width:44px;min-height:44px;top:2px;right:2px}
-[data-selected-block=service],[data-selected-block=reviews],[data-selected-block=footer]{background:#e7f1f6}
-[data-selected-block=process]{background:#e8efe4}
+[data-selected-block=service],[data-selected-block=reviews],[data-selected-block=footer]{background:#e1eff7}
+[data-selected-block=process]{background:#e7efe2}
 @media(max-width:760px){dialog{width:calc(100% - 40px);padding:32px 24px 24px}html{scrollbar-gutter:auto}}
 @media(prefers-reduced-motion:reduce){dialog [data-close]{transition:none}}

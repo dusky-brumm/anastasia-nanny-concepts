@@ -23,7 +23,7 @@ html[data-body-font=caveat] .site-preview.early-classic .s-reviews [data-open-qu
 .site-preview.early-classic #apply .s-apply-intro h2{margin-inline:auto}
 .site-preview.early-classic #apply .consultation-picture{grid-column:1;grid-row:2;justify-self:center;width:253px;max-width:100%;height:115px;margin:24px 0 10px}
 .site-preview.early-classic #apply .s-apply-intro>.comparison-form-contact{grid-column:1;grid-row:3;justify-self:center;margin-top:0}
-body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padding-block:24px 28px;background:#e7f1f6!important;text-align:left;color:var(--ink)}
+body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padding-block:24px 28px;background:#e1eff7!important;text-align:left;color:var(--ink)}
 .s-site-footer .footer-inner{max-width:1120px;margin-inline:auto}
 .s-site-footer .footer-thread{display:block;width:100%;height:38px;margin:0 0 26px;pointer-events:none}
 .s-site-footer .footer-main{display:flex;align-items:center;justify-content:space-between;gap:32px}

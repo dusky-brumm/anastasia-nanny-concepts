@@ -89,5 +89,12 @@
     "title": "Карандаши — рисунок на полях знакомства",
     "group": "Иллюстрации",
     "sha256": "8bfc218db68aed30b9e5b58bc59949ab4643b8eea87f4ec0d5984d01b8d4354b"
+  },
+  {
+    "id": "pricing-family-schedule",
+    "file": "media/pricing-family-schedule.webp",
+    "title": "Семейный ежедневник для варианта стоимости",
+    "group": "Иллюстрации",
+    "sha256": "31dd215f5c03e56f6dce0387032a28ce92ee35de2f12957fb6a5607acc78cf2b"
   }
 ]

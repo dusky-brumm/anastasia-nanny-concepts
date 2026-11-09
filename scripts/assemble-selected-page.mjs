@@ -4,7 +4,7 @@ import postcss from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 import {sitePage} from '../src/site/pages.mjs';
 
-const shared=['fonts.css','site-typography.css','site-refinements.css','site-polish.css','site-responsive.css','site-layout.css'];
+const shared=['fonts.css','site-typography.css','site-refinements.css','site-polish.css','site-responsive.css','site-layout.css','pricing-studies.css'];
 const external=url=>/^(?:[a-z][a-z\d+.-]*:|\/\/|#|%23)/i.test(url);
 export function scopeSelector(source,hosts){
   const scope=`:where(${hosts.map(id=>'.'+id).join(',')})`;

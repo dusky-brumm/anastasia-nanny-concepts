@@ -1376,6 +1376,20 @@
         320
       ],
       "overflow": false
+    },
+    "pricing_studies_20261109": {
+      "variants": [
+        "Меловые круги",
+        "Линия оплаты",
+        "Бумажные карточки",
+        "Акцент на предоплате",
+        "Семейный ежедневник"
+      ],
+      "scope": "Pricing only; five explicitly requested comparisons. All other selected blocks remain fixed.",
+      "terms_link": "Beside the introductory inclusion text",
+      "selection": "Numbered accessible tabs; shareable pricing=1..5 URL; no storage",
+      "artwork": "Reuse the three existing subjects and family schedule from the saved pencil library",
+      "temporary_payload_budget": 2250000
     }
   },
   "reviewed_decisions": {
@@ -1392,16 +1406,16 @@
     "retired_named_designs": "November 6 explicitly removed numbered designs 10 and 12-16, including Yoga 16 and Elliot 15; this overrides the earlier optional Yoga clarification. Three explicitly transferred blocks survive inside designs 7 and 11.",
     "complete_block_catalog": "Retired by explicit single-selected-site request on November 7. Preserve selected nine blocks only; all old assembly links redirect to home.",
     "latest_classic_service": "The later explicit request rejects the family-interview block in design 6; use its completed illustrated service replacement.",
-    "latest_switcher": "No design, font or About-layout controls; final fixed Lora + Manrope and About 1 per November 8 request."
+    "latest_switcher": "Fixed selected site, fonts and About; five explicitly requested pricing-only comparisons added November 9."
   },
   "validation": {
-    "build": "7ba84886d8",
     "tests": {
-      "passed": 37,
-      "failed": 0
+      "failed": 0,
+      "passed": 38
     },
-    "static_check": "PASS: one document, nine complete blocks, no resizing frames; 44 files, 1843769 bytes, 63 local assets, 11 canonical artwork hashes.",
-    "visual_check": "Verified the extra 48px desktop height at 1440px and 72px padding at 320px. No horizontal overflow or browser console errors. Pricing sketch verified separately as a local proposal."
+    "visual_check": "Five pricing variants verified at 1440, 900, 390 and 320px; no horizontal overflow, keyboard Home/End and URL restoration pass, stable scroll while switching. Browser console has no errors.",
+    "build": "fb1dcf7af7",
+    "static_check": "PASS: 48 files, 2121458 bytes, 84 local assets, 14 artwork hashes; one document, nine sections."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

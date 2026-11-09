@@ -1,5 +1,5 @@
 {
-  "build": "87462cb3b7",
+  "build": "c80ac9f4c2",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1663,6 +1663,23 @@
       "photo_width_after": 429,
       "desktop_shift_px": 24,
       "layout": "Single existing hero; preserve text alignment, printed border, caption, backing and mobile centering"
+    },
+    "matched_illustrations_20261109": {
+      "references": [
+        "16-step-first-meeting.webp",
+        "07-service-interview.webp"
+      ],
+      "replaced": [
+        "reviews-guestbook-matched-20261109.webp",
+        "footer-family-matched-20261109.webp"
+      ],
+      "tea_variants": [
+        "consultation-tea-matched-1-20261109.webp",
+        "consultation-tea-matched-2-20261109.webp"
+      ],
+      "style": "Broken blue/sage pencil outlines, selective hatching, milk fills, transparent background without gray haze",
+      "comparison": "Independent 1/2 drawing buttons in tea application layouts; original single form retained",
+      "originals": "Previous source illustrations retained"
     }
   },
   "reviewed_decisions": {
@@ -1686,9 +1703,9 @@
       "passed": 41,
       "failed": 0
     },
-    "build": "87462cb3b7",
-    "visual_check": "Hero photo 390 to 429px (+10%), print frame 414 to 453px; whole photo assembly shifted 24px toward the text on wide desktops. Verified 1440px, 1024px, 866px and 390px viewports; text alignment and mobile centering retained.",
-    "static_check": "PASS: 60 files, 3178364 bytes including 745564 optional About drawings; 111 local assets; 45 artwork hashes.",
+    "build": "c80ac9f4c2",
+    "visual_check": "Matched the review guestbook and footer family to approved process/service colored-pencil drawings. Two transparent tea compositions share the existing form. Desktop and phone screenshots verified; drawing switch preserves form values and blue/milk skins; no horizontal overflow.",
+    "static_check": "PASS: 61 files, 3313762 bytes including 745564 optional About drawings; 112 local assets; 49 artwork hashes.",
     "preserved": "All earlier site edits, original source photographs, stories, pricing, reviews, application and footer retained."
   },
   "completed_css_sha256": {

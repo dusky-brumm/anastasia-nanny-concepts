@@ -313,5 +313,33 @@
     "title": "Книга и карандаш — лёгкие ручные штрихи",
     "group": "Иллюстрации",
     "sha256": "64efd522db481f54d26318ce82a9c910d48346fdb3b2233aa6545e5f318e9c56"
+  },
+  {
+    "id": "reviews-guestbook-matched-20261109",
+    "file": "media/reviews-guestbook-matched-20261109.webp",
+    "title": "Книга отзывов — единый карандашный стиль",
+    "group": "Иллюстрации",
+    "sha256": "de38db6c1f755b0e242931254979f4773ceadfae35dcad46d52ea4787b882e49"
+  },
+  {
+    "id": "footer-family-matched-20261109",
+    "file": "media/footer-family-matched-20261109.webp",
+    "title": "Семья — единый карандашный стиль",
+    "group": "Иллюстрации",
+    "sha256": "4b9f817e03037dfcae4a9650d4413e68ef7e58d1173c2df74069e9af272cd73a"
+  },
+  {
+    "id": "consultation-tea-matched-1-20261109",
+    "file": "media/consultation-tea-matched-1-20261109.webp",
+    "title": "Чашки — спокойная композиция",
+    "group": "Иллюстрации",
+    "sha256": "2eb9c4bf87188caa4f24be274468bef69f813d72bd748bfc9c50f7e4a23f03c0"
+  },
+  {
+    "id": "consultation-tea-matched-2-20261109",
+    "file": "media/consultation-tea-matched-2-20261109.webp",
+    "title": "Чашки — свободная композиция",
+    "group": "Иллюстрации",
+    "sha256": "4dc72d180ec3cc075689409bb21137081a30ad4999dc084351efd62790354495"
   }
 ]

@@ -24,3 +24,24 @@ for(const study of document.querySelectorAll('[data-ending-study]')){
  const restore=()=>chooseEnding(new URLSearchParams(location.search).get(kind));
  addEventListener('popstate',restore);restore();
 }
+
+// Compare only the drawing; keep the same form and its entered values.
+const consultation=document.querySelector('#apply[data-consultation-art]');
+if(consultation){
+ const choices=[...consultation.querySelectorAll('[data-consultation-choice]')];
+ function chooseDrawing(value){
+  const selected=choices.find(button=>button.dataset.consultationChoice===String(value))??choices[0];
+  consultation.dataset.consultationArt=selected.dataset.consultationChoice;
+  for(const button of choices)button.setAttribute('aria-pressed',String(button===selected));
+ }
+ consultation.addEventListener('click',event=>{
+  const button=event.target.closest('[data-consultation-choice]');
+  if(!button||!consultation.contains(button))return;
+  chooseDrawing(button.dataset.consultationChoice);
+  const url=new URL(location.href);
+  url.searchParams.set('tea',button.dataset.consultationChoice);
+  history.replaceState(null,'',url);
+ });
+ const restoreDrawing=()=>chooseDrawing(new URLSearchParams(location.search).get('tea'));
+ addEventListener('popstate',restoreDrawing);restoreDrawing();
+}

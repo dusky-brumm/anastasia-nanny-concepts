@@ -55,6 +55,18 @@
  .site-preview.early-classic #apply:is([data-ending-design="3"],[data-ending-design="4"]) .ending-picture--cups{width:240px;height:120px}
 }
 
+/* Both tea drawings share the existing layout and the same form. */
+.site-preview.early-classic #apply .consultation-art-switch{display:none;grid-column:1;grid-row:3;align-items:center;justify-content:center;gap:4px;margin:0 0 8px;font:400 13px/1.5 var(--pair-body);color:#526c73}
+.site-preview.early-classic #apply .consultation-art-switch>span{margin-right:8px}
+.site-preview.early-classic #apply .consultation-art-switch button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid transparent;border-radius:50%;background:transparent;font:500 14px/1 var(--pair-body);color:inherit;cursor:pointer}
+.site-preview.early-classic #apply .consultation-art-switch button[aria-pressed=true]{border-color:#94afbe;background:#e1eff7;color:#28353c}
+.site-preview.early-classic #apply .consultation-art-switch button:focus-visible{outline:2px solid #526c73;outline-offset:3px}
+.site-preview.early-classic #apply:is([data-ending-design="3"],[data-ending-design="4"]) .consultation-art-switch{display:flex}
+.site-preview.early-classic #apply:is([data-ending-design="3"],[data-ending-design="4"])[data-consultation-art="1"] .ending-picture--cups[data-consultation-variant="2"],
+.site-preview.early-classic #apply:is([data-ending-design="3"],[data-ending-design="4"])[data-consultation-art="2"] .ending-picture--cups[data-consultation-variant="1"]{display:none}
+.site-preview.early-classic #apply .ending-conversation-line{grid-row:4}
+.site-preview.early-classic #apply .s-apply-intro>.comparison-form-contact{grid-row:5}
+
 /* Footer information is identical in all three compositions. */
 body[data-isolated-block=footer] .site-preview #footer[data-ending-study]{position:relative;isolation:isolate;display:block;padding-block:44px 28px!important;background:#e1eff7!important}
 .site-preview #footer .footer-inner{max-width:none}

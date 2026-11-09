@@ -1,5 +1,5 @@
 {
-  "build": "c80ac9f4c2",
+  "build": "774539b493",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Animate all final pencil illustrations in contour, hatched background and detail phases, at one third of the former drawing duration; add three shareable stroke variants and replay while preserving the 500 ms service stagger.",
     "Swap About photos one and three; enlarge the printed photos by about 20 percent and their crayon backings by about 15 percent; add restrained reading and pencil margin drawings, with a sharper responsive family photo and complete srcset asset retention",
     "Slightly freshen the shared pastel blue from #e7f1f6 to #e1eff7 and make a minimal sage adjustment from #e8efe4 to #e7efe2; apply consistently to block backgrounds, footer and hero glow",
     "Make the family-service section more compact; reduce vertical gaps, move the three stage texts slightly right and their pictures slightly left with smaller mobile offsets",
@@ -1680,6 +1681,28 @@
       "style": "Broken blue/sage pencil outlines, selective hatching, milk fills, transparent background without gray haze",
       "comparison": "Independent 1/2 drawing buttons in tea application layouts; original single form retained",
       "originals": "Previous source illustrations retained"
+    },
+    "all_pencil_drawing_20261109": {
+      "base_commit": "339eb191e89208f58f133ce68e198c9c9308cac4",
+      "dependency_chat": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "dependency_completed": true,
+      "raster_assets": 22,
+      "illustration_instances": 43,
+      "treatments": [
+        "long strokes",
+        "short strokes",
+        "crosshatching"
+      ],
+      "phases": [
+        "contour",
+        "hatched background",
+        "details"
+      ],
+      "speed_multiplier": 3,
+      "service_stagger_ms": 500,
+      "caption_offset_ms": 500,
+      "source_images": "Unchanged; contour metadata hashes match all final raster assets",
+      "documentation": "docs/pencil-drawing-20261109.md"
     }
   },
   "reviewed_decisions": {
@@ -1700,19 +1723,19 @@
   },
   "validation": {
     "tests": {
-      "passed": 41,
+      "passed": 43,
       "failed": 0
     },
-    "build": "c80ac9f4c2",
-    "visual_check": "Matched the review guestbook and footer family to approved process/service colored-pencil drawings. Two transparent tea compositions share the existing form. Desktop and phone screenshots verified; drawing switch preserves form values and blue/milk skins; no horizontal overflow.",
-    "static_check": "PASS: 61 files, 3313762 bytes including 745564 optional About drawings; 112 local assets; 49 artwork hashes.",
-    "preserved": "All earlier site edits, original source photographs, stories, pricing, reviews, application and footer retained."
+    "build": "774539b493",
+    "visual_check": "Three hatch variants and intermediate paper/detail frames; process, pricing, About registered photo continuations and panorama, review book, both form cups, footer family, keyboard and 390/320 px layouts verified. Form name/message preserved across layout and cup switches. No horizontal overflow; motion-off removes masks and exposes all captions.",
+    "static_check": "PASS: one document, nine blocks; 58 files, 3372407 bytes including 745564 optional About drawings; 107 local assets; 49 artwork hashes.",
+    "preserved": "Completed accents/illustration changes from source 339eb191e89208f58f133ce68e198c9c9308cac4; hero/photo layout, original photographs and all illustration files unchanged."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "fe7d4867bc",
+  "previous_confirmed_build": "c80ac9f4c2",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node scripts/build-selected-site.mjs",
     "check": "node scripts/check-selected-site.mjs",
-    "test": "node --test scripts/tests/reference.test.mjs scripts/tests/studio.test.mjs scripts/tests/seo.test.mjs scripts/tests/selected-site.test.mjs scripts/tests/drawing-motion.test.mjs scripts/tests/page-assembly.test.mjs scripts/tests/service-drawing.test.mjs"
+    "test": "node --test scripts/tests/reference.test.mjs scripts/tests/studio.test.mjs scripts/tests/seo.test.mjs scripts/tests/selected-site.test.mjs scripts/tests/drawing-motion.test.mjs scripts/tests/page-assembly.test.mjs scripts/tests/artwork-drawing.test.mjs"
   },
   "devDependencies": {
     "postcss": "8.5.32",

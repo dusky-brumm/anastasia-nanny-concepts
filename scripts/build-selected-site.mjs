@@ -40,21 +40,22 @@ for(const {file} of selection.blocks){
   let inlineDrawing=0;
   for(const [tag] of html.matchAll(/<img\b[^>]*\bdata-ink-source\b[^>]*>/g)){
     const src=tag.match(/\bsrc="([^"]+)"/)?.[1],classes=tag.match(/\bclass="([^"]+)"/)?.[1]??'';
-    const svgFile=path.resolve(path.dirname(target),src??'');
+    const svgFile=path.resolve(path.dirname(target),src?.split(/[?#]/)[0]??'');
     if(!src||!svgFile.startsWith(output+path.sep)||!svgFile.endsWith('.svg'))throw new Error('Invalid drawing source');
-    const mode=tag.includes('data-ink-mode="focus"')?'data-ink-focus':'data-ink-line="enter"';
+    const artwork=tag.includes('data-pencil-art')?`data-pencil-art="vector" data-pencil-file="${path.basename(src.split('?')[0])}"`:'';
+    const mode=artwork?'':tag.includes('data-ink-mode="focus"')?'data-ink-focus':'data-ink-line="enter"';
     const prefix=`inline-${++inlineDrawing}-`;
     const svg=(await readFile(svgFile,'utf8'))
       .replace(/\bid="([^"]+)"/g,(_,id)=>`id="${prefix}${id}"`)
       .replace(/url\(#([^)]+)\)/g,(_,id)=>`url(#${prefix}${id})`)
-      .replace('<svg ',`<svg class="${classes}" ${mode} aria-hidden="true" focusable="false" `);
+      .replace('<svg ',`<svg class="${classes}" ${artwork} ${mode} aria-hidden="true" focusable="false" `);
     html=html.replace(tag,svg);
   }
   html=html.replace('<html lang="ru"','<html lang="ru" data-font-pair="5" data-body-font="manrope"');
   const styles=['fonts.css','site-typography.css','site-refinements.css','site-polish.css','site-responsive.css','site-layout.css']
     .filter(file=>!html.includes(`href="../${file}`))
     .map(file=>`<link rel="stylesheet" href="../${file}?v=__VERSION__">`).join('');
-  html=html.replace('</head>',styles+'<script type="module" src="../block-typography.js?v=__VERSION__"></script><script type="module" src="../drawing-motion.js?v=__VERSION__"></script><script type="module" src="../service-drawing.js?v=__VERSION__"></script></head>');
+  html=html.replace('</head>',styles+'<script type="module" src="../block-typography.js?v=__VERSION__"></script><script type="module" src="../drawing-motion.js?v=__VERSION__"></script></head>');
   // A classic script after styles and markup can signal layout before images
   // or the decorative module graph finish. Standalone previews stay unchanged.
   html=html.replace('</body>','<script>document.documentElement.dataset.blockLayoutReady="true";try{if(parent!==window)parent.dispatchEvent(new CustomEvent("site:block-ready",{detail:{frame:frameElement}}));}catch{}</script></body>');
@@ -87,12 +88,13 @@ for(const fontCss of ['fonts.css','studio/fonts.css']){
 }
 await replaceTokens(output);
 await assembleSelectedPage(output,selection,version);
-const runtimeFiles=['block-ui.js','about-story.js','review-carousel.js','drawing-motion.js','service-drawing.js','single-page.js','header-navigation.js','pricing-studies.js','review-studies.js','ending-studies.js','about-scenes.js'];
+const runtimeFiles=['block-ui.js','about-story.js','review-carousel.js','drawing-motion.js','single-page.js','header-navigation.js','pricing-studies.js','review-studies.js','ending-studies.js','about-scenes.js'];
 const runtime=[];
 for(const file of runtimeFiles){
   const source=(await readFile('src/site/'+file,'utf8')).replace(/^import\s+[^\n]+;\r?\n/gm,'').replace(/^export\s+(?=(?:const|function|async\s+function)\b)/gm,'');
-  const model=file==='drawing-motion.js'?'drawing-model.js':file==='service-drawing.js'?'service-drawing-model.js':null;
-  runtime.push(`(()=>{${model?(await readFile('src/site/'+model,'utf8')).replace(/^export\s+/gm,''):'\n'}\n${source}\n})();`);
+  const models=file==='drawing-motion.js'?['drawing-model.js','hatching-model.js','pencil-artwork-data.js','pencil-renderer.js']:[];
+  const support=await Promise.all(models.map(model=>readFile('src/site/'+model,'utf8')));
+  runtime.push(`(()=>{${support.map(text=>text.replace(/^import\s+[^\n]+;\r?\n/gm,'').replace(/^export\s+/gm,'')).join('\n')}\n${source}\n})();`);
 }
 runtime.push(`(${bindRequestUi.toString()})(${formatRequest.toString()},false);`);
 await writeFile(path.join(output,'site-runtime.js'),runtime.join('\n'));

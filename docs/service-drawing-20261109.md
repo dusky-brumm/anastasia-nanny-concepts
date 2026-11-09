@@ -1,5 +1,7 @@
 # Service illustration drawing
 
+Superseded by the unified controller described in [pencil-drawing-20261109.md](pencil-drawing-20261109.md). The earlier service-only controller and model below have been replaced; current drawing durations are three times faster.
+
 The three illustrations in «Я подбираю няню под вашу семью» keep their original image files, dimensions and layout. `service-drawing-model.js` defines the hand-traced contours, clipped pencil hatching and timing. The SVG masks reveal the existing pixels instead of recoloring or replacing the artwork.
 
 - Profile: back sheet, front sheet, portrait, notes, check.

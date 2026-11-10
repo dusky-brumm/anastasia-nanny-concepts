@@ -8,5 +8,12 @@ dialog{box-sizing:border-box;max-height:calc(100dvh - 48px);overflow:auto}
 dialog [data-close]{display:grid;place-items:center;min-width:44px;min-height:44px;top:2px;right:2px}
 [data-selected-block=service],[data-selected-block=reviews],[data-selected-block=footer]{background:#e1eff7}
 [data-selected-block=process]{background:#e7efe2}
+/* Quiet section edges: 4–6px of curvature, independent of the section height. */
+[data-selected-block=about],[data-selected-block=process]{position:relative;z-index:1;--section-wave-height:clamp(8px,.75vw,12px)}
+[data-selected-block=about]{background:var(--site-milk,#faf8f2);--section-wave-color:var(--site-milk,#faf8f2)}
+[data-selected-block=process]{--section-wave-color:#e7efe2}
+[data-selected-block=about]::before,[data-selected-block=process]::before{content:'';position:absolute;z-index:2;left:0;top:calc(1px - var(--section-wave-height));width:100%;height:var(--section-wave-height);background:var(--section-wave-color);mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%2018%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M0%209C240%203%20480%203%20720%209S1200%2015%201440%209V18H0Z%22%2F%3E%3C%2Fsvg%3E") center/100% 100% no-repeat;pointer-events:none}
+[data-selected-block=process]::before{transform:scaleX(-1)}
+[data-selected-block=process] #process{border-radius:0}
 @media(max-width:760px){dialog{width:calc(100% - 40px);padding:32px 24px 24px}html{scrollbar-gutter:auto}}
 @media(prefers-reduced-motion:reduce){dialog [data-close]{transition:none}}

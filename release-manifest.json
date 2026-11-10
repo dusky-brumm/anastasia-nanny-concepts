@@ -1,6 +1,6 @@
 {
-  "build": "e6a9bbaf38",
-  "base_commit": "554fad0db4d3a82c48b68ccfe56d5e826309cd06",
+  "build": "8595a604b8",
+  "base_commit": "c222c17e37f47e77017d4db570309303f399c55d",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2303,5 +2303,18 @@
     "telegram": "https://t.me/inyfid",
     "instagram": "Existing non-link icon retained; profile URL requested",
     "checks": "Build and 52 existing tests passed"
+  },
+  "subtle_section_waves_20261110": {
+    "boundaries": [
+      "service to about",
+      "about to process"
+    ],
+    "curvature_px": {
+      "mobile": 4,
+      "desktop_max": 6
+    },
+    "shape": "Shallow mirrored SVG-mask curves; tall process corner radius removed",
+    "layout": "No changes to block heights or content spacing",
+    "checks": "CSS parse, build, served asset bytes and 52 existing tests passed"
   }
 }

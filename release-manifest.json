@@ -1,5 +1,5 @@
 {
-  "build": "3b740bbedb",
+  "build": "4df166316d",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1889,6 +1889,26 @@
       "independent_review": "Portrait spacing, landscape layout, fifth stage and minimum two-column width reviewed",
       "documentation": "docs/phone-matrix-20261110.md"
     },
+    "compact_about_20261110": {
+      "base_commit": "9c5d7f33e6978f5b7b71d47fe8d74580a248cc5f",
+      "scope": "Only the selected About scene 4; shorter section padding, photo margins and photo-to-copy gaps",
+      "phone_photo_max_width_px": 268,
+      "phone_section_padding_px": 32,
+      "phone_body_font_px": 17,
+      "height_before_after_px": {
+        "320": [988, 790],
+        "360": [1041, 838],
+        "393": [1041, 811],
+        "430": [1086, 807],
+        "768": [1280, 965],
+        "1024": [924, 728],
+        "1280": [956, 754],
+        "1716": [1004, 776]
+      },
+      "review": "Independent agent reviewed phone and desktop screenshots; no spacing regressions found",
+      "preserved": "All four stories, shared grid sizing and fixed navigation, original photos and registered drawings, human figure opacity 0.1, text sizes and 44px phone controls",
+      "documentation": "docs/compact-about-20261110.md"
+    },
     "faint_people_20261110": {
       "base_commit": "55fa4b90863998efb5cde28f5211b44f90420c67",
       "selector": ".about-figure-continuation",
@@ -1924,10 +1944,10 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "3b740bbedb",
-    "visual_check": "All four About stories checked; three figure overlays have0.10 opacity, environment/photo remain1. Rainbow has no human continuation. Desktop and393px phone inspected; no overflow. Original image files unchanged.",
-    "static_check": "PASS: one document, nine blocks;51 files,2681508 bytes including579244 optional About drawings;85 local assets;52 artwork hashes.",
-    "preserved": "Background environments, photographs, registration coordinates, responsive layout and existing animations."
+    "build": "4df166316d",
+    "visual_check": "All four About stories checked at 320,360,393,430,768,1024,1280,1716px and boundaries 760,761,1000,1001px. No horizontal overflow or text clipping; navigation remains fixed between stories. Phone and desktop screenshots independently reviewed.",
+    "static_check": "PASS: one document, nine blocks;51 files,2681528 bytes including579244 optional About drawings;85 local assets;52 artwork hashes.",
+    "preserved": "Background environments, photographs, registration coordinates, human figure opacity0.1, text sizes, carousel behavior and existing animations."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

@@ -1,6 +1,6 @@
 {
-  "build": "f2e60af42c",
-  "base_commit": "fb2a130d559a7827c0d24b4d21fd02f974e1003f",
+  "build": "6bc49d05ea",
+  "base_commit": "2d537e296faadd6292bc1412a3c9bf3411816407",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2234,5 +2234,15 @@
       "real_delivery": "awaiting bot"
     },
     "static_pages": "manual Telegram draft retained"
+  },
+  "pricing_values_serif_20261110": {
+    "font": "Lora",
+    "selector": "#pricing .pn-terms dd",
+    "values": [
+      "25 000 ₽",
+      "После 1–2 пробных недель",
+      "6 месяцев"
+    ],
+    "checks": "build, public asset bytes and 52 existing tests passed"
   }
 }

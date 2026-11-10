@@ -1,5 +1,5 @@
 {
-  "build": "345bfb4506",
+  "build": "b1f1cc9cee",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Enlarge only the opening About lead, keeping the other slide lead sizes unchanged. Replace the between-games interview anecdote with Anastasia’s original sports/recruiting statement from her supplied Instagram story.",
     "Compact the sticky header and mobile hero; keep the original text/photo treatment, with a smaller signed photo and one centered CTA below it on phones. Increase the service divider/artwork gap, shorten the pricing section and reveal desktop process arrows in a timed sequence with restored heads.",
     "Keep the selected sage application form permanently, removing the blue alternative, color buttons and color-selection runtime; retain white fields, cup drawing, contour frame and request behavior.",
     "Make the drawn human continuations around About photographs barely visible with opacity0.10; preserve the existing environment drawing and original photo strength.",
@@ -2015,6 +2016,18 @@
       "controls": "Only book illustration choices1–5; book query shares selection; all other removed design controls stay removed",
       "animation": "Existing contour/background/detail pencil renderer and duration, replay selected book on click; review carousel and other illustrations unaffected",
       "layout": "Same160px picture frame and44px choice controls for all options; 30 cases checked at320/360/393/430/768/1280px"
+    },
+    "about_headline_copy_20261110": {
+      "intro": "36px on desktop, 26px on phones and 24px on narrow phones; original Lora type retained",
+      "family_slide": "Unchanged",
+      "sports_copy": "Для меня спорт, как и работа рекрутером, — это дисциплина, системность и работа на результат.",
+      "source": {
+        "thread_title": "Блок про Анастасию",
+        "thread_id": "01a19f57-fdd2-7263-8eae-ecd605f23b26",
+        "attachment": "codex-clipboard-32ce88c7-3705-4a7c-95eb-4d5ab398fd87.png",
+        "original": "Спорт, как и работа рекрутером, основывается на дисциплине, системности и работе на результат"
+      },
+      "preserved": "Photographs, registered pencil backdrops, shared slide height and navigation, all other blocks"
     }
   },
   "reviewed_decisions": {
@@ -2038,16 +2051,16 @@
       "passed": 44,
       "failed": 0
     },
-    "build": "345bfb4506",
-    "visual_check": "Five books checked at six widths; one visible option and pressed button, stable160px drawing frame,44px targets and no horizontal overflow. Active book enters drawing then complete. Motion-off restores static pricing masks and complete books.",
-    "static_check": "PASS: one document,nine blocks;55files,3062781bytes including579244 optional About drawings;89local assets;54artwork hashes.",
+    "build": "b1f1cc9cee",
+    "visual_check": "Desktop1440px opening lead36px, other leads24px. Phone390px opening26px, other leads21px; nav position2391.28px unchanged between first and fourth slides. Narrow320px opening24px; no horizontal overflow. Original Instagram attachment inspected for replacement wording.",
+    "static_check": "PASS: one document, nine blocks; 55 files, 3062828 bytes including 579244 About drawings; 89 local assets; 54 artwork hashes.",
     "preserved": "Latest cab756f source: green form without color switch, compact header/mobile hero, desktop route drawing, service divider spacing and smaller pricing block. All four compact About stories and faint0.1 figure continuations retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "f61fb20787",
+  "previous_confirmed_build": "345bfb4506",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

@@ -1,6 +1,6 @@
 {
-  "build": "b90160bae7",
-  "base_commit": "baa4b0982b0fd8a613d0388ed15230027eb352c5",
+  "build": "97a9503160",
+  "base_commit": "a3bdb8b2eaef67e30f4e6cd26c63ec032c700b9b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Remove only the visible На сайте heading from the footer navigation;retain all six links and the existing navigation accessible name.",
     "Limit the shared nine-section content grid to1280px for desktop viewports761–2560px; keep the existing1360px grid above2560px and preserve phone geometry.",
     "Use a single review slide on desktop and phones, with centered chalk arrows and three direct-selection dots matching About; preserve native horizontal scrolling, stable slide height and all review/book content.",
     "Tighten title-to-description spacing inside the three mobile service items by8px and increase their separation from24px to40px up to760px; preserve desktop layout,fonts and illustrations.",
@@ -2158,6 +2159,7 @@
       "mobile": "393px measurements identical before and after",
       "ultrawide": "2561px and3440px measurements identical before and after"
     },
+    "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links.",
     "reviews_three_up_20261110": {
       "base_commit": "23ce7b961b13e0ae56c3e6f7a9bed97fcfdc29c3",
       "desktop": "Three cards per page, two pages for six saved quotations.",
@@ -2165,7 +2167,8 @@
       "content_source": "docs/review-restored-content-20261110.json",
       "navigation": "Page-size-aware arrows/dots/Home/End, page snap targets and active-review preservation on resize.",
       "preserved": "Selected book and cups, form delivery Worker, all texture comparisons, remaining blocks."
-    }
+    },
+    "footer_label_integrated_source": "baa4b0982b0fd8a613d0388ed15230027eb352c5"
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
@@ -2184,13 +2187,17 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "5907273c78",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3312780bytes,57artwork hashes.",
+    "build": "f5be27bc95",
     "visual_check": "1280/1024px:3cards/2pages;390/320px:1card/6pages. Arrows,dots,keyboard,wrap,resizing and smooth navigation passed; no horizontal overflow.",
+    "static_check": "PASS: one document,nine blocks;57files,3313154bytes including579244 optional About drawings and306644 comparison textures;93local assets;57artwork hashes.Worker serves57exact public assets;server bundle4431968bytes.",
+    "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
+    "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed.",
+    "desktop_content_width": "Nine section content boxes measured1280px at1440,1920,2560px;1360px above2560px. No horizontal overflow at all7checked widths.393px and ultrawide measurements identical before/after. Hero and five-stage route visually checked at1920px.52tests passed.",
+    "footer_label": "Visible footer heading removed;all6navigation links retained;latest6review cards and desktop3-card pages preserved.52tests passed.",
     "form": "No form submitted; current Telegram Worker and config retained."
   },
   "completed_css_sha256": {

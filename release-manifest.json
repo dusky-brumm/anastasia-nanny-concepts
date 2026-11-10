@@ -2209,7 +2209,7 @@
     },
     "build": "bd5d28fea4",
     "visual_check": "1280px: one Telegram review link to the right of the heading;320px: link wraps below heading above cards,no horizontal overflow. Six reviews and pagination retained.",
-    "static_check": "PASS: one document,nine blocks;57files,3315867bytes including579244 optional About drawings and306644 comparison textures;93local assets;58artwork hashes.Worker serves57exact public assets;server bundle4435588bytes.",
+    "static_check": "PASS: one document,nine blocks;57files,3315870bytes including579244 optional About drawings and306644 comparison textures;93local assets;58artwork hashes.Worker serves57exact public assets;server bundle4435588bytes.",
     "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
     "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed.",
     "desktop_content_width": "Nine section content boxes measured1280px at1440,1920,2560px;1360px above2560px. No horizontal overflow at all7checked widths.393px and ultrawide measurements identical before/after. Hero and five-stage route visually checked at1920px.52tests passed.",

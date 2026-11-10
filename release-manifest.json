@@ -1,5 +1,5 @@
 {
-  "build": "7c42ecf918",
+  "build": "457b15af5a",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -2107,6 +2107,12 @@
       "documentation": "docs/book-four-cups-hatching-20261110.md",
       "integrated_source": "14a529702dd0b308ecc45b54a01c5695740d511c",
       "surface_studies": "Preserve all four surface modes and comparison controller from completed source14a5297"
+    },
+    "clean_book_cups_20261110": {
+      "base_commit": "50cdd5ca3f5b660725593fb1783287d013cbdfbd",
+      "backgrounds": "Remove the separate blue/sage diagonal hatching layers around the selected book and cups; preserve foreground illustration pixels and layout.",
+      "line": "Retain the quiet loop shape; match service connector color #658392 and dry-chalk filter. A 2.3px non-scaling stroke stays legible on phones and desktop, at .96 opacity.",
+      "preserved": "Selected book4, new cups, form colors, all surface comparison versions and illustration reveal animations."
     }
   },
   "reviewed_decisions": {
@@ -2130,10 +2136,9 @@
       "passed": 44,
       "failed": 0
     },
-    "build": "7c42ecf918",
-    "visual_check": "Selected book4 and new cups checked at320,393,430,768,1280px. No horizontal overflow; background layer dimensions match each picture wrapper. Old book=1 still shows4; comparison controls absent. Native proof shows both illustrations and background hatches. All four integrated surface modes retain book4,the new cups and absolute hatches; switching preserves entered form text. Independent adaptivity critique found no new issues.",
-    "preserved": "Book4 pixels,review carousel/content,form fields/green wash,1px larger button frame gap,About text and pricing scroll behavior. Surface texture comparisons from14a5297 retained.",
-    "static_check": "PASS: one document,nine blocks;57files,3304320bytes including579244 optional About drawings and306644 comparison textures;92local assets;57artwork hashes."
+    "build": "457b15af5a",
+    "visual_check": "Desktop1280px and phone390px: no picture background hatches; preserved illustrations, form and comparison versions. The loop is a non-scaling2.3px chalk stroke. No horizontal overflow.",
+    "static_check": "PASS: one document,nine blocks;57files,3301021bytes including579244 optional About drawings and306644 comparison textures;92local assets;57artwork hashes."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

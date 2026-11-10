@@ -1,6 +1,6 @@
 {
-  "build": "664c684530",
-  "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
+  "build": "fe9c972f47",
+  "base_commit": "fb2a130d559a7827c0d24b4d21fd02f974e1003f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2133,7 +2133,8 @@
       "accessibility": "Inactive slides hidden from accessibility tree;active dot aria-current;polite slide announcement;reduced motion uses instant scrolling",
       "stability": "All three cards use the tallest slide height;active review preserved on resize",
       "autoplay": false,
-      "preserved": "Texts,authors,photos,white pencil backings,selected book4,service mobile spacing and completed illustration fixes"
+      "preserved": "Texts,authors,photos,white pencil backings,selected book4,service mobile spacing and completed illustration fixes",
+      "integrated_telegram_form_source": "a9b905601f03bdf503a6acb707549271c091e4c0"
     }
   },
   "reviewed_decisions": {
@@ -2154,14 +2155,14 @@
   },
   "validation": {
     "tests": {
-      "passed": 44,
+      "passed": 52,
       "failed": 0
     },
-    "build": "664c684530",
+    "build": "fe9c972f47",
     "visual_check": "Desktop1280px and phone390px: no picture background hatches; preserved illustrations, form and comparison versions. The loop is a non-scaling2.3px chalk stroke. No horizontal overflow.",
-    "static_check": "PASS: one document,nine blocks;57files,3304452bytes including579244 optional About drawings and306644 comparison textures;93local assets;57artwork hashes.",
+    "static_check": "PASS: one document,nine blocks;57files,3305302bytes including579244 optional About drawings and306644 comparison textures;93local assets;57artwork hashes.Worker serves57exact assets;server bundle4421500bytes.",
     "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
-    "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed."
+    "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
@@ -2191,5 +2192,24 @@
     "placement": "Single caption row: Анастасия Доронина, Telegram, Instagram; on the lower white field of the printed photograph",
     "responsive": "Remove the former social sidebar gutter; fit the caption at 320px and retain 44px Telegram target",
     "links": "Telegram remains https://t.me/inyfid; Instagram stays an accessible non-interactive icon pending the user URL"
+  },
+  "telegram_delivery": {
+    "date": "2026-11-10",
+    "previous_build": "8973f1e5d7",
+    "host": "Sites",
+    "endpoint": "/api/request",
+    "status": "awaiting_bot_setup",
+    "secret_keys": [
+      "TELEGRAM_BOT_TOKEN",
+      "TELEGRAM_CHAT_ID"
+    ],
+    "checks": {
+      "build": "passed",
+      "asset_bytes": "57 assets match",
+      "tests": "52 passed",
+      "browser": "unavailable: tool timed out",
+      "real_delivery": "awaiting bot"
+    },
+    "static_pages": "manual Telegram draft retained"
   }
 }

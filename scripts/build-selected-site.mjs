@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {formatRequest} from '../src/reference/request.js';
 import {bindRequestUi} from '../src/reference/studio/request-ui.js';
+import {bindSiteRequestUi} from '../src/site/request-form.js';
 import {sitemapXml,robotsTxt} from '../src/reference/studio/seo.js';
 import {assembleSelectedPage} from './assemble-selected-page.mjs';
 
@@ -96,7 +97,7 @@ for(const file of runtimeFiles){
   const support=await Promise.all(models.map(model=>readFile('src/site/'+model,'utf8')));
   runtime.push(`(()=>{${support.map(text=>text.replace(/^import\s+[^\n]+;\r?\n/gm,'').replace(/^export\s+/gm,'')).join('\n')}\n${source}\n})();`);
 }
-runtime.push(`(${bindRequestUi.toString()})(${formatRequest.toString()},false);`);
+runtime.push(`(${bindSiteRequestUi.toString()})(${formatRequest.toString()});`);
 await writeFile(path.join(output,'site-runtime.js'),runtime.join('\n'));
 // Publish only dependencies of the nine selected blocks, never archived galleries.
 const retained=new Set();

@@ -1,6 +1,26 @@
 import {formatRequest} from '../src/reference/request.js';
 
 const maxBodyBytes = 16 * 1024;
+const recentRequests = new Map();
+
+export function telegramConfigured(env) {
+  return /^\d+:[\w-]+$/.test(env.TELEGRAM_BOT_TOKEN ?? '')
+    && /^[1-9]\d*$/.test(env.TELEGRAM_CHAT_ID ?? '');
+}
+
+async function allowRequest(request, env) {
+  const key = request.headers.get('CF-Connecting-IP') ?? 'unknown';
+  if (env.REQUEST_LIMIT) return (await env.REQUEST_LIMIT.limit({key})).success;
+  // Sites has no custom rate-limit binding. Bound this per-isolate fallback;
+  // the standalone Cloudflare deployment uses its native REQUEST_LIMIT binding.
+  const now = Date.now();
+  for (const [ip, value] of recentRequests) if (value.until <= now) recentRequests.delete(ip);
+  const previous = recentRequests.get(key);
+  if (previous) return ++previous.count <= 5;
+  if (recentRequests.size >= 10000) return false;
+  recentRequests.set(key, {count: 1, until: now + 60000});
+  return true;
+}
 
 async function readApplication(request) {
   if (!request.body) return null;
@@ -37,9 +57,10 @@ async function readApplication(request) {
 
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
     const origin = request.headers.get('Origin');
-    const allowed = (env.SITE_ORIGINS ?? '').split(',').map(value => value.trim());
-    if (new URL(request.url).pathname !== '/request') return new Response(null, {status: 404});
+    const allowed = [url.origin, ...(env.SITE_ORIGINS ?? '').split(',').map(value => value.trim())];
+    if (!['/request', '/api/request'].includes(url.pathname)) return new Response(null, {status: 404});
     if (!origin || !allowed.includes(origin)) return new Response(null, {status: 403});
 
     const headers = {
@@ -56,12 +77,10 @@ export default {
     }
     if (request.method !== 'POST') return result(405);
     if (request.headers.get('Content-Type')?.split(';')[0].trim() !== 'application/json') return result(415);
-    if (!/^\d+:[\w-]+$/.test(env.TELEGRAM_BOT_TOKEN ?? '')
-      || !/^[1-9]\d*$/.test(env.TELEGRAM_CHAT_ID ?? '')) return result(503);
+    if (!telegramConfigured(env)) return result(503);
 
     try {
-      const {success} = await env.REQUEST_LIMIT.limit({key: request.headers.get('CF-Connecting-IP') ?? 'unknown'});
-      if (!success) return result(429);
+      if (!await allowRequest(request, env)) return result(429);
       const application = await readApplication(request);
       if (!application) return result(400);
       const response = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {

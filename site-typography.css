@@ -3,6 +3,7 @@
 html[data-font-pair] body,html[data-font-pair] :is(.site-preview,.sheet,.reference-design,.service-design){--heading:var(--pair-heading)!important;--display:var(--pair-heading)!important;--body:var(--pair-body)!important;--heading-weight:var(--pair-heading-weight)!important;font-family:var(--pair-body)!important}
 html[data-font-pair] :is(p,dt,dd,label,button,input,textarea,nav,figcaption,blockquote,.s-signature,.hand,.s-footer-name){font-family:var(--pair-body)!important}
 html[data-font-pair] :is(h1,h2,h3){font-family:var(--pair-heading)!important;font-weight:var(--pair-heading-weight)!important;letter-spacing:var(--pair-tracking)!important}
+html[data-font-pair] #pricing .pn-terms dd{font-family:var(--pair-heading)!important;font-weight:var(--pair-heading-weight)!important}
 html[data-font-pair] h1{font-size:clamp(calc(34px * var(--pair-scale)),calc(4.4vw * var(--pair-scale)),calc(54px * var(--pair-scale)))!important;line-height:1.12!important}
 html[data-font-pair] h2,html[data-font-pair] .s-about h3{font-size:clamp(calc(29px * var(--pair-scale)),calc(3.5vw * var(--pair-scale)),calc(42px * var(--pair-scale)))!important;line-height:1.18!important;text-wrap:balance}
 html[data-font-pair] h3{font-size:clamp(calc(21px * var(--pair-scale)),calc(2vw * var(--pair-scale)),calc(24px * var(--pair-scale)))!important;line-height:1.3!important}

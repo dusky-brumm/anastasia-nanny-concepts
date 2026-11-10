@@ -1,6 +1,6 @@
 {
-  "build": "b2a40421ee",
-  "base_commit": "eca98795436f03d8224495e611bd9220e56d39b2",
+  "build": "4f7c9de1f3",
+  "base_commit": "375f4affde1e52f0c302e652ec21c9d0972d213f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2210,7 +2210,16 @@
       "cleanup": "Cancel previous animations,prepare existing SVG masks and reuse loaded images;node counts stay stable",
       "static_modes": "Respect reduced motion,motion=off and capture=1",
       "preserved": "Static About photos and continuations,form values,selected illustrations,comparison versions and current layout",
-      "integrated_source": "d428ed14c5a5b7f808af20b636793f2b47e03173"
+      "integrated_source": "8078b5e6c6dfca487b06ae12f5077a286f36b138"
+    },
+    "review_book_blend_20261110": {
+      "base_commit": "eca98795436f03d8224495e611bd9220e56d39b2",
+      "book": "Built-in ImageGen localized paper whitening; same approved shape,pencil contours,scribbles and teal bookmark. Original source asset retained.",
+      "background": "Separate cohesive low-contrast chalk/pencil ground,with softly fading milk/blue/sage shading; a hint of tabletop below the book.",
+      "layout": "Foreground book retains its420px desktop drawing size and original SVG crop. Backdrop has a580px wrapper clipped to available width; mobile book size retained.",
+      "prompts": "docs/review-book-blend-20261110.json",
+      "preserved": "Green form1,soft white review2,six reviews/two desktop pages,Telegram link beside heading,all other blocks and animation behavior.",
+      "integration": "Retain the parallel phone book frame compaction from d428ed1:144px high. Regenerate shared output from both changes."
     }
   },
   "reviewed_decisions": {
@@ -2231,14 +2240,14 @@
     "drawing_replay": "Latest explicit request: re-entry replays animated blocks;scroll-linked elements reverse on upward scrolling.This supersedes earlier once-per-visit behavior."
   },
   "validation": {
-    "build": "b2a40421ee",
+    "build": "4f7c9de1f3",
     "tests": {
       "passed": 56,
       "failed": 0
     },
-    "static_check": "PASS: one document,nine blocks;57files,3323471bytes including579244 optional About drawings and306644 comparison textures;93local assets;58artwork hashes.Worker serves57exact public assets;server bundle4445724bytes.",
-    "visual_check": "1280px and320px: default option2 has a much whiter72–100% pigment base and light28% pencil contrast; original1 and prior3/4 remain available. Every mode keeps solid sage form RGB231,239,226 with no background image. Six reviews/two desktop pages retained; no horizontal overflow.",
-    "form": "No form submitted; current Telegram Worker/config retained.",
+    "static_check": "PASS: Worker serves58 exact public assets;single page,9 blocks,58 files,3322995 bytes,94 local assets,60 artwork hashes;Worker4445237 bytes.",
+    "visual_check": "1280px: foreground book remains420px wide,soft ground580px;320px: both fit269px with no horizontal overflow. Localized white paper retouch preserves book composition. Existing twelve raster contour records regenerated from their actual current images. Green form1,soft review2,six reviews/two desktop pages preserved. Latest phone frame144px high verified at320px; book and ground remain269px wide.",
+    "form": "No form submitted; Telegram Worker/config retained.",
     "scroll_replay": "56tests passed.Desktop service runs1to2;route runs2to3;small in-block scroll keeps run2.SVG node counts unchanged.Price scale1to0.451to1 and mobile route dash offsets reverse then return exactly.Caption can appear while its image remains offscreen,then image replays.Cups run1to2 while a dummy form value is retained.Motion-off keeps all21drawings complete with0runs.Final integrated source rechecked: all3service illustrations and captions finish at run2.No console errors."
   },
   "completed_css_sha256": {
@@ -2349,5 +2358,12 @@
     },
     "note": "Trimmed empty framing around the width-constrained book artwork",
     "checks": "Build, served asset bytes and 52 existing tests passed"
+  },
+  "concise_conversation_line_20261110": {
+    "shape": "One short, shallow pencil stroke under the cups",
+    "layout": "Single inline grid element replaces both absolute line overlays and their reserved bottom space",
+    "desktop_width_px": 240,
+    "mobile_max_width_px": 180,
+    "checks": "Browser inspected at 1440x1000 and 390x1000; no horizontal overflow or overlap with contact link or form; build and 52 existing tests passed"
   }
 }

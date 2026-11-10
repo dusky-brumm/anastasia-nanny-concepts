@@ -1,14 +1,12 @@
 /* The selected consultation composition, with a sage chalk wash. */
 .site-preview.early-classic #apply[data-ending-study]{--form-wash:#e7efe2;display:block}
-.site-preview.early-classic #apply .contact-study-content{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(40px,7vw,100px);padding-bottom:78px}
+.site-preview.early-classic #apply .contact-study-content{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(40px,7vw,100px)}
 .site-preview.early-classic #apply .s-apply-intro{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr);align-content:center;align-self:center;justify-items:center;width:100%;max-width:none;padding:30px 0}
 .site-preview.early-classic #apply .s-apply-intro>.s-section-heading{grid-column:1;grid-row:1;width:100%;margin:0;text-align:center}
 .site-preview.early-classic #apply .s-apply-intro h2{max-width:390px;margin:0 auto;text-align:center}
 .site-preview.early-classic #apply .ending-cups-art{position:relative;isolation:isolate;display:grid;place-items:center;grid-column:1;grid-row:2;width:min(100%,360px);height:190px;margin:24px 0 12px}
 .site-preview.early-classic #apply .ending-cups-art .ending-picture--cups{position:relative;z-index:1;display:block;width:90%;height:90%;pointer-events:none}
-.site-preview.early-classic #apply .ending-conversation-space{grid-column:1;grid-row:3;height:38px;margin-bottom:12px}
-.site-preview.early-classic #apply .contact-study-content>.ending-conversation-line{position:absolute;z-index:-1;left:-10px;bottom:0;display:block;width:calc(100% + 20px);max-width:none;height:220px;margin:0;overflow:visible;opacity:.82;pointer-events:none}
-.site-preview.early-classic #apply .contact-study-content>.ending-conversation-line--mobile{display:none}
+.site-preview.early-classic #apply .s-apply-intro>.ending-conversation-line{grid-column:1;grid-row:3;display:block;width:min(65%,240px);height:18px;margin:0 0 16px;opacity:.72;pointer-events:none}
 .site-preview.early-classic #apply .s-apply-intro>.comparison-form-contact{grid-column:1;grid-row:4;justify-self:center;margin:0}
 .site-preview.early-classic #apply .s-form-pencil{position:relative;isolation:isolate;grid-template-columns:minmax(0,1fr);width:100%;margin:0;max-width:none;min-width:0;gap:22px;padding:36px!important;background:transparent}
 .site-preview.early-classic #apply .s-form-pencil::after{content:'';position:absolute;z-index:-1;inset:0;background:var(--form-wash);mask:url('media/review-chalk-white-block-20261109.webp') center/100% 100% no-repeat;pointer-events:none}
@@ -22,16 +20,13 @@
  .site-preview.early-classic #apply .contact-study-content{gap:36px;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
  .site-preview.early-classic #apply .s-form-pencil{padding:28px!important}
  .site-preview.early-classic #apply .ending-cups-art{height:160px}
- .site-preview.early-classic #apply .contact-study-content>.ending-conversation-line--desktop{bottom:20px}
 }
 @media(max-width:760px){
- .site-preview.early-classic #apply .contact-study-content{grid-template-columns:minmax(0,1fr);gap:20px;padding-bottom:56px}
+ .site-preview.early-classic #apply .contact-study-content{grid-template-columns:minmax(0,1fr);gap:20px}
  .site-preview.early-classic #apply .s-apply-intro{padding:0;align-content:start}
  .site-preview.early-classic #apply .s-apply-intro h2{max-width:none}
  .site-preview.early-classic #apply .ending-cups-art{width:min(100%,250px);height:115px;margin:12px 0 0}
- .site-preview.early-classic #apply .ending-conversation-space{height:24px;margin-bottom:0}
- .site-preview.early-classic #apply .contact-study-content>.ending-conversation-line--desktop{display:none}
- .site-preview.early-classic #apply .contact-study-content>.ending-conversation-line--mobile{display:block;left:-8px;top:24px;bottom:auto;width:calc(100% + 16px);height:calc(100% - 24px);opacity:.74}
+ .site-preview.early-classic #apply .s-apply-intro>.ending-conversation-line{width:min(58%,180px);height:14px;margin-bottom:12px;opacity:.66}
  .site-preview.early-classic #apply .s-apply-intro>.comparison-form-contact a{font-size:13px}
  .site-preview.early-classic #apply .s-form-pencil{gap:20px;padding:26px 22px!important}
 }

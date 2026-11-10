@@ -1,0 +1,25 @@
+{
+  "tool": "built-in ImageGen",
+  "prompt": "Edit target: the provided colored-pencil tabletop PNG. Preserve its exact outline and shallow perspective geometry. Critical correction: remove ALL opaque white/milk/grey fill from the tabletop plane and apron. The empty surface between the drawing marks must be TRANSPARENT, not white. This should be an extremely minimal outline sketch of a tabletop drawn in warm natural light brown pencil. Use softly broken light ochre-brown/sepia contours and just a few very sparse warm brown wood-grain/plank marks. No blue or green. No gray shadows or white plane. All edges dissolve to transparency. Thin delicate front edge in brown, sparse incomplete apron beneath, NO thick lip or heavy shadow. Same extra-wide3:1 composition, table alone, no objects and no text. Absolutely no book; existing book will overlay this. Preserve real alpha transparency throughout most of the tabletop surface. Restrained elegant hand sketch, no painted area, no blurred wash, no vignette. Brown pencil marks floating on actual transparent canvas.",
+  "target": "Transparent tabletop from previous iteration; foreground book unchanged",
+  "generated_original": "C:/Users/Нат/.codex/generated_images/01a19f7b-5b25-7e03-8715-e4afa371b7f3/exec-9153b12a-9881-491f-b5a0-a6e444e755c1.png",
+  "asset": {
+    "file": "media/reviews-table-warm-20261110.webp",
+    "sha256": "64d7363792adf0cdf1ca3c36a2178d920b493e73955bb2a37f9b73419667b7ab",
+    "bytes": 120964,
+    "size": [
+      1280,
+      427
+    ],
+    "alpha": [
+      0,
+      223
+    ]
+  },
+  "display": {
+    "table_opacity": 0.28,
+    "previous_opacity": 0.82,
+    "book": "Approved original asset and SVG untouched",
+    "fading": "Existing table-only edge masks retained"
+  }
+}

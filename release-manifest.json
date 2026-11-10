@@ -1,5 +1,5 @@
 {
-  "build": "c5f524edcb",
+  "build": "40e5ed720d",
   "base_commit": "375f4affde1e52f0c302e652ec21c9d0972d213f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -2230,6 +2230,12 @@
       "static_modes": "Respect reduced motion,motion=off and capture=1",
       "preserved": "Static About photos and continuations,form values,selected illustrations,comparison versions and current layout",
       "integrated_source": "8078b5e6c6dfca487b06ae12f5077a286f36b138"
+    },
+    "review_table_warm_20261110": {
+      "base_commit": "13f12300e3bd533cec10fe649ee93e68473baf3d",
+      "table": "Warm brown pencil outline with a mostly transparent plane; opacity reduced from 0.82 to 0.28 on desktop and phone",
+      "foreground": "Approved white book asset, size and animation unchanged",
+      "prompt": "docs/review-table-warm-20261110.json"
     }
   },
   "reviewed_decisions": {
@@ -2250,13 +2256,13 @@
     "drawing_replay": "Latest explicit request: re-entry replays animated blocks;scroll-linked elements reverse on upward scrolling.This supersedes earlier once-per-visit behavior."
   },
   "validation": {
-    "build": "c5f524edcb",
+    "build": "40e5ed720d",
     "tests": {
       "passed": 56,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves 58 exact assets; single page, 9 blocks, 58 files, 3345800 bytes, 61 artwork hashes.",
-    "visual_check": "1280px: unchanged420px book above640px table.320px: unchanged269x144px book above289px table;no overflow. Edge masks affect only the table; book mask is none and original book pixels/animation are retained. Form remains solid sage green; soft white review2,six reviews and desktop3-card pages preserved.",
+    "static_check": "PASS: Worker serves 58 exact assets; 9 blocks, 58 deployed files, 3328805 bytes, 62 artwork hashes.",
+    "visual_check": "1280px desktop and 320px phone checked: warm transparent tabletop at 0.28 opacity, unchanged sharp book, no horizontal overflow.",
     "form": "No form submitted; Telegram Worker/config retained.",
     "scroll_replay": "56tests passed.Desktop service runs1to2;route runs2to3;small in-block scroll keeps run2.SVG node counts unchanged.Price scale1to0.451to1 and mobile route dash offsets reverse then return exactly.Caption can appear while its image remains offscreen,then image replays.Cups run1to2 while a dummy form value is retained.Motion-off keeps all21drawings complete with0runs.Final integrated source rechecked: all3service illustrations and captions finish at run2.No console errors."
   },

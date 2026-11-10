@@ -1,6 +1,6 @@
 {
-  "build": "7a671b1bd5",
-  "base_commit": "375f4affde1e52f0c302e652ec21c9d0972d213f",
+  "build": "2dcfb02fa3",
+  "base_commit": "d332beaaa7801b1ff109583495722d8f249a5d06",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2381,5 +2381,10 @@
     "desktop_width_px": 240,
     "mobile_max_width_px": 180,
     "checks": "Browser inspected at 1440x1000 and 390x1000; no horizontal overflow or overlap with contact link or form; build and 52 existing tests passed"
+  },
+  "remove_texture_toolbar_20261110": {
+    "removed": "Top comparison controls, variant labels, jump links, close button and reserved header gap",
+    "preserved": "Selected review grain, hidden SVG mask definitions and fixed sage form",
+    "checks": "JS syntax, build, served asset bytes and 56 existing tests passed"
   }
 }

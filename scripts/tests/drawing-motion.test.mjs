@@ -1,6 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {clamp01,entryProgress,segmentProgress,drawingEnabled,pencilGesture} from '../../src/site/drawing-model.js';
+import {clamp01,entryProgress,segmentProgress,drawingEnabled,pencilGesture,pricingPatchState} from '../../src/site/drawing-model.js';
+
+test('price patches grow with scroll, reverse and hold still without any time input',()=>{
+  const far=pricingPatchState(1000,320,1000),near=pricingPatchState(750,320,1000),full=pricingPatchState(300,320,1000);
+  assert.ok(far.scale<near.scale&&near.scale<full.scale);
+  assert.equal(full.scale,1);assert.ok(full.radius>71);
+  assert.deepEqual(pricingPatchState(750,320,1000),near);
+  assert.deepEqual(pricingPatchState(1000,320,1000),far);
+  for(const height of [230,320])for(const viewport of [360,568,852,1000])for(const top of [-500,0,200,600,1200]){
+    const state=pricingPatchState(top,height,viewport,2);
+    assert.ok(Object.values(state).every(Number.isFinite));
+    assert.ok(Math.abs(state.x)<=2&&Math.abs(state.y)<=1.4&&Math.abs(state.angle)<=1.1);
+  }
+  assert.equal(pricingPatchState(NaN,230,852),null);
+  assert.equal(pricingPatchState(300,0,852),null);
+  assert.equal(pricingPatchState(300,230,0),null);
+});
 
 test('drawings stay untouched below view and finish before their captions are read',()=>{
   assert.equal(entryProgress(1100,120,1000,56),0);

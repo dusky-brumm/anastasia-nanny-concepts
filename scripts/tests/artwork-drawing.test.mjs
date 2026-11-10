@@ -36,7 +36,7 @@ test('cards entering on separate frames keep a 20ms activation gap without delay
 });
 test('every final raster illustration has contours from its actual unchanged image file',async()=>{
   const assets=JSON.parse(await readFile(new URL('../../docs/pencil-artwork-assets.json',import.meta.url)));
-  assert.equal(assets.length,12);assert.equal(Object.keys(pencilArtwork).length,assets.length);
+  assert.equal(new Set(assets).size,assets.length);assert.equal(Object.keys(pencilArtwork).length,assets.length);
   for(const file of assets){
     const data=pencilArtwork[path.basename(file)];assert.ok(data?.contours.length,file);
     assert.ok(data.size.length===2&&data.size.every(value=>value>0),file);

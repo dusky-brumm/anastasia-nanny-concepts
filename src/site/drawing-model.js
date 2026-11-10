@@ -1,5 +1,18 @@
 export const clamp01=value=>Number.isFinite(value)?Math.max(0,Math.min(1,value)):0;
 
+// Position alone controls the chalk patches: pausing scroll pauses every change.
+export function pricingPatchState(top,height,viewportHeight,index=0,toolbarHeight=0){
+  if(![top,height,viewportHeight,index,toolbarHeight].every(Number.isFinite)||height<=0||viewportHeight<=toolbarHeight)return null;
+  const available=viewportHeight-Math.max(0,toolbarHeight);
+  const progress=clamp01((toolbarHeight+available*.94-top)/Math.min(available*.46,height+available*.1));
+  const eased=progress*progress*(3-2*progress);
+  const phase=(toolbarHeight+available*.65-top)/Math.max(height,available*.55);
+  return {scale:.28+.72*eased,radius:38+38*eased,
+    x:Math.sin(phase*2.8+index*1.3)*2*eased,
+    y:Math.sin(phase*2.1+index*.9)*1.4*eased,
+    angle:Math.sin(phase*3+index*1.2)*1.1*eased};
+}
+
 // A drawing finishes while it is comfortably in view, before its caption is read.
 export function entryProgress(top,height,viewportHeight,toolbarHeight=0){
   if(![top,height,viewportHeight,toolbarHeight].every(Number.isFinite)||viewportHeight<=0)return 0;

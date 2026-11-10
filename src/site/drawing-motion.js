@@ -1,4 +1,4 @@
-import {drawingEnabled,entryProgress,segmentProgress} from './drawing-model.js?v=__VERSION__';
+import {drawingEnabled,entryProgress,segmentProgress,pricingPatchState} from './drawing-model.js?v=__VERSION__';
 import {pencilDuration,nextServiceDelay} from './hatching-model.js?v=__VERSION__';
 import {pencilArtwork} from './pencil-artwork-data.js?v=__VERSION__';
 import {createPencilDrawing} from './pencil-renderer.js?v=__VERSION__';
@@ -11,6 +11,8 @@ let viewport={enabled:drawingEnabled({choice:params.get('motion'),capture:params
 let active,queued=false,viewportReceived=parent===window;
 const easing='cubic-bezier(.22,1,.36,1)';
 const serviceStarts=new Map();
+const pricePatches=[...document.querySelectorAll('#pricing .pn-3 .pn-term')];
+const patchProperties=['--pn-growth','--pn-radius','--pn-x','--pn-y','--pn-wobble'];
 
 const lines=[...document.querySelectorAll('svg[data-ink-line]')].map(svg=>({
   svg,progress:0,started:false,animations:[],
@@ -26,7 +28,7 @@ const pictures=[...document.querySelectorAll('svg[data-pencil-art]')].map(svg=>{
   const image=svg.querySelector('image');
   const url=image?.getAttribute('href')??image?.getAttribute('data-pencil-src')??svg.dataset.pencilFile??'';
   const key=url.split(/[?#]/)[0].split('/').pop();
-  const drawing=createPencilDrawing(svg,pencilArtwork[key],{paper:/book|profile|recommendation|application|letter|calendar|tea|chairs/.test(key)});
+  const drawing=createPencilDrawing(svg,pencilArtwork[key],{paper:/book|album|profile|recommendation|application|letter|calendar|tea|chairs/.test(key)});
   if(!drawing)return null;
   const service=svg.hasAttribute('data-service-drawing');
   return {...drawing,key,service,kind:svg.dataset.serviceDrawing,group:svg.closest('[data-block]')??svg.parentElement,
@@ -64,6 +66,7 @@ function requestMedia(picture){
 function setActive(next){
   if(active===next)return;
   active=next;document.documentElement.dataset.drawingMotion=active?'on':'off';
+  if(!active)for(const patch of pricePatches)for(const property of patchProperties)patch.style.removeProperty(property);
   serviceStarts.clear();
   for(const line of lines){
     if(!active){finishLine(line,false);continue;}
@@ -119,6 +122,13 @@ function isDisplayed(picture,bounds){
 function render(){
   setActive(viewportReceived&&viewport.enabled&&!reduced.matches);
   if(!viewport.near||document.hidden)return;
+  if(active)pricePatches.forEach((patch,index)=>{
+    const bounds=patch.getBoundingClientRect();
+    const state=pricingPatchState(viewport.frameTop+bounds.top,bounds.height,viewport.viewportHeight,index,viewport.toolbarHeight);
+    if(!state)return;
+    const values=[state.scale.toFixed(4),state.radius.toFixed(3)+'%',state.x.toFixed(3)+'px',state.y.toFixed(3)+'px',state.angle.toFixed(3)+'deg'];
+    patchProperties.forEach((property,i)=>{if(patch.style.getPropertyValue(property)!==values[i])patch.style.setProperty(property,values[i]);});
+  });
   const progressFor=element=>{
     const bounds=element.getBoundingClientRect();
     return bounds.width&&bounds.height?entryProgress(viewport.frameTop+bounds.top,bounds.height,viewport.viewportHeight,viewport.toolbarHeight):0;
@@ -157,6 +167,15 @@ function render(){
 function schedule(){if(!queued){queued=true;requestAnimationFrame(()=>{queued=false;render();});}}
 
 document.addEventListener('drawing:viewport',event=>{viewportReceived=true;viewport=event.detail;schedule();});
+document.addEventListener('review:bookchange',event=>{
+  const root=event.detail?.root;if(!(root instanceof Element)||!root.matches('#reviews .review-book-option'))return;
+  for(const picture of pictures){
+    if(!picture.svg.closest('.review-book-option'))continue;
+    if(root.contains(picture.svg)){picture.started=false;if(active)preparePicture(picture);else finishPicture(picture,false);}
+    else finishPicture(picture);
+  }
+  schedule();
+});
 document.addEventListener('visibilitychange',schedule);reduced.addEventListener('change',schedule);
 document.addEventListener('scroll',schedule,{passive:true,capture:true});
 new MutationObserver(schedule).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['class','hidden','aria-hidden','data-fonts-ready']});

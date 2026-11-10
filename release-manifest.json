@@ -1,5 +1,5 @@
 {
-  "build": "996f5a547e",
+  "build": "345bfb4506",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1961,6 +1961,60 @@
       "pricing": "Outer spacing reduced by 16px per side on desktop/12px on mobile; shorter chalk patches and a slightly closer FAQ",
       "process": "Desktop route now traces four arrows once on entry, 520ms each with 180ms stagger. Preserve scroll-driven mobile arrows, original drawn paths and reduced-motion static output; restore marker heads and stroke geometry at completion.",
       "form": "Fixed selected sage wash; no color selector or alternative color runtime"
+    },
+    "scroll_chalk_pricing_20261110": {
+      "base_commit": "cab756f89669824306cbf2fc99327d30f8f97cc5",
+      "scope": "Only the three colored chalk backgrounds in selected pricing mode3",
+      "driver": "Current viewport position only; reversible; no elapsed time, animation, CSS transition or perpetual animation-frame loop",
+      "scale": [
+        0.28,
+        1
+      ],
+      "circle_clip_percent": [
+        38,
+        76
+      ],
+      "maximum_motion": {
+        "x_px": 2,
+        "y_px": 1.4,
+        "rotation_degrees": 1.1
+      },
+      "preserved": "Approved chalk masks, blue/sage/blue palette, fixed content positions, newest compact pricing spacing",
+      "motion_off": "Full static approved shape for motion=off, capture and system reduced motion"
+    },
+    "review_book_choices_20261110": {
+      "request": "Offer several alternative guestbook drawings and recover earlier work; user chooses later",
+      "choices": [
+        {
+          "id": 1,
+          "name": "Current",
+          "file": "reviews-guestbook-matched-20261109.webp"
+        },
+        {
+          "id": 2,
+          "name": "Earlier open guestbook,9November",
+          "file": "reviews-open-guestbook-20261109.webp"
+        },
+        {
+          "id": 3,
+          "name": "Earlier book on blanket",
+          "file": "review-book.webp"
+        },
+        {
+          "id": 4,
+          "name": "New light notebook",
+          "file": "reviews-light-notebook-20261110.webp"
+        },
+        {
+          "id": 5,
+          "name": "New small album",
+          "file": "reviews-small-album-20261110.webp"
+        }
+      ],
+      "generation": "Two ImageGen built-in transparent edits, original PNGs and exact prompts retained in artifacts/scroll-pricing-books-20261110; delivery WebP encoding with unchanged dimensions",
+      "controls": "Only book illustration choices1–5; book query shares selection; all other removed design controls stay removed",
+      "animation": "Existing contour/background/detail pencil renderer and duration, replay selected book on click; review carousel and other illustrations unaffected",
+      "layout": "Same160px picture frame and44px choice controls for all options; 30 cases checked at320/360/393/430/768/1280px"
     }
   },
   "reviewed_decisions": {
@@ -1981,14 +2035,13 @@
   },
   "validation": {
     "tests": {
-      "passed": 43,
+      "passed": 44,
       "failed": 0
     },
-    "build": "996f5a547e",
-    "visual_check": "390px: hero height reduced from 830px to 675px; header 58px; CTA centered below the smaller photo, visible in the first 844px screen. Widths 320/360/430: no horizontal overflow, centered CTA and 62px single-row photo caption. Desktop 1440px: header 64px; arrow state waiting -> drawing -> complete, all four arrowheads restored and non-scaling stroke retained. Service divider gap 34px; pricing text stays within the 300px chalk patches.",
-    "static_check": "PASS: one document, nine blocks; 51 files, 2680994 bytes including 579244 About drawings; 85 local assets; 52 artwork hashes.",
-    "preserved": "Background environments, photographs, registration coordinates, human figure opacity0.1, text sizes, carousel behavior and existing animations.",
-    "latest_change": "Green form is fixed in source and CSS; retired color switch and runtime removed. Previous photograph/layout refinements preserved from 0cf3f0f73fc418519908756318bd52436b46710a."
+    "build": "345bfb4506",
+    "visual_check": "Five books checked at six widths; one visible option and pressed button, stable160px drawing frame,44px targets and no horizontal overflow. Active book enters drawing then complete. Motion-off restores static pricing masks and complete books.",
+    "static_check": "PASS: one document,nine blocks;55files,3062781bytes including579244 optional About drawings;89local assets;54artwork hashes.",
+    "preserved": "Latest cab756f source: green form without color switch, compact header/mobile hero, desktop route drawing, service divider spacing and smaller pricing block. All four compact About stories and faint0.1 figure continuations retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

@@ -39,9 +39,9 @@ html[data-font-pair] .site-preview.early-classic #pricing .pricing-new dt{margin
 html[data-font-pair] .site-preview.early-classic #pricing .pricing-new dd{margin:16px 0 0;font:500 clamp(29px,2.7vw,36px)/1.28 var(--pair-body);color:#28353c;letter-spacing:-.03em}
 html[data-font-pair] .site-preview.early-classic #pricing .pn-term-2 dd{font-size:clamp(21px,2vw,26px);line-height:1.4;letter-spacing:-.02em}
 /* 3. Soft dry-chalk swatches hold the copy without a card frame. */
-.site-preview.early-classic #pricing .pn-3 .pn-term::before{content:'';position:absolute;z-index:-1;inset:0;background:var(--pn-wash);mask:url('artwork/vectors/pricing-chalk-patch-20261109.svg') center/100% 100% no-repeat;pointer-events:none}
-.site-preview.early-classic #pricing .pn-3 .pn-term:nth-child(2)::before{transform:rotate(2deg) scaleX(-1)}
-.site-preview.early-classic #pricing .pn-3 .pn-term:nth-child(3)::before{transform:rotate(-1deg) scaleY(-1)}
+.site-preview.early-classic #pricing .pn-3 .pn-term::before{content:'';position:absolute;z-index:-1;inset:0;background:var(--pn-wash);mask:url('artwork/vectors/pricing-chalk-patch-20261109.svg') center/100% 100% no-repeat;clip-path:circle(var(--pn-radius,76%) at 50% 50%);transform:translate(var(--pn-x,0px),var(--pn-y,0px)) rotate(calc(var(--pn-base-angle,0deg) + var(--pn-wobble,0deg))) scale(var(--pn-growth,1)) scale(var(--pn-flip-x,1),var(--pn-flip-y,1));pointer-events:none}
+.site-preview.early-classic #pricing .pn-3 .pn-term:nth-child(2){--pn-base-angle:2deg;--pn-flip-x:-1}
+.site-preview.early-classic #pricing .pn-3 .pn-term:nth-child(3){--pn-base-angle:-1deg;--pn-flip-y:-1}
 /* 4. Tall arches echo the calm portrait frame, drawn with a dry pencil. */
 /* 5. One open notebook joins the three conditions without separate boxes. */
 /* 6. Low oval medallions keep the three conditions in one horizontal row. */

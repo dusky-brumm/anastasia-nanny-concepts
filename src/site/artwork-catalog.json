@@ -362,5 +362,19 @@
     "title": "Карандашное продолжение фигуры: park",
     "group": "Иллюстрации",
     "sha256": "83ab0cd12d75d73b281379ab0b75ec62cac18f7ae4c8b35ffa948293c84ad8b9"
+  },
+  {
+    "id": "reviews-light-notebook-20261110",
+    "file": "media/reviews-light-notebook-20261110.webp",
+    "title": "Лёгкий разворот",
+    "group": "Иллюстрации",
+    "sha256": "03a93b81807b8bb32ee2efc94729220e768038c1b9137204a34c9e6f66c96805"
+  },
+  {
+    "id": "reviews-small-album-20261110",
+    "file": "media/reviews-small-album-20261110.webp",
+    "title": "Альбом с закладкой",
+    "group": "Иллюстрации",
+    "sha256": "cfbad18f131c728dd086968c760061f1f777486a7f0f289fe380a6b8a7c06604"
   }
 ]

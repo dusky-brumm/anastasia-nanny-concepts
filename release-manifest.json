@@ -1,5 +1,5 @@
 {
-  "build": "a436eef084",
+  "build": "b486cfde0a",
   "base_commit": "2d537e296faadd6292bc1412a3c9bf3411816407",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Remove only the visible На сайте heading from the footer navigation;retain all six links and the existing navigation accessible name.",
     "Limit the shared nine-section content grid to1280px for desktop viewports761–2560px; keep the existing1360px grid above2560px and preserve phone geometry.",
     "Use a single review slide on desktop and phones, with centered chalk arrows and three direct-selection dots matching About; preserve native horizontal scrolling, stable slide height and all review/book content.",
     "Tighten title-to-description spacing inside the three mobile service items by8px and increase their separation from24px to40px up to760px; preserve desktop layout,fonts and illustrations.",
@@ -2169,8 +2170,11 @@
     "review_link_heading_20261110": {
       "placement": "Move the existing Telegram review link from beside the guestbook to the right of the Reviews heading above the cards.",
       "responsive": "The heading row wraps naturally on phones; the link remains above the review slider.",
-      "preserved": "Six reviews,two desktop pages,chalk dots,book drawing,form and other sections."
-    }
+      "preserved": "Six reviews,two desktop pages,chalk dots,book drawing,form and other sections.",
+      "integration": "Preserve concurrent footer heading removal from a3bdb8b; regenerate shared output from both source changes."
+    },
+    "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links.",
+    "footer_label_integrated_source": "baa4b0982b0fd8a613d0388ed15230027eb352c5"
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
@@ -2189,14 +2193,18 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "a436eef084",
+    "build": "b486cfde0a",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3312952bytes,57artwork hashes.",
+    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3312901bytes,57artwork hashes.",
     "visual_check": "1280px: one Telegram review link to the right of the heading;320px: link wraps below heading above cards,no horizontal overflow. Six reviews and pagination retained.",
-    "form": "No form submitted; Telegram Worker/config retained."
+    "form": "No form submitted; Telegram Worker/config retained.",
+    "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
+    "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed.",
+    "desktop_content_width": "Nine section content boxes measured1280px at1440,1920,2560px;1360px above2560px. No horizontal overflow at all7checked widths.393px and ultrawide measurements identical before/after. Hero and five-stage route visually checked at1920px.52tests passed.",
+    "footer_label": "Visible footer heading removed;all6navigation links retained;latest6review cards and desktop3-card pages preserved.52tests passed."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

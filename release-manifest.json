@@ -1,6 +1,6 @@
 {
-  "build": "8b5a163510",
-  "base_commit": "eca98795436f03d8224495e611bd9220e56d39b2",
+  "build": "7a3bc5d7ce",
+  "base_commit": "d428ed14c5a5b7f808af20b636793f2b47e03173",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2335,5 +2335,12 @@
     },
     "note": "Trimmed empty framing around the width-constrained book artwork",
     "checks": "Build, served asset bytes and 52 existing tests passed"
+  },
+  "concise_conversation_line_20261110": {
+    "shape": "One short, shallow pencil stroke under the cups",
+    "layout": "Single inline grid element replaces both absolute line overlays and their reserved bottom space",
+    "desktop_width_px": 240,
+    "mobile_max_width_px": 180,
+    "checks": "Browser inspected at 1440x1000 and 390x1000; no horizontal overflow or overlap with contact link or form; build and 52 existing tests passed"
   }
 }

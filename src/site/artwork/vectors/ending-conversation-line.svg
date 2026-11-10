@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" preserveAspectRatio="none" fill="none">
-  <title>Карандашная нить разговора от чашек к форме</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 24" preserveAspectRatio="none" fill="none">
+  <title>Короткая карандашная линия беседы</title>
   <defs><filter id="conversation-powder" x="-2%" y="-8%" width="104%" height="116%"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="11"/><feColorMatrix type="luminanceToAlpha"/><feComponentTransfer><feFuncA type="linear" slope="2" intercept="-.2"/></feComponentTransfer><feComposite in="SourceGraphic" operator="in"/></filter></defs>
-  <g filter="url(#conversation-powder)"><path data-ink-stroke d="M12 82C82 52 142 63 192 72C241 80 275 69 302 56C331 41 356 55 348 77C340 99 313 91 316 72C319 55 348 44 386 60C431 79 456 99 479 132C523 194 628 210 718 190C819 170 884 192 969 180C1052 167 1114 139 1187 148" stroke="#658392" stroke-width="1.8" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g filter="url(#conversation-powder)"><path data-ink-stroke d="M8 13C84 9 126 9 163 12C208 15 261 15 312 11" stroke="#658392" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/></g>
 </svg>

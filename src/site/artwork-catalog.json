@@ -163,9 +163,9 @@
   {
     "id": "ending-conversation-line",
     "file": "artwork/vectors/ending-conversation-line.svg",
-    "title": "Карандашная нить разговора от чашек к форме",
+    "title": "Короткая карандашная линия беседы",
     "group": "Линии, стрелки и значки",
-    "sha256": "730a8f2ed799d736ea02b6151ace121df418aee654f94ac4f5935e9854def888"
+    "sha256": "eef7741f2d5dffac5731848554aa6ed2fb7bac6a4a031d4fe24add3fa0056ff7"
   },
   {
     "id": "ending-margin-bracket",

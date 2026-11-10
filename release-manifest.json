@@ -1,6 +1,6 @@
 {
-  "build": "b743379327",
-  "base_commit": "e2959abaf5b902ab4e0ca25c58a3fff578e30099",
+  "build": "cd8cad55be",
+  "base_commit": "04932f7c088dcadcbddeccb58fc4d8c0376045a9",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2277,6 +2277,16 @@
     "contrast_ratio": 9.09,
     "scope": "Global text selection, including form fields",
     "forced_colors": "System Highlight and HighlightText preserved",
+    "checks": "Build and 52 existing tests passed"
+  },
+  "social_icons_20261110": {
+    "photo_glyph_px": 21.6,
+    "previous_photo_glyph_px": 20,
+    "increase_percent": 8,
+    "click_target_px": 44,
+    "footer": "Matching Telegram and Instagram icons below existing contact links",
+    "telegram": "https://t.me/inyfid",
+    "instagram": "Existing non-link icon retained; profile URL requested",
     "checks": "Build and 52 existing tests passed"
   }
 }

@@ -1,5 +1,23 @@
 export const clamp01=value=>Number.isFinite(value)?Math.max(0,Math.min(1,value)):0;
 
+// Re-arm only after a visited block has fully cleared the screen, with a small
+// margin so its transparent edges and the sticky header cannot cause flicker.
+export function drawingReplayState(wasVisible,top,height,viewportHeight,toolbarHeight=0){
+  const visible=Boolean(wasVisible);
+  if(![top,height,viewportHeight,toolbarHeight].every(Number.isFinite)||height<=0||viewportHeight<=toolbarHeight)return {visible,reset:false};
+  const edge=Math.max(0,toolbarHeight),bottom=top+height;
+  if(bottom>edge&&top<viewportHeight)return {visible:true,reset:false};
+  if(bottom<=edge-32||top>=viewportHeight+32)return {visible:false,reset:visible};
+  return {visible,reset:false};
+}
+
+// The same amount of visible artwork starts a pass from either scroll direction.
+export function drawingInView(top,height,viewportHeight,toolbarHeight=0){
+  if(![top,height,viewportHeight,toolbarHeight].every(Number.isFinite)||height<=0||viewportHeight<=toolbarHeight)return false;
+  const edge=Math.max(0,toolbarHeight),part=Math.min(height*.35,(viewportHeight-edge)*.12);
+  return top+height>edge+part&&top<viewportHeight-part;
+}
+
 // Position alone controls the chalk patches: pausing scroll pauses every change.
 export function pricingPatchState(top,height,viewportHeight,index=0,toolbarHeight=0){
   if(![top,height,viewportHeight,index,toolbarHeight].every(Number.isFinite)||height<=0||viewportHeight<=toolbarHeight)return null;

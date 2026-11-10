@@ -1,6 +1,6 @@
 {
-  "build": "3408994725",
-  "base_commit": "a3bdb8b2eaef67e30f4e6cd26c63ec032c700b9b",
+  "build": "b743379327",
+  "base_commit": "e2959abaf5b902ab4e0ca25c58a3fff578e30099",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2270,5 +2270,13 @@
     "artwork": "Editable SVG with existing dry pencil grain and stroke drawing",
     "checks": "Build, 58 artwork hashes, 57 served asset bytes and 52 existing tests passed",
     "browser": "Computer Use stopped because the browser URL could not be verified"
+  },
+  "custom_text_selection_20261110": {
+    "background": "#d2dfc9",
+    "text": "#28353c",
+    "contrast_ratio": 9.09,
+    "scope": "Global text selection, including form fields",
+    "forced_colors": "System Highlight and HighlightText preserved",
+    "checks": "Build and 52 existing tests passed"
   }
 }

@@ -169,8 +169,7 @@ function isDisplayed(picture,bounds){
 function render(){
   setActive(viewportReceived&&viewport.enabled&&!reduced.matches);
   if(document.hidden)return;
-  const comparisonBar=parent===window?document.querySelector('.surface-study-bar'):null;
-  const visibleTop=Math.max(viewport.toolbarHeight,siteHeader?.getBoundingClientRect().bottom??0,comparisonBar?.getBoundingClientRect().bottom??0);
+  const visibleTop=Math.max(viewport.toolbarHeight,siteHeader?.getBoundingClientRect().bottom??0);
   if(active)replayGroups(visibleTop);
   if(!viewport.near)return;
   if(active)pricePatches.forEach((patch,index)=>{

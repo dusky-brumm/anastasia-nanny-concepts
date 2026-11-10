@@ -1,0 +1,3 @@
+/* Fixed review variant 2. The texture has no toolbar or extra header spacing. */
+.review-texture-defs{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+html .site-preview.early-classic #reviews [data-open-quotes] .s-review-grid .s-review::before{background:#fff;mask-image:url('media/surface-studies-20261110/review-pencil.webp'),url('#review-pencil-paper-grain');mask-position:center;mask-size:108% 108%,100% 100%;mask-repeat:no-repeat;mask-mode:alpha,luminance;mask-composite:intersect;border-radius:8px}

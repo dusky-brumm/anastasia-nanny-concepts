@@ -1,6 +1,0 @@
-/* Selected review texture; comparison toolbar and its reserved header space are retired. */
-.surface-study-masks{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
-html[data-texture-study="blue"]{--study-form-image:url('media/surface-studies-20261110/form-blue.webp');--study-review-mask:url('media/surface-studies-20261110/review-pencil.webp')}
-html[data-texture-study="green"]{--study-form-image:url('media/surface-studies-20261110/form-green.webp');--study-review-mask:url('media/surface-studies-20261110/review-chalk.webp')}
-html[data-texture-study="duo"]{--study-form-image:url('media/surface-studies-20261110/form-duo.webp');--study-review-mask:url('media/surface-studies-20261110/review-pencil.webp')}
-html[data-texture-study]:not([data-texture-study="original"]) .site-preview.early-classic #reviews [data-open-quotes] .s-review-grid .s-review::before{background:#fff;mask-image:var(--study-review-mask),url('#surface-study-paper-grain');mask-position:center;mask-size:108% 108%,100% 100%;mask-repeat:no-repeat;mask-mode:alpha,luminance;mask-composite:intersect;border-radius:8px}

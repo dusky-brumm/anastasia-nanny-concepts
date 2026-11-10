@@ -1,6 +1,6 @@
 {
-  "build": "2dcfb02fa3",
-  "base_commit": "d332beaaa7801b1ff109583495722d8f249a5d06",
+  "build": "955d984f54",
+  "base_commit": "9c5d7f33e6978f5b7b71d47fe8d74580a248cc5f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,33 +23,12 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
-    "Replay timed pencil illustrations and enter-drawn lines after their block fully leaves the viewport;support entry from either scroll direction and reverse scroll-linked route lines without a maximum-progress latch.",
-    "Shift the entire consultation composition20px left on desktop viewports1101px and wider;keep heading,cups,connecting line and form together without changing sizes or spacing.",
-    "Remove only the visible На сайте heading from the footer navigation;retain all six links and the existing navigation accessible name.",
-    "Limit the shared nine-section content grid to1280px for desktop viewports761–2560px; keep the existing1360px grid above2560px and preserve phone geometry.",
-    "Use a single review slide on desktop and phones, with centered chalk arrows and three direct-selection dots matching About; preserve native horizontal scrolling, stable slide height and all review/book content.",
-    "Tighten title-to-description spacing inside the three mobile service items by8px and increase their separation from24px to40px up to760px; preserve desktop layout,fonts and illustrations.",
-    "Add three optional generated pencil-hatching surface versions for the existing form and review cards, alongside an explicit original comparison. Keep the ordinary site unchanged. Share through texture=blue/green/duo/original; one fixed numbered comparison strip changes only background finishes without resetting fields, scroll position or existing book choices.",
-    "Enlarge only the opening About lead, keeping the other slide lead sizes unchanged. Replace the between-games interview anecdote with Anastasia’s original sports/recruiting statement from her supplied Instagram story.",
-    "Compact the sticky header and mobile hero; keep the original text/photo treatment, with a smaller signed photo and one centered CTA below it on phones. Increase the service divider/artwork gap, shorten the pricing section and reveal desktop process arrows in a timed sequence with restored heads.",
-    "Keep the selected sage application form permanently, removing the blue alternative, color buttons and color-selection runtime; retain white fields, cup drawing, contour frame and request behavior.",
-    "Make the drawn human continuations around About photographs barely visible with opacity0.10; preserve the existing environment drawing and original photo strength.",
-    "Review seven additional phone sizes and landscape layouts; use two readable stage columns from761–1100px,16px descriptions and shorter stage-section padding on low landscape screens.",
-    "Refine phone adaptivity after independent screenshot critique: compact selected price swatches and cup-form introduction, strengthen FAQ plus/minus strokes, add application link to the mobile menu, keep stage names complete at320px and improve hero wrapping through390px.",
-    "Finalize all selected sections, remove design comparisons and inactive runtime/controllers/artwork from publication; keep one cup drawing and the selected application layout, adding only blue/sage form washes with white fields and preserved input values.",
-    "Animate all final pencil illustrations in contour, hatched background and detail phases, at one third of the former drawing duration; add three shareable stroke variants and replay while preserving the 500 ms service stagger.",
-    "Swap About photos one and three; enlarge the printed photos by about 20 percent and their crayon backings by about 15 percent; add restrained reading and pencil margin drawings, with a sharper responsive family photo and complete srcset asset retention",
-    "Slightly freshen the shared pastel blue from #e7f1f6 to #e1eff7 and make a minimal sage adjustment from #e8efe4 to #e7efe2; apply consistently to block backgrounds, footer and hero glow",
-    "Make the family-service section more compact; reduce vertical gaps, move the three stage texts slightly right and their pictures slightly left with smaller mobile offsets",
-    "Restore the earlier irregular double-pencil button contour from 7be353c for hero and form actions, with versioned mask URLs",
-    "Clarify the hero promise: choose a nanny from suitable candidates instead of choose a person",
-    "Lead the service block with Я подбираю няню под вашу семью and the preschool/school interview examples, then place the same three illustrated work stages below; retain the profile example link and existing pencil animations",
-    "Pencil motion: original chalk pricing circles trace on entry, nine illustrations reveal through overlapping pencil passes, the calm underline traces its real strokes, and scroll arrows update once per animation frame; preserve static content, mobile layouts and reduced-motion preferences",
-    "Replace the nine resizing iframes with one complete HTML page; preserve component styles, stabilize fonts and review heights, and avoid redrawing artwork already visible at startup",
-    "Bring the hero portrait closer to its larger heading, restore the ink-colored calm word with a closer stronger pencil underline, increase section breathing room and About photos, and sharpen the prepayment book",
-    "Unify all nine desktop sections on the process section’s centered 1360px grid; simplify the application to three placeholder-led fields and one Telegram draft action",
-    "Apply the explicitly selected dry-crayon photo backing from the five design studies; preserve the white photograph, signature, social icons and existing layout",
-    "Move Telegram and Instagram into the white photograph caption, immediately after the confirmed Анастасия Доронина signature; retain the Telegram destination and deferred Instagram link",
+    "Remove hero process shortcut; keep upright Lora calm word in #526c73 with coordinated word/underline reveal; widen white reviews with filled pencil quotes beside text",
+    "Confirmed photo signature Anastasia Doronina; personal Telegram @inyfid, channel anastasiadoroninaa; Instagram deferred",
+    "Printed hero photograph with opaque white frame and larger signed margin, milk tape, separate green backing, no branch; photo and adjacent icons replace header socials",
+    "Quiet interaction feedback: stationary buttons, transparent arrows, thin focus/link accents",
+    "Pure white untextured review cards and compact avatars; pencil comma shapes",
+    "Wider, centered five-step route; revised horizontal composition proposals remain local only",
     "Apply the confirmed photo signature Анастасия Доронина and distinguish personal Telegram contact from the existing channel; defer Instagram as requested",
     "Turn the hero portrait into a white printed photograph with a larger signed lower margin, milk tape, separate green backing and social icons moved out of the header",
     "Unify subtle interaction feedback: transparent drawn arrows, stationary action buttons, thin link underlines and restrained keyboard/field focus",
@@ -67,23 +46,81 @@
     "Refine review quotation marks with a readable dry-chalk SVG; keep mobile author spacing compact and three desktop cards",
     "Apply explicit clarification: dry chalk texture is only a library sample; restore previous grain on hero, About and review backgrounds",
     "Remove headings from all four About slides in all three layouts, preserving photos and large body copy",
-    "Remove questionnaire/magnifier decoration from selected service block; retain its library original"
+    "Remove questionnaire/magnifier decoration from selected service block; retain its library original",
+    "Refined review quotation marks and mobile author spacing",
+    "New outline consultation illustration and blue footer with drawn thread",
+    "Selected and refined About variant 1; ordinary circular dry-pencil arrows in About and reviews",
+    "Completed five refinement passes: typography, compact font controls, scroll-drawn route, story timer, drawing accents and accessible motion controls",
+    "Improved application focus and parent-managed draft reveal; preserved user data during typography changes",
+    "Completed dedicated mobile refinement, optimized assets and accessible controls",
+    "Social icons follow the confirmed name inside the white photo caption",
+    "Selected dry-crayon photo backing; other studies remain local",
+    "Shared 1360px content grid and simplified three-field Telegram form",
+    "Larger portraits and heading, shared section rhythm, ink-colored calm and sharp prepayment drawing",
+    "One fully rendered document, embedded fonts and stable loading instead of resizing frames",
+    "Chalk price circles and handwritten values, uppercase menu, Lora story introductions and refined contours",
+    "Transparent pencil chairs drawing, centered under heading and enlarged 15%",
+    "Three smaller individually drawn chalk price circles and ordinary Manrope values",
+    "More vertical space around the process route: 24px at each desktop edge, 12px on mobile",
+    "Pencil underline, nine illustration reveals, sequential chalk price circles and scroll-drawn route; once per page visit with reduced-motion fallback",
+    "Service heading Я подбираю няню под вашу семью; detailed preschool/school interview examples and profile link first, pencil separator and three unchanged illustrated stages below.",
+    "Hero ending: выбрать няню из подходящих кандидаток; suggested alternative sentences remain unselected.",
+    "Restore the earlier irregular double-pencil contour for hero/form buttons, with versioned masks.",
+    "Compact service spacing; copy slightly right, illustrations slightly left; smaller mobile offsets.",
+    "Slightly brighter blue #e1eff7 and barely adjusted sage #e7efe2; milk #faf8f2 retained.",
+    "Swap first/third About photos, enlarge photo/backing, add requested reading/pencil motifs and responsive family image.",
+    "Five explicitly requested pricing comparisons and conditions link moved next to introductory text.",
+    "Three explicitly requested review treatments with dense chalk patches and selected pencil motifs.",
+    "Three independent application and three footer treatments; one persistent form, complete navigation/contacts/privacy information.",
+    "Button pencil-outline inset reduced to -4px",
+    "Explicitly requested photo-background studies; original later restored as option 1, all three new studies retained as 2–4",
+    "No strokes between price circles; pencil question mark and separators with more FAQ space",
+    "Original photo/pricing options first, new pricing options 2–6, whiter square review patches, chairs redrawn and reduced 10%; photo-removal assumption superseded by explicit next-turn clarification",
+    "Selected Home and Family footer defaults to 3, door replaced by adult/child holding hands, clean blue background, curl separator above bottom links; clarification: review options 2/3 rejected, all four photo options retained",
+    "Light opaque milk book pages in service; prior request is completed",
+    "Quiet sticky header and thin drawn current-section underline",
+    "Tea cups left, classic form right, apply 3 milk and 4 blue, revised letter option 2; shared form retained",
+    "Service drawing sequence; image stagger 500ms, captions offset 500ms; later acceleration/all-images request remains pending",
+    "Remove individual review illustrations, add shared guestbook below and Telegram link; preserve pricing 1/2, replace 3–6; merged parallel service animations",
+    "Expand About options 2/4; align four pencil continuations to original photograph inner crop; preserve original photos, text, ordering, options 1/3",
+    "Service book redrawn to match neighbouring pencil illustrations; milk pages and animation retained.",
+    "Remove the service example-questionnaire link by direct user request.",
+    "Hero photo +10%, 24px closer to copy; one existing alignment, alternative alignment request explicitly withdrawn.",
+    "Redraw guestbook and footer family in consistent pencil style; two requested tea drawings, tea=1/2, same form.",
+    "All final illustrations draw three times faster: contour, visibly hatched background, details; drawing=1/2/3 treatments and replay; preserve original artwork, photos, registration and form fields.",
+    "Static registered photo continuations, visible immediately",
+    "Explicit artistic figure extensions beyond three unchanged photographs",
+    "Selected drawing1; service about0.7s, parallel fade,20ms launch gap",
+    "Stable About navigation height, copy and dots closer to photograph",
+    "Fixed Home and family footer, selector removed",
+    "Fixed chalk-patches pricing, other panels and selector removed",
+    "Remove all unselected designs and replay/choice controls; keep About4, drawing1, chalk-patch pricing, chosen reviews/footer, cups1 and only blue/green form colors. Sites157 was intermediate within this same turn.",
+    "After main series finished, integrate independently critiqued iPhone16 responsive fixes: heading wraps, compact price/form, stronger FAQ controls and mobile menu request link.",
+    "Review other phone sizes and landscape; process uses two readable columns at761–1100px, less top padding on short landscape screens.",
+    "Only drawn human extensions become barely visible at opacity0.1; original photos and environment opacity remain1, source image bytes unchanged.",
+    "Shorter About section on phones and desktop; reduce empty margins, retain readable copy, original photos, static registered scenes and stable controls.",
+    "Select sage-green form permanently; remove the color selector and old form parameter behavior.",
+    "Compact header, phone hero with smaller photo and centered action below it, service divider gap, shorter pricing and sequential desktop arrow drawing.",
+    "Pricing backgrounds grow and move only with viewport position; explicitly requested five local review-book comparisons retain the pencil reveal.",
+    "Enlarge the opening About lead; retain family story and replace sports anecdote with the original discipline/system/results statement.",
+    "Thicker side-view book with five stars and five plus signs replaces option1; options2–5 remain, and latest main About change is integrated.",
+    "Move irregular double-pencil outline one pixel farther from hero and submit buttons: inset -5px, geometry unchanged."
   ],
   "excluded": [
     "Cancelled complete designs 2, 3, 4, 5, 6 and 8",
     "Old family-story review content and stale form/footer/service markup",
     "Superseded palette menus and custom color controls",
     "Main site navigation entry",
-    "Ordinary versions of retained paired designs",
-    "Unchosen application compositions and second cup drawing, About background comparisons, alternative pencil animations, inactive pricing/review/footer controllers and their published dependencies"
+    "Ordinary versions of retained paired designs"
   ],
   "chat_checkpoints": {
     "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0": "01a1a69e-5e51-72d0-9456-0c36dafe19db",
     "01a19ff5-0633-72c1-933f-28362d0b1d33": "01a1a0a4-415d-7040-a576-cd27fb413ca4",
-    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1b75e-4762-7dc2-89f4-eecd6b4258c6",
+    "01a19f7b-5b25-7e03-8715-e4afa371b7f3": "01a1c586-2295-7eb2-af0b-600a34a107be",
     "01a1a6ae-b668-7110-b476-16c98ce8f319": "01a1a6af-0e7f-7c53-87c8-5b15983cd83b",
     "01a1a69e-7596-7921-8407-8d31eaa1e746": "01a1a6c0-4a25-7471-8bfc-2bf1883402a6",
-    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1ac05-116f-7370-9629-445830e5052d"
+    "01a1a6a6-e65c-77a2-b8c7-ee2dac7c11dc": "01a1ac05-116f-7370-9629-445830e5052d",
+    "01a1c122-42a7-7311-957f-5ebf5088bb47": "01a1c594-fd67-7a91-a870-02a11a07d31d"
   },
   "direct_request_thread": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
   "direct_request_date": "2026-11-05",
@@ -790,6 +827,1295 @@
       "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
       "turn": "01a1b75e-4762-7dc2-89f4-eecd6b4258c6",
       "status": "included"
+    },
+    "review-quote-20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1b766-78cb-7791-be0a-f499ccad5698",
+      "commit": "87b69a7d385a6bb074eebcbd9fcefd72005d7a9c",
+      "build": "4bed4dea2d",
+      "sites_version": 96,
+      "status": "completed",
+      "included_in": "8cd89996c9"
+    },
+    "contact-footer-20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1b771-a5c2-7a90-b4ee-900db36f26c1",
+      "commit": "ca70e650fb04526ae1482cffde7a5b13c5f4ea33",
+      "build": "f3a0fc1e2b",
+      "sites_version": 97,
+      "status": "completed",
+      "included_in": "8cd89996c9"
+    },
+    "about-first-and-arrows-20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1b77c-f290-7620-9006-8adcf618cb76",
+      "commit": "89187de31a5f2ccd824a196b9f61869bb66fe35c",
+      "build": "6fa7598400",
+      "sites_version": 99,
+      "status": "completed",
+      "included_in": "8cd89996c9"
+    },
+    "five-passes-20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1b78e-763f-7af2-a969-d04e6677b269",
+      "commit": "ffc88baad9a740a2ec2ff64fec8169b5aaf75ffa",
+      "build": "8cd89996c9",
+      "sites_version": 100,
+      "status": "completed",
+      "included_in": "8cd89996c9",
+      "sha256_binary": {
+        "docs/about-open-spread-20261108.md": "1a1dbfd32a68ee2ad5acf95d527de4243669d990c2a16815772a6c6a5f4249e7",
+        "docs/contact-footer-20261108.md": "8b5f87515f111decf36f8533fa1340e3680ef3155a8b01e77734e4db703e1efc",
+        "docs/five-passes-20261108.md": "9be1cf011a1626a3c3e502399f4d2fbd151d25bd7e81b32f5daa593a573fbf9f",
+        "docs/normal-chalk-arrows-20261108.md": "05a352a6c801e60ed51d53267f9d51f5a3e736e1c396e03d57fb47ccc124b565",
+        "scripts/build-selected-site.mjs": "454a36c6193b473ea3009e193b8489ea8d7829067df0532a34331bfa3b1dfffb",
+        "scripts/check-selected-site.mjs": "269b12650718067b923295eba45cc4561bae42d06d80679d4558ace93e732a96",
+        "scripts/tests/drawing-motion.test.mjs": "42120466c86838c5fc2bbc671daf955f861050a29fbfd8716f94e638aa2cd5d2",
+        "src/reference/studio/reference-frames.js": "a903a9e81a27c15ef2f7d8d4eeb022cb41b6724cbc4a7337e10c94551c8c629e",
+        "src/reference/studio/request-ui.js": "f12ebb4b81e0be3a4c2c4e41f9bdee927984b9e5c0826f0526d19109ae56d359",
+        "src/reference/studio/review-carousel.js": "31c7bb4404b8cba44a88d5c9a8ed632d38ccb9ed57915d5c3f7fcfba5aa41c9d",
+        "src/site/about-section.js": "156e63bce7a6f3c01d0d1ca7a9049bf9801387d586a0d091ff53ed101829b784",
+        "src/site/about-story.css": "06691c1f5d6861b37eb5c00e29dd2e9febce38ad9957ea6e57b9d1e1aed5a946",
+        "src/site/about-story.js": "bf3d14cb0ac30b2f6276abb866315e91523aaa74fe58374361ed591baadde50b",
+        "src/site/artwork-catalog.json": "ce1e38954ea7a51e6e30b9efe85da07e156c69b6d91f87acae4a2c36710e280c",
+        "src/site/artwork/illustrations/consultation-chairs-20261108.png": "dd542dd9e9e3f4062a6ba6ea283ac9fa18f82478994985273a480a32fa054c7d",
+        "src/site/artwork/illustrations/consultation-chairs-chalk-20261108.png": "76c5226c00eee92ba006da09b618d4cb3fcccb466b1192e207b2e6144acbe12c",
+        "src/site/artwork/vectors/chalk-word-underline.svg": "c92b28f7bf7244980f057aa4a4e66496ad0f999b19a46aff1b30fff5d9894064",
+        "src/site/artwork/vectors/field-focus-line.svg": "2775650db78ea5094800d384116d9627f3e7970d1cfa07d6ebd96782be014725",
+        "src/site/artwork/vectors/footer-thread.svg": "449bf3ca80ad5a5dac01c761dbb5f5ce65a8ac4c627ce37a1358ab02695b2288",
+        "src/site/artwork/vectors/navigation-arrow-chalk.svg": "d17b5d0f4ae0e0c3f2f4a69f9580237e27864750be2f580c458d4d1b3747c5a0",
+        "src/site/artwork/vectors/review-opening-quote.svg": "2de5f9496ce7f7767220782207404d610d255cfc8037806125e4181e601642b8",
+        "src/site/artwork/vectors/service-connecting-line.svg": "e08893e529f257dca6b675001c49f577312bf7dbf999f06cbbc39b590a4d8eba",
+        "src/site/blocks/apply.html": "1e6c5ba30db2f801ea99a88458a1c47687c326d835f0658ce2cb32910a91ae5c",
+        "src/site/blocks/footer.html": "7a667376f479db72faaacbc703c696d05f312d62e20788c6556745d05c2de367",
+        "src/site/blocks/hero.html": "eea60872a9048fa891d39163b0c4bd18ca07dcaaa178fb19bfd53580bdadc70a",
+        "src/site/blocks/process.html": "5a0b6d74e0ae4176e8ff99d40273e6fef4fceacb4f7c8d12f89d5ae3be8f9b5e",
+        "src/site/blocks/reviews.html": "7562e3a7759cf390bcc6556f5b64a6887865ae631bfcdc7a8df8ea6658d0abc4",
+        "src/site/blocks/service.html": "4eb9472bf524d62abf54d9f5753c9cfa4ecca6ce216d1f292b56b0e5929ab4fb",
+        "src/site/drawing-model.js": "ddaae4aab890dd78cfc4007e445e0cc51000f9bfac68d24db6f5b442a97cc952",
+        "src/site/drawing-motion.js": "81dc36bb811568f338a358b21791f6a65be15aca719faf3501393aadd642dd05",
+        "src/site/drawing-parent.js": "8bd411aa0feac289afae0fa23a70647565daa8536eb05595f0dff1e422c1d332",
+        "src/site/pages.mjs": "5e76dc5c6e42a4a556f7ff2ac4fdd97461dd331cfa3d67b012dd273e703e540b",
+        "src/site/site-base.css": "5618c5d696dd4171053ac4e672d2947bf057e43ac94f39617d325def2d0a5d22",
+        "src/site/site-base.js": "68b3e731f82600049401b004a48b6f50eb6eba3528f00b59ceae1fab927d8085",
+        "src/site/site-polish.css": "90a4984c8b87451cf2dbf18be954a09173513bbaa97e33a1a1aeda272d79224e",
+        "src/site/site-refinements.css": "22fce9772d18888402b7553cf5a75156683b6dd7f7fc4db6f7c0a80e1313532b"
+      }
+    },
+    "final_site_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb0c-84a4-73f2-b9f6-ae405a0b4c8f",
+      "commit": "2a81a532e45f0358b58a00931fbeb074f716637b",
+      "build": "149532802e",
+      "sites_version": 101,
+      "status": "completed",
+      "included_in": "5d548de0fb",
+      "sha256_binary": {
+        "docs/final-site-20261108.md": "b28fac5cd4c0f39a2bbb9f7db5f5e169f0399c5cdc80a8454b36e3dc660242a3",
+        "scripts/build-selected-site.mjs": "91680c60a54e307b675bc7db57ad6224c3bdc7d48c72a2cf513736dedb0dce2a",
+        "scripts/check-selected-site.mjs": "90f6e18d334440a0974305b53798185cf40afb6a50f9ac4eb23a3680b1597740",
+        "scripts/tests/selected-site.test.mjs": "6dd66f9ab6c5a46aad801bb40af333bde3d93c87eef387aca8f5d4cf22db65a8",
+        "src/site/about-story.css": "ea8ac59ab6545faf04f3d4f5d07c72ac25a6ff082e91df3abfb74f16b9485f55",
+        "src/site/about-story.js": "01af66e27fd21ebe132785ed376c8ddeafcfb664126d4b91d18e84c79d5d3830",
+        "src/site/artwork-catalog.json": "46d528d6dba5ef179a8a79da393839fe9e85a50773784b7b9d761fb3b912a3e6",
+        "src/site/block-typography.js": "52347bf894631a28134a218582fa165dbda23d7ecc588ba03f305731102d7d77",
+        "src/site/block-ui.js": "64310e9f535188f8a1b947c435f1c572f0f9f0c688d964ceb3d171ec818ebc4b",
+        "src/site/blocks/about.html": "e945dda58b2cde720c4a00e732afbbba62b9920636e796f41aa5cd74fc960b99",
+        "src/site/blocks/apply.html": "d569e8bfea3438eaa89aa5750d1b545508711b701d6beb8c84b7c68477698196",
+        "src/site/blocks/footer.html": "761230e30a6b9c8966edb1743395ba1005c79762c9d7fd1949470a9a5f6a5920",
+        "src/site/blocks/header.html": "99a9d002b1a97a46492bb289190cd83f5d7c4d3fbd444c26be93427a9605e585",
+        "src/site/blocks/hero.html": "32fb97b82ec08d690e10efc6b348717ca738dec38ee836cda232f5c98a65ac01",
+        "src/site/blocks/pricing.html": "408e2d250b8fd7d0d1baaf888cf3bf559e8720c8298dad5724ca705b712ae465",
+        "src/site/blocks/process.html": "5679a7f137eec50bc727d9649ead138beb24c8184f1da12365c7ccd70de92e14",
+        "src/site/blocks/reviews.html": "ccf2c39d236fd2d32b25ddbd916fd3a8f8ca7ce777521f294617c0b23ddf1f68",
+        "src/site/blocks/service.html": "ffb26d928412106436d37a52522d7b38b774c699909d37b6c6ac0fedd48223a3",
+        "src/site/drawing-motion.js": "ad8f463c0dc7663a05d9dd6c4c4d411d6bd8054a3cd3dceb596f269a12e1c16a",
+        "src/site/drawing-parent.js": "7928cda9e6d4240a6738a2506c42abfc23f56a275f0837821fda774c571ead3d",
+        "src/site/pages.mjs": "f66696944243109d20936f5bae39eb58a2b43872956ac5661b7553583658e00f",
+        "src/site/site-base.css": "df59a4f165e7e4eaf42c07c3a2f885a58421c094ebb8178f8fb04cc0e8c6f02e",
+        "src/site/site-base.js": "b7742051db61a93539a70cd9097843071f8e30369ccb2950c11ae8fa9d1f9790",
+        "src/site/site-polish.css": "9e1971682e4c6ec3ec2b4da3336aa960cab6596e82aa54fe43b87b76a8be12d5",
+        "src/site/typography.js": "0d3e04377ec89f061ca5d6bf4c2a24ee876059f68938828718ea5f90f7955591"
+      }
+    },
+    "contour_milk_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb1d-369f-7193-b5a6-055d4e19a7e5",
+      "commit": "d61f69419328207f64f63dec08e96afd8cbcc406",
+      "build": "29c80f5720",
+      "sites_version": 102,
+      "status": "completed",
+      "included_in": "5d548de0fb",
+      "sha256_binary": {
+        "docs/contour-milk-20261108.md": "f99e900f5c72df88737d0944f9c13a69cf04f07b274d2e5ba1a8654b1fc4fa07",
+        "src/site/about-story.css": "c928b9affa12ba3a2f7a6eee61d978f5f681f6fd7615b3bee286f698d802fe5b",
+        "src/site/blocks/about.html": "bc5ab435ed6c41fa2e889fa0e0404de57957f4dc0b5fb6daebb8d3142f8c50df",
+        "src/site/blocks/apply.html": "35c44fbdb912db8209f9a5bb3ca17e658d08db44cc92527ceddfddcc74111bf6",
+        "src/site/blocks/footer.html": "4421ce8707e1d66a8b289318f28feb7221732a552f528ab4cbd64507411644f8",
+        "src/site/blocks/header.html": "ad0c6fb4e13196237891ffc06f8f8d4d2188991411b5bb3d641986f576675ab7",
+        "src/site/blocks/hero.html": "7d5369bfe35d0c38cd7186e5d23d947ca4a9d9db1215f57d595feca4e68ee09c",
+        "src/site/blocks/pricing.html": "f7a782cd9453cec6b00ec516ce8006ed2eb2ba9921143edbab855b4fd9320ba8",
+        "src/site/blocks/process.html": "ce0eea084ca7ca7034b0ee2abe4080b906ec7fbdf26f7b567f20750fbbbaa64d",
+        "src/site/blocks/reviews.html": "8972fffc406606a827f71dcfd1d6741f3b8b7511d20529d6408fcc095dffc1c1",
+        "src/site/blocks/service.html": "c6533655175001866695f4cfaf452b57219e31b3fd1403d1f65427ef1682c25f",
+        "src/site/site-base.css": "202e52fc0d4aac6e998623a1eb66d9e43226e48737c594aa4b4717690f83a8f1",
+        "src/site/site-polish.css": "7a550f3211813f5f00340cbebef3f12e7c9a60bc63cf32388feb22c6dd2fd228",
+        "src/site/site-refinements.css": "f277954d64417534b5724b8ca8b3bbacd85885f4f57ad9ad3ec1335f90ab641a",
+        "src/site/site-typography.css": "c06846c7bf3302b716a9a256264e85ed5a137ea719425628dd4d726551f83329"
+      }
+    },
+    "about_static_photo_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb23-e766-7801-8947-dcea31ac86fe",
+      "commit": "8552aee63957f56e67ce44195454823eecb0c51b",
+      "build": "470cefbe02",
+      "sites_version": 103,
+      "status": "completed",
+      "included_in": "5d548de0fb",
+      "sha256_binary": {
+        "src/site/about-story.css": "757f3db49816d24ba66e5fed567f9c0df279ab80cee7f5b962b31414ad159a9c",
+        "src/site/artwork-catalog.json": "f3008dd3033cf8132c5c06c071ccdd96cffe5bcbb26356bff575a2d7c3bf367d",
+        "src/site/blocks/about.html": "45ba944b6b401578dcccded23d2aec2f74048521bbb570744e967afb0678eccc"
+      }
+    },
+    "handdrawn_quotes_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb28-c6df-7760-9692-b2f04a37ab85",
+      "commit": "3bcf57f1b66e4ac87ac8d825bf61f6fd37cf5646",
+      "build": "c991eba404",
+      "sites_version": 104,
+      "status": "completed",
+      "included_in": "5d548de0fb",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "efe409f5bbefd2885157f2c3f338ea1b81bf5b9936d77cfd26f379f1c0563e4b",
+        "src/site/artwork/vectors/review-opening-quote.svg": "69aee0a2b9e127de86ab14403abdba020b1f803f502543b075e336ee8de9623b",
+        "src/site/blocks/reviews.html": "9760e0a0931999a4275f2881b484f44cc84a1782adbfde0732e6ef1beb9b01d9"
+      }
+    },
+    "centered_pricing_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb30-8247-77a0-b785-22db54b16b2d",
+      "commit": "0b4b848de4134aa6a36460a50e0180c65f5ee42c",
+      "build": "2357feee3a",
+      "sites_version": 105,
+      "status": "completed",
+      "included_in": "5d548de0fb",
+      "sha256_binary": {
+        "src/site/blocks/pricing.html": "88ee048d7eb08c067650746c7ce1e6f2b547a5272d6f750926caeadc1b9b4b9c",
+        "src/site/site-refinements.css": "00e9c5b2ade23bfad7d2a2e8c2b2931bcf016e90a2a907b819501cbdb1adfbd0"
+      }
+    },
+    "about_controls_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb36-dc6f-73f3-869e-ae873371f6b2",
+      "commit": "de85eb9e37456022b70ee7b1178ee00ee04bd83e",
+      "build": "5d548de0fb",
+      "sites_version": 106,
+      "status": "completed",
+      "included_in": "5d548de0fb",
+      "sha256_binary": {
+        "src/site/about-story.css": "0208486611f4a67fe870546861a37fa8c15f8cb59d07e4c1d83fa9d8e76c2087",
+        "src/site/about-story.js": "98c53fd2ed7f96ede0eef40d1c1290c4032083ab03c9d81d5a71743101a46dbf",
+        "src/site/blocks/about.html": "feba01eb16d8d8a0180f110da109f94ce7cf11f647ec6b53dec0298d8aeb6ef4"
+      }
+    },
+    "process_alignment_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb3f-fa9f-7991-a8f9-65092f869190",
+      "commit": "e2624ae7224adf06f640b6f272064fa1451671a6",
+      "build": "a5c199afa7",
+      "sites_version": 107,
+      "status": "completed",
+      "included_in": "dd23ce6867",
+      "sha256_binary": {
+        "src/site/site-refinements.css": "f1f3772d94e2d2a87523f1cda2964c9602ec7694b0f4a5f175ce9dcee2183670"
+      }
+    },
+    "white_reviews_pencil_quotes_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb4c-d58d-73a2-98c5-26124cac8add",
+      "commit": "8859cefad3d138fa4cf7ae1953b3c53d4d5c6320",
+      "build": "3c1daf5186",
+      "sites_version": 108,
+      "status": "completed",
+      "included_in": "dd23ce6867",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "7dfadcf1f7f195480504108188ad1dada89e2f9ea1f413e3609b4840a667d600",
+        "src/site/artwork/vectors/review-opening-quote.svg": "8c2fe65f48795c7a5da16d878f0fdb106d20dd5b201d5d6a2cd6336b6be0c39c",
+        "src/site/blocks/reviews.html": "44a46606f47e4ba875bf207af6b14c61c0409f5d2d91057b82e5945a9dc8ef8f",
+        "src/site/site-refinements.css": "be01dd632b21c220f70db5a2baea7f4382dc56a93cc64e22c0cceced0f5e1874"
+      }
+    },
+    "quiet_interactions_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb54-9fb8-7fe0-a1a3-e88f05e115f0",
+      "commit": "936c5694bb358bcd70789f7b32e77e078a7ca281",
+      "build": "23e7aa9018",
+      "sites_version": 109,
+      "status": "completed",
+      "included_in": "dd23ce6867",
+      "sha256_binary": {
+        "src/site/site-base.css": "7f2e76fcf5dd53809ea3fba5dcc50993f6346c4d4f5bd414831c3ee8c94b5a6d",
+        "src/site/site-polish.css": "eba8a4f1a737485a85ee9662d3a1e18fa151747adf8b25e1e39c991994bcc6b2"
+      }
+    },
+    "hero_print_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb5e-5019-7fb2-ae9e-eba9182f59ce",
+      "commit": "507ba7b9d3352736d839c77f8b3ec362390ad9a7",
+      "build": "d498d1698a",
+      "sites_version": 110,
+      "status": "completed",
+      "included_in": "dd23ce6867",
+      "sha256_binary": {
+        "scripts/build-selected-site.mjs": "54a071f57a4e5e89ba86bfcf5edb749b42f98ec7483ac543ab52b3a2934e194a",
+        "src/site/blocks/header.html": "0194556ad3b72211bbaca53cd875bf7fd48fe7b199d2672d21f5eee0be9389a2",
+        "src/site/blocks/hero.html": "8699bf769437f532560c3933268f27310e2500ce8a7715826a4a45cf0f8ebce6",
+        "src/site/hero-photo.css": "8c0c8ee2be255349009119ee1ce5f29278debf744b0bdaa37d159758f554406c"
+      }
+    },
+    "confirmed_identity_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb70-e9cc-79e0-b058-bfc5c54c150c",
+      "commit": "5e58635bbbaef0182666bdd061f622abbb884fd7",
+      "build": "47ba03e44a",
+      "sites_version": 111,
+      "status": "completed",
+      "included_in": "dd23ce6867",
+      "sha256_binary": {
+        "src/site/blocks/hero.html": "193254404384c20f85fc770d763941d49c1778a09803afb9dad436fcfe49d477"
+      }
+    },
+    "calm_and_reviews_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb89-6e47-72d3-9ad8-8af9635492a2",
+      "commit": "79dbc3e805f4d0127182b0cd83a6390f6bdb25f4",
+      "build": "dd23ce6867",
+      "sites_version": 112,
+      "status": "completed",
+      "included_in": "dd23ce6867",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "587afd1b06b2681d9953bc1ae707f0eccd2c270ace14991115b17df46d5f3dc3",
+        "src/site/artwork/vectors/review-opening-quote.svg": "18d874a710204fad2a4f6ead1dc5ac39fdb3cca7851e7b10a07abf6bb3ce1706",
+        "src/site/blocks/hero.html": "3cbb40e7ccdae2642cbed1efad6b1d412248e5005533494b2ef51fd88d93e676",
+        "src/site/drawing-motion.js": "8735b9a3297c8caeebc59c98ee47c56f321da881a8fcd3db689fdfed364f3ccf",
+        "src/site/site-polish.css": "0cf1b13df500d6b555097f62b871b9a2a725886860d4bdff5efcdb94ca2c03c0",
+        "src/site/site-refinements.css": "4245b871f9d87a2f4dbebb112a9a7639f17cb7ae2681a11ad3c89568e78e223e"
+      }
+    },
+    "mobile_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bb95-35ee-7771-9c12-763d4f49da90",
+      "commit": "54371b93d010f95e8833056b8cd0f81525c22d14",
+      "build": "5a7c9138eb",
+      "sites_version": 114,
+      "status": "completed",
+      "included_in": "7324c539ee",
+      "sha256_binary": {
+        "scripts/build-selected-site.mjs": "f6b33cc1484d3709c84ef9908c1f5d3ae2b5e1f71e21400fad51cbdcc499f951",
+        "scripts/check-selected-site.mjs": "6ea329ff425f9e5b0aa94f5df5e455aab5d2ebd301c57f82983608c129c4b25e",
+        "src/site/drawing-motion.js": "708cb737fddeabad104e5c86388a6ceb502c392933c7df99db680f70c56ea5ea",
+        "src/site/frame-layout.js": "91d2f672665c528c1dd6eea7adf03dc69b9d24016acf395ccf193e30c87b0253",
+        "src/site/site-base.css": "00aea99fc83fc01184d9c0db5946750d96694fe97da8396095c14bbc5c6c40cf"
+      },
+      "intermediate_sites_versions": [
+        113,
+        114
+      ]
+    },
+    "hero_caption_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bbe8-93b0-7cc1-8f1f-b88ea788026c",
+      "commit": "fef5e5769f9e16c7554312ac10d16545c2161b26",
+      "build": "453bd4a694",
+      "sites_version": 115,
+      "status": "completed",
+      "included_in": "7324c539ee",
+      "sha256_binary": {
+        "src/site/blocks/hero.html": "4ee5a23c3c2d97ab7d0135b1118cbc20802ef187b46948fbaa719080fa94bb8e",
+        "src/site/hero-photo.css": "6de26a811c0508e25f441b847a4e8425e241ce2234e5e0c5518329ee2df848c4",
+        "src/site/site-base.css": "daf97ebf897e2e1c31c67b56522efea39fc1be94a5d9f3fa3b61d6dabc879d51",
+        "src/site/site-responsive.css": "6f2107937fe5e981b5b93884969f17bff57e0d963335562bef78cc02c9d838b7"
+      }
+    },
+    "hero_backing_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bc05-aae3-7710-93d9-3930f7cdcaf5",
+      "commit": "72c745d7e678ac3f3001638ce8f84522dc94022e",
+      "build": "21666d9d09",
+      "sites_version": 116,
+      "status": "completed",
+      "included_in": "7324c539ee",
+      "sha256_binary": {
+        "src/site/artwork/vectors/hero-backing-dry-crayon.svg": "c15d1c94f7061b1dae584954b608bf006db9fe3a715e9439404a11b9b844fd0b",
+        "src/site/hero-photo.css": "5cbef55abacd6247fbe5db66ec69fcd3035a8154d7469d03748d8d8d23d8565b",
+        "src/site/site-responsive.css": "25712fab6fbada1939ba48e806029cc299b8fdddec9482b1a6403015d9fc81f3"
+      }
+    },
+    "shared_width_and_form_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bc0c-8868-7f23-9fe3-52a6158c7cee",
+      "commit": "4a4a8ed8341bba5f2f3e024227fc07f3efde8525",
+      "build": "60fc59886e",
+      "sites_version": 117,
+      "status": "completed",
+      "included_in": "7324c539ee",
+      "sha256_binary": {
+        "scripts/build-selected-site.mjs": "1a5995b69300ab560700da8c467b63d9b08c384dfe7240a1d209941080a194b5",
+        "src/reference/studio/request-ui.js": "d356969e094f691f33a265256faade1abc625d22860f3645aa7c38af957c77f1",
+        "src/site/blocks/apply.html": "145ed80290c48268dbca5be9c4f72be2818ef18ca12bf950316580be99bf4de5",
+        "src/site/pages.mjs": "ea3af37dc0193e74eb62ab886a3346d48b91863f5ba1238abd877edab437b332",
+        "src/site/site-layout.css": "8c253f1f600e0c3f389f8f5d51242803ceb4ef6738e65e507fe2a06b7deb3881"
+      }
+    },
+    "portraits_and_rhythm_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bc1b-98ef-76e0-ae2c-9863031f75a3",
+      "commit": "815970f4f52206fea19a749aa05809db86bda545",
+      "build": "3a1df47991",
+      "sites_version": 118,
+      "status": "completed",
+      "included_in": "7324c539ee",
+      "sha256_binary": {
+        "src/site/about-story.css": "0ce6ea4d74fde30a6f6fa35db8d9d2752fc60a52cbd5152a9bf56c289ac921f1",
+        "src/site/artwork-catalog.json": "c11dffd54d47db0a60f15e1202e140015d5a0997554b88415cfca587f7999682",
+        "src/site/artwork/vectors/chalk-word-underline.svg": "af0131f4d9bfd0afdddd0629a443ea9c3b531a57e28fec79d1aa38c023cb83cc",
+        "src/site/artwork/vectors/prepayment-book.svg": "e4a080e1f6382b836c256ddd686f7e07b6de585c6e3b436cd876ec0164ea9089",
+        "src/site/blocks/about.html": "feadfd1b70638e12a00cb3bd7a5c58cbe86c032bc2efc95d0956e48a99f408e6",
+        "src/site/blocks/pricing.html": "0b9b445184c31a6a3da15b1205c063b9060ef6185e6d5290a5567b9493d4af17",
+        "src/site/drawing-motion.js": "b9fd9e78116b46ec8bb291c031bd29b833e8115186ec84ea623c196b37dabf98",
+        "src/site/hero-photo.css": "c25d3558d26db0ed9d575d00a7487d2040792700df209ff80757f24a342211df",
+        "src/site/site-base.css": "585489d0601695f887b1c067f1e07102fcd5f72f38b12f526a43815eb1ec273b",
+        "src/site/site-layout.css": "37e8d724c82f2b13e0d8d6a49c0c4f86ad1315faee28e29a41367213eca9f861",
+        "src/site/site-polish.css": "cfb3335945db6ada9e81f4dc29d5095f9c25d247ac8421e2d0327c65d38d21db"
+      }
+    },
+    "stable_loading_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bc33-d605-72a0-a0ed-2020e4f3565a",
+      "commit": "8a8d44f392e5ae069acd00a9eeca7caedfeda6c8",
+      "build": "173f63553b",
+      "sites_version": 119,
+      "status": "completed",
+      "included_in": "7324c539ee",
+      "sha256_binary": {
+        "package-lock.json": "755a91a06020b1f9a47ae802976193dfeceefec9d81839fb7089f80409dee064",
+        "package.json": "92b1db57005ef88d9741d7a04de602b2b5bcc42a6f3d9875bae7a68c6f536eed",
+        "scripts/assemble-selected-page.mjs": "26c2a836eebba25de75008a04327799d87474e7588edea45c13ec581931406ac",
+        "scripts/build-selected-site.mjs": "5ceb04960011935415b32a95befed1c876c9c1afac5462dffe401e20e8eff101",
+        "scripts/check-selected-site.mjs": "2a8ae95e5019217b21fe0cb147de10fadd020e82811212d46ce0c3b8d29a79c8",
+        "scripts/check-single-page.mjs": "b8baf22aafea552584cae4d2a7b3457fa998fed5b6fecf0b167de0ed20c5f079",
+        "scripts/tests/page-assembly.test.mjs": "7f41e9e3a95fa12c7fe84d67d0e62e73673271894cf67d583140bac2889607bb",
+        "scripts/tests/selected-site.test.mjs": "156a5d2c18a00898ca07d5fa260fae2eafdaf3db567739adfb6a45fa06723f94",
+        "src/reference/studio/request-ui.js": "c726c1a0ac7df6e363921f6b14386522c08ad658a07875ffe1166ec24ab3c373",
+        "src/site/drawing-motion.js": "52880e36d43a98426152cf5778c6b834332c73f1aee0592ba597488b4a6e9f57",
+        "src/site/pages.mjs": "ab154a0f2dd0728032ba4e559854edbfa903e2af4ceefcf10ec483dcd0b8e393",
+        "src/site/review-carousel.js": "da70547747856b637a9e5b2fb28ce98052ba58b2ffab243ce5ce42e58ca861ad",
+        "src/site/single-page.css": "6b1d513fe3ea979b2440928f7adf526d668cde571ee14e9fa7139852ad83729b",
+        "src/site/single-page.js": "aa16f027dffd6f722d99564b922921f5b2c71c30aa98ea077a101ca47cbb7c0a",
+        "src/site/site-base.css": "7a2f4f192251a1fa1b14734cf77d539bca16c10c8dd037710b2ad13289de92f2"
+      }
+    },
+    "chalk_details_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bc64-ee37-79d1-a29e-72e0c3a71837",
+      "commit": "e4f4aa7d90eafea68e515e91c447dfeda64099bb",
+      "build": "385c1af7cf",
+      "sites_version": 120,
+      "status": "completed",
+      "included_in": "7324c539ee",
+      "sha256_binary": {
+        "src/reference/studio/pencil-button.svg": "9841ee3f1295e8ada3199389cba47a59c6d0407e924a71a8b7f48fc7b4c9e4bf",
+        "src/site/about-story.css": "5f7c3dfba9801de75f07df5618a83ee5ce18044ed6461e7f596fb76970cecf21",
+        "src/site/artwork-catalog.json": "45ccae2cc5b1be80a6d6a6a60fb71f74530d8b9cdfb1f62fffa67d1128b3b164",
+        "src/site/artwork/vectors/chalk-price-ring.svg": "fee3f6f74558fb0efd3e7d4d6745ad7287f293c9b8150ee998e411d7c93c6d5b",
+        "src/site/artwork/vectors/chalk-word-underline.svg": "38b170f66ad2f21dd2c65b5bcf5155c3ba943c7327183e8c886ec30290c2804b",
+        "src/site/blocks/pricing.html": "6bde8d5e7a66dff8bc642555322734f53c6a6736af30151f3840d7ba41284d42",
+        "src/site/blocks/service.html": "4b928949eebc89f813bfa2bb6f8f9425fee721f9fd4b1487f9b64471bb6d33d8",
+        "src/site/site-layout.css": "03d16e2a40456f9509708395190aaf10b0ae7639c899f2416550feb10982fd75",
+        "src/site/site-polish.css": "ca83a6fd7f8c62e16243bcea71be2ceb7c3d1b6d7a9eeadfd9955432828dfddf",
+        "src/site/site-refinements.css": "70a7d806a55f6dbb4972c9b22100076bdb7e2f6e658d21dbc659c5b5bd82d5e8",
+        "src/site/site-responsive.css": "a6027b41074e07c6ca84ffd0ce27615b300e38e3e1e334d5d6ad203df8d2186c"
+      }
+    },
+    "consultation_illustration_20261108": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bc71-7bff-7af2-be8f-cfb9de081236",
+      "commit": "c24093b0ab5c4f7b8d22f51cf5514fe4551806ea",
+      "build": "7324c539ee",
+      "sites_version": 121,
+      "status": "completed",
+      "included_in": "7324c539ee",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "ac02ce388738afc65c5faf0fa4edd2dbc1bdec9ec00f9bc4903446792ddc7ca0",
+        "src/site/artwork/illustrations/consultation-chairs-pencil-20261108.png": "03bac4d3ad39d4db7ae804d4bc85fbfc303a8195ead0dec2226b6cf53623a32f",
+        "src/site/blocks/apply.html": "a17abbadcdd6518a7e4cb891d6e3dc1f42da9ef15964f4358aec7212343fe84b",
+        "src/site/media/consultation-chairs-pencil-20261108.webp": "3fef199174c23d112cd38a5fb43ed166e5665ea5ad51d097adba98129422a2cd",
+        "src/site/site-layout.css": "f1ca4a4ffd3effda31c39ed2f1d29b03761a226f898f2cfd57ce1777950725a2",
+        "src/site/site-refinements.css": "695f953636a4918a202866fe5e5310a7b79d25b6411196d8e84258b9edf22efd",
+        "src/site/site-responsive.css": "76598fa754658301dc1623dd06a567541529b728cfe36fbe6ea803ea61ad36ce"
+      }
+    },
+    "pricing_circles_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bc94-2eb2-7840-aa09-256abb6eb4dc",
+      "commit": "83204f25c04db484203805caeb86d265d6e9ba91",
+      "build": "22fd595d46",
+      "sites_version": 122,
+      "status": "completed",
+      "included_in": "35f3485066",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "1b9ddf4f443d17185fb219a2e169bf2a7c6c3e1e5a1630c5f6518ed23799d45d",
+        "src/site/artwork/vectors/chalk-price-ring-2.svg": "f4fef4aede2fb949e944c1c6f12046ae09cfc279e0386c69951abd207c0a0fb2",
+        "src/site/artwork/vectors/chalk-price-ring-3.svg": "c741f8418ec596bfef3a595d4f8446fc3add889a17ad13be607163988d9ae4fb",
+        "src/site/artwork/vectors/chalk-price-ring.svg": "e17d7024510d41c983d465afbe5cd6d33c44a79a82071e0dc9cb8d77aae46ffe",
+        "src/site/site-refinements.css": "a36cb666c5d7ff2398c1bfde6b9655d96395bd0f8dc5108a34b372d55aa8ce41"
+      }
+    },
+    "process_air_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bcb8-fb0e-7622-9559-e4cff5b8f7fc",
+      "commit": "8c9bf2c233c6578f6f9aec317964c2f34a956db5",
+      "build": "7ba84886d8",
+      "sites_version": 123,
+      "status": "completed",
+      "included_in": "35f3485066",
+      "sha256_binary": {
+        "src/site/site-layout.css": "bb421a193a4a24aad6826b4ba3f733935548e4e9e33b95270a147d7481848885"
+      }
+    },
+    "pencil_motion_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bcfc-2279-7812-97da-73c75b364d6b",
+      "commit": "881add897d64c8682556b3bbd9bf25be69451f36",
+      "build": "35f3485066",
+      "sites_version": 124,
+      "status": "completed",
+      "included_in": "35f3485066",
+      "sha256_binary": {
+        "scripts/tests/drawing-motion.test.mjs": "84451f4a11a045a1cda146e164f0c9d6ad5054d40a4889781d79c2d4e3d585f1",
+        "src/site/blocks/pricing.html": "d9c6f1b13962105d7847b408baba968bde98ba79972e3180637f72d9ab6fc774",
+        "src/site/drawing-model.js": "f0b9bb0e61eb9ddd0774dbcb010b8ffa0902cf86840b6f106659843b0eae5aa2",
+        "src/site/drawing-motion.js": "36e9c0a69489bd729fcb1f9cd9a8da54ed30209da7637ff019adacc6ae325cc7",
+        "src/site/single-page.css": "2a1548826afcc76d42c8e074e1a73cadd60d2b79ff9615e18db27e345c0e4600",
+        "src/site/site-polish.css": "73432e5f20e3b66db19b6b2ca5d879ca56f6c23eefbd53a442e47a2f484f8ebe"
+      }
+    },
+    "family_service_order_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1beea-b5bb-76b1-b385-3b0f9a150a19",
+      "commit": "d621d7fd573bccad6731d260d0ecbf4d16a9984f",
+      "build": "2eb97903ac",
+      "sites_version": 125,
+      "status": "completed",
+      "included_in": "2eb97903ac",
+      "sha256_binary": {
+        "src/site/blocks/service.html": "2cf118a06155aa954cf0623cb9c6142035247ed8cbf8c3129dc30665c1106f87",
+        "src/site/site-refinements.css": "5815d7f878d9e0d074adf67b108f92061f0ea0844f287af632c6bc2a34c25e43"
+      }
+    },
+    "hero_copy_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bf66-046c-7e23-a830-8ba21bf0329e",
+      "commit": "f5639b8188eb4df335c484ccb642e6b364a652de",
+      "build": "d2222bd598",
+      "sites_version": 126,
+      "status": "completed",
+      "included_in": "3d16bde209",
+      "sha256_binary": {
+        "src/site/blocks/hero.html": "0d3b5b6a2a295c270b72d167858800dedf5cd9f01fea6c302f9cd790553f1b7f"
+      }
+    },
+    "button_contour_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bf6b-344a-7020-a96d-049338cb44d5",
+      "commit": "2c3cec105e8a2820c29761804d11db6f80fc28e3",
+      "build": "db7f445ca3",
+      "sites_version": 127,
+      "status": "completed",
+      "included_in": "3d16bde209",
+      "sha256_binary": {
+        "src/reference/studio/pencil-button.svg": "ec92c57c1bf9eb5350137d9dc5e39bd840be4fc7b03da65e4eef74e59c3e9004",
+        "src/site/site-polish.css": "c75fe88f7fe992c5272173b70f0466014b05c28f3904616f78507d3148e9e24f"
+      }
+    },
+    "compact_service_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bf72-9059-7961-b6ce-a2b526289162",
+      "commit": "d9e045a4761d75b09da723502c74bf234fefd686",
+      "build": "dfdc5dbf2c",
+      "sites_version": 128,
+      "status": "completed",
+      "included_in": "3d16bde209",
+      "sha256_binary": {
+        "src/site/site-layout.css": "b68d2963f4ea072552140a268a83417943cad69d82062664d7d47ce12e06d72f",
+        "src/site/site-refinements.css": "d4cd5285833d1453350066fbf4d5b1189ae610d36f3faabe6cf2f0607e444e7d"
+      }
+    },
+    "latest_palette_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bf79-a488-7681-8874-27199656b5fc",
+      "commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
+      "build": "6ffbdf3997",
+      "sites_version": 129,
+      "status": "completed",
+      "included_in": "3d16bde209",
+      "sha256_binary": {
+        "src/reference/studio/variants/eight-references/palette.css": "5414c8dc7febb87d66ba677e5fe3ab96f62476924bdadac45e48f6c6d0735707",
+        "src/site/blocks/about.html": "c12bf18d1acaf40ad978bf464949045a3475fb74576c84f6c392d55f66fe1ac4",
+        "src/site/blocks/apply.html": "a11824a8a2eab30d98ea825f5742f87ba00343f8c6d06bad49612929389920ba",
+        "src/site/blocks/footer.html": "463d3e4a7b90bed605afd00cca9a624fdc509cf650ebdac5065bdd669d852c66",
+        "src/site/blocks/header.html": "8b1cd4a35bec7fd0a649e7a592329b65d60e059a24db2b8e2b423d0ff29cd06f",
+        "src/site/blocks/hero.html": "1d87a37ea95d86ea8500529ba63d06a4f32c281bea40b37ccd1eee927ac10eba",
+        "src/site/blocks/pricing.html": "f92a9a2c34631037e76885a71c249be358c8b3867a4fc90f734b5eb44c569559",
+        "src/site/blocks/process.html": "677df3c636483c312e20a94cbda32f03b3f793b41b649f8b2ac1861d15bf7cf5",
+        "src/site/blocks/reviews.html": "3704d6cc49bea2d89a4942f7d6432d2208ade4ef7b374582542796636e146a61",
+        "src/site/blocks/service.html": "53dbca15d19f7331e6c54db5c38b2ea68d54ca8c4da3e237e79165b628b7c566",
+        "src/site/site-base.css": "8ed2ad9a9bce5a18d2d9187ea341703c3131f76c0034079260bf8ac21698a88f",
+        "src/site/site-refinements.css": "24efd1d86562edf357058fd4fd68d63a89cd27b3d6416612208334f87945d84d"
+      }
+    },
+    "about_photo_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bf82-690a-7e62-8bb3-a0e0a88dac65",
+      "commit": "4594dee2ab609a69d1ae3c5ba2e7594dcfd766e9",
+      "build": "b33cbef5b5",
+      "sites_version": 130,
+      "status": "completed",
+      "included_in": "3d16bde209",
+      "sha256_binary": {
+        "scripts/build-selected-site.mjs": "366f541e1e1d9a613b56a7aae07837044be2d3c76879037c0e576172635528af",
+        "scripts/check-single-page.mjs": "0453023f94608a4673b35174185301e328b84691c227df6457def4c876984e4a",
+        "src/site/about-story.css": "da26e06729d3bcc1ffe6ababad210b1e87187f57d5a713a0d731e0ba0639b241",
+        "src/site/artwork-catalog.json": "bc150b39bd64937b2abae2279c45c6655e9e22bdc9086d2b0704c684ec51ef5d",
+        "src/site/blocks/about.html": "e7469bb2c62c0d657eace5c19f34f36020921be4b63555b7502228c6241539d0",
+        "src/site/media/about-pencils.webp": "8bfc218db68aed30b9e5b58bc59949ab4643b8eea87f4ec0d5984d01b8d4354b",
+        "src/site/media/about-reading.webp": "4b955883b06542ff4020a8ad0281dda99e50b6a7e86c5bd5e12865bb9bf7116e",
+        "src/site/media/family-900.webp": "117c496ddb1a96875fcd06a54c32d716d9e3dcd50af6a1d4e81bb411f7bccb16"
+      }
+    },
+    "pricing_studies_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bf95-1fc0-79f3-b176-1eeb9dd46834",
+      "commit": "2e8a0a04932f3beae472c9a42845a82278ff9cdf",
+      "build": "fb1dcf7af7",
+      "sites_version": 131,
+      "status": "completed",
+      "included_in": "3d16bde209",
+      "sha256_binary": {
+        "scripts/assemble-selected-page.mjs": "a1c90c2f8bcf42781e2caf82d243e8f6fc6b9f476c38807124ac842a52005c46",
+        "scripts/build-selected-site.mjs": "397e0a93f324acdb5508bdaccce69e0a99ad147d0a07a30746a3b853a4da0836",
+        "scripts/check-single-page.mjs": "77859fd258200834b2a0ac21b447d67a1005121cbed839708d61b7403a688fb0",
+        "src/site/artwork-catalog.json": "ef48168408b1d9d5516728b66f81cdb6e190ee87c8c5e1d2b53e7ccfe4011b23",
+        "src/site/blocks/pricing.html": "6795583dcd3af3c8eb143f0a97717524f1c583d20419495d5754a2d8c6405c82",
+        "src/site/media/pricing-family-schedule.webp": "31dd215f5c03e56f6dce0387032a28ce92ee35de2f12957fb6a5607acc78cf2b",
+        "src/site/pricing-studies.css": "02385d0849101e9432e3548b03b28ed6040f6718bf39f18f6f32120507a1af6e",
+        "src/site/pricing-studies.js": "d91db1fc24f1ad6365dad03072c7869d084a4d62f9389d368e36eb7e358d3ee7"
+      }
+    },
+    "review_clouds_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bfa3-c63e-7660-befe-e794d4563f22",
+      "commit": "5b2d60254a9be41f75630544cb5c44aca9c4a94b",
+      "build": "84b3855952",
+      "sites_version": 132,
+      "status": "completed",
+      "included_in": "3d16bde209",
+      "sha256_binary": {
+        "scripts/assemble-selected-page.mjs": "0d7703d548d9052be4ccd10ae50e893cb80055deb7fc64e23097ba8b5369daf9",
+        "scripts/build-selected-site.mjs": "8e8e22b50df0bca116500a611a55eb32f2f99a5b6bb5425fa92f734fee867cd7",
+        "scripts/check-single-page.mjs": "818113761b10c5953012ad375ab3e6844fa1f52e5ed6177b7889701deace69a0",
+        "src/site/artwork-catalog.json": "089bf027647a9810d82ace35cae334f52f3db545345a606eb461be5fde8069ad",
+        "src/site/blocks/reviews.html": "454128760a51d40b8494e891f2991effff340800d2a2033f9941b42846788a9e",
+        "src/site/media/review-book.webp": "cfac0a473decd78b0f82b800d57c39e868f85126af0c86289cc5ff38c69a5977",
+        "src/site/media/review-cloud-blue.webp": "40e7d46819dceec589314c3c85594fe3d047c418acb04ad509304ce7e42cf36f",
+        "src/site/media/review-cloud-ivory.webp": "06aad9a5aedd1bd95fceb75a5cb9bda9d64658cf19d3550d51fce1acfa38b4ff",
+        "src/site/media/review-cloud-sage.webp": "838005e377b58f53198a0e9117d7ca92820babbefba0da21ed602cbd724b7093",
+        "src/site/media/review-cups.webp": "d4e1dbd4bf2e682ebfe5f3654f187fd70437f54c624f9d645fc1851f02ddf9f1",
+        "src/site/media/review-letter.webp": "1ddf81443211bf0001d882cd53a4707951aded94a3f7bf00246427097fce452c",
+        "src/site/review-studies.css": "eb0a87a2177a7126521bd261ac2e8817e91dd87c54fd9f12e88186698089f216",
+        "src/site/review-studies.js": "1adf7b0884f7b3c6c5ff3d4c74d8a69b08168f85e64e0a61c2def957fff3e7bc"
+      }
+    },
+    "ending_studies_20261109": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1bfb2-05b6-7e51-96c1-f9701905ed1f",
+      "commit": "ca616fd39690bcc6a535e2c1b1a8b4789ccc7056",
+      "build": "3d16bde209",
+      "sites_version": 133,
+      "status": "completed",
+      "included_in": "3d16bde209",
+      "sha256_binary": {
+        "scripts/assemble-selected-page.mjs": "1df34657783020bbe68184b025d325e039aa1f27725056ad70f42a7bf308543e",
+        "scripts/build-selected-site.mjs": "bee06e38765b0663bc5b915fa4a5a060e123d640a758e6fa51428bca343abacb",
+        "scripts/check-single-page.mjs": "6d757be64deef2024be74054bb483a5767ad16e73622136eb9e6cdfd8f953373",
+        "src/site/artwork-catalog.json": "ca5e4da414d5855ecb6964acb80c099fa3a8f3453b32432dbb609b63cc02c510",
+        "src/site/artwork/vectors/ending-conversation-line.svg": "cd0b74ff1d73cc8e36c6b6de66399527b51b794f4afa307ade66cd784a73f9b6",
+        "src/site/artwork/vectors/ending-margin-bracket.svg": "678e03a3d9ef365b9980e9b88b9fe11be0c464ae0e0f04b779e5be2e3dfb9f4d",
+        "src/site/blocks/apply.html": "8022c1f8d00c88ca59463987689903bae8f3b7fd584268438d9a825627d09b40",
+        "src/site/blocks/footer.html": "a21a4e9b59c865cac0836c5d2891a12fe92463b73e84140fd5fff691189f567b",
+        "src/site/ending-studies.css": "2368dc125f9c5405fe64e38d2edad3e2357480c69bf8178ff9d3ba55a3ede88b",
+        "src/site/ending-studies.js": "ab11f7736faabf2d7bb9ec052f5cb37a893670d4885ab3ec4aa23407f8554307",
+        "src/site/media/ending-cups.webp": "3e135bcdfd36d5d05b10a30ae029b68b6f116960253c3ac597cd9c73e89a2baa",
+        "src/site/media/ending-door.webp": "dd821dc1e10c93d6d4ede8862c98f01354ebe236f08fb6bd2f4a2ca35798f741",
+        "src/site/media/ending-letter.webp": "2fb9a0ad15333ce38116007438dc03b93c2305e3c9164fcfae5b4f0af9b7d62c"
+      }
+    },
+    "completed_turn_01a1c081-5cbe-7eb0-af26-cecad157d147": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c081-5cbe-7eb0-af26-cecad157d147",
+      "commit": "96132b401d38a780354b8ccca697cf2c6ac3f91e",
+      "build": "389820ce96",
+      "sites_version": 134,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/site-polish.css": "86204ebe4ed3aea0fb12f975ce357febdb9f84b0c6e21e08430694bc11c92452"
+      },
+      "summary": "Button pencil-outline inset reduced to -4px"
+    },
+    "completed_turn_01a1c087-b2af-7320-bf7b-0b8bad498c97": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c087-b2af-7320-bf7b-0b8bad498c97",
+      "commit": "144fe97303994e7a67727d8a8047cc3599d375fc",
+      "build": "dbc9582a9d",
+      "sites_version": 135,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "scripts/assemble-selected-page.mjs": "c3e50e4ee2807865fc825e5ef1efd00b441202c069c1171d4a390cdef9fa1714",
+        "scripts/build-selected-site.mjs": "41482117863679a6dcc1dfd716eb6639cdface51758fedd5a84f753a658b6870",
+        "scripts/check-single-page.mjs": "58ba3deabfeb913a2e2540049960736ed63e93360bfb7034fbc793d206f6285d",
+        "src/site/about-scenes.css": "c0811309fffc79a1dc488c6ac231e5e35ef476f22b8b7d2aaf40acb3609659e8",
+        "src/site/about-scenes.js": "6ee9f5b665decb57e505216a7c38dda9fd6389cdd4f3638e31404802f7992f6f",
+        "src/site/artwork-catalog.json": "df28caf24bbd364433ca2604dc17a779007ea6940857bba3983920da31440aa1",
+        "src/site/blocks/about.html": "c2ffffbe86c5cd9b37c5b508cfeaa10a4c6d71549f269e82377f9cc75b1e6e51",
+        "src/site/media/about-photo-scene-cafe.webp": "450fa5b06b573d0c1a526b340d7272cbd9179747499dbc669a33df5c5f6edee4",
+        "src/site/media/about-photo-scene-family.webp": "803d4d5ea12bf8a16c4ef3c1380ea07f0558b111f9aecb85f7af56faaef34a82",
+        "src/site/media/about-photo-scene-park.webp": "2e0467c796778f2c19812143167105761e2702f09b5b6e81ee3d46c8dceb68de",
+        "src/site/media/about-photo-scene-rainbow.webp": "3663f55640166e802425ea4ef0901c1d147b324886d941e16439b854cad94698",
+        "src/site/media/about-scene-panorama.webp": "3170cd7683e3bd2073c8b36bb15eae046f26dfa0ce26142ca24449a5b1042257"
+      },
+      "summary": "Explicitly requested photo-background studies; original later restored as option 1, all three new studies retained as 2–4"
+    },
+    "completed_turn_01a1c0b6-d979-73f2-809a-28a4f7a76bb2": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c0b6-d979-73f2-809a-28a4f7a76bb2",
+      "commit": "cc1c64ca9639df1ddeb4a98f98a861d28ada1329",
+      "build": "d7b5a9e475",
+      "sites_version": 136,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "0d3397c3feca79d1fc999ccae95391cc7ce2e9b9fa112b4c885d23c1e464451a",
+        "src/site/artwork/vectors/faq-question-pencil.svg": "e68dd5abd87745a084a5d2ed70215936886b599f0b218333dda5e633b2e49894",
+        "src/site/blocks/pricing.html": "6a597d3e52a084059086f7ce4ca0301b517b7454f20a8b007e558b0aa34d72f1",
+        "src/site/pricing-studies.css": "63e745109d702138c0a0219945c4006cfc32149290703610b4bee39c6b00433c"
+      },
+      "summary": "No strokes between price circles; pencil question mark and separators with more FAQ space"
+    },
+    "completed_turn_01a1c0c0-ca00-7db0-8106-5ccc25261373": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c0c0-ca00-7db0-8106-5ccc25261373",
+      "commit": "4fe7f4d2e18b5efa90b68b5ff60a03d258241051",
+      "build": "1c2d68d090",
+      "sites_version": 137,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "scripts/check-single-page.mjs": "fc8538edb5b17d83fc30c16d058c9d334b02e397df63520c963a6a64aa2d923b",
+        "src/site/about-scenes.css": "878a1b369bf4f218cc96fdbb42825abcd6c9b71f67e7e092a433aa40711549b1",
+        "src/site/artwork-catalog.json": "39a5fb96ec2387f6c2f14b9e5c6615b186464f25051587d17e47f3eccee6b067",
+        "src/site/blocks/about.html": "c0b866cada07f9677a14fb8bc05495800117945dfc92916138e3e401cbb9ce5e",
+        "src/site/blocks/apply.html": "00b750a3efffd68632a7b262b2e6ac36018c12aee3e77ccdd969e2a2de8ae344",
+        "src/site/blocks/pricing.html": "e422fd974f2109c56588d04e6b391fe5e4f4deba1b7839a517a5c0f0531f85a6",
+        "src/site/blocks/reviews.html": "734a5001604b110787ceecbc09cbde895ec897a1a18960fce4d0556ba753dda4",
+        "src/site/ending-studies.css": "38016c2c7f67da30fcea197fe7220318c2682dc433ed18824e1f63c25ebb9e32",
+        "src/site/media/consultation-chairs-light-pencil-20261109.webp": "3d4e330cb9761e89b1b9d437bfd61ede4b08c3858f17b9350d782f40f0148ca4",
+        "src/site/media/review-chalk-white-block-20261109.webp": "c6419bf19d759fd425af4ff39cf60f457289ff40eec3aa74214548ebeb9b5623",
+        "src/site/pricing-studies.css": "f4d5f0f066e0a54e07b7dfc4aea3b98f4eb553d6fe535bf83cff6dd5ac7d67f3",
+        "src/site/review-studies.css": "1763c01c8368b82d18c635ac5e954b0a0faa2b6227a9c4680395d228d09a4faf"
+      },
+      "summary": "Original photo/pricing options first, new pricing options 2–6, whiter square review patches, chairs redrawn and reduced 10%; photo-removal assumption superseded by explicit next-turn clarification"
+    },
+    "completed_turn_01a1c0d2-ddef-7d62-a0a7-ae26813d3601": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c0d2-ddef-7d62-a0a7-ae26813d3601",
+      "commit": "bea7b92ed7f71dced0d9a50b2a233d15f1acb247",
+      "build": "a8ba7397f1",
+      "sites_version": 139,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/about-scenes.css": "2af465662a63fa4f80c6f6c51ee6f8fc81667ef9d81e7a37121a05a35c23f8ae",
+        "src/site/blocks/about.html": "f023949357b538519719ba98ae851434032079d0be2474c618ac58f21f9bcf1b",
+        "src/site/blocks/reviews.html": "f8cbd7e780d43e1cf28db6cf601cc9787da3379974a76a15cee2c5ab87c8b3e3",
+        "src/site/review-studies.css": "f23ddd162b6ded60ab590f5168820c083b5327705168267f16052c625b0b7318"
+      },
+      "summary": "Selected Home and Family footer defaults to 3, door replaced by adult/child holding hands, clean blue background, curl separator above bottom links; clarification: review options 2/3 rejected, all four photo options retained"
+    },
+    "completed_turn_01a1c0e6-eb09-7771-b5d2-30e5dc10504a": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c0e6-eb09-7771-b5d2-30e5dc10504a",
+      "commit": "629bdeae6b86fb8b844beda6a0edb2c6de8645ea",
+      "build": "fe7d4867bc",
+      "sites_version": 140,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "b13ce38e9c43d093083968761759f47591d32ab2b907c76cdaddc2ae0702f91f",
+        "src/site/blocks/service.html": "658ee36b4852e589afc585028f95e159926e1f7bc26360d694026f96ddd7890b",
+        "src/site/media/service-book-light-pages-20261109.webp": "94443537b8536917a45bfcb8c5c3e7bc51335fc6c89fbc02863cd349f963c15a"
+      },
+      "summary": "Light opaque milk book pages in service; prior request is completed"
+    },
+    "completed_turn_01a1c0f1-4439-7372-a119-d5a50ac40dd8": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c0f1-4439-7372-a119-d5a50ac40dd8",
+      "commit": "afe8d03796e61ca1917ef74fee65e6435b3b0dc2",
+      "build": "82fd66feec",
+      "sites_version": 141,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "scripts/build-selected-site.mjs": "c9ad234f2f27d2842ab6b7987f75c11695d25c353a592c8acf0d1dd7d2f8e451",
+        "src/site/blocks/header.html": "9a80a4586df17beb0bd576b28b079a6a106cacc6a026ad2974a45bf969b70d75",
+        "src/site/header-navigation.js": "ceeaa9dccaa2cc6bd310afbe362023c9e765a8612eea1adccd0e2f54387868e4",
+        "src/site/single-page.css": "31f95b41f0e72d3c79a0cfe21615ab8ff22dd530d6d7485215b446781ab44287"
+      },
+      "summary": "Quiet sticky header and thin drawn current-section underline"
+    },
+    "completed_turn_01a1c11b-c3c8-7bc0-be6d-92e727dee8c9": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c11b-c3c8-7bc0-be6d-92e727dee8c9",
+      "commit": "6719f14dc66566eb89cb8a55f187411bb0cd84f8",
+      "build": "cc248002d3",
+      "sites_version": 142,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "a782b3b8e95fb7444d407abeb3b0e162b3d3af09bad9453ae61882e2e19a92b9",
+        "src/site/blocks/apply.html": "d4378c128d603dbc40dd777fab7d918fb335f1a2b1a301e7cc106df46434209f",
+        "src/site/ending-studies.css": "6118c198e4bb53a5b048ccaa9647d84d4d7604126372e77888fbc5b02039ec8c",
+        "src/site/media/consultation-tea-pencil-20261109.webp": "853886849257fcc40ec215aa352855d539a6ee6993e09b4b739543080810261e"
+      },
+      "summary": "Tea cups left, classic form right, apply 3 milk and 4 blue, revised letter option 2; shared form retained"
+    },
+    "completed_turn_01a1c122-50c2-75d1-ada6-6af940ee4440": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c122-50c2-75d1-ada6-6af940ee4440",
+      "commit": "4b5b7612de81deaec9b96d7fc194f3501e739287",
+      "build": "16dc1b0d0b",
+      "sites_version": 143,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "docs/service-drawing-20261109.md": "270a444297ff0ae8618e64404b0bbd19f03030fdd13c8783886fd443859137e8",
+        "package.json": "9ad22cd1f33ec571fd7517b3b4feb347600d5d11919b6c30f53b502d6c893871",
+        "scripts/build-selected-site.mjs": "baf55ceede0bf987dfa6bf2565bd54da1a0eed8c7bbe5fee00ea5f02a7390fe0",
+        "scripts/tests/service-drawing.test.mjs": "3f9ecdb303e88bc873685d6d4e49a76d790ffd5f4afc6889e1381cb1a7df7a4d",
+        "src/site/blocks/service.html": "4916fbd370a6ff236185606eb90adac517eecc726c9aab2c6298573450d489bc",
+        "src/site/drawing-motion.js": "473cd82961a6fceb359444c4cace181925477daeee5eefd6a094b1ea8f4e966c",
+        "src/site/service-drawing-model.js": "7adb07e2b11b9a558b1cc66822a4f487b8b2dd3ff1a57b40cc358e7c42fa9e9a",
+        "src/site/service-drawing.js": "db9440c635eaa51ed75399792dd191c44ea6884b364df903d8ed705290d17ceb"
+      },
+      "summary": "Service drawing sequence; image stagger 500ms, captions offset 500ms; later acceleration/all-images request remains pending"
+    },
+    "completed_turn_01a1c127-6764-7e91-a49d-f138383a9e59": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c127-6764-7e91-a49d-f138383a9e59",
+      "commit": "d35f88821b16d0e28228d15304019a223d76523d",
+      "build": "d9d5d90a81",
+      "sites_version": 144,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "docs/service-drawing-20261109.md": "270a444297ff0ae8618e64404b0bbd19f03030fdd13c8783886fd443859137e8",
+        "package.json": "9ad22cd1f33ec571fd7517b3b4feb347600d5d11919b6c30f53b502d6c893871",
+        "scripts/build-selected-site.mjs": "baf55ceede0bf987dfa6bf2565bd54da1a0eed8c7bbe5fee00ea5f02a7390fe0",
+        "scripts/tests/service-drawing.test.mjs": "3f9ecdb303e88bc873685d6d4e49a76d790ffd5f4afc6889e1381cb1a7df7a4d",
+        "src/site/blocks/service.html": "4916fbd370a6ff236185606eb90adac517eecc726c9aab2c6298573450d489bc",
+        "src/site/drawing-motion.js": "473cd82961a6fceb359444c4cace181925477daeee5eefd6a094b1ea8f4e966c",
+        "src/site/service-drawing-model.js": "7adb07e2b11b9a558b1cc66822a4f487b8b2dd3ff1a57b40cc358e7c42fa9e9a",
+        "src/site/service-drawing.js": "db9440c635eaa51ed75399792dd191c44ea6884b364df903d8ed705290d17ceb"
+      },
+      "summary": "Remove individual review illustrations, add shared guestbook below and Telegram link; preserve pricing 1/2, replace 3–6; merged parallel service animations"
+    },
+    "completed_turn_01a1c13b-2b1f-7662-ac8f-2d41e37e91a0": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c13b-2b1f-7662-ac8f-2d41e37e91a0",
+      "commit": "194779295b1a9acf1bd80a3bf4d0f93beb85407b",
+      "build": "ea677514f8",
+      "sites_version": 145,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "scripts/check-single-page.mjs": "550dd02fa9584ddbbd3f939c4215f8c550aa4171abc73b177db0606109202c36",
+        "src/site/about-scenes.css": "eac73fc4d739ea981f21987ea01b495f48fd5c5071002a9715043f33a43878f6",
+        "src/site/artwork-catalog.json": "7930cf53d78d76652918e175b7ea0237025bda260fc1644a0fbefba9ad598761",
+        "src/site/media/about-photo-scene-cafe-registered-20261109.webp": "222feded1fb78babcc227a0f151eb736634fb464eb27a667a94f6010c6dad64a",
+        "src/site/media/about-photo-scene-family-registered-20261109.webp": "77ceb942c05c927a521a122e80023dbd9526ce445a7c43577e0585514e1883db",
+        "src/site/media/about-photo-scene-park-registered-20261109.webp": "b46ea6f577401f7d16053c250d1a6cd9995360f66af928f8c54eefafdd112620",
+        "src/site/media/about-photo-scene-rainbow-registered-20261109.webp": "cf028d2cca8d119446bf044465a7389579d606e785004a39a8edb9b3402a64b0"
+      },
+      "summary": "Expand About options 2/4; align four pencil continuations to original photograph inner crop; preserve original photos, text, ordering, options 1/3"
+    },
+    "completed_turn_01a1c155-eafc-7aa1-a124-85bff0ff275d": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c155-eafc-7aa1-a124-85bff0ff275d",
+      "commit": "8bfd7fc30fb944e25d8fba6daf170ab825570ffb",
+      "build": "f598ac74cc",
+      "sites_version": 146,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "fbc438157fc0d8dcbbfffff37eccba28e229f2b7b32f734c3afd8b241d7ba20f",
+        "src/site/blocks/service.html": "57c761375f97a81dcfde83ac0c0c0618b7333ba51d8964689a9ca1e408c16b78",
+        "src/site/media/service-book-hand-pencil-20261109.webp": "64efd522db481f54d26318ce82a9c910d48346fdb3b2233aa6545e5f318e9c56"
+      },
+      "summary": "Service book redrawn to match neighbouring pencil illustrations; milk pages and animation retained."
+    },
+    "completed_turn_01a1c15e-35b8-7603-9004-ddd60937b120": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c15e-35b8-7603-9004-ddd60937b120",
+      "commit": "47eaed27bb89c6a985fcc696519aaa9b1e33424f",
+      "build": "9a051f5127",
+      "sites_version": 147,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/blocks/service.html": "4c56e87b49c8e844c9fd04d5cf571f128ef3f039efff53ff5da32c526e807a72"
+      },
+      "summary": "Remove the service example-questionnaire link by direct user request."
+    },
+    "completed_turn_01a1c162-a84b-7a02-b385-ed1e1d7f9a07": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c162-a84b-7a02-b385-ed1e1d7f9a07",
+      "commit": "dd223c6f40e55e509d8c29c411082ba218358764",
+      "build": "87462cb3b7",
+      "sites_version": 148,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/blocks/hero.html": "49cbe9c8f559ee77153b06f66d0583200f72b558b8e4a0c9d2176cf83d513aad",
+        "src/site/hero-photo.css": "b27e794215ccacbd3fc5c5c859e7a791cb2d5e7aae9fcb8929481686e2e7a174"
+      },
+      "summary": "Hero photo +10%, 24px closer to copy; one existing alignment, alternative alignment request explicitly withdrawn."
+    },
+    "completed_turn_01a1c16b-8c55-7831-b202-47c76c92455e": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c16b-8c55-7831-b202-47c76c92455e",
+      "commit": "339eb191e89208f58f133ce68e198c9c9308cac4",
+      "build": "c80ac9f4c2",
+      "sites_version": 149,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "src/site/artwork-catalog.json": "35b97d62316d0b45a3ba7a27738278148e80125dcdd04168314e07474f9ba622",
+        "src/site/blocks/apply.html": "c59ef8e14fb7fef44b65cfc34a6282aa461416f7690971d0fca664374d71f740",
+        "src/site/blocks/footer.html": "79d3be9f99bfed5c90e733a75572f9a2a368266cfbce8399aca0becb236b5ba9",
+        "src/site/blocks/reviews.html": "7b9b78c6cf7b70914be453cc37c2e09c2249438ca8dcd4c63068999647bb0e38",
+        "src/site/ending-studies.css": "e1536d0a8c605324e3c547890d3968df861390f0c2aa81057cac880f006c4d05",
+        "src/site/ending-studies.js": "0f21df513a733e252b14fda6aef9c6e7df34f9663e21414e15741e11a57cdcb1",
+        "src/site/media/consultation-tea-matched-1-20261109.webp": "2eb9c4bf87188caa4f24be274468bef69f813d72bd748bfc9c50f7e4a23f03c0",
+        "src/site/media/consultation-tea-matched-2-20261109.webp": "4dc72d180ec3cc075689409bb21137081a30ad4999dc084351efd62790354495",
+        "src/site/media/footer-family-matched-20261109.webp": "4b9f817e03037dfcae4a9650d4413e68ef7e58d1173c2df74069e9af272cd73a",
+        "src/site/media/reviews-guestbook-matched-20261109.webp": "de38db6c1f755b0e242931254979f4773ceadfae35dcad46d52ea4787b882e49"
+      },
+      "summary": "Redraw guestbook and footer family in consistent pencil style; two requested tea drawings, tea=1/2, same form."
+    },
+    "completed_turn_01a1c13a-56c2-7573-9da6-c684d8b5effe": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c13a-56c2-7573-9da6-c684d8b5effe",
+      "commit": "111ec9e94beda09c33e839c199d72912742efc11",
+      "build": "774539b493",
+      "sites_version": 150,
+      "status": "completed",
+      "included_in": "774539b493",
+      "sha256_binary": {
+        "docs/pencil-artwork-assets.json": "85002f27e35c76917ca692282e1d5530074e9021bbf42a85a824186f9ddb3cb5",
+        "docs/pencil-contour-overrides.json": "34766ee4c7194a6361dd6f1a497f5fee8e203f613717fd1f7ce2df1b2d330607",
+        "docs/pencil-drawing-20261109.md": "595836f6b1269c9c849161658235e1a7ba63b1cbe49044512021de6de06e3c7e",
+        "docs/service-drawing-20261109.md": "4b983f87f9b9a3ace11bf9345244edc0a5e72cc94b4412fd1ca0e52bd60caa7b",
+        "package.json": "86c02135ba5ba5db7f954286efa3075eed2cc23923a45eb07a7d19f835f9f953",
+        "scripts/build-selected-site.mjs": "bb87b39755e088cd53e8e5441a2d6446d842b2c19bf0bf5ce5ef3b17ee98a4ba",
+        "scripts/tests/artwork-drawing.test.mjs": "4eac4e1a888d0a856b3ba70e3dce90c133ee5e95919d656b5a5ddc16c5e6da2f",
+        "scripts/trace-pencil-artwork.py": "ccee6fa7da8bd08bf115e5ef7d55c1b2e5e552ab6cc3fd2408f45d3a7c96ed2a",
+        "src/site/blocks/about.html": "d68e68357f6701ec3f4d053e2496b02c4664f292a3d4a7f540c829dfbe79f506",
+        "src/site/blocks/apply.html": "91f8b43863fe977fffb4ebbc011c3ec526a113ad15475e569124b7724bd9a345",
+        "src/site/blocks/footer.html": "49553c273a4afcf1fc060d68662f709b79026e969f04d8ba669a1a43e680b042",
+        "src/site/blocks/pricing.html": "157374378d7fc7a9020ee9d39e6980f88a851fda0158dc58b21614cb2531c77d",
+        "src/site/blocks/process.html": "37710911a109cb0a5ce688c385f0402063aaab3d652b4bdb27e19cc100a9d2d4",
+        "src/site/blocks/reviews.html": "dccb27e838f6cf37df46e3ed4116002a5ef83cd8e866ee3f0ef72149278893b8",
+        "src/site/blocks/service.html": "c53515a8bafa2c73f3fcfd698ba20b366f4a5968d4747f03010c3e6394f2035c",
+        "src/site/drawing-motion.js": "30453f86dc89dcde637a0c8c51bfd429422bb14755123ee0ef2362943e3ae77a",
+        "src/site/hatching-model.js": "f5e36b171fee73f5d6a4920495552e29b86b4e023dddbdf87138147965d64850",
+        "src/site/pencil-artwork-data.js": "97f3c4bf21a87a5196b0441f69d2d7e676a98c347e4840d017a45781f42bf1ac",
+        "src/site/pencil-renderer.js": "0dc16d71e9c4411280fcbb74d76aceb643d91659a3a111eac5a4b9047780875e",
+        "src/site/site-refinements.css": "7f67082f6cf741a591238a54eb95f3ce2b942a5dc8cc0a70758f2b7c7901b50f"
+      },
+      "summary": "All final illustrations draw three times faster: contour, visibly hatched background, details; drawing=1/2/3 treatments and replay; preserve original artwork, photos, registration and form fields."
+    },
+    "completed_turn_01a1c1f3-e403-7552-a103-dbd540ea1226": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c1f3-e403-7552-a103-dbd540ea1226",
+      "commit": "8fc5fc6cefc7979c6a94750a7050ef6e93dc8163",
+      "build": "d4c8915977",
+      "sites_version": 151,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "src/site/about-scenes.css": "dc727b7e93aa55202c0a7ed31c8aa0601a22efe15d3950f4e5e118c8545dac73",
+        "src/site/blocks/about.html": "a24d9441aa91f91c0335622730b69f91622a9b112caa344663ac71e6bdd744a8"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c1fd-0692-7ef2-8e2f-9c6d63bc7594": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c1fd-0692-7ef2-8e2f-9c6d63bc7594",
+      "commit": "84846aeaa666b6e85273e9ae42966e12e5f1a482",
+      "build": "c0abe4f706",
+      "sites_version": 152,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "scripts/check-single-page.mjs": "c565094903733faedf5737127be5284e5450bcd058b690e0bc99e73b3f81cc2a",
+        "src/site/about-scenes.css": "c48db208649cf7cbcfd438aa3aa2e65aa68d30397e23ef37b52b3d8b0835a84d",
+        "src/site/artwork-catalog.json": "50ee7820a49d015dab09b0c7b87fc20740add5be111e9f1ad940d8ef23c3c6a3",
+        "src/site/blocks/about.html": "d13e110d14724d9d5fdb4c500635742ffe4a0eae70adf2553958ed76ed3e626a",
+        "src/site/media/about-figure-cafe-20261110.webp": "d1de40982080b4c66fa7354f83b7b317ca6bcc41e56dbe8dea7f89fdceae19d3",
+        "src/site/media/about-figure-family-20261110.webp": "5e2c68700e7771074fdf55f8d61534598a33dd04a8c84756556fd0f30f0987da",
+        "src/site/media/about-figure-park-20261110.webp": "83ab0cd12d75d73b281379ab0b75ec62cac18f7ae4c8b35ffa948293c84ad8b9"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c20d-6fb7-77f2-a571-67b0abe860a6": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c20d-6fb7-77f2-a571-67b0abe860a6",
+      "commit": "5495d2d75dd6f1b19796f282ff18666faf8e473b",
+      "build": "2f11107dc7",
+      "sites_version": 153,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "scripts/tests/artwork-drawing.test.mjs": "2589598ee15075f673b2f6f6e9b4d4f4cc0065160b9c70c053d69153720bf705",
+        "src/site/drawing-motion.js": "35bb59d2fe7e85eefded363d7a73ded66037b647d1d871bbe626458495b4d5ec",
+        "src/site/hatching-model.js": "7ca48e5eaf6f3456b521bf6c35a7f2c1947ba4c09a619edc92fd838b63296dbe"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c215-b48d-7cb0-add8-8446fbbfaf79": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c215-b48d-7cb0-add8-8446fbbfaf79",
+      "commit": "a6b008c9ac2db3f596d264f95004ee59e0d5ac5d",
+      "build": "fa95994547",
+      "sites_version": 154,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "src/site/about-scenes.css": "16da98585b9029335980bdcd62ad70f595c24ece74a1e338aa7fa048fe03484f",
+        "src/site/about-story.css": "4ebb98047dd34e34ea1e75a26e6ee9efdf5e7059186a4d720e8e11c0632f3d09"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c21f-d1a1-7030-b821-1de89345bc0b": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c21f-d1a1-7030-b821-1de89345bc0b",
+      "commit": "93ee337b1522caa13d411d0952d91e5ff2b29388",
+      "build": "90bc1c3a6b",
+      "sites_version": 155,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "src/site/blocks/footer.html": "28d8d38b2e760368db8a9de7ab75a2610a3a1b490d9caff1cf4e3586831e1866",
+        "src/site/ending-studies.js": "2d77bf89542299b383d43b06300c77f991607f0ddb747ab70c3ab05d4f6eb790"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c224-eac4-7460-9152-c3e476de507e": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c224-eac4-7460-9152-c3e476de507e",
+      "commit": "87fa4b3ac7ef4a0013ca27ab862dd9bc0b406ebe",
+      "build": "1c5086596e",
+      "sites_version": 156,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "src/site/blocks/pricing.html": "570951d86bf05e5cee595e95253e3d623f27b0a119920c63434d553e09ecd47b",
+        "src/site/pricing-studies.js": "a5816a4274cee0969a8af1cf878d79da2d70cdab5a9f24c736458a24c08d2133"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c22b-1616-7c51-87d2-c3d2a48bbb69": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c22b-1616-7c51-87d2-c3d2a48bbb69",
+      "commit": "882b0e672b4a36dde309e231088324216701b08e",
+      "build": "d9e8075743",
+      "sites_version": 158,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "docs/pencil-artwork-assets.json": "dbd2671622f3034cd11a48ae95d153aa9cb23f835e023f9353e91d3986e1c862",
+        "scripts/build-selected-site.mjs": "946441f7cbad8e3cac4a2e637d5a244e5d7d6eb6a63a7e8d7e8bae1db662923b",
+        "scripts/check-single-page.mjs": "b55bbbc2b123616c1606703f6facf57bab7b16ef01978fe9a6784974d3336cd6",
+        "scripts/tests/artwork-drawing.test.mjs": "5f5d1daf4ed5f22c551bb425b15878024b3946a655aae55c47bd590bd9d4d173",
+        "src/site/about-scenes.css": "42c9862a5bd1ecb58139adae32cfb226ca6c519afeffecbbb5166771a2b77d7d",
+        "src/site/about-story.css": "bd8294050461301b2566ca35991f23e4b344426fdce3dc72fdd8b0e2ee549d04",
+        "src/site/blocks/about.html": "51ed55b9a8660de8ea8a746c3c71e909c160511d5f29e4011849423636755fee",
+        "src/site/blocks/apply.html": "2ce8500cd30e874d1725a3111c4df7e5e68144c07b230cce62f2a9afa519a12f",
+        "src/site/blocks/service.html": "5756d240b3f736bc28e73abd78f38a73818f1380a7c329eafdba874cda42f1a6",
+        "src/site/drawing-motion.js": "d929a3f466776cb1684aa1cc1316eefe4ecf222eeac49294d3ccc50c76f06820",
+        "src/site/ending-studies.css": "61c11dc6d20adb3ab5fd7816a4351cb3e53bd852f12f7ecdee616ff780ae3945",
+        "src/site/ending-studies.js": "86fde1404a13d3216e2b545c17954bb2a51ef01c3f2dbc6d99d5f939161a775c",
+        "src/site/hatching-model.js": "df29988f4614b0207eb9b31766300413749c017a46fad8a01289f1f0e5033dc7",
+        "src/site/pencil-artwork-data.js": "2fe52d4d5dddf6bff63edc50c1479021da33cb8ddd3b3ea0e93a32e6e63b0540",
+        "src/site/pencil-renderer.js": "38f2225fb6b17927b367b42164a56607e363e9b500c7765608baee84eca268f8",
+        "src/site/pricing-studies.css": "4247c67857cba9525e25df987b25336e8ac30e723b0f5ba5bf189d1fbb8840c4",
+        "src/site/site-refinements.css": "b3ff77479713586b8b8a7fd72c4da226da231291cb923e939b24413074177e96",
+        "src/site/site-responsive.css": "ab27c74e4dfbbca695e56dbb62d6a2a7c44aeaadc12a2dc2d74ca8306eae9791"
+      },
+      "deleted_paths": [
+        "src/site/about-scenes.js",
+        "src/site/pricing-studies.js",
+        "src/site/review-studies.js"
+      ]
+    },
+    "completed_turn_01a1c210-d4cd-7c61-8fca-16f9d3cf0564": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c210-d4cd-7c61-8fca-16f9d3cf0564",
+      "commit": "662eaed462c3ca0ef5b1531b887ab16373e38eb5",
+      "build": "73c69c7863",
+      "sites_version": 159,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "docs/mobile-adaptivity-20261110.md": "7b2f9cf15675698bacbfef606adc6a1d260b7d75aff068321838bbee1038c1bb",
+        "src/site/blocks/header.html": "99a63917b914bcb5ae1dacb375e4fa28a80078a8eadef8fa14428921760d091a",
+        "src/site/ending-studies.css": "2af56d12a29d7b13b82cbaa7e3394e1d63a9bd6b7845bffc34898f1f684b496d",
+        "src/site/pricing-studies.css": "2e2d6101778ccfeaf0ccc35bf57763c2df3667b07889e45697ed89c57a7e04ad",
+        "src/site/site-layout.css": "142f93261e5fe3a6d16b3f9c0b9ad7ac41483fd6153cdc71214bf380a93623e0",
+        "src/site/site-responsive.css": "377d26dab4d192e4d9490cdd3c5911938cacbb5125c1e3cf4cdd2833dccaf642"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c246-27e8-7aa0-8fbd-149c2357a1c5": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c246-27e8-7aa0-8fbd-149c2357a1c5",
+      "commit": "55fa4b90863998efb5cde28f5211b44f90420c67",
+      "build": "54e1cc33f4",
+      "sites_version": 160,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "docs/phone-matrix-20261110.md": "615f0b76860b1af79388ab302152e3382523b5d47edb963fc8aa277436be29a7",
+        "src/site/site-layout.css": "82716ed7940000310500bb1326cf0307857197eb28e7503ff6b014e40a0c0c21",
+        "src/site/site-refinements.css": "3088aec56d4848f6122057429de74ed924623b8b1422afdfac56f3e78881d97d"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c260-801f-78b3-a8a0-2b09c2bd3903": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c260-801f-78b3-a8a0-2b09c2bd3903",
+      "commit": "9c5d7f33e6978f5b7b71d47fe8d74580a248cc5f",
+      "build": "3b740bbedb",
+      "sites_version": 161,
+      "status": "completed",
+      "included_in": "3b740bbedb",
+      "sha256_binary": {
+        "src/site/about-scenes.css": "41012c4ce7ffbda630ac8297124c9e65a18f064f39282b15c961692358379114"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c54e-19fc-7721-939a-ac2a5742c585": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c54e-19fc-7721-939a-ac2a5742c585",
+      "commit": "0cf3f0f73fc418519908756318bd52436b46710a",
+      "build": "4df166316d",
+      "sites_version": 162,
+      "status": "completed",
+      "included_in": "dc61e0d67e",
+      "sha256_binary": {
+        "docs/compact-about-20261110.md": "d66a88b11db61768c37a4f5103494f1e2de9a0d626ef5984c78ba3a37231bc7c",
+        "src/site/about-scenes.css": "814decbc41bff176cdd7f0bd642478c27546dac0ce5ad7f11b21df8d0bc4ab25"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c567-5539-7972-a394-779c6542d9b7": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c567-5539-7972-a394-779c6542d9b7",
+      "commit": "7f54d59fe04af43db38a7d5e42e16e76bd675837",
+      "build": "f61fb20787",
+      "sites_version": 163,
+      "status": "completed",
+      "included_in": "dc61e0d67e",
+      "sha256_binary": {
+        "scripts/build-selected-site.mjs": "c64f9b8ced0b5d747d041a0992f14bc8e09443c0fe6715a30f07f2369707e1c7",
+        "scripts/check-single-page.mjs": "effa4d08ce2f382c27e961a017fb6b5776238d3ea7663d06eed647f3b287957e",
+        "src/site/blocks/apply.html": "e53ae53eeaa88badf1bb9bc674066194e9d48692a81848a52450157dc116321a",
+        "src/site/ending-studies.css": "f1591eac12560827722c807548e6a278c2199019fa2adab37b56d2a0351c461f"
+      },
+      "deleted_paths": [
+        "src/site/ending-studies.js"
+      ]
+    },
+    "completed_turn_01a1c56d-58fc-7220-981e-dfafc7706ffe": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c56d-58fc-7220-981e-dfafc7706ffe",
+      "commit": "cab756f89669824306cbf2fc99327d30f8f97cc5",
+      "build": "996f5a547e",
+      "sites_version": 164,
+      "status": "completed",
+      "included_in": "dc61e0d67e",
+      "sha256_binary": {
+        "src/site/blocks/process.html": "e86dff881e5d8803a9a9918abd4d93d7cf741145a24f8ee0f32bea08a85cdb41",
+        "src/site/drawing-motion.js": "e6bdd29c562d80a9ce376c53a95116f20efdadf8cf3b602d4b1c4406bc9158da",
+        "src/site/pricing-studies.css": "f9eb61d54dbf8197763301f62008df3cad476bb52ec24dc7a37308ca95a4d3ed",
+        "src/site/single-page.css": "34cd8cf880a3a76c3059f0646d1fa3d04c643b2fe40f272ee86c9f135faddafa",
+        "src/site/site-layout.css": "70a2a246027ccfe69d36bd00d2beeae3dabf34d28576b257935feb995bfcf9d5",
+        "src/site/site-refinements.css": "8024fbedff731847ae8bcf88e016f3d8732bc7f94ac6f79ee25076ee742e4caf"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c56b-8c0b-74d1-bf31-4c0e3d22bef9": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c56b-8c0b-74d1-bf31-4c0e3d22bef9",
+      "commit": "4f06f289d2b5775da3c06fa57da451df79406739",
+      "build": "345bfb4506",
+      "sites_version": 165,
+      "status": "completed",
+      "included_in": "dc61e0d67e",
+      "sha256_binary": {
+        "docs/pencil-artwork-assets.json": "2577e2ec6bfd317275d6198ebc30bf904a5a9a5046d51b37b77aa6f6cfc8012a",
+        "docs/scroll-pricing-books-20261110.md": "08b7cd4e9abbe45e458c30156f9de7c81140b398edacc5f31e0e6a2f43ade493",
+        "scripts/build-selected-site.mjs": "4b3e7f99be219de415a273cfaf6ea621da6f2d7b05944ee5f91899f6a88a3f73",
+        "scripts/tests/artwork-drawing.test.mjs": "cfa4652c6648fc31f688ef6a86b1532e67778a82c64294ae0138a33b54de5b42",
+        "scripts/tests/drawing-motion.test.mjs": "1d760d310b11a0646a30f951e235f6dfeececcc4bde0a4c6485af35c0c15e4a3",
+        "src/site/artwork-catalog.json": "d66b190f922e3e980cc24f6ab24874aa7dc7277ab64432763326fef6c2999c0f",
+        "src/site/blocks/reviews.html": "192a516ddbaaa5fc5c694bc1e1cfa49a901e8b71eb253bb115b851f170d9d4fd",
+        "src/site/drawing-model.js": "68134e6060a74842450cc56d2849dc82db0fbf44c20da1536d41cbd43220a438",
+        "src/site/drawing-motion.js": "fb9b201bf898eca93537e94226f14b0460ab0b4719cd1f0c82b8fe7e7846db45",
+        "src/site/media/reviews-light-notebook-20261110.webp": "03a93b81807b8bb32ee2efc94729220e768038c1b9137204a34c9e6f66c96805",
+        "src/site/media/reviews-small-album-20261110.webp": "cfbad18f131c728dd086968c760061f1f777486a7f0f289fe380a6b8a7c06604",
+        "src/site/pencil-artwork-data.js": "9842bb8a8bfc08f2454afaa6e1c5f08e451a2dd9d27e0ae491337f254bb3b941",
+        "src/site/pricing-studies.css": "d546ea7953030d55916fea09508f3216f9cdde341301335778e2a6847b644ed3",
+        "src/site/review-book.js": "567d03f2a36f68617181a05b2d16c281cf1ad43b239f8648a56af9c0c7388231",
+        "src/site/review-studies.css": "0a5316a748a8c39551dc5296bba566696176d5e23223879c196e42d95e35dd06"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c586-2295-7eb2-af0b-600a34a107be": {
+      "path": "sites/nastya-chalk-release-20261105",
+      "thread": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+      "turn": "01a1c586-2295-7eb2-af0b-600a34a107be",
+      "commit": "4d7927d8d432d76ee00e32f0ce29a509d1f75660",
+      "build": "b1f1cc9cee",
+      "sites_version": 166,
+      "status": "completed",
+      "included_in": "dc61e0d67e",
+      "sha256_binary": {
+        "src/site/about-story.css": "f5db95af39450905931d97980da291412529394462a1624fcec1524e352c8b4d",
+        "src/site/blocks/about.html": "273f91ede839cad536b09f23c2e09f9347f3e28eca1f0be003547f049629b6a5"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c584-ac6f-7fd0-8411-2874277abb80": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c584-ac6f-7fd0-8411-2874277abb80",
+      "commit": "504729831c8596e0f0faff087cdfa511f950ca3b",
+      "build": "17fcda981a",
+      "sites_version": 167,
+      "status": "completed",
+      "included_in": "dc61e0d67e",
+      "sha256_binary": {
+        "docs/pencil-artwork-assets.json": "b85eccb5e8127352d9ab2c1a8fbd11dc6647404125b72e578c0e5bb1894a9e78",
+        "docs/rated-book-20261110.md": "7a034c99249debf56d5edd6b471d8535a8863b03826debd9641b4805ad25cdad",
+        "src/site/artwork-catalog.json": "7ed089f93fef1eaf39bb669af9f0297099a18a656b11ba18b5828a0ec8d23ed3",
+        "src/site/blocks/reviews.html": "a9ad99b171a64b994b391a07ae4bef4e5cc22e70ba50eb192ca8ef4aed464983",
+        "src/site/media/reviews-rated-book-20261110.webp": "71c2bfa14fa211205a4347a66f282d00300992012bb11c6810f229f0fc8efa2a",
+        "src/site/pencil-artwork-data.js": "4d27a80fcdc9891975764616d024362609b4564a4e0303b144c234c1977222f8"
+      },
+      "deleted_paths": []
+    },
+    "completed_turn_01a1c594-fd67-7a91-a870-02a11a07d31d": {
+      "path": "sites/nastya-service-drawing-release-20261109/.sites-checkout",
+      "thread": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+      "turn": "01a1c594-fd67-7a91-a870-02a11a07d31d",
+      "commit": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
+      "build": "dc61e0d67e",
+      "sites_version": 168,
+      "status": "completed",
+      "included_in": "dc61e0d67e",
+      "sha256_binary": {
+        "src/site/site-polish.css": "e8f1e527a550200e89025eb4fe030d508ec428c70ea549eafde77318d4aafb3e"
+      },
+      "deleted_paths": []
     }
   },
   "imported_sources_note": "These completed directions are now integrated into the main site. Separate source folders or Sites projects do not exclude future agreed changes from this site. Compare future deltas against these snapshots and current chat decisions; retain the selected shared blocks. Original projects remain untouched.",
@@ -798,12 +2124,11 @@
     "palette_controls": false,
     "home_navigation": false,
     "top_navigation": [
-      "design_variants",
-      "block_comparison"
+      "selected_site_navigation"
     ],
-    "hero_background": "soft blue radial gradient",
-    "pricing_background": "#fcfcfa solid milk",
-    "footer_background": "green #e8efe4",
+    "hero_background": "Original blue accent and grain backings retained; printed photo has opaque white frame and separate sage backing",
+    "pricing_background": "#faf8f2; light-milk token --site-milk; no green pricing gradient",
+    "footer_background": "#e7f1f6 blue",
     "source_chat": "Первый блок",
     "source_thread": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
     "source_messages_utc": [
@@ -841,9 +2166,9 @@
     },
     "full_width_layout": {
       "background": "viewport width",
-      "content_max_width_px": 1120,
+      "content_max_width_px": 1360,
       "yoga_portrait": "inside content container",
-      "illustrated": "Full viewport section backgrounds; centered content up to 1120px; approved blue service/reviews and green process/footer sections."
+      "illustrated": "Viewport-width backgrounds and a common centered 1360px content grid; mobile gutters retained."
     },
     "numbered_switcher": {
       "status": "retired",
@@ -906,7 +2231,7 @@
       "build": "08b62ba700"
     },
     "single_selected_site": {
-      "date": "2026-11-07",
+      "date": "2026-11-08",
       "source_turn": "01a1b49c-7221-7501-9e2f-7f16c9ef92d2",
       "choices": {
         "header": "quiet",
@@ -920,9 +2245,19 @@
         "footer": "chalk-letter"
       },
       "only_site": true,
-      "artwork_library_count": 111,
+      "artwork_library_count": 0,
       "supersedes": "All previous requirements to retain design switcher and block comparisons.",
-      "artwork_count": 111
+      "artwork_count": 49,
+      "public_artwork_library": false,
+      "permitted_section_comparisons": {
+        "about": 4,
+        "pricing": 6,
+        "apply": 4,
+        "footer": 3,
+        "tea": 2,
+        "drawing": 3,
+        "reviews": 1
+      }
     },
     "typography_and_materials_20261107": {
       "source_turn": "01a1b4b5-03e5-7290-81c1-4d6488d9f2f0",
@@ -934,7 +2269,12 @@
       "reviews": "three textured compact cards with photos on desktop; one at a time with chalk arrows below 821px",
       "apply": "original open-envelope drawing restored",
       "hero": "grain on blue and green sheets behind photo",
-      "supersedes": "Earlier no-font-controls and green-pricing requirements; no palette selector or design switcher returns."
+      "supersedes": "Earlier no-font-controls and green-pricing requirements; no palette selector or design switcher returns.",
+      "superseded_fields": {
+        "fonts": "approved_typography_20261107",
+        "apply": "contact_footer_20261108"
+      },
+      "superseded_where_conflicting_by": "final_site_20261108 and subsequent November 8 decisions; no old public library, font experiments or About alternatives"
     },
     "historical_fonts_20261107": {
       "source_turn": "01a1b656-b743-7ea1-baf8-8d8ea71828d3",
@@ -955,7 +2295,8 @@
       "default_pair": "5: Lora + Manrope (chosen by user in Deployment chat after the historical-font release)",
       "final_pair_chosen_by_user": true,
       "selection": "fonts=1..100, heading/body selectors; approved Lora + Manrope default and fresh storage key",
-      "supersedes": "Previous ten new font pairs; controls select fonts only, never retired designs"
+      "supersedes": "Previous ten new font pairs; controls select fonts only, never retired designs",
+      "superseded_where_conflicting_by": "final_site_20261108 and subsequent November 8 decisions; no old public library, font experiments or About alternatives"
     },
     "approved_typography_20261107": {
       "source_chat": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
@@ -963,19 +2304,21 @@
       "heading": "Lora",
       "body": "Manrope",
       "preset_id": "5",
-      "status": "chosen_for_now",
+      "status": "fixed",
       "accent_candidate": "Caveat",
-      "accent_application": "deferred; user said possibly, no mass replacement",
-      "storage_key": "nastya-selected-lora-manrope-v1",
-      "explicit_font_links": "preserved",
-      "picker": "retained for possible further comparison; no request to remove it"
+      "accent_application": "Caveat 400 only for the confirmed photo signature; later explicit request restores upright Manrope price values. Lora headings and Manrope body remain fixed.",
+      "storage_key": null,
+      "explicit_font_links": "ignored; always Lora + Manrope",
+      "picker": "removed by explicit final-site request"
     },
     "cards_and_spacing_20261107": {
       "source_turn": "01a1b66a-b8f9-7651-8897-581efb408871",
       "source_commit": "b8761d909b59fef31a8b1d2cbd200db422bc0b99",
       "pricing": "three hand-drawn outlined cards",
       "apply": "envelope reduced approximately one third",
-      "process": "wider spacing and redrawn wide arrows; responsive labels"
+      "process": "wider spacing and redrawn wide arrows; responsive labels",
+      "apply_superseded_by": "contact_footer_20261108",
+      "superseded_where_conflicting_by": "final_site_20261108 and subsequent November 8 decisions; no old public library, font experiments or About alternatives"
     },
     "retired_artwork_20261107": {
       "source_chat": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
@@ -1060,19 +2403,14 @@
       "status": "included"
     },
     "about_stories_20261107": {
-      "scope": "Only the About block has three local layouts; no complete-design selector or block comparison restored",
+      "scope": "Only chosen open spread 1; no alternatives or selector",
       "variants": [
-        "Открытый разворот",
-        "Голубой этюд",
-        "Личный альбом"
+        "Открытый разворот"
       ],
       "autoplay_ms": 6500,
       "source_commit": "1127317fd241b555249745c40f390342b3dd735d",
       "documentation": "docs/about-redesign-20261107.md",
-      "preserved_illustrations": [
-        "about-notebook-20261107.png",
-        "about-branch-20261107.png"
-      ],
+      "preserved_illustrations": [],
       "source_turn": "01a1b756-25f3-7920-8802-cd7832c21387",
       "heading": "none on slides",
       "body_px": {
@@ -1082,7 +2420,9 @@
       "lead_px": {
         "desktop": 23,
         "mobile": 20
-      }
+      },
+      "chosen_variant": "1",
+      "navigation": "Previous arrow, four dots, next arrow; 32px artwork inside 40px targets; no pause button, counter or process shortcut. Autoplay/hover/focus pause, keyboard, swipe, reduced motion remain."
     },
     "chalk_texture_20261107": {
       "button": "One fine outline with gently rounded corners; no doubled sketch line",
@@ -1099,14 +2439,16 @@
         "source_chat": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
         "user_answer": "Только образцы в библиотеке",
         "overrides": "Earlier application of new PNG to page backgrounds. Keep the new library PNG and neat button unchanged."
-      }
+      },
+      "superseded_where_conflicting_by": "final_site_20261108 and subsequent November 8 decisions; no old public library, font experiments or About alternatives"
     },
     "archival_material_samples": {
       "files": [
         "artwork/chalk-almost-white/soft-chalk-v1.png",
         "artwork/lines/pencil-button-double.svg"
       ],
-      "scope": "Library samples only. Never substitute these for the current dry-chalk background or single neat button contour."
+      "scope": "Library samples only. Neither old double button contour nor old/new PNG chalk samples replace the current neat button and original SVG page grain.",
+      "superseded_where_conflicting_by": "final_site_20261108 and subsequent November 8 decisions; no old public library, font experiments or About alternatives"
     },
     "service_decoration_20261107": {
       "source_turn": "01a1b75e-4762-7dc2-89f4-eecd6b4258c6",
@@ -1118,18 +2460,20 @@
         44,
         33
       ],
-      "rule": "Static decorative opening quotes with dry-chalk grain, shared by all three reviews. Text and selected fonts unchanged.",
+      "rule": "Two filled pencil-drawn comma shapes with pressure strokes and sparse highlights, no grain filter or font glyph",
       "mobile": "Natural card height; footer follows review with 24px padding instead of stretching to the longest review.",
       "desktop": "Three equal-width, equal-height cards with aligned author footers.",
-      "preserve": "Original quote artwork stays in the library; original SVG background grain unchanged."
+      "preserve": "Latest calm_and_reviews_20261108 overrides older chalk/outline samples; no public library"
     },
     "contact_footer_20261108": {
       "illustration": "artwork/illustrations/consultation-chairs-20261108.png",
       "medium": "Built-in ImageGen, transparent dry-crayon line sketch; original alpha PNG preserved",
       "footer": "Full-width #e7f1f6 field, constrained content, name, small site navigation, Telegram, privacy button and return-to-top link",
       "line": "artwork/vectors/footer-thread.svg",
-      "preserve": "Form fields, request logic, chosen fonts and all previous artwork stay unchanged; envelope and arch remain in the library",
-      "documentation": "docs/contact-footer-20261108.md"
+      "preserve": "Chosen outline chairs and blue footer remain; unused envelope, arch and dense experiment removed from current site by final-site request; originals remain in Git history/local archives.",
+      "documentation": "docs/contact-footer-20261108.md",
+      "supersedes": "Previous envelope-on-form and green-footer requirements. Originals remain library-only.",
+      "current_apply": "Latest pencil chairs image consultation-chairs-pencil-20261108.png source, compact WebP output, centered under heading and +15%; replaces earlier outline-only chairs. Three-field Telegram action; user confirms sending."
     },
     "first_chalk_and_arrows_20261108": {
       "illustration": "artwork/illustrations/consultation-chairs-chalk-20261108.png",
@@ -1137,7 +2481,8 @@
       "arrows": "artwork/vectors/navigation-arrow-chalk.svg",
       "scope": "About and review carousel controls; circle, straight shaft and simple arrowhead with subtle dry-pencil grain",
       "preserve": "Previous outline illustration and raster arrows remain in the library. Footer, form logic and process route unchanged.",
-      "documentation": "docs/normal-chalk-arrows-20261108.md"
+      "documentation": "docs/normal-chalk-arrows-20261108.md",
+      "superseded_where_conflicting_by": "final_site_20261108 and subsequent November 8 decisions; no old public library, font experiments or About alternatives"
     },
     "about_open_spread_20261108": {
       "chosen_variant": "1",
@@ -1146,29 +2491,29 @@
       "desktop": "Photo left, copy and controls together on the right. 24px copy/control spacing; 432px minimum composition height.",
       "mobile": "Keep stacked photo/text composition with 30px gap. No headings on slides.",
       "arrows": "Ordinary circular arrows with straight shaft, simple head and dry-pencil grain; common to About and reviews.",
-      "form_illustration": "Restored consultation-chairs-20261108.png; filled experiment stays library-only.",
+      "form_illustration": "consultation-chairs-20261108.png; unused experiments removed from current publication",
       "documentation": "docs/about-open-spread-20261108.md"
     },
     "five_passes_20261108": {
       "direction": "Preserve chosen About 1, Lora + Manrope, Almost White palette and all retained artwork",
       "motion": "One-time chalk gestures and a scroll-drawn route; passive scroll sampling through a single queued animation frame; no scroll interception",
-      "controls": "User motion switch, system reduced-motion override, synchronized 6.5s story-dot clock, static complete fallback",
+      "controls": "No toolbar or motion switch. motion=off and system reduced motion still provide static completed drawings and disable autoplay.",
       "form": "Neat field outlines, focus stroke, explicit next-step hint, parent-managed draft reveal without inner iframe scrolling",
-      "artwork": "119 retained/new items; three native SVG strokes added; all nine explicitly retired files remain absent",
+      "artwork": "Eight active canonical assets; no public library. Earlier 119 count is historical.",
       "documentation": "docs/five-passes-20261108.md"
     },
     "final_site_20261108": {
       "scope": "Explicit request to keep only the chosen final site",
       "fonts": "Lora + Manrope, fixed regardless of old URL/local storage choices",
       "about": "Chosen open spread 1; other layouts and their switcher removed",
-      "artwork": "110 unused canonical items removed; nine active originals retained; no public gallery, catalog or ZIP",
-      "runtime": "Only the nine blocks and their dependencies; editor and variant generators excluded",
+      "artwork": "49 canonical hashes; 22 unchanged raster assets animate in 43 illustration instances. Photos are originals and never animated. No public artwork library/catalog/ZIP.",
+      "runtime": "One index.html, nine independent source blocks, one bundled runtime, no iframe. Only explicitly requested scoped comparisons remain.",
       "documentation": "docs/final-site-20261108.md"
     },
     "contour_milk_20261108": {
       "paper": "#faf8f2",
       "token": "--site-milk",
-      "buttons": "Hero and form use the existing pencil-button SVG with inset -7px; neat outline separate from fill",
+      "buttons": "Separate neat rounded pencil contour, more distinct per subsequent November 8 request; current studio/pencil-button.svg with inset -7px; no motion on hover.",
       "preserve": "One selected site, typography, photographs, drawings and blue/sage surfaces",
       "documentation": "docs/contour-milk-20261108.md"
     },
@@ -1182,12 +2527,13 @@
       "shape": "Three open stroke gestures: two distinct curls and an additional lower pressure pass; no filled glyph silhouettes",
       "material": "Existing #526c73 dry-chalk grain retained; subtle irregularity at stroke edges",
       "layout": "44x33px mark box and three desktop cards retained",
-      "delivery": "SVG image URL includes the build version to refresh cached artwork"
+      "delivery": "SVG image URL includes the build version to refresh cached artwork",
+      "superseded_by": "white_reviews_pencil_quotes_20261108 then calm_and_reviews_20261108"
     },
     "centered_pricing_20261108": {
-      "alignment": "Illustration, label and value centered horizontally; content group centered inside each outlined card",
+      "alignment": "Centered illustrations, labels and ordinary Manrope values inside three individually drawn blue/sage/blue circles; values 26px, middle 22px on two lines.",
       "copy": "Prepayment retains 25 000 ₽; remove В начале подбора.",
-      "mobile": "One centered vertical composition per card, 216px minimum height"
+      "mobile": "292px maximum circle, compact inset, no overflow at 320px. Desktop circles 320px; no handwritten pricing values."
     },
     "about_controls_20261108": {
       "layout": "Previous arrow, four chalk dots, next arrow in one compact row; centered on mobile",
@@ -1195,6 +2541,7 @@
       "removed": "Pause button, numeric slide counter, process shortcut and their unused runtime/styles",
       "preserve": "Four stories, autoplay, reading hover/focus pauses, reduced-motion support, keyboard and swipe navigation"
     },
+    "decision_priority": "Latest explicit choices in completed main and animation chats override historical fields; the current policy below is authoritative. Older comparison records are history, not permission to restore alternatives.",
     "process_alignment_20261108": {
       "width": "1360px maximum stage instead of 1280px; full-width sage background retained",
       "alignment": "Illustration, chalk number, heading and paragraph share each column center; desktop number spacing grows from 256px to 272px",
@@ -1206,7 +2553,8 @@
       "cards": "Pure #ffffff background with no background image; existing blue section, three desktop cards and mobile carousel retained",
       "quotes": "Two separately drawn closed comma contours in #526c73; 2.2px and 2.05px strokes in a 64x48 viewBox; no fill, filter, grain or noise",
       "avatars": "Render existing portraits at 32x32px instead of 40x40px to reduce enlargement; original faces unchanged",
-      "avatar_limit": "All local copies share the same three source files, only 25x26px and 26x26px. Original photographs are required for truly sharp larger avatars."
+      "avatar_limit": "All local copies share the same three source files, only 25x26px and 26x26px. Original photographs are required for truly sharp larger avatars.",
+      "subsequent_refinement": "calm_and_reviews_20261108: wider cards, left quote column and translucent pencil fill"
     },
     "quiet_interactions_20261108": {
       "arrows": "About and review arrows retain transparent backgrounds in all states; hover strengthens existing ink opacity from .78 to 1 instead of adding a filled halo",
@@ -1216,20 +2564,27 @@
       "preserve": "Current artwork, static About photograph, compact carousel controls, white review cards, selected colors, existing layout, reduced-motion handling and all functionality"
     },
     "hero_print_20261108": {
-      "layers": "Green textured backing is a separate sibling at z-index 0; opaque white print is z-index 1. Original lead-photo pseudo-backing disabled",
+      "layers": "Opaque white photo print above the chosen dry-crayon blue/sage vector backing; no solid rectangle backing.",
       "print": "White 12px desktop frame, 76px caption area; responsive 8-10px edges and 66px caption on phones; branch markup removed",
       "tape": "Existing milk #faf8f2, .94 opacity, clean softly irregular edges",
-      "signature": "Анастасия Доронина, explicitly confirmed by the user; Caveat 400 restored only for this signature, with its local font and OFL license",
-      "socials": "Telegram and Instagram artwork moved beside the portrait. Photo and Telegram icon link to https://t.me/inyfid; external links use noopener noreferrer",
+      "signature": "Confirmed Anastasia Doronina signature in Caveat 400; later pricing use has been explicitly withdrawn.",
+      "socials": "Telegram and deferred noninteractive Instagram icons immediately follow the name inside the white print caption; Telegram/photo link to https://t.me/inyfid.",
       "instagram_input": "User explicitly deferred Instagram. Preserve the icon as an accessible, non-interactive image until its profile URL is provided",
       "telegram_confirmed": "User confirmed @inyfid for personal contact and t.me/anastasiadoroninaa as the channel. Photo and sidebar Telegram icon open personal contact; existing review/channel links remain unchanged",
       "header": "Remove social groups from both desktop and mobile header; retain the five section links and mobile menu"
     },
     "calm_and_reviews_20261108": {
-      "hero": "Remove the secondary process shortcut; keep the main application action. Calm uses the same upright Lora as the heading and existing #526c73 accent.",
-      "animation": "One-time 1100ms ink-to-accent color reveal coupled with the existing 1000ms pencil underline. Reduced motion, capture and motion=off keep the complete static result.",
-      "reviews": "Expand the constrained content to 1280px. Keep three white cards across desktop; give each a separate 36px left quote column and align its author with the review text. Keep mobile horizontal carousel.",
+      "hero": "Single primary action; calm remains upright inherited Lora, #28353c ink. Wider, higher gently curved dry-pencil underline.",
+      "animation": "One-time underline, complete static reduced-motion fallback; old gray ink-to-accent transition superseded by restrained opacity.",
+      "reviews": "Three white desktop cards, separate quote column and aligned authors; common 1360px grid; stable-height mobile horizontal carousel.",
       "quotes": "Retain both hand-drawn comma shapes; add translucent #526c73 pencil fill, individual pressure strokes and sparse highlights. No grain filter or font glyph."
+    },
+    "confirmed_identity_20261108": {
+      "name": "Анастасия Доронина",
+      "personal_telegram": "https://t.me/inyfid",
+      "channel": "https://t.me/anastasiadoroninaa",
+      "instagram": "Deferred by user; icon noninteractive, do not invent URL",
+      "source_turn": "01a1bb70-e9cc-79e0-b058-bfc5c54c150c"
     },
     "mobile_20261108": {
       "scope": "Separate mobile refinement; approved design and desktop compositions retained",
@@ -1288,7 +2643,7 @@
       "loading_probe": "artifacts/stable-loading-20261108/final-loading-phone.json: no layout-shift events (CLS 0), one constant document height during the five-second cold-load sample with delayed raster images. Diagnostic Chrome test, not a field Core Web Vitals result."
     },
     "chalk_details_20261108": {
-      "pricing": "Replace three rectangular frames with dry-chalk circular contours: blue #94afbe, sage #9ead90, blue #94afbe. Center existing illustrations, labels and handwritten Caveat values. Keep the middle value on two lines, including at 320px.",
+      "pricing": "Three blue/sage/blue circles retained; later pricing_circles_20261109 replaces ideal uniform shapes with separate smoother smaller contours and ordinary Manrope values.",
       "terms_link": "Use the same fine drawn rule as the footer Telegram link; remove the straight bottom border.",
       "about": "Use the approved heading face Lora for each introductory slide phrase, 1px larger at each existing breakpoint: 24/22/21px.",
       "header": "Uppercase navigation with restrained tracking; preserve desktop and mobile menus.",
@@ -1303,6 +2658,32 @@
       "export": "960px alpha WebP, quality 88, 92008 bytes. The SVG viewBox retains the tight original composition without altering the generated source.",
       "layout": "Center the picture precisely under the heading using a shared intrinsic-width grid. Increase desktop dimensions from 220x100px to 253x115px (15%). Mobile width increases from 88px to 101.2px, with a 46px-high viewport to avoid empty padding. Contact link shares the same center.",
       "image_prompt": "artifacts/chairs-refinement-20261108/image-prompt.md"
+    },
+    "hero_caption_20261108": {
+      "placement": "Single caption row: Анастасия Доронина, Telegram, Instagram; on the lower white field of the printed photograph",
+      "responsive": "Remove the former social sidebar gutter; fit the caption at 320px and retain 44px Telegram target",
+      "links": "Telegram remains https://t.me/inyfid; Instagram stays an accessible non-interactive icon pending the user URL"
+    },
+    "current_policy_20261109": {
+      "precedence": "Latest explicit requests and this policy override older historical decision fields; historical entries are not permission to restore removed features.",
+      "architecture": "One index.html, nine separate selected source blocks;55 output files,89 local references,55 canonical artwork hashes. One runtime, scoped combined CSS, embedded WOFF2, no iframe.",
+      "fonts": "Fixed Lora/Manrope, straight Manrope pricing, Caveat only hero signature; no font selector.",
+      "backgrounds": "Milk #faf8f2, blue #e1eff7, sage #e7efe2. About original uses dry crayon; requested other About scenes allowed. Reviews are white near-rectangular drawn cards, no rejected colored/cloud comparison options.",
+      "artwork": "Only individually requested current art used; static About figure family/cafe/park added. All source archives/originals preserved. No public library/catalog/ZIP, discarded variants pruned from out.",
+      "form": "One matched1 cups drawing and classic form, permanently sage #e7efe2 with white fields. Color selector and color runtime removed; form=blue/green no longer changes color. Three accessible fields, Telegram handoff and no storage retained.",
+      "local_studies": "Old route/pricing/photo-backing proposals remain unselected unless a later direct request explicitly used an individual asset. No public illustration library.",
+      "pending": "All seven new requests across both chats completed. Only unrelated unfinished paper-chalk remains excluded.",
+      "motion": "Only chosen long-stroke drawing1; service0.659–0.719s with20ms gaps, other art about1s, static About scenes/photos. Desktop route four arrows trace once on entry520ms each/180ms stagger; marker heads restored. Mobile arrows keep scroll reveal. Pricing background movement is separately explicitly driven by scroll and reversible; book selection can replay selected book. One scheduled RAF, passive natural scroll; off/reduced/capture yield complete static drawings and stop autoplay.",
+      "service": "34px gap between pencil divider and illustration row; family-specific copy, hand-pencil milk-page book,20ms launch gap and fast drawing retained. No example questionnaire link/magnifier/duplicate heading.",
+      "hero": "Desktop photo429px and24px closer retained. Phone cover is compact: 24/32px vertical padding, headline clamp28–34px, copy15px, photo280px (256px <=360), existing action centered BELOW photo. Original white frame/signature/contact rules and approved copy preserved.",
+      "buttons": "Irregular double-pencil contour now inset -5px, one pixel farther from hero and form button fills by explicit request01a1c594. No geometry change, jump or hover lift.",
+      "about": "Only registered photo continuation4, four original photographs and stories; backgrounds static, human extensions opacity0.1. Section is shorter: padding64–88px desktop and32px phone, photo max400px desktop/268px phone, smaller gaps. Stable navigation and original photo alignment retained. Opening lead36px desktop/26px phone/24px narrow; family story unchanged; sports text now the original discipline/system/results statement.",
+      "reviews": "Existing white cards/authors/mobile carousel unchanged. Under cards, explicit NEW limited book1..5 comparison with44px accessible controls,160px frame, URL preserved and no storage. Option1 is a thicker side-view pencil guestbook with5stars and5plus signs, default;2 earlier open guestbook,3 earlier book on blanket,4 light notebook,5 small album. Existing drawing replay on choosing a book, about1.06s for option1. Creating comparisons is completed; no final choice among all five inferred.",
+      "pricing": "Only selected former3 chalk patches, blue/sage/blue, fixed text and same financial terms. Compact300px desktop/220px phone cards and closer FAQ. NEW explicit scroll behavior grows only backgrounds0.28→1 and circle clip38→76%; viewport position alone drives reversible x<=2px,y<=1.4px,rotation<=1.1deg. Stationary scroll means no movement. No time-based loop or CSS animation/transition. Reduced motion/off/capture show final static shapes.",
+      "footer": "Only chosen Home and family composition3, no selector. Matched adult/child drawing, clean blue background, bottom curl line, navigation/contacts/privacy/top/copyright retained.",
+      "header": "Sticky quiet milk header now64px desktop/58px mobile, active pencil underline/aria-current and measured anchor offsets retained. Mobile menu includes request link.",
+      "mobile": "Previous phone/landscape route improvements retained. New source browser QA covers320/360/393/430/760/761/768/1000/1001/1024/1280/1716 and30 book cases. Screenshots and JSON reviewed; not physical iPhone/Safari or field Core Web Vitals.",
+      "comparisons": "ONLY book=1..5 is permitted by new explicit request01a1c56b. No form color choice; all other old about/pricing/reviews/apply/footer/tea/drawing parameters/controls and general Replay remain removed. No constructor, localStorage, fonts/palettes or public art library."
     },
     "pricing_circles_20261109": {
       "contours": "Three individually drawn, subtly asymmetric smooth chalk contours. Each has its own path, overdraw accents and grain seed. Blue/sage/blue palette retained.",
@@ -1346,6 +2727,14 @@
         "three illustrated stages"
       ],
       "mobile_width_checked": 320
+    },
+    "hero_copy_20261109": {
+      "summary": "Hero ending: выбрать няню из подходящих кандидаток; suggested alternative sentences remain unselected.",
+      "source_turn": "01a1bf66-046c-7e23-a830-8ba21bf0329e"
+    },
+    "button_contour_20261109": {
+      "summary": "Restore the earlier irregular double-pencil contour for hero/form buttons, with versioned masks.",
+      "source_turn": "01a1bf6b-344a-7020-a96d-049338cb44d5"
     },
     "compact_service_20261109": {
       "desktop_section_height": 704,
@@ -1446,6 +2835,30 @@
       ],
       "artwork": "Reuse existing colored-pencil illustrations, chalk patches and native pencil strokes; no new typefaces",
       "selection": "Independent apply=1..3 and footer=1..3 shareable query parameters"
+    },
+    "scoped_comparison_permission_20261109": {
+      "approved_scope": {
+        "book": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "default": "book1, modified thick side-view rated guestbook; not an inferred final selection among all five",
+      "fixed_choices": {
+        "about": 4,
+        "pricing": 3,
+        "reviews": 1,
+        "apply": "sage form with cups1",
+        "tea": 1,
+        "drawing": 1,
+        "footer": 3
+      },
+      "removed": "All previous design controls, form color selector and general replay stay removed.",
+      "priority": "Later explicit green-form requests and book-comparison request01a1c56b override earlier historical permissions and cleanup rules only within their scope.",
+      "exclusions": "No library/catalog/ZIP, gallery, fonts/palettes, iframe or full constructor."
     },
     "button_contour_inset_20261109": {
       "scope": "Hero and all application layouts",
@@ -1719,6 +3132,10 @@
       "source_images": "Unchanged; contour metadata hashes match all final raster assets",
       "documentation": "docs/pencil-drawing-20261109.md"
     },
+    "remove_example_questionnaire_20261109": {
+      "source_turn": "01a1c15e-35b8-7603-9004-ddd60937b120",
+      "decision": "Remove Посмотреть пример анкеты from service; do not restore it from prior source copies."
+    },
     "static_about_continuation_20261110": {
       "scope": "About drawing mode 4; four registered photograph continuations",
       "visibility": "Eager href images, outside data-pencil-art renderer; no waiting, stroke reveal or replay",
@@ -1734,7 +3151,9 @@
       "scope": "Only About continuation mode 4, stories 1/3/4",
       "style": "Light colored-pencil sleeve, hand, clothing and leg continuations; opacity 0.82 and fading outer edge",
       "registration": "Opaque photo rectangle coordinates project each generated foreground layer from the real image viewport; generated photo center removed",
-      "preserved": "Original source photo hashes, existing background artwork, story copy, geometry, static rendering and other drawing animations"
+      "preserved": "Original source photo hashes, existing background artwork, story copy, geometry, static rendering and other drawing animations",
+      "latest_opacity": 0.1,
+      "historical_opacity_note": "Original0.82 replaced by explicit later faint-people request; environment unchanged."
     },
     "faster_service_long_strokes_20261110": {
       "treatment": "1: Длинные штрихи",
@@ -1790,7 +3209,7 @@
       "about": "Fixed photo continuation 4 with registered, immediately visible static environment/figure layers; keep four stories and stable navigation",
       "pricing": "Fixed selected blue/sage/blue chalk patches",
       "reviews": "Current three white chalk cards with shared book below",
-      "apply": "Fixed selected cups drawing 1 and layout 4 with sage wash #e7efe2 and pure-white fields; no color selector or query-driven alternatives.",
+      "apply": "Selected cups drawing 1 and former layout 4; default blue wash #e1eff7 and additional sage wash #e7efe2, pure-white fields. Only two color buttons; switching reuses the same form and keeps its values. Share with form=blue or form=green.",
       "footer": "Fixed selected home and family composition 3",
       "removed": "All other live design switches, old query-driven alternatives, inactive controllers, unused pencil passes and contour data; unpublished dependencies are pruned by the build"
     },
@@ -1899,6 +3318,19 @@
       "independent_review": "Portrait spacing, landscape layout, fifth stage and minimum two-column width reviewed",
       "documentation": "docs/phone-matrix-20261110.md"
     },
+    "faint_people_20261110": {
+      "base_commit": "55fa4b90863998efb5cde28f5211b44f90420c67",
+      "selector": ".about-figure-continuation",
+      "opacity_before": 0.82,
+      "opacity_after": 0.1,
+      "scope": [
+        "family",
+        "cafe",
+        "park"
+      ],
+      "environment_and_photo_opacity": 1,
+      "source_images": "Unchanged"
+    },
     "compact_about_20261110": {
       "base_commit": "9c5d7f33e6978f5b7b71d47fe8d74580a248cc5f",
       "scope": "Only the selected About scene 4; shorter section padding, photo margins and photo-to-copy gaps",
@@ -1942,19 +3374,6 @@
       "review": "Independent agent reviewed phone and desktop screenshots; no spacing regressions found",
       "preserved": "All four stories, shared grid sizing and fixed navigation, original photos and registered drawings, human figure opacity 0.1, text sizes and 44px phone controls",
       "documentation": "docs/compact-about-20261110.md"
-    },
-    "faint_people_20261110": {
-      "base_commit": "55fa4b90863998efb5cde28f5211b44f90420c67",
-      "selector": ".about-figure-continuation",
-      "opacity_before": 0.82,
-      "opacity_after": 0.1,
-      "scope": [
-        "family",
-        "cafe",
-        "park"
-      ],
-      "environment_and_photo_opacity": 1,
-      "source_images": "Unchanged"
     },
     "green_form_final_20261110": {
       "background": "#e7efe2",
@@ -2022,9 +3441,7 @@
       "generation": "Two ImageGen built-in transparent edits, original PNGs and exact prompts retained in artifacts/scroll-pricing-books-20261110; delivery WebP encoding with unchanged dimensions",
       "controls": "Only book illustration choices1–5; book query shares selection; all other removed design controls stay removed",
       "animation": "Existing contour/background/detail pencil renderer and duration, replay selected book on click; review carousel and other illustrations unaffected",
-      "layout": "Same160px picture frame and44px choice controls for all options; 30 cases checked at320/360/393/430/768/1280px",
-      "superseded_by": "book_four_cups_hatching_20261110",
-      "status": "completed; user selected4"
+      "layout": "Same160px picture frame and44px choice controls for all options; 30 cases checked at320/360/393/430/768/1280px"
     },
     "about_headline_copy_20261110": {
       "intro": "36px on desktop, 26px on phones and 24px on narrow phones; original Lora type retained",
@@ -2042,7 +3459,7 @@
       "base_commit": "4f06f289d2b5775da3c06fa57da451df79406739",
       "file": "media/reviews-rated-book-20261110.webp",
       "choice": 1,
-      "default": false,
+      "default": true,
       "shape": "Thicker hardcover guestbook with visible layered page edges and a curved central gutter, seen from the front/side",
       "page_marks": {
         "stars": 5,
@@ -2053,8 +3470,7 @@
       "preserved": "Book choices2–5, old source image, review carousel,160px picture frame, responsive layout and scroll-driven pricing patches",
       "generation": "ImageGen built-in transparent edit, exact prompt and original PNG retained in artifacts/rated-book-20261110",
       "documentation": "docs/rated-book-20261110.md",
-      "integrated_source": "4d7927d8d432d76ee00e32f0ce29a509d1f75660",
-      "superseded_by": "book_four_cups_hatching_20261110"
+      "integrated_source": "4d7927d8d432d76ee00e32f0ce29a509d1f75660"
     },
     "button_frame_gap_20261110": {
       "base_commit": "504729831c8596e0f0faff087cdfa511f950ca3b",
@@ -2064,191 +3480,20 @@
       "visual_gap_increase_px": 1,
       "preserved": "Button fill,dimensions,padding,position,hand-drawn mask and interaction behavior"
     },
-    "surface_studies_20261110": {
-      "versions": {
-        "original": "Existing sage form wash and original white review cards",
-        "blue": "Generated blue pencil form and more visible white pencil review panels",
-        "green": "Generated sage pencil form and denser white chalk review panels",
-        "duo": "Generated blue/sage pencil form and white pencil review panels"
-      },
-      "entry": "Query parameter texture=original|blue|green|duo; absent or invalid values keep the original site without the comparison strip",
-      "controls": "One fixed numbered strip under the compact sticky header, direct application/reviews jumps and a close control; original content nodes retained",
-      "assets": {
-        "generator": "Built-in ImageGen",
-        "selected": 5,
-        "extra_source_studies": 1,
-        "optimized_bytes": 306644,
-        "prompts": "docs/surface-studies-20261110.json",
-        "directory": "src/site/media/surface-studies-20261110"
-      },
-      "rendering": "Form hatching is clipped by the selected pencil contour. Pure-white review pigment uses the generated rectangle alpha and a contrast-adjusted generated hatch luminance mask; controlled edges, no colored/gray paper cast.",
-      "budgets": "The original base budget stays2.8MB; optional comparison images have350KB cap and the complete site remains under the existing3.8MB cap."
-    },
-    "book_four_cups_hatching_20261110": {
-      "base_commit": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
-      "book": {
-        "selected": 4,
-        "fixed": true,
-        "file": "media/reviews-light-notebook-20261110.webp",
-        "pixels": "Unchanged",
-        "comparison_controls": "Removed after user selection; old book query values cannot override the chosen drawing"
-      },
-      "cups": {
-        "file": "media/consultation-cups-hand-pencil-20261110.webp",
-        "style_references": [
-          "07-service-interview.webp",
-          "16-step-first-meeting.webp"
-        ],
-        "style": "Broken dry-pencil outlines, blue/sage crayon hatching and milk fills; same two cups,saucers and open book"
-      },
-      "background": {
-        "file": "artwork/vectors/book-cups-hatching-20261110.svg",
-        "style": "Sparse blue/sage pencil strokes on transparency",
-        "position": "Separate absolute layer behind book and cups; no layout space",
-        "animation": "Existing vector pencil renderer, no paper fill layer"
-      },
-      "animation": "Existing1060ms contour/background/detail sequence retained; background hatching uses the same renderer",
-      "active_raster_assets": 12,
-      "source_archives": "Previous books and cups remain in source; inactive images and controller are excluded from deployment",
-      "documentation": "docs/book-four-cups-hatching-20261110.md",
-      "integrated_source": "14a529702dd0b308ecc45b54a01c5695740d511c",
-      "surface_studies": "Preserve all four surface modes and comparison controller from completed source14a5297"
-    },
-    "clean_book_cups_20261110": {
-      "base_commit": "50cdd5ca3f5b660725593fb1783287d013cbdfbd",
-      "backgrounds": "Remove the separate blue/sage diagonal hatching layers around the selected book and cups; preserve foreground illustration pixels and layout.",
-      "line": "Retain the quiet loop shape; match service connector color #658392 and dry-chalk filter. A 2.3px non-scaling stroke stays legible on phones and desktop, at .96 opacity.",
-      "preserved": "Selected book4, new cups, form colors, all surface comparison versions and illustration reveal animations."
-    },
-    "service_mobile_spacing_20261110": {
-      "max_width_px": 760,
-      "row_gap_px": 4,
-      "previous_row_gap_px": 12,
-      "item_gap_px": 40,
-      "previous_item_gap_px": 24,
-      "integrated_source": "0f52649857299b5600fa4a02d2abab5cfcb21172",
-      "verification": "320,360,393,430px: no horizontal overflow;1280px: measured layout identical; independent screenshot critique passed"
-    },
-    "review_slider_20261110": {
-      "slides_visible": 1,
-      "desktop_max_width_px": 760,
-      "controls": "Previous arrow,three chalk dots,next arrow;44x44px targets",
-      "navigation": "Smooth native horizontal scrolling,cyclic arrows,direct dot selection,ArrowLeft/ArrowRight/Home/End keys",
-      "accessibility": "Inactive slides hidden from accessibility tree;active dot aria-current;polite slide announcement;reduced motion uses instant scrolling",
-      "stability": "All three cards use the tallest slide height;active review preserved on resize",
-      "autoplay": false,
-      "preserved": "Texts,authors,photos,white pencil backings,selected book4,service mobile spacing and completed illustration fixes",
-      "integrated_telegram_form_source": "a9b905601f03bdf503a6acb707549271c091e4c0"
-    },
-    "content_width_1280_20261110": {
-      "desktop_content_max_px": 1280,
-      "desktop_viewport_range_px": [
-        761,
-        2560
-      ],
-      "ultrawide_content_max_px": 1360,
-      "ultrawide_min_viewport_px": 2561,
-      "implementation": "One shared content-width variable;all nine sections remain centered on the same grid",
-      "verified_viewports_px": [
-        393,
-        1280,
-        1440,
-        1920,
-        2560,
-        2561,
-        3440
-      ],
-      "mobile": "393px measurements identical before and after",
-      "ultrawide": "2561px and3440px measurements identical before and after"
-    },
-    "reviews_three_up_20261110": {
-      "base_commit": "23ce7b961b13e0ae56c3e6f7a9bed97fcfdc29c3",
-      "desktop": "Three cards per page, two pages for six saved quotations.",
-      "phone": "One card per page, all six available; compact chalk dots fit320px.",
-      "content_source": "docs/review-restored-content-20261110.json",
-      "navigation": "Page-size-aware arrows/dots/Home/End, page snap targets and active-review preservation on resize.",
-      "preserved": "Selected book and cups, form delivery Worker, all texture comparisons, remaining blocks."
-    },
-    "review_link_heading_20261110": {
-      "placement": "Move the existing Telegram review link from beside the guestbook to the right of the Reviews heading above the cards.",
-      "responsive": "The heading row wraps naturally on phones; the link remains above the review slider.",
-      "preserved": "Six reviews,two desktop pages,chalk dots,book drawing,form and other sections.",
-      "integration": "Preserve concurrent footer heading and consultation line updates from82bd2b3; regenerate shared output from all source changes."
-    },
-    "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links.",
-    "footer_label_integrated_source": "baa4b0982b0fd8a613d0388ed15230027eb352c5",
-    "visible_surface_choices_cups_20261110": {
-      "base_commit": "04932f7c088dcadcbddeccb58fc4d8c0376045a9",
-      "cups": "Scale the illustration to90% within its unchanged centered wrapper on every breakpoint; preserve surrounding line and layout.",
-      "surface_choices": "Show the four existing surface versions on the ordinary site by default,starting with the selected green original. Original/blue/green/duo remain linkable; off explicitly closes the bar.",
-      "performance": "Do not request optional hatch grain while original is selected.",
-      "preserved": "Six reviews,two desktop pages,Telegram link beside review heading,form delivery,all selected drawings.",
-      "integration": "Preserve concurrent20px desktop consultation shift from3431c93; the cups remain90% inside the same wrapper."
-    },
-    "apply_shift_left_20261110": {
-      "desktop_min_viewport_px": 1101,
-      "shift_left_px": 20,
-      "selector": "#apply .contact-study-content",
-      "method": "Relative left offset on the existing positioned grid wrapper",
-      "preserved": "All element widths,heights and vertical positions;phone/tablet geometry;latest desktop/mobile connecting lines and request behavior",
-      "base_source": "82bd2b3f0cfd65439d3c59fddd834797d525224e",
-      "integrated_completed_source": "04932f7c088dcadcbddeccb58fc4d8c0376045a9"
-    },
-    "selected_green_soft_white_reviews_20261110": {
-      "base_commit": "c222c17e37f47e77017d4db570309303f399c55d",
-      "form": "Fix the selected solid sage green finish from option1 in every texture mode.",
-      "reviews": "Refine option2 with the same generated pencil strokes and neat drawn shape. A second filter pass retains72–100% white pigment and forces a solid alpha base,leaving28% of the prior grain contrast.",
-      "default": "Option2 soft white reviews; comparison controls now affect reviews only. Other previous review textures remain available.",
-      "preserved": "90% cups,desktop consultation position and connecting lines,six reviews/two desktop pages,larger social icons and footer links,Telegram delivery."
-    },
-    "review_book_blend_20261110": {
-      "base_commit": "eca98795436f03d8224495e611bd9220e56d39b2",
-      "book": "Built-in ImageGen localized paper whitening; same approved shape,pencil contours,scribbles and teal bookmark. Original source asset retained.",
-      "background": "Separate cohesive low-contrast chalk/pencil ground,with softly fading milk/blue/sage shading; a hint of tabletop below the book.",
-      "layout": "Foreground book retains its420px desktop drawing size and original SVG crop. Backdrop has a580px wrapper clipped to available width; mobile book size retained.",
-      "prompts": "docs/review-book-blend-20261110.json",
-      "preserved": "Green form1,soft white review2,six reviews/two desktop pages,Telegram link beside heading,all other blocks and animation behavior.",
-      "integration": "Retain the parallel phone book frame compaction from d428ed1:144px high. Regenerate shared output from both changes."
-    },
-    "review_table_scene_20261110": {
-      "base_commit": "8078b5e6c6dfca487b06ae12f5077a286f36b138",
-      "background": "Replace the rejected blurred oval wash with a clean colored-pencil tabletop: perspective edges,light plank seams and a short front apron.",
-      "reference": "The approved About cafe photo continuation; precision in the center and gradually dissolving edges.",
-      "composition": "Separate640px table drawing beneath the unchanged420px book; gradient masks fade only the table. Phone rendering fits within the available gutters.",
-      "book": "Keep the approved white book file,pixels,420px desktop size,144px phone frame and existing drawing animation unchanged.",
-      "prompt": "docs/review-table-scene-20261110.json",
-      "preserved": "Green form1,soft review2,six reviews/two desktop pages,header/footer social links and latest simplified consultation line.",
-      "integration": "Preserve scroll replay improvements from33fc232; foreground book stays unchanged and backdrop remains a separate static layer."
-    },
-    "scroll_replay_20261110": {
-      "rearm": "After a visited drawing block clears the visible viewport by32px;small movements within the block keep the current pass",
-      "entry": "Symmetric meaningful artwork visibility from either direction;respect sticky header and texture comparison bar",
-      "timing": "Existing fast contour/background/detail durations and20ms service staggering",
-      "captions": "Animate actual heading/paragraph targets on desktop and display:contents phone layout;allow visible text to fade in before its offscreen illustration",
-      "scroll": "Route progress follows current position in both directions;price patches keep their existing stateless bidirectional movement",
-      "cleanup": "Cancel previous animations,prepare existing SVG masks and reuse loaded images;node counts stay stable",
-      "static_modes": "Respect reduced motion,motion=off and capture=1",
-      "preserved": "Static About photos and continuations,form values,selected illustrations,comparison versions and current layout",
-      "integrated_source": "8078b5e6c6dfca487b06ae12f5077a286f36b138"
-    },
-    "review_table_warm_20261110": {
-      "base_commit": "13f12300e3bd533cec10fe649ee93e68473baf3d",
-      "table": "Warm brown pencil outline with a mostly transparent plane; opacity reduced from 0.82 to 0.28 on desktop and phone",
-      "foreground": "Approved white book asset, size and animation unchanged",
-      "prompt": "docs/review-table-warm-20261110.json"
-    },
-    "review_table_restore_20261110": {
-      "table": "Restore the earlier tabletop asset, without recoloring or regeneration",
-      "opacity": 0.38,
-      "original_opacity": 0.82,
-      "book": "Foreground book unchanged",
-      "validation": "Checks and tests not run, at the user request; build only for publication"
+    "latest_direct_review_selection_20261110": {
+      "source_thread": "01a19f8d-f408-7261-9bb7-f8635baf1fb1",
+      "request": "убери пока все что с вариантами сверху связано, для отзывов берем 2",
+      "selected_review_variant": 2,
+      "comparison_toolbar": "removed",
+      "url_texture_switching": "disabled",
+      "source_comparisons": "retained locally, excluded from published dependencies",
+      "publication_gate": "whole related series completed"
     }
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
-    "theme": "Light milk #faf8f2 on neutral surfaces; existing blue #e7f1f6 and sage #e8efe4 retained. No palette controls.",
-    "header": "Header contains the name and section navigation. Hero social icons belong inside its white photograph caption, immediately after the signature.",
+    "theme": "Almost White; blue hero and textured blue/green paper; milk pricing per latest explicit request; selected footer. No palette controls.",
+    "header": "Anastasia Doronina · Individual nanny selection, uniform uppercase lettering; Telegram and Instagram before service menu; collapse on mobile",
     "content": "Remove repeated hero labels; preserve current section when switching designs; underline only спокойно; white photo frames",
     "current_chat_overrides": "Four-frame About without heading; reviews without family stories; textured thin form lines and pencil button; only improved designs where paired",
     "reference_compositions": "Complete reference layouts are retired; keep only the Elliot hero inside design 11.",
@@ -2259,18 +3504,852 @@
     "retired_named_designs": "November 6 explicitly removed numbered designs 10 and 12-16, including Yoga 16 and Elliot 15; this overrides the earlier optional Yoga clarification. Three explicitly transferred blocks survive inside designs 7 and 11.",
     "complete_block_catalog": "Retired by explicit single-selected-site request on November 7. Preserve selected nine blocks only; all old assembly links redirect to home.",
     "latest_classic_service": "The later explicit request rejects the family-interview block in design 6; use its completed illustrated service replacement.",
-    "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer.",
-    "drawing_replay": "Latest explicit request: re-entry replays animated blocks;scroll-linked elements reverse on upward scrolling.This supersedes earlier once-per-visit behavior."
+    "latest_switcher": "Current chosen pair Lora headings + Manrope body, preset 5. Historical font controls retained; Caveat is only a possible accent. No design or palette controls.",
+    "latest_package": "Four completed turns through 01a1b78e-763f-7af2-a969-d04e6677b269, including explicit clarification that first variant means About. Grain remains SVG; chalk PNG remains library-only.",
+    "final_mobile_20261110": {
+      "turns": [
+        "01a1c1f3-e403-7552-a103-dbd540ea1226",
+        "01a1c1fd-0692-7ef2-8e2f-9c6d63bc7594",
+        "01a1c20d-6fb7-77f2-a571-67b0abe860a6",
+        "01a1c215-b48d-7cb0-add8-8446fbbfaf79",
+        "01a1c21f-d1a1-7030-b821-1de89345bc0b",
+        "01a1c224-eac4-7460-9152-c3e476de507e",
+        "01a1c22b-1616-7c51-87d2-c3d2a48bbb69",
+        "01a1c210-d4cd-7c61-8fca-16f9d3cf0564",
+        "01a1c246-27e8-7aa0-8fbd-149c2357a1c5",
+        "01a1c260-801f-78b3-a8a0-2b09c2bd3903"
+      ],
+      "latest_people_opacity": 0.1,
+      "only_remaining_choice": "form blue/green",
+      "all_current_requests_completed": true
+    },
+    "compact_scroll_20261110": {
+      "turns": [
+        "01a1c54e-19fc-7721-939a-ac2a5742c585",
+        "01a1c567-5539-7972-a394-779c6542d9b7",
+        "01a1c56d-58fc-7220-981e-dfafc7706ffe",
+        "01a1c56b-8c0b-74d1-bf31-4c0e3d22bef9",
+        "01a1c586-2295-7eb2-af0b-600a34a107be",
+        "01a1c584-ac6f-7fd0-8411-2874277abb80",
+        "01a1c594-fd67-7a91-a870-02a11a07d31d"
+      ],
+      "remaining_choice": "book1..5 only",
+      "form": "fixed sage",
+      "button_inset_px": -5,
+      "all_current_requests_completed": true
+    }
   },
   "validation": {
-    "checks": "Not run for this small visual update, at the user request",
-    "form": "No form submitted; existing Worker configuration retained"
+    "status": "passed",
+    "build": "Independent pinned npm ci without lifecycle scripts, bundled Node24 rebuild.",
+    "static_checks": {
+      "files": 55,
+      "local_references": 89,
+      "canonical_artwork_hashes": 55
+    },
+    "canonical_artwork_sha256": {
+      "artwork/classic-chalk-ui/dot.webp": "4daab1b6305378b97eca0f94e807791f036d1d59bdde7d747041bf950418bcf9",
+      "artwork/vectors/review-opening-quote.svg": "18d874a710204fad2a4f6ead1dc5ac39fdb3cca7851e7b10a07abf6bb3ce1706",
+      "artwork/illustrations/consultation-chairs-pencil-20261108.png": "03bac4d3ad39d4db7ae804d4bc85fbfc303a8195ead0dec2226b6cf53623a32f",
+      "artwork/vectors/footer-thread.svg": "449bf3ca80ad5a5dac01c761dbb5f5ce65a8ac4c627ce37a1358ab02695b2288",
+      "artwork/vectors/navigation-arrow-chalk.svg": "d17b5d0f4ae0e0c3f2f4a69f9580237e27864750be2f580c458d4d1b3747c5a0",
+      "artwork/vectors/chalk-word-underline.svg": "38b170f66ad2f21dd2c65b5bcf5155c3ba943c7327183e8c886ec30290c2804b",
+      "artwork/vectors/service-connecting-line.svg": "e08893e529f257dca6b675001c49f577312bf7dbf999f06cbbc39b590a4d8eba",
+      "artwork/vectors/field-focus-line.svg": "2775650db78ea5094800d384116d9627f3e7970d1cfa07d6ebd96782be014725",
+      "artwork/vectors/chalk-price-ring.svg": "e17d7024510d41c983d465afbe5cd6d33c44a79a82071e0dc9cb8d77aae46ffe",
+      "artwork/vectors/chalk-price-ring-2.svg": "f4fef4aede2fb949e944c1c6f12046ae09cfc279e0386c69951abd207c0a0fb2",
+      "artwork/vectors/chalk-price-ring-3.svg": "c741f8418ec596bfef3a595d4f8446fc3add889a17ad13be607163988d9ae4fb",
+      "media/about-reading.webp": "4b955883b06542ff4020a8ad0281dda99e50b6a7e86c5bd5e12865bb9bf7116e",
+      "media/about-pencils.webp": "8bfc218db68aed30b9e5b58bc59949ab4643b8eea87f4ec0d5984d01b8d4354b",
+      "media/pricing-family-schedule.webp": "31dd215f5c03e56f6dce0387032a28ce92ee35de2f12957fb6a5607acc78cf2b",
+      "media/review-cloud-ivory.webp": "06aad9a5aedd1bd95fceb75a5cb9bda9d64658cf19d3550d51fce1acfa38b4ff",
+      "media/review-cloud-blue.webp": "40e7d46819dceec589314c3c85594fe3d047c418acb04ad509304ce7e42cf36f",
+      "media/review-cloud-sage.webp": "838005e377b58f53198a0e9117d7ca92820babbefba0da21ed602cbd724b7093",
+      "media/review-letter.webp": "1ddf81443211bf0001d882cd53a4707951aded94a3f7bf00246427097fce452c",
+      "media/review-cups.webp": "d4e1dbd4bf2e682ebfe5f3654f187fd70437f54c624f9d645fc1851f02ddf9f1",
+      "media/review-book.webp": "cfac0a473decd78b0f82b800d57c39e868f85126af0c86289cc5ff38c69a5977",
+      "media/ending-letter.webp": "2fb9a0ad15333ce38116007438dc03b93c2305e3c9164fcfae5b4f0af9b7d62c",
+      "media/ending-cups.webp": "3e135bcdfd36d5d05b10a30ae029b68b6f116960253c3ac597cd9c73e89a2baa",
+      "media/ending-door.webp": "dd821dc1e10c93d6d4ede8862c98f01354ebe236f08fb6bd2f4a2ca35798f741",
+      "artwork/vectors/ending-conversation-line.svg": "cd0b74ff1d73cc8e36c6b6de66399527b51b794f4afa307ade66cd784a73f9b6",
+      "artwork/vectors/ending-margin-bracket.svg": "678e03a3d9ef365b9980e9b88b9fe11be0c464ae0e0f04b779e5be2e3dfb9f4d",
+      "media/about-scene-panorama.webp": "3170cd7683e3bd2073c8b36bb15eae046f26dfa0ce26142ca24449a5b1042257",
+      "media/about-photo-scene-family.webp": "803d4d5ea12bf8a16c4ef3c1380ea07f0558b111f9aecb85f7af56faaef34a82",
+      "media/about-photo-scene-rainbow.webp": "3663f55640166e802425ea4ef0901c1d147b324886d941e16439b854cad94698",
+      "media/about-photo-scene-cafe.webp": "450fa5b06b573d0c1a526b340d7272cbd9179747499dbc669a33df5c5f6edee4",
+      "media/about-photo-scene-park.webp": "2e0467c796778f2c19812143167105761e2702f09b5b6e81ee3d46c8dceb68de",
+      "artwork/vectors/faq-question-pencil.svg": "e68dd5abd87745a084a5d2ed70215936886b599f0b218333dda5e633b2e49894",
+      "media/consultation-chairs-light-pencil-20261109.webp": "3d4e330cb9761e89b1b9d437bfd61ede4b08c3858f17b9350d782f40f0148ca4",
+      "media/review-chalk-white-block-20261109.webp": "c6419bf19d759fd425af4ff39cf60f457289ff40eec3aa74214548ebeb9b5623",
+      "media/footer-family-pencil-20261109.webp": "c3c8359f747858a9527ab2f3a1a769b4905ff24cd36565d3453a0525933cf34b",
+      "media/service-book-light-pages-20261109.webp": "94443537b8536917a45bfcb8c5c3e7bc51335fc6c89fbc02863cd349f963c15a",
+      "media/consultation-tea-pencil-20261109.webp": "853886849257fcc40ec215aa352855d539a6ee6993e09b4b739543080810261e",
+      "media/reviews-open-guestbook-20261109.webp": "6553ef8684bc5a971c73f11fbfb4a461dd1ce80288fb07570cec375ca0ae8c56",
+      "artwork/vectors/pricing-pencil-arch-20261109.svg": "6ae52ea6606c047a13f149d8e38aca5ca69fbdb68143e03c4dbd8c2dbad3b572",
+      "artwork/vectors/pricing-pencil-oval-20261109.svg": "44922b56334bf45a33790fcd59eb92d5d0ac15778a1f2f3cd546ddf8a0eb02d1",
+      "artwork/vectors/pricing-chalk-patch-20261109.svg": "9786bea293482bf7b65dd33dd3b12dcaccefce6491e31a7fb998303c0363974d",
+      "media/about-photo-scene-family-registered-20261109.webp": "77ceb942c05c927a521a122e80023dbd9526ce445a7c43577e0585514e1883db",
+      "media/about-photo-scene-rainbow-registered-20261109.webp": "cf028d2cca8d119446bf044465a7389579d606e785004a39a8edb9b3402a64b0",
+      "media/about-photo-scene-cafe-registered-20261109.webp": "222feded1fb78babcc227a0f151eb736634fb464eb27a667a94f6010c6dad64a",
+      "media/about-photo-scene-park-registered-20261109.webp": "b46ea6f577401f7d16053c250d1a6cd9995360f66af928f8c54eefafdd112620",
+      "media/service-book-hand-pencil-20261109.webp": "64efd522db481f54d26318ce82a9c910d48346fdb3b2233aa6545e5f318e9c56",
+      "media/reviews-guestbook-matched-20261109.webp": "de38db6c1f755b0e242931254979f4773ceadfae35dcad46d52ea4787b882e49",
+      "media/footer-family-matched-20261109.webp": "4b9f817e03037dfcae4a9650d4413e68ef7e58d1173c2df74069e9af272cd73a",
+      "media/consultation-tea-matched-1-20261109.webp": "2eb9c4bf87188caa4f24be274468bef69f813d72bd748bfc9c50f7e4a23f03c0",
+      "media/consultation-tea-matched-2-20261109.webp": "4dc72d180ec3cc075689409bb21137081a30ad4999dc084351efd62790354495",
+      "media/about-figure-family-20261110.webp": "5e2c68700e7771074fdf55f8d61534598a33dd04a8c84756556fd0f30f0987da",
+      "media/about-figure-cafe-20261110.webp": "d1de40982080b4c66fa7354f83b7b317ca6bcc41e56dbe8dea7f89fdceae19d3",
+      "media/about-figure-park-20261110.webp": "83ab0cd12d75d73b281379ab0b75ec62cac18f7ae4c8b35ffa948293c84ad8b9",
+      "media/reviews-light-notebook-20261110.webp": "03a93b81807b8bb32ee2efc94729220e768038c1b9137204a34c9e6f66c96805",
+      "media/reviews-small-album-20261110.webp": "cfbad18f131c728dd086968c760061f1f777486a7f0f289fe380a6b8a7c06604",
+      "media/reviews-rated-book-20261110.webp": "71c2bfa14fa211205a4347a66f282d00300992012bb11c6810f229f0fc8efa2a"
+    },
+    "tests": {
+      "passed": 44,
+      "failed": 0,
+      "run_by": "monitor independent checkout"
+    },
+    "diff_check": "passed,CRLF-aware",
+    "repeat_build": {
+      "status": "passed",
+      "files": 55,
+      "published_bytes": 3299633,
+      "exact_files": 50,
+      "normalized_files": [
+        "out/index.html",
+        "out/robots.txt",
+        "out/site-runtime.js",
+        "out/site-sections.css",
+        "out/sitemap.xml"
+      ],
+      "mismatches": [],
+      "extra": [],
+      "published_build": "dc61e0d67e",
+      "rebuild_cache_key": "dc61e0d67e",
+      "normalization": "CRLF only; same cache key and exact binary bytes"
+    },
+    "public": {
+      "build": "dc61e0d67e",
+      "source_commit": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
+      "checked_at_utc": "2026-11-10T13:49:38.630433+00:00",
+      "passed": true,
+      "expected_files": 55,
+      "expected_absent": 31,
+      "files": [
+        {
+          "path": "artwork/vectors/hero-backing-dry-crayon.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 18179,
+          "sha256": "c15d1c94f7061b1dae584954b608bf006db9fe3a715e9439404a11b9b844fd0b"
+        },
+        {
+          "path": "artwork/vectors/navigation-arrow-chalk.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 812,
+          "sha256": "d17b5d0f4ae0e0c3f2f4a69f9580237e27864750be2f580c458d4d1b3747c5a0"
+        },
+        {
+          "path": "artwork/vectors/pricing-chalk-patch-20261109.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 623,
+          "sha256": "9786bea293482bf7b65dd33dd3b12dcaccefce6491e31a7fb998303c0363974d"
+        },
+        {
+          "path": "assets/anastasia.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 1030,
+          "sha256": "5e6ec29ecc0d0b51eef02bae01c3a355363cf2dc719ba1ab0d00c1b1f788eb4a"
+        },
+        {
+          "path": "assets/julia.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 1212,
+          "sha256": "ee67d9cca0a815c6e3ec7d1256cd651f704c7ed99d63004b592dc7da10ea4211"
+        },
+        {
+          "path": "assets/natalia.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 962,
+          "sha256": "28551bb7e68dbbc5c8ce9b594e7a1c768491abf334679e2b61a7e46827538012"
+        },
+        {
+          "path": "assets/social-card.png",
+          "matches": true,
+          "status": 200,
+          "bytes": 29239,
+          "sha256": "685afe7117f2bae3a51dd535869819612a0eec9b667bdb01eb4a6bdd8045fb79"
+        },
+        {
+          "path": "favicon.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 181,
+          "sha256": "01c09b65e81b06ccb5cee5bc8279b4560821d9d3ab6a11f4ff3d1f0e3975dbb7"
+        },
+        {
+          "path": "fonts/caveat-OFL.txt",
+          "matches": true,
+          "status": 200,
+          "bytes": 4385,
+          "sha256": "1f9d81d094273d82f3898a1ee8b598a717d050ecbf5ff7bede105b704880157b"
+        },
+        {
+          "path": "fonts/manrope-OFL.txt",
+          "matches": true,
+          "status": 200,
+          "bytes": 4387,
+          "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+        },
+        {
+          "path": "index.html",
+          "matches": true,
+          "status": 200,
+          "bytes": 61611,
+          "sha256": "9055fb924b6591217fabb10b1e3f785edab267bd166a9ea56fdb880de2be0c84"
+        },
+        {
+          "path": "media/07-service-interview.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 81256,
+          "sha256": "8fd7254b7f2473e65c1a13d1386dcd94e56ad2e18e42c933e076ff04a10b6c77"
+        },
+        {
+          "path": "media/08-service-recommendation.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 57274,
+          "sha256": "eed991a17b970e86f3d14abc9c44192f8e35245156af9cea59b6f1b66acc2542"
+        },
+        {
+          "path": "media/13-step-application.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 49350,
+          "sha256": "17fd3d0251c9cab3dfff25218cb88a6aa8ef2435cc99c002255a13c6364403e3"
+        },
+        {
+          "path": "media/14-step-nanny-profile.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 69448,
+          "sha256": "f77fc26e8dd0702d05ab6ba54c90acb41561e3ade67962823352813d8f95df9b"
+        },
+        {
+          "path": "media/15-step-search-interview.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 68930,
+          "sha256": "6ae38dee4f9a7bf5bf87f8d7eabe58447e26f661376e498ef8b9fc8ec4ad1dfe"
+        },
+        {
+          "path": "media/16-step-first-meeting.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 82554,
+          "sha256": "75ad15e224d71ead2820a5e9a3055f4ced976fb5e74f0bb9b45fb170bf642e37"
+        },
+        {
+          "path": "media/17-step-support.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 77004,
+          "sha256": "f0510d9eb2c2871dc1c94c2af23563d3d28b19cd90dee7e2542adae39acaf925"
+        },
+        {
+          "path": "media/19-guarantee-calendar.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 79266,
+          "sha256": "51ad596cd6083a93ae3fa304fdbdc5628ff0fcc2a73bdfc446b9575146f50f83"
+        },
+        {
+          "path": "media/about-figure-cafe-20261110.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 29402,
+          "sha256": "d1de40982080b4c66fa7354f83b7b317ca6bcc41e56dbe8dea7f89fdceae19d3"
+        },
+        {
+          "path": "media/about-figure-family-20261110.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 41358,
+          "sha256": "5e2c68700e7771074fdf55f8d61534598a33dd04a8c84756556fd0f30f0987da"
+        },
+        {
+          "path": "media/about-figure-park-20261110.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 40626,
+          "sha256": "83ab0cd12d75d73b281379ab0b75ec62cac18f7ae4c8b35ffa948293c84ad8b9"
+        },
+        {
+          "path": "media/about-photo-scene-cafe-registered-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 146108,
+          "sha256": "222feded1fb78babcc227a0f151eb736634fb464eb27a667a94f6010c6dad64a"
+        },
+        {
+          "path": "media/about-photo-scene-family-registered-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 115778,
+          "sha256": "77ceb942c05c927a521a122e80023dbd9526ce445a7c43577e0585514e1883db"
+        },
+        {
+          "path": "media/about-photo-scene-park-registered-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 123104,
+          "sha256": "b46ea6f577401f7d16053c250d1a6cd9995360f66af928f8c54eefafdd112620"
+        },
+        {
+          "path": "media/about-photo-scene-rainbow-registered-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 82868,
+          "sha256": "cf028d2cca8d119446bf044465a7389579d606e785004a39a8edb9b3402a64b0"
+        },
+        {
+          "path": "media/chalk-dot.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 3074,
+          "sha256": "74e8ded98fd34a45cbf576343ed9250ea40c2d36614a4007cae038028492a916"
+        },
+        {
+          "path": "media/child-640.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 72288,
+          "sha256": "164d810ff44f0b32a33c5fcba64e2961f316a0c72aa1324fc37c7b940670acb2"
+        },
+        {
+          "path": "media/consultation-tea-matched-1-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 89040,
+          "sha256": "2eb9c4bf87188caa4f24be274468bef69f813d72bd748bfc9c50f7e4a23f03c0"
+        },
+        {
+          "path": "media/family-640.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 68840,
+          "sha256": "db9f9bea9bffa7100fab516d97fad9829069de7e544be11c4c8a561209c57e2c"
+        },
+        {
+          "path": "media/family-900.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 87002,
+          "sha256": "117c496ddb1a96875fcd06a54c32d716d9e3dcd50af6a1d4e81bb411f7bccb16"
+        },
+        {
+          "path": "media/footer-family-matched-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 44056,
+          "sha256": "4b9f817e03037dfcae4a9650d4413e68ef7e58d1173c2df74069e9af272cd73a"
+        },
+        {
+          "path": "media/portrait-480.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 41000,
+          "sha256": "6c5efd1838874727d3ba88263d0d806295557674be2c6aab710b9f8f59bf000e"
+        },
+        {
+          "path": "media/portrait-720.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 82028,
+          "sha256": "a335db22820e5f4bab326fda40688e2c48ace799aba4354c3555d07e19e6f787"
+        },
+        {
+          "path": "media/rainbow-640.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 103966,
+          "sha256": "603fedae30376dae302497b4aeb15a48bc9a469023170781c17b63bac2145875"
+        },
+        {
+          "path": "media/review-book.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 20784,
+          "sha256": "cfac0a473decd78b0f82b800d57c39e868f85126af0c86289cc5ff38c69a5977"
+        },
+        {
+          "path": "media/review-chalk-white-block-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 35474,
+          "sha256": "c6419bf19d759fd425af4ff39cf60f457289ff40eec3aa74214548ebeb9b5623"
+        },
+        {
+          "path": "media/reviews-light-notebook-20261110.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 174600,
+          "sha256": "03a93b81807b8bb32ee2efc94729220e768038c1b9137204a34c9e6f66c96805"
+        },
+        {
+          "path": "media/reviews-open-guestbook-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 49002,
+          "sha256": "6553ef8684bc5a971c73f11fbfb4a461dd1ce80288fb07570cec375ca0ae8c56"
+        },
+        {
+          "path": "media/reviews-rated-book-20261110.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 293280,
+          "sha256": "71c2bfa14fa211205a4347a66f282d00300992012bb11c6810f229f0fc8efa2a"
+        },
+        {
+          "path": "media/reviews-small-album-20261110.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 124136,
+          "sha256": "cfbad18f131c728dd086968c760061f1f777486a7f0f289fe380a6b8a7c06604"
+        },
+        {
+          "path": "media/service-book-hand-pencil-20261109.webp",
+          "matches": true,
+          "status": 200,
+          "bytes": 58802,
+          "sha256": "64efd522db481f54d26318ce82a9c910d48346fdb3b2233aa6545e5f318e9c56"
+        },
+        {
+          "path": "robots.txt",
+          "matches": true,
+          "status": 200,
+          "bytes": 246,
+          "sha256": "8a611e17924102f7bf1fcdbe645575b1ba6d068f02cecd062d3abef3b2fc738f"
+        },
+        {
+          "path": "single-page.css",
+          "matches": true,
+          "status": 200,
+          "bytes": 3168,
+          "sha256": "736b2c6198751f559706ada70f895cb47a8ff6ba1ff2a6235b1cbb582581cabe"
+        },
+        {
+          "path": "site-base.css",
+          "matches": true,
+          "status": 200,
+          "bytes": 1392,
+          "sha256": "8ed2ad9a9bce5a18d2d9187ea341703c3131f76c0034079260bf8ac21698a88f"
+        },
+        {
+          "path": "site-runtime.js",
+          "matches": true,
+          "status": 200,
+          "bytes": 66789,
+          "sha256": "36af0400d57badf7e0938c2c35adcf9822994be56bde586e7ec802a4997ebf31"
+        },
+        {
+          "path": "site-sections.css",
+          "matches": true,
+          "status": 200,
+          "bytes": 601779,
+          "sha256": "5814610f2d5b4d8fc3291ce166188e8d9945db36fcc7a73274d08911cf50c9fd"
+        },
+        {
+          "path": "site-typography.css",
+          "matches": true,
+          "status": 200,
+          "bytes": 2247,
+          "sha256": "c06846c7bf3302b716a9a256264e85ed5a137ea719425628dd4d726551f83329"
+        },
+        {
+          "path": "sitemap.xml",
+          "matches": true,
+          "status": 200,
+          "bytes": 186,
+          "sha256": "5e36eba0bc64f62d8b4e5f91c68343e91d4cfeb7414c6c01c3318328c033d3b9"
+        },
+        {
+          "path": "studio/fonts/Lora-OFL.txt",
+          "matches": true,
+          "status": 200,
+          "bytes": 4422,
+          "sha256": "6d6bc7bbb828514925dabcaf89e4771398d12c60dd1cb2bbb90eea129535d0f4"
+        },
+        {
+          "path": "studio/pencil-button.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 452,
+          "sha256": "ec92c57c1bf9eb5350137d9dc5e39bd840be4fc7b03da65e4eef74e59c3e9004"
+        },
+        {
+          "path": "studio/pencil-frame-neat.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 992,
+          "sha256": "cb14ae755feec13a78cee51a407fe023b4809f9d633dfc8dcfbe7dc7632c01ee"
+        },
+        {
+          "path": "studio/pencil-frame.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 1004,
+          "sha256": "9956fb5b2aff4fa1e9bcdb7257d051574ab0285808c5c5b6ddd93faf12e5c64a"
+        },
+        {
+          "path": "studio/pencil-rule.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 711,
+          "sha256": "63909f0f628a3aa2aa0110f52a26e8849d056a59c29ceb9a7cb2fa5ffcbb0054"
+        },
+        {
+          "path": "textures/chalk-grain.svg",
+          "matches": true,
+          "status": 200,
+          "bytes": 590,
+          "sha256": "db174011cf892fe1e66fa4b77e2800a2410a07540009ba8a2f8d4ac78a989873"
+        },
+        {
+          "path": "about-model.js",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork-catalog.json",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "artwork-catalog.json",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          }
+        },
+        {
+          "path": "artwork-library.zip",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork.html",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork/illustrations/about-branch-20261107.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork/illustrations/route-heart.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "artwork/illustrations/route-heart.webp",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          },
+          "last_retry_status": 503,
+          "retry_note": "Canonical URL returned404 on final verification."
+        },
+        {
+          "path": "artwork/line-drawings/02-hero.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "artwork/line-drawings/02-hero.png",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          },
+          "retry_note": "Uncached canonical URL returns404 after transient503 for cache-busting query."
+        },
+        {
+          "path": "artwork/line-drawings/03-service.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork/line-drawings/04-about.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "artwork/line-drawings/04-about.png",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          }
+        },
+        {
+          "path": "artwork/line-drawings/05-process.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork/line-drawings/06-guarantee.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "artwork/line-drawings/06-guarantee.png",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          },
+          "retry_note": "Uncached canonical URL returns404 after transient503 for cache-busting query."
+        },
+        {
+          "path": "artwork/line-drawings/07-reviews.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork/line-drawings/08-apply.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork/line-drawings/09-footer.png",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork/vectors/chalk-price-ring-2.svg",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "artwork/vectors/chalk-price-ring-3.svg",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "artwork/vectors/chalk-price-ring-3.svg",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          },
+          "retry_note": "Uncached canonical URL returns404 after transient503 for cache-busting query."
+        },
+        {
+          "path": "artwork/vectors/chalk-price-ring.svg",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "blocks/about.html",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "blocks/about.html",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          },
+          "retry_note": "Uncached canonical URL returns404 after transient503 for cache-busting query."
+        },
+        {
+          "path": "blocks/hero.html",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "blocks/hero.html",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          }
+        },
+        {
+          "path": "drawing-parent.js",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "font-pairs.js",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "frame-layout.js",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "frame-layout.js",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          }
+        },
+        {
+          "path": "media/about-pencils.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "media/about-reading.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "media/about-scene-panorama.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "media/consultation-chairs-light-pencil-20261109.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "media/consultation-tea-matched-2-20261109.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true,
+          "first_observation": {
+            "path": "media/consultation-tea-matched-2-20261109.webp",
+            "matches": false,
+            "status": 503,
+            "expected_absent": true
+          }
+        },
+        {
+          "path": "media/ending-letter.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "media/review-cloud-ivory.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "media/reviews-guestbook-matched-20261109.webp",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        },
+        {
+          "path": "site-base.js",
+          "matches": true,
+          "status": 404,
+          "expected_absent": true
+        }
+      ],
+      "release_content_verified": true
+    },
+    "source_audit": {
+      "checked_at_utc": "2026-11-10T13:50:33.241466+00:00",
+      "confirmed_build": "3b740bbedb",
+      "source_file_count": 143,
+      "changed_sources": [],
+      "changed_paper_chalk": [],
+      "repositories": {
+        "nastya-selected-release-20261107": {
+          "head": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
+          "dirty_count": 0
+        },
+        "nastya-final-mobile-release-20261110": {
+          "head": "9c5d7f33e6978f5b7b71d47fe8d74580a248cc5f",
+          "dirty_count": 0
+        },
+        "nastya-chalk-release-20261105": {
+          "head": "4d7927d8d432d76ee00e32f0ce29a509d1f75660",
+          "dirty_count": 0
+        },
+        "nastya-service-drawing-release-20261109/.sites-checkout": {
+          "head": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
+          "dirty_count": 0
+        },
+        "nastya-fotoalbum": {
+          "head": "bd9bd2d7c98ad858bb0a541ad3c13124d73d478e",
+          "dirty_count": 1
+        },
+        "nastya-zhurnal": {
+          "head": "519cd12e8476ed57de7f95a603472841a2547702",
+          "dirty_count": 0
+        },
+        "nastya-tihaya-redaktsiya": {
+          "head": "ad29bbbedd54277dcd23e885a1bc1b8d454ba006",
+          "dirty_count": 1
+        },
+        "nastya-eight-references": {
+          "head": null,
+          "dirty_count": 5
+        },
+        "nastya-unified-20261105": {
+          "head": "532fa1722605b5fd1fc82235999bd8a25fcaf77a",
+          "dirty_count": 105
+        },
+        "nastya-compact-scroll-release-20261110": {
+          "head": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
+          "dirty_count": 0
+        }
+      }
+    },
+    "source_browser_proofs": [
+      "artifacts\\compact-about-20261110",
+      "artifacts\\form-green-final-20261110",
+      "artifacts\\compact-layout-20261110",
+      "artifacts\\scroll-pricing-books-20261110",
+      "artifacts\\about-headline-copy-20261110",
+      "artifacts\\rated-book-20261110",
+      "artifacts\\button-gap-20261110"
+    ],
+    "screenshots_reviewed": [
+      "compact-layout-20261110/mobile-published.png",
+      "compact-about-20261110/after-393.jpg",
+      "rated-book-20261110/phone-320.jpg",
+      "about-headline-copy-20261110/about-published.png",
+      "form-green-final-20261110/form-green-final.png"
+    ],
+    "code_review": "Checked scoped book controller, URL/keyboard semantics, scroll-only pricing model and static fallback, arrow marker cleanup, retained registered photo layers, green form cleanup and compact CSS.",
+    "limitations": "Source browser viewport emulation and screenshots/JSON; no new monitor browser session, physical-device Safari or field Core Web Vitals claim.",
+    "deferred_cleanup": "Full manifest overlay and harmless extra closing main deferred to next substantive source edit; no metadata-only commit."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "dc61e0d67e",
+  "previous_confirmed_build": "3b740bbedb",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",
@@ -2279,16 +4358,35 @@
       "note": "Do not publish paper-chalk draft or recreate retired options."
     }
   ],
-  "source_commit": null,
+  "source_commit": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
   "deployment": {
-    "status": "pending"
+    "status": "released",
+    "sites_version": 168,
+    "sites_version_id": "appgprj_6adb4a39d8588191817d307ec46df7dd~appgver_97ccfbd478d881919346fdf8bbca3777",
+    "sites_deployment_id": "appgdep_6af31939a8148191b0df6c011cbaf6d3",
+    "sites_status": "succeeded",
+    "sites_url": "https://nastya-nanny-concepts-oct23.dusky-brumm.chatgpt.site",
+    "pages_url": "https://dusky-brumm.github.io/anastasia-nanny-concepts/",
+    "pages_status": "succeeded",
+    "pages_commit": "7cb763da7362bd7718d7830e414af833f43a80e0",
+    "source_main": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
+    "public_build": "dc61e0d67e",
+    "github_workflow": {
+      "conclusion": "success",
+      "databaseId": 42826690710,
+      "headSha": "7cb763da7362bd7718d7830e414af833f43a80e0",
+      "status": "completed",
+      "url": "https://github.com/dusky-brumm/anastasia-nanny-concepts/actions/runs/42826690710"
+    },
+    "latest_sites_observed": 168,
+    "access": "custom,revision1,one owner,no groups/external visitors",
+    "verified_at_utc": "2026-11-10T13:50:33.373719+00:00"
   },
   "integrated_about_source": {
-    "commit": "270c5006d214c17e446ce236027ddb8f53aff47e",
-    "build": "1bdd30e5ad",
-    "sites_version": 91,
-    "turn": "01a1b698-132f-7f32-9f74-74697d60062f",
-    "integration_note": "Completed About imported; nine restored retired drawings excluded according to explicit later user decision."
+    "commit": "1127317fd241b555249745c40f390342b3dd735d",
+    "build": "b1ca650ad4",
+    "sites_version": 93,
+    "turn": "01a1b756-25f3-7920-8802-cd7832c21387"
   },
   "hero_caption_20261108": {
     "placement": "Single caption row: Анастасия Доронина, Telegram, Instagram; on the lower white field of the printed photograph",
@@ -2386,5 +4484,112 @@
     "removed": "Top comparison controls, variant labels, jump links, close button and reserved header gap",
     "preserved": "Selected review grain, hidden SVG mask definitions and fixed sage form",
     "checks": "JS syntax, build, served asset bytes and 56 existing tests passed"
+  },
+  "metadata_note": "Source manifest builddc61e0d67e is current, but historical imports/checkpoints remain stale. Merge this FULL85-import overlay with the next substantive source change; no standalone metadata commit/version.",
+  "reviewed_local_requests_20261109": [
+    {
+      "turn": "01a1bcc2-b22d-70b3-8d8c-03df6aa0b870",
+      "status": "completed_local_only",
+      "path": "artifacts/illustration-library-20261109",
+      "note": "18 illustrations, nine drawn elements and five layout studies requested for possible use. No selection, no public gallery or ZIP authorized."
+    },
+    {
+      "turn": "01a1bcf7-222b-7503-92db-e4a2d1b89fa5",
+      "status": "completed_advice_only",
+      "note": "Drawing-on-background review proposed contrast/material refinements. No blanket approval to apply suggestions."
+    },
+    {
+      "turn": "01a1bcb8-fb0e-7622-9559-e4cff5b8f7fc",
+      "status": "completed_local_proposal",
+      "path": "artifacts/process-air-20261109/pricing-proposal.png",
+      "note": "Larger pricing values, connecting arrow and compact FAQ remain an unselected local sketch."
+    }
+  ],
+  "publication_policy": {
+    "gate": "All current requests across both related chats complete; recheck immediately before import/push/deployment.",
+    "authorization": "Standing explicit GitHub main/exact-out Pages and existing private Sites authorization in monitor chat.",
+    "verified_before_push": {
+      "timedOut": false,
+      "wake": null,
+      "polls": [
+        {
+          "schemaVersion": 1,
+          "cursor": "a5e00e74-6662-4d91-9da2-cb5499e9d952:171",
+          "revision": 171,
+          "changed": false,
+          "thread": {
+            "id": "01a19f7b-5b25-7e03-8715-e4afa371b7f3",
+            "hostId": "local",
+            "status": {
+              "type": "idle"
+            }
+          },
+          "latestTurn": {
+            "id": "01a1c586-2295-7eb2-af0b-600a34a107be",
+            "status": "completed",
+            "error": null,
+            "startedAt": 1794315264,
+            "completedAt": 1794316079,
+            "durationMs": 814841
+          },
+          "latestAssistantMessageId": "msg_03f55ce0dce7a671016af3172db5b487d098c4fec9b1240d1a",
+          "latestAssistantMessage": null,
+          "latestToolMarkerId": "call_cf9098bbe5a04579aaac8ed777e2915b",
+          "latestToolMarker": null
+        },
+        {
+          "schemaVersion": 1,
+          "cursor": "29427950-ba1a-4ead-ac9f-9c2a1113509e:7",
+          "revision": 7,
+          "changed": false,
+          "thread": {
+            "id": "01a1c122-42a7-7311-957f-5ebf5088bb47",
+            "hostId": "local",
+            "status": {
+              "type": "idle"
+            }
+          },
+          "latestTurn": {
+            "id": "01a1c594-fd67-7a91-a870-02a11a07d31d",
+            "status": "completed",
+            "error": null,
+            "startedAt": 1794316238,
+            "completedAt": 1794316665,
+            "durationMs": 427261
+          },
+          "latestAssistantMessageId": "msg_0e79e53e8b32fcc1016af31977c57087d091ca48148e443791",
+          "latestAssistantMessage": null,
+          "latestToolMarkerId": "exec-ec86e280-6d16-4c7f-b638-93aacef6c185",
+          "latestToolMarker": null
+        }
+      ]
+    },
+    "no_force_push": true,
+    "no_duplicate_sites_version": true
+  },
+  "reviews_variant_two_final_20261110": {
+    "status": "built_pending_github_push",
+    "request": "Remove the top comparison UI for now; keep review variant 2.",
+    "base_source_commit": "33fc2320cddb9281fe18118d7ff78775f16af146",
+    "base_source_build": "4f7c9de1f3",
+    "last_independently_confirmed_build": "dc61e0d67e",
+    "review_variant": 2,
+    "review_texture": "soft-white-pencil",
+    "comparison_ui": false,
+    "old_texture_query_ignored": true,
+    "form": "solid-sage",
+    "preserved_source_work": "Latest published replay, consultation line, and artwork at base commit. Subsequent source-chat changes must be incorporated after the whole series completes.",
+    "validation": "Code review and syntax only; build/tests/publication deferred by standing whole-series gate."
+  },
+  "direct_github_release_20261111": {
+    "status": "built_pending_push",
+    "request": "Deploy latest local version to GitHub, no tests, as fast as possible",
+    "base_source": "9ec1cee6f00802f3968a21f81283e3ade8a068a7",
+    "base_build": "2dcfb02fa3",
+    "last_independently_verified_package": "dc61e0d67e",
+    "tests": "not run by explicit user instruction",
+    "scope": "GitHub source/main and exact static out to Pages; no Sites deployment",
+    "note": "Includes latest local source and focused review2/no-toolbar change. Whole-series monitoring gate is overridden for this explicitly requested immediate GitHub deploy; no full independent package audit claimed.",
+    "build": "955d984f54"
   }
 }

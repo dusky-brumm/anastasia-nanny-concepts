@@ -1,0 +1,5 @@
+// Selected review variant 2: white pigment with the original, softened pencil grain.
+export const reviewTextureDefs=`<svg class="review-texture-defs" aria-hidden="true" focusable="false"><defs>
+<filter id="review-pencil-grain-contrast" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="linear" slope="3" intercept="-2"/><feFuncG type="linear" slope="3" intercept="-2"/><feFuncB type="linear" slope="3" intercept="-2"/></feComponentTransfer><feComponentTransfer><feFuncR type="linear" slope=".28" intercept=".72"/><feFuncG type="linear" slope=".28" intercept=".72"/><feFuncB type="linear" slope=".28" intercept=".72"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer></filter>
+<mask id="review-pencil-paper-grain" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox" x="0" y="0" width="1" height="1" style="mask-type:luminance"><image href="media/surface-studies-20261110/form-blue.webp" x="-.05" y="-.2" width="1.1" height="1.4" preserveAspectRatio="none" filter="url(#review-pencil-grain-contrast)"/></mask>
+</defs></svg>`;

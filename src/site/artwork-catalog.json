@@ -376,5 +376,12 @@
     "title": "Альбом с закладкой",
     "group": "Иллюстрации",
     "sha256": "cfbad18f131c728dd086968c760061f1f777486a7f0f289fe380a6b8a7c06604"
+  },
+  {
+    "id": "reviews-rated-book-20261110",
+    "file": "media/reviews-rated-book-20261110.webp",
+    "title": "Книга отзывов: пять звёзд и пять плюсов",
+    "group": "Иллюстрации",
+    "sha256": "71c2bfa14fa211205a4347a66f282d00300992012bb11c6810f229f0fc8efa2a"
   }
 ]

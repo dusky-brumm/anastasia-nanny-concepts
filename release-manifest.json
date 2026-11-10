@@ -1,5 +1,5 @@
 {
-  "build": "b1f1cc9cee",
+  "build": "17fcda981a",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -1988,8 +1988,8 @@
       "choices": [
         {
           "id": 1,
-          "name": "Current",
-          "file": "reviews-guestbook-matched-20261109.webp"
+          "name": "Thick guestbook with5stars and5plus signs",
+          "file": "reviews-rated-book-20261110.webp"
         },
         {
           "id": 2,
@@ -2028,6 +2028,23 @@
         "original": "Спорт, как и работа рекрутером, основывается на дисциплине, системности и работе на результат"
       },
       "preserved": "Photographs, registered pencil backdrops, shared slide height and navigation, all other blocks"
+    },
+    "rated_review_book_20261110": {
+      "base_commit": "4f06f289d2b5775da3c06fa57da451df79406739",
+      "file": "media/reviews-rated-book-20261110.webp",
+      "choice": 1,
+      "default": true,
+      "shape": "Thicker hardcover guestbook with visible layered page edges and a curved central gutter, seen from the front/side",
+      "page_marks": {
+        "stars": 5,
+        "plus_signs": 5
+      },
+      "style": "Same muted blue/sage dry-pencil illustration on transparent background",
+      "animation": "Existing1060ms contour/background/detail drawing, with replay and motion-off behavior unchanged",
+      "preserved": "Book choices2–5, old source image, review carousel,160px picture frame, responsive layout and scroll-driven pricing patches",
+      "generation": "ImageGen built-in transparent edit, exact prompt and original PNG retained in artifacts/rated-book-20261110",
+      "documentation": "docs/rated-book-20261110.md",
+      "integrated_source": "4d7927d8d432d76ee00e32f0ce29a509d1f75660"
     }
   },
   "reviewed_decisions": {
@@ -2051,10 +2068,10 @@
       "passed": 44,
       "failed": 0
     },
-    "build": "b1f1cc9cee",
-    "visual_check": "Desktop1440px opening lead36px, other leads24px. Phone390px opening26px, other leads21px; nav position2391.28px unchanged between first and fourth slides. Narrow320px opening24px; no horizontal overflow. Original Instagram attachment inspected for replacement wording.",
-    "static_check": "PASS: one document, nine blocks; 55 files, 3062828 bytes including 579244 About drawings; 89 local assets; 54 artwork hashes.",
-    "preserved": "Latest cab756f source: green form without color switch, compact header/mobile hero, desktop route drawing, service divider spacing and smaller pricing block. All four compact About stories and faint0.1 figure continuations retained."
+    "build": "17fcda981a",
+    "visual_check": "Generated marks visually counted: exactly5stars and5plus signs. New book uses the same review drawing renderer and1060ms duration; phone and desktop proof images retained in artifacts/rated-book-20261110.",
+    "static_check": "PASS: one document,nine blocks;55files,3299420bytes including579244 optional About drawings;89local assets;55artwork hashes.",
+    "preserved": "Pricing scroll behavior, review content/carousel, choices2–5, green form, compact About, latest mobile layout and drawing sequence. Latest36px desktop/26px phone About introduction and sports quote from source4d7927d retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

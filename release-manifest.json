@@ -1,6 +1,6 @@
 {
-  "build": "8595a604b8",
-  "base_commit": "c222c17e37f47e77017d4db570309303f399c55d",
+  "build": "2fa40d4226",
+  "base_commit": "ee4d97641474c161ed00abdf6c7f1378a714bf5d",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2192,6 +2192,13 @@
       "preserved": "All element widths,heights and vertical positions;phone/tablet geometry;latest desktop/mobile connecting lines and request behavior",
       "base_source": "82bd2b3f0cfd65439d3c59fddd834797d525224e",
       "integrated_completed_source": "04932f7c088dcadcbddeccb58fc4d8c0376045a9"
+    },
+    "selected_green_soft_white_reviews_20261110": {
+      "base_commit": "c222c17e37f47e77017d4db570309303f399c55d",
+      "form": "Fix the selected solid sage green finish from option1 in every texture mode.",
+      "reviews": "Refine option2 with the same generated pencil strokes and neat drawn shape. A second filter pass retains72–100% white pigment and forces a solid alpha base,leaving28% of the prior grain contrast.",
+      "default": "Option2 soft white reviews; comparison controls now affect reviews only. Other previous review textures remain available.",
+      "preserved": "90% cups,desktop consultation position and connecting lines,six reviews/two desktop pages,larger social icons and footer links,Telegram delivery."
     }
   },
   "reviewed_decisions": {
@@ -2211,15 +2218,14 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "9f1b6804b0",
+    "build": "cfe4cc46bc",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3315493bytes,58artwork hashes.",
-    "visual_check": "1280px and320px: four texture choices visible on a normal URL; all modes switch without reload or field loss. Cups width and height are exactly90% of prior values. No horizontal overflow. Closing sets texture=off and stays closed after reload. Six reviews and pagination retained.",
-    "form": "No form submitted; Telegram Worker/config retained.",
-    "apply_shift_left": "Measured393,1024,1100,1101,1280,1920px.No horizontal overflow.Heading,cups,form and visible line move exactly-20px at1101px and wider;all visible widths,heights and vertical coordinates unchanged.Phone/tablet visible geometry identical.52tests passed."
+    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3317810bytes,58artwork hashes.",
+    "visual_check": "1280px and320px: default option2 has a much whiter72–100% pigment base and light28% pencil contrast; original1 and prior3/4 remain available. Every mode keeps solid sage form RGB231,239,226 with no background image. Six reviews/two desktop pages retained; no horizontal overflow.",
+    "form": "No form submitted; current Telegram Worker/config retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

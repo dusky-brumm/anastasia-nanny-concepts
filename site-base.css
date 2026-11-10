@@ -1,4 +1,6 @@
 html{scrollbar-gutter:stable;background:var(--site-milk,#faf8f2)}body{margin:0}main,[data-selected-block]{display:block;width:100%;margin:0;padding:0}[data-selected-block]{scroll-margin-top:8px}
+::selection{background-color:#d2dfc9;color:#28353c;text-shadow:none}
+@media(forced-colors:active){::selection{background-color:Highlight;color:HighlightText}}
 dialog{position:fixed;width:min(520px,calc(100% - 64px));padding:32px;border:1px solid #9baba4;border-radius:12px;background:var(--site-milk,#faf8f2);color:#293b36;font:16px/1.6 system-ui,sans-serif}dialog::backdrop{background:#1c30295c}dialog h2{font-size:25px;font-weight:500}dialog [data-close]{position:absolute;top:10px;right:14px;border:0;background:none;font-size:28px;color:inherit;cursor:pointer}.no-script{padding:24px;font:16px/1.6 system-ui,sans-serif}a:focus-visible,button:focus-visible{outline:1.5px solid #385a6b;outline-offset:4px}
 dialog [data-close]{transition:color 180ms ease}dialog [data-close]:hover{color:#385a6b}
 html:has(dialog[open]){overflow:hidden}

@@ -1,6 +1,6 @@
 {
-  "build": "4dc6cb8dda",
-  "base_commit": "3431c93eb7b42a9a630ee0562e890c902d724dc0",
+  "build": "e6a9bbaf38",
+  "base_commit": "554fad0db4d3a82c48b68ccfe56d5e826309cd06",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2160,7 +2160,6 @@
       "mobile": "393px measurements identical before and after",
       "ultrawide": "2561px and3440px measurements identical before and after"
     },
-    "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links.",
     "reviews_three_up_20261110": {
       "base_commit": "23ce7b961b13e0ae56c3e6f7a9bed97fcfdc29c3",
       "desktop": "Three cards per page, two pages for six saved quotations.",
@@ -2169,7 +2168,22 @@
       "navigation": "Page-size-aware arrows/dots/Home/End, page snap targets and active-review preservation on resize.",
       "preserved": "Selected book and cups, form delivery Worker, all texture comparisons, remaining blocks."
     },
+    "review_link_heading_20261110": {
+      "placement": "Move the existing Telegram review link from beside the guestbook to the right of the Reviews heading above the cards.",
+      "responsive": "The heading row wraps naturally on phones; the link remains above the review slider.",
+      "preserved": "Six reviews,two desktop pages,chalk dots,book drawing,form and other sections.",
+      "integration": "Preserve concurrent footer heading and consultation line updates from82bd2b3; regenerate shared output from all source changes."
+    },
+    "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links.",
     "footer_label_integrated_source": "baa4b0982b0fd8a613d0388ed15230027eb352c5",
+    "visible_surface_choices_cups_20261110": {
+      "base_commit": "04932f7c088dcadcbddeccb58fc4d8c0376045a9",
+      "cups": "Scale the illustration to90% within its unchanged centered wrapper on every breakpoint; preserve surrounding line and layout.",
+      "surface_choices": "Show the four existing surface versions on the ordinary site by default,starting with the selected green original. Original/blue/green/duo remain linkable; off explicitly closes the bar.",
+      "performance": "Do not request optional hatch grain while original is selected.",
+      "preserved": "Six reviews,two desktop pages,Telegram link beside review heading,form delivery,all selected drawings.",
+      "integration": "Preserve concurrent20px desktop consultation shift from3431c93; the cups remain90% inside the same wrapper."
+    },
     "apply_shift_left_20261110": {
       "desktop_min_viewport_px": 1101,
       "shift_left_px": 20,
@@ -2178,12 +2192,6 @@
       "preserved": "All element widths,heights and vertical positions;phone/tablet geometry;latest desktop/mobile connecting lines and request behavior",
       "base_source": "82bd2b3f0cfd65439d3c59fddd834797d525224e",
       "integrated_completed_source": "04932f7c088dcadcbddeccb58fc4d8c0376045a9"
-    },
-    "review_link_heading_20261110": {
-      "placement": "Move the existing Telegram review link from beside the guestbook to the right of the Reviews heading above the cards.",
-      "responsive": "The heading row wraps naturally on phones; the link remains above the review slider.",
-      "preserved": "Six reviews,two desktop pages,chalk dots,book drawing,form and other sections.",
-      "integration": "Preserve concurrent footer heading and consultation line updates from82bd2b3; regenerate shared output from all source changes."
     }
   },
   "reviewed_decisions": {
@@ -2203,17 +2211,13 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
+    "build": "9f1b6804b0",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "build": "bd5d28fea4",
-    "visual_check": "1280px: one Telegram review link to the right of the heading;320px: link wraps below heading above cards,no horizontal overflow. Six reviews and pagination retained.",
-    "static_check": "PASS: one document,nine blocks;57files,3315870bytes including579244 optional About drawings and306644 comparison textures;93local assets;58artwork hashes.Worker serves57exact public assets;server bundle4435588bytes.",
-    "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
-    "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed.",
-    "desktop_content_width": "Nine section content boxes measured1280px at1440,1920,2560px;1360px above2560px. No horizontal overflow at all7checked widths.393px and ultrawide measurements identical before/after. Hero and five-stage route visually checked at1920px.52tests passed.",
-    "footer_label": "Visible footer heading removed;all6navigation links retained;latest6review cards and desktop3-card pages preserved.52tests passed.",
+    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3315493bytes,58artwork hashes.",
+    "visual_check": "1280px and320px: four texture choices visible on a normal URL; all modes switch without reload or field loss. Cups width and height are exactly90% of prior values. No horizontal overflow. Closing sets texture=off and stays closed after reload. Six reviews and pagination retained.",
     "form": "No form submitted; Telegram Worker/config retained.",
     "apply_shift_left": "Measured393,1024,1100,1101,1280,1920px.No horizontal overflow.Heading,cups,form and visible line move exactly-20px at1101px and wider;all visible widths,heights and vertical coordinates unchanged.Phone/tablet visible geometry identical.52tests passed."
   },

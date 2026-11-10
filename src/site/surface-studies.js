@@ -4,14 +4,14 @@ import {surfaceVersions,surfaceVersion} from './surface-study-model.js';
 const surfaceRoot=document.documentElement;
 let surfaceBar;
 function chooseSurface(value){
- const version=surfaceVersion(value);
+ const version=surfaceVersion(value??'original');
  if(!version){delete surfaceRoot.dataset.textureStudy;surfaceBar?.remove();surfaceBar=null;return;}
  surfaceRoot.dataset.textureStudy=version.id;
  if(!surfaceBar){
   surfaceBar=document.createElement('nav');
   surfaceBar.className='surface-study-bar';
   surfaceBar.setAttribute('aria-label','Сравнение фактур');
-  surfaceBar.innerHTML='<span class="surface-study-caption">Фактуры</span><div class="surface-study-choices" role="group" aria-label="Выбрать версию"></div><span class="surface-study-name" aria-live="polite"></span><div class="surface-study-jumps"><a href="#apply">Заявка</a><a href="#reviews">Отзывы</a></div><button class="surface-study-close" type="button" aria-label="Закрыть сравнение и вернуться к основному сайту">×</button>';
+  surfaceBar.innerHTML='<span class="surface-study-caption">Форма и отзывы</span><div class="surface-study-choices" role="group" aria-label="Выбрать версию"></div><span class="surface-study-name" aria-live="polite"></span><div class="surface-study-jumps"><a href="#apply">Заявка</a><a href="#reviews">Отзывы</a></div><button class="surface-study-close" type="button" aria-label="Закрыть сравнение и вернуться к основному сайту">×</button>';
   const group=surfaceBar.querySelector('.surface-study-choices');
   surfaceVersions.forEach((item,index)=>{
    const button=document.createElement('button');
@@ -28,15 +28,16 @@ function chooseSurface(value){
    const button=event.target.closest('[data-texture-choice]');
    const close=event.target.closest('.surface-study-close');
    if(!button&&!close)return;
-   const id=button?.dataset.textureChoice??null,url=new URL(location.href);
-   if(id)url.searchParams.set('texture',id);else url.searchParams.delete('texture');
+   const id=button?.dataset.textureChoice??'off',url=new URL(location.href);
+   url.searchParams.set('texture',id);
    history.replaceState(null,'',url);
    chooseSurface(id);
   });
  }
  // Reuse the generated strokes as white pigment, with visible paper gaps.
- const grain=version.id==='original'?'green':version.id;
- surfaceBar.querySelector('[data-study-grain]').setAttribute('href',`media/surface-studies-20261110/form-${grain}.webp`);
+ const grain=surfaceBar.querySelector('[data-study-grain]');
+ if(version.id==='original')grain.removeAttribute('href');
+ else grain.setAttribute('href',`media/surface-studies-20261110/form-${version.id}.webp`);
  const contrast=version.id==='green'?2:3;
  for(const channel of surfaceBar.querySelectorAll('[data-study-contrast]')){
   channel.setAttribute('slope',String(contrast));channel.setAttribute('intercept',String(1-contrast));

@@ -1,5 +1,5 @@
 {
-  "build": "dc61e0d67e",
+  "build": "f47733fade",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Add three optional generated pencil-hatching surface versions for the existing form and review cards, alongside an explicit original comparison. Keep the ordinary site unchanged. Share through texture=blue/green/duo/original; one fixed numbered comparison strip changes only background finishes without resetting fields, scroll position or existing book choices.",
     "Enlarge only the opening About lead, keeping the other slide lead sizes unchanged. Replace the between-games interview anecdote with Anastasia’s original sports/recruiting statement from her supplied Instagram story.",
     "Compact the sticky header and mobile hero; keep the original text/photo treatment, with a smaller signed photo and one centered CTA below it on phones. Increase the service divider/artwork gap, shorten the pricing section and reveal desktop process arrows in a timed sequence with restored heads.",
     "Keep the selected sage application form permanently, removing the blue alternative, color buttons and color-selection runtime; retain white fields, cup drawing, contour frame and request behavior.",
@@ -2053,6 +2054,26 @@
       "inset_after_px": -5,
       "visual_gap_increase_px": 1,
       "preserved": "Button fill,dimensions,padding,position,hand-drawn mask and interaction behavior"
+    },
+    "surface_studies_20261110": {
+      "versions": {
+        "original": "Existing sage form wash and original white review cards",
+        "blue": "Generated blue pencil form and more visible white pencil review panels",
+        "green": "Generated sage pencil form and denser white chalk review panels",
+        "duo": "Generated blue/sage pencil form and white pencil review panels"
+      },
+      "entry": "Query parameter texture=original|blue|green|duo; absent or invalid values keep the original site without the comparison strip",
+      "controls": "One fixed numbered strip under the compact sticky header, direct application/reviews jumps and a close control; original content nodes retained",
+      "assets": {
+        "generator": "Built-in ImageGen",
+        "selected": 5,
+        "extra_source_studies": 1,
+        "optimized_bytes": 306644,
+        "prompts": "docs/surface-studies-20261110.json",
+        "directory": "src/site/media/surface-studies-20261110"
+      },
+      "rendering": "Form hatching is clipped by the selected pencil contour. Pure-white review pigment uses the generated rectangle alpha and a contrast-adjusted generated hatch luminance mask; controlled edges, no colored/gray paper cast.",
+      "budgets": "The original base budget stays2.8MB; optional comparison images have350KB cap and the complete site remains under the existing3.8MB cap."
     }
   },
   "reviewed_decisions": {
@@ -2076,16 +2097,16 @@
       "passed": 44,
       "failed": 0
     },
-    "build": "dc61e0d67e",
-    "visual_check": "Hero/form pseudo-elements have-5px on all four sides at393px and1280px; no overflow; normal button geometry preserved. Phone screenshot retained in artifacts/button-gap-20261110.",
-    "static_check": "PASS: one document,nine blocks;55files,3299420bytes including579244 optional About drawings;89local assets;55artwork hashes.",
-    "preserved": "All current artwork,rated guestbook,scroll-driven pricing,About text,mobile layout and behavior."
+    "build": "f47733fade",
+    "visual_check": "Desktop1440px: four version buttons work, white fields and a single form remain, entered name is preserved and scrollY4405 remains unchanged across original/green/duo. White pencil texture visible behind all three review cards. Phones390px/320px: no page or comparison-strip horizontal overflow, form fits327px/257px and reviews retain the single-card carousel. Closing the comparison or opening an unknown texture restores the unmodified sage/white finish; no browser errors.",
+    "static_check": "PASS: one document, nine blocks;61 files,3613800 bytes including579244 About drawing bytes and306644 optional comparison texture bytes;96 local assets;55 artwork hashes.",
+    "preserved": "Latest source a5fddf1e9404495b757fc3f5eefc265aa27d5008, all photos, original main-site finishes, enlarged About opening lead, source-based sports copy, existing book options, form action and all other sections."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "345bfb4506",
+  "previous_confirmed_build": "dc61e0d67e",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

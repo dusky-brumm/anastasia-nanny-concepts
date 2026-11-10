@@ -66,7 +66,12 @@ for(const name of optionalAboutFiles){
  try{optionalAboutBytes+=(await stat('out/media/'+name+'.webp')).size;}
  catch(error){if(error.code!=='ENOENT')throw error;}
 }
-assert.ok(bytes-optionalAboutBytes<2_800_000,`Base payload budget exceeded: ${bytes-optionalAboutBytes}`);
+// Comparison-only backgrounds are requested by CSS only for explicit texture modes.
+const surfaceStudyNames=['form-blue','form-green','form-duo','review-pencil','review-chalk'];
+let optionalSurfaceBytes=0;
+for(const name of surfaceStudyNames)optionalSurfaceBytes+=(await stat('out/media/surface-studies-20261110/'+name+'.webp')).size;
+assert.ok(optionalSurfaceBytes<350_000,`Texture comparison budget exceeded: ${optionalSurfaceBytes}`);
+assert.ok(bytes-optionalAboutBytes-optionalSurfaceBytes<2_800_000,`Base payload budget exceeded: ${bytes-optionalAboutBytes-optionalSurfaceBytes}`);
 assert.ok(optionalAboutBytes<1_000_000,`Optional drawing budget exceeded: ${optionalAboutBytes}`);
 assert.ok(bytes<3_800_000,`Full site payload budget exceeded: ${bytes}`);
-console.log(`PASS: one document, nine complete blocks, no frame resizing; ${files} files, ${bytes} bytes (${optionalAboutBytes} optional About drawings), ${links} local assets; ${catalog.length} artwork hashes.`);
+console.log(`PASS: one document, nine complete blocks, no frame resizing; ${files} files, ${bytes} bytes (${optionalAboutBytes} optional About drawings, ${optionalSurfaceBytes} optional comparison textures), ${links} local assets; ${catalog.length} artwork hashes.`);

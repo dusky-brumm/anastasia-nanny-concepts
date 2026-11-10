@@ -1,0 +1,51 @@
+{
+  "generator": "Built-in ImageGen",
+  "assets": [
+    {
+      "id": "form-blue",
+      "prompt": "Use case: stylized-concept. Asset type: production website UI texture, a single isolated horizontal rectangular swatch, landscape 3:2. It will sit behind real HTML form fields, so include no text, no symbols, no UI, no objects. Elegant grown-up dry colored-pencil / soft chalk drawing matching an understated nanny-selection site with milk #faf8f2, pale blue #e1eff7 and sage #e7efe2. Straight-ish rectangular silhouette, modestly softened corners, tidy hand-drawn perimeter, generous transparent outer margin (about 4%). Completely flat front view, no perspective, no shadows, no lighting effects, no yellow/gray paper, no watercolor. Visible closely spaced diagonal hatching strokes at roughly 25 degrees, repeated by hand with small pressure variations and tiny broken crayon grain. Medium-thick dry pencil strokes, light translucent overall fill, some narrow transparent gaps showing the page beneath. Uniform density over the entire interior, clearly recognizable as manual hatching rather than a flat digital fill. Do not make a ragged/torn cloud. True transparent background outside the swatch. Palette: only pale dusty sky blue, strokes around #a6c1d2 at delicate pressure; combined result looks like #e1eff7 on milk. A calm light blue hatched field.",
+      "source": "C:\\Users\\Нат\\.codex\\generated_images\\01a19f7b-5b25-7e03-8715-e4afa371b7f3\\exec-b2d96847-8253-4fb2-9413-0743c4116cde.png",
+      "workspace_original": "C:/Users/Нат/Documents/ChatGPT/Anastasia/artifacts/surface-studies-20261110/originals/form-blue.png",
+      "site_asset": "src/site/media/surface-studies-20261110/form-blue.webp",
+      "optimized_bytes": 75128,
+      "optimized_sha256": "f73b68ba46bb2f2906731f09f97298bf1171d89ccee3bd5fbdf702a8aeb14a3b"
+    },
+    {
+      "id": "form-green",
+      "prompt": "Use case: stylized-concept. Asset type: production website UI texture, a single isolated horizontal rectangular swatch, landscape 3:2. It will sit behind real HTML form fields, so include no text, no symbols, no UI, no objects. Elegant grown-up dry colored-pencil / soft chalk drawing matching an understated nanny-selection site with milk #faf8f2, pale blue #e1eff7 and sage #e7efe2. Straight-ish rectangular silhouette, modestly softened corners, tidy hand-drawn perimeter, generous transparent outer margin (about 4%). Completely flat front view, no perspective, no shadows, no lighting effects, no yellow/gray paper, no watercolor. Visible closely spaced diagonal hatching strokes at roughly 25 degrees, repeated by hand with small pressure variations and tiny broken crayon grain. Medium-thick dry pencil strokes, light translucent overall fill, some narrow transparent gaps showing the page beneath. Uniform density over the entire interior, clearly recognizable as manual hatching rather than a flat digital fill. Do not make a ragged/torn cloud. True transparent background outside the swatch. Palette: only pale restrained sage green, strokes around #afbea4 at delicate pressure; combined result looks like #e7efe2 on milk. A calm light sage hatched field. Keep the same simple rectangular shape and diagonal hatching rhythm as a refined UI panel.",
+      "source": "C:\\Users\\Нат\\.codex\\generated_images\\01a19f7b-5b25-7e03-8715-e4afa371b7f3\\exec-bb3acc71-10fb-4418-8604-8397e080984e.png",
+      "workspace_original": "C:/Users/Нат/Documents/ChatGPT/Anastasia/artifacts/surface-studies-20261110/originals/form-green.png",
+      "site_asset": "src/site/media/surface-studies-20261110/form-green.webp",
+      "optimized_bytes": 56306,
+      "optimized_sha256": "63e8c9c3de9d3479b8feaeeef1f6baa47008e8dea4d830221cf8f5ad76b69d3e"
+    },
+    {
+      "id": "form-duo",
+      "prompt": "Use case: stylized-concept. Asset type: production website UI texture, a single isolated horizontal rectangular swatch, landscape 3:2. It will sit behind real HTML form fields, so include no text, no symbols, no UI, no objects. Elegant grown-up dry colored-pencil / soft chalk drawing matching an understated nanny-selection site with milk #faf8f2, pale blue #e1eff7 and sage #e7efe2. Straight-ish rectangular silhouette, modestly softened corners, tidy hand-drawn perimeter, generous transparent outer margin (about 4%). Completely flat front view, no perspective, no shadows, no lighting effects, no yellow/gray paper, no watercolor. Visible closely spaced diagonal hatching strokes at roughly 25 degrees, repeated by hand with small pressure variations and tiny broken crayon grain. Medium-thick dry pencil strokes, light translucent overall fill, some narrow transparent gaps showing the page beneath. Uniform density over the entire interior, clearly recognizable as manual hatching rather than a flat digital fill. Do not make a ragged/torn cloud. True transparent background outside the swatch. Palette: pale dusty sky blue #a6c1d2 and soft sage #afbea4, both delicate pressure. Blue pencil strokes primarily in the upper-left half, sage strokes in the lower-right half; gently interleaved hand-drawn strokes through the middle. Both colors clearly present, airy and harmonious, not a digital gradient.",
+      "source": "C:\\Users\\Нат\\.codex\\generated_images\\01a19f7b-5b25-7e03-8715-e4afa371b7f3\\exec-fffa19c7-be81-468a-989d-09d02152c9db.png",
+      "workspace_original": "C:/Users/Нат/Documents/ChatGPT/Anastasia/artifacts/surface-studies-20261110/originals/form-duo.png",
+      "site_asset": "src/site/media/surface-studies-20261110/form-duo.webp",
+      "optimized_bytes": 95076,
+      "optimized_sha256": "f96a98a07b6a90401998d96a45ea7ed8ff78ed0248c1f2bbdcdee266ee43edea"
+    },
+    {
+      "id": "review-pencil",
+      "prompt": "Use case: stylized-concept. Asset type: white pencil-filled background panel for readable HTML testimonial cards. Generate exactly one isolated upright rectangular swatch, 4:3 landscape, true transparent background. Pure WHITE #ffffff colored pencil applied in tidy, closely spaced horizontal and gently diagonal strokes; dense white interior that will provide a nearly opaque bright white surface, with tiny tasteful pencil lines and paper gaps. Edges clearly hand drawn with rounded corners and modest uneven pencil stroke ends, but very neat and almost rectangular, NOT torn paper, NOT irregular cloud, NOT ornate, no border line. White strokes only, absolutely no cream/yellow/beige/gray tint or dirty marks, no shadows, no objects, no typography, no quotation marks. Flat texture only. Generous transparent outer margin 4%. Sophisticated elegant minimal editorial chalk/pencil medium designed to look good over pale blue #e1eff7. Dense readable center; subtle grain and white hatch marks most noticeable at the perimeter.",
+      "source": "C:\\Users\\Нат\\.codex\\generated_images\\01a19f7b-5b25-7e03-8715-e4afa371b7f3\\exec-511828a9-b324-4785-a8b3-410993305bba.png",
+      "workspace_original": "C:/Users/Нат/Documents/ChatGPT/Anastasia/artifacts/surface-studies-20261110/originals/review-pencil.png",
+      "site_asset": "src/site/media/surface-studies-20261110/review-pencil.webp",
+      "optimized_bytes": 43596,
+      "optimized_sha256": "cbe78a8c82024a7073864051daa28cfea38406b0c687de1232563ec55b2dbdde"
+    },
+    {
+      "id": "review-chalk",
+      "prompt": "Use case: stylized-concept. Asset type: white dry-chalk-filled background panel for real HTML testimonial cards. Exactly one isolated wide 4:3 rectangular patch with small soft rounded corners and a tidy, slightly handmade outline. True transparent surrounding background, outer margin about 4%. Pure brilliant WHITE #ffffff chalk, broad dry hand strokes layered in short horizontal passes, dense smooth white reading area in the center, subtle crayon texture and tiny breaks only near the edges, faint white stroke direction. Feels carefully hand colored rather than a digital rectangle. Keep the silhouette nearly straight and balanced. NO torn-paper edges, NO crumpled paper, NO cloudy scallops, NO watercolor, NO shadows, NO yellow, NO cream, NO beige, NO gray, NO text or objects. Elegant restrained adult website material for cards on pale blue #e1eff7. A single flat white texture swatch.",
+      "source": "C:\\Users\\Нат\\.codex\\generated_images\\01a19f7b-5b25-7e03-8715-e4afa371b7f3\\exec-75611479-7e59-45d1-82e7-89effc943ff0.png",
+      "workspace_original": "C:/Users/Нат/Documents/ChatGPT/Anastasia/artifacts/surface-studies-20261110/originals/review-chalk.png",
+      "site_asset": "src/site/media/surface-studies-20261110/review-chalk.webp",
+      "optimized_bytes": 36538,
+      "optimized_sha256": "9188a14e9ea12f016b8e331530f1e3e88338d2d9469d59bfa77323568edbf167"
+    }
+  ],
+  "rendering": "Forms use the generated colored hatching clipped by the existing drawn form contour. White review panels combine each generated panel silhouette with the luminance of generated hatching, keeping white pigment and transparent paper gaps. No form or review copy is rasterized."
+}

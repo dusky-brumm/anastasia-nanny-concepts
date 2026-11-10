@@ -1,3 +1,4 @@
+import {surfaceVersions} from './surface-study-model.js';
 import {seoHead} from '../reference/studio/seo.js';
 
 export const blockLabels={header:'Хедер',hero:'Главный блок',service:'Об услуге',about:'Знакомство с Анастасией',process:'Как проходит подбор',pricing:'Стоимость и гарантия',reviews:'Отзывы и история семьи',apply:'Заявка',footer:'Футер'};
@@ -10,9 +11,10 @@ ${seoHead('index.html')}
 <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="site-base.css?v=__VERSION__">
 <link rel="preload" as="image" href="media/portrait-480.webp" imagesrcset="media/portrait-480.webp 480w, media/portrait-720.webp 720w" imagesizes="(max-width:650px) calc(100vw - 100px), (max-width:850px) 330px, 390px">
 <link rel="stylesheet" href="site-typography.css?v=__VERSION__">
-<script>(()=>{const root=document.documentElement;root.dataset.imageReveal='on';root.dataset.drawingMotion=matchMedia('(prefers-reduced-motion: reduce)').matches||new URLSearchParams(location.search).get('motion')==='off'||new URLSearchParams(location.search).get('capture')==='1'?'off':'on';if(!document.fonts)return;root.dataset.fontsReady='pending';const reveal=()=>{root.dataset.fontsReady='ready';};const fallback=setTimeout(reveal,1200);document.addEventListener('load',event=>{if(event.target.id!=='site-design')return;Promise.allSettled([document.fonts.load('400 16px Manrope','Няня Nanny'),document.fonts.load('500 16px Manrope','Няня Nanny'),document.fonts.load('600 16px Manrope','Няня Nanny'),document.fonts.load('400 32px Lora','Няня Nanny'),document.fonts.load('400 32px Caveat','Анастасия Доронина')]).then(()=>document.fonts.ready).then(()=>{clearTimeout(fallback);reveal();});},true);})();</script>
+<script>(()=>{const root=document.documentElement;root.dataset.imageReveal='on';const surface=new URLSearchParams(location.search).get('texture');if(${JSON.stringify(surfaceVersions.map(version=>version.id))}.includes(surface))root.dataset.textureStudy=surface;root.dataset.drawingMotion=matchMedia('(prefers-reduced-motion: reduce)').matches||new URLSearchParams(location.search).get('motion')==='off'||new URLSearchParams(location.search).get('capture')==='1'?'off':'on';if(!document.fonts)return;root.dataset.fontsReady='pending';const reveal=()=>{root.dataset.fontsReady='ready';};const fallback=setTimeout(reveal,1200);document.addEventListener('load',event=>{if(event.target.id!=='site-design')return;Promise.allSettled([document.fonts.load('400 16px Manrope','Няня Nanny'),document.fonts.load('500 16px Manrope','Няня Nanny'),document.fonts.load('600 16px Manrope','Няня Nanny'),document.fonts.load('400 32px Lora','Няня Nanny'),document.fonts.load('400 32px Caveat','Анастасия Доронина')]).then(()=>document.fonts.ready).then(()=>{clearTimeout(fallback);reveal();});},true);})();</script>
 <link id="site-design" rel="stylesheet" href="site-sections.css?v=__VERSION__">
 <link rel="stylesheet" href="single-page.css?v=__VERSION__">
+<link rel="stylesheet" href="surface-studies.css?v=__VERSION__">
 <script defer src="site-runtime.js?v=__VERSION__"></script>
 </head><body>
 <main aria-label="Индивидуальный подбор няни">${blocks.join('\n')}</main>

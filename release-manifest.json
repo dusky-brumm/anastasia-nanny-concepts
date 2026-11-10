@@ -1,6 +1,6 @@
 {
-  "build": "b486cfde0a",
-  "base_commit": "2d537e296faadd6292bc1412a3c9bf3411816407",
+  "build": "3408994725",
+  "base_commit": "a3bdb8b2eaef67e30f4e6cd26c63ec032c700b9b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2171,7 +2171,7 @@
       "placement": "Move the existing Telegram review link from beside the guestbook to the right of the Reviews heading above the cards.",
       "responsive": "The heading row wraps naturally on phones; the link remains above the review slider.",
       "preserved": "Six reviews,two desktop pages,chalk dots,book drawing,form and other sections.",
-      "integration": "Preserve concurrent footer heading removal from a3bdb8b; regenerate shared output from both source changes."
+      "integration": "Preserve concurrent footer heading and consultation line updates from82bd2b3; regenerate shared output from all source changes."
     },
     "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links.",
     "footer_label_integrated_source": "baa4b0982b0fd8a613d0388ed15230027eb352c5"
@@ -2193,12 +2193,12 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "b486cfde0a",
+    "build": "3408994725",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3312901bytes,57artwork hashes.",
+    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3315165bytes,58artwork hashes.",
     "visual_check": "1280px: one Telegram review link to the right of the heading;320px: link wraps below heading above cards,no horizontal overflow. Six reviews and pagination retained.",
     "form": "No form submitted; Telegram Worker/config retained.",
     "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
@@ -2263,5 +2263,12 @@
       "6 месяцев"
     ],
     "checks": "build, public asset bytes and 52 existing tests passed"
+  },
+  "conversation_line_20261110": {
+    "desktop": "Continuous blue pencil line below the cups and along the lower edge of the form, with a single loose loop",
+    "mobile": "Separate contour follows the right edge and bottom of the stacked form",
+    "artwork": "Editable SVG with existing dry pencil grain and stroke drawing",
+    "checks": "Build, 58 artwork hashes, 57 served asset bytes and 52 existing tests passed",
+    "browser": "Computer Use stopped because the browser URL could not be verified"
   }
 }

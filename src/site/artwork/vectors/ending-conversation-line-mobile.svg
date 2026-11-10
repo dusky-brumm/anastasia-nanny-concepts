@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 760" preserveAspectRatio="none" fill="none">
+  <title>Карандашная нить вокруг мобильной формы</title>
+  <defs><filter id="conversation-mobile-powder" x="-4%" y="-2%" width="108%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="11"/><feColorMatrix type="luminanceToAlpha"/><feComponentTransfer><feFuncA type="linear" slope="2" intercept="-.2"/></feComponentTransfer><feComposite in="SourceGraphic" operator="in"/></filter></defs>
+  <g filter="url(#conversation-mobile-powder)"><path data-ink-stroke d="M18 174C73 160 113 183 168 170C192 165 205 159 207 171C209 183 192 188 188 177C184 163 207 154 232 164C285 180 336 153 348 190C357 216 350 254 350 292C350 378 358 453 350 537C345 594 357 649 337 690C316 733 266 737 224 728C176 718 125 743 78 730" stroke="#658392" stroke-width="1.7" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

@@ -163,9 +163,9 @@
   {
     "id": "ending-conversation-line",
     "file": "artwork/vectors/ending-conversation-line.svg",
-    "title": "Карандашная линия беседы",
+    "title": "Карандашная нить разговора от чашек к форме",
     "group": "Линии, стрелки и значки",
-    "sha256": "8cbaa807df9371ccfbf0114c56e8c15ad1d2b4265fb5225468ced862ea85bdbc"
+    "sha256": "730a8f2ed799d736ea02b6151ace121df418aee654f94ac4f5935e9854def888"
   },
   {
     "id": "ending-margin-bracket",
@@ -397,5 +397,12 @@
     "title": "Лёгкие фоновые штрихи для книги и чашек",
     "group": "Иллюстрации",
     "sha256": "0e35eecc483c29ee21a1a7076e531861c8a0e944fa926126458a1ee40fbfa15b"
+  },
+  {
+    "id": "ending-conversation-line-mobile",
+    "file": "artwork/vectors/ending-conversation-line-mobile.svg",
+    "title": "Карандашная нить вокруг мобильной формы",
+    "group": "Линии, стрелки и значки",
+    "sha256": "63a820993d819adbc44dc3e020d356b7f5cb2399b891bfed5c94c63966bf6c73"
   }
 ]

@@ -404,5 +404,19 @@
     "title": "Карандашная нить вокруг мобильной формы",
     "group": "Линии, стрелки и значки",
     "sha256": "63a820993d819adbc44dc3e020d356b7f5cb2399b891bfed5c94c63966bf6c73"
+  },
+  {
+    "id": "reviews-book-white-20261110",
+    "file": "media/reviews-book-white-20261110.webp",
+    "title": "Книга отзывов — более белые страницы",
+    "group": "Иллюстрации",
+    "sha256": "70c3163a111574e74bb2eed64ec705e635362c84022ef1166b46f9f4a9da3875"
+  },
+  {
+    "id": "reviews-book-ground-20261110",
+    "file": "media/reviews-book-ground-20261110.webp",
+    "title": "Мягкая карандашная поверхность под книгой",
+    "group": "Иллюстрации",
+    "sha256": "92a29319833a15e8306ceba849b995aab4607a6256bb3a8050fba07917c3e71b"
   }
 ]

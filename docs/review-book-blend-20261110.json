@@ -1,0 +1,67 @@
+{
+  "tool": "built-in ImageGen",
+  "reference": "src/site/media/reviews-light-notebook-20261110.webp",
+  "prompts": [
+    {
+      "id": "book-whiter",
+      "prompt": "Use case: precise-object-edit. Edit target: the attached transparent colored-pencil drawing of an open book. Make only a subtle localized color retouch: brighten a few broad areas of the paper toward clean warm white, especially the center of each page and the outer upper page surfaces; reduce the yellow/cream cast there by about 20 percent. Preserve the existing book exactly: same very wide shallow perspective, same silhouette, page geometry and position, graphite-blue and sage broken dry-pencil contours, squiggle lines on pages, corner hatching, teal bookmark and hand-drawn texture. Keep some soft milk-colored paper shading near folds. Do not redesign, redraw or simplify the book; this is the same approved illustration with small white highlights. Keep original composition and wide canvas proportions. Transparent background; no surrounding objects, no shadows or added background, no text, no new decorations."
+    },
+    {
+      "id": "book-backdrop",
+      "prompt": "Use case: stylized-concept. Asset type: transparent decorative underdrawing to place BEHIND the existing open book on a calm nanny-selection website. The attached book is a style and palette reference ONLY: DO NOT draw a book or any objects. Create one very low-contrast wide horizontal hand-shaded surface, as if the book rests on an airy sketched tabletop. Soft broad dry colored-pencil and chalk strokes in mostly milk white, very pale powder blue and a whisper of sage; a few faint gently curving pencil gestures suggest the tabletop plane beneath the book. Elegant restrained adult drawing, tactile dry pencil on paper. Continuous softly blended hatching, generous sparse transparent gaps and feathered edges that fully dissolve into transparency. Centered broad flattened oval/irregular horizontal footprint, about 3:1 landscape proportions, with its lightest area under the center and understated blue/sage along the lower edge. It should blend naturally on website background #e1eff7. No rectangular border, no square tile, no realistic drop shadow, no dark grey or yellow dirt, no scattered little parallel stroke clusters, no objects, no leaves, stars, hearts, books, cups, text or symbols. A quiet cohesive ground, subordinate to the foreground book."
+    }
+  ],
+  "assets": [
+    {
+      "id": "book-whiter",
+      "original": "C:\\Users\\Нат\\Documents\\ChatGPT\\Anastasia\\artifacts\\book-blend-20261110\\originals\\book-whiter.png",
+      "file": "media/reviews-book-white-20261110.webp",
+      "source_size": [
+        1983,
+        793
+      ],
+      "size": [
+        1200,
+        480
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        50,
+        39,
+        1188,
+        480
+      ],
+      "bytes": 60990,
+      "sha256": "70c3163a111574e74bb2eed64ec705e635362c84022ef1166b46f9f4a9da3875"
+    },
+    {
+      "id": "book-backdrop",
+      "original": "C:\\Users\\Нат\\Documents\\ChatGPT\\Anastasia\\artifacts\\book-blend-20261110\\originals\\book-backdrop.png",
+      "file": "media/reviews-book-ground-20261110.webp",
+      "source_size": [
+        2172,
+        724
+      ],
+      "size": [
+        1200,
+        400
+      ],
+      "alpha": [
+        0,
+        254
+      ],
+      "alpha_bbox": [
+        0,
+        2,
+        1198,
+        400
+      ],
+      "bytes": 114936,
+      "sha256": "92a29319833a15e8306ceba849b995aab4607a6256bb3a8050fba07917c3e71b"
+    }
+  ],
+  "rendering": "Approved book composition and SVG crop retained. New continuous chalk ground is a separate static decorative layer; only the retouched book uses the existing drawing animation."
+}

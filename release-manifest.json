@@ -1,6 +1,6 @@
 {
-  "build": "7a3bc5d7ce",
-  "base_commit": "d428ed14c5a5b7f808af20b636793f2b47e03173",
+  "build": "2d332bb406",
+  "base_commit": "375f4affde1e52f0c302e652ec21c9d0972d213f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2199,6 +2199,15 @@
       "reviews": "Refine option2 with the same generated pencil strokes and neat drawn shape. A second filter pass retains72–100% white pigment and forces a solid alpha base,leaving28% of the prior grain contrast.",
       "default": "Option2 soft white reviews; comparison controls now affect reviews only. Other previous review textures remain available.",
       "preserved": "90% cups,desktop consultation position and connecting lines,six reviews/two desktop pages,larger social icons and footer links,Telegram delivery."
+    },
+    "review_book_blend_20261110": {
+      "base_commit": "eca98795436f03d8224495e611bd9220e56d39b2",
+      "book": "Built-in ImageGen localized paper whitening; same approved shape,pencil contours,scribbles and teal bookmark. Original source asset retained.",
+      "background": "Separate cohesive low-contrast chalk/pencil ground,with softly fading milk/blue/sage shading; a hint of tabletop below the book.",
+      "layout": "Foreground book retains its420px desktop drawing size and original SVG crop. Backdrop has a580px wrapper clipped to available width; mobile book size retained.",
+      "prompts": "docs/review-book-blend-20261110.json",
+      "preserved": "Green form1,soft white review2,six reviews/two desktop pages,Telegram link beside heading,all other blocks and animation behavior.",
+      "integration": "Retain the parallel phone book frame compaction from d428ed1:144px high. Regenerate shared output from both changes."
     }
   },
   "reviewed_decisions": {
@@ -2218,14 +2227,14 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "cfe4cc46bc",
+    "build": "b0771bef1e",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3317810bytes,58artwork hashes.",
-    "visual_check": "1280px and320px: default option2 has a much whiter72–100% pigment base and light28% pencil contrast; original1 and prior3/4 remain available. Every mode keeps solid sage form RGB231,239,226 with no background image. Six reviews/two desktop pages retained; no horizontal overflow.",
-    "form": "No form submitted; current Telegram Worker/config retained."
+    "static_check": "PASS: Worker serves58exact assets; single page,9blocks,58files,3320781bytes,60artwork hashes.",
+    "visual_check": "1280px: foreground book remains420px wide,soft ground580px;320px: both fit269px with no horizontal overflow. Localized white paper retouch preserves book composition. Existing twelve raster contour records regenerated from their actual current images. Green form1,soft review2,six reviews/two desktop pages preserved. Latest phone frame144px high verified at320px; book and ground remain269px wide.",
+    "form": "No form submitted; Telegram Worker/config retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

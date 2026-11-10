@@ -1,5 +1,5 @@
 {
-  "build": "17fcda981a",
+  "build": "dc61e0d67e",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -2045,6 +2045,14 @@
       "generation": "ImageGen built-in transparent edit, exact prompt and original PNG retained in artifacts/rated-book-20261110",
       "documentation": "docs/rated-book-20261110.md",
       "integrated_source": "4d7927d8d432d76ee00e32f0ce29a509d1f75660"
+    },
+    "button_frame_gap_20261110": {
+      "base_commit": "504729831c8596e0f0faff087cdfa511f950ca3b",
+      "scope": "Hero action and application submit button only",
+      "inset_before_px": -4,
+      "inset_after_px": -5,
+      "visual_gap_increase_px": 1,
+      "preserved": "Button fill,dimensions,padding,position,hand-drawn mask and interaction behavior"
     }
   },
   "reviewed_decisions": {
@@ -2068,10 +2076,10 @@
       "passed": 44,
       "failed": 0
     },
-    "build": "17fcda981a",
-    "visual_check": "Generated marks visually counted: exactly5stars and5plus signs. New book uses the same review drawing renderer and1060ms duration; phone and desktop proof images retained in artifacts/rated-book-20261110.",
+    "build": "dc61e0d67e",
+    "visual_check": "Hero/form pseudo-elements have-5px on all four sides at393px and1280px; no overflow; normal button geometry preserved. Phone screenshot retained in artifacts/button-gap-20261110.",
     "static_check": "PASS: one document,nine blocks;55files,3299420bytes including579244 optional About drawings;89local assets;55artwork hashes.",
-    "preserved": "Pricing scroll behavior, review content/carousel, choices2–5, green form, compact About, latest mobile layout and drawing sequence. Latest36px desktop/26px phone About introduction and sports quote from source4d7927d retained."
+    "preserved": "All current artwork,rated guestbook,scroll-driven pricing,About text,mobile layout and behavior."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

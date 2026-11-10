@@ -75,7 +75,7 @@ html[data-drawing-motion=off] svg[data-ink-line] path{stroke-dashoffset:0!import
 
 /* A separate, neat pencil contour stays visible outside the filled action. */
 .reference-design.look-02-elliot #hero .hero-actions .button,.site-preview .s-form-pencil .s-button{position:relative;overflow:visible;border-radius:8px}
-.reference-design.look-02-elliot #hero .hero-actions .button::after,.site-preview .s-form-pencil .s-button::before{content:'';position:absolute;display:block;inset:-4px;border:0;border-radius:0;transform:none;background:var(--button,#526c73);mask:url('studio/pencil-button.svg?v=__VERSION__') center/100% 100% no-repeat;opacity:1;pointer-events:none}
+.reference-design.look-02-elliot #hero .hero-actions .button::after,.site-preview .s-form-pencil .s-button::before{content:'';position:absolute;display:block;inset:-5px;border:0;border-radius:0;transform:none;background:var(--button,#526c73);mask:url('studio/pencil-button.svg?v=__VERSION__') center/100% 100% no-repeat;opacity:1;pointer-events:none}
 
 /* The navigation has one quiet, uppercase rhythm on desktop and in the menu. */
 .site-preview #header .s-nav>a{text-transform:uppercase;font-size:12px;letter-spacing:.065em}

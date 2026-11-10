@@ -1,5 +1,6 @@
 /* All selected compositions share the process section's centered content width. */
 :root{--site-content-width:1360px;--site-content-gutter:clamp(24px,3vw,56px);--site-content-inset:max(var(--site-content-gutter),calc((100% - var(--site-content-width))/2))}
+@media(min-width:761px) and (max-width:2560px){:root{--site-content-width:1280px}}
 :root{--site-section-space:clamp(88px,7vw,112px)}
 .reference-design.look-02-elliot #hero .cover-grid,.site-preview.early-classic :is(#pricing,#reviews,#apply,#process),.site-preview .about-story,#chalk-service-designs .service-scene{padding-block:var(--site-section-space)!important}
 #chalk-service-designs .service-scene{padding-block:calc(var(--site-section-space) - 16px)!important}

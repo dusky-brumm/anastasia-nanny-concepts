@@ -1,5 +1,5 @@
 {
-  "build": "fe9c972f47",
+  "build": "f2e60af42c",
   "base_commit": "fb2a130d559a7827c0d24b4d21fd02f974e1003f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Limit the shared nine-section content grid to1280px for desktop viewports761–2560px; keep the existing1360px grid above2560px and preserve phone geometry.",
     "Use a single review slide on desktop and phones, with centered chalk arrows and three direct-selection dots matching About; preserve native horizontal scrolling, stable slide height and all review/book content.",
     "Tighten title-to-description spacing inside the three mobile service items by8px and increase their separation from24px to40px up to760px; preserve desktop layout,fonts and illustrations.",
     "Add three optional generated pencil-hatching surface versions for the existing form and review cards, alongside an explicit original comparison. Keep the ordinary site unchanged. Share through texture=blue/green/duo/original; one fixed numbered comparison strip changes only background finishes without resetting fields, scroll position or existing book choices.",
@@ -2135,6 +2136,27 @@
       "autoplay": false,
       "preserved": "Texts,authors,photos,white pencil backings,selected book4,service mobile spacing and completed illustration fixes",
       "integrated_telegram_form_source": "a9b905601f03bdf503a6acb707549271c091e4c0"
+    },
+    "content_width_1280_20261110": {
+      "desktop_content_max_px": 1280,
+      "desktop_viewport_range_px": [
+        761,
+        2560
+      ],
+      "ultrawide_content_max_px": 1360,
+      "ultrawide_min_viewport_px": 2561,
+      "implementation": "One shared content-width variable;all nine sections remain centered on the same grid",
+      "verified_viewports_px": [
+        393,
+        1280,
+        1440,
+        1920,
+        2560,
+        2561,
+        3440
+      ],
+      "mobile": "393px measurements identical before and after",
+      "ultrawide": "2561px and3440px measurements identical before and after"
     }
   },
   "reviewed_decisions": {
@@ -2158,11 +2180,12 @@
       "passed": 52,
       "failed": 0
     },
-    "build": "fe9c972f47",
+    "build": "f2e60af42c",
     "visual_check": "Desktop1280px and phone390px: no picture background hatches; preserved illustrations, form and comparison versions. The loop is a non-scaling2.3px chalk stroke. No horizontal overflow.",
-    "static_check": "PASS: one document,nine blocks;57files,3305302bytes including579244 optional About drawings and306644 comparison textures;93local assets;57artwork hashes.Worker serves57exact assets;server bundle4421500bytes.",
+    "static_check": "PASS: one document,nine blocks;57files,3305458bytes including579244 optional About drawings and306644 comparison textures;93local assets;57artwork hashes.Worker serves57exact public assets;server bundle4421708bytes.",
     "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
-    "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed."
+    "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed.",
+    "desktop_content_width": "Nine section content boxes measured1280px at1440,1920,2560px;1360px above2560px. No horizontal overflow at all7checked widths.393px and ultrawide measurements identical before/after. Hero and five-stage route visually checked at1920px.52tests passed."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

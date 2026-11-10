@@ -1,6 +1,6 @@
 {
-  "build": "fb6f59a2c0",
-  "base_commit": "ee4d97641474c161ed00abdf6c7f1378a714bf5d",
+  "build": "b0771bef1e",
+  "base_commit": "eca98795436f03d8224495e611bd9220e56d39b2",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2206,7 +2206,8 @@
       "background": "Separate cohesive low-contrast chalk/pencil ground,with softly fading milk/blue/sage shading; a hint of tabletop below the book.",
       "layout": "Foreground book retains its420px desktop drawing size and original SVG crop. Backdrop has a580px wrapper clipped to available width; mobile book size retained.",
       "prompts": "docs/review-book-blend-20261110.json",
-      "preserved": "Green form1,soft white review2,six reviews/two desktop pages,Telegram link beside heading,all other blocks and animation behavior."
+      "preserved": "Green form1,soft white review2,six reviews/two desktop pages,Telegram link beside heading,all other blocks and animation behavior.",
+      "integration": "Retain the parallel phone book frame compaction from d428ed1:144px high. Regenerate shared output from both changes."
     }
   },
   "reviewed_decisions": {
@@ -2226,13 +2227,13 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "fb6f59a2c0",
+    "build": "b0771bef1e",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves58exact assets; single page,9blocks,58files,3320648bytes,60artwork hashes.",
-    "visual_check": "1280px: foreground book remains420px wide,soft ground580px;320px: both fit269px with no horizontal overflow. Localized white paper retouch preserves book composition. Existing twelve raster contour records regenerated from their actual current images. Green form1,soft review2,six reviews/two desktop pages preserved.",
+    "static_check": "PASS: Worker serves58exact assets; single page,9blocks,58files,3320781bytes,60artwork hashes.",
+    "visual_check": "1280px: foreground book remains420px wide,soft ground580px;320px: both fit269px with no horizontal overflow. Localized white paper retouch preserves book composition. Existing twelve raster contour records regenerated from their actual current images. Green form1,soft review2,six reviews/two desktop pages preserved. Latest phone frame144px high verified at320px; book and ground remain269px wide.",
     "form": "No form submitted; Telegram Worker/config retained."
   },
   "completed_css_sha256": {
@@ -2330,5 +2331,18 @@
     "shape": "Shallow mirrored SVG-mask curves; tall process corner radius removed",
     "layout": "No changes to block heights or content spacing",
     "checks": "CSS parse, build, served asset bytes and 52 existing tests passed"
+  },
+  "mobile_review_book_spacing_20261110": {
+    "max_width_px": 760,
+    "svg_frame_height_px": {
+      "previous": 160,
+      "current": 144
+    },
+    "visible_gap_reduction_px": {
+      "above": 8,
+      "below": 8
+    },
+    "note": "Trimmed empty framing around the width-constrained book artwork",
+    "checks": "Build, served asset bytes and 52 existing tests passed"
   }
 }

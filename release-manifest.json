@@ -1,6 +1,6 @@
 {
-  "build": "2fa40d4226",
-  "base_commit": "ee4d97641474c161ed00abdf6c7f1378a714bf5d",
+  "build": "8b5a163510",
+  "base_commit": "eca98795436f03d8224495e611bd9220e56d39b2",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2322,5 +2322,18 @@
     "shape": "Shallow mirrored SVG-mask curves; tall process corner radius removed",
     "layout": "No changes to block heights or content spacing",
     "checks": "CSS parse, build, served asset bytes and 52 existing tests passed"
+  },
+  "mobile_review_book_spacing_20261110": {
+    "max_width_px": 760,
+    "svg_frame_height_px": {
+      "previous": 160,
+      "current": 144
+    },
+    "visible_gap_reduction_px": {
+      "above": 8,
+      "below": 8
+    },
+    "note": "Trimmed empty framing around the width-constrained book artwork",
+    "checks": "Build, served asset bytes and 52 existing tests passed"
   }
 }

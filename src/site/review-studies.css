@@ -55,3 +55,7 @@
  .site-preview.early-classic #reviews .s-review-heading{gap:6px 16px}
  .site-preview.early-classic #reviews .s-review-heading .s-review-more{font-size:14px}
 }
+/* Trim 8px of empty SVG framing above and below the book on phones. */
+@media(max-width:760px){
+ .site-preview.early-classic #reviews .review-book .review-guestbook-picture{height:144px}
+}

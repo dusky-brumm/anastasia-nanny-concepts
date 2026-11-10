@@ -44,8 +44,8 @@
 /* The guestbook belongs to the whole collection, outside the sliding track. */
 .site-preview.early-classic #reviews .review-guestbook{display:flex;align-items:center;justify-content:center;gap:48px;width:fit-content;max-width:100%;margin:38px auto 0}
 .site-preview.early-classic #reviews .review-guestbook-picture{display:block;flex:none;width:420px;max-width:56vw;height:auto;pointer-events:none}
-.site-preview.early-classic #reviews .review-book{position:relative;isolation:isolate;width:580px;max-width:100%;flex:none}
-.site-preview.early-classic #reviews .review-book-ground{position:absolute;z-index:0;left:0;top:-20px;display:block;width:100%;height:200px;opacity:.68;pointer-events:none}
+.site-preview.early-classic #reviews .review-book{position:relative;isolation:isolate;width:640px;max-width:100%;flex:none}
+.site-preview.early-classic #reviews .review-book-ground{position:absolute;z-index:0;left:0;top:-36px;display:block;width:100%;height:240px;opacity:.82;mask-image:linear-gradient(to right,transparent,#000 15%,#000 85%,transparent),linear-gradient(to bottom,transparent,#000 18%,#000 70%,transparent);mask-composite:intersect;pointer-events:none}
 .site-preview.early-classic #reviews .review-book .review-guestbook-picture{position:relative;z-index:1;width:min(100%,420px);max-width:none;height:160px;margin-inline:auto}
 .site-preview.early-classic #reviews .s-review-heading .s-review-more{position:relative;display:inline-flex;align-items:center;gap:9px;min-height:44px;max-width:100%;font-size:15px;line-height:1.6;text-decoration:none;color:#28353c}
 .site-preview.early-classic #reviews .s-review-heading .s-review-more::after{content:'';position:absolute;inset:auto 0 4px;height:3px;background:#526c73;mask:url('studio/pencil-rule.svg') center/100% 100% no-repeat;opacity:.55}
@@ -53,7 +53,7 @@
  .site-preview.early-classic #reviews .review-guestbook{flex-direction:column;gap:12px;margin-top:32px;text-align:center}
  .site-preview.early-classic #reviews .review-guestbook-picture{width:min(100%,340px);max-width:100%}
  .site-preview.early-classic #reviews .review-book{width:340px;max-width:100%}
- .site-preview.early-classic #reviews .review-book-ground{top:0;height:160px;opacity:.64}
+ .site-preview.early-classic #reviews .review-book-ground{left:-10px;top:-18px;width:calc(100% + 20px);height:190px;opacity:.82}
  .site-preview.early-classic #reviews .s-review-heading{gap:6px 16px}
  .site-preview.early-classic #reviews .s-review-heading .s-review-more{font-size:14px}
 }

@@ -1,5 +1,5 @@
 {
-  "build": "2d332bb406",
+  "build": "0bab1a7b99",
   "base_commit": "375f4affde1e52f0c302e652ec21c9d0972d213f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -2208,6 +2208,15 @@
       "prompts": "docs/review-book-blend-20261110.json",
       "preserved": "Green form1,soft white review2,six reviews/two desktop pages,Telegram link beside heading,all other blocks and animation behavior.",
       "integration": "Retain the parallel phone book frame compaction from d428ed1:144px high. Regenerate shared output from both changes."
+    },
+    "review_table_scene_20261110": {
+      "base_commit": "8078b5e6c6dfca487b06ae12f5077a286f36b138",
+      "background": "Replace the rejected blurred oval wash with a clean colored-pencil tabletop: perspective edges,light plank seams and a short front apron.",
+      "reference": "The approved About cafe photo continuation; precision in the center and gradually dissolving edges.",
+      "composition": "Separate640px table drawing beneath the unchanged420px book; gradient masks fade only the table. Phone rendering fits within the available gutters.",
+      "book": "Keep the approved white book file,pixels,420px desktop size,144px phone frame and existing drawing animation unchanged.",
+      "prompt": "docs/review-table-scene-20261110.json",
+      "preserved": "Green form1,soft review2,six reviews/two desktop pages,header/footer social links and latest simplified consultation line."
     }
   },
   "reviewed_decisions": {
@@ -2227,13 +2236,13 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "b0771bef1e",
+    "build": "0bab1a7b99",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves58exact assets; single page,9blocks,58files,3320781bytes,60artwork hashes.",
-    "visual_check": "1280px: foreground book remains420px wide,soft ground580px;320px: both fit269px with no horizontal overflow. Localized white paper retouch preserves book composition. Existing twelve raster contour records regenerated from their actual current images. Green form1,soft review2,six reviews/two desktop pages preserved. Latest phone frame144px high verified at320px; book and ground remain269px wide.",
+    "static_check": "PASS: Worker serves58exact assets; single page,9blocks,58files,3341791bytes,61artwork hashes.",
+    "visual_check": "1280px: unchanged420px book above640px table.320px: unchanged269x144px book above289px table;no overflow. Edge masks affect only the table; book mask is none and original book pixels/animation are retained. Form remains solid sage green; soft white review2,six reviews and desktop3-card pages preserved.",
     "form": "No form submitted; Telegram Worker/config retained."
   },
   "completed_css_sha256": {

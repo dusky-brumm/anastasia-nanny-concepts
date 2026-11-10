@@ -1,0 +1,26 @@
+{
+  "tool": "built-in ImageGen",
+  "prompt": "Use case: stylized-concept. Asset: a transparent, very wide colored-pencil TABLETOP scene for a nanny website, to place behind the existing open-book illustration. Image 1 is the approved foreground book: reference for viewpoint, colors and where a book will rest; DO NOT include or redraw the book. Image 2 is the website's About-slider screenshot: use the elegant blue/sage colored-pencil furniture continuation around the PHOTO as the exact stylistic reference; do not copy the photo, people, text or UI. Draw a recognizable light rectangular wooden tabletop in shallow perspective, seen from slightly above at the same low viewing angle as the open book. A clean pale milk-white tabletop plane spans most of the wide composition; several extremely light blue pencil wood-grain/plank seams run along its depth, a lightly drawn front table edge and short apron establish real furniture geometry. The central upper tabletop is unobstructed, ready to receive the separately overlaid book. The tabletop back edge is near18% canvas height, front edge near72%, with the empty book landing area centered across x20–80%, y25–58%. Let the table continue toward both sides beyond that landing area. Near the center the restrained dry-pencil edge contours are readable; moving outward they become increasingly sparse, incomplete and lighter, gradually dissolving fully into transparency at every outer edge just like the sketched photo continuations in image2. Wide horizontal canvas about3:1. Plenty of air. Precise delicate broken pencil outlines, subtle tiny local hatching, milk-white paper, pale slate blue and a whisper of sage. Must blend onto blue webpage background #e1eff7. No uniform grey/beige wash, no muddy blur, no smudged oval, no cushion, no ellipse-shaped shadow, no vignette, no full rectangular image border, no photorealistic rendering. No book, no cups, no people, plants, hearts, stars, lettering or extra objects. Only a clean lightly sketched table surface and a short fading suggestion of its front apron. Truly transparent outside the drawn table and fading strokes.",
+  "references": [
+    "src/site/media/reviews-book-white-20261110.webp",
+    "artifacts/about-scenes-20261109/about-3-cafe-desktop.png"
+  ],
+  "asset": {
+    "file": "media/reviews-table-scene-20261110.webp",
+    "source_size": [
+      2172,
+      724
+    ],
+    "size": [
+      1280,
+      427
+    ],
+    "alpha": [
+      0,
+      255
+    ],
+    "bytes": 137970,
+    "sha256": "5038ee8f50165938618d501c32dd2523d0723da3e0bc681e8792ddc52265ac8a"
+  },
+  "registration": "Separate tableau behind unchanged book; edge fading applies only to the table SVG,never to the book."
+}

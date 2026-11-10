@@ -91,46 +91,68 @@ if(section){
 
 })();
 (()=>{
-// A single review on phones; all three cards stay aligned on larger screens.
+// One review per slide at every width; native touch scrolling stays available.
 const strip=document.querySelector('[data-open-quotes]');
 if(strip){
   const track=strip.querySelector('.s-review-grid'),cards=[...track.children];
   const controls=strip.querySelector('.comparison-quote-controls');
-  const previous=controls.querySelector('[data-quote-step="-1"]'),next=controls.querySelector('[data-quote-step="1"]');
-  const position=controls.querySelector('.comparison-quote-position');
-  let queued=false,previousStep=0;
+  const dots=[...controls.querySelectorAll('[data-quote-index]')];
+  const position=controls.querySelector('.review-slider-status');
+  let selected=0,destination=null,queued=false,previousStep=0;
   const step=()=>cards[0].getBoundingClientRect().width+(parseFloat(getComputedStyle(track).columnGap)||0);
+  const wrap=index=>(index+cards.length)%cards.length;
+  function show(index){
+    selected=index;
+    dots.forEach((dot,i)=>{
+      if(i===index)dot.setAttribute('aria-current','true');
+      else dot.removeAttribute('aria-current');
+    });
+    cards.forEach((card,i)=>{
+      if(i===index)card.removeAttribute('aria-hidden');
+      else card.setAttribute('aria-hidden','true');
+    });
+    const label=`Отзыв ${index+1} из ${cards.length}`;
+    if(position.textContent!==label)position.textContent=label;
+  }
   function update(){
     queued=false;
-    if(!track.isConnected||!track.clientWidth)return;
-    const size=step(),limit=Math.max(0,track.scrollWidth-track.clientWidth);
-    if(!size)return;
-    const first=Math.min(cards.length-1,Math.max(0,Math.round(track.scrollLeft/size)));
-    const count=Math.max(1,Math.round((track.clientWidth+(parseFloat(getComputedStyle(track).columnGap)||0))/size));
-    const last=Math.min(cards.length,first+count);
-    controls.hidden=limit<4;
-    previous.disabled=track.scrollLeft<2;next.disabled=track.scrollLeft>=limit-2;
-    const label=`${last===first+1?first+1:`${first+1}–${last}`} из ${cards.length}`;
-    if(position.textContent!==label)position.textContent=label;
-    strip.style.setProperty('--review-progress',String(last/cards.length));
+    const size=step();
+    if(!track.isConnected||!track.clientWidth||!size)return;
+    if(destination!==null){
+      if(Math.abs(track.scrollLeft-destination*size)>2)return;
+      destination=null;
+    }
+    show(Math.min(cards.length-1,Math.max(0,Math.round(track.scrollLeft/size))));
   }
   function schedule(){if(!queued){queued=true;requestAnimationFrame(update);}}
-  function move(left){
-    track.scrollTo({left,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.dataset.drawingMotion==='off'?'instant':'smooth'});
+  function move(index){
+    destination=wrap(index);show(destination);
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.dataset.drawingMotion==='off';
+    track.scrollTo({left:destination*step(),behavior:reduce?'instant':'smooth'});
+    schedule();
   }
-  for(const button of [previous,next])button.addEventListener('click',()=>move(track.scrollLeft+step()*Number(button.dataset.quoteStep)));
+  controls.hidden=cards.length<2;
+  cards.forEach((card,index)=>{
+    card.setAttribute('role','group');card.setAttribute('aria-roledescription','слайд');
+    card.setAttribute('aria-label',`${index+1} из ${cards.length}`);
+  });
+  controls.querySelectorAll('[data-quote-step]').forEach(button=>button.addEventListener('click',()=>move(selected+Number(button.dataset.quoteStep))));
+  dots.forEach(dot=>dot.addEventListener('click',()=>move(Number(dot.dataset.quoteIndex))));
   track.addEventListener('scroll',schedule,{passive:true});
+  for(const event of ['pointerdown','wheel'])track.addEventListener(event,()=>{destination=null;},{passive:true});
   track.addEventListener('keydown',event=>{
     if(event.target!==track||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
-    event.preventDefault();move(event.key==='Home'?0:event.key==='End'?track.scrollWidth:track.scrollLeft+step()*(event.key==='ArrowRight'?1:-1));
+    event.preventDefault();move(event.key==='Home'?0:event.key==='End'?cards.length-1:selected+(event.key==='ArrowRight'?1:-1));
   });
   const observer=new ResizeObserver(()=>{
     const size=step();
-    if(previousStep&&Math.abs(size-previousStep)>1)track.scrollTo({left:Math.round(track.scrollLeft/previousStep)*size,behavior:'instant'});
+    if(previousStep&&Math.abs(size-previousStep)>1){
+      destination=null;track.scrollTo({left:selected*size,behavior:'instant'});
+    }
     previousStep=size;schedule();
   });
   observer.observe(track);cards.forEach(card=>observer.observe(card));
-  document.fonts.ready.then(schedule);update();
+  document.fonts.ready.then(schedule);show(0);
 }
 
 })();
@@ -654,43 +676,86 @@ addEventListener('popstate',restoreSurface);
 restoreSurface();
 
 })();
-(function bindRequestUi(formatRequest,manageDialog=true) {
-  function fitDraft(output) {
-    output.style.height='auto';
-    const limit=Math.max(220,Math.min(520,window.innerHeight*.65));
-    output.style.height=Math.min(limit,Math.max(220,output.scrollHeight+2))+'px';
-  }
-  window.addEventListener('resize',()=>{
-    document.querySelectorAll('.s-draft:not([hidden]) textarea').forEach(fitDraft);
-  });
+(function bindSiteRequestUi(formatRequest) {
+  const endpoint = document.body.dataset.requestEndpoint;
+  const pending = new WeakSet();
   document.querySelectorAll('.s-consult-form [type=submit]').forEach(button => { button.disabled = false; });
-  document.addEventListener('click', async event => {
-    const button = event.target.closest('button');
-    if(manageDialog&&button?.matches('.s-privacy'))document.querySelector('#studio-privacy').showModal();
-    if(manageDialog&&button?.matches('[data-close]'))button.closest('dialog').close();
-    if(button?.matches('.s-copy')){const form=button.closest('form'),output=form.elements.namedItem('draft'),status=form.querySelector('[role=status]');try{await navigator.clipboard.writeText(output.value);status.textContent='Текст скопирован.';}catch{output.focus();output.select();status.textContent='Скопируйте выделенный текст вручную.';}}
-    if(event.target.matches('#studio-privacy')){const r=event.target.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)event.target.close();}
-  });
-  document.addEventListener('submit',event=>{
-    const form=event.target;if(!form.matches('.s-consult-form'))return;event.preventDefault();
-    const name=form.elements.namedItem('name'),contact=form.elements.namedItem('contact'),message=form.elements.namedItem('message');
-    name.setCustomValidity(name.value.trim()?'':'Укажите ваше имя.');contact.setCustomValidity(contact.value.trim().length>=3?'':'Укажите телефон или Telegram для связи.');
-    if(!form.reportValidity())return;
-    const text=formatRequest({name:name.value,contact:contact.value,message:message.value});
-    if(form.dataset.requestFlow==='telegram'){
-      const destination=new URL('https://t.me/inyfid');
-      destination.searchParams.set('text',text);
-      window.open(destination.href,'_blank','noopener,noreferrer');
+  if (endpoint) {
+    const privacy = document.querySelector('#studio-privacy p');
+    if (privacy) privacy.textContent = 'При нажатии «Оставить заявку» имя, контакт и текст запроса передаются Анастасии через Telegram-бота. Отдельная база заявок на сайте не ведётся.';
+  }
+  document.addEventListener('submit', async event => {
+    const form = event.target;
+    if (!form.matches('.s-consult-form')) return;
+    event.preventDefault();
+    if (pending.has(form)) return;
+    const fields = ['name', 'contact', 'message'].map(key => form.elements.namedItem(key));
+    const [name, contact, message] = fields;
+    name.setCustomValidity(name.value.trim() ? '' : 'Укажите ваше имя.');
+    contact.setCustomValidity(contact.value.trim().length >= 3 ? '' : 'Укажите телефон или Telegram для связи.');
+    if (!form.reportValidity()) return;
+    const application = {name: name.value, contact: contact.value, message: message.value, website: ''};
+    const destination = new URL('https://t.me/inyfid');
+    destination.searchParams.set('text', formatRequest(application));
+    if (!endpoint) {
+      window.open(destination.href, '_blank', 'noopener,noreferrer');
       return;
     }
-    form.elements.namedItem('draft').value=text;
-    const draft=form.querySelector('.s-draft');draft.hidden=false;fitDraft(form.elements.namedItem('draft'));form.querySelector('[role=status]').textContent='Заявка подготовлена. Отправьте её Анастасии самостоятельно.';
-    const prepared=new CustomEvent('request:draft',{bubbles:true,cancelable:true});
-    if(form.dispatchEvent(prepared))draft.scrollIntoView({block:'nearest',behavior:'instant'});
+    const submit = form.querySelector('[type=submit]');
+    const label = submit.firstChild;
+    const originalLabel = label.textContent;
+    const status = form.querySelector('[role=status]');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    pending.add(form);
+    form.setAttribute('aria-busy', 'true');
+    submit.disabled = true;
+    fields.forEach(field => { field.readOnly = true; });
+    label.textContent = 'Отправляем… ';
+    status.textContent = '';
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(application),
+        credentials: 'same-origin',
+        signal: controller.signal,
+      });
+      if (response.ok && (await response.json()).ok === true) {
+        form.reset();
+        status.textContent = 'Заявка отправлена. Анастасия свяжется с вами.';
+        return;
+      }
+      status.textContent = response.status === 429
+        ? 'Слишком много попыток. Попробуйте через минуту или напишите лично.'
+        : 'Не удалось подтвердить отправку. Попробуйте ещё раз или напишите лично.';
+    } catch {
+      status.textContent = 'Не удалось подтвердить отправку. Попробуйте ещё раз или напишите лично.';
+    } finally {
+      clearTimeout(timeout);
+      pending.delete(form);
+      form.removeAttribute('aria-busy');
+      submit.disabled = false;
+      fields.forEach(field => { field.readOnly = false; });
+      label.textContent = originalLabel;
+    }
+    const link = document.createElement('a');
+    link.href = destination.href;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.className = 's-text-link';
+    link.textContent = 'Отправить в Telegram ↗';
+    status.append(' ', link);
   });
-  document.addEventListener('input',event=>{const form=event.target.closest('.s-consult-form');if(!form||event.target.name==='draft')return;const draft=form.querySelector('.s-draft');if(draft)draft.hidden=true;form.querySelector('[role=status]').textContent='';form.elements.namedItem('name').setCustomValidity('');form.elements.namedItem('contact').setCustomValidity('');});
+  document.addEventListener('input', event => {
+    const form = event.target.closest('.s-consult-form');
+    if (!form || pending.has(form)) return;
+    form.elements.namedItem('name').setCustomValidity('');
+    form.elements.namedItem('contact').setCustomValidity('');
+    form.querySelector('[role=status]').textContent = '';
+  });
 })(function formatRequest({name,contact,message}) {
   const lines=['Здравствуйте, Анастасия!','',`Меня зовут ${name.trim()}.`,`Связаться со мной: ${contact.trim()}.`];
   if(message.trim())lines.push('','О нашей семье:',message.trim());
   return lines.join('\n');
-},false);
+});

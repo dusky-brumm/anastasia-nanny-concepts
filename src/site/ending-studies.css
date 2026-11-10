@@ -6,8 +6,7 @@
 .site-preview.early-classic #apply .s-apply-intro h2{max-width:390px;margin:0 auto;text-align:center}
 .site-preview.early-classic #apply .ending-cups-art{position:relative;isolation:isolate;grid-column:1;grid-row:2;width:min(100%,360px);height:190px;margin:24px 0 12px}
 .site-preview.early-classic #apply .ending-cups-art .ending-picture--cups{position:relative;z-index:1;display:block;width:100%;height:100%;pointer-events:none}
-.site-preview.early-classic #apply .ending-cups-art>.illustration-hatching{position:absolute;inset:0;z-index:0;display:block;width:100%;height:100%;pointer-events:none}
-.site-preview.early-classic #apply .ending-conversation-line{grid-column:1;grid-row:3;width:min(85%,390px);height:38px;margin:0 0 12px;opacity:.65}
+.site-preview.early-classic #apply .ending-conversation-line{grid-column:1;grid-row:3;width:min(85%,390px);height:38px;margin:0 0 12px;opacity:.96}
 .site-preview.early-classic #apply .s-apply-intro>.comparison-form-contact{grid-column:1;grid-row:4;justify-self:center;margin:0}
 .site-preview.early-classic #apply .s-form-pencil{position:relative;isolation:isolate;grid-template-columns:minmax(0,1fr);width:100%;margin:0;max-width:none;min-width:0;gap:22px;padding:36px!important;background:transparent}
 .site-preview.early-classic #apply .s-form-pencil::after{content:'';position:absolute;z-index:-1;inset:0;background:var(--form-wash);mask:url('media/review-chalk-white-block-20261109.webp') center/100% 100% no-repeat;pointer-events:none}
@@ -24,7 +23,7 @@
  .site-preview.early-classic #apply .s-apply-intro{padding:0;align-content:start}
  .site-preview.early-classic #apply .s-apply-intro h2{max-width:none}
  .site-preview.early-classic #apply .ending-cups-art{width:min(100%,250px);height:115px;margin:12px 0 0}
- .site-preview.early-classic #apply .ending-conversation-line{width:min(85%,300px);height:18px;margin-bottom:0}
+ .site-preview.early-classic #apply .ending-conversation-line{width:min(85%,300px);height:24px;margin-bottom:0}
  .site-preview.early-classic #apply .s-apply-intro>.comparison-form-contact a{font-size:13px}
  .site-preview.early-classic #apply .s-form-pencil{gap:20px;padding:26px 22px!important}
 }

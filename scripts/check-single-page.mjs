@@ -9,7 +9,7 @@ const selection=JSON.parse(await readFile('src/site/selection.json','utf8'));
 assert.deepEqual(selection.blocks.map(({id})=>id),['header','hero','service','about','process','pricing','reviews','apply','footer']);
 assert.equal((home.match(/data-selected-block=/g)||[]).length,9);
 assert.equal((home.match(/data-block-document=/g)||[]).length,9);
-assert.doesNotMatch(home,/<iframe\b|data-design-navigation|data-assembly-choice|data-font-choice|data-heading-choice|data-body-choice|data-about-choice|font-switcher|artwork-library|data-(?:ending|scene|drawing|consultation|pricing|review)-choice/);
+assert.doesNotMatch(home,/<iframe\b|data-design-navigation|data-assembly-choice|data-font-choice|data-heading-choice|data-body-choice|data-about-choice|font-switcher|artwork-library|data-(?:ending|scene|drawing|consultation|pricing|review)-choice|data-form-color-choice/);
 assert.equal((home.match(/<main\b/g)||[]).length,1);
 assert.equal((home.match(/<h1\b/g)||[]).length,1);
 assert.match(home,/data-font-pair="5" data-body-font="manrope"/);

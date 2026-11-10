@@ -1,5 +1,5 @@
 {
-  "build": "b743379327",
+  "build": "73a6d94047",
   "base_commit": "e2959abaf5b902ab4e0ca25c58a3fff578e30099",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -2174,7 +2174,14 @@
       "integration": "Preserve concurrent footer heading and consultation line updates from82bd2b3; regenerate shared output from all source changes."
     },
     "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links.",
-    "footer_label_integrated_source": "baa4b0982b0fd8a613d0388ed15230027eb352c5"
+    "footer_label_integrated_source": "baa4b0982b0fd8a613d0388ed15230027eb352c5",
+    "visible_surface_choices_cups_20261110": {
+      "base_commit": "04932f7c088dcadcbddeccb58fc4d8c0376045a9",
+      "cups": "Scale the illustration to90% within its unchanged centered wrapper on every breakpoint; preserve surrounding line and layout.",
+      "surface_choices": "Show the four existing surface versions on the ordinary site by default,starting with the selected green original. Original/blue/green/duo remain linkable; off explicitly closes the bar.",
+      "performance": "Do not request optional hatch grain while original is selected.",
+      "preserved": "Six reviews,two desktop pages,Telegram link beside review heading,form delivery,all selected drawings."
+    }
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
@@ -2193,18 +2200,14 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "3408994725",
+    "build": "73a6d94047",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3315165bytes,58artwork hashes.",
-    "visual_check": "1280px: one Telegram review link to the right of the heading;320px: link wraps below heading above cards,no horizontal overflow. Six reviews and pagination retained.",
-    "form": "No form submitted; Telegram Worker/config retained.",
-    "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
-    "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed.",
-    "desktop_content_width": "Nine section content boxes measured1280px at1440,1920,2560px;1360px above2560px. No horizontal overflow at all7checked widths.393px and ultrawide measurements identical before/after. Hero and five-stage route visually checked at1920px.52tests passed.",
-    "footer_label": "Visible footer heading removed;all6navigation links retained;latest6review cards and desktop3-card pages preserved.52tests passed."
+    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3315374bytes,58artwork hashes.",
+    "visual_check": "1280px and320px: four texture choices visible on a normal URL; all modes switch without reload or field loss. Cups width and height are exactly90% of prior values. No horizontal overflow. Closing sets texture=off and stays closed after reload. Six reviews and pagination retained.",
+    "form": "No form submitted; Telegram Worker/config retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

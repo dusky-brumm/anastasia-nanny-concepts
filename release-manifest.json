@@ -1,5 +1,5 @@
 {
-  "build": "f61fb20787",
+  "build": "996f5a547e",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Compact the sticky header and mobile hero; keep the original text/photo treatment, with a smaller signed photo and one centered CTA below it on phones. Increase the service divider/artwork gap, shorten the pricing section and reveal desktop process arrows in a timed sequence with restored heads.",
     "Keep the selected sage application form permanently, removing the blue alternative, color buttons and color-selection runtime; retain white fields, cup drawing, contour frame and request behavior.",
     "Make the drawn human continuations around About photographs barely visible with opacity0.10; preserve the existing environment drawing and original photo strength.",
     "Review seven additional phone sizes and landscape layouts; use two readable stage columns from761–1100px,16px descriptions and shorter stage-section padding on low landscape screens.",
@@ -1952,6 +1953,14 @@
       "fields": "#ffffff",
       "switcher": "Removed; old form=blue/form=green query parameters no longer change the approved color",
       "preserved": "Cup drawing, pencil borders, single form, copy, submission behavior and all other selected sections"
+    },
+    "compact_layout_20261110": {
+      "header": "64px desktop and 58px mobile; sticky behavior and measured anchor offsets retained",
+      "mobile_hero": "Text begins 28px higher; modestly smaller headline/body and 280px photo (256px on narrow phones), then the existing centered application action. Desktop hero unchanged.",
+      "service": "34px between the pencil divider and illustrated studies",
+      "pricing": "Outer spacing reduced by 16px per side on desktop/12px on mobile; shorter chalk patches and a slightly closer FAQ",
+      "process": "Desktop route now traces four arrows once on entry, 520ms each with 180ms stagger. Preserve scroll-driven mobile arrows, original drawn paths and reduced-motion static output; restore marker heads and stroke geometry at completion.",
+      "form": "Fixed selected sage wash; no color selector or alternative color runtime"
     }
   },
   "reviewed_decisions": {
@@ -1975,9 +1984,9 @@
       "passed": 43,
       "failed": 0
     },
-    "build": "f61fb20787",
-    "visual_check": "All four About stories checked at 320,360,393,430,768,1024,1280,1716px and boundaries 760,761,1000,1001px. No horizontal overflow or text clipping; navigation remains fixed between stories. Phone and desktop screenshots independently reviewed.",
-    "static_check": "PASS: one document, nine blocks; 51 files, 2678475 bytes including 579244 About drawings; 85 local assets; 52 artwork hashes.",
+    "build": "996f5a547e",
+    "visual_check": "390px: hero height reduced from 830px to 675px; header 58px; CTA centered below the smaller photo, visible in the first 844px screen. Widths 320/360/430: no horizontal overflow, centered CTA and 62px single-row photo caption. Desktop 1440px: header 64px; arrow state waiting -> drawing -> complete, all four arrowheads restored and non-scaling stroke retained. Service divider gap 34px; pricing text stays within the 300px chalk patches.",
+    "static_check": "PASS: one document, nine blocks; 51 files, 2680994 bytes including 579244 About drawings; 85 local assets; 52 artwork hashes.",
     "preserved": "Background environments, photographs, registration coordinates, human figure opacity0.1, text sizes, carousel behavior and existing animations.",
     "latest_change": "Green form is fixed in source and CSS; retired color switch and runtime removed. Previous photograph/layout refinements preserved from 0cf3f0f73fc418519908756318bd52436b46710a."
   },
@@ -1985,7 +1994,7 @@
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
     "src/reference/studio/reference-integration.css": "25be96a25015ecac23262e93b2fd233f854d066ae4c4d05a0a4b2a9a62fc7dc8"
   },
-  "previous_confirmed_build": "4df166316d",
+  "previous_confirmed_build": "f61fb20787",
   "pending_changes": [
     {
       "chat": "01a1ac09-bafe-7330-b307-286bdd0fd74a",

@@ -7,7 +7,7 @@
 .site-preview.early-classic #pricing .pricing-panel{position:relative;margin-block:20px 0;min-width:0}
 .site-preview.early-classic #pricing .pricing-panel :is(dl,dt,dd){margin:0}
 .site-preview.early-classic #pricing .pricing-panel :is(svg,img){pointer-events:none}
-.site-preview.early-classic #pricing .s-faq{position:relative;margin-top:80px;padding-top:56px;border-top:0}
+.site-preview.early-classic #pricing .s-faq{position:relative;margin-top:64px;padding-top:44px;border-top:0}
 .site-preview.early-classic #pricing .s-faq::before,.site-preview.early-classic #pricing .comparison-faq-questions details::before{content:'';position:absolute;left:0;right:0;height:8px;background:#94afbe;mask:url('studio/pencil-rule.svg?v=__VERSION__') center/100% 100% no-repeat;pointer-events:none}
 .site-preview.early-classic #pricing .s-faq::before{top:0;opacity:.7;transform:rotate(-.12deg)}
 .site-preview.early-classic #pricing .faq-heading{display:flex;align-items:flex-start;gap:20px}
@@ -21,7 +21,7 @@
 @media(max-width:760px){
  .site-preview.early-classic #pricing .pricing-intro{gap:2px;margin-top:14px}
  .site-preview.early-classic #pricing .pricing-panel{margin-top:16px}
- .site-preview.early-classic #pricing .s-faq{margin-top:56px;padding-top:38px;row-gap:28px}
+ .site-preview.early-classic #pricing .s-faq{margin-top:44px;padding-top:32px;row-gap:28px}
  .site-preview.early-classic #pricing .faq-heading{align-items:center;gap:14px}
  .site-preview.early-classic #pricing .faq-heading h3{max-width:16ch;margin:0}
  .site-preview.early-classic #pricing .faq-question{width:44px;height:58px}
@@ -32,7 +32,7 @@
 /* Four fresh studies; the two approved circle compositions above are intact. */
 .site-preview.early-classic #pricing .pricing-new{isolation:isolate;margin-top:28px;color:#28353c}
 .site-preview.early-classic #pricing .pn-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:0;min-width:0}
-.site-preview.early-classic #pricing .pn-term{--pn-line:#94afbe;--pn-wash:#dcebf4;position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:320px;padding:36px 28px;text-align:center}
+.site-preview.early-classic #pricing .pn-term{--pn-line:#94afbe;--pn-wash:#dcebf4;position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:300px;padding:30px 28px;text-align:center}
 .site-preview.early-classic #pricing .pn-term:nth-child(2){--pn-line:#9ead90;--pn-wash:#e0e9d8}
 .site-preview.early-classic #pricing .pn-picture{display:block;flex:none;width:88px;height:80px;margin:0 0 18px;object-fit:contain}
 html[data-font-pair] .site-preview.early-classic #pricing .pricing-new dt{margin:0;font:400 16px/1.5 var(--pair-body);color:#28353c;letter-spacing:0}
@@ -54,7 +54,7 @@ html[data-font-pair] .site-preview.early-classic #pricing .pn-term-2 dd{font-siz
  .site-preview.early-classic #pricing .pricing-new{margin-top:18px}
  .site-preview.early-classic #pricing .pn-terms{grid-template-columns:minmax(0,1fr);gap:18px;justify-items:center}
  .site-preview.early-classic #pricing .pn-term{width:min(100%,390px);min-height:280px;padding:32px 28px}
- .site-preview.early-classic #pricing .pn-3 .pn-term{min-height:230px;padding:24px}
+ .site-preview.early-classic #pricing .pn-3 .pn-term{min-height:220px;padding:22px}
  .site-preview.early-classic #pricing .pn-3 .pn-picture{width:72px;height:64px;margin-bottom:12px}
  html[data-font-pair] .site-preview.early-classic #pricing .pn-3 dd{margin-top:12px}
 }

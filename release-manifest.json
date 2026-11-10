@@ -1,6 +1,6 @@
 {
-  "build": "638ff1c778",
-  "base_commit": "0f52649",
+  "build": "ac2b1f3ec2",
+  "base_commit": "fb2a130d559a7827c0d24b4d21fd02f974e1003f",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Tighten title-to-description spacing inside the three mobile service items by8px and increase their separation from24px to40px up to760px; preserve desktop layout,fonts and illustrations.",
     "Add three optional generated pencil-hatching surface versions for the existing form and review cards, alongside an explicit original comparison. Keep the ordinary site unchanged. Share through texture=blue/green/duo/original; one fixed numbered comparison strip changes only background finishes without resetting fields, scroll position or existing book choices.",
     "Enlarge only the opening About lead, keeping the other slide lead sizes unchanged. Replace the between-games interview anecdote with Anastasia’s original sports/recruiting statement from her supplied Instagram story.",
     "Compact the sticky header and mobile hero; keep the original text/photo treatment, with a smaller signed photo and one centered CTA below it on phones. Increase the service divider/artwork gap, shorten the pricing section and reveal desktop process arrows in a timed sequence with restored heads.",
@@ -2113,6 +2114,15 @@
       "backgrounds": "Remove the separate blue/sage diagonal hatching layers around the selected book and cups; preserve foreground illustration pixels and layout.",
       "line": "Retain the quiet loop shape; match service connector color #658392 and dry-chalk filter. A 2.3px non-scaling stroke stays legible on phones and desktop, at .96 opacity.",
       "preserved": "Selected book4, new cups, form colors, all surface comparison versions and illustration reveal animations."
+    },
+    "service_mobile_spacing_20261110": {
+      "max_width_px": 760,
+      "row_gap_px": 4,
+      "previous_row_gap_px": 12,
+      "item_gap_px": 40,
+      "previous_item_gap_px": 24,
+      "integrated_source": "0f52649857299b5600fa4a02d2abab5cfcb21172",
+      "verification": "320,360,393,430px: no horizontal overflow;1280px: measured layout identical; independent screenshot critique passed"
     }
   },
   "reviewed_decisions": {
@@ -2136,9 +2146,10 @@
       "passed": 44,
       "failed": 0
     },
-    "build": "457b15af5a",
+    "build": "8973f1e5d7",
     "visual_check": "Desktop1280px and phone390px: no picture background hatches; preserved illustrations, form and comparison versions. The loop is a non-scaling2.3px chalk stroke. No horizontal overflow.",
-    "static_check": "PASS: one document,nine blocks;57files,3301021bytes including579244 optional About drawings and306644 comparison textures;92local assets;57artwork hashes."
+    "static_check": "PASS: one document,nine blocks;57files,3301493bytes including579244 optional About drawings and306644 comparison textures;92local assets;57artwork hashes.",
+    "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
@@ -2171,7 +2182,7 @@
   },
   "telegram_delivery": {
     "date": "2026-11-10",
-    "previous_build": "457b15af5a",
+    "previous_build": "8973f1e5d7",
     "host": "Sites",
     "endpoint": "/api/request",
     "status": "awaiting_bot_setup",

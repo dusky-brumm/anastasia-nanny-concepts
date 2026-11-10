@@ -49,7 +49,8 @@ body[data-isolated-block=footer] .site-preview .s-site-footer{display:block;padd
 @media(max-width:760px){
  #chalk-service-designs .studies .service-example--intro{grid-template-columns:minmax(0,1fr);gap:10px;margin-top:16px}
  #chalk-service-designs .studies .service-example--intro p{font-size:17px;line-height:1.65}
- #chalk-service-designs .studies .study-grid{gap:24px}
+ #chalk-service-designs .studies .study-grid{gap:40px}
+ #chalk-service-designs .studies .study{row-gap:4px}
  #chalk-service-designs .studies .study-picture{position:relative;left:-6px}
  #chalk-service-designs .studies .study :is(h3,p){position:relative;left:4px}
 }

@@ -1,5 +1,5 @@
 {
-  "build": "5907273c78",
+  "build": "a436eef084",
   "base_commit": "2d537e296faadd6292bc1412a3c9bf3411816407",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -2165,6 +2165,11 @@
       "content_source": "docs/review-restored-content-20261110.json",
       "navigation": "Page-size-aware arrows/dots/Home/End, page snap targets and active-review preservation on resize.",
       "preserved": "Selected book and cups, form delivery Worker, all texture comparisons, remaining blocks."
+    },
+    "review_link_heading_20261110": {
+      "placement": "Move the existing Telegram review link from beside the guestbook to the right of the Reviews heading above the cards.",
+      "responsive": "The heading row wraps naturally on phones; the link remains above the review slider.",
+      "preserved": "Six reviews,two desktop pages,chalk dots,book drawing,form and other sections."
     }
   },
   "reviewed_decisions": {
@@ -2184,14 +2189,14 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "5907273c78",
+    "build": "a436eef084",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3312780bytes,57artwork hashes.",
-    "visual_check": "1280/1024px:3cards/2pages;390/320px:1card/6pages. Arrows,dots,keyboard,wrap,resizing and smooth navigation passed; no horizontal overflow.",
-    "form": "No form submitted; current Telegram Worker and config retained."
+    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3312952bytes,57artwork hashes.",
+    "visual_check": "1280px: one Telegram review link to the right of the heading;320px: link wraps below heading above cards,no horizontal overflow. Six reviews and pagination retained.",
+    "form": "No form submitted; Telegram Worker/config retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

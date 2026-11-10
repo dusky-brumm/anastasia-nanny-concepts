@@ -383,5 +383,19 @@
     "title": "Книга отзывов: пять звёзд и пять плюсов",
     "group": "Иллюстрации",
     "sha256": "71c2bfa14fa211205a4347a66f282d00300992012bb11c6810f229f0fc8efa2a"
+  },
+  {
+    "id": "consultation-cups-hand-pencil-20261110",
+    "file": "media/consultation-cups-hand-pencil-20261110.webp",
+    "title": "Чашки — живой карандашный стиль",
+    "group": "Иллюстрации",
+    "sha256": "55fd149b78376fab7faede964943b0bf01de540be28d24d21caf75e1a9acf075"
+  },
+  {
+    "id": "book-cups-hatching-20261110",
+    "file": "artwork/vectors/book-cups-hatching-20261110.svg",
+    "title": "Лёгкие фоновые штрихи для книги и чашек",
+    "group": "Иллюстрации",
+    "sha256": "0e35eecc483c29ee21a1a7076e531861c8a0e944fa926126458a1ee40fbfa15b"
   }
 ]

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" preserveAspectRatio="none">
+  <defs><filter id="pencil-grain" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".21" numOctaves="2" seed="19" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="1.8" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#pencil-grain)">
+    <g stroke="#91aebe" stroke-width="3.2" opacity=".52">
+      <path d="M87 100l71-42 M102 119l88-53 M128 127l73-46 M159 130l65-39 M193 130l41-25"/>
+      <path d="M729 356l67-39 M739 376l98-59 M768 382l82-50 M800 389l65-41 M836 388l44-29"/>
+    </g>
+    <g stroke="#a2b693" stroke-width="3.7" opacity=".52">
+      <path d="M783 79l45-28 M801 95l63-39 M826 103l70-43 M858 107l52-31"/>
+      <path d="M109 355l58-35 M128 370l78-46 M151 383l94-56 M180 390l84-51 M214 392l55-33"/>
+    </g>
+    <g stroke="#9eb5c0" stroke-width="1.5" opacity=".38">
+      <path d="M70 108l64-37 M127 142l56-34 M722 390l70-41 M812 405l49-29 M786 110l67-40"/>
+    </g>
+  </g>
+</svg>

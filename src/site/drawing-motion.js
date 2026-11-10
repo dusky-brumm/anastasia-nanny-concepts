@@ -28,7 +28,7 @@ const pictures=[...document.querySelectorAll('svg[data-pencil-art]')].map(svg=>{
   const image=svg.querySelector('image');
   const url=image?.getAttribute('href')??image?.getAttribute('data-pencil-src')??svg.dataset.pencilFile??'';
   const key=url.split(/[?#]/)[0].split('/').pop();
-  const drawing=createPencilDrawing(svg,pencilArtwork[key],{paper:/book|album|profile|recommendation|application|letter|calendar|tea|chairs/.test(key)});
+  const drawing=createPencilDrawing(svg,pencilArtwork[key],{paper:!svg.classList.contains('illustration-hatching')&&/book|album|profile|recommendation|application|letter|calendar|tea|cups|chairs/.test(key)});
   if(!drawing)return null;
   const service=svg.hasAttribute('data-service-drawing');
   return {...drawing,key,service,kind:svg.dataset.serviceDrawing,group:svg.closest('[data-block]')??svg.parentElement,
@@ -167,15 +167,6 @@ function render(){
 function schedule(){if(!queued){queued=true;requestAnimationFrame(()=>{queued=false;render();});}}
 
 document.addEventListener('drawing:viewport',event=>{viewportReceived=true;viewport=event.detail;schedule();});
-document.addEventListener('review:bookchange',event=>{
-  const root=event.detail?.root;if(!(root instanceof Element)||!root.matches('#reviews .review-book-option'))return;
-  for(const picture of pictures){
-    if(!picture.svg.closest('.review-book-option'))continue;
-    if(root.contains(picture.svg)){picture.started=false;if(active)preparePicture(picture);else finishPicture(picture,false);}
-    else finishPicture(picture);
-  }
-  schedule();
-});
 document.addEventListener('visibilitychange',schedule);reduced.addEventListener('change',schedule);
 document.addEventListener('scroll',schedule,{passive:true,capture:true});
 new MutationObserver(schedule).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['class','hidden','aria-hidden','data-fonts-ready']});

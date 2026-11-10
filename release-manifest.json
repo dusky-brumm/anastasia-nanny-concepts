@@ -1,5 +1,5 @@
 {
-  "build": "f47733fade",
+  "build": "7c42ecf918",
   "base_commit": "dc700cd667788d80c8dc4c67c4e6432a92d1858b",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -2016,7 +2016,9 @@
       "generation": "Two ImageGen built-in transparent edits, original PNGs and exact prompts retained in artifacts/scroll-pricing-books-20261110; delivery WebP encoding with unchanged dimensions",
       "controls": "Only book illustration choices1–5; book query shares selection; all other removed design controls stay removed",
       "animation": "Existing contour/background/detail pencil renderer and duration, replay selected book on click; review carousel and other illustrations unaffected",
-      "layout": "Same160px picture frame and44px choice controls for all options; 30 cases checked at320/360/393/430/768/1280px"
+      "layout": "Same160px picture frame and44px choice controls for all options; 30 cases checked at320/360/393/430/768/1280px",
+      "superseded_by": "book_four_cups_hatching_20261110",
+      "status": "completed; user selected4"
     },
     "about_headline_copy_20261110": {
       "intro": "36px on desktop, 26px on phones and 24px on narrow phones; original Lora type retained",
@@ -2034,7 +2036,7 @@
       "base_commit": "4f06f289d2b5775da3c06fa57da451df79406739",
       "file": "media/reviews-rated-book-20261110.webp",
       "choice": 1,
-      "default": true,
+      "default": false,
       "shape": "Thicker hardcover guestbook with visible layered page edges and a curved central gutter, seen from the front/side",
       "page_marks": {
         "stars": 5,
@@ -2045,7 +2047,8 @@
       "preserved": "Book choices2–5, old source image, review carousel,160px picture frame, responsive layout and scroll-driven pricing patches",
       "generation": "ImageGen built-in transparent edit, exact prompt and original PNG retained in artifacts/rated-book-20261110",
       "documentation": "docs/rated-book-20261110.md",
-      "integrated_source": "4d7927d8d432d76ee00e32f0ce29a509d1f75660"
+      "integrated_source": "4d7927d8d432d76ee00e32f0ce29a509d1f75660",
+      "superseded_by": "book_four_cups_hatching_20261110"
     },
     "button_frame_gap_20261110": {
       "base_commit": "504729831c8596e0f0faff087cdfa511f950ca3b",
@@ -2074,6 +2077,36 @@
       },
       "rendering": "Form hatching is clipped by the selected pencil contour. Pure-white review pigment uses the generated rectangle alpha and a contrast-adjusted generated hatch luminance mask; controlled edges, no colored/gray paper cast.",
       "budgets": "The original base budget stays2.8MB; optional comparison images have350KB cap and the complete site remains under the existing3.8MB cap."
+    },
+    "book_four_cups_hatching_20261110": {
+      "base_commit": "a5fddf1e9404495b757fc3f5eefc265aa27d5008",
+      "book": {
+        "selected": 4,
+        "fixed": true,
+        "file": "media/reviews-light-notebook-20261110.webp",
+        "pixels": "Unchanged",
+        "comparison_controls": "Removed after user selection; old book query values cannot override the chosen drawing"
+      },
+      "cups": {
+        "file": "media/consultation-cups-hand-pencil-20261110.webp",
+        "style_references": [
+          "07-service-interview.webp",
+          "16-step-first-meeting.webp"
+        ],
+        "style": "Broken dry-pencil outlines, blue/sage crayon hatching and milk fills; same two cups,saucers and open book"
+      },
+      "background": {
+        "file": "artwork/vectors/book-cups-hatching-20261110.svg",
+        "style": "Sparse blue/sage pencil strokes on transparency",
+        "position": "Separate absolute layer behind book and cups; no layout space",
+        "animation": "Existing vector pencil renderer, no paper fill layer"
+      },
+      "animation": "Existing1060ms contour/background/detail sequence retained; background hatching uses the same renderer",
+      "active_raster_assets": 12,
+      "source_archives": "Previous books and cups remain in source; inactive images and controller are excluded from deployment",
+      "documentation": "docs/book-four-cups-hatching-20261110.md",
+      "integrated_source": "14a529702dd0b308ecc45b54a01c5695740d511c",
+      "surface_studies": "Preserve all four surface modes and comparison controller from completed source14a5297"
     }
   },
   "reviewed_decisions": {
@@ -2097,10 +2130,10 @@
       "passed": 44,
       "failed": 0
     },
-    "build": "f47733fade",
-    "visual_check": "Desktop1440px: four version buttons work, white fields and a single form remain, entered name is preserved and scrollY4405 remains unchanged across original/green/duo. White pencil texture visible behind all three review cards. Phones390px/320px: no page or comparison-strip horizontal overflow, form fits327px/257px and reviews retain the single-card carousel. Closing the comparison or opening an unknown texture restores the unmodified sage/white finish; no browser errors.",
-    "static_check": "PASS: one document, nine blocks;61 files,3613800 bytes including579244 About drawing bytes and306644 optional comparison texture bytes;96 local assets;55 artwork hashes.",
-    "preserved": "Latest source a5fddf1e9404495b757fc3f5eefc265aa27d5008, all photos, original main-site finishes, enlarged About opening lead, source-based sports copy, existing book options, form action and all other sections."
+    "build": "7c42ecf918",
+    "visual_check": "Selected book4 and new cups checked at320,393,430,768,1280px. No horizontal overflow; background layer dimensions match each picture wrapper. Old book=1 still shows4; comparison controls absent. Native proof shows both illustrations and background hatches. All four integrated surface modes retain book4,the new cups and absolute hatches; switching preserves entered form text. Independent adaptivity critique found no new issues.",
+    "preserved": "Book4 pixels,review carousel/content,form fields/green wash,1px larger button frame gap,About text and pricing scroll behavior. Surface texture comparisons from14a5297 retained.",
+    "static_check": "PASS: one document,nine blocks;57files,3304320bytes including579244 optional About drawings and306644 comparison textures;92local assets;57artwork hashes."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

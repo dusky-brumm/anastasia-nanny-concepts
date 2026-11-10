@@ -1,5 +1,5 @@
 {
-  "build": "73a6d94047",
+  "build": "9f1b6804b0",
   "base_commit": "e2959abaf5b902ab4e0ca25c58a3fff578e30099",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Shift the entire consultation composition20px left on desktop viewports1101px and wider;keep heading,cups,connecting line and form together without changing sizes or spacing.",
     "Remove only the visible На сайте heading from the footer navigation;retain all six links and the existing navigation accessible name.",
     "Limit the shared nine-section content grid to1280px for desktop viewports761–2560px; keep the existing1360px grid above2560px and preserve phone geometry.",
     "Use a single review slide on desktop and phones, with centered chalk arrows and three direct-selection dots matching About; preserve native horizontal scrolling, stable slide height and all review/book content.",
@@ -2180,7 +2181,17 @@
       "cups": "Scale the illustration to90% within its unchanged centered wrapper on every breakpoint; preserve surrounding line and layout.",
       "surface_choices": "Show the four existing surface versions on the ordinary site by default,starting with the selected green original. Original/blue/green/duo remain linkable; off explicitly closes the bar.",
       "performance": "Do not request optional hatch grain while original is selected.",
-      "preserved": "Six reviews,two desktop pages,Telegram link beside review heading,form delivery,all selected drawings."
+      "preserved": "Six reviews,two desktop pages,Telegram link beside review heading,form delivery,all selected drawings.",
+      "integration": "Preserve concurrent20px desktop consultation shift from3431c93; the cups remain90% inside the same wrapper."
+    },
+    "apply_shift_left_20261110": {
+      "desktop_min_viewport_px": 1101,
+      "shift_left_px": 20,
+      "selector": "#apply .contact-study-content",
+      "method": "Relative left offset on the existing positioned grid wrapper",
+      "preserved": "All element widths,heights and vertical positions;phone/tablet geometry;latest desktop/mobile connecting lines and request behavior",
+      "base_source": "82bd2b3f0cfd65439d3c59fddd834797d525224e",
+      "integrated_completed_source": "04932f7c088dcadcbddeccb58fc4d8c0376045a9"
     }
   },
   "reviewed_decisions": {
@@ -2200,14 +2211,15 @@
     "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
   },
   "validation": {
-    "build": "73a6d94047",
+    "build": "9f1b6804b0",
     "tests": {
       "passed": 52,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3315374bytes,58artwork hashes.",
+    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3315493bytes,58artwork hashes.",
     "visual_check": "1280px and320px: four texture choices visible on a normal URL; all modes switch without reload or field loss. Cups width and height are exactly90% of prior values. No horizontal overflow. Closing sets texture=off and stays closed after reload. Six reviews and pagination retained.",
-    "form": "No form submitted; Telegram Worker/config retained."
+    "form": "No form submitted; Telegram Worker/config retained.",
+    "apply_shift_left": "Measured393,1024,1100,1101,1280,1920px.No horizontal overflow.Heading,cups,form and visible line move exactly-20px at1101px and wider;all visible widths,heights and vertical coordinates unchanged.Phone/tablet visible geometry identical.52tests passed."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

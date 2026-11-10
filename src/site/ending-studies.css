@@ -15,6 +15,9 @@
 .site-preview.early-classic #apply .s-form-pencil :is(input,textarea){background-color:#fff!important;font-size:16px!important}
 .site-preview.early-classic #apply .s-form-pencil textarea{min-height:126px;resize:vertical}
 .site-preview.early-classic #apply .s-form-pencil .s-button{min-height:50px}
+@media(min-width:1101px){
+ .site-preview.early-classic #apply .contact-study-content{left:-20px}
+}
 @media(min-width:761px) and (max-width:1050px){
  .site-preview.early-classic #apply .contact-study-content{gap:36px;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
  .site-preview.early-classic #apply .s-form-pencil{padding:28px!important}

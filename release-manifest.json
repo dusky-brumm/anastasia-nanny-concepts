@@ -1,6 +1,6 @@
 {
-  "build": "562962f7c6",
-  "base_commit": "fb2a130d559a7827c0d24b4d21fd02f974e1003f",
+  "build": "f5be27bc95",
+  "base_commit": "2d537e296faadd6292bc1412a3c9bf3411816407",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2159,7 +2159,16 @@
       "mobile": "393px measurements identical before and after",
       "ultrawide": "2561px and3440px measurements identical before and after"
     },
-    "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links."
+    "footer_label_20261110": "Remove the footer navigation heading На сайте from HTML;the navigation grid closes the freed row naturally and keeps all six section links.",
+    "reviews_three_up_20261110": {
+      "base_commit": "23ce7b961b13e0ae56c3e6f7a9bed97fcfdc29c3",
+      "desktop": "Three cards per page, two pages for six saved quotations.",
+      "phone": "One card per page, all six available; compact chalk dots fit320px.",
+      "content_source": "docs/review-restored-content-20261110.json",
+      "navigation": "Page-size-aware arrows/dots/Home/End, page snap targets and active-review preservation on resize.",
+      "preserved": "Selected book and cups, form delivery Worker, all texture comparisons, remaining blocks."
+    },
+    "footer_label_integrated_source": "baa4b0982b0fd8a613d0388ed15230027eb352c5"
   },
   "reviewed_decisions": {
     "first_block_chat": "01a19ffd-dd9a-7a52-aa79-4c35e358bcd0",
@@ -2182,13 +2191,14 @@
       "passed": 52,
       "failed": 0
     },
-    "build": "562962f7c6",
-    "visual_check": "Desktop1280px and phone390px: no picture background hatches; preserved illustrations, form and comparison versions. The loop is a non-scaling2.3px chalk stroke. No horizontal overflow.",
-    "static_check": "PASS: one document,nine blocks;57files,3305407bytes including579244 optional About drawings and306644 comparison textures;93local assets;57artwork hashes.Worker serves57exact public assets;server bundle4421640bytes.",
+    "build": "f5be27bc95",
+    "visual_check": "1280/1024px:3cards/2pages;390/320px:1card/6pages. Arrows,dots,keyboard,wrap,resizing and smooth navigation passed; no horizontal overflow.",
+    "static_check": "PASS: one document,nine blocks;57files,3313154bytes including579244 optional About drawings and306644 comparison textures;93local assets;57artwork hashes.Worker serves57exact public assets;server bundle4431968bytes.",
     "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
     "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed.",
     "desktop_content_width": "Nine section content boxes measured1280px at1440,1920,2560px;1360px above2560px. No horizontal overflow at all7checked widths.393px and ultrawide measurements identical before/after. Hero and five-stage route visually checked at1920px.52tests passed.",
-    "footer_label": "Reviewed the single heading removal;footer navigation and contact group remain intact.52tests passed."
+    "footer_label": "Visible footer heading removed;all6navigation links retained;latest6review cards and desktop3-card pages preserved.52tests passed.",
+    "form": "No form submitted; current Telegram Worker and config retained."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",
@@ -2237,5 +2247,15 @@
       "real_delivery": "awaiting bot"
     },
     "static_pages": "manual Telegram draft retained"
+  },
+  "pricing_values_serif_20261110": {
+    "font": "Lora",
+    "selector": "#pricing .pn-terms dd",
+    "values": [
+      "25 000 ₽",
+      "После 1–2 пробных недель",
+      "6 месяцев"
+    ],
+    "checks": "build, public asset bytes and 52 existing tests passed"
   }
 }

@@ -1,6 +1,48 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {clamp01,entryProgress,segmentProgress,drawingEnabled,pencilGesture,pricingPatchState} from '../../src/site/drawing-model.js';
+import {clamp01,entryProgress,segmentProgress,drawingEnabled,pencilGesture,pricingPatchState,drawingReplayState,drawingInView} from '../../src/site/drawing-model.js';
+
+test('visited blocks re-arm after leaving either edge and can enter again',()=>{
+  let state=drawingReplayState(false,1100,700,900,64);
+  assert.deepEqual(state,{visible:false,reset:false});
+  state=drawingReplayState(state.visible,800,700,900,64);
+  assert.deepEqual(state,{visible:true,reset:false});
+  state=drawingReplayState(state.visible,-800,700,900,64);
+  assert.deepEqual(state,{visible:false,reset:true});
+  state=drawingReplayState(state.visible,-600,700,900,64);
+  assert.deepEqual(state,{visible:true,reset:false});
+  state=drawingReplayState(state.visible,1000,700,900,64);
+  assert.deepEqual(state,{visible:false,reset:true});
+});
+
+test('long blocks and small edge movements do not interrupt the current pass',()=>{
+  assert.deepEqual(drawingReplayState(true,-1200,1800,900,64),{visible:true,reset:false});
+  assert.deepEqual(drawingReplayState(true,-1750,1800,900,64),{visible:true,reset:false});
+  assert.deepEqual(drawingReplayState(true,920,700,900,64),{visible:true,reset:false});
+  assert.deepEqual(drawingReplayState(true,932,700,900,64),{visible:false,reset:true});
+  assert.deepEqual(drawingReplayState(false,1000,700,900,64),{visible:false,reset:false});
+  for(const [top,height,viewport] of [[NaN,700,900],[0,0,900],[0,700,0]]){
+    assert.deepEqual(drawingReplayState(true,top,height,viewport,64),{visible:true,reset:false});
+  }
+});
+
+test('pictures wait for meaningful visibility from above as well as below',()=>{
+  assert.equal(drawingInView(850,180,900,64),false);
+  assert.equal(drawingInView(800,180,900,64),true);
+  assert.equal(drawingInView(-60,180,900,64),false);
+  assert.equal(drawingInView(0,180,900,64),true);
+  assert.equal(drawingInView(-200,180,900,64),false);
+  assert.equal(drawingInView(-400,1700,900,64),true);
+  assert.equal(drawingInView(0,0,900,64),false);
+});
+
+test('scroll-drawn route progress has the same values on the way back',()=>{
+  const positions=[1000,800,400,800,1000];
+  const progress=positions.map(top=>entryProgress(top,130,900,64));
+  assert.equal(progress[0],0);assert.equal(progress[2],1);
+  assert.equal(progress[1],progress[3]);assert.equal(progress[0],progress[4]);
+  assert.ok(progress[1]>0&&progress[1]<1);
+});
 
 test('price patches grow with scroll, reverse and hold still without any time input',()=>{
   const far=pricingPatchState(1000,320,1000),near=pricingPatchState(750,320,1000),full=pricingPatchState(300,320,1000);

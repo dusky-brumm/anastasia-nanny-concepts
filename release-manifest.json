@@ -1,5 +1,5 @@
 {
-  "build": "8b5a163510",
+  "build": "b2a40421ee",
   "base_commit": "eca98795436f03d8224495e611bd9220e56d39b2",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
@@ -23,6 +23,7 @@
     "src/reference/studio/contour-motion.js": "4e12333aa97466047db62730147d39b77a44d7876b389225c518f687e4f8269d"
   },
   "included": [
+    "Replay timed pencil illustrations and enter-drawn lines after their block fully leaves the viewport;support entry from either scroll direction and reverse scroll-linked route lines without a maximum-progress latch.",
     "Shift the entire consultation composition20px left on desktop viewports1101px and wider;keep heading,cups,connecting line and form together without changing sizes or spacing.",
     "Remove only the visible На сайте heading from the footer navigation;retain all six links and the existing navigation accessible name.",
     "Limit the shared nine-section content grid to1280px for desktop viewports761–2560px; keep the existing1360px grid above2560px and preserve phone geometry.",
@@ -2199,6 +2200,17 @@
       "reviews": "Refine option2 with the same generated pencil strokes and neat drawn shape. A second filter pass retains72–100% white pigment and forces a solid alpha base,leaving28% of the prior grain contrast.",
       "default": "Option2 soft white reviews; comparison controls now affect reviews only. Other previous review textures remain available.",
       "preserved": "90% cups,desktop consultation position and connecting lines,six reviews/two desktop pages,larger social icons and footer links,Telegram delivery."
+    },
+    "scroll_replay_20261110": {
+      "rearm": "After a visited drawing block clears the visible viewport by32px;small movements within the block keep the current pass",
+      "entry": "Symmetric meaningful artwork visibility from either direction;respect sticky header and texture comparison bar",
+      "timing": "Existing fast contour/background/detail durations and20ms service staggering",
+      "captions": "Animate actual heading/paragraph targets on desktop and display:contents phone layout;allow visible text to fade in before its offscreen illustration",
+      "scroll": "Route progress follows current position in both directions;price patches keep their existing stateless bidirectional movement",
+      "cleanup": "Cancel previous animations,prepare existing SVG masks and reuse loaded images;node counts stay stable",
+      "static_modes": "Respect reduced motion,motion=off and capture=1",
+      "preserved": "Static About photos and continuations,form values,selected illustrations,comparison versions and current layout",
+      "integrated_source": "d428ed14c5a5b7f808af20b636793f2b47e03173"
     }
   },
   "reviewed_decisions": {
@@ -2215,17 +2227,19 @@
     "retired_named_designs": "November 6 explicitly removed numbered designs 10 and 12-16, including Yoga 16 and Elliot 15; this overrides the earlier optional Yoga clarification. Three explicitly transferred blocks survive inside designs 7 and 11.",
     "complete_block_catalog": "Retired by explicit single-selected-site request on November 7. Preserve selected nine blocks only; all old assembly links redirect to home.",
     "latest_classic_service": "The later explicit request rejects the family-interview block in design 6; use its completed illustrated service replacement.",
-    "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer."
+    "latest_switcher": "Fixed main site and fonts; explicitly requested local comparisons for About drawings, pricing, reviews, application and footer.",
+    "drawing_replay": "Latest explicit request: re-entry replays animated blocks;scroll-linked elements reverse on upward scrolling.This supersedes earlier once-per-visit behavior."
   },
   "validation": {
-    "build": "cfe4cc46bc",
+    "build": "b2a40421ee",
     "tests": {
-      "passed": 52,
+      "passed": 56,
       "failed": 0
     },
-    "static_check": "PASS: Worker serves57exact assets; single page,9blocks,57files,3317810bytes,58artwork hashes.",
+    "static_check": "PASS: one document,nine blocks;57files,3323471bytes including579244 optional About drawings and306644 comparison textures;93local assets;58artwork hashes.Worker serves57exact public assets;server bundle4445724bytes.",
     "visual_check": "1280px and320px: default option2 has a much whiter72–100% pigment base and light28% pencil contrast; original1 and prior3/4 remain available. Every mode keeps solid sage form RGB231,239,226 with no background image. Six reviews/two desktop pages retained; no horizontal overflow.",
-    "form": "No form submitted; current Telegram Worker/config retained."
+    "form": "No form submitted; current Telegram Worker/config retained.",
+    "scroll_replay": "56tests passed.Desktop service runs1to2;route runs2to3;small in-block scroll keeps run2.SVG node counts unchanged.Price scale1to0.451to1 and mobile route dash offsets reverse then return exactly.Caption can appear while its image remains offscreen,then image replays.Cups run1to2 while a dummy form value is retained.Motion-off keeps all21drawings complete with0runs.Final integrated source rechecked: all3service illustrations and captions finish at run2.No console errors."
   },
   "completed_css_sha256": {
     "src/reference/studio/unified-designs.css": "0f469aedbc410dc0bc7d2bda0feb8db5fbf654d489c3dcbb34409c40f5c52852",

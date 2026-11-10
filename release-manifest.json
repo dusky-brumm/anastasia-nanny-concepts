@@ -1,6 +1,6 @@
 {
-  "build": "b95ac1509f",
-  "base_commit": "a3bdb8b2eaef67e30f4e6cd26c63ec032c700b9b",
+  "build": "bd5d28fea4",
+  "base_commit": "e2959abaf5b902ab4e0ca25c58a3fff578e30099",
   "draft_base_commit": "fc81fee52b56be4206bdffbd27a9fa30393957cf",
   "draft_snapshot_sha256_lf": {
     "scripts/build-reference.mjs": "7ebb07612d3a042ae135e0bde0a2b7c2a88df7a1fd856a22cc6dae3f888f5756",
@@ -2176,7 +2176,14 @@
       "selector": "#apply .contact-study-content",
       "method": "Relative left offset on the existing positioned grid wrapper",
       "preserved": "All element widths,heights and vertical positions;phone/tablet geometry;latest desktop/mobile connecting lines and request behavior",
-      "base_source": "82bd2b3f0cfd65439d3c59fddd834797d525224e"
+      "base_source": "82bd2b3f0cfd65439d3c59fddd834797d525224e",
+      "integrated_completed_source": "04932f7c088dcadcbddeccb58fc4d8c0376045a9"
+    },
+    "review_link_heading_20261110": {
+      "placement": "Move the existing Telegram review link from beside the guestbook to the right of the Reviews heading above the cards.",
+      "responsive": "The heading row wraps naturally on phones; the link remains above the review slider.",
+      "preserved": "Six reviews,two desktop pages,chalk dots,book drawing,form and other sections.",
+      "integration": "Preserve concurrent footer heading and consultation line updates from82bd2b3; regenerate shared output from all source changes."
     }
   },
   "reviewed_decisions": {
@@ -2200,14 +2207,14 @@
       "passed": 52,
       "failed": 0
     },
-    "build": "b95ac1509f",
-    "visual_check": "1280/1024px:3cards/2pages;390/320px:1card/6pages. Arrows,dots,keyboard,wrap,resizing and smooth navigation passed; no horizontal overflow.",
-    "static_check": "PASS: one document,nine blocks;57files,3315537bytes including579244 optional About drawings and306644 comparison textures;93local assets;58artwork hashes.Worker serves57exact public assets;server bundle4435148bytes.",
+    "build": "bd5d28fea4",
+    "visual_check": "1280px: one Telegram review link to the right of the heading;320px: link wraps below heading above cards,no horizontal overflow. Six reviews and pagination retained.",
+    "static_check": "PASS: one document,nine blocks;57files,3315867bytes including579244 optional About drawings and306644 comparison textures;93local assets;58artwork hashes.Worker serves57exact public assets;server bundle4435588bytes.",
     "service_mobile_spacing": "320,360,393,430px: all three title/body gaps reduced by8px;article separation24 to40px;no horizontal overflow.1280px: measured layout identical.Independent adaptivity critique passed. Rechecked393px on final integrated build.",
     "review_slider": "Browser-checked320,360,393,430,768,1280px;no horizontal overflow;one full-width card;all controls44x44;equal slide heights. Arrows,rapid consecutive clicks,3-to1 wrap,direct dot selection,keyboard Home and ArrowRight,resize preservation verified. Independent screenshot adaptivity critique passed.44tests passed. Final integrated Worker build rechecked in browser;52tests passed.",
     "desktop_content_width": "Nine section content boxes measured1280px at1440,1920,2560px;1360px above2560px. No horizontal overflow at all7checked widths.393px and ultrawide measurements identical before/after. Hero and five-stage route visually checked at1920px.52tests passed.",
     "footer_label": "Visible footer heading removed;all6navigation links retained;latest6review cards and desktop3-card pages preserved.52tests passed.",
-    "form": "No form submitted; current Telegram Worker and config retained.",
+    "form": "No form submitted; Telegram Worker/config retained.",
     "apply_shift_left": "Measured393,1024,1100,1101,1280,1920px.No horizontal overflow.Heading,cups,form and visible line move exactly-20px at1101px and wider;all visible widths,heights and vertical coordinates unchanged.Phone/tablet visible geometry identical.52tests passed."
   },
   "completed_css_sha256": {
@@ -2274,5 +2281,13 @@
     "artwork": "Editable SVG with existing dry pencil grain and stroke drawing",
     "checks": "Build, 58 artwork hashes, 57 served asset bytes and 52 existing tests passed",
     "browser": "Computer Use stopped because the browser URL could not be verified"
+  },
+  "custom_text_selection_20261110": {
+    "background": "#d2dfc9",
+    "text": "#28353c",
+    "contrast_ratio": 9.09,
+    "scope": "Global text selection, including form fields",
+    "forced_colors": "System Highlight and HighlightText preserved",
+    "checks": "Build and 52 existing tests passed"
   }
 }
